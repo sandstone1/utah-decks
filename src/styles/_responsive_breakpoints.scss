@@ -1,0 +1,47 @@
+
+
+// ==============================
+// REMEMBER, WE CAN'T USE CSS VARIABLES OR CUSTOM PROPERTIES IN MEDIA QUERIES
+// ==============================
+
+// this information came from the article :
+// " https://bholmes.dev/blog/alternative-to-css-variable-media-queries/ "
+
+/*
+    " The first is what I'd recommend to existing Sass users: fall back to Sass
+    variables for media queries, and use CSS variables everywhere else. "
+*/
+
+
+
+// ==============================
+// RESPONSIVE BREAKPOINTS
+// ==============================
+
+
+// ==============================
+// MOST POPULAR DESKTOP SIZES - NORTH AMERICA :
+// #1 - 1920
+// #2 - 1280
+// #3 - 1366
+// #4 - 1536
+// ==============================
+
+
+$bp-2080 : 2080px;
+$bp-2000 : 2000px;
+$bp-1920 : 1920px; // decided to replace 1937 with 1920 => my old notes : 1920 + 17 (added 17px to compensate for Firefox including the scroll bar width as part of the browser width and therefore causing problems with the media queries) = 1937
+$bp-1728 : 1728px; // default 2024 16-inch MacBook Pro
+$bp-1536 : 1536px; // decided to replace 1617 with 1536 => my old notes : 1600 + 17 (added 17px to compensate for Firefox including the scroll bar width as part of the browser width and therefore causing problems with the media queries) = 1617
+$bp-1440 : 1440px; // default 2024 15-inch MacBook Air
+$bp-1376 : 1376px; // decided to replace 1366 with 1376 since the 2024 iPad Pro has viewport size of 1032 x 1376
+$bp-1280 : 1280px;
+$bp-1032 : 1032px; // decided to replace 1024 with 1032 since the 2024 iPad Pro has viewport size of 1032 x 1376
+$bp-920  : 920px;
+$bp-768  : 768px;
+$bp-620  : 620px;
+$bp-480  : 480px;
+$bp-375  : 375px;
+$bp-320  : 320px;
+
+

@@ -1,0 +1,131 @@
+---
+
+// ==============================
+// imports
+// ==============================
+
+// import in getCollection
+import { getCollection } from 'astro:content';
+// import in AddToCart component
+import { AddToCart } from '../../solid/cart/add-to-cart';
+// import in formatCurrency function
+import { formatCurrency } from '../../../utils/format-currency';
+// import in our styles
+import styles from './shop-items.module.scss';
+
+
+// ==============================
+// api fetch
+// ==============================
+
+// get the products from product content collection and Astro will automatically
+// know our shopItems are of type CollectionEntry
+const shopItems = await getCollection( "products" );
+
+/*
+// get products
+// const result = await fetch( 'https://astro-frontend-masters-api.netlify.app/api/products' );
+
+if ( !result.ok ) {
+
+    // console.log the error
+    console.log( result );
+
+} // end of if
+
+// get the body of the response or the result and this will be a json object and save it
+// to the variable shopItems
+const shopItems : ShopItem[] = await result.json();
+*/
+
+
+// ==============================
+// props
+// ==============================
+
+// define prop types and by defining a Props interface right above the Astro.props;
+// line below, we get great auto-complete
+interface Props {
+    
+    count?     : number; // the ? makes it optional
+    addToCart? : boolean; // want this to toggle on and off so that we only show the add to cart button on the shop page
+
+}
+
+// then we want to access these props and the way to do it in Astro is you get
+// a global object called Astro that we can use in .astro files and from that we can
+// then grab the props out of Astro and then we can destructure those props
+
+// the Astro object contains everything about the current request, including props, params,
+// cookies and locals
+
+// so now we have count, which we know is a number and addToCart, which we know is a boolean
+const { count = Infinity, addToCart = true } = Astro.props;
+
+---
+
+{
+    /*
+        // ==============================
+        // container
+        // ==============================
+
+        // Keep the container section as plain HTML and only use the Curly Braces { } for the
+        // dynamic part ( the .map loop ). It keeps your file clean and follows the "Astro way"
+        // of keeping static and dynamic parts separate.
+
+        // Astro templates run on the server
+    */
+}
+<section class={ styles.shopItemsContainer }>
+
+    {
+        // with slice, start at 0 and use count to show a certain number of products on the page
+        shopItems.slice( 0, count ).map( ( item : any ) => {
+
+            return (
+
+                /*
+                    // ==============================
+                    // container > cart item
+                    // ==============================
+                */
+                <div class={ styles.shopItemsContainerItem }>
+
+                    <img
+                        src={ item.data.image.src }
+                        alt={ item.data.image.alt }
+                    />
+
+                    <h2>{ item.data.title }</h2>
+
+                    <p>{ item.data.description }</p>
+
+                    <p class={ styles.shopItemsContainerItemPrice }>{ formatCurrency( item.data.price) }</p>
+
+                    {
+                        /*
+                            // ==============================
+                            // container > add to cart button
+                            // ==============================
+                        */
+                    }
+                    {
+                        /* 
+                            I changed from client:only="react" to client:load since client:load
+                            prevents the tiny flicker of the button when the button appears a
+                            few milliseconds late
+                        */
+                    }
+                    { addToCart ? <AddToCart item={ item.data } client:load /> : null }
+
+                </div>
+
+            )
+
+        } )
+
+    }
+
+</section>
+

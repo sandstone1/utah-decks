@@ -1,0 +1,199 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+// ==============================
+// real estate broker website container
+// ==============================
+
+.realEstateBrokerWebsiteContainer {
+
+    // parent
+    grid-area   : div8;
+    grid-column : 1 / -1; // position against the parent
+
+    // children
+    display               : grid;
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // remember, there are 2 things we want to accomplish :
+    // 1 - allow the wrapper div to position against the parent div and thereby
+    // shrink as needed
+    // 2 - we want to center the wrapper div ( see below for details )
+    // ==============================
+
+    // ==============================
+    // " grid-template-columns " is needed so that the wrapper div ( i.e. child ) can position
+    // against the parent ( i.e. this div ) by using " grid-column : 2 / 22; " and this allows
+    // the background declared below to span across the entire container or the entire site and
+    // this also allows the wrapper div to dynamically contain its children within the
+    // " grid-column : 2 / 22; " context so that as the screen size shrinks the wrapper div
+    // container and all its children containers or divs will automatically shrink as well
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    justify-items         : center;
+
+    padding : 12.0rem 0 12.0rem 0;
+
+    background : var( --background-lg-1 );
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+        // children
+        display               : grid;
+        grid-template-rows    : repeat( 4, auto );
+        grid-template-columns : 1fr;
+        grid-template-areas   : "h3"
+                                "border"
+                                "div1"
+                                "div2";
+
+        width : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+
+        // ==============================
+        // container > div 1 > h3
+        // ==============================
+
+        > h3 {
+
+            @include h3-light-title;
+
+            margin : 0 0 3.0rem 0;
+
+        } // end of container > div1 > h3
+
+        // ==============================
+        // container > div 1 > div 1
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            > h5 {
+
+                @include h5-light-title;
+
+                margin : 0 0 2.0rem 0;
+
+            } // end of container > div1 > div1 > h5
+
+            // ==============================
+            // container > div 1 > div 1 > ul ( the list )
+            // ==============================
+
+            > ul {
+
+                padding : 0 0 0 1.6rem;
+
+                list-style-type : disc; // override the global stylesheet in this case
+                // list-style-position: outside; // make sure the disc markers are located
+                // the content box
+
+                > li {
+
+                    @include text-base-light;
+
+                    margin : 0 0 2.0rem 0;
+
+                    > a {
+
+                        @include text-base-light;
+
+                        margin : 0 0 0 0;
+
+                        text-decoration : underline;
+
+                    } // end of container > div1 > div1 > ul > li > a
+
+                } // end of container > div1 > div1 > ul > li
+
+                > li:last-child {
+
+                    margin : 0 0 0 0;
+
+                } // end of container > div1 > div1 > ul > li:last-child
+
+                // ==============================
+                // container > div 1 > div 1 > ul > span ( show tech details )
+                // ==============================
+
+                > span {
+
+                    display : block;
+                    padding : 2.0rem 2.0rem 2.0rem 2.0rem;
+
+                    border        : 0.75px solid var( --gray-200 );
+                    border-radius : 6px;
+
+                    @include text-base-light;
+
+                    margin : 0 0 2.0rem 0;
+
+                    cursor : pointer;
+
+                } // end of container > div1 > div1 > ul > span
+
+                // ==============================
+                // container > div 1 > div 1 > ul > a > img 1
+                // ==============================
+
+                > a > img.realEstateBrokerWebsiteContainerImage1 {
+
+                    padding : 0 0 1.0rem 0;
+
+                } // end of container > div1 > div1 > ul > a > image 1
+
+            } // end of container > div1 > div1 > ul
+
+        } // end of container > div1 > div1
+
+    } // end of container > div1
+
+} // end of container
+

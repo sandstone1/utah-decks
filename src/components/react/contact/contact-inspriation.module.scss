@@ -1,0 +1,162 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+// ==============================
+// contact inspriation container
+// ==============================
+
+.contactInspriationContainer {
+
+    // parent
+    grid-area   : div2;
+    grid-column : 1 / -1; // position against the parent and see notes in parent above
+
+    // children
+    display                 : grid;
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // remember, there are 2 things we want to accomplish :
+    // 1 - allow the wrapper div to position against the parent div and thereby
+    // shrink as needed
+    // 2 - we want to center the wrapper div ( see below for details )
+    // ==============================
+
+    // ==============================
+    // " grid-template-columns " is needed so that the wrapper div ( i.e. child ) can position
+    // against the parent ( i.e. this div ) by using " grid-column : 2 / 22; " and this allows
+    // the background declared below to span across the entire container or the entire site and
+    // this also allows the wrapper div to dynamically contain its children within the
+    // " grid-column : 2 / 22; " context so that as the screen size shrinks the wrapper div
+    // container and all its children containers or divs will automatically shrink as well
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    justify-items         : center;
+
+    padding : 12.0rem 0 12.0rem 0; // provide some top and bottom spacing for this section
+
+    // ==============================
+    // background
+    // ==============================
+
+    // background : var( --gray-316 ); // visual preference
+    background : var( --yellow-40 );
+
+    // ==============================
+    // end of background
+    // ==============================
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1
+    // ==============================
+
+    > div {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+        // children
+        display       : grid;
+        justify-items : center;
+
+        // ==============================
+        // remember, 
+        // 1 - with " grid-column : 2 / 22; " and " width : min( 126.0rem, 100% ); ",
+        // the children content will stay within the bounds of 2 / 22 and shrink
+        // automatically as needed
+        // 2 - and the children content will be the smaller of 126.0rem or 100%
+        // ==============================
+
+        width : min( 126.0rem, 100% ); // browser will select the smaller of 126.0rem or 100%
+
+        // ==============================
+        // container > div 1 > h4
+        // ==============================
+
+        > h3 {
+
+            @include h3-dark-title;
+
+            margin : 0 0 4.0rem 0;
+
+            text-align : center;
+
+            @media all and ( max-width : $bp-375 ) {
+
+                text-align : left;
+
+            } // end of container div1 > h3 > bp-375
+
+        } // end of container > div1 > h3
+
+        // ==============================
+        // container > div 1 > div 1
+        // ==============================
+
+        > div {
+
+            // children
+            display               : grid;
+            grid-template-columns : repeat( 4, 1fr ); // divide the images in 4 equal columns
+            grid-gap              : 0 4.0rem; // provide some column spacing between the images  
+
+            @media all and ( max-width : $bp-1440 ) {
+
+                grid-template-columns : repeat( 2, 1fr ); // go from 4 columns to 2 columns
+                grid-gap              : 4.0rem 4.0rem; // provide some row spacing between the images
+        
+            } // end of container div1 > div > bp-1440
+
+            @media all and ( max-width : $bp-768 ) {
+
+                grid-template-columns : 1fr; // go from 2 columns to 1 column
+                grid-gap              : 4.0rem 0; // provide some row spacing between the images
+
+            } // end of container div1 > div > bp-768
+
+        } // end of container div1 > div1
+
+    } // end of container div1
+
+} // end of container
+
+

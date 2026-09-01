@@ -1,0 +1,401 @@
+---
+
+// remember the 3 dashes above HAVE TO START ON LINE 1
+
+
+// ==============================
+// Imports
+// ==============================
+
+// import in getEntry
+import { getEntry } from 'astro:content';
+// import in the file system library from node
+import fs from 'node:fs';
+// import in the path library from node
+import path from 'node:path';
+// import in Stripe
+import Stripe from "stripe";
+// import in the database connection
+import { db } from '../../../lib/db';
+// import in the formatCurrency function
+import { formatCurrency } from '../../../utils/format-currency';
+// import in our styles
+// import styles from './[sussionId].module.scss';
+
+
+// ==============================
+// Initialize stripe
+// ==============================
+
+// initialize stripe
+const stripe = new Stripe( import.meta.env.STRIPE_SECRET_KEY!,
+    // make sure we call the same version of the api so that if stripe updates the api
+    // it doesn't break our application
+    {
+        apiVersion : "2026-03-25.dahlia",
+
+        // this uses the browser-standard fetch which is much more stable in Astro / Vite
+        httpClient : Stripe.createFetchHttpClient(), 
+    } 
+);
+
+
+// ==============================
+// 1 - Get the session_id from the URL
+// ==============================
+
+// use Astro.params to look into the url path and pluck out the dynamic route part
+// or [sessionId]
+const { sessionId } = Astro.params;
+
+
+// we have to prove to TS that session_id is not undefined; otherwise, we are geting an error in
+// arg : [ session_id ] below
+
+// ==============================
+// sessionId check
+// ==============================
+
+// instead of doing a check here, we could have done :
+// args : [ id! ] and "!" tells TS: " I know what I'm doing, trust me. "
+if ( !sessionId  ) {
+
+    // consol.log out the following message
+    console.log( '-------------------------' );
+    console.error( "❌ sessionId not found " );
+    console.log( '-------------------------' );
+
+    return Astro.redirect('/404');
+
+} // end of if
+
+// ==============================
+// Got the sessionId - proceed forward
+// ==============================
+
+
+// ==============================
+// 2 - Get session details from Stripe
+// ==============================
+
+// ask Stripe for the session details so we can get the metadata and fill in the
+// dynamic webpage
+const session = await stripe.checkout.sessions.retrieve( sessionId );
+
+
+// ==============================
+// 3 - Get the orderId
+// ==============================
+
+// once we have the session details from stripe then we can use the metadata that we saved
+// in the API route, which was the orderID
+const orderId = session.metadata?.orderId;
+
+// ==============================
+// orderId check
+// ==============================
+
+if ( !orderId  ) {
+
+    // consol.log out the following message
+    console.error( "❌ orderId not found " );
+    console.log( '-----------------------' );
+
+    return Astro.redirect('/404');
+
+} // end of if
+
+// ==============================
+// Got the orderId - proceed forward
+// ==============================
+
+
+// ==============================
+// 4 - Fetch the order
+// ==============================
+
+// we need check the order first to make sure we have an actual order and if we don't
+// then redirect the user to a 404 page
+const orderResult = await db.execute(
+    {
+        sql  : 'SELECT * FROM orders WHERE id = ?',
+        args : [ orderId ]
+    }
+);
+
+// get the order
+const order = orderResult.rows[ 0 ];
+
+// ==============================
+// Order check
+// ==============================
+
+// if there is no order then redirect the user to a 404 page
+if ( !order ) {
+
+    // consol.log out the following message
+    console.error( "❌ order not found " );
+    console.log( '---------------------' );
+
+    return Astro.redirect( '/404' );
+
+} // end of if
+
+// ==============================
+// Got the order - proceed forward
+// ==============================
+
+
+// ==============================
+// 5 - Fetch the sandwiches for this order
+// ==============================
+
+const itemsResult = await db.execute(
+    {
+        sql  : 'SELECT * FROM order_items WHERE orderId = ?',
+        args : [ orderId ]
+    }
+);
+
+
+// ==============================
+// 6 - Enrich the items with Content Collection data
+// ==============================
+
+// use .map() alone when we are just changing data that is already there; use
+// await Promise.all( map(...) ) when our loop has to fetch new data ( like
+// getEntry or a database call ) and remember, Promise.all( map(...) ) is much
+// faster than doing the looping individually
+const enrichedItems = await Promise.all(
+
+    itemsResult.rows.map( async ( item : any ) => {
+
+        // grab the full product details using the productId
+
+        // remember, Astro is use to productId being a string so we need convert our
+        // productId from a number to a string
+
+        // remmeber, in pages/blog/[ id ], we used the following code :
+
+        // get id from Astro.params for a fresh lookup
+        // const { id } = Astro.params;
+
+        // fetch the entry again to ensure it's live and valid
+        // const entry = await getEntry( 'blog', id );
+
+        // render out the content
+        // const { Content } = await render( entry ); 
+
+        // here, we doing the same thing; we are getting one item from the products collection
+        // by the productId to identify which item to get and the using Astro's built in
+        // getEntry() function to get all the product information for that particular product
+
+        // item.productId?.toString() is returning 1.0 and we need it to be 1 to match out product
+        // id of 1
+        const idToSearch = Math.floor( item.productId ).toString();
+
+        // use getEntry to get the product
+        const product = await getEntry( 'products', idToSearch );
+
+        // console.log out the id and make sure it is a whole number
+        console.log( 'Found product id:', idToSearch );
+
+        // return the cart items and the product information
+        return {
+            ...item,
+            product: product?.data // this gives us the .title, description, .image, etc.
+        };
+
+    } )
+
+) // end of enrichedItems
+
+
+// ==============================
+// 7. Get the path to your HTML file
+// ==============================
+
+// process.cwd() gets the root of your project
+const filePath = path.join( process.cwd(), 'src/pages/email/html/sndwch-shop-payment-receipt-v1.html' );
+
+
+// ==============================
+// 8. Read the file content as a string
+// ==============================
+
+// get the string contents of the email file
+let htmlTemplate = fs.readFileSync( filePath, 'utf8' );
+
+
+// ==============================
+// 9. Define variables and loop through enrichedItems to define sandwichRows
+// ==============================
+
+const receipt = `
+    <tr>
+        <!-- padding and add background-color: #ffffff; for Outlook -->
+        <td class="darkmode-transparent" style="padding: 0px 30px 20px 30px; font-family: 'Roboto', Helvetica, Arial, sans-serif; background-color: #ffffff;">
+            <table width="100%" style="border-spacing: 0;" role="presentation">
+
+                <!-- row 1 -->
+                <tr>
+                    <!-- padding between content -->
+                    <!-- remember, our background image needs to be 600 by 899 -->
+                    <!-- remember, this image has a transparent background so that it works in both light and dark modes -->
+                    <td background="https://res.cloudinary.com/sandstone1/image/upload/v1775972888/sndwch-title-v7_owedlr.png" width="360" height="40" style="padding: 30px 0 10px 0; background-position: left center; background-repeat: no-repeat;">
+
+                        <!-- remember #1 -->
+                        <!-- remember, vml is needed in order for background images to work in Outlook ( more specifically, Outlook from 2007 - 2013 ) -->
+                        <!-- from https://www.emailonacid.com/blog/article/email-development/conditional-css-code/ : " You can code your emails with Vector Markup Language
+                        (VML), but it only works in older versions of Outlook ( 2007-2013 ) " -->
+
+                        <!-- remember #2 -->
+                        <!-- remember, our image has a transparent background and in order for the tranparent background to work in desktop Outlook, we have to set the fill
+                        value to false or fill="false"; otherwise, desktop Outlook is adding a white background to the image in both light and dark modes -->
+
+                        <!--[if mso]>
+                            <v:image xmlns:v="urn:schemas-microsoft-com:vml" fill="false" stroke="false" style="display: inline-block; width: 270pt; height: 30pt; border: 0; background-position: left center;" src="https://res.cloudinary.com/sandstone1/image/upload/v1775972888/sndwch-title-v7_owedlr.png" alt="Hero Image" />
+                            <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="display: inline-block; position: absolute; width: 270pt; height: 30pt; border: 0;">
+                            <v:fill opacity="0%" color="#000000" />
+                            <v:textbox inset="0,0,0,0">
+                        <![endif]-->
+
+                        <!--[if mso]>
+                            </v:textbox>
+                            </v:rect>
+                        <![endif]-->
+
+                    </td>
+                </tr>
+
+                <!-- row 2 -->
+                <tr>
+                    <!-- remember, &#39; works in Outlook and all other emails clients and use this instead of &apos; since &apos; does not work in Outlook -->
+                        <!-- from stackoverflow : " That being said if you have to support legacy browsers or writing HTML emails for Outlook then you're best sticking to &#39; "-->
+                    <!-- padding between content -->
+                    <td style="padding: 0 0 20px 0; text-align: left;">
+                        <p class="darkmode-background-text-color" style="margin: 0; font-size: 18px; color: #374151;  line-height: 28.8px; text-decoration: none !important;">We've received your payment and our sandwich architects are already at work.</p>
+                    </td>
+                </tr>
+
+                <!-- row 3 -->
+                <tr>
+                    <!-- remember, &#39; works in Outlook and all other emails clients and use this instead of &apos; since &apos; does not work in Outlook -->
+                        <!-- from stackoverflow : " That being said if you have to support legacy browsers or writing HTML emails for Outlook then you're best sticking to &#39; "-->
+                    <!-- padding between content -->
+                    <td style="padding: 0 0 2.5px 0; text-align: left;">
+                        <p class="darkmode-background-text-color" style="margin: 0; font-size: 20px; color: #374151;  line-height: 28.8px; text-decoration: none !important;"><b>Receipt</b></p>
+                    </td>
+                </tr>
+
+                <!-- row 4 -->
+                <tr>
+                    <!-- remember, &#39; works in Outlook and all other emails clients and use this instead of &apos; since &apos; does not work in Outlook -->
+                        <!-- from stackoverflow : " That being said if you have to support legacy browsers or writing HTML emails for Outlook then you're best sticking to &#39; "-->
+                    <!-- padding between content -->
+                    <td style="padding: 0 0 0 0; text-align: left;">
+                        <p class="darkmode-background-text-color" style="margin: 0; font-size: 18px; color: #374151; line-height: 28.8px; text-decoration: none !important;">Date: ${ new Date().toLocaleDateString() }</p>
+                    </td>
+                </tr>
+
+                <!-- row 5 -->
+                <tr>
+                    <!-- remember, &#39; works in Outlook and all other emails clients and use this instead of &apos; since &apos; does not work in Outlook -->
+                        <!-- from stackoverflow : " That being said if you have to support legacy browsers or writing HTML emails for Outlook then you're best sticking to &#39; "-->
+                    <!-- padding between content -->
+                    <td style="padding: 0 0 0 0; text-align: left;">
+                        <p class="darkmode-background-text-color" style="margin: 0; font-size: 18px; color: #374151; line-height: 28.8px; text-decoration: none !important;">Order number: ${ orderId.slice( 0, 8 ).toUpperCase() }</p>
+                    </td>
+                </tr>
+
+                <!-- row 6 -->
+                <tr>
+                    <!-- padding between content -->
+                    <td style="padding: 0 0 0 0; text-align: left;">
+                        <p class="darkmode-background-text-color" style="margin: 0; font-size: 18px; color: #374151; line-height: 28.8px; text-decoration: none !important;">Amount paid: ${ formatCurrency( Number( order.totalPrice ) ) }</p>
+                    </td>
+                </tr>
+
+                <!-- row 7 -->
+                <tr>
+                    <!-- remember, &#39; works in Outlook and all other emails clients and use this instead of &apos; since &apos; does not work in Outlook -->
+                    <!-- from stackoverflow : " That being said if you have to support legacy browsers or writing HTML emails for Outlook then you're best sticking to &#39; "-->
+                    <!-- padding between content -->
+                    <td style="padding: 0 0 0 0; text-align: left;">
+                        <p class="darkmode-background-text-color" style="margin: 0; font-size: 18px; color: #374151; line-height: 28.8px; text-decoration: none !important;">Paid via Stripe</p>
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+    </tr>        
+`;
+
+let sandwichRows = '';
+
+for ( const item of enrichedItems ) {
+
+    // We create a new row for every sandwich bought
+    sandwichRows += `
+        <tr>
+            <td class="darkmode-transparent" align="left" style="padding: 0px 0px 20px 0px; background-color: #ffffff;">
+
+                <!-- content -->
+                <table width="100%" style="border-spacing: 0;" role="presentation">
+
+                    <!-- row 1 -->
+                    <tr>
+                        <!-- padding between content -->
+                        <td style="padding: 0px 0px 20px 0px; text-align: left;">
+                            <p class="darkmode-background-text-color" style=" margin: 0; padding: 0px 30px 0px 30px; font-family: 'Roboto', Helvetica, Arial, sans-serif; font-size: 18px; color: #374151; line-height: 28.8px; text-decoration: none !important;">
+                                ${ item.quantity } ${ item.product.title } - ${ formatCurrency( Number( item.priceAtPurchase ) ) }
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    <!-- row 2 -->
+                    <tr>
+                        <!-- padding between content -->
+                        <td style="padding: 0 0 0 0;">
+                            <a href="tel:18005551212" target="_self" style="text-decoration: none;">
+                                <img 
+                                    src="${ item.product.image.src }"
+                                    alt="${ item.product.title }" 
+                                    width="600" 
+                                    style="display: block; width: 100%; max-width: 600px; height: auto; border: 0;" 
+                                />
+                            </a>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </td>
+        </tr>
+    `;
+
+}
+
+// Construct the URL using our new dynamic path
+const dynamicPaymentReceiptUrl = `${ import.meta.env.SITE }/email/view/${ sessionId }`;
+
+
+// ==============================
+// 10. Swap the placeholder with real rows and use placeholders in my html email code
+// ==============================
+
+htmlTemplate = htmlTemplate
+                .replace( '{{receipt}}', receipt )
+                .replace( '{{sandwichRows}}', sandwichRows )
+                .replace( '{{url}}', dynamicPaymentReceiptUrl );
+
+---
+
+<!-- this is a built-in component from Astro used to inject a raw string of HTML directly
+into a page without wrapping it in an extra html tags -->
+
+<!-- since your htmlTemplate is already a complete, "state-of-the-art" HTML document
+( starting with <!DOCTYPE html> ), you don't want Astro to add any extra code around it.
+You just want the browser to treat that string as the entire webpage. -->
+<Fragment set:html={ htmlTemplate } />
+

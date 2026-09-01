@@ -1,0 +1,311 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../../../styles/_mixins.scss' as *;
+@use '../../../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+// ==============================
+// earth 3d container
+// ==============================
+
+.earth3dContainer {
+
+    // parent
+    grid-area   : div4;
+    grid-column : 1 / -1; // needed in order to fill the parent container\
+
+    // children
+    display       : grid; // needed to center the object
+    justify-items : center; // needed to center the object
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // remember, there are 2 things we want to accomplish :
+    // 1 - allow the wrapper div to position against the parent div and thereby
+    // shrink as needed
+    // 2 - we want to center the wrapper div ( see below for details )
+    // ==============================
+
+    // ==============================
+    // " grid-template-columns " is needed so that the wrapper div ( i.e. child ) can position
+    // against the parent ( i.e. this div ) by using " grid-column : 2 / 22; " and this allows
+    // the background declared below to span across the entire container or the entire site and
+    // this also allows the wrapper div to dynamically contain its children within the
+    // " grid-column : 2 / 22; " context so that as the screen size shrinks the wrapper div
+    // container and all its children containers or divs will automatically shrink as well
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    // justify-items : center; // this is needed to center the h1 element and the object
+    // on smaller screens
+
+    position : relative; // needed for the text
+    padding  : 12.0rem 0 12.0rem 0;
+
+    // remember, " grid-column : 1 / -1; " allows the background image to span the entire screen
+    background-image : url( /images/lama_bg_01.jpeg );
+    // background : var( --black );
+    // background : radial-gradient(#363508, #000000);
+    // background : radial-gradient( rgba( 33, 27, 129, 1 ), rgba( 16, 24, 32, 1 ) );
+    // background : radial-gradient( #2f2890, var( --black ) );
+    // background : var( --background-lg-39 ); // good one
+    // background : var( --background-lg-40 );
+    background : var( --background-lg-43 );
+
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 1 / -1; // position against the parent and remember, in
+        // R3F this is needed to center the canvas
+
+        z-index : 1; // make sure the h2 and canvas sit above the starfield or div 3
+        // and see nav.module.scss for z-index notes
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > h2
+        // ==============================
+
+        > h2 {
+
+            @include h2-light-title;
+
+            margin     : 0 0 0 0;
+            padding    : 0 0 0 0;
+            text-align : center;
+
+            @media all and ( max-width : $bp-620 ) {
+
+                padding    : 0 0 2.25rem 0; // needed for smaller screens to give some
+                // spacing between the h2 element and the 3d object
+        
+            } // end of container > div1 > h2 > bp-620
+
+        } // container > div1 > h2
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > div 1
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            width  : 800px; // need to give the canvas container a specified width at
+            // each breakpoint
+            height : 800px; // need to give the canvas container a specified height at
+            // each breakpoint
+
+            @media all and ( max-width : $bp-1032 ) {
+                
+                width  : 600px;
+                height : 600px;
+    
+            } // end of container > div1 > div1 > bp-1032
+
+            @media all and ( max-width : $bp-620 ) {
+                
+                width  : 360px; // had to shrink the width and height so users
+                // have more room to scroll
+                height : 360px;
+    
+            } // end of container > div1 > div1 > bp-620
+        
+            @media all and ( max-width : $bp-375 ) {
+    
+                width  : 280px;
+                height : 280px;
+    
+            } // end of container > div1 > div1 > bp-375
+    
+            // ==============================
+            // container > div 1 ( wrapper div ) > div 1 > canvas
+            // ==============================
+/*
+            > canvas {
+
+
+            } // end of container > div1 > div1 > canvas
+*/
+
+        } // end of container > div1 > div1
+
+    } // end of container > div1
+
+    // ==============================
+    // container > div 2 ( 3D instructional text )
+    // ==============================
+
+    > div:nth-child( 2 ) {
+
+        position : absolute;
+        top      : 14.0rem;
+        right    : 10vw;
+
+        pointer-events : none; // this makes sure we can still interact with
+        // the underlying 3D object
+
+        @media all and ( max-width : $bp-1440 ) {
+
+           display : none;
+
+        } // end of container > div1 > div1 > bp-1440
+
+        > p {
+
+            width   : 25.0rem;
+            height  : auto;
+            padding : 2.0rem 2.0rem 2.0rem 2.0rem;
+
+            border-radius : 6px;
+
+            @include text-base-dark;
+
+            margin  : 0 0 0 0;
+
+            color : var( --white );
+
+            background : var( --blue-83 );
+
+        } // container > div2 > p
+
+    } // end of container > div2
+
+    // ==============================
+    // container > div 3 ( starfield )
+    // ==============================
+
+    // ==============================
+    // remember, the code for this starfield came from this article :
+    // " https://dev.to/nicm42/scss-stars-4kkl " and this codepen example :
+    // " https://codepen.io/nicm42/pen/wvPKzNg " and Kevin's Powell
+    // codepen example was also helpful in creating the twinkle keyframe
+    // and animation properties:
+    // " https://codepen.io/kevinpowell/pen/gOGBVvG/9f8789e6719a077e488af6d8483bfead?editors=1100 "
+    // ==============================
+
+    > div:nth-child( 3 ) {
+
+        // needed so that the stars fill up the entire container
+        position : absolute;
+        top      : 0;
+        left     : 0;
+        right    : 0;
+        bottom   : 0;
+
+        overflow : hidden; // this prevented my footer from being super long
+
+        > .earth3dContainerDiv3Star {
+
+            position : relative; // set relative so that each star can have a random
+            // top and left position
+    
+            background-color : white; // background of the div and each div
+            // is about 1 or 2 pixels wide and high ( see the for loop below )
+    
+        } // end of container > div2 > div( 1 - 200 )
+
+        // ==============================
+        // keyframe
+        // ==============================
+
+        @keyframes twinkle {
+
+            0% {
+                opacity   : 0.25; // Kevin Powell's defaults
+                // opacity   : 0.50;
+                transform : scale( 1.0 ); // Kevin Powell's defaults
+            }
+
+            50% {
+                // opacity   : 0.60; // Kevin Powell's defaults
+                opacity   : 0.75;
+                transform : scale( 1.125 ); // Kevin Powell's defaults
+            }
+
+            100% {
+                // opacity   : 0.40; // Kevin Powell's defaults
+                opacity   : 0.50;
+                transform : scale( 0.8 ); // Kevin Powell's defaults
+            }
+
+        } // end of keyframe twinkle
+
+        // ==============================
+        // for loop
+        // ==============================
+
+        // run a for loop in sass so that I can loop through the stars and
+        // provide each star with a random top, lefy, width, height and opacity
+        @for $i from 1 through 200 {
+
+            // nth-type-of( 2 ) selects the second element of div siblings
+            // and the for loop will loop through all 200 div siblings
+
+            // remember, in sass we use the dollar sign for variables so I could declare
+            // a variable by doing : "$i : white; " and use it in the code by doing :
+            //  color : $i; "
+            .earth3dContainerDiv3Star:nth-of-type( #{ $i } ) {
+
+                // each star will get the following 5 key value pairs
+
+                // remember, " random() will return a number between 1-100
+                // by itself, or you pass in a single integer parameter to
+                // define the upper limit. random(500) will return a number
+                // between 1-500. "
+                top             : random( 101 ) - 1 + vh; // this will return a random number between 1 - 100
+                left            : random( 101 ) - 1 + vw; // this will return a random number between 1 - 100
+                width           : random( 2 ) + px; // this will return a random number between 1 - 2
+                height          : random( 2 ) + px; // this will return a random number between 1 - 2
+                // opacity         : random( 50 ) / 100 + 0.5; // this will return a random number between ( 1 - 50 ) / 100 = ( 0.01 - 0.50 ) + 0.5 = 0.51 - 1.00
+                animation       : twinkle 5s infinite alternate; // 5 seconds to run the keyframe
+                animation-delay : $i * random() * .38s; // delay the start so that each star is
+                // twinkling at different times
+
+            } // end of the for loop > nth-of-type
+
+        } // end of the for loop
+
+    } // end of container > div2
+
+} // end of container
+
+

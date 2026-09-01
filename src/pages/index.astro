@@ -1,0 +1,196 @@
+---
+
+// import in the Layout component
+import Layout from '../layouts/main-layout.astro';
+// import in the Hero component
+import HeroComponent from '../components/react/hero-image/index/hero-image-v4';
+// import in the By The Numbers component
+import ByTheNumbersComponent from '../components/react/by-the-numbers/by-the-numbers-v2';
+// import in the WhatWeDo component
+import ServicesComponent from '../components/react/services/services-v1';
+// import in the Contact Blob component
+import ContactBlobComponent from '../components/react/contact-blob/contact-blob-v3';
+// import in the Contact Us component
+import ContactUsComponent from '../components/react/contact-us/contact-us-v3';
+// import in the Contact Us component
+import WhyChooseUsComponent from '../components/react/why-choose-us/why-choose-us-v2';
+
+
+/*
+// import in the Infinite Scroll component
+import InfiniteScrollComponent from '../components/react/infinite-scroll/infinite-scroll-v2';
+// import in the Why Work With Us component
+import WhyWorkWithUsComponent from '../components/react/why-work-with-us/why-work-with-us-video-no-calc-v5';
+// import in the Sticky Pictures component
+import StickyPicturesComponent from '../components/react/animations/scroll-driven/sticky-pictures/sticky-pictures-v9';
+// import in the Our Process dark component
+import OurProcessDarkComponent from '../components/react/our-process/our-process-dark-v3';
+// import in the Our Process light component
+import OurProcessLightComponent from '../components/react/our-process/our-process-light';
+// import in the Pricing component
+import PricingRadialGradientComponent from '../components/react/pricing/pricing-radial-gradient-v5';
+// import in the Where You Can Find Us component
+import WhereYouCanFindUsComponent from '../components/react/where-you-can-find-us/where-you-can-find-us-v4';
+// import in the Cimikoski Stem Cells Website component
+import CimikoskiStemCellsWebsiteComponent from '../components/react/websites/cimikoski-stem-cells-v2';
+// import in the Real Estate Broker Website component
+import RealEstateBrokerWebsiteComponent from '../components/react/websites/real-estate-broker-gray-bg-v2';
+// import in the Ranking Made Easy Website component
+import RankingMadeEasyWebsiteComponent from '../components/react/websites/ranking-made-easy-gradient-bg-v3';
+*/
+
+
+// import in the Where You Can Find Us component
+import WhereYouCanFindUsComponent from '../components/react/where-you-can-find-us/where-you-can-find-us-v6';
+// import in the ContactVideoComponent
+import ContactVideoComponent from '../components/react/contact/contact-video-v2';
+// import in the scss file
+import styles from './index.module.scss';
+
+---
+
+<Layout>
+
+    {
+        /*
+            Structured data as JSON-LD markup
+        */
+    }
+    <script slot="head" type="application/ld+json"
+        set:html={ 
+            JSON.stringify(
+                {
+                    "@context": "http://schema.org",
+                    "@type": "LocalBusiness",
+                    "name": "Enchanting Apps",
+                    "url": "https://enchantingapps.com/"
+                }
+            )
+        }
+    >
+    </script>
+
+    <!-- page specific meta tags -->
+    <meta slot="head" name="keywords" content='SEO, search engine optimization, local SEO, AI agent development, AI automation, web development, website design, Lehi Utah, Utah County, Salt Lake City' />
+    <meta slot="head" name="description" content='Struggling to get found online? Enchanting Apps specializes in digital marketing, website development, and AI agents that drive real results for your business.' />
+    <meta slot="head" property="og:image" content='/images/rocket_01_300.jpeg' />
+    <meta slot="head" property="og:title" content='Digital Marketing, Websites & AI Agents | Enchanting Apps' />
+    <meta slot="head" property="og:description" content='Struggling to get found online? Enchanting Apps specializes in digital marketing, website development, and AI agents that drive real results for your business.' />
+    <meta slot="head" property="og:site_name" content='Enchanting Apps' />
+    <meta slot="head" property="og:url" content='https://enchantingapps.com/' />
+    <meta slot="head" property="og:type" content='website' />
+    <meta slot="head" property="og:locale" content="en_US" />
+    <link slot="head" rel="canonical" href="https://enchantingapps.com/" />
+    <title slot="head">Digital Marketing, Websites & AI Agents | Enchanting Apps</title>
+
+    <!-- stop Google from crawling this site until I have an address and a doctor on the site -->
+    <!-- remove this line of code and think about updating my public/robots.txt file when I'm ready -->
+    <meta name="robots" content="noindex, nofollow" />
+
+
+    {
+        /*
+            // ==============================
+            // container
+            // ==============================
+        */
+    }
+    <div class={ styles.homePageContainer }>
+
+        {
+            /*
+                // ==============================
+                // container > div 1
+                //
+                // in order to eliminate initial page jank, the hero component has to be
+                // client:load when using gsap ( see notes in the hero component for details )
+                // ==============================
+            */
+        }
+        <HeroComponent client:load />
+
+        {
+            /*
+                // ==============================
+                // container > div 2
+                // ==============================
+            */
+        }
+        <ByTheNumbersComponent client:visible />
+
+        {
+            /*
+                // ==============================
+                // container > div 3
+                // ==============================
+            */
+        }
+        <ServicesComponent client:visible />
+
+        {
+            /*
+                // ==============================
+                // container > div 4
+                //
+                // use my intersection observer, do not use client:visible and client:only="react"
+                // downloads the JS upfront but skips SSR — our internal Intersection Observer
+                // controls exactly when the content appears
+                // ==============================
+            */
+        }
+        <ContactBlobComponent client:only="react" />
+
+        {
+            /*
+                // ==============================
+                // container > div 5
+                // ==============================
+            */
+        }
+        <ContactUsComponent client:visible />
+
+        {
+            /*
+                // ==============================
+                // container > div 6
+                // ==============================
+            */
+        }
+        <WhyChooseUsComponent client:visible />
+
+        {
+            /*
+                // ==============================
+                // container > div 11
+                // ==============================
+            */
+        }
+        <WhereYouCanFindUsComponent client:visible />
+
+        {
+            /*
+                // ==============================
+                // container > div 12
+                // ==============================
+                <CimikoskiStemCellsWebsiteComponent client:load />
+            */
+        }
+
+        {
+            /*
+                // ==============================
+                // container > div 15
+                //
+                // use my intersection observer, do not use client:visible and client:only="react"
+                // downloads the JS upfront but skips SSR — our internal Intersection Observer
+                // controls exactly when the content appears
+                // ==============================
+            */
+        }
+        <ContactVideoComponent client:load />
+
+    </div>
+
+</Layout>
+
+

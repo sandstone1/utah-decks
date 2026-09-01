@@ -1,0 +1,802 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+// ==============================
+// spinner container
+// ==============================
+
+.spinnerContainer {
+
+    // parent
+    grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+    // children
+    display       : grid;
+    align-content : center; // use margin top to vertically align the message
+
+    width  : min( 50.0rem, 100% );
+    height : 1045.89px;
+    margin : 0 auto;
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        height : 1005.89px; // match the height of the contact form container
+
+    } // end of spinner container > bp-1280
+
+    @media all and ( max-width : $bp-1032 ) {
+
+        height : 916.88px; // match the height of the contact form container
+
+    } // end of spinner container > bp-1032
+
+    @media all and ( max-width : $bp-768 ) {
+
+        height : 911.12px; // match the height of the contact form container
+
+    } // end of spinner container > bp-768
+
+    @media all and ( max-width : $bp-620 ) {
+
+        height : 902.48px; // match the height of the contact form container
+
+    } // end of spinner container > bp-620
+
+    @media all and ( max-width : 385px ) {
+
+        height : 922.63px; // match the height of the contact form container
+
+    } // end of spinner container > 385px
+
+} // end of spinner container
+
+
+
+// ==============================
+// error message container
+// ==============================
+
+.errorMessageContainer {
+
+    // parent
+    grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+    // children
+    display       : grid;
+    align-content : center; // use margin top to vertically align the message
+
+    width  : min( 50.0rem, 100% );
+    height : 1045.89px;
+    margin : 0 auto;
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        height : 1005.89px; // match the height of the contact form container
+
+    } // end of error message container > bp-1280
+
+    @media all and ( max-width : $bp-1032 ) {
+
+        height : 916.88px; // match the height of the contact form container
+
+    } // end of error message container > bp-1032
+
+    @media all and ( max-width : $bp-768 ) {
+
+        height : 911.12px; // match the height of the contact form container
+
+    } // end of error message container > bp-768
+
+    @media all and ( max-width : $bp-620 ) {
+
+        height : 902.48px; // match the height of the contact form container
+
+    } // end of error message container > bp-620
+
+    @media all and ( max-width : 385px ) {
+
+        height : 922.63px; // match the height of the contact form container
+
+    } // end of error message container > 385px
+
+} // end of error message container
+
+
+
+// ==============================
+// success message container
+// ==============================
+
+.successMessageContainer {
+
+    // parent
+    grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+    // children
+    display       : grid;
+    align-content : center; // use margin top to vertically align the message
+
+    width  : min( 50.0rem, 100% );
+    height : 1045.89px;
+    margin : 0 auto;
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        height : 1005.89px; // match the height of the contact form container
+
+    } // end of success container > bp-1280
+
+    @media all and ( max-width : $bp-1032 ) {
+
+        height : 916.88px; // match the height of the contact form container
+
+    } // end of success container > bp-1032
+
+    @media all and ( max-width : $bp-768 ) {
+
+        height : 911.12px; // match the height of the contact form container
+
+    } // end of success container > bp-768
+
+    @media all and ( max-width : $bp-620 ) {
+
+        height : 902.48px; // match the height of the contact form container
+
+    } // end of success container > bp-620
+
+    @media all and ( max-width : 385px ) {
+
+        height : 922.63px; // match the height of the contact form container
+
+    } // end of success message container > 385px
+
+} // end of success message container
+
+
+
+// ==============================
+// contact form container ( wrapper div )
+// ==============================
+
+.contactFormContainer {
+
+    // children
+    display               : grid;
+    grid-template-rows    : auto;
+    grid-template-columns : 1fr;
+    grid-template-areas   : "h2"
+                            "form";
+
+    // ==============================
+    // remember, this container just needs to sit inside the parent container
+    // ==============================
+
+    max-width : 38.0rem; // set a max width for the container and set the same max-width
+    // for the contact information container and remember, we had to set max-width and
+    // not width so that the content would shrink on smaller screens
+
+    // ==============================
+    // container > h2
+    // ==============================
+
+    > h2 {
+
+        // parent
+        grid-area : h2;
+
+        @include h2-dark-title;
+
+    } // end of container > h2
+
+    // ==============================
+    // container > form
+    // ==============================
+
+    > form {
+
+        // parent
+        grid-area : form;
+
+        margin : 3.75rem 0 0 0;
+
+        // ==============================
+        // container > form > first name input container
+        // ==============================
+
+        > div:nth-child( 1 ) {
+
+            position : relative; // needed for the label
+
+            // ==============================
+            // container > form > first name input container > input element
+            // ==============================
+
+            > input {
+
+                display : block;
+                width   : 100%;
+                margin  : 0;
+                padding : 10px 10px 10px 0;
+
+                border        : none;
+                border-radius : 0;
+                border-bottom : 1px solid var( --gray-475 );
+
+                @include text-base-dark;
+
+                background : none;
+
+                &:focus {
+
+                    outline : none;
+
+                } // container > form > first name input container > input > &:focus
+
+                // The general sibling combinator (~) separates two selectors and matches the
+                // second element only if it follows the first element (though not necessarily
+                // immediately), and both are children of the same parent
+
+                // what this says below is that whenever the user focuses inside the input element
+                // we want to use the general sibling combinator to target the form input label
+                // element and give the label an opacity of 0 and use a transition is give the
+                // movement a nice feel
+                &:focus ~ .serviceRecoveryContactFormContainerFormDiv1Label {
+
+                    @include shrinkLabel-dark();
+
+                }  // container > form > first name input container > input > &:focus ~ label
+
+            } // container > form > first name input container > input
+
+            // handle the browser autofill
+            input:-webkit-autofill,
+            input:-webkit-autofill:hover, 
+            input:-webkit-autofill:focus, 
+            input:-webkit-autofill:active {
+
+                transition              : background-color 0s ease-out 50000s; // just needed to set the delay to a very high number
+                // -webkit-text-fill-color : var( --gray-225 );
+                -webkit-text-fill-color : var( --gray-770 );
+
+            } // container > form > first name input container > input:webkit-autofill
+
+            // ==============================
+            // container > form > first name input container > label element
+            // ==============================
+
+            .serviceRecoveryContactFormContainerFormDiv1Label {
+
+                position : absolute;
+                top      : 10px;
+                left     : 0px;
+
+                @include text-base-dark;
+
+                pointer-events : none;
+                transition     : all 300ms ease; // transition : all will target the top,
+                // font-size and color properties
+
+            } // container > form > first name input container > label
+
+            // ==============================
+            // container > form > first name input container > label shrink
+            // ==============================
+
+            .serviceRecoveryContactFormContainerFormDiv1LabelShrink {
+
+                position : absolute;
+                top      : -20px;
+                left     : 0px;
+
+                @include text-extra-small-dark;
+
+                font-size   : 1.45rem;
+            
+            } // container > form > first name input container > label shrink
+
+        } // container > form > first name input container
+
+        // ==============================
+        // container > form > last name input container
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            position : relative; // needed for the label
+            margin   : 5.0rem 0 0 0; // visual preference and remember :
+            // the first name margin top was 0
+            // the last name margin top was 5.0rem
+            // the email margin top was 5.0rem
+            // the phone number margin top was 5.0rem
+            // the website margin top was 5.0rem
+            // the textarea margin top was 6.0rem
+            // the Google reCAPTCHA component margin top was 4.0rem
+            // the button margin top was 4.0rem
+
+            // ==============================
+            // container > form > last name input container > input element
+            // ==============================
+
+            > input {
+
+                display : block;
+                width   : 100%;
+                margin  : 0;
+                padding : 10px 10px 10px 0;
+
+                border        : none;
+                border-radius : 0;
+                border-bottom : 1px solid var( --gray-475 );
+
+                @include text-base-dark;
+
+                background : none;
+
+                &:focus {
+
+                    outline : none;
+
+                } // container > form > last name input container > input > &:focus
+
+                // The general sibling combinator (~) separates two selectors and matches the
+                // second element only if it follows the first element (though not necessarily
+                // immediately), and both are children of the same parent
+
+                // what this says below is that whenever the user focuses inside the input element
+                // we want to use the general sibling combinator to target the form input label
+                // element and give the label an opacity of 0 and use a transition is give the
+                // movement a nice feel
+                &:focus ~ .serviceRecoveryContactFormContainerFormDiv2Label {
+
+                    @include shrinkLabel-dark();
+
+                }  // container > form > last name input container > input > &:focus ~ label
+
+            } // container > form > last name input container > input
+
+            // handle the browser autofill
+            input:-webkit-autofill,
+            input:-webkit-autofill:hover, 
+            input:-webkit-autofill:focus, 
+            input:-webkit-autofill:active {
+
+                transition              : background-color 0s ease-out 50000s; // just needed to set the delay to a very high number
+                // -webkit-text-fill-color : var( --gray-225 );
+                -webkit-text-fill-color : var( --gray-770 );
+
+            } // container > form > last name input container > input:webkit-autofill
+
+            // ==============================
+            // container > form > last name input container > label element
+            // ==============================
+
+            .serviceRecoveryContactFormContainerFormDiv2Label {
+
+                position : absolute;
+                top      : 10px;
+                left     : 0px;
+
+                @include text-base-dark;
+
+                pointer-events : none;
+                transition     : all 300ms ease; // transition : all will target the top,
+                // font-size and color properties
+
+            } // container > form > last name input container > label
+
+            // ==============================
+            // container > form > last name input container > label shrink
+            // ==============================
+
+            .serviceRecoveryContactFormContainerFormDiv2LabelShrink {
+
+                position : absolute;
+                top      : -20px;
+                left     : 0px;
+
+                @include text-extra-small-dark;
+
+                font-size   : 1.45rem;
+            
+            } // container > form > last name input container > label shrink
+
+        } // container > form > last name input container
+
+        // ==============================
+        // container > form > email input container
+        // ==============================
+
+        > div:nth-child( 3 ) {
+
+            position : relative; // needed for the label
+            margin   : 5.0rem 0 0 0; // visual preference
+
+            // ==============================
+            // container > form > email input container > input element
+            // ==============================
+
+            > input {
+
+                display : block;
+                width   : 100%;
+                margin  : 0;
+                padding : 10px 10px 10px 0;
+
+                border        : none;
+                border-radius : 0;
+                border-bottom : 1px solid var( --gray-475 );
+
+                @include text-base-dark;
+
+                background : none;
+
+                &:focus {
+
+                    outline : none;
+
+                } // end of container > form > div3 > input > &:focus
+
+                // The general sibling combinator (~) separates two selectors and matches the
+                // second element only if it follows the first element (though not necessarily
+                // immediately), and both are children of the same parent
+
+                // what this says below is that whenever the user focuses inside the input element
+                // we want to use the general sibling combinator to target the form input label
+                // element and give the label an opacity of 0 and use a transition is give the
+                // movement a nice feel
+                &:focus ~ .contactFormContainerFormEmailInputContainerLabel {
+
+                    @include shrinkLabel-dark();
+
+                } // end of container > form > email input container > input > &:focus ~ label
+
+            } // end of container > form > email input container > input
+
+            // handle the browser autofill
+            input:-webkit-autofill,
+            input:-webkit-autofill:hover, 
+            input:-webkit-autofill:focus, 
+            input:-webkit-autofill:active {
+
+                transition              : background-color 0s ease-out 50000s; // just needed to set the delay to a very high number
+                // -webkit-text-fill-color : var( --gray-225 );
+                -webkit-text-fill-color : var( --gray-770 );
+
+            } // container > form > email input container > input:webkit-autofill
+
+            // ==============================
+            // container > form > email input container > label element
+            // ==============================
+
+            .contactFormContainerFormEmailInputContainerLabel {
+
+                position : absolute;
+                top      : 10px;
+                left     : 0px;
+
+                @include text-base-dark;
+
+                pointer-events : none;
+                transition     : all 300ms ease; // transition : all will target the top,
+                // font-size and color properties
+
+            } // end of container > form > email input container > label
+
+            // ==============================
+            // container > form > email input container > label shrink
+            // ==============================
+
+            .contactFormContainerFormEmailInputContainerLabelShrink {
+
+                position : absolute;
+                top      : -20px;
+                left     : 0px;
+
+                @include text-extra-small-dark;
+
+                font-size   : 1.45rem;
+            
+            } // end of container > form > email input container > label shrink
+
+        } // end of container > form > email input container
+
+        // ==============================
+        // container > form > phone input container
+        // ==============================
+
+        > div:nth-child( 4 ) {
+
+            position : relative; // needed for the label
+            margin   : 5.0rem 0 0 0; // visual preference
+
+            // ==============================
+            // container > form > phone input container > input element
+            // ==============================
+
+            > input {
+
+                display : block;
+                width   : 100%;
+                margin  : 0;
+                padding : 10px 10px 10px 0;
+
+                border        : none;
+                border-radius : 0;
+                border-bottom : 1px solid var( --gray-475 );
+
+                @include text-base-dark;
+
+                background : none;
+
+                &:focus {
+
+                    outline : none;
+
+                } // end of container > form > phone input container > input > &:focus
+
+                // The general sibling combinator (~) separates two selectors and matches the
+                // second element only if it follows the first element (though not necessarily
+                // immediately), and both are children of the same parent
+
+                // what this says below is that whenever the user focuses inside the input element
+                // we want to use the general sibling combinator to target the form input label
+                // element and give the label an opacity of 0 and use a transition is give the
+                // movement a nice feel
+                &:focus ~ .contactFormContainerFormPhoneInputContainerLabel {
+
+                    @include shrinkLabel-dark();
+
+                } // end of container > form > phone input container > input > &:focus ~ label
+
+            } // end of container > form > phone input container > input
+
+            // handle the browser autofill
+            input:-webkit-autofill,
+            input:-webkit-autofill:hover, 
+            input:-webkit-autofill:focus, 
+            input:-webkit-autofill:active {
+
+                transition              : background-color 0s ease-out 50000s; // just needed to set the delay to a very high number
+                -webkit-text-fill-color : var( --gray-225 );
+
+            } // container > form > phone input container > input:webkit-autofill
+
+            // ==============================
+            // container > form > phone input container > label element
+            // ==============================
+
+            .contactFormContainerFormPhoneInputContainerLabel {
+
+                position : absolute;
+                top      : 10px;
+                left     : 0px;
+
+                @include text-base-dark;
+
+                pointer-events : none;
+                transition     : all 300ms ease; // transition : all will target the top,
+                // font-size and color properties
+
+            } // end of container > form > phone input container > label
+
+            // ==============================
+            // container > form > phone input container > label shrink
+            // ==============================
+
+            .contactFormContainerFormPhoneInputContainerLabelShrink {
+
+                position : absolute;
+                top      : -20px;
+                left     : 0px;
+
+                @include text-extra-small-dark;
+
+                font-size   : 1.45rem;
+            
+            } // end of container > form > phone input container > label shrink
+
+        } // end of container > form > phone input container
+
+        // ==============================
+        // container > form > text area box container
+        // ==============================
+
+        > div:nth-child( 5 ) {
+
+            position : relative; // needed for the textbox label
+            margin   : 6.0rem 0 0 0; // visual preference
+
+            // ==============================
+            // container > form > text area box container > text area box
+            // ==============================
+
+            > textarea {
+
+                display : block;
+                width   : 100%;
+                padding : 1.2rem 1.2rem 1.2rem 1.2rem;
+
+                border        : 1px solid var( --gray-475 );
+                border-radius : 4px;
+
+                @include text-base-dark;
+
+                // had specify the following key value pair in order to match the
+                // parent container background color
+                background-color: rgba( 253, 253, 253, 1 );
+
+                background : none;
+
+                &:focus {
+
+                    outline : none;
+
+                } // end of container > form > text area container > textarea > &:focus
+
+                // The general sibling combinator (~) separates two selectors and matches the
+                // second element only if it follows the first element (though not necessarily
+                // immediately), and both are children of the same parent
+
+                // what this says below is that whenever the user focuses inside the input element
+                // we want to use the general sibling combinator to target the form input label
+                // element and give the label an opacity of 0 and use a transition is give the
+                // movement a nice feel
+                &:focus ~ .contactFormContainerFormTextAreaContainerLabel {
+
+                    opacity : 0; // erase the text when the cursor is in the textarea box
+
+                }  // end of container > form > text area container > textarea > &:focus ~ label
+
+            } // end of container > form > text area container > textarea
+
+            // ==============================
+            // container > form > text area box container > label element
+            // ==============================
+
+            .contactFormContainerFormTextAreaContainerLabel {
+
+                position : absolute;
+                top      : 1.2rem;
+                left     : 1.2rem;
+
+                @include text-base-dark;
+
+                pointer-events : none;
+                transition     : opacity 200ms ease;
+
+                // provide some space on the right side of the text box so that
+                // the text is not right up against the container and this only
+                // happens on small screens
+                @media all and ( max-width : $bp-375 ) {
+
+                    right : 1.8rem; // visual preference
+
+                } // end of container > form > text area container > label > bp-375
+
+            } // end of container > form > text area container > label
+
+            // ==============================
+            // container > form > text area box container > label shrink
+            // ==============================
+
+            .contactFormContainerFormTextAreaContainerLabelShrink {
+
+                display : none;
+            
+            } // end of container > form > text area container > label shrink
+
+        } // end of container > form > text area container
+
+        // ==============================
+        // container > form > div6 ( Google reCAPTCHA badge ) > div > div ( Google styling for the badge is here )
+        // ==============================
+
+        > div:nth-child( 6 ) > div > div {
+
+            // see below for the notes from the Wasatch Front Local
+            // contact-form-postmark-badge-long.module.scss file
+
+            // ==============================
+            // remember, the ReCAPTCHA component and " size="invisible" " was breaking our layout
+            // when using translate to animate the page load ( see the pages/get-featured.module.scss
+            // file for details on the animation )
+            //
+            // to fix this, we added the 2 lines of code below which brought the invisible
+            // ReCAPTCHA component inside the form container on smaller devices and this was
+            // enough to prevent the layout issues we were having when using translate to animate
+            // the page load
+            //
+            // one of the layout issues we were having, for reference, is that the side menu would
+            // not open all the way and maybe open 50% or so and the other main issue was we could
+            // not resize the browser without causing the entire layout to break
+            // ==============================
+
+            // see below for the notes from the Ranking Made Easy
+            // service-recovery-contact-form.module.scss file
+
+            // for some reason the badge was not attached to the page container and working
+            // like it did for the Enchanting Apps contact form, where it attached itself to
+            // the bottom right corner of the page; instead, the badge was attaching itself
+            // to the bottom right corner of the service recovery contact form container with
+            // the right part extending beyound the service recovery contact form container,
+            // causing layout problems when I resized the browser
+
+            // and I could not figure out why the badge's position behaved one way in Enchanting
+            // Apps and another way in Ranking Made Easy
+
+            // on 1-4-25, I figured out why badge's position behaved one way in Enchanting
+            // Apps and another way in Ranking Made Easy and that was because in Enchanting
+            // Apps I did not have the slide up animation and when I added the slide up
+            // animation to the contact page in Enchanting Apps then the layout problems from
+            // the reCAPTCHA badge started
+
+            // nevertheless, in Ranking Made Easy this was causing serious layout problems
+            // when I resized the browser, even though the badge was not visible, it was
+            // still taking up space
+
+            // to fix this issue the service recovery contact form container had to contain
+            // the entire badge inside its borders and to make that happen I had to manually
+            // move the badge and I did that by targeting the div where Google was styling
+            // the badge and by adding the 2 key value pairs below
+            position : fixed !important;
+            right    : 0px !important;
+
+        } // container > form > div6 > div > div
+
+        // ==============================
+        // container > form > Google reCAPTCHA text
+        // ==============================
+
+        .contactFormContainerFormGoogleReCAPTCHAText {
+
+            font-size : 1.4rem;
+
+            > p > a {
+
+                color : var( --blue-83 );
+
+            } // end of container > form > Google reCAPTCHA text > p > a
+
+        } // end of container > form > Google reCAPTCHA text
+
+        // ==============================
+        // container > form > button container
+        // ==============================
+
+        .contactFormContainerFormButtonContainer {
+
+            // children
+            display : grid; // display grid makes the button span the entire width of the
+            // parent container
+            margin : 4.0rem 0 0 0; // visual preference
+
+            > button {
+
+                @include button-v5();
+
+                background : var( --blue-83 ); // visual preference
+
+                &:hover {
+
+                    background : rgba( 0, 125, 240, 1 );
+
+                } // end of container > form > button container > button > &:hover
+
+            } // end of container > form > button container > button
+
+        } // end of container > form > button container
+
+    } // end of container > form
+
+} // end of container
+

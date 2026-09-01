@@ -1,0 +1,367 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../styles/_mixins.scss' as *;
+@use '../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// keyframes 1
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+@keyframes move-1 {
+
+    from {
+
+        // see step 70 of the app-cimikoski-stem-cells.js for a border radius definition
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 100px to the
+        // left and 50px up from its initial position
+        transform : translate( -100px, -50px ) rotate( -90deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 100px down from its starting position
+
+        // the ending rotate of -10deg will rotate the blob up and to the left
+        transform : translate( 500px, 100px ) rotate( -10deg );
+
+    } // end of to
+  
+} // end of move-1
+
+
+// ==============================
+// keyframes 2
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-2 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 850px, 50px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 900px, -50px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-2
+
+
+// ==============================
+// keyframes 3
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-3 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 725px, 25px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 800px, -50px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-3
+
+
+// ==============================
+// keyframes 4
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-4 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 650px, 25px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 625px, 0px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// blob container
+// ==============================
+
+.blobContainer {
+
+    position : absolute;
+    top      : 15.0rem;
+    right    : 55.0%;
+    width    : 45.0rem;
+    height   : 45.0rem;
+    z-index  : 0;
+
+    background     : linear-gradient( 180deg, var( --blue-green-500 ) 31.77%, var( --blue-66 ) 100% );
+    mix-blend-mode : color-dodge; // this provided for a very nice effect
+
+    // transition                : 1s cubic-bezier( 0.07, 0.8, 0.16, 1 ); // this cubic-bezier starts off really fast
+    // and slows down ( see how it looks here : https://www.w3schools.com/cssref/tryit.php?filename=trycss_func_cubic-bezier2 )
+    // and remmeber, the transition is only needed if we have a hover state
+
+    animation-name            : move-2;
+    animation-duration        : 15s; // took the duration down from 25s to 10s since I reduced the amount of movement
+    animation-direction       : alternate;
+    animation-iteration-count : infinite;
+
+    @media all and ( max-width : $bp-2080 ) {
+
+        top    : 15.0rem;
+        right  : 60.0%;
+        width  : 40.0rem;
+        height : 40.0rem;
+
+    } // end of container > bp-2080
+
+    @media all and ( max-width : $bp-1728 ) {
+
+        top   : 15.0rem;
+        right : 70.0%;
+
+    } // end of container > bp-1728
+
+    @media all and ( max-width : $bp-1536 ) {
+
+        top    : 15.0rem;
+        right  : 72.5%;
+        width  : 35.0rem;
+        height : 35.0rem;
+
+    } // end of container > bp-1536
+
+    @media all and ( max-width : $bp-1376 ) {
+
+        top    : 15.0rem;
+        right  : 75.0%;
+        width  : 30.0rem;
+        height : 30.0rem;
+
+    } // end of container > bp-1376
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        top    : 12.0rem;
+        right  : 92.0%;
+
+    } // end of container > bp-1280
+
+    @media all and ( max-width : $bp-1032 ) {
+
+        top   : 12.0rem;
+        right : 95.0%;
+
+        animation-name     : move-3;
+        animation-duration : 15.0s;
+
+    } // end of container > bp-1032
+
+    @media all and ( max-width : $bp-920 ) {
+
+        top    : 12.0rem;
+        right  : 110.0%;
+        width  : 25.0rem;
+        height : 25.0rem;
+
+    } // end of container > bp-920
+
+    @media all and ( max-width : $bp-768 ) {
+
+        top    : 8.0rem;
+        right  : 110.0%;
+        width  : 35.0rem;
+        height : 35.0rem;
+
+        animation-name     : move-4;
+        animation-duration : 15.0s;
+
+    } // end of container > bp-768
+
+    @media all and ( max-width : $bp-620 ) {
+
+        top    : 8.0rem;
+        right  : 140.0%;
+        width  : 30.0rem;
+        height : 30.0rem;
+
+    } // end of container > bp-620
+
+    @media all and ( max-width : $bp-480 ) {
+
+        top    : 24.0rem;
+        right  : 165.0%;
+        width  : 30.0rem;
+        height : 30.0rem;
+
+    } // end of container > bp-480
+
+    @media all and ( max-width : 410px ) {
+
+        top    : 24.0rem;
+        right  : 200.0%;
+        width  : 27.5rem;
+        height : 27.5rem;
+
+    } // end of container > 410px
+
+    @media all and ( max-width : 380px ) {
+
+        top    : 24.0rem;
+        right  : 190.0%;
+        width  : 25.0rem;
+        height : 25.0rem;
+
+    } // end of container > 380px
+
+    @media all and ( max-width : 350px ) {
+
+        top    : 24.0rem;
+        right  : 215.0%;
+        width  : 22.5rem;
+        height : 22.5rem;
+
+    } // end of container > 350px
+
+} // end of container
+
+

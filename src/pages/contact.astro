@@ -1,0 +1,238 @@
+---
+
+
+// import in the Layout component
+import Layout from '../layouts/main-layout.astro';
+// import in the Hero header component
+import HeroHeaderComponent from '../components/react/hero/hero-header';
+// import in the Contact Form Postmark Badge component
+import ContactFormPostmarkComponent from '../components/react/contact/contact-form-other-postmark-badge-long-v3';
+// import in the Contact Information component
+import ContactInformationComponent from '../components/react/contact/contact-information-v5';
+// import in the Where You Can Find Us component
+import WhereYouCanFindUsComponent from '../components/react/where-you-can-find-us/where-you-can-find-us-v4';
+// import in the Blob Blue background component
+import BlobComponentOne from '../components/react/animations/blob/blob-v12';
+// import in the Blob Blue background component
+import BlobComponentTwo from '../components/react/animations/blob/blob-v13';
+// import in our stylesheet
+import styles from './contact.module.scss';
+
+---
+
+<Layout>
+
+    {
+        /*
+            page specific meta tags
+        */
+    }
+    <meta slot="head" name="keywords" content='SEO, search engine optimization, local SEO, AI agent development, AI automation, web development, website design, Lehi Utah, Utah County, Salt Lake City' />
+    <meta slot="head" name="description" content='Struggling to get found online? Enchanting Apps specializes in digital marketing, website development, and AI agents that drive real results for your business.' />
+    <meta slot="head" property="og:image" content='/images/rocket_01_300.jpeg' />
+    <meta slot="head" property="og:title" content='Contact Us | Enchanting Apps' />
+    <meta slot="head" property="og:description" content='Struggling to get found online? Enchanting Apps specializes in digital marketing, website development, and AI agents that drive real results for your business.' />
+    <meta slot="head" property="og:site_name" content='Enchanting Apps' />
+    <meta slot="head" property="og:url" content='https://enchantingapps.com/contact' />
+    <meta slot="head" property="og:type" content='website' />
+    <meta slot="head" property="og:locale" content="en_US" />
+    <link slot="head" rel="canonical" href="https://enchantingapps.com/contact" />
+    <title slot="head">Contact Us | Enchanting Apps</title>
+
+    {
+        /*
+            // ==============================
+            // container
+            // ==============================
+        */
+    }
+
+    <div class={ styles.contactPageContainer }>
+
+        <HeroHeaderComponent client:load />
+    
+        {
+            /*
+                // ==============================
+                // container > div 2
+                // ==============================
+            */
+        }
+        <div>
+
+            {
+                /*
+                    // ==============================
+                    // container > div 2 > div 1 ( section title )
+                    // ==============================
+                */
+            }
+            <div>
+
+                <h1 class="contact-page-h1">Schedule Your <span style={ { color : 'var( --blue-77 )' } }>Free Consultation</span></h1>
+
+                <picture>
+                    <source 
+                        srcset="/images/underline_gray_870_02_512.png"
+                        type="image/png"
+                    />
+                    <img
+                        class="contact-page-image-underline"
+                        src="/images/underline_gray_870_02_512.png"
+                        width={ 512 }
+                        height={ 48 }
+                        loading="eager"
+                        fetchpriority="high"
+                        alt="Gray underline"
+                    />
+                </picture>
+
+            </div>
+
+            {
+                /*
+                    // ==============================
+                    // container > div 2 > div 2 ( wrapper div )
+                    // ==============================
+                */
+            }
+            <div>
+
+                {
+                    /*
+                        // ==============================
+                        // container > div 2 > div 2 > div 1 ( blue box )
+                        // ==============================
+                    */
+                }
+                <div class="contact-page-blue-box">
+    
+                    <h2>We&apos;re Here to Help</h2>
+
+                    <p>Fill out the form below and we'll reach out within the hour
+                    to find a time that works for you.</p>
+    
+                    {
+                        /*
+                            // ==============================
+                            // container > picture ( picture of postcards )
+                            // ==============================
+    
+                            // ==============================
+                            // remember, add the width and height to the image tag so
+                            // that the content below this div does not appear for a
+                            // split second on page load
+                            // ==============================
+    
+                            // ==============================
+                            // remember, in order to make the width and height responsive,
+                            // we had to set the width figure in the css file
+                            // ==============================
+                        */
+                    }
+                    <picture>
+                        <source 
+                            srcset="/images/mj_postcards_01_580.webp"
+                            type="image/webp"
+                        />
+                        <img
+                            src="/images/mj_postcards_01_580.png"
+                            width={ 580 }
+                            height={ 325 }
+                            loading="eager"
+                            fetchpriority="high"
+                            alt="Picture of postcards"
+                        />
+                    </picture>
+    
+                    <picture>
+                        <source 
+                            srcset="/images/arrow_01_512.png"
+                            type="image/png"
+                        />
+                        <img
+                            src="/images/arrow_01_512.png"
+                            width={ 125 }
+                            height={ 125 }
+                            loading="eager"
+                            fetchpriority="high"
+                            alt="Down arrow"
+                        />
+                    </picture>
+    
+                </div>
+        
+                {
+                    /*
+                        // ==============================
+                        // container > div 2 > div 2 > div 2 ( contact form )
+                        // ==============================
+                    */
+                }
+                <div>
+    
+                    <ContactFormPostmarkComponent client:visible />
+    
+                </div>
+
+                {
+                    /*
+                        // ==============================
+                        // container > div 2 > div 2 > div 3 ( contact information )
+                        // ==============================
+                    */
+                }
+                <div class="contact-page-yellow-box">
+    
+                    <ContactInformationComponent />             
+    
+                </div>
+
+                {
+                    /*
+                        // ==============================
+                        // container > div 2 > div 2 > div 4 ( orange background circle )
+                        // ==============================
+                    */
+                }
+                <div></div>
+
+            </div>
+    
+        </div>
+
+        {
+            /*
+                // ==============================
+                // container > div 3 ( Google maps )
+                // ==============================
+            */
+        }
+        <div>
+
+            <WhereYouCanFindUsComponent client:visible />
+
+        </div>
+
+        {
+            /*
+                // ==============================
+                // container ( square or blob )
+                // ==============================
+            */
+        }
+        <BlobComponentOne client:visible />
+
+        {
+            /*
+                // ==============================
+                // container ( square or blob )
+                // ==============================
+            */
+        }
+        <BlobComponentTwo client:visible />
+
+    </div>
+
+</Layout>
+

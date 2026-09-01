@@ -1,0 +1,326 @@
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+// ==============================
+// keyframes 1
+// ==============================
+
+
+
+
+
+
+
+
+
+// ==============================
+// by the numbers container
+// ==============================
+
+.byTheNumbersContainer {
+
+    // parent
+    grid-area   : div5;
+    grid-column : 1 / -1; // position against the parent
+
+    // children
+    display               : grid;
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // 1 - in the content div use grid-column to position against the parent grid and until we
+    // can use sub grid we may need to duplicate the parent grid and bring it down to the
+    // content div where we can position against it
+    // 2 - now our content div is sitting empty inside the parent grid we need to give the
+    // content div a width and height so we can create the content box and
+    // 3 - then set up a grid within the content box so that we can layout the content
+    // inside the content box as needed and
+    // 4 - the only cavet to 3 above, is that sometimes we need to go with a horizontal layout
+    // and in those cases, flexbox may be the better choice than css grid
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    // min-height : 100vh;
+
+     // provide some extra bottom padding for this component and remember 2 divs below this
+     // component we have a div with top and bottom padding of 18rem
+     padding : 12.0rem 0 18.0rem 0;
+
+    // ==============================
+    // background
+    // ==============================
+
+    background : var( --gray-872 );
+    // background-image : linear-gradient( to bottom, rgba( 32, 40, 52, 1.0),  rgba( 32, 40, 52, 1.0 ) );
+    background-image : linear-gradient( to bottom, rgba( 32, 40, 52, 0.975 ),  rgba( 32, 40, 52, 0.975 ) ), url( /images/mj_tree_bark_04_500.webp );
+    background-size  : cover;
+
+    // ==============================
+    // end of background
+    // ==============================
+
+    // make sure a user can not tap on the screen and inadvertently move the numbers during
+    // the scrolling process
+    pointer-events : none;
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // remove or decrease the opacity of the tree bark background on mobile devices
+    // ==============================
+
+    @media all and ( max-width : $bp-620 ) {
+
+        background-image : linear-gradient( to bottom, rgba( 32, 40, 52, 1.0),  rgba( 32, 40, 52, 1.0 ) );
+        // background-image : linear-gradient( to bottom, rgba( 32, 40, 52, 0.965 ),  rgba( 32, 40, 52, 0.965 ) ), url( /images/mj_tree_bark_04_500.webp );
+    
+    } // end of container > bp-620
+
+    // ==============================
+    // end of remove or decrease the decrease opacity of the tree bark background on mobile devices
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+        display               : grid;
+        grid-template-columns : 1fr;
+        align-content         : center;
+        justify-items         : center;
+        grid-template-areas   : "div1"
+                                "div2";
+
+        opacity : 0; // need for the intersection observer animation
+
+        // ==============================
+        // container > div 1 > div 1
+        // ==============================
+
+        > div:nth-child( 1 ) {
+
+            // parent
+            grid-area : div1;
+    
+            display : grid;
+            width   : min( 144.0rem, 100% ); // needed in order to left justify the h2
+
+            @media all and ( max-width : $bp-1032 ) {
+
+                width : min( 80.0rem, 100% ); // needed in order to left justify the h2
+            
+            } // end of container > bp-1032
+    
+            // ==============================
+            // container > div 1 > div 1 > h2
+            // ==============================
+    
+            > h2 {
+    
+                @include h2-light-title;
+    
+                margin : 0 0 4.0rem 0;
+
+                > span {
+
+                    color : var( --green-23-5 );
+
+                } // end of container > div 1 > div 1 > h2 > span
+    
+            } // end of container > div 1 > div 1 > h2
+    
+        } // container > div 1 > div 1
+
+        // ==============================
+        // container > div 1 > div 2
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            // parent
+            grid-area : div2;
+    
+            display         : flex;
+            justify-content : space-between;
+            gap             : 2.0rem 0;
+            width           : min( 144.0rem, 100% ); // needed in order to left justify the div1 - div4
+
+            @media all and ( max-width : $bp-1032 ) {
+
+                display               : grid;
+                grid-template-columns : 1fr 1fr;
+                gap                   : 4.0rem 0;
+                grid-template-areas   : "div1 div2"
+                                        "div3 div4";
+
+                width : min( 80.0rem, 100% ); // needed in order to left justify the div1 - div4
+            
+            } // end of container > bp-1032
+
+            @media all and ( max-width : $bp-620 ) {
+
+                display               : grid;
+                grid-template-columns : 1fr;
+                gap                   : 4.0rem 0;
+                grid-template-areas   : "div1"
+                                        "div2"
+                                        "div3"
+                                        "div4";
+
+                width : min( 80.0rem, 100% ); // needed in order to left justify the div1 - div4
+            
+            } // end of container > bp-620
+
+            // ==============================
+            // container > div 1 > div 2 > div 1
+            // ==============================
+    
+            > div:nth-child( 1 ) {
+
+                // parent
+                grid-area : div1;
+
+                > div {
+
+                    @include h2-light-title;
+
+                } // end of container > div 1 > div 2 > div 1 > div 1
+
+                > p {
+
+                    @include h8-light-title;
+
+                    font-weight : 400;
+
+                } // end of container > div 1 > div 2 > div 1 > p
+
+            } // end of container > div 1 > div 2 > div 1
+
+            // ==============================
+            // container > div 1 > div 2 > div 2
+            // ==============================
+    
+            > div:nth-child( 2 ) {
+
+                // parent
+                grid-area : div2;
+
+                > div {
+
+                    @include h2-light-title;
+
+                } // end of container > div 1 > div 2 > div 2 > div 1
+
+                > p {
+
+                    @include h8-light-title;
+
+                    font-weight : 400;
+
+                } // end of container > div 1 > div 2 > div 2 > p
+    
+            } // end of container > div 1 > div 2 > div 2
+
+            // ==============================
+            // container > div 1 > div 2 > div 3
+            // ==============================
+    
+            > div:nth-child( 3 ) {
+
+                // parent
+                grid-area : div3;
+
+                > div {
+
+                    @include h2-light-title;
+
+                } // end of container > div 1 > div 2 > div 3 > div 1
+
+                > p {
+
+                    @include h8-light-title;
+
+                    font-weight : 400;
+
+                } // end of container > div 1 > div 2 > div 3 > p
+    
+            } // end of container > div 1 > div 2 > div 3
+
+            // ==============================
+            // container > div 1 > div 2 > div 4
+            // ==============================
+    
+            > div:nth-child( 4 ) {
+
+                // parent
+                grid-area : div4;
+
+                > div {
+
+                    @include h2-light-title;
+
+                } // end of container > div 1 > div 2 > div 4 > div 1
+
+                > p {
+
+                    @include h8-light-title;
+
+                    font-weight : 400;
+
+                } // end of container > div 1 > div 2 > div 4 > p
+    
+            } // end of container > div 1 > div 2 > div 4
+
+        } // container > div 1 > div 2
+
+    } // end of container > div 1
+
+} // container
+

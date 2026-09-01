@@ -1,0 +1,41 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../../../styles/_mixins.scss' as *;
+@use '../../../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+// ==============================
+// sphere mesh distrort simple container
+// ==============================
+
+.sphereMeshDistrortSimpleContainer {
+
+    // children
+    display     : grid;
+    align-items : center;
+
+    width    : 15.0rem;
+    height   : 20.0rem;
+
+    // ==============================
+    // container > div ( 3d sphere )
+    // ==============================
+
+    > div {
+
+        width  : 15.0rem;
+        height : 20.0rem;
+
+    } // container > div1
+
+} // end of container
+
+

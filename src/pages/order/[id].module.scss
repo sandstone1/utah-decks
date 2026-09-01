@@ -1,0 +1,306 @@
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../styles/_mixins.scss' as *;
+@use '../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+// ==============================
+// order review container
+// ==============================
+
+.orderReviewContainer {
+
+    // parent
+    grid-column : 1 / -1; // position this container against the main container
+    // and do this so that the child elements take up the entire screen horizontally
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // 1 - in the content or wrapper div use grid-column to position against the parent grid and
+    // remember we may need to duplicate the parent grid and bring it down to the content or
+    // wrapper div
+    // 2 - now our content div is sitting empty inside the parent grid we need to give the
+    // content div a width and height so we can create the content box and
+    // 3 - then set up a grid within the content box so that we can layout the content
+    // inside the content box as needed and
+    // 4 - the only cavet to 3 above, is that sometimes we need to go with a horizontal layout
+    // and in those cases, flexbox may be the better choice than css grid and
+    // 5 - only do the grid-template-columns : minmax( 8rem, 1fr ) ... when the direct child is a
+    // content div
+    // ==============================
+
+    display               : grid;
+    grid-template-rows    : auto;
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    justify-items       : center;
+
+    margin : 12.0rem 0;
+
+    // ==============================
+    // background
+    // ==============================
+
+    background : var( --white );
+
+    // ==============================
+    // end of background
+    // ==============================
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // ==============================
+        // create the content box
+        // ==============================
+    
+        // parent
+        grid-column : 2 / 22; // position against the parent
+
+        // children
+        display               : grid;
+        grid-template-rows    : repeat( 4, auto );
+        grid-template-columns : 1fr;
+        gap                   : 3.0rem 0;
+        grid-template-areas   : "h1"
+                                "p"
+                                "div1"
+                                "div2";
+
+        max-width : min( 65.0rem, 100% ); // browser will select the smaller of 65.0rem or 100%
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            justify-self : start;
+
+        } // end of container > div1 > bp-1280
+
+        > h1 {
+
+            // parent
+            grid-area : h1;
+
+            margin : 0 0 0 0;
+
+            font-family : var( --font-display-5 );
+            font-size   : 2.85rem;
+            font-weight : 700;
+            color       : var( --black );
+    
+        } // end of container > div1 > h1
+    
+        > p {
+
+            // parent
+            grid-area : p;
+
+            margin : 0;
+
+            font-family : var( --font-primary-5 );
+            font-size   : 1.80rem;
+            font-weight : 400;
+            color       : var( --black );
+    
+        } // end of container > div1 > p
+
+        // ==============================
+        // container > div 1 > div:nth-child( 3 ) ( order items container )
+        // ==============================
+
+        > div:nth-child( 3 ) {
+
+            // parent
+            grid-area : div1;
+
+            display         : flex;
+            justify-content : start;
+            gap             : 3.0rem 3.0rem;
+            flex-wrap       : wrap;
+
+            // ==============================
+            // container > div 1 > div:nth-child( 3 ) > div ( order item container )
+            // ==============================
+
+            // each item
+            > div {
+
+                width : 25.0rem; // make the div shrink and this represents the image width and the
+                // images are coming in a 250px
+
+                @media all and ( max-width : $bp-375 ) {
+
+                    width : 23.0rem;
+
+                } // end of container > div1 > div:nth-child( 3 ) > div > bp-375
+
+                > img {
+
+                    // to make images shrink responsively, we need to use the max-width: 100%; and height: auto; combo
+                    // or max-width : 100%; height : 100%; and object-fit : 100%;
+                    display   : block; // remove the inline gap at the bottom
+                    max-width : 100%; // this allows the image to shrink, but not grow larger than its real size
+                    height    : auto; // this keeps the image from looking "squashed"
+
+                    // now let's add the object-fit property and remember for object-fit to work we have to add
+                    // the width and the height to the element
+
+                    // by using these 3 key value pairs inside the image element or " width : 100%; "
+                    // and " height : 100%; " and " object-fit : cover; " we see that each image now fills up
+                    // one grid cell and one grid cell only
+
+                    object-fit : cover; // good for image cropping
+
+                } // end of container > div1 > div:nth-child( 3 ) > div > img
+
+                // ==============================
+                // container > div 1 > div:nth-child( 3 ) > div > div ( order item )
+                // ==============================
+                > div {
+
+                    width : 25.0rem; // make the div shrink and this represents the image width and the
+                    // images are coming in a 250px
+
+                    @media all and ( max-width : $bp-375 ) {
+
+                        width : 23.0rem;
+
+                    } // end of container > div1 > div:nth-child( 3 ) > div > div > bp-375
+
+                    > h3 {
+    
+                        margin : 1.0rem 0 0 0;
+
+                        font-family : var( --font-display-5 );
+                        font-size   : 2.10rem;
+                        font-weight : 700;
+                        color       : var( --black );
+    
+                    } // end of container > div1 > div:nth-child( 3 ) > div > div > h3
+    
+                    > p:nth-child( 2 ) {
+    
+                        margin : 1.0rem 0 0 0;
+
+                        font-family : var( --font-primary-5 );
+                        font-size   : 1.80rem;
+                        font-weight : 400;
+                        color       : var( --black );
+
+                    } // end of container > div1 > div:nth-child( 3 ) > div > div > p;nth-child( 1 )
+
+                    > p:nth-child( 3 ) {
+    
+                        margin : 0.75rem 0 0 0;
+    
+                    } // end of container > div1 > div:nth-child( 3 ) > div > div > p;nth-child( 2 )
+
+                } // end of container > div1 > div:nth-child( 3 ) > div > div
+
+            } // end of container > div1 > div:nth-child( 3 ) > div
+
+        } // end of container > div1 > div:nth-child( 3 )
+
+        // ==============================
+        // order review container > order details
+        // ==============================
+        
+        > div:nth-child( 4 ) {
+
+            // parent
+            grid-area : div2;
+
+            display : grid;
+            gap     : 2.0rem 0;
+            margin  : 1.0rem 0 0 0;
+
+            > h2 {
+
+                font-family : var( --font-display-5 );
+                font-size   : 2.60rem;
+                font-weight : 700;
+                color       : var( --black );
+
+            } // end of container > div1 > div:nth-child( 4 ) > h2
+
+            > button {
+
+                display   : block;
+                max-width : 25.0rem;
+                margin    : 0.50rem 0 0 0;
+                padding   : 0.75rem 1.5rem;
+            
+                border        : 0;
+                border-radius : 0.50rem;
+            
+                font-family     : var( --font-primary-5 );
+                font-size       : 1.80rem;
+                font-weight     : 700;
+                color           : var( --white );
+                text-decoration : none;
+            
+                background-color : var( --black );
+                transition       : background-color 0.3s ease-out;
+    
+                &:hover {
+    
+                    cursor           : pointer;
+                    background-color : var( --purple-350 );
+    
+                } // end of container > div1 > div:nth-child( 4 ) > button > &:hover
+    
+                &:is( :active, :focus ) {
+    
+                    outline        : 2px solid var( --black );
+                    outline-offset : 4px;
+    
+                } // end of container > div1 > div:nth-child( 4 ) > button > &:is( :active, :focus )
+
+            } // end of container > div1 > div:nth-child( 4 ) > button
+
+        } // end of container > div1 > div:nth-child( 4 )
+
+    }// end of container > div1
+
+} // end of container
+

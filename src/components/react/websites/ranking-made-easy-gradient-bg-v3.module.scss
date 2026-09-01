@@ -1,0 +1,432 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// keyframes 1
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+@keyframes move-1 {
+
+    from {
+
+        // see step 70 of the app-cimikoski-stem-cells.js for a border radius definition
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this will start the blob 100px to the
+        // left and 50px up from its initial position
+        transform : translate( -100px, -50px ) rotate( -90deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 100px down from its starting position
+
+        // the ending rotate of -10deg will rotate the blob up and to the left
+        transform : translate( 500px, 100px ) rotate( -10deg );
+
+    } // end of to
+  
+} // end of move-1
+
+
+// ==============================
+// keyframes 2
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-2 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 0, 50px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 50px, -50px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-2
+
+
+// ==============================
+// keyframes 3
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-3 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 0, 25px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 50px, -50px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-3
+
+
+// ==============================
+// keyframes 4
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-4 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 0, 25px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 0, -50px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// ranking made easy website container
+// ==============================
+
+.rankingMadeEasyWebsiteContainer {
+
+    // ==============================
+    // div 12 in the index.js file
+    // ==============================
+
+    // parent
+    grid-area   : div12;
+    grid-column : 1 / -1; // position against the parent
+
+    // children
+    display               : grid;
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // remember, there are 2 things we want to accomplish :
+    // 1 - allow the wrapper div to position against the parent div and thereby
+    // shrink as needed
+    // 2 - we want to center the wrapper div ( see below for details )
+    // ==============================
+
+    // ==============================
+    // " grid-template-columns " is needed so that the wrapper div ( i.e. child ) can position
+    // against the parent ( i.e. this div ) by using " grid-column : 2 / 22; " and this allows
+    // the background declared below to span across the entire container or the entire site and
+    // this also allows the wrapper div to dynamically contain its children within the
+    // " grid-column : 2 / 22; " context so that as the screen size shrinks the wrapper div
+    // container and all its children containers or divs will automatically shrink as well
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    justify-items         : center;
+
+    position : relative; // needed for absolutely positioned div below
+    padding  : 12.0rem 0 12.0rem 0;
+
+    //background : var( --background-lg-1 );
+    //background : var( --background-lg-62 );
+    //background : var( --background-lg-54 );
+    // background       : var( --background-lg-42-1 );
+    // background-image : var( --background-lg-42-4 );
+    // background-image : conic-gradient( from 0deg at center, var( --blue-800 ) 0%, var( --blue-80 ) 70% );
+    // background-image : conic-gradient( from 0deg at center, var( --blue-800 ) 0%, var( --purple-300 ) 70% );
+    background : var( --gray-872 );
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( content div )
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column: 2 / 22;
+
+        // children
+        display               : grid;
+        grid-template-rows    : repeat( 4, auto );
+        grid-template-columns : 1fr;
+        grid-template-areas   : "h3"
+                                "border"
+                                "div1"
+                                "div2";
+
+        z-index : 1; // position the blob or sqaure behind this div
+        width   : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+
+        // ==============================
+        // container div 1 > h3
+        // ==============================
+
+        > h3 {
+
+            @include h3-light-title;
+
+            margin : 0 0 3.0rem 0;
+
+        } // end of container > div1 > h3
+
+        // ==============================
+        // container div 1 > div 2
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            > h5 {
+
+                @include h5-light-title;
+
+                margin : 0 0 2.0rem 0;
+
+            } // end of container > div1 > div2 > h5
+
+            // ==============================
+            // container div 1 > div 2 > ul ( the list )
+            // ==============================
+
+            > ul {
+
+                padding : 0 0 0 1.6rem;
+
+                list-style-type : disc; // override the global stylesheet in this case
+                // list-style-position: outside; // make sure the disc markers are located
+                // the content box
+
+                > li {
+
+                    @include text-base-light;
+
+                    margin : 0 0 2.0rem 0;
+
+                    > a {
+
+                        @include text-base-light;
+
+                        margin : 0 0 0 0;
+
+                        text-decoration : underline;
+
+                    } // end of container > div1 > div2 > ul > li > a
+
+                } // end of container > div1 > div2 > ul > li
+
+                > li:last-child {
+
+                    margin : 0 0 0 0;
+
+                } // end of container > div1 > div2 > ul > li:last-child
+
+                // ==============================
+                // container div 1 > div 2 > ul > span ( show tech details )
+                // ==============================
+
+                > span {
+
+                    display : block;
+                    padding : 2.0rem 2.0rem 2.0rem 2.0rem;
+
+                    border        : 0.75px solid var( --gray-200 );
+                    border-radius : 6px;
+
+                    @include text-base-light;
+
+                    margin : 0 0 2.0rem 0;
+
+                    cursor : pointer;
+
+                } // end of container > div1 > div2 > ul > span
+
+                // ==============================
+                // container div 1 > div 2 > ul > a > img 1
+                // ==============================
+
+                > a > img.rankingMadeEasyWebsiteContainerImage1 {
+
+                    padding : 0 0 1.0rem 0;
+
+                } // end of container > div1 > div2 > ul > a > image 1
+
+            } // end of container > div1 > div2 > ul
+
+        } // end of container > div1 > div2
+
+    } // end of container > div1
+
+} // end of container
+

@@ -1,0 +1,332 @@
+
+
+
+
+// ==============================
+// notes
+// ==============================
+
+// ==============================
+// assuming we have enough content to create a scrollable side menu then :
+// 1 - height : 100vh will not show the last div
+// 2 - height : 100% will show the last div
+// 3 - height : 100svh will show the last div
+// 4 - grid-template-rows : minmax( calc( 100vh - 7.94rem ), 1fr ); will not show any div underneth the fold
+// 5 - grid-template-rows : minmax( calc( 100vh - 7.94rem ), 100% ); will not show any div underneth the fold
+// 6 - grid-template-rows : minmax( calc( 100vh - 7.94rem ), 100svh ); will not show the last div
+// ==============================
+
+// ==============================
+// 6 takeaways :
+// 1 - can not use grid-template-rows to determine the height of the side menu
+// 2 - have to use either height : 100%; or height : 100svh;
+// 3 - show all the nav item when we open the side menu
+// and remember, having a sub menu that opens up to new content creates problems; for example, if we open
+// the sub menu then scroll everything works as expected and we can scroll to the bottom of the
+// side menu and there is no scroll chaining happening after we reach the bottom of the side menu
+// and the hamburger menu does not move from its original position; however, if we keep the side
+// menu sub menu closed and then if we scroll then the nav items scroll up and off the screen so
+// we need to show all the nav items when we open the side menu
+// 4 - if we have 3 nav items or less we can probably use our hack
+// to stop the scroll chaining; however, we have to switch to either height : 100%; or
+// height : 100svh; once we get enough content so that the content overflows the visible side menu
+// container or we are close to overflowing the visible side menu container and remember, some
+// mobile screens are very short so what looks fine on my desktop may overflow some smaller
+// devices and if we have our hack in place then the user will not be able to see the nav items
+// that lie underneth the fold
+// 5 - there is no way to prevent scroll chaining unless we have enough content so that the content
+// overflows the side menu visible container, unless we take a chance and use our hack
+// 6 - after some more testing, the most nav items I can have before I have to switch to
+// " height : 100%; or height : 100svh; " is 4 because even on the Galaxy S23 I was getting pretty
+// close to the bottom of the side menu container and I only had 4 nav items
+// ==============================
+
+
+
+
+
+
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+// ==============================
+// background overlay container
+// ==============================
+
+// background overlay
+.backgroundOverlay {
+
+    // important
+    visibility : hidden; // match the side menu container set up
+
+    position : fixed;
+    top      : 0%;
+    left     : 0%;
+    z-index  : 2; // make this z-index the same as the side menu container z-index
+    width    : 100%;
+    height   : 200rem; // changed height from 100% to 200rem since iPad Chrome was
+    // cutting off the background overlay and the side menu container at the very
+    // bottom of the screen to show the white bar and by changing the height to 200rem
+    // the background overlay now covers the entire screen anytime we open the side
+    // menu
+
+    background-color : rgba( 0, 0, 0, 0.50 );
+
+} // end of backgroundOverlay
+
+
+
+
+
+// ==============================
+// side menu container
+// ==============================
+
+// side menu container
+.sideMenuContainer {
+
+    // children
+    display    : grid;
+    // ==============================
+    // important!
+    // 1 - the min-height + 3.0rem makes sure that our side menu covers the viewport
+    // in Chrome on the iPad when we have only a few nav menu items
+    // 2 - the height of 100% makes sure that our side menu easily scrolls to the
+    // bottom of the side menu even if we have 10 or more nav menu items
+    // ==============================
+    min-height : calc( 100vh + 3.0rem ); // approach 1
+    height     : 100%; // approach 1
+
+    visibility : hidden; // hide the slide menu container on page load and use this key value
+    // pair instead of " display : none " so that I can click through to the different pages
+    position   : fixed;
+    top        : 0;
+    right      : 0;
+    // bottom   : 0;
+    z-index    : 2; // see nav.module.scss for z-index notes
+    width      : 0; // set the width in the web animations api
+    overflow   : scroll; // make sure the side menu scrolls to the bottom of the side
+    // menu container
+    padding    : 4.0rem 4.0rem 4.0rem 4.0rem;
+
+    // ==============================
+    // keep for reference
+    // grid-template-rows : calc( 100vh - 7.94rem ); // approach 2
+    // height  : 100svh; // approach 2 and this fixed the problem that 100vh created, which was
+    // that users could not scroll to the bottom on the side menu or in other words they
+    // could not see the cart menu item and 100svh fixed that; however, using approach 1
+    // below fixed this issue
+    // ==============================
+
+    // ==============================
+    // important!
+    // ==============================
+    // ==============================
+    // prevent scrolling
+    // ==============================
+
+    // ==============================
+    // 2 approaches
+    // ==============================
+
+    // ==============================
+    // first approach - this is the best approach since we can easily see all the nav items
+    // and we can use " min-height : calc( 100vh + 3.0rem ); " on the container to maintain
+    // a consistent height when scrolling on the body content downward
+    // ==============================
+    // ==============================
+    // 1 - use " min-height : calc( 100vh + 3.0rem ); " to maintain a consistent height when
+    // scrolling on the underlying site content downward since " height : 100svh; " will shrink
+    // and only cover part of the underlying site content and " calc( 100vh + 3.0rem ) " will
+    // make sure our side menu, at the very least, covers the viewport in both Safari and Chrome
+    // on the iPad and then
+    // 2 - use " height : 100%; " to make sure the our side menu easily scrolls to the bottom of
+    // the side menu even when we have a bunch of side menu items and then
+    // 3 - user " overscroll-behavior : contain; " here and then
+    // 4 - use " min-height : calc( 100vh + 3.0rem ); " and " height : 100%; " on the ul element
+    // or we need to define the height on the ul element and if we forget step 1 and 2 then
+    // " overscroll-behavior : contain; " will not work ( for details, see the following
+    // stackoverflow article :
+    // " https://stackoverflow.com/questions/75672861/why-overscroll-behavior-contain-is-not-working-in-this-case " )
+    // and then
+    // 4 - remember do not need to use the hacky useEffect hook 3 or
+    // " height : calc( 100vh - 7.94rem ); " and then
+    // 5 - remember, one of reasons this is the best option is we can easily see all the nav
+    // items even if they scroll on top of the hamburger menu item; otherwise, to get this same
+    // effect we have to use the " height : 100svh; " and this causes issues as detailed in step 1
+    // above
+    // ==============================
+
+    // ==============================
+    // second approach
+    // ==============================
+    // ==============================
+    // 1 - use " height  : 100svh; " so we can see all nav items and then
+    // 2 - use " overscroll-behavior : contain; " here and then
+    // 3 - use " grid-template-rows : calc( 100vh - 7.94rem ); " to gate the nav items from
+    // covering the hamburger menu item when scrolling up and then
+    // 4 - remember do not need to use the hacky useEffect hook 3 or
+    // " height : calc( 100vh - 7.94rem ); " and since we added step 3 above
+    // ==============================
+
+    overscroll-behavior : contain; // this prevents the hamburger menu and the underlying
+    // site from scrolling once we reach the end of the side menu container or in other
+    // words this prevents scroll chaining; otherwise, once we reach the end of the side
+    // menu container the hamburger menu will start to scroll upward until it scrolls off
+    // the screen
+
+    // to make overscroll behavior work we need to have enough content inside this container
+    // so that this container will scroll; otherwise, " overscroll-behavior : contain; "
+    // will not work so if we do not have enough content inside this container then use the
+    // first approach above
+
+    // ==============================
+    // background
+    // ==============================
+
+    background : linear-gradient( in oklch, var( --purple-140 ) 0%, var( --blue-83-6 ) 100% );
+    // background : linear-gradient( in oklch, var( --purple-150 ) 0%, var( --blue-300 ) 100% );
+
+    // ==============================
+    // container > ul ( side menu list )
+    // ==============================
+
+    > ul {
+
+        // children
+        display               : grid;
+        grid-template-rows    : repeat( 6, 6.25rem ); // make sure this matches the number
+        // of tabs
+        grid-template-columns : 1fr;
+        align-items           : center; // center the items horizontally
+        justify-items         : start; // this made the border bottom only as wide
+        // as the anchor element
+        grid-gap              : 4.0rem 0;
+
+        // ==============================
+        // important!
+        // 1 - the min-height + 3.0rem makes sure that our side menu covers the viewport
+        // in Chrome on the iPad when we have only a few nav menu items
+        // 2 - the height of 100% makes sure that our side menu easily scrolls to the
+        // bottom of the side menu even if we have 10 or more nav menu items
+        // ==============================
+        min-height : calc( 100vh + 3.0rem ); // approach 1
+        height     : 100%; // approach 1
+        margin     : 12.0rem 0 0 0; // this provides spacing between the nav items and the
+        // hamburger menu item
+
+        @media all and ( max-width : $bp-620 ) {
+
+            margin : 18.0rem 0 0 0; // this provides spacing between the nav items and the
+            // hamburger menu item
+    
+        } // end of container > div1 > ul > bp-620
+
+        // ==============================
+        // container > ul > li
+        // ==============================
+
+        > li {
+
+            width : 25.0rem; // add some extra spacing for touch events
+
+            // ==============================
+            // container > ul > li > a
+            // ==============================
+
+            > a {
+
+                display : block; // needed for animation
+                padding : 1.5rem 2.2rem 1.5rem 0; // needed for animation
+
+                // keep the size for border-bottom at 0.1px and not 0.1rem otherwise the
+                // border will tend to disappear as the viewport shrinks
+                border-bottom : 1px inset rgba( 255, 255, 255, .15 );
+
+                font-family    : var( --font-primary-5 );
+                font-size      : 1.9rem;
+                font-weight    : 400;
+                color          : var( --white );
+                letter-spacing : 0.5px;
+
+                transition : all 0.2s ease-out;
+
+                // ==============================
+                // although we don't need the display key value pair above or the
+                // padding key value pair above or the transition key value pair above
+                // or the &:hover for this app, we will keep all this here for reference
+                // purposes or future use cases
+                // ==============================
+
+                // hover selector for the anchor tabs
+                &:hover {
+
+                    border-radius : 6px;
+
+                    background-color : rgba( 255, 255, 255, 0.05 );
+
+                    cursor : pointer;
+
+                    // move the background color up just a little to add a nice hoover effect
+                    transform: translate3d( 0, -3px, 0 );
+
+                    // remove the animation effect for screen sizes under 1376 pixels
+                    @media all and ( max-width : $bp-1376 ) {
+
+                        background-color : inherit;
+
+                        transform: none;
+                
+                    } // end of container > ul > li > a > &:hover > bp-1376
+
+                } // end of container > ul > li > a > &:hover
+
+                // active, focus selectors for the anchor tabs
+                &:active, &:focus {
+
+                    // on mobile devices, safari was putting a think white background around
+                    // my clicks and " outline : none; " is my attempt to not show any browser
+                    // outline on a click event
+                    outline : 0;
+
+                    // on mobile devices, safari was putting a think white background around
+                    // my clicks and I found the answer on how to solve this problem from
+                    // stackoverflow :
+                    // " https://stackoverflow.com/questions/69594393/tapping-links-in-ios-safari-shows-a-thick-white-border-around-element-how-to-g "
+                    background-color : transparent;
+
+                    // on mobile devices, safari was putting a think white background around
+                    // my clicks and I found the answer on how to solve this problem from
+                    // stackoverflow :
+                    // " https://stackoverflow.com/questions/9784350/mobile-safari-tap-and-hold-a-link-it-will-show-a-gray-shadow-how-to-disable-it?rq=3 "
+                    -webkit-tap-highlight-color : rgba( 0, 0, 0, 0 );
+                
+                } // end of container > ul > li > a > &:active, &:focus
+
+            } // end of container > ul > li > a
+
+        } // end of container > ul > li
+
+        // hide the 3d objects and 3d models links for now
+        li:nth-child( 2 ), li:nth-child( 3 ) {
+
+            display : none;
+
+        } // end of container > ul > li:nth-child( 2 ), li:nth-child( 3 )
+
+    } // end of container > ul
+
+} // end of container
+
+
+

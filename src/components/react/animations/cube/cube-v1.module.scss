@@ -1,0 +1,783 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../styles/_mixins.scss' as *;
+@use '../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// keyframes 1
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+@keyframes rotate {
+
+    from {
+
+        transform : rotateX( 0deg ) rotateY( 0deg ) rotateZ( 0deg );
+
+    } // end of from
+
+    to {
+
+        transform : rotateX( 0deg ) rotateY( 360deg ) rotateZ( 360deg );
+
+    } // end of to
+
+  } // end of rotate
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// cube container
+// ==============================
+
+.cubeContainer {
+
+    // ==============================
+    // remember, we got this code and thinking from :
+    // " https://3dtransforms.desandro.com/cube " and
+    // " https://codepen.io/tigercodes/pen/abQxYrb "
+    // ==============================
+
+    // for the cube and this is the scene or 3D space
+    // " I recommend using this same pattern for any 3D transform : scene, object and faces
+    // ( or 3D space, 3D object and sides ). Keeping the 3D space element and the object a
+    // separate element establishes a paradigm that is simple to understand and easier to style. "
+    perspective        : 1000px;
+    perspective-origin : 100% 100%;
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div {
+
+        // for the cube and this is the 3D object
+        position : relative;
+        top      : 33.0rem;
+        width    : 35.0rem;
+        height   : 35.0rem;
+
+        // " In order for subsequent children to inherit a parent’s perspective, and live in
+        // the same 3D space, the parent can pass along its perspective with
+        // " transform-style : preserve-3d "
+        transform-style : preserve-3d;
+        // animation       : rotate 6s linear infinite;
+        animation-name            : rotate;
+        animation-duration        : 6s;
+        animation-timing-function : linear;
+        animation-iteration-count : infinite;
+
+        @media all and ( max-width : $bp-2080 ) {
+
+            width  : 30.0rem;
+            height : 30.0rem;
+
+        } // end of container > div1 > bp-2080
+
+        @media all and ( max-width : $bp-1920 ) {
+
+            width  : 30.0rem;
+            height : 30.0rem;
+
+        } // end of container > div1 > bp-1920
+
+        @media all and ( max-width : $bp-1536 ) {
+
+            width  : 30.0rem;
+            height : 30.0rem;
+
+        } // end of container > div1 > bp-1536
+
+        @media all and ( max-width : $bp-1376 ) {
+
+            width  : 30.0rem;
+            height : 30.0rem;
+
+        } // end of container > div1 > bp-1376
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            width  : 28.0rem;
+            height : 28.0rem;
+
+        } // end of container > div1 > bp-1280
+
+        @media all and ( max-width : $bp-920 ) {
+
+            width  : 26.0rem;
+            height : 26.0rem;
+
+        } // end of container > div1 > bp-920
+
+        @media all and ( max-width : $bp-768 ) {
+
+            top    : 36.0rem;
+            width  : 26.0rem;
+            height : 26.0rem;
+
+        } // end of container > div1 > bp-768
+
+        @media all and ( max-width : $bp-620 ) {
+
+            width  : 22.0rem;
+            height : 22.0rem;
+
+        } // end of container > div1 > bp-620
+
+        @media all and ( max-width : $bp-480 ) {
+
+            top    : 39.0rem;
+            width  : 20.0rem;
+            height : 20.0rem;
+
+        } // end of container > div1 > bp-480
+
+        @media all and ( max-width : 430px ) {
+
+            width  : 19.0rem;
+            height : 19.0rem;
+
+        } // end of container > div1 > 420px
+
+        @media all and ( max-width : 395px ) {
+
+            top    : 42.0rem;
+            width  : 18.0rem;
+            height : 18.0rem;
+
+        } // end of container > div1 > 395px
+
+        @media all and ( max-width : $bp-375 ) {
+
+            width  : 16.0rem;
+            height : 16.0rem;
+
+        } // end of container > div1 > bp-375
+
+        @media all and ( max-width : 350px ) {
+
+            width  : 15.0rem;
+            height : 15.0rem;
+
+        } // end of container > div1 > 350px
+
+        > div {
+
+            position : absolute;
+            width    : 100%;
+            height   : 100%;
+
+            background : linear-gradient( to right, rgba( 9, 173, 200, 0.9 ), rgba( 0, 31, 78, 0.9 ) );
+
+            // ==============================
+            // remember, using the " filter : blur( 3.0rem ); " property in Safari caused massive
+            // performance problems but after applying " transform : translateZ( 0 ); " the
+            // performance problems went away
+            // ==============================
+
+            // ==============================
+            // see the following answers in stackoverflow for details :
+            // " https://stackoverflow.com/questions/44662417/css-filter-is-very-slow-on-safari-with-different-order-can-someone-explain "
+            // or more specially, see this anwser :
+            /*
+                Use CSS property on element with blur
+
+                transform: translateZ(0)
+
+                to make CSS render on GPU
+            */
+            // ==============================
+
+            // transform : translateZ( 0 ); // this makes the css render on the GPU, which is what we want
+
+            // ==============================
+            // remember, will-change does basically the same thing as the translateZ( 0 ) hack
+            // and see the follow article for details :
+            // " https://stackoverflow.com/questions/48862283/js-animation-performance-with-will-change-vs-transformz0 "
+            //
+            // and one of the answers said : " will-change basically does the same thing (as of today)
+            // as the translateZ( 0 ) hack: it pulls the element out onto a new rendering layer.
+            // The difference is that will-change is telling the browser your intent, namely, that you
+            // will be changing this property; whereas with translateZ(0) that is merely a coincidental
+            // side effect. So will-change is just a more modern way of accomplishing the same thing "
+            // ==============================
+
+            // ==============================
+            // testing this in Safari shows that it really works and without it my gradient background
+            // animation is super choppy
+            // ==============================
+
+            will-change : transform;
+
+        } // end of container > div1 > div( 1 - 6 )
+
+        // for the cube and this is one of the sides to the cube
+        > div:nth-child( 1 ) {
+
+            // " To push them out to their appropriate sides, they need to be translated out from
+            // the center of their positions. Each side of the cube is 200px wide. From the cube’s
+            // center they’ll need to be translated out half that distance, 100px. "
+            transform : rotateY( 0deg ) translateZ( 17.5rem );
+
+            @media all and ( max-width : $bp-2080 ) {
+
+                transform : rotateY( 0deg ) translateZ( 15.0rem );
+    
+            } // end of container > div1 > div1 > bp-2080
+
+            @media all and ( max-width : $bp-1920 ) {
+
+                transform : rotateY( 0deg ) translateZ( 15.0rem );
+    
+            } // end of container > div1 > div1 > bp-1920
+
+            @media all and ( max-width : $bp-1536 ) {
+
+                transform : rotateY( 0deg ) translateZ( 15.0rem );
+    
+            } // end of container > div1 > div1 > bp-1536
+
+            @media all and ( max-width : $bp-1376 ) {
+
+                transform : rotateY( 0deg ) translateZ( 15.0rem );
+    
+            } // end of container > div1 > div1 > bp-1376
+    
+            @media all and ( max-width : $bp-1280 ) {
+
+                transform : rotateY( 0deg ) translateZ( 14.0rem );
+    
+            } // end of container > div1 > div1 > bp-1280
+    
+            @media all and ( max-width : $bp-920 ) {
+
+                transform : rotateY( 0deg ) translateZ( 13.0rem );
+    
+            } // end of container > div1 > div1 > bp-920
+
+            @media all and ( max-width : $bp-768 ) {
+
+                transform : rotateY( 0deg ) translateZ( 13.0rem );
+    
+            } // end of container > div1 > div1 > bp-768
+    
+            @media all and ( max-width : $bp-620 ) {
+    
+                transform : rotateY( 0deg ) translateZ( 11.0rem );
+    
+            } // end of container > div1 > div1 > bp-620
+    
+            @media all and ( max-width : $bp-480 ) {
+
+                transform : rotateY( 0deg ) translateZ( 10.0rem );
+    
+            } // end of container > div1 > div1 > bp-480
+
+            @media all and ( max-width : 430px ) {
+
+                transform : rotateY( 0deg ) translateZ( 9.5rem );
+    
+            } // end of container > div1 > div1 > 420px
+    
+            @media all and ( max-width : 395px ) {
+
+                transform : rotateY( 0deg ) translateZ( 9.0rem );
+    
+            } // end of container > div1 > div1 > 395px
+
+            @media all and ( max-width : $bp-375 ) {
+
+                transform : rotateY( 0deg ) translateZ( 8.0rem );
+    
+            } // end of container > div1 > div1 > bp-375
+    
+            @media all and ( max-width : 350px ) {
+
+                transform : rotateY( 0deg ) translateZ( 7.5rem );
+    
+            } // end of container > div1 > div1 > 350px
+
+        } // end of container > div1 > div1
+
+        // for the cube and this is one of the sides to the cube
+        > div:nth-child( 2 ) {
+
+            // " To push them out to their appropriate sides, they need to be translated out from
+            // the center of their positions. Each side of the cube is 200px wide. From the cube’s
+            // center they’ll need to be translated out half that distance, 100px. "
+            transform : rotateY( 90deg ) translateZ( 17.5rem );
+
+            @media all and ( max-width : $bp-2080 ) {
+
+                transform : rotateY( 90deg ) translateZ( 15.0rem );
+    
+            } // end of container > div1 > div2 > bp-2080
+
+            @media all and ( max-width : $bp-1920 ) {
+
+                transform : rotateY( 90deg ) translateZ( 15.0rem );
+    
+            } // end of container > div1 > div2 > bp-1920
+
+            @media all and ( max-width : $bp-1536 ) {
+
+                transform : rotateY( 90deg ) translateZ( 15.0rem );
+    
+            } // end of container > div1 > div2 > bp-1536
+
+            @media all and ( max-width : $bp-1376 ) {
+
+                transform : rotateY( 90deg ) translateZ( 15.0rem );
+    
+            } // end of container > div1 > div2 > bp-1376
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                transform : rotateY( 90deg ) translateZ( 14.0rem );
+    
+            } // end of container > div1 > div2 > bp-1280
+    
+            @media all and ( max-width : $bp-920 ) {
+
+                transform : rotateY( 90deg ) translateZ( 13.0rem );
+    
+            } // end of container > div1 > div2 > bp-920
+
+            @media all and ( max-width : $bp-768 ) {
+
+                transform : rotateY( 90deg ) translateZ( 13.0rem );
+    
+            } // end of container > div1 > div2 > bp-768
+    
+            @media all and ( max-width : $bp-620 ) {
+    
+                transform : rotateY( 90deg ) translateZ( 11.0rem );
+    
+            } // end of container > div1 > div2 > bp-620
+    
+            @media all and ( max-width : $bp-480 ) {
+    
+                transform : rotateY( 90deg ) translateZ( 10.0rem );
+    
+            } // end of container > div1 > div2 > bp-480
+
+            @media all and ( max-width : 430px ) {
+
+                transform : rotateY( 90deg ) translateZ( 9.5rem );
+    
+            } // end of container > div1 > div2 > 420px
+    
+            @media all and ( max-width : 395px ) {
+
+                transform : rotateY( 90deg ) translateZ( 9.0rem );
+    
+            } // end of container > div1 > div2 > 395px
+
+            @media all and ( max-width : $bp-375 ) {
+
+                transform : rotateY( 90deg ) translateZ( 8.0rem );
+    
+            } // end of container > div1 > div2 > bp-375
+    
+            @media all and ( max-width : 350px ) {
+
+                transform : rotateY( 90deg ) translateZ( 7.5rem );
+    
+            } // end of container > div1 > div2 > 350px
+
+        } // end of container > div1 > div2
+
+        // for the cube and this is one of the sides to the cube
+        > div:nth-child( 3 ) {
+
+            // " To push them out to their appropriate sides, they need to be translated out from
+            // the center of their positions. Each side of the cube is 200px wide. From the cube’s
+            // center they’ll need to be translated out half that distance, 100px. "
+            transform : rotateY( 180deg ) translateZ( 17.5rem );
+
+            @media all and ( max-width : $bp-2080 ) {
+
+                transform : rotateY( 180deg ) translateZ( 15.0rem );
+    
+            } // end of container > div1 > div3 > bp-2080
+
+            @media all and ( max-width : $bp-1920 ) {
+
+                transform : rotateY( 180deg ) translateZ( 15.0rem );
+    
+            } // end of container > div1 > div3 > bp-1920
+
+            @media all and ( max-width : $bp-1536 ) {
+
+                transform : rotateY( 180deg ) translateZ( 15.0rem );
+    
+            } // end of container > div1 > div3 > bp-1536
+
+            @media all and ( max-width : $bp-1376 ) {
+
+                transform : rotateY( 180deg ) translateZ( 15.0rem );
+    
+            } // end of container > div1 > div3 > bp-1376
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                transform : rotateY( 180deg ) translateZ( 14.0rem );
+    
+            } // end of container > div1 > div3 > bp-1280
+    
+            @media all and ( max-width : $bp-920 ) {
+
+                transform : rotateY( 180deg ) translateZ( 13.0rem );
+    
+            } // end of container > div1 > div3 > bp-920
+
+            @media all and ( max-width : $bp-768 ) {
+
+                transform : rotateY( 180deg ) translateZ( 13.0rem );
+    
+            } // end of container > div1 > div3 > bp-768
+    
+            @media all and ( max-width : $bp-620 ) {
+    
+                transform : rotateY( 180deg ) translateZ( 11.0rem );
+    
+            } // end of container > div1 > div3 > bp-620
+    
+            @media all and ( max-width : $bp-480 ) {
+    
+                transform : rotateY( 180deg ) translateZ( 10.0rem );
+    
+            } // end of container > div1 > div3 > bp-480
+
+            @media all and ( max-width : 430px ) {
+
+                transform : rotateY( 180deg ) translateZ( 9.5rem );
+    
+            } // end of container > div1 > div3 > 420px
+    
+            @media all and ( max-width : 395px ) {
+
+                transform : rotateY( 180deg ) translateZ( 9.0rem );
+    
+            } // end of container > div1 > div3 > 395px
+
+            @media all and ( max-width : $bp-375 ) {
+
+                transform : rotateY( 180deg ) translateZ( 8.0rem );
+    
+            } // end of container > div1 > div3 > bp-375
+    
+            @media all and ( max-width : 350px ) {
+
+                transform : rotateY( 180deg ) translateZ( 7.5rem );
+    
+            } // end of container > div1 > div3 > 350px
+
+        } // end of container > div1 > div3
+
+        // for the cube and this is one of the sides to the cube
+        > div:nth-child( 4 ) {
+
+            // " To push them out to their appropriate sides, they need to be translated out from
+            // the center of their positions. Each side of the cube is 200px wide. From the cube’s
+            // center they’ll need to be translated out half that distance, 100px. "
+            transform : rotateY( 270deg ) translateZ( 17.5rem );
+
+            @media all and ( max-width : $bp-2080 ) {
+
+                transform : rotateY( 270deg ) translateZ( 15.0rem );
+    
+            } // end of container > div1 > div4 > bp-2080
+
+            @media all and ( max-width : $bp-1920 ) {
+
+                transform : rotateY( 270deg ) translateZ( 15.0rem );
+    
+            } // end of container > div1 > div4 > bp-1920
+
+            @media all and ( max-width : $bp-1536 ) {
+
+                transform : rotateY( 270deg ) translateZ( 15.0rem );
+    
+            } // end of container > div1 > div4 > bp-1536
+
+            @media all and ( max-width : $bp-1376 ) {
+
+                transform : rotateY( 270deg ) translateZ( 15.0rem );
+    
+            } // end of container > div1 > div4 > bp-1376
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                transform : rotateY( 270deg ) translateZ( 14.0rem );
+    
+            } // end of container > div1 > div4 > bp-1280
+    
+            @media all and ( max-width : $bp-920 ) {
+
+                transform : rotateY( 270deg ) translateZ( 13.0rem );
+    
+            } // end of container > div1 > div4 > bp-920
+
+            @media all and ( max-width : $bp-768 ) {
+
+                transform : rotateY( 270deg ) translateZ( 13.0rem );
+    
+            } // end of container > div1 > div4 > bp-768
+    
+            @media all and ( max-width : $bp-620 ) {
+    
+                transform : rotateY( 270deg ) translateZ( 11.0rem );
+    
+            } // end of container > div1 > div4 > bp-620
+    
+            @media all and ( max-width : $bp-480 ) {
+    
+                transform : rotateY( 270deg ) translateZ( 10.0rem );
+    
+            } // end of container > div1 > div4 > bp-480
+
+            @media all and ( max-width : 430px ) {
+
+                transform : rotateY( 270deg ) translateZ( 9.5rem );
+    
+            } // end of container > div1 > div4 > 420px
+    
+            @media all and ( max-width : 395px ) {
+
+                transform : rotateY( 270deg ) translateZ( 9.0rem );
+    
+            } // end of container > div1 > div4 > 395px
+
+            @media all and ( max-width : $bp-375 ) {
+
+                transform : rotateY( 270deg ) translateZ( 8.0rem );
+    
+            } // end of container > div1 > div4 > bp-375
+    
+            @media all and ( max-width : 350px ) {
+
+                transform : rotateY( 270deg ) translateZ( 7.5rem );
+    
+            } // end of container > div1 > div4 > 350px
+
+        } // end of container > div1 > div4
+
+        // for the cube and this is one of the sides to the cube
+        > div:nth-child( 5 ) {
+
+            // " To push them out to their appropriate sides, they need to be translated out from
+            // the center of their positions. Each side of the cube is 200px wide. From the cube’s
+            // center they’ll need to be translated out half that distance, 100px. "
+            transform : rotateX( 90deg ) translateZ( 17.5rem );
+
+            @media all and ( max-width : $bp-2080 ) {
+
+                transform : rotateX( 90deg ) translateZ( 15.0rem );
+    
+            } // end of container > div1 > div5 > bp-2080
+
+            @media all and ( max-width : $bp-1920 ) {
+
+                transform : rotateX( 90deg ) translateZ( 15.0rem );
+    
+            } // end of container > div1 > div5 > bp-1920
+
+            @media all and ( max-width : $bp-1536 ) {
+
+                transform : rotateX( 90deg ) translateZ( 15.0rem );
+    
+            } // end of container > div1 > div5 > bp-1536
+
+            @media all and ( max-width : $bp-1376 ) {
+
+                transform : rotateX( 90deg ) translateZ( 15.0rem );
+    
+            } // end of container > div1 > div5 > bp-1376
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                transform : rotateX( 90deg ) translateZ( 14.0rem );
+    
+            } // end of container > div1 > div5 > bp-1280
+    
+            @media all and ( max-width : $bp-920 ) {
+
+                transform : rotateX( 90deg ) translateZ( 13.0rem );
+    
+            } // end of container > div1 > div5 > bp-920
+
+            @media all and ( max-width : $bp-768 ) {
+
+                transform : rotateX( 90deg ) translateZ( 13.0rem );
+    
+            } // end of container > div1 > div5 > bp-768
+    
+            @media all and ( max-width : $bp-620 ) {
+    
+                transform : rotateX( 90deg ) translateZ( 11.0rem );
+    
+            } // end of container > div1 > div5 > bp-620
+    
+            @media all and ( max-width : $bp-480 ) {
+    
+                transform : rotateX( 90deg ) translateZ( 10.0rem );
+    
+            } // end of container > div1 > div5 > bp-480
+
+            @media all and ( max-width : 430px ) {
+
+                transform : rotateX( 90deg ) translateZ( 9.5rem );
+    
+            } // end of container > div1 > div5 > 420px
+    
+            @media all and ( max-width : 395px ) {
+
+                transform : rotateX( 90deg ) translateZ( 9.0rem );
+    
+            } // end of container > div1 > div5 > 395px
+
+            @media all and ( max-width : $bp-375 ) {
+
+                transform : rotateX( 90deg ) translateZ( 8.0rem );
+    
+            } // end of container > div1 > div5 > bp-375
+    
+            @media all and ( max-width : 350px ) {
+
+                transform : rotateX( 90deg ) translateZ( 7.5rem );
+    
+            } // end of container > div1 > div5 > 350px
+
+        } // end of container > div1 > div5
+
+        // for the cube and this is one of the sides to the cube
+        > div:nth-child( 6 ) {
+
+            // " To push them out to their appropriate sides, they need to be translated out from
+            // the center of their positions. Each side of the cube is 200px wide. From the cube’s
+            // center they’ll need to be translated out half that distance, 100px. "
+            transform : rotateX( -90deg ) translateZ( 17.5rem );
+
+            @media all and ( max-width : $bp-2080 ) {
+
+                transform : rotateX( -90deg ) translateZ( 15.0rem ) rotate( 180deg );
+    
+            } // end of container > div1 > div6 > bp-2080
+
+            @media all and ( max-width : $bp-1920 ) {
+
+                transform : rotateX( -90deg ) translateZ( 15.0rem ) rotate( 180deg );
+    
+            } // end of container > div1 > div6 > bp-1920
+
+            @media all and ( max-width : $bp-1536 ) {
+
+                transform : rotateX( -90deg ) translateZ( 15.0rem ) rotate( 180deg );
+    
+            } // end of container > div1 > div6 > bp-1536
+
+            @media all and ( max-width : $bp-1376 ) {
+
+                transform : rotateX( -90deg ) translateZ( 15.0rem ) rotate( 180deg );
+    
+            } // end of container > div1 > div6 > bp-1376
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                transform : rotateX( -90deg ) translateZ( 14.0rem ) rotate( 180deg );
+    
+            } // end of container > div1 > div6 > bp-1280
+    
+            @media all and ( max-width : $bp-920 ) {
+
+                transform : rotateX( -90deg ) translateZ( 13.0rem ) rotate( 180deg );
+    
+            } // end of container > div1 > div6 > bp-920
+
+            @media all and ( max-width : $bp-768 ) {
+
+                transform : rotateX( -90deg ) translateZ( 13.0rem ) rotate( 180deg );
+    
+            } // end of container > div1 > div6 > bp-768
+    
+            @media all and ( max-width : $bp-620 ) {
+    
+                transform : rotateX( -90deg ) translateZ( 11.0rem ) rotate( 180deg );
+    
+            } // end of container > div1 > div6 > bp-620
+    
+            @media all and ( max-width : $bp-480 ) {
+    
+                transform : rotateX( -90deg ) translateZ( 10.0rem ) rotate( 180deg );
+    
+            } // end of container > div1 > div6 > bp-480
+
+            @media all and ( max-width : 430px ) {
+
+                transform : rotateX( -90deg ) translateZ( 9.5rem ) rotate( 180deg );
+    
+            } // end of container > div1 > div6 > 420px
+    
+            @media all and ( max-width : 395px ) {
+
+                transform : rotateX( -90deg ) translateZ( 9.0rem ) rotate( 180deg );
+    
+            } // end of container > div1 > div6 > 395px
+
+            @media all and ( max-width : $bp-375 ) {
+
+                transform : rotateX( -90deg ) translateZ( 8.0rem ) rotate( 180deg );
+    
+            } // end of container > div1 > div6 > bp-375
+    
+            @media all and ( max-width : 350px ) {
+
+                transform : rotateX( -90deg ) translateZ( 7.5rem ) rotate( 180deg );
+    
+            } // end of container > div1 > div6 > 350px
+
+        } // end of container > div1 > div6
+
+    } // end of container > div1
+
+} // end of container
+
+

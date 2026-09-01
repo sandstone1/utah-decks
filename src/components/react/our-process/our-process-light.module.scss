@@ -1,0 +1,1179 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+// ==============================
+// our process container
+// ==============================
+
+.ourProcessContainer {
+
+    // ==============================
+    // div 7 in the index.js file
+    // ==============================
+
+    // parent
+    grid-area   : div7; // refer to parent for details on div3
+    grid-column : 1 / -1; // center against the parent grid
+
+    // children
+    display               : grid;
+    grid-template-rows    : auto;
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // remember, there are 2 things we want to accomplish :
+    // 1 - allow the wrapper div to position against the parent div and thereby
+    // shrink as needed
+    // 2 - we want to center the wrapper div ( see below for details )
+    // ==============================
+
+    // ==============================
+    // " grid-template-columns " is needed so that the wrapper div ( i.e. child ) can position
+    // against the parent ( i.e. this div ) by using " grid-column : 2 / 22; " and this allows
+    // the background declared below to span across the entire container or the entire site and
+    // this also allows the wrapper div to dynamically contain its children within the
+    // " grid-column : 2 / 22; " context so that as the screen size shrinks the wrapper div
+    // container and all its children containers or divs will automatically shrink as well
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    justify-items         : center;
+
+    // ==============================
+    // remember, I had to add " position : relative; " for the absolutely positioned
+    // svg shape div below to work
+    // ==============================
+
+    position : relative;
+    z-index  : 1;
+    padding  : 12.0rem 0 12.0rem 0;
+
+    // ==============================
+    // background
+    // ==============================
+
+    // background : var( --gray-230 );
+
+    // background : var( --blue-64 );
+    // background : var( --blue-62 );
+    // background : var( --yellow-60 );
+    //background : var( --green-10 );
+    // background : var( --green-20 );
+    // background : var( --background-lg-2 );
+    // background : var( --gray-190 );
+    // background : var( --background-lg-38 );
+    // background : var( --blue-75 );
+    // background       : var( --background-lg-42-1 );
+    // background-image : var( --background-lg-42-2 );
+    // background : var( --background-lg-46 );
+
+    // background  : url( /textures/kindajean.png );
+    // background  : url( /textures/whitey.png );
+    // background  : url( /textures/light_toast.png );
+    // background  : url( /textures/linen.png );
+
+    // background : var( --blue-59 );
+    // background : var( --yellow-55 );
+    // background : var( --green-10 );
+    background : var( --yellow-20 );
+    // background : var( --yellow-30 );
+    // background : var( --yellow-40 );
+    // background : var( --green-06 ); // great background color and it warms up the site;
+    // however, does not mesh as well as --gray-230 when you have white blocks on the top
+    // of the background but that's not appliable in this case since we are using
+    // --green-23 or none as the background
+    // background : var( --gray-872 );
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+        // children
+        display               : grid;
+        grid-template-rows    : repeat( 8, auto );
+        grid-template-columns : 1fr;
+        align-items           : center;
+        justify-items         : left;
+        grid-gap              : 0 6.0rem;
+        grid-template-areas   : "h2-1"
+                                "div2"
+                                "div3"
+                                "div4"
+                                "div5"
+                                "div6"
+                                "div7";
+
+        // ==============================
+        // remember, 
+        // 1 - with " grid-column : 2 / 22; " and " width : min( 144.0rem, 100% ); ",
+        // the children content will stay within the bounds of 2 / 22 and shrink
+        // automatically as needed
+        // 2 - and the children content will be the smaller of 144.0rem or 100%
+        // ==============================
+
+        width  : min( 144.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
+        // margin : 0 auto;
+
+        // opacity : 0; // needed for the opacity and slide up animation
+        opacity : 1;
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            // ==============================
+            // remember, 
+            // 1 - with " grid-column : 2 / 22; " and " width : min( 80.0rem, 100% ); ",
+            // the children content will stay within the bounds of 2 / 22 and shrink
+            // automatically as needed
+            // 2 - and the children content will be the smaller of 80.0rem or 100%
+            // ==============================
+
+            width : min( 80.0rem, 100% );
+
+        } // end of container > div1 > h1 > bp-1280
+
+        // ==============================
+        // container > div 1 > h2
+        // ==============================
+
+        > h2 {
+
+            // parent
+            grid-area : h2-1;
+
+            @include h2-dark-title;
+
+            margin : 0 0 4.0rem 0;
+
+        } // end of container > div1 > h2-1
+
+        // ==============================
+        // container > div 1 > div:nth-child( 2 )
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            // parent
+            grid-area : div2;
+
+            // children
+            display               : grid;
+            grid-template-rows    : auto;
+            grid-template-columns : 1fr 1fr;
+            align-items           : center;
+            justify-items         : center;
+            grid-gap              : 0 6.0rem;
+            grid-template-areas   : "div2 picture";
+
+            margin : 0 0 12.0rem 0;
+
+            // ==============================
+            // create a white background for a card effect with the following 3 properties
+            // ==============================
+
+            padding : 6.0rem; // property #1
+
+            border-radius : 6px; // property #2
+
+            // background : var( --white ); // property #3
+            // background : var( --yellow-55 ); // property #3
+            // background : var( --red-25 ); // property #3
+            // background : var( --blue-58 ); // property #3
+            background : var( --green-23 ); // property #3
+            // background : var( --blue-62-1 ); // property #3
+
+            // ==============================
+            // end of white background
+            // ==============================
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                display               : grid;
+                grid-template-rows    : repeat( 2, auto );
+                grid-template-columns : 1fr;
+                align-items           : start;
+                justify-items         : center;
+                grid-gap              : 6.0rem 0;
+                grid-template-areas   : "div2"
+                                        "picture";
+
+            } // end of container > div1 > div2 > bp-1280
+
+            @media all and ( max-width : 360px ) {
+
+                padding : 4.0rem; // property #1
+
+            } // end of container > div1 > div2 > 360px
+
+            // ==============================
+            // container > div 1 > div 2 > picture
+            // ==============================
+
+            > picture {
+
+                // parent
+                grid-area : picture;
+
+                > img {
+
+                    display : block;
+
+                    border-radius : 6px;
+
+                } // end of container > div1  > div2 > picture > img
+
+            } // end of container > div1 > div2 > picture
+
+            // ==============================
+            // container > div 1 > div 2 > div:nth-child( 2 )
+            // ==============================
+
+            > div:nth-child( 2 ) {
+
+                // parent
+                grid-area : div2;
+
+                // ==============================
+                // container > div 1 > div 2 > div 2 > h3
+                // ==============================
+
+                > h3 {
+
+                    @include h4-dark-title;
+
+                    margin : 0 0 1.5rem 0;
+
+                    line-height : 1.3; // visual preference and needed for when the
+                    // h1 splits into 2 lines
+
+                } // end of container > div1 > div2 > div2 > h3
+
+                // ==============================
+                // container > div 1 > div 2 > div 2 > p
+                // ==============================
+
+                > p {
+
+                    width  : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+                    margin : 0 0 2.0rem 0;
+
+                    @include text-base-dark;
+
+                } // end of container > div1 > div2 > div2 > p
+
+                // ==============================
+                // container > > div 1 > div 2 > div 2 > p:last-child
+                // ==============================
+
+                > p:last-child {
+
+                    margin : 0 0 0 0;
+
+                } // end of container > div1 > div2 > div2 > p:last-child
+
+            } // end of container > div1 > div2 > div2
+
+        } // end of container > div1 > div2
+
+        // ==============================
+        // container > div 1 > div:nth-child( 3 )
+        // ==============================
+
+        > div:nth-child( 3 ) {
+
+            // parent
+            grid-area : div3;
+
+            // children
+            display               : grid;
+            grid-template-rows    : auto;
+            grid-template-columns : 1fr 1fr;
+            align-items           : center;
+            justify-items         : center;
+            grid-gap              : 0 6.0rem;
+            grid-template-areas   : "picture div2";
+
+            margin : 0 0 12.0rem 0;
+
+            // ==============================
+            // create a white background for a card effect with the following 3 properties
+            // ==============================
+
+            padding : 6.0rem;
+            // padding : 0 6.0rem 6.0rem 6.0rem; // property #1
+
+            border-radius : 6px; // property #2
+
+            // background : var( --white ); // property #3
+            // background : var( --yellow-55 );
+            // background : var( --red-25 ); // property #3
+            // background : var( --green-07 ); // property #3
+            // background : var( --purple-27 ); // property #3
+            // background : var( --green-20 ); // property #3
+            // background : var( --green-23 ); // property #3
+            // background : var( --blue-62-1 ); // property #3
+            // background : var( --yellow-120 ); // property #3
+
+            // ==============================
+            // end of white background
+            // ==============================
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                display               : grid;
+                grid-template-rows    : repeat( 2, auto );
+                grid-template-columns : 1fr;
+                align-items           : start;
+                justify-items         : center;
+                grid-gap              : 6.0rem 0;
+                grid-template-areas   : "div2"
+                                        "picture";
+
+            } // end of container > div1 > div3 > bp-1280
+
+            @media all and ( max-width : 360px ) {
+
+                padding : 4.0rem; // property #1
+
+            } // end of container > div1 > div3 > 360px
+
+            // ==============================
+            // container > div 1 > div 3 > picture
+            // ==============================
+
+            > picture {
+
+                // parent
+                grid-area : picture;
+
+                > img {
+
+                    display : block;
+
+                    border-radius : 6px;
+
+                } // end of container > div1 > div3 > picture > img
+
+            } // end of container > div1 > div3 > picture
+
+            // ==============================
+            // container > div 1 > div 3 > div:nth-child( 2 )
+            // ==============================
+
+            > div:nth-child( 2 ) {
+
+                // parent
+                grid-area : div2;
+
+                // ==============================
+                // container > div 1 > div 3 > div 2 > h3
+                // ==============================
+
+                > h3 {
+
+                    @include h4-dark-title;
+
+                    margin : 0 0 1.5rem 0;
+
+                    line-height : 1.3; // visual preference and needed for when the
+                    // h1 splits into 2 lines
+
+                }  // end of container > div1 > div3 > div2 > h3
+  
+                // ==============================
+                // container > div 1 > div 4 > div 2 > p
+                // ==============================
+
+                > p {
+
+                    width  : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+                    margin : 0 0 2.0rem 0;
+
+                    @include text-base-dark;
+
+                } // end of container > div1 > div3 > div2 > p
+
+                // ==============================
+                // container > div 1 > div 3 > div 2 > p:last-child
+                // ==============================
+
+                > p:last-child {
+
+                    margin : 0 0 0 0;
+
+                } // end of container > div1 > div3 > div2 > p:last-child
+
+            } // end of container > div1 > div3 > div2
+
+        } // end of container > div1 > div5
+
+        // ==============================
+        // container > div 1 > div:nth-child( 4 )
+        // ==============================
+
+        > div:nth-child( 4 ) {
+
+            // parent
+            grid-area : div4;
+
+            // children
+            display               : grid;
+            grid-template-rows    : auto;
+            grid-template-columns : 1fr 1fr;
+            align-items           : start;
+            justify-items         : center;
+            grid-gap              : 0 6.0rem;
+            grid-template-areas   : "div2 div1";
+
+            margin : 0 0 12.0rem 0;
+
+            // ==============================
+            // create a white background for a card effect with the following 3 properties
+            // ==============================
+
+            padding : 6.0rem; // property #1
+
+            border-radius : 6px; // property #2
+
+            // background : var( --white ); // property #3
+            // background : var( --yellow-55 ); // property #3
+            // background : var( --red-25 ); // property #3
+            // background : var( --orange-20 ); // property #3
+            // background : var( --purple-27 ); // property #3
+            // background : var( --green-20 ); // property #3
+            background : var( --green-23 ); // property #3
+            // background : var( --blue-62-1 ); // property #3
+
+            // ==============================
+            // end of white background
+            // ==============================
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                display               : grid;
+                grid-template-rows    : repeat( 2, auto );
+                grid-template-columns : 1fr;
+                align-items           : start;
+                justify-items         : center;
+                grid-gap              : 6.0rem 0;
+                grid-template-areas   : "div2"
+                                        "div1";
+
+            } // end of container > div1 > div4 > bp-1280
+
+            @media all and ( max-width : 360px ) {
+
+                padding : 4.0rem; // property #1
+
+            } // end of container > div1 > div4 > 360px
+
+            // ==============================
+            // container > div 1 > div 4 > div:nth-child( 1 )
+            // ==============================
+
+            > div:nth-child( 1 ) {
+
+                // parent
+                grid-area : div1;
+
+                // children
+                align-self : center;
+
+                border-radius : 6px;
+
+                // ==============================
+                // create a white background for a card effect with the following 2 properties
+                // ==============================
+
+                padding : 3.0rem; // property #1
+
+                background : var( --background-lg-22 ); // property #1
+
+                // ==============================
+                // end of white background
+                // ==============================
+
+                // ==============================
+                // shrink the technologies used box
+                // ==============================
+
+                @media all and ( max-width : $bp-1440 ) {
+
+                    width : min( 35.0rem, 100% ); // browser will select the smaller of 35.0rem or 100%
+    
+                } // end of container > div1 > div4 > div1 > bp-1440
+
+                // ==============================
+                // expand the technologies used box
+                // ==============================
+
+                @media all and ( max-width : $bp-1280 ) {
+
+                    width : 100%;
+    
+                } // end of container > div1 > div4 > div1 > bp-1280
+
+                > h6:nth-child( 1 ) {
+
+                    @include h6-dark-title;
+
+                    margin : 0 0 2.0rem 0;
+
+                    @media all and ( max-width : 357px ) {
+
+                        display : none;
+        
+                    } // end of container > div1 > div4 > div1 > h6:nth-child( 1 ) > 357px
+    
+                } // end of container > div1 > div4 > div1 > h6:nth-child( 1 )
+
+                > h6:nth-child( 2 ) {
+
+                    @include h6-dark-title;
+
+                    display : none;
+                    margin  : 0 0 2.0rem 0;
+
+                    @media all and ( max-width : 357px ) {
+
+                        display : block;
+        
+                    } // end of container > div1 > div4 > div1 > h6:nth-child( 2 ) > 357px
+    
+                } // end of container > div1 > div4 > div1 > h6:nth-child( 2 )
+
+                // ==============================
+                // container > div 1 > div 5 > div 1 > ul ( the technologies used list )
+                // ==============================
+
+                > ul {
+
+                    @media all and ( max-width : $bp-768 ) {
+
+                        width : 30.0rem; // make a line break so we move the mongodb, threejs
+                        // and sass icons to the second line so that the spacing between the
+                        // icons works
+    
+                    } // end of container > div1 > div5 > div1 > ul > bp-768
+
+                    @media all and ( max-width : $bp-620 ) {
+
+                        width : 100%; // make a line break so we move the mongodb, threejs
+                        // and sass icons to the second line so that the spacing between the
+                        // icons works
+    
+                    } // end of container > div1 > div4 > div1 > ul > bp-620
+
+                    > svg {
+
+                        margin : 0 2.0rem 0 0;
+
+                    } // end of container > div1 > div4> div1 > ul > svg
+
+                    > svg:nth-child( 5 ) {
+
+                        margin : 0 1.3rem 0 0; // compensate for odd padding on the github icon
+
+                        @media all and ( max-width : $bp-1440 ) {
+
+                            margin : 0 2.0rem 0 0; // when the icons move to 2 lines then
+                            // even out the spacing by putting margin right back to 2.0rem
+        
+                        } // end of container > div1 > div4 > div1 > ul > svg:nth-child( 5 ) > bp-1440
+
+                        @media all and ( max-width : $bp-1280 ) {
+
+                            margin : 0 1.3rem 0 0; // when the icons move to 2 lines then
+                            // even out the spacing by putting margin right back to 2.0rem
+        
+                        } // end of container > div1 > div4 > div1 > ul > svg:nth-child( 5 ) > bp-1280
+
+                        @media all and ( max-width : $bp-768 ) {
+
+                            margin : 0 2.0rem 0 0; // when the icons move to 2 lines then
+                            // even out the spacing by putting margin right back to 2.0rem
+        
+                        } // end of container > div1 > div4 > div1 > ul > svg:nth-child( 5 ) > bp-768
+
+                    }  // end of container > div1 > div4 > div1 > ul > svg:nth-child( 5 )
+
+                    > svg:nth-child( 6 ) {
+
+                        margin : 0 1.0rem 0 0; // compensate for odd padding on the mongodb icon
+
+                        @media all and ( max-width : $bp-1440 ) {
+
+                            margin : 0 2.0rem 0 0; // when the icons move to 2 lines then
+                            // even out the spacing by putting margin right back to 2.0rem
+        
+                        } // end of container > div1 > div4 > div1 > ul > svg:nth-child( 6 ) > bp-1440
+
+                        @media all and ( max-width : $bp-1280 ) {
+
+                            margin : 0 1.0rem 0 0; // when the icons move to 2 lines then
+                            // even out the spacing by putting margin right back to 2.0rem
+        
+                        } // end of container > div1 > div4 > div1 > ul > svg:nth-child( 6 ) > bp-1280
+
+                        @media all and ( max-width : $bp-768 ) {
+
+                            margin : 0 2.0rem 0 0; // when the icons move to 2 lines then
+                            // even out the spacing by putting margin right back to 2.0rem
+        
+                        } // end of container > div1 > div4 > div1 > ul > svg:nth-child( 6 ) > bp-768
+
+                    } // end of container > div1 > div4> div1 > ul > svg:nth-child( 6 )
+
+                    > svg:nth-child( 7 ) {
+
+                        margin : 0 1.7rem 0 0; // compensate for odd padding on the threejs icon
+
+                        @media all and ( max-width : $bp-1440 ) {
+
+                            margin : 0 2.0rem 0 0; // when the icons move to 2 lines then
+                            // even out the spacing by putting margin right back to 2.0rem
+        
+                        } // end of container > div1 > div4 > div1 > ul > svg:nth-child( 7 ) > bp-1440
+
+                        @media all and ( max-width : $bp-1280 ) {
+
+                            margin : 0 1.7rem 0 0; // when the icons move to 2 lines then
+                            // even out the spacing by putting margin right back to 2.0rem
+        
+                        } // end of container > div1 > div4 > div1 > ul > svg:nth-child( 7 ) > bp-1280
+
+                        @media all and ( max-width : $bp-768 ) {
+
+                            margin : 0 2.0rem 0 0; // when the icons move to 2 lines then
+                            // even out the spacing by putting margin right back to 2.0rem
+        
+                        } // end of container > div1 > div4 > div1 > ul > svg:nth-child( 7 ) > bp-1440
+
+                    } // end of container > div1 > div4 > div1 > ul > svg:nth-child( 7 )
+
+                } // end of container > div1 > div4 > div1 > ul
+
+            } // end of container > div1 > div4 > div1
+
+            // ==============================
+            // container > div 1 > div 4 > div:nth-child( 2 )
+            // ==============================
+
+            > div:nth-child( 2 ) {
+
+                // parent
+                grid-area : div2;
+
+                // ==============================
+                // container > div 2 > div 5 > div 2 > h3
+                // ==============================
+
+                > h3 {
+
+                    @include h4-dark-title;
+
+                    margin : 0 0 1.5rem 0;
+
+                    line-height : 1.3; // visual preference and needed for when the
+                    // h1 splits into 2 lines
+
+                }  // end of container > div1 > div4 > div2 > h3
+
+                // ==============================
+                // container > div 1 > div 5 > div 2 > p
+                // ==============================
+
+                > p {
+
+                    width  : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+                    margin : 0 0 2.0rem 0;
+
+                    @include text-base-dark;
+
+                } // end of container > div1 > div4 > div2 > p
+
+                // ==============================
+                // container > div 1 > div 5 > div 2 > p:last-child
+                // ==============================
+
+                > p:last-child {
+
+                    margin : 0 0 0 0;
+
+                } // end of container > div1 > div4 > div2 > p:last-child
+
+                // ==============================
+                // container > div 1 > div 5 > div 2 > ul ( the list )
+                // ==============================
+
+                > ul {
+
+                    margin : 0 0 0 1.5rem;
+
+                    list-style-type : disc; // override the global stylesheet in this case
+                    // list-style-position: outside;
+                    // make sure the disc markers are located the content box
+
+                    @media all and ( max-width : $bp-375 ) {
+
+                        width : 100%; // make a line break so we move the mongodb, threejs
+                        // and sass icons to the second line so that the spacing between the
+                        // icons works
+    
+                    } // end of container > div1 > div4 > div2 > ul > bp-375
+
+                    > li {
+
+                        @include text-base-dark;
+
+                        margin : 0 0 1.5rem 0;
+
+                    } // end of container > div1 > div4 > div2 > ul > li
+
+                    > li:last-child {
+
+                        margin : 0 0 0 0;
+
+                    } // end of container > div1 > div4 > div2 > ul > li
+
+                } // end of container > div1 > div4 > div2 > ul
+
+            } // end of container > div1 > div4 > div2
+
+        } // end of container > div1 > div4
+
+        // ==============================
+        // container > div 1 > div:nth-child( 5 )
+        // ==============================
+
+        > div:nth-child( 5 ) {
+
+            // parent
+            grid-area : div5;
+
+            // children
+            display               : grid;
+            grid-template-rows    : auto;
+            grid-template-columns : 1fr 1fr;
+            align-items           : center;
+            justify-items         : center;
+            grid-gap              : 0 6.0rem;
+            grid-template-areas   : "picture div2";
+
+            margin : 0 0 12.0rem 0;
+
+            // ==============================
+            // create a white background for a card effect with the following 3 properties
+            // ==============================
+
+            padding : 6.0rem; // property #1
+
+            border-radius : 6px; // property #2
+
+            // background : var( --white ); // property #3
+            // background : var( --yellow-55 ); // property #3
+            // background : var( --red-25 ); // property #3
+            // background : var( --blue-58 ); // property #3
+            // background : var( --green-23 ); // property #3
+
+            // ==============================
+            // end of white background
+            // ==============================
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                display               : grid;
+                grid-template-rows    : repeat( 2, auto );
+                grid-template-columns : 1fr;
+                align-items           : start;
+                justify-items         : center;
+                grid-gap              : 6.0rem 0;
+                grid-template-areas   : "div2"
+                                        "picture";
+
+            } // end of container > div1 > div5 > bp-1280
+
+            @media all and ( max-width : 360px ) {
+
+                padding : 4.0rem; // property #1
+
+            } // end of container > div1 > div5> 360px
+
+            // ==============================
+            // container > div 1 > div 5 > picture
+            // ==============================
+
+            > picture {
+
+                // parent
+                grid-area : picture;
+
+                > img {
+
+                    display : block;
+
+                    border-radius : 6px;
+
+                    // filter : grayscale( 100% );
+
+                } // end of container > div1 > div5 > picture > img
+
+            } // end of container > div1 > div5 > picture
+
+            // ==============================
+            // container > div 1 > div 5 > div:nth-child( 2 )
+            // ==============================
+
+            > div:nth-child( 2 ) {
+
+                // parent
+                grid-area : div2;
+
+                // ==============================
+                // container > div 1 > div 5> h3
+                // ==============================
+
+                > h3 {
+
+                    @include h4-dark-title;
+
+                    margin : 0 0 1.5rem 0;
+
+                    line-height : 1.3; // visual preference and needed for when the
+                    // h1 splits into 2 lines
+
+                } // end of container > div1 > div5 > div2 > h3
+
+                // ==============================
+                // container > div 1 > div 5 > div 2 > p
+                // ==============================
+
+                > p {
+
+                    width  : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+                    margin : 0 0 2.0rem 0;
+
+                    @include text-base-dark;
+
+                } // end of container > div1 > div5 > div2 > p
+
+                // ==============================
+                // container > div 1 > div 5 > div 1 > p:last-child
+                // ==============================
+
+                > p:last-child {
+
+                    margin : 0 0 0 0;
+
+                } // end of container > div1 > div5 > div2 > p:last-child
+
+            } // end of container > div1 > div5 > div2
+
+        } // end of container > div1 > div5
+
+        // ==============================
+        // container > div 1 > div:nth-child( 6 )
+        // ==============================
+
+        > div:nth-child( 6 ) {
+
+            // parent
+            grid-area : div6;
+
+            // children
+            display               : grid;
+            grid-template-rows    : auto;
+            grid-template-columns : 1fr 1fr;
+            align-items           : center;
+            justify-items         : center;
+            grid-gap              : 0 6.0rem;
+            grid-template-areas   : "div2 picture";
+
+            margin : 0 0 12.0rem 0;
+
+            // ==============================
+            // create a white background for a card effect with the following 3 properties
+            // ==============================
+
+            padding : 6.0rem; // property #1
+
+            border-radius : 6px; // property #2
+
+            // background : var( --white ); // property #3
+            // background : var( --yellow-55 ); // property #3
+            // background : var( --red-25 ); // property #3
+            // background : var( --green-07 ); // property #3
+            background : var( --green-23 ); // property #3
+            // background : var( --blue-61-1 );
+            // background : var( --blue-62-1 ); // property #3
+
+            // ==============================
+            // end of white background
+            // ==============================
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                display               : grid;
+                grid-template-rows    : repeat( 2, auto );
+                grid-template-columns : 1fr;
+                align-items           : start;
+                justify-items         : center;
+                grid-gap              : 6.0rem 0;
+                grid-template-areas   : "div2"
+                                        "picture";
+
+            } // end of container > div1 > div6 > bp-1280
+
+            @media all and ( max-width : 360px ) {
+
+                padding : 4.0rem; // property #1
+
+            } // end of container > div1 > div6 > 360px
+
+            // ==============================
+            // container > div 1 > div 6 > picture
+            // ==============================
+
+            > picture {
+
+                // parent
+                grid-area : picture;
+
+                > img {
+
+                    display : block;
+
+                    border-radius : 6px;
+
+                    // filter : grayscale( 100% );
+
+                } // end of container > div1 > div6 > picture > img
+
+            } // end of container > div1 > div6 > picture
+
+            // ==============================
+            // container > div 1 > div 6 > div:nth-child( 2 )
+            // ==============================
+
+            > div:nth-child( 2 ) {
+
+                // parent
+                grid-area : div2;
+
+                // ==============================
+                // container > div 2 > div 6 > div 2 > h3
+                // ==============================
+
+                > h3 {
+
+                    @include h4-dark-title;
+
+                    margin : 0 0 1.5rem 0;
+
+                    line-height : 1.3; // visual preference and needed for when the
+                    // h1 splits into 2 lines
+
+                } // end of container > div1 > div6 > div2 > h3
+
+                // ==============================
+                // container  > div 1 > div 6 > div 2 > p
+                // ==============================
+
+                > p {
+
+                    width  : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+                    margin : 0 0 2.0rem 0;
+
+                    @include text-base-dark;
+
+                } // end of container  > div1 > div6 > div2 > p
+
+                // ==============================
+                // container  > div 1 > div 6 > div 2 > p:last-child
+                // ==============================
+
+                > p:last-child {
+
+                    margin : 0 0 0 0;
+
+                } // end of container  > div1 > div6 > div2 > p:last-child
+
+            } // end of container  > div1 > div6 > div2
+
+        } // end of container > div1 > div6
+
+        // ==============================
+        // container > div 1 > div:nth-child( 7 )
+        // ==============================
+
+        > div:nth-child( 7 ) {
+
+            // parent
+            grid-area : div7;
+
+            // children
+            display               : grid;
+            grid-template-rows    : auto;
+            grid-template-columns : 1fr 1fr;
+            align-items           : center;
+            justify-items         : center;
+            grid-gap              : 0 6.0rem;
+            grid-template-areas   : "picture div2";
+
+            // ==============================
+            // create a white background for a card effect with the following 3 properties
+            // ==============================
+
+            padding : 6.0rem; // property #1
+
+            border-radius : 6px; // property #2
+
+            // background : var( --white ); // property #3
+            // background : var( --yellow-55 ); // property #3
+            // background : var( --red-25 ); // property #3
+            // background : var( --orange-20 ); // property #3
+            // background : var( --green-23 ); // property #3
+
+            // ==============================
+            // end of white background
+            // ==============================
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                display               : grid;
+                grid-template-rows    : repeat( 2, auto );
+                grid-template-columns : 1fr;
+                align-items           : start;
+                justify-items         : center;
+                grid-gap              : 6.0rem 0;
+                grid-template-areas   : "div2"
+                                        "picture";
+
+            } // end of container > div1 > div7 > bp-1280
+
+            @media all and ( max-width : 360px ) {
+
+                padding : 4.0rem; // property #1
+
+            } // end of container > div1 > div7 > 360px
+
+            // ==============================
+            // container > div 1 > div 7 > picture
+            // ==============================
+
+            > picture {
+
+                // parent
+                grid-area : picture;
+
+                > img {
+
+                    display : block;
+
+                    border-radius : 6px;
+
+                } // end of container > div1 > div7 > picture > img
+
+            } // end of container > div1 > div7 > picture
+
+            // ==============================
+            // container > div 1 > div 7 > div:nth-child( 2 )
+            // ==============================
+
+            > div:nth-child( 2 ) {
+
+                // parent
+                grid-area : div2;
+
+                // ==============================
+                // container > div 1 > div 7> div 2 > h3
+                // ==============================
+
+                > h3 {
+
+                    @include h4-dark-title;
+
+                    margin : 0 0 1.5rem 0;
+
+                    line-height : 1.3; // visual preference and needed for when the
+                    // h1 splits into 2 lines
+
+                } // end of container > div1 > div7 > div2 > h3
+
+                // ==============================
+                // container > div 1 > div 7 > div2 > p
+                // ==============================
+
+                > p {
+
+                    width  : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+                    margin : 0 0 2.0rem 0;
+
+                    @include text-base-dark;
+
+                } // end of container > div1 > div7 > div2 > p
+
+                // ==============================
+                // container > div 1 > div 7 > div 2 > p:last-child
+                // ==============================
+
+                > p:last-child {
+
+                    margin : 0 0 0 0;
+
+                } // end of container > div1 > div7 > div2 > p:last-child
+
+            } // end of container > div1 > div7 > div2
+
+        } // end of container > div1 > div7
+
+    } // end of container > div1
+
+} // end of container
+

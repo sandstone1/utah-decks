@@ -1,0 +1,78 @@
+
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+// ==============================
+// logo ranking made easy shapes container
+// ==============================
+
+.logoRankingMadeEasyShapesContainer {
+
+    // children
+    display               : grid;
+    grid-template-rows    : repeat( 3, auto );
+    grid-template-columns : 1fr;
+    grid-gap              : 0.8rem 0;
+    grid-template-areas   : "span1"
+                            "span2"
+                            "span3";
+
+    > span:nth-child( 1 ) {
+
+        // parent
+        grid-area : span1;
+
+        width  : 3.2rem;
+        height : 1.6rem;
+
+        border-radius : 0.6rem;
+
+        background : var( --green-100 ); // visual preference
+
+    } // end of container > div1 > span:nth-child( 1 )
+
+    > span:nth-child( 2 ) {
+
+        // parent
+        grid-area : span2;
+
+        width  : 3.2rem;
+        height : 1.6rem;
+
+        border-radius : 0.6rem;
+
+        background : var( --yellow-150 ); // visual preference
+        // background : var( --orange-95 ); // visual preference
+        // background : var( --brown-80 ); // visual preference
+        // background : var( --silver ); // visual preference
+        // background : var( --black ); // visual preference
+        background : var( --gray-400 ); // visual preference
+
+    } // end of container > div1 > span:nth-child( 2 )
+
+    > span:nth-child( 3 ) {
+
+        // parent
+        grid-area : span3;
+
+        width  : 3.2rem;
+        height : 1.6rem;
+
+        border-radius : 0.6rem;
+
+        background : var( --red-30 ); // visual preference
+
+    } // end of container > div1 > span:nth-child( 3 )
+
+} // end of container
+

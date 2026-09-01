@@ -1,0 +1,974 @@
+
+
+
+
+// ==============================
+// hero image component - notes
+// ==============================
+
+// ==============================
+// note #1
+// ==============================
+
+// ==============================
+// remember, we determined the height of the hero container and then passed
+// that height value up to the parent ( i.e. the index.js file ) and then in the index.js
+// file we set the state for the hero container height and then passed that height state
+// value down to the child component or the you are going to discover component and then
+// we set the top margin for the you are going to discover component container div and
+// this pushed the div2 content down below the hero container and made everything work
+// as expected
+// ==============================
+
+// ==============================
+// files :
+// components/hero/hero.js ( see useEffect #2 and function #2 )
+// pages/index.js ( see passParentToChildHeightHandlerFunction )
+// components/you-are-going-to-discover/you-are-going-to-discover.js ( see useEffect #1 )
+// components/hero/hero.module.scss
+// ==============================
+
+
+
+
+
+// ==============================
+// note #2
+// ==============================
+
+// ==============================
+// remember, since the hero component uses absolute positioning we left the component
+// out of the grid-template-rows and grid-template-areas calculations in the
+// homePageContainer div or index.module.scss file ( see Enchanting Apps for more
+// details )
+// ==============================
+
+
+
+
+
+// ==============================
+// note #3
+// ==============================
+
+// ==============================
+// remember, in the hero component we did the following :
+// 1 - we had to comment out " bottom : 0 " in the hero container div and then
+// 2 - we had to set height to 100vh or 100svh for screen sizes above bp-620 and then
+// 3 - we had to set height to auto and bottom padding to 12.0rem for screen sizes
+// at or below bp-620 ( remember, at small screen sizes our content overflowed into
+// div 2 ); otherwise, there was no way to provide any spacing at the bottom of the
+// hero container unless we added a specific height to the container and then modified
+// the height at different breakpoints
+// 4 - we had to set align-content to start for screen sizes at or below bp-620
+// and then we had to set the top padding to 160px in order the get the content placed
+// correctly once the content goes vertical
+// ==============================
+
+// ==============================
+// and even then, we found that iphone rendered the spacing different ( i.e. incorrectly )
+// than androids and desktop
+// ==============================
+
+// ==============================
+// files :
+// components/hero/hero.module.scss
+// ==============================
+
+
+
+
+
+// ==============================
+// note #4
+// ==============================
+
+// ==============================
+// remember, 
+// 1 - the goal here is to have the hero container take up the entire screen for
+// screen sizes above bp-620 and this makes for a nice hero first impression and
+// this works out well because almost all devices with a width greater than bp-620
+// ( i.e. desktops and tablets ) have a length that is long enough to comfortably
+// support our hero content and then
+// 2 - we want to have the hero container flex or grow as needed to support the
+// content or keep the content from overflowing into div2 as screen sizes become
+// smaller ( i.e. at or below bp-620 ) and remember there are smaller mobile devices
+// with relatively short screen heights ( i.e. 675px or less ) and this along
+// with a more narrow screen width causes the hero content to become longer and
+// therefore we need to be able to flex the hero container and this applies to
+// most mobile devices and to be safe we start flexing the hero container for
+// screen sizes at or below bp-620 
+// ==============================
+
+// ==============================
+// files :
+// components/hero/hero.js ( see useEffect #2 and function #2 )
+// pages/index.js ( see passParentToChildHeightHandlerFunction )
+// components/you-are-going-to-discover/you-are-going-to-discover.js ( see useEffect #1 )
+// components/hero/hero.module.scss
+// ==============================
+
+
+
+
+
+// ==============================
+// note #5
+// ==============================
+
+// ==============================
+// remember, 
+// 1 - " height : 100vh; " worked well for the iPad; however, on Android or Google tablets
+// this key value pair was not centering the hero container and it was not rendering the
+// bottom portion of the hero image inside the initial viewport ( e.g. it was cutting off
+// the bottom 10px or so of the image and thereby bunching up the hero content ) and to
+// solve this problem we added " height : 100svh; " and this solved the problem for
+// Google tablets and remember even with this change iPads still looked great and worked
+// as expected
+// ==============================
+
+// ==============================
+// files :
+// components/hero/hero.module.scss
+// ==============================
+
+
+
+
+
+// ==============================
+// note 6
+// ==============================
+
+// ==============================
+// step 1 - remember, when comparing the background image version of the hero component
+// ( i.e. the hero.js file ) to the plain background color version of the hero component
+// ( i.e. the hero-plain-background.js file ), other than 2 style changes made in the
+// hero-plain-background.module.scss file ( see steps 2 & 3 below ), the hero plain
+// background component is the same component as the hero component and we made no changes
+// to the index.js file and / or the you-are-going-to-discover.js file
+// step 2 - change #1 - remove the background image code
+// step 3 - change #2 - add a background color to the hero plain background container div
+// ==============================
+
+// ==============================
+// files :
+// components/hero/hero-plain-background.js
+// components/hero/hero-plain-background.module.scss
+// ==============================
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../styles/_mixins.scss' as *;
+@use '../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// keyframes
+// ==============================
+
+// ==============================
+// elastic animation
+// ==============================
+
+// ==============================
+// option 2
+// use the css animation property to animate the hero container on page load
+// ==============================
+
+@keyframes animate-on-page-load {
+
+    from {
+
+        opacity   : 0;
+        scale     : 0.99 1;
+        translate : 0 8.0rem;
+
+    }
+
+    to {
+
+        opacity   : 1;
+        scale     : 1 1;
+        translate : 0 0;
+
+    }
+
+} // end of animate-on-page-load
+
+// ==============================
+// fallback for non mobile devices
+// ==============================
+
+@keyframes animate-on-page-load-fallback-non-mobile {
+
+    from {
+
+        opacity   : 0;
+        translate : 0 3.0rem;
+
+    }
+
+    to {
+
+        opacity   : 1;
+        translate : 0 0;
+
+    }
+
+} // end of animate-on-page-load-fallback-non-mobile
+
+// ==============================
+// fallback for mobile devices
+// ==============================
+
+@keyframes animate-on-page-load-fallback-mobile {
+
+    from {
+
+        opacity : 0;
+
+    }
+
+    to {
+
+        opacity : 1;
+
+    }
+
+} // end of animate-on-page-load-fallback-mobile
+
+// ==============================
+// end of elastic animation
+// ==============================
+
+// ==============================
+// end of Keyframes
+// ==============================
+
+
+
+
+
+
+
+
+
+// ==============================
+// hero plain background container
+// ==============================
+
+.heroPlainBackgroundContainer {
+
+    // children
+    display               : grid;
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // 1 - in the content div use grid-column to position against the parent grid and until we
+    // can use sub grid we may need to duplicate the parent grid and bring it down to the
+    // content div where we can position against it
+    // 2 - now our content div is sitting empty inside the parent grid we need to give the
+    // content div a width and height so we can create the content box and
+    // 3 - then set up a grid within the content box so that we can layout the content
+    // inside the content box as needed and
+    // 4 - the only cavet to 3 above, is that sometimes we need to go with a horizontal layout
+    // and in those cases, flexbox may be the better choice than css grid
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    align-content       : center;
+    justify-items       : center;
+
+    // ==============================
+    // IMPORTANT!
+    // get rid of FOUC
+    //
+    // part 1
+    // I think because of the time it takes to determine and then pass the hero container
+    // height down to the child component that follows the hero component that on page
+    // load for a split second, the child components were showing up as a FOUC and overridiing
+    // the hero component ( and this makes sense since they are later in the stacking order )
+    //
+    // after much trial and error, I found that a z-index of 1 ( and setting a delay on using
+    // the Intersection Observer - see part 2 ) makes sure that the hero component lies above
+    // the child components on page load and this helps eliminates the FOUC I was seeing and
+    // gives the browser time to layout the page
+    //
+    // part 2
+    // I also had to delay the Intersection Observer for 100ms in the 2 child components that
+    // follow the hero components and this seemed to help eliminate the FOUC
+    // ==============================
+    z-index : 1;
+
+    // ==============================
+    // end of get rid of FOUC
+    // ==============================
+
+    // ==============================
+    // for screen sizes over bp-620, set the height of the hero container to 100vh
+    // or 100svh and this will make the background image span the entire screen
+    // ==============================
+
+    height : 100vh; // set height equal to 100vh for larger screens and then switch
+    // to auto once the content overflows the 100vh container and this happens at
+    // or below bp-620
+
+    // ==============================
+    // @supports
+    // ==============================
+
+    // use @supports to test for " 100svh "
+
+    // see the following article for details on @supports : 
+    // " https://css-tricks.com/how-supports-works/ "
+    @supports ( height : 100svh ) {
+
+        height : 100svh; // remember, svh stands for smallest virewport height and unlike
+        // 100vh, which causes the hero container to overflow into div2 on some mobiles
+        // devices, 100svh takes into account any mobile bars, etc. and seems to work
+        // pretty well
+    
+        // remember, 100svh and 100vh are the same on desktop since desktops don't have
+        // any mobile bars, etc. to contend with
+
+    } // @supports ( height : 100svh )
+
+    // ==============================
+    // wrap the background over the header and hero container
+    // ==============================
+
+    position : absolute;
+    left     : 0;
+    top      : 0;
+    right    : 0;
+    // bottom   : 0; // important!! ( see the notes below )
+
+    // ==============================
+    // background
+    // ==============================
+
+    // background : var( --background-lg-8 ); // good color
+    // background : var( --background-lg-47 );
+    // background       : black;
+    // background-image : conic-gradient( from 0deg at center, var( --blue-800 ) 70%, var( --blue-80 ) 0% );
+    background       : var( --blue-800 );
+    background-image : var( --background-lg-50-11 );
+
+    // ==============================
+    // end of background
+    // ==============================
+
+    // ==============================
+    // eliminate FOUC
+    // ==============================
+
+    // ==============================
+    // part 1 - see useEffect for part 2
+    // ==============================
+
+    // remember, we had FOUC on page load and many times it was a quick flash of the
+    // content below the hero container
+
+    // I tried many approaches to solving this problem and as of 6-19-24, the best
+    // I could come up with is to do the below and then in the useEffect hook set
+    // opacity to 1
+
+    // and this worked pretty well
+    // opacity    : 0;
+    // transition : opacity 200ms ease-out 0ms;
+
+    // ==============================
+    // end of eliminate FOUC
+    // ==============================
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // flex the hero plain background container for small screen sizes
+    // ==============================
+
+    @media all and ( max-width : $bp-620 ) {
+
+        // ==============================
+        // remember, to change to align-content to start
+        // ==============================
+
+        align-content : start; // when the content goes vertical, change align-content
+        // to start and add some top padding for better spacing between the header and
+        // the hero container
+
+        // adding min-height allowed us to set up a minimum height and sometimes we
+        // will need this if the content overflows 100svh at bp-320 but in this case
+        // it is just a visual preference
+        min-height : 92.0rem;
+
+        // ==============================
+        // important!!
+        // ==============================
+
+        // ==============================
+        // remember, to make the " height : auto; " and bottom padding of 12.0rem
+        // work properly we had to comment out " bottom : 0 " above; otherwise, there
+        // was no way to provide any spacing at the bottom of the container unless we
+        // added a specific height to the container and then modified the height at
+        // different breakpoints
+        // ==============================
+
+        // ==============================
+        // even then, I found that iphone rendered the spacing different ( i.e. incorrectly )
+        // than androids and desktop
+        // ==============================
+
+        height : auto; // change to " height : auto " once the content expands
+        // beyond a height of 100vh and that way all mobile devices will render
+        // the container spacing in the same way
+
+        padding : 160px 0 12.0rem 0; // add some bottom padding in conjunction
+        // with " height : auto "
+
+        // ==============================
+        // end of important!!
+        // ==============================
+
+    } // end of bp-620
+
+    // ==============================
+    // end of flex the hero plain background container for small screen sizes
+    // ==============================
+
+    // ==============================
+    // container > div1 ( wrapper div )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent
+
+        // children
+        display               : grid;
+        grid-template-rows    : repeat( 3, auto );
+        grid-template-columns : 1fr;
+        justify-items         : center;
+        gap                   : 4.0rem 0;
+        grid-template-areas   : "h1"
+                                "h2"
+                                "button";
+
+        width   : min( 144.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
+        // z-index : 1; // only really needed if we bring in the animating radial gradients
+
+        @media all and ( max-width : $bp-620 ) {
+
+            margin : 13.0rem 0 0 0; // remember we had to add some extra spacing on the top due
+            // to the extra long company name
+
+        } // end of container > div1 > bp-620
+
+        @media all and ( max-width : $bp-480 ) {
+
+            margin : 15.0rem 0 0 0; // remember we had to add even more spacing on the top due
+            // to the extra long company name ( see the header.module.scss file for details )
+
+        } // end of container > div1 > bp-480
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > h1
+        // ==============================
+
+        > h1 {
+
+            // parent
+            grid-area : h1;
+
+            @include h1-light-hero;
+
+            // needed for the start of the animation
+            opacity : 0;
+
+            // ==============================
+            // will-change
+            // use either will-change or translateZ( 0 ) to " promote elements that you plan to
+            // animate "
+            // see the following article for details :
+            // " https://web.dev/articles/stick-to-compositor-only-properties-and-manage-layer-count " 
+            // ==============================
+
+            will-change : transform;
+
+            // ==============================
+            // end of will-change
+            // ==============================
+
+            // ==============================
+            // fallback animation
+            // ==============================
+
+            // ==============================
+            // option 1
+            // use the css animation property to animate the hero container on page load
+            // ==============================
+
+            // ==============================
+            // remember, older versions of Chrome and Safari do not support the linear function
+            // so we need a fallback
+            // ==============================
+
+            // ==============================
+            // fallback animation - non mobile
+            // ==============================
+
+            animation-name            : animate-on-page-load-fallback-non-mobile;
+            animation-duration        : 600ms;
+            animation-timing-function : ease-in-out; // standard easing
+            animation-delay           : 300ms;
+            animation-iteration-count : 1; // this is the default but leave here for reference purposes
+            animation-fill-mode       : forwards;
+
+            // ==============================
+            // end of fallback animation - non mobile
+            // ==============================
+
+            // ==============================
+            // fallback animation - mobile
+            // ==============================
+
+            // ==============================
+            // for fallback on mobile devices, just fade in the elements since
+            // " transform : translateY( ); " results in a janky user experience
+            // on mobile devices
+            // ==============================
+
+            @media all and ( max-width : $bp-480 ) {
+
+                animation-name            : animate-on-page-load-fallback-mobile;
+                animation-duration        : 1000ms;
+                animation-timing-function : ease-out; // standard easing
+                animation-delay           : 300ms;
+                animation-iteration-count : 1; // this is the default but leave here for reference purposes
+                animation-fill-mode       : forwards;
+
+            } // end of container > div > h1 > bp-480
+
+            // ==============================
+            // end of fallback animation - mobile
+            // ==============================
+
+            // ==============================
+            // end of fallback animation
+            // ==============================
+
+            // ==============================
+            // elastic animation
+            // ==============================
+
+            // ==============================
+            // option 2
+            // use the css animation property to animate the hero container on page load
+            // ==============================
+
+            // ==============================
+            // remember, I liked the spring animation too but as much as the elastic animation
+            // but Safari does not do a good job with the spring easing interpolation
+            // ==============================
+
+            // ==============================
+            // see Enchanted Ratings for an example of how to implement the spring animation
+            // ==============================
+
+            // ==============================
+            // use @supports to target browsers that support the linear() easing function that
+            // interpolates linearly between multiple points and if the browser does not support
+            // this easing function then provide a fallback animation ( see above )
+            // ==============================
+
+            @supports ( animation-timing-function: linear(
+                0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%, 0.723 12.9%, 0.938 16.7%, 1.017,
+                1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%,
+                1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%,
+                0.997 69.8%, 1.003 76.9%, 1.004 83.8%, 1
+            ) ) {
+
+                animation-name            : animate-on-page-load;
+                animation-duration        : var( --elastic-duration );
+                animation-timing-function : var( --elastic-easing );
+                animation-delay           : 500ms;
+                animation-iteration-count : 1; // this is the default but leave here for reference purposes
+                animation-fill-mode       : forwards;
+
+            } // end of @supports
+
+            // ==============================
+            // end of elastic animation
+            // ==============================
+    
+        } // end of container > div1 > h1
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > h2
+        // ==============================
+
+        > h2 {
+
+            // parent
+            grid-area : h2;
+
+            @include h2-light-hero;
+
+            // needed for the start of the animation
+            opacity : 0;
+
+            // ==============================
+            // will-change
+            // use either will-change or translateZ( 0 ) to " promote elements that you plan to
+            // animate "
+            // see the following article for details :
+            // " https://web.dev/articles/stick-to-compositor-only-properties-and-manage-layer-count " 
+            // ==============================
+
+            will-change : transform;
+
+            // ==============================
+            // end of will-change
+            // ==============================
+
+            // ==============================
+            // fallback animation
+            // ==============================
+
+            // ==============================
+            // option 1
+            // use the css animation property to animate the hero container on page load
+            // ==============================
+
+            // ==============================
+            // remember, older versions of Chrome and Safari do not support the linear function
+            // so we need a fallback
+            // ==============================
+
+            // ==============================
+            // fallback animation - non mobile
+            // ==============================
+
+            animation-name            : animate-on-page-load-fallback-non-mobile;
+            animation-duration        : 600ms;
+            animation-timing-function : ease-in-out; // standard easing
+            animation-delay           : 500ms;
+            animation-iteration-count : 1; // this is the default but leave here for reference purposes
+            animation-fill-mode       : forwards;
+
+            // ==============================
+            // end of fallback animation - non mobile
+            // ==============================
+
+            // ==============================
+            // fallback animation - mobile
+            // ==============================
+
+            // ==============================
+            // for fallback on mobile devices, just fade in the elements since
+            // " transform : translateY( ); " results in a janky user experience
+            // on mobile devices
+            // ==============================
+
+            @media all and ( max-width : $bp-480 ) {
+
+                animation-name            : animate-on-page-load-fallback-mobile;
+                animation-duration        : 1000ms;
+                animation-timing-function : ease-out; // standard easing
+                animation-delay           : 300ms;
+                animation-iteration-count : 1; // this is the default but leave here for reference purposes
+                animation-fill-mode       : forwards;
+
+            } // end of container > div > h2 > bp-480
+
+            // ==============================
+            // end of fallback animation - mobile
+            // ==============================
+
+            // ==============================
+            // end of fallback animation
+            // ==============================
+
+            // ==============================
+            // elastic animation
+            // ==============================
+
+            // ==============================
+            // option 2
+            // use the css animation property to animate the hero container on page load
+            // ==============================
+
+            // ==============================
+            // remember, I liked the spring animation too but as much as the elastic animation
+            // but Safari does not do a good job with the spring easing interpolation
+            // ==============================
+
+            // ==============================
+            // see Enchanted Ratings for an example of how to implement the spring animation
+            // ==============================
+
+            // ==============================
+            // use @supports to target browsers that support the linear() easing function that
+            // interpolates linearly between multiple points and if the browser does not support
+            // this easing function then provide a fallback animation ( see above )
+            // ==============================
+
+            @supports ( animation-timing-function: linear(
+                0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%, 0.723 12.9%, 0.938 16.7%, 1.017,
+                1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%,
+                1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%,
+                0.997 69.8%, 1.003 76.9%, 1.004 83.8%, 1
+            ) ) {
+
+                animation-name            : animate-on-page-load;
+                animation-duration        : var( --elastic-duration );
+                animation-timing-function : var( --elastic-easing );
+                animation-delay           : 700ms;
+                animation-iteration-count : 1; // this is the default but leave here for reference purposes
+                animation-fill-mode       : forwards;
+
+            } // end of @supports
+
+            // ==============================
+            // end of elastic animation
+            // ==============================
+
+        } // end of container > div1 > h2
+
+        // ==============================
+        // container > div 1 > div:nth-child( 3 ) ( button container )
+        // ==============================
+
+        > div {
+
+            // parent
+            grid-area : button;
+
+            margin  : 1.0rem 0 0 0; // visual preference
+            padding : 1.5rem 2.2rem; // visual preference
+
+            border        : 0.075rem solid var( --gray-290 );
+            border-radius : 0.6rem;
+
+            // needed for the start of the animation
+            opacity : 0;
+
+            // ==============================
+            // will-change
+            // use either will-change or translateZ( 0 ) to " promote elements that you plan to
+            // animate "
+            // see the following article for details :
+            // " https://web.dev/articles/stick-to-compositor-only-properties-and-manage-layer-count " 
+            // ==============================
+
+            will-change : transform;
+
+            // ==============================
+            // end of will-change
+            // ==============================
+
+            transition : all 0.2s ease-out; // provide for a nice hover animation
+
+            // hover selector for the navigation tabs
+            &:hover {
+
+                // border-radius : 6px;
+
+                // background-color : rgba( 24, 59, 131, 1 );
+
+                cursor : pointer;
+
+                // move the background color up just a little to add a nice hover effect
+                transform : translateY( -0.3rem );
+
+                // remove the animation effect for screen sizes under 1440 pixels
+                @media all and ( max-width : $bp-1440 ) {
+
+                    background-color : inherit;
+
+                    transform: none;
+            
+                } // end of container > div1 > div:nth-child( 3 ) > &:hover > bp-1440
+
+            } // end of container > div1 > div:nth-child( 3 ) > &:hover
+
+            // active, focus selectors for the navigation tabs
+            &:active, &:focus {
+
+                // on mobile devices, safari was putting a think white background around my clicks
+                // and I found the answer on how to solve this problem from stackoverflow :
+                // " https://stackoverflow.com/questions/9784350/mobile-safari-tap-and-hold-a-link-it-will-show-a-gray-shadow-how-to-disable-it?rq=3 "
+                -webkit-tap-highlight-color : rgba( 0, 0, 0, 0 );
+            
+            } // end of container > div1 > div:nth-child( 3 ) > &:active, &:focused
+
+            // ==============================
+            // fallback animation
+            // ==============================
+
+            // ==============================
+            // option 1
+            // use the css animation property to animate the hero container on page load
+            // ==============================
+
+            // ==============================
+            // remember, older versions of Chrome and Safari do not support the linear function
+            // so we need a fallback
+            // ==============================
+
+            // ==============================
+            // fallback animation - non mobile
+            // ==============================
+
+            animation-name            : animate-on-page-load-fallback-non-mobile;
+            animation-duration        : 600ms;
+            animation-timing-function : ease-in-out; // standard easing
+            animation-delay           : 700ms;
+            animation-iteration-count : 1; // this is the default but leave here for reference purposes
+            animation-fill-mode       : forwards;
+
+            // ==============================
+            // end of fallback animation - non mobile
+            // ==============================
+
+            // ==============================
+            // fallback animation - mobile
+            // ==============================
+
+            // ==============================
+            // for fallback on mobile devices, just fade in the elements since
+            // " transform : translateY( ); " results in a janky user experience
+            // on mobile devices
+            // ==============================
+
+            @media all and ( max-width : $bp-480 ) {
+
+                animation-name            : animate-on-page-load-fallback-mobile;
+                animation-duration        : 1000ms;
+                animation-timing-function : ease-out; // standard easing
+                animation-delay           : 300ms;
+                animation-iteration-count : 1; // this is the default but leave here for reference purposes
+                animation-fill-mode       : forwards;
+
+            } // end of container > div > div:nth-child( 3 ) > bp-480
+
+            // ==============================
+            // end of fallback animation - mobile
+            // ==============================
+
+            // ==============================
+            // end of fallback animation
+            // ==============================
+
+            // ==============================
+            // elastic animation
+            // ==============================
+
+            // ==============================
+            // option 2
+            // use the css animation property and the keyframe declaration to animate the hero
+            // container on page load
+            // ==============================
+
+            // ==============================
+            // remember, I liked the spring animation too but as much as the elastic animation
+            // but Safari does not do a good job with the spring easing interpolation
+            // ==============================
+
+            // ==============================
+            // see Enchanted Ratings for an example of how to implement the spring animation
+            // ==============================
+
+            // ==============================
+            // use @supports to target browsers that support the linear() easing function that
+            // interpolates linearly between multiple points and if the browser does not support
+            // this easing function then provide a fallback animation ( see above )
+            // ==============================
+
+            @supports ( animation-timing-function: linear(
+                0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%, 0.723 12.9%, 0.938 16.7%, 1.017,
+                1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%,
+                1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%,
+                0.997 69.8%, 1.003 76.9%, 1.004 83.8%, 1
+            ) ) {
+
+                animation-name            : animate-on-page-load;
+                animation-duration        : var( --elastic-duration );
+                animation-timing-function : var( --elastic-easing );
+                animation-delay           : 900ms;
+                animation-iteration-count : 1; // this is the default but leave here for reference purposes
+                animation-fill-mode       : forwards;
+
+            } // end of @supports
+
+            // ==============================
+            // end of elastic animation
+            // ==============================
+
+            // ==============================
+            // container > div 1 > div:nth-child( 3 ) ( button container ) > a ( text for the button )
+            // ==============================
+
+            > a {
+
+                @include hero-button-light;
+
+            } // end of container > div1 > div:nth-child( 3 ) > a
+
+        } // end of container > div1 > div:nth-child( 3 )
+
+    } // end of container > div1
+
+} // end of container
+

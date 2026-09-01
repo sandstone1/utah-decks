@@ -1,0 +1,1977 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+// ==============================
+// keyframes 1
+// ==============================
+
+// ==============================
+// rotate the circle
+// ==============================
+
+// ==============================
+// purpose : rotate the circle
+// ==============================
+
+@keyframes rotate-1 {
+
+    from {
+
+        transform : rotate( 0deg );
+
+    } // end of from
+  
+    to {
+
+        transform : rotate( 360deg );
+
+    } // end of to
+  
+} // end of rotate-1
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// what we do container
+// ==============================
+
+.whatWeDoContainer {
+
+    // ==============================
+    // div 3 in the index.js file
+    // ==============================
+
+    // parent
+    grid-area   : div3;
+    grid-column : 1 / -1; // position against the parent
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // 1 - in the content div use grid-column to position against the parent grid and until we
+    // can use sub grid we may need to duplicate the parent grid and bring it down to the
+    // content div where we can position against it
+    // 2 - now our content div is sitting empty inside the parent grid we need to give the
+    // content div a width and height so we can create the content box and
+    // 3 - then set up a grid within the content box so that we can layout the content
+    // inside the content box as needed and
+    // 4 - the only cavet to 3 above, is that sometimes we need to go with a horizontal layout
+    // and in those cases, flexbox may be the better choice than css grid
+    // ==============================
+
+    display               : grid;
+    grid-template-rows    : auto;
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    justify-items         : center;
+
+    position : relative; // needed for wave shape
+    padding  : 12.0rem 0 24.0rem 0; // add 24.0rem bottom padding since my image below can not
+    // add a padding top of 12.0rem
+
+    // ==============================
+    // background
+    // ==============================
+
+    background : var( --blue-83 );
+    background : var( --blue-84 );
+    // background : var( --blue-85-2 );
+    // background : var( --blue-85-2 );
+    background : var( --gray-872 );
+    // background : var( --yellow-20 );
+
+    // ==============================
+    // end of background
+    // ==============================
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+        // children
+        display               : grid;
+        grid-template-rows    : auto auto;
+        grid-template-columns : 1fr;
+        grid-gap              : 4.0rem 0;
+        grid-template-areas   : "h2"
+                                "div";
+
+        // make this section sit above the animating gradient
+        z-index : 1;
+        width   : min( 192.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
+
+        // opacity : 0; // needed for the opacity and slide up animation
+
+        @media all and ( max-width : $bp-1536 ) {
+
+            width   : min( 144.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
+
+        } // end of container > div1 > bp-1536
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            width   : min( 80.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
+
+        } // end of container > div1 > bp-1280
+
+        > h2 {
+
+            // parent
+            grid-area : h2;
+
+            @include h2-light-title;
+
+            opacity : 0; // needed for the opacity and slide up animation
+
+            @media all and ( max-width : $bp-1536 ) {
+
+                justify-self : left;
+    
+            } // end of container > div1 > h2 > bp-1536
+    
+        }  // end of container > div1 > h2
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges )
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            // parent
+            grid-area : div;
+
+            display               : grid;
+            grid-template-rows    : repeat( 2 auto );
+            grid-template-columns : 1fr 1fr 1fr;
+            grid-gap              : 12.0rem 12.0rem;
+            grid-template-areas   : "div1 div2 div3"
+                                    "div4 div5 div6";
+
+            @media all and ( max-width : $bp-1728 ) {
+
+                grid-template-rows    : repeat( 3, auto );
+                grid-template-columns : 1fr 1fr;
+                grid-gap              : 12.0rem 12.0rem;
+                grid-template-areas   : "div1 div2"
+                                        "div3 div4"
+                                        "div5 div6";
+    
+            } // end of container > div1 > div2 > bp-1728
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                grid-template-rows    : repeat( 5, auto );
+                grid-template-columns : 1fr;
+                grid-gap              : 12.0rem 0;
+                grid-template-areas   : "div1"
+                                        "div2"
+                                        "div3"
+                                        "div4"
+                                        "div5"
+                                        "div6";
+    
+            } // end of container > div1 > div2 > bp-1280
+
+            // ==============================
+            // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges ) > div 1 ( badge 1 )
+            // ==============================
+
+            > div:nth-child( 1 ) {
+
+                // parent
+                grid-area : div1;
+
+                // children
+                display               : grid;
+                grid-template-rows    : auto auto 1fr;
+                grid-template-columns : 1fr;
+                align-content         : start;
+                grid-gap              : 2.0rem 0;
+                grid-template-areas   : "h3"
+                                        "p2"
+                                        "picture"
+                                        "div4";
+
+                margin : 0;
+        
+                // ==============================
+                // create a card
+                // ==============================
+
+                padding : 6.0rem;
+
+                border-radius : 6px;
+
+                background : var( --yellow-120 );
+
+                // ==============================
+                // end of create a card
+                // ==============================
+
+                opacity: 0; // needed for the opacity and slide in animation
+
+                @media all and ( max-width : $bp-1280 ) {
+
+                    grid-template-columns : 2fr 1fr;
+                    grid-gap              : 2.0rem 6.0rem;
+                    grid-template-areas   : "h3      h3"
+                                            "p2 picture"
+                                            "div4 div4";
+        
+                } // end of container > div1 > div2 > div1 > bp-1280
+
+                @media all and ( max-width : $bp-768 ) {
+
+                    display               : grid;
+                    grid-template-rows    : auto auto 1fr;
+                    grid-template-columns : 1fr;
+                    align-items           : start;
+                    grid-gap              : 2.0rem 0;
+                    grid-template-areas   : "h3"
+                                            "p2"
+                                            "picture"
+                                            "div4";
+
+                }  // end of container > div1 > div2 > div1 > bp-768
+
+                // ==============================
+                // container > div 1 > div 2 > div 1 > h3
+                // ==============================
+
+                > h3 {
+
+                    // parent
+                    grid-area : h3;
+
+                    @include h4-dark-title;
+
+                    line-height : 1.3; // visual preference and needed for when the
+                    // h1 splits into 2 lines
+
+                } // end of container > div1 > div2 > div1 > h3
+
+                // ==============================
+                // container > div 1 > div 2 > div 1 > p
+                // ==============================
+
+                > p:nth-child( 2 ) {
+
+                    // parent
+                    grid-area : p2;
+
+                    @include text-base-dark;
+
+                    margin : 0 0 2.0rem 0;
+
+                } // end of container > div1 > div2 > div1 > p
+
+                // ==============================
+                // container > div 1 > div 2 > div 1 > picture
+                // ==============================
+
+                > picture {
+
+                    // parent
+                    grid-area : picture;
+
+                    align-self   : end; 
+                    justify-self : center;
+
+                    > img {
+
+                        display : block;
+
+                        // this blends my Mid Journey pictures into the background color perfectly
+                        // and makes white pixels completely transparent and keeps black pixels
+                        // visible — works perfectly with black and white illustrations on
+                        // colored backgrounds without needing to remove the background at all
+                        mix-blend-mode : multiply;
+
+                        border-radius : 6px;
+
+                    } // end of container > div1 > div2 > div1 > picture > img
+
+                } // end of container > div1 > div2 > div1 > picture
+
+                // ==============================
+                // container > div 1 > div 2 > div 1 > div 1
+                // ==============================
+
+                > div {
+
+                    // parent
+                    grid-area : div4;
+
+                    justify-self : center;
+
+                    padding : 2.0rem 0 0 0;
+
+                    @media all and ( max-width : $bp-1280 ) {
+
+                        // justify-self : left;
+
+                        padding : 0 0 0 0;
+            
+                    } // end of container > div1 > div2 > div1 > bp-1280
+
+                    @media all and ( max-width : $bp-768 ) {
+
+                        padding : 2.0rem 0 0 0;
+            
+                    } // end of container > div1 > div2 > div1 > bp-768
+
+                    > a {
+
+                        // @include text-large-light;
+                
+                        display  : inline-flex;
+                        position : relative;
+                        // clip the absolutely positioned span so that it doesn't bleed outside to other
+                        // nearby links
+                        overflow : hidden;
+
+                        @include text-base-dark;
+
+                        @media all and ( max-width : $bp-620 ) {
+                
+                            margin : 0 0 0 0; // get rid of the right margin on smaller screens
+                
+                        } // end of container > div1 > div1 > p:nth-child( 1 ) > bp-620
+
+                        /*
+                            please see the sritcle for details on this effect :
+                            https://css-tricks.com/4-ways-to-animate-the-color-of-a-text-link-on-hover/
+                        */
+                
+                        /*
+                            this is AI's estimate of how this works :
+                
+                            The span itself is invisible — it's just a clipping window ( overflow: hidden ) that
+                            moves. The actual colored, underlined text lives in the ::before pseudo-element, and
+                            IT'S the only thing you ever see. As the span ( window ) slides from off-screen-left
+                            into its normal position, more and more of the ::before text becomes visible through
+                            that window, creating the "wipe in from the left" effect. The color isn't moving
+                            INTO existence — it's always there, just progressively REVEALED as the clipping window
+                            slides into place around it
+                        */
+                
+                        /*
+                            I checked and the ::before is sitting behind the anchor text, which has the same
+                            value as ::before or the content : attr( data-content );
+                
+                            and the span container is sitting to the right of the anchor text
+                
+                            so I'm not sure how this effect works
+                        */
+
+                        // this is the container and it slide in from the left
+                        > span:nth-child( 1 ) {
+                
+                            position : absolute;
+                            top      : 0;
+                            left     : 0;
+                
+                            overflow   : hidden;
+                            transform  : translateX( -100% );
+                            transition : transform 400ms ease-out;
+                
+                            // even though we probably don't need this since mobile devices can't hover, turn
+                            // this off anyways
+                            @media all and ( max-width : $bp-768 ) {
+                
+                                display : none;
+                            
+                            }// container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 ) > bp-768
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )
+                
+                        &:hover span:nth-child( 1 ) {
+
+                            transform : translateX( 0 );
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 )
+                
+                        // this is the text and it slides in from the right
+                        > span:nth-child( 1 )::before {
+                
+                            display : inline-flex;
+                
+                            color           : var( --gray-870 );
+                            text-decoration : underline;
+                
+                            transform  : translateX( 100% );
+                            transition : transform 400ms ease-out;
+                
+                            // the text
+                            content : attr( data-content );
+                
+                            // even though we probably don't need this since mobile devices can't hover, turn
+                            // this off anyways
+                            @media all and ( max-width : $bp-768 ) {
+                
+                                display : none;
+                            
+                            } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )::before > bp-768
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > > span:nth-child( 1 )::before
+                
+                        &:hover span:nth-child( 1 ):before {
+                
+                            transform : translateX( 0 );
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 ):before
+                
+                    } // container > div 1 > div 2 > div 1 > div 1 > a
+
+                } // container > div 1 > div 2 > div 1 > div 1
+
+            } // container > div 1 > div 2 > div 1
+
+            // ==============================
+            // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges ) > div 2 ( badge 2 )
+            // ==============================
+
+            > div:nth-child( 2 ) {
+
+                // parent
+                grid-area : div2;
+
+                // children
+                display               : grid;
+                grid-template-rows    : auto auto 1fr;
+                grid-template-columns : 1fr;
+                align-content         : start;
+                grid-gap              : 2.0rem 0;
+                grid-template-areas   : "h3"
+                                        "p2"
+                                        "picture"
+                                        "div4";
+
+                margin : 0;
+        
+                // ==============================
+                // create a card
+                // ==============================
+
+                padding : 6.0rem;
+
+                border-radius : 6px;
+
+                background : var( --yellow-120 );
+
+                // ==============================
+                // end of create a card
+                // ==============================
+
+                opacity: 0; // needed for the opacity and slide in animation
+
+                @media all and ( max-width : $bp-1280 ) {
+
+                    grid-template-columns : 2fr 1fr;
+                    grid-gap              : 2.0rem 6.0rem;
+                    grid-template-areas   : "h3      h3"
+                                            "p2 picture"
+                                            "div4 div4";
+        
+                } // end of container > div1 > div2 > div2 > bp-1280
+
+                @media all and ( max-width : $bp-768 ) {
+
+                    display               : grid;
+                    grid-template-rows    : repeat( 3, auto );
+                    grid-template-columns : 1fr;
+                    align-items           : start;
+                    grid-gap              : 2.0rem 0;
+                    grid-template-areas   : "h3"
+                                            "p2"
+                                            "picture"
+                                            "div4";
+
+                }  // end of container > div1 > div2 > div2 > bp-768
+
+                // ==============================
+                // container > div 1 > div 2 > div 2 > h3
+                // ==============================
+
+                > h3 {
+
+                    // parent
+                    grid-area : h3;
+
+                    @include h4-dark-title;
+
+                    line-height : 1.3; // visual preference and needed for when the
+                    // h1 splits into 2 lines
+
+                } // end of container > div1 > div2 > div2 > h3
+
+                // ==============================
+                // container > div 1 > div 2 > div 2 > p
+                // ==============================
+
+                > p:nth-child( 2 ) {
+
+                    // parent
+                    grid-area : p2;
+
+                    @include text-base-dark;
+
+                    margin : 0 0 2.0rem 0;
+
+                } // end of container > div1 > div2 > div2 > p
+
+                // ==============================
+                // container > div 1 > div 2 > div 2 > picture
+                // ==============================
+
+                > picture {
+
+                    // parent
+                    grid-area : picture;
+
+                    align-self   : end; 
+                    justify-self : center;
+
+                    > img {
+
+                        display : block;
+
+                        // this blends my Mid Journey pictures into the background color perfectly
+                        // and makes white pixels completely transparent and keeps black pixels
+                        // visible — works perfectly with black and white illustrations on
+                        // colored backgrounds without needing to remove the background at all
+                        mix-blend-mode : multiply;
+
+                        border-radius : 6px;
+
+                    } // end of container > div1 > div2 > div2 > picture > img
+
+                } // end of container > div1 > div2 > div2 > picture
+
+                // ==============================
+                // container > div 1 > div 2 > div 1 > div 1
+                // ==============================
+
+                > div {
+
+                    // parent
+                    grid-area : div4;
+
+                    justify-self : center;
+
+                    padding : 2.0rem 0 0 0;
+
+                    @media all and ( max-width : $bp-1280 ) {
+
+                        // justify-self : left;
+
+                        padding : 0 0 0 0;
+            
+                    } // end of container > div1 > div2 > div1 > bp-1280
+
+                    @media all and ( max-width : $bp-768 ) {
+
+                        padding : 2.0rem 0 0 0;
+            
+                    } // end of container > div1 > div2 > div1 > bp-768
+
+                    > a {
+
+                        // @include text-large-light;
+                
+                        display  : inline-flex;
+                        position : relative;
+                        // clip the absolutely positioned span so that it doesn't bleed outside to other
+                        // nearby links
+                        overflow : hidden;
+
+                        @include text-base-dark;
+
+                        @media all and ( max-width : $bp-620 ) {
+                
+                            margin : 0 0 0 0; // get rid of the right margin on smaller screens
+                
+                        } // end of container > div1 > div1 > p:nth-child( 1 ) > bp-620
+                        
+                
+                        /*
+                            please see the sritcle for details on this effect :
+                            https://css-tricks.com/4-ways-to-animate-the-color-of-a-text-link-on-hover/
+                        */
+                
+                        /*
+                            this is AI's estimate of how this works :
+                
+                            The span itself is invisible — it's just a clipping window ( overflow: hidden ) that
+                            moves. The actual colored, underlined text lives in the ::before pseudo-element, and
+                            IT'S the only thing you ever see. As the span ( window ) slides from off-screen-left
+                            into its normal position, more and more of the ::before text becomes visible through
+                            that window, creating the "wipe in from the left" effect. The color isn't moving
+                            INTO existence — it's always there, just progressively REVEALED as the clipping window
+                            slides into place around it
+                        */
+                
+                        /*
+                            I checked and the ::before is sitting behind the anchor text, which has the same
+                            value as ::before or the content : attr( data-content );
+                
+                            and the span container is sitting to the right of the anchor text
+                
+                            so I'm not sure how this effect works
+                        */
+                
+                        // this is the container and it slide in from the left
+                        > span:nth-child( 1 ) {
+                
+                            position : absolute;
+                            top      : 0;
+                            left     : 0;
+                
+                            overflow   : hidden;
+                            transform  : translateX( -100% );
+                            transition : transform 400ms ease-out;
+                
+                            // even though we probably don't need this since mobile devices can't hover, turn
+                            // this off anyways
+                            @media all and ( max-width : $bp-768 ) {
+                
+                                display : none;
+                            
+                            }// container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 ) > bp-768
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )
+                
+                        &:hover span:nth-child( 1 ) {
+                
+                            transform : translateX( 0 );
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 )
+                
+                        // this is the text and it slides in from the right
+                        > span:nth-child( 1 )::before {
+                
+                            display : inline-flex;
+                
+                            color           : var( --gray-870 );
+                            text-decoration : underline;
+                
+                            transform  : translateX( 100% );
+                            transition : transform 400ms ease-out;
+                
+                            // the text
+                            content : attr( data-content );
+                
+                            // even though we probably don't need this since mobile devices can't hover, turn
+                            // this off anyways
+                            @media all and ( max-width : $bp-768 ) {
+                
+                                display : none;
+                            
+                            } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )::before > bp-768
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > > span:nth-child( 1 )::before
+                
+                        &:hover span:nth-child( 1 ):before {
+                
+                            transform : translateX( 0 );
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 ):before
+                
+                    } // container > div 1 > div 2 > div 1 > div 1 > a
+
+                } // container > div 1 > div 2 > div 1 > div 1
+
+            } // end of container > div1 > div2 > div2
+
+            // ==============================
+            // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges ) > div 3 ( badge 3 )
+            // ==============================
+
+            > div:nth-child( 3 ) {
+
+                // parent
+                grid-area : div3;
+
+                // children
+                display               : grid;
+                grid-template-rows    : auto auto 1fr;
+                grid-template-columns : 1fr;
+                align-content         : start;
+                grid-gap              : 2.0rem 0;
+                grid-template-areas   : "h3"
+                                        "p2"
+                                        "picture"
+                                        "div4";
+
+                margin : 0;
+        
+                // ==============================
+                // create a card
+                // ==============================
+
+                padding : 6.0rem;
+
+                border-radius : 6px;
+
+                background : var( --yellow-120 );
+
+                // ==============================
+                // end of create a card
+                // ==============================
+
+                opacity: 0; // needed for the opacity and slide in animation
+
+                @media all and ( max-width : $bp-1728 ) {
+
+                    background : var( --blue-62-1 );
+        
+                } // end of container > div1 > div2 > div3 > bp-1728
+
+                @media all and ( max-width : $bp-1280 ) {
+
+                    grid-template-columns : 2fr 1fr;
+                    grid-gap              : 2.0rem 6.0rem;
+                    grid-template-areas   : "h3      h3"
+                                            "p2 picture"
+                                            "div4 div4";
+        
+                } // end of container > div1 > div2 > div3 > bp-1280
+
+                @media all and ( max-width : $bp-768 ) {
+
+                    display               : grid;
+                    grid-template-rows    : repeat( 3, auto );
+                    grid-template-columns : 1fr;
+                    align-items           : start;
+                    grid-gap              : 2.0rem 0;
+                    grid-template-areas   : "h3"
+                                            "p2"
+                                            "picture"
+                                            "div4";
+
+                }  // end of container > div1 > div2 > div3 > bp-768
+
+                // ==============================
+                // container > div 1 > div 2 > div 3 > h3
+                // ==============================
+
+                > h3 {
+
+                    // parent
+                    grid-area : h3;
+
+                    @include h4-dark-title;
+
+                    line-height : 1.3; // visual preference and needed for when the
+                    // h1 splits into 2 lines
+
+                } // end of container > div1 > div2 > div3 > h3
+
+                // ==============================
+                // container > div 1 > div 2 > div 3 > p
+                // ==============================
+
+                > p:nth-child( 2 ) {
+
+                    // parent
+                    grid-area : p2;
+
+                    @include text-base-dark;
+
+                    margin : 0 0 2.0rem 0;
+
+                } // end of container > div1 > div2 > div3 > p
+
+                // ==============================
+                // container > div 1 > div 2 > div 3 > picture
+                // ==============================
+
+                > picture {
+
+                    // parent
+                    grid-area : picture;
+
+                    align-self   : end; 
+                    justify-self : center;
+
+                    > img {
+
+                        display : block;
+
+                        // this blends my Mid Journey pictures into the background color perfectly
+                        // and makes white pixels completely transparent and keeps black pixels
+                        // visible — works perfectly with black and white illustrations on
+                        // colored backgrounds without needing to remove the background at all
+                        mix-blend-mode : multiply;
+
+                        border-radius : 6px;
+
+                    } // end of container > div1 > div2 > div3 > picture > img
+
+                } // end of container > div1 > div2 > div3 > picture
+
+                // ==============================
+                // container > div 1 > div 2 > div 1 > div 1
+                // ==============================
+
+                > div {
+
+                    // parent
+                    grid-area : div4;
+
+                    justify-self : center;
+
+                    padding : 2.0rem 0 0 0;
+
+                    @media all and ( max-width : $bp-1280 ) {
+
+                        // justify-self : left;
+
+                        padding : 0 0 0 0;
+            
+                    } // end of container > div1 > div2 > div1 > bp-1280
+
+                    @media all and ( max-width : $bp-768 ) {
+
+                        padding : 2.0rem 0 0 0;
+            
+                    } // end of container > div1 > div2 > div1 > bp-768
+
+                    > a {
+
+                        // @include text-large-light;
+                
+                        display  : inline-flex;
+                        position : relative;
+                        // clip the absolutely positioned span so that it doesn't bleed outside to other
+                        // nearby links
+                        overflow : hidden;
+
+                        @include text-base-dark;
+
+                        @media all and ( max-width : $bp-620 ) {
+                
+                            margin : 0 0 0 0; // get rid of the right margin on smaller screens
+                
+                        } // end of container > div1 > div1 > p:nth-child( 1 ) > bp-620
+                        
+                
+                        /*
+                            please see the sritcle for details on this effect :
+                            https://css-tricks.com/4-ways-to-animate-the-color-of-a-text-link-on-hover/
+                        */
+                
+                        /*
+                            this is AI's estimate of how this works :
+                
+                            The span itself is invisible — it's just a clipping window ( overflow: hidden ) that
+                            moves. The actual colored, underlined text lives in the ::before pseudo-element, and
+                            IT'S the only thing you ever see. As the span ( window ) slides from off-screen-left
+                            into its normal position, more and more of the ::before text becomes visible through
+                            that window, creating the "wipe in from the left" effect. The color isn't moving
+                            INTO existence — it's always there, just progressively REVEALED as the clipping window
+                            slides into place around it
+                        */
+                
+                        /*
+                            I checked and the ::before is sitting behind the anchor text, which has the same
+                            value as ::before or the content : attr( data-content );
+                
+                            and the span container is sitting to the right of the anchor text
+                
+                            so I'm not sure how this effect works
+                        */
+                
+                        // this is the container and it slide in from the left
+                        > span:nth-child( 1 ) {
+                
+                            position : absolute;
+                            top      : 0;
+                            left     : 0;
+                
+                            overflow   : hidden;
+                            transform  : translateX( -100% );
+                            transition : transform 400ms ease-out;
+                
+                            // even though we probably don't need this since mobile devices can't hover, turn
+                            // this off anyways
+                            @media all and ( max-width : $bp-768 ) {
+                
+                                display : none;
+                            
+                            }// container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 ) > bp-768
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )
+                
+                        &:hover span:nth-child( 1 ) {
+                
+                            transform : translateX( 0 );
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 )
+                
+                        // this is the text and it slides in from the right
+                        > span:nth-child( 1 )::before {
+                
+                            display : inline-flex;
+                
+                            color           : var( --gray-870 );
+                            text-decoration : underline;
+                
+                            transform  : translateX( 100% );
+                            transition : transform 400ms ease-out;
+                
+                            // the text
+                            content : attr( data-content );
+                
+                            // even though we probably don't need this since mobile devices can't hover, turn
+                            // this off anyways
+                            @media all and ( max-width : $bp-768 ) {
+                
+                                display : none;
+                            
+                            } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )::before > bp-768
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > > span:nth-child( 1 )::before
+                
+                        &:hover span:nth-child( 1 ):before {
+                
+                            transform : translateX( 0 );
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 ):before
+                
+                    } // container > div 1 > div 2 > div 1 > div 1 > a
+
+                } // container > div 1 > div 2 > div 1 > div 1
+
+            } // end of container > div1 > div2 > div3
+
+            // ==============================
+            // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges ) > div 4 ( badge 4 )
+            // ==============================
+
+            > div:nth-child( 4 ) {
+
+                // parent
+                grid-area : div4;
+
+                // children
+                display               : grid;
+                grid-template-rows    : auto auto 1fr;
+                grid-template-columns : 1fr;
+                align-content         : start;
+                grid-gap              : 2.0rem 0;
+                grid-template-areas   : "h3"
+                                        "p2"
+                                        "picture"
+                                        "div4";
+
+                margin : 0;
+        
+                // ==============================
+                // create a card
+                // ==============================
+
+                padding : 6.0rem;
+
+                border-radius : 6px;
+
+                // background : var( --yellow-120 );
+                background : var( --blue-62-1 );
+
+                // ==============================
+                // end of create a card
+                // ==============================
+
+                opacity: 0; // needed for the opacity and slide in animation
+
+                @media all and ( max-width : $bp-1280 ) {
+
+                    grid-template-columns : 2fr 1fr;
+                    grid-gap              : 2.0rem 6.0rem;
+                    grid-template-areas   : "h3      h3"
+                                            "p2 picture"
+                                            "div4 div4";
+        
+                } // end of container > div1 > div2 > div4 > bp-1280
+
+                @media all and ( max-width : $bp-768 ) {
+
+                    display               : grid;
+                    grid-template-rows    : repeat( 3, auto );
+                    grid-template-columns : 1fr;
+                    align-items           : start;
+                    grid-gap              : 2.0rem 0;
+                    grid-template-areas   : "h3"
+                                            "p2"
+                                            "picture"
+                                            "div4";
+
+                }  // end of container > div1 > div2 > div4 > bp-768
+
+                // ==============================
+                // container > div 1 > div 2 > div 4 > h3
+                // ==============================
+
+                > h3 {
+
+                    // parent
+                    grid-area : h3;
+
+                    @include h4-dark-title;
+
+                    line-height : 1.3; // visual preference and needed for when the
+                    // h1 splits into 2 lines
+
+                } // end of container > div1 > div2 > div4 > h3
+
+                // ==============================
+                // container > div 1 > div 2 > div 4 > p
+                // ==============================
+
+                > p:nth-child( 2 ) {
+
+                    // parent
+                    grid-area : p2;
+
+                    @include text-base-dark;
+
+                    margin : 0 0 2.0rem 0;
+
+                } // end of container > div1 > div2 > div4 > p
+
+                // ==============================
+                // container > div 1 > div 2 > div 4 > picture
+                // ==============================
+
+                > picture {
+
+                    // parent
+                    grid-area : picture;
+
+                    align-self   : end; 
+                    justify-self : center;
+
+                    > img {
+
+                        display : block;
+
+                        // this blends my Mid Journey pictures into the background color perfectly
+                        // and makes white pixels completely transparent and keeps black pixels
+                        // visible — works perfectly with black and white illustrations on
+                        // colored backgrounds without needing to remove the background at all
+                        mix-blend-mode : multiply;
+
+                        border-radius : 6px;
+
+                    } // end of container > div1 > div2 > div4 > picture > img
+
+                } // end of container > div1 > div2 > div4 > picture
+
+                // ==============================
+                // container > div 1 > div 2 > div 1 > div 1
+                // ==============================
+
+                > div {
+
+                    // parent
+                    grid-area : div4;
+
+                    justify-self : center;
+
+                    padding : 2.0rem 0 0 0;
+
+                    @media all and ( max-width : $bp-1280 ) {
+
+                        // justify-self : left;
+
+                        padding : 0 0 0 0;
+            
+                    } // end of container > div1 > div2 > div1 > bp-1280
+
+                    @media all and ( max-width : $bp-768 ) {
+
+                        padding : 2.0rem 0 0 0;
+            
+                    } // end of container > div1 > div2 > div1 > bp-768
+
+                    > a {
+
+                        // @include text-large-light;
+                
+                        display  : inline-flex;
+                        position : relative;
+                        // clip the absolutely positioned span so that it doesn't bleed outside to other
+                        // nearby links
+                        overflow : hidden;
+
+                        @include text-base-dark;
+
+                        @media all and ( max-width : $bp-620 ) {
+                
+                            margin : 0 0 0 0; // get rid of the right margin on smaller screens
+                
+                        } // end of container > div1 > div1 > p:nth-child( 1 ) > bp-620
+                        
+                
+                        /*
+                            please see the sritcle for details on this effect :
+                            https://css-tricks.com/4-ways-to-animate-the-color-of-a-text-link-on-hover/
+                        */
+                
+                        /*
+                            this is AI's estimate of how this works :
+                
+                            The span itself is invisible — it's just a clipping window ( overflow: hidden ) that
+                            moves. The actual colored, underlined text lives in the ::before pseudo-element, and
+                            IT'S the only thing you ever see. As the span ( window ) slides from off-screen-left
+                            into its normal position, more and more of the ::before text becomes visible through
+                            that window, creating the "wipe in from the left" effect. The color isn't moving
+                            INTO existence — it's always there, just progressively REVEALED as the clipping window
+                            slides into place around it
+                        */
+                
+                        /*
+                            I checked and the ::before is sitting behind the anchor text, which has the same
+                            value as ::before or the content : attr( data-content );
+                
+                            and the span container is sitting to the right of the anchor text
+                
+                            so I'm not sure how this effect works
+                        */
+                
+                        // this is the container and it slide in from the left
+                        > span:nth-child( 1 ) {
+                
+                            position : absolute;
+                            top      : 0;
+                            left     : 0;
+                
+                            overflow   : hidden;
+                            transform  : translateX( -100% );
+                            transition : transform 400ms ease-out;
+                
+                            // even though we probably don't need this since mobile devices can't hover, turn
+                            // this off anyways
+                            @media all and ( max-width : $bp-768 ) {
+                
+                                display : none;
+                            
+                            }// container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 ) > bp-768
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )
+                
+                        &:hover span:nth-child( 1 ) {
+                
+                            transform : translateX( 0 );
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 )
+                
+                        // this is the text and it slides in from the right
+                        > span:nth-child( 1 )::before {
+                
+                            display : inline-flex;
+                
+                            color           : var( --gray-870 );
+                            text-decoration : underline;
+                
+                            transform  : translateX( 100% );
+                            transition : transform 400ms ease-out;
+                
+                            // the text
+                            content : attr( data-content );
+                
+                            // even though we probably don't need this since mobile devices can't hover, turn
+                            // this off anyways
+                            @media all and ( max-width : $bp-768 ) {
+                
+                                display : none;
+                            
+                            } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )::before > bp-768
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > > span:nth-child( 1 )::before
+                
+                        &:hover span:nth-child( 1 ):before {
+                
+                            transform : translateX( 0 );
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 ):before
+                
+                    } // container > div 1 > div 2 > div 1 > div 1 > a
+
+                } // container > div 1 > div 2 > div 1 > div 1
+
+            } // end of container > div1 > div2 > div4
+
+            // ==============================
+            // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges ) > div 5 ( badge 5 )
+            // ==============================
+
+            > div:nth-child( 5 ) {
+
+                // parent
+                grid-area : div5;
+
+                // children
+                display               : grid;
+                grid-template-rows    : auto auto 1fr;
+                grid-template-columns : 1fr;
+                align-content         : start;
+                grid-gap              : 2.0rem 0;
+                grid-template-areas   : "h3"
+                                        "p2"
+                                        "picture"
+                                        "div4";
+
+                margin : 0;
+        
+                // ==============================
+                // create a card
+                // ==============================
+
+                padding : 6.0rem;
+
+                border-radius : 6px;
+
+                // background : var( --yellow-120 );
+                background : var( --blue-62-1 );
+
+                // ==============================
+                // end of create a card
+                // ==============================
+
+                opacity: 0; // needed for the opacity and slide in animation
+
+                @media all and ( max-width : $bp-1728 ) {
+
+                    background : var( --purple-27 );
+        
+                } // end of container > div1 > div2 > div5 > bp-1728
+    
+                @media all and ( max-width : $bp-1280 ) {
+
+                    grid-template-columns : 2fr 1fr;
+                    grid-gap              : 2.0rem 6.0rem;
+                    grid-template-areas   : "h3      h3"
+                                            "p2 picture"
+                                            "div4 div4";
+        
+                } // end of container > div1 > div2 > div5 > bp-1280
+
+                @media all and ( max-width : $bp-768 ) {
+
+                    display               : grid;
+                    grid-template-rows    : repeat( 3, auto );
+                    grid-template-columns : 1fr;
+                    align-items           : start;
+                    grid-gap              : 2.0rem 0;
+                    grid-template-areas   : "h3"
+                                            "p2"
+                                            "picture"
+                                            "div4";
+
+                }  // end of container > div1 > div2 > div5 > bp-768
+
+                // ==============================
+                // container > div 1 > div 2 > div 5 > h3
+                // ==============================
+
+                > h3 {
+
+                    // parent
+                    grid-area : h3;
+
+                    @include h4-dark-title;
+
+                    line-height : 1.3; // visual preference and needed for when the
+                    // h1 splits into 2 lines
+
+                } // end of container > div1 > div2 > div5 > h3
+
+                // ==============================
+                // container > div 1 > div 2 > div 5 > p
+                // ==============================
+
+                > p:nth-child( 2 ) {
+
+                    // parent
+                    grid-area : p2;
+
+                    @include text-base-dark;
+
+                    margin : 0 0 2.0rem 0;
+
+                } // end of container > div1 > div2 > div5 > p
+
+                // ==============================
+                // container > div 1 > div 2 > div 5 > picture
+                // ==============================
+
+                > picture {
+
+                    // parent
+                    grid-area : picture;
+
+                    align-self   : end; 
+                    justify-self : center;
+
+                    > img {
+
+                        display : block;
+
+                        // this blends my Mid Journey pictures into the background color perfectly
+                        // and makes white pixels completely transparent and keeps black pixels
+                        // visible — works perfectly with black and white illustrations on
+                        // colored backgrounds without needing to remove the background at all
+                        mix-blend-mode : multiply;
+
+                        border-radius : 6px;
+
+                    } // end of container > div1 > div2 > div5 > picture > img
+
+                } // end of container > div1 > div2 > div5 > picture
+
+                // ==============================
+                // container > div 1 > div 2 > div 1 > div 1
+                // ==============================
+
+                > div {
+
+                    // parent
+                    grid-area : div4;
+
+                    justify-self : center;
+
+                    padding : 2.0rem 0 0 0;
+
+                    @media all and ( max-width : $bp-1280 ) {
+
+                        // justify-self : left;
+
+                        padding : 0 0 0 0;
+            
+                    } // end of container > div1 > div2 > div1 > bp-1280
+
+                    @media all and ( max-width : $bp-768 ) {
+
+                        padding : 2.0rem 0 0 0;
+            
+                    } // end of container > div1 > div2 > div1 > bp-768
+
+                    > a {
+
+                        // @include text-large-light;
+                
+                        display  : inline-flex;
+                        position : relative;
+                        // clip the absolutely positioned span so that it doesn't bleed outside to other
+                        // nearby links
+                        overflow : hidden;
+
+                        @include text-base-dark;
+
+                        @media all and ( max-width : $bp-620 ) {
+                
+                            margin : 0 0 0 0; // get rid of the right margin on smaller screens
+                
+                        } // end of container > div1 > div1 > p:nth-child( 1 ) > bp-620
+                        
+                
+                        /*
+                            please see the sritcle for details on this effect :
+                            https://css-tricks.com/4-ways-to-animate-the-color-of-a-text-link-on-hover/
+                        */
+                
+                        /*
+                            this is AI's estimate of how this works :
+                
+                            The span itself is invisible — it's just a clipping window ( overflow: hidden ) that
+                            moves. The actual colored, underlined text lives in the ::before pseudo-element, and
+                            IT'S the only thing you ever see. As the span ( window ) slides from off-screen-left
+                            into its normal position, more and more of the ::before text becomes visible through
+                            that window, creating the "wipe in from the left" effect. The color isn't moving
+                            INTO existence — it's always there, just progressively REVEALED as the clipping window
+                            slides into place around it
+                        */
+                
+                        /*
+                            I checked and the ::before is sitting behind the anchor text, which has the same
+                            value as ::before or the content : attr( data-content );
+                
+                            and the span container is sitting to the right of the anchor text
+                
+                            so I'm not sure how this effect works
+                        */
+                
+                        // this is the container and it slide in from the left
+                        > span:nth-child( 1 ) {
+                
+                            position : absolute;
+                            top      : 0;
+                            left     : 0;
+                
+                            overflow   : hidden;
+                            transform  : translateX( -100% );
+                            transition : transform 400ms ease-out;
+                
+                            // even though we probably don't need this since mobile devices can't hover, turn
+                            // this off anyways
+                            @media all and ( max-width : $bp-768 ) {
+                
+                                display : none;
+                            
+                            }// container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 ) > bp-768
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )
+                
+                        &:hover span:nth-child( 1 ) {
+                
+                            transform : translateX( 0 );
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 )
+                
+                        // this is the text and it slides in from the right
+                        > span:nth-child( 1 )::before {
+                
+                            display : inline-flex;
+                
+                            color           : var( --gray-870 );
+                            text-decoration : underline;
+                
+                            transform  : translateX( 100% );
+                            transition : transform 400ms ease-out;
+                
+                            // the text
+                            content : attr( data-content );
+                
+                            // even though we probably don't need this since mobile devices can't hover, turn
+                            // this off anyways
+                            @media all and ( max-width : $bp-768 ) {
+                
+                                display : none;
+                            
+                            } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )::before > bp-768
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > > span:nth-child( 1 )::before
+                
+                        &:hover span:nth-child( 1 ):before {
+                
+                            transform : translateX( 0 );
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 ):before
+                
+                    } // container > div 1 > div 2 > div 1 > div 1 > a
+
+                } // container > div 1 > div 2 > div 1 > div 1
+
+            } // end of container > div1 > div2 > div5
+
+            // ==============================
+            // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges ) > div 6 ( badge 6 )
+            // ==============================
+
+            > div:nth-child( 6 ) {
+
+                // parent
+                grid-area : div6;
+
+                // children
+                display               : grid;
+                grid-template-rows    : auto auto 1fr;
+                grid-template-columns : 1fr;
+                align-content         : start;
+                grid-gap              : 2.0rem 0;
+                grid-template-areas   : "h3"
+                                        "p2"
+                                        "picture"
+                                        "div4";
+
+                margin : 0;
+        
+                // ==============================
+                // create a card
+                // ==============================
+
+                padding : 6.0rem;
+
+                border-radius : 6px;
+
+                // background : var( --yellow-120 );
+                background : var( --blue-62-1 );
+
+                // ==============================
+                // end of create a card
+                // ==============================
+
+                opacity: 0; // needed for the opacity and slide in animation
+
+                @media all and ( max-width : $bp-1728 ) {
+
+                    background : var( --purple-27 );
+        
+                } // end of container > div1 > div2 > div6 > bp-1728
+    
+                @media all and ( max-width : $bp-1280 ) {
+
+                    grid-template-columns : 2fr 1fr;
+                    grid-gap              : 2.0rem 6.0rem;
+                    grid-template-areas   : "h3      h3"
+                                            "p2 picture"
+                                            "div4 div4";
+        
+                } // end of container > div1 > div2 > div6 > bp-1280
+
+                @media all and ( max-width : $bp-768 ) {
+
+                    display               : grid;
+                    grid-template-rows    : repeat( 3, auto );
+                    grid-template-columns : 1fr;
+                    align-items           : start;
+                    grid-gap              : 2.0rem 0;
+                    grid-template-areas   : "h3"
+                                            "p2"
+                                            "picture"
+                                            "div4";
+
+                }  // end of container > div1 > div2 > div6 > bp-768
+
+                // ==============================
+                // container > div 1 > div 2 > div 5 > h3
+                // ==============================
+
+                > h3 {
+
+                    // parent
+                    grid-area : h3;
+
+                    @include h4-dark-title;
+
+                    line-height : 1.3; // visual preference and needed for when the
+                    // h1 splits into 2 lines
+
+                } // end of container > div1 > div2 > div6 > h3
+
+                // ==============================
+                // container > div 1 > div 2 > div 5 > p
+                // ==============================
+
+                > p:nth-child( 2 ) {
+
+                    // parent
+                    grid-area : p2;
+
+                    @include text-base-dark;
+
+                    margin : 0 0 2.0rem 0;
+
+                } // end of container > div1 > div2 > div6 > p
+
+                // ==============================
+                // container > div 1 > div 2 > div 5 > picture
+                // ==============================
+
+                > picture {
+
+                    // parent
+                    grid-area : picture;
+
+                    align-self   : end; 
+                    justify-self : center;
+
+                    > img {
+
+                        display : block;
+
+                        // this blends my Mid Journey pictures into the background color perfectly
+                        // and makes white pixels completely transparent and keeps black pixels
+                        // visible — works perfectly with black and white illustrations on
+                        // colored backgrounds without needing to remove the background at all
+                        mix-blend-mode : multiply;
+
+                        border-radius : 6px;
+
+                    } // end of container > div1 > div2 > div6 > picture > img
+
+                } // end of container > div1 > div2 > div6 > picture
+
+                // ==============================
+                // container > div 1 > div 2 > div 1 > div 1
+                // ==============================
+
+                > div {
+
+                    // parent
+                    grid-area : div4;
+
+                    justify-self : center;
+
+                    padding : 2.0rem 0 0 0;
+
+                    @media all and ( max-width : $bp-1280 ) {
+
+                        // justify-self : left;
+
+                        padding : 0 0 0 0;
+            
+                    } // end of container > div1 > div2 > div1 > bp-1280
+
+                    @media all and ( max-width : $bp-768 ) {
+
+                        padding : 2.0rem 0 0 0;
+            
+                    } // end of container > div1 > div2 > div1 > bp-768
+
+                    > a {
+
+                        // @include text-large-light;
+                
+                        display  : inline-flex;
+                        position : relative;
+                        // clip the absolutely positioned span so that it doesn't bleed outside to other
+                        // nearby links
+                        overflow : hidden;
+
+                        @include text-base-dark;
+
+                        @media all and ( max-width : $bp-620 ) {
+                
+                            margin : 0 0 0 0; // get rid of the right margin on smaller screens
+                
+                        } // end of container > div1 > div1 > p:nth-child( 1 ) > bp-620
+                        
+                
+                        /*
+                            please see the sritcle for details on this effect :
+                            https://css-tricks.com/4-ways-to-animate-the-color-of-a-text-link-on-hover/
+                        */
+                
+                        /*
+                            this is AI's estimate of how this works :
+                
+                            The span itself is invisible — it's just a clipping window ( overflow: hidden ) that
+                            moves. The actual colored, underlined text lives in the ::before pseudo-element, and
+                            IT'S the only thing you ever see. As the span ( window ) slides from off-screen-left
+                            into its normal position, more and more of the ::before text becomes visible through
+                            that window, creating the "wipe in from the left" effect. The color isn't moving
+                            INTO existence — it's always there, just progressively REVEALED as the clipping window
+                            slides into place around it
+                        */
+                
+                        /*
+                            I checked and the ::before is sitting behind the anchor text, which has the same
+                            value as ::before or the content : attr( data-content );
+                
+                            and the span container is sitting to the right of the anchor text
+                
+                            so I'm not sure how this effect works
+                        */
+                
+                        // this is the container and it slide in from the left
+                        > span:nth-child( 1 ) {
+                
+                            position : absolute;
+                            top      : 0;
+                            left     : 0;
+                
+                            overflow   : hidden;
+                            transform  : translateX( -100% );
+                            transition : transform 400ms ease-out;
+                
+                            // even though we probably don't need this since mobile devices can't hover, turn
+                            // this off anyways
+                            @media all and ( max-width : $bp-768 ) {
+                
+                                display : none;
+                            
+                            }// container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 ) > bp-768
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )
+                
+                        &:hover span:nth-child( 1 ) {
+                
+                            transform : translateX( 0 );
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 )
+                
+                        // this is the text and it slides in from the right
+                        > span:nth-child( 1 )::before {
+                
+                            display : inline-flex;
+                
+                            color           : var( --gray-870 );
+                            text-decoration : underline;
+                
+                            transform  : translateX( 100% );
+                            transition : transform 400ms ease-out;
+                
+                            // the text
+                            content : attr( data-content );
+                
+                            // even though we probably don't need this since mobile devices can't hover, turn
+                            // this off anyways
+                            @media all and ( max-width : $bp-768 ) {
+                
+                                display : none;
+                            
+                            } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )::before > bp-768
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > > span:nth-child( 1 )::before
+                
+                        &:hover span:nth-child( 1 ):before {
+                
+                            transform : translateX( 0 );
+                
+                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 ):before
+                
+                    } // container > div 1 > div 2 > div 1 > div 1 > a
+
+                } // container > div 1 > div 2 > div 1 > div 1
+
+            } // end of container > div1 > div2 > div6
+
+        } // end of container > div1 > div2
+
+    } // end of container > div1
+
+    // ==============================
+    // container > div 2 ( wrapper div ) ( case study )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 2 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+        z-index : 1; // sits above the animating gradient
+        width   : min( 80.0rem, 100% ); // browser will select the smaller of 80rem or 100%
+        margin  : 24.0rem 0 0 0;
+
+        // ==============================
+        // container > div 2 > h2:nth-child( 1 )
+        // ==============================
+
+        > h2:nth-child( 1 ) {
+
+            @include h2-light-title;
+
+            // margin : 0 0 1.5rem 0;
+            margin : 0 0 4.0rem 0;
+
+        } // end of container > div2 > h2:nth-child( 1 )
+/*
+        // ==============================
+        // container > div 2 > p:nth-child( 2 ) ( remember, this is an empty p element )
+        // ==============================
+
+        > p:nth-child( 2 ), p:nth-child( 3 ) {
+
+            @include text-large-light;
+
+            margin : 0 0 2.0rem 0;
+
+        } // end of container > div2 > p:nth-child( 2 ), p:nth-child( 3 )
+
+        // ==============================
+        // container > div 2 > p::nth-child( 4 ) ( paragraph plus yellow text )
+        // ==============================
+
+        > p:nth-child( 4 ) {
+
+            @include text-base-large-light;
+
+            margin : 0 0 0.75rem 0;
+            // margin : 0 0 6.0rem 0;
+
+            @media all and ( max-width : $bp-768 ) {
+
+                margin : 0 0 6.0rem 0;
+        
+            } // end of container > div2 > p:nth-child( 4 ) > bp-768
+
+            @media all and ( max-width : 447px ) {
+
+                margin : 0 0 0.75rem 0;
+        
+            } // end of container > div2 > p:nth-child( 4 ) > 447px
+
+            @media all and ( max-width : 365px ) {
+
+                margin : 0 0 6.0rem 0;
+        
+            } // end of container > div2 > p:nth-child( 4 ) > 365px
+
+            > span {
+
+                // font-weight : 600;
+                // color       : var( --blue-62);
+
+                font-size   : 2.2rem;
+                font-weight : 700;
+                color       : var( --yellow-150 );
+
+            } // end of container > div2 > p:nth-child( 4 ) > span
+
+        } // end of container > div2 > p:nth-child( 4 )
+
+        // ==============================
+        // container > div 2 > div::nth-child( 5 ) ( yellow underline )
+        // ==============================
+
+        > div:nth-child( 5 ) {
+
+            width : 45%;
+
+            @media all and ( max-width : $bp-768 ) {
+
+                display : none;
+
+            } // end of container > div2 > p:nth-child( 5 ) > bp-768
+
+            @media all and ( max-width : 447px ) {
+
+                display : block;        
+                width   : 75%;
+
+            } // end of container > div2 > p:nth-child( 5 ) > 447px
+
+            @media all and ( max-width : 365px ) {
+
+                display : none;
+
+            } // end of container > div2 > p:nth-child( 5 ) > 365px
+
+            picture > img {
+
+                display : block; // eliminate spacing under picture
+                margin  : 0 0 6.0rem 0;
+
+            } // end of container > div2 > p:nth-child( 5 ) > picture > img
+
+        } // end of container > div2 > p:nth-child( 5 )
+*/
+        // ==============================
+        // container > div 2 > picture:nth-child( 5 ) ( Google Map Pack ranking for Utah Stem
+        // Cells on 8-13-25 )
+        // ==============================
+
+        > picture:nth-child( 2 ) {
+
+            // children
+            display       : grid;
+            align-items   : center;
+            justify-items : left;
+
+            background : var( --blue-62-1 );
+
+            > img {
+
+                display : block; // remove the bottom spacing
+
+                // make the picture smaller
+                width  : 100%;
+                height : 100%; 
+
+                // this blends my Mid Journey pictures into the background color perfectly
+                // and makes white pixels completely transparent and keeps black pixels
+                // visible — works perfectly with black and white illustrations on
+                // colored backgrounds without needing to remove the background at all
+                mix-blend-mode : multiply;
+
+                // create a round picture so that the image isn't so large
+                // border-radius : 50%;
+
+                // now let add the object-fit property and remember for object-fit to work we have to add
+                // the width and the height to the element
+
+                // by using these 3 key value pairs inside the image element or " width : 100%; "
+                // and " height : 100%; " and " object-fit : cover; " we see that each image now fills up
+                // one grid cell and one grid cell only
+
+                object-fit : cover;
+
+            } // end of container > div2 > picture:nth-child( 6 ) > img
+
+        } // end of container > div2 > picture:nth-child( 6 )
+
+    } // container > div 2
+
+    // ==============================
+    // container > div 3 ( animating backgrounds )
+    // ==============================
+
+    > div:nth-child( 3 ) {
+
+        display : block; // hide the blob and show the animating backgrounds
+        z-index : 0; // remember, this container has to sit behind the parent container
+        // which has a z-index of 1
+
+        opacity : 1;
+
+        @media all and ( max-width : $bp-1536 ) {
+
+            //margin : 40.0rem 0 0 0;
+
+        } // end of container > div2 > p:nth-child( 5 ) > bp-1536
+
+    } // end of container > div3
+
+} // end of container
+

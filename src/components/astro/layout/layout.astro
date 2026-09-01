@@ -1,0 +1,274 @@
+---
+
+// ==============================
+// imports
+// ==============================
+
+// import in our Header component
+import Header from '../../react/header/header.jsx';
+// import in our Footer component
+import Footer from '../../react/footer/footer-v3.jsx';
+// import in our stylesheet
+import styles from './layout.module.scss';
+
+---
+
+{
+    /*
+        // ==============================
+        // container
+        // ==============================
+
+        // Keep the container section as plain HTML and only use the Curly Braces { } for the
+        // dynamic part ( the .map loop ). It keeps your file clean and follows the "Astro way"
+        // of keeping static and dynamic parts separate.
+
+        // Astro templates run on the server
+    */
+}
+<div class={ styles.layoutContainer }>
+
+    {
+        /*
+            // ==============================
+            // header
+            // ==============================
+
+            // pass in scrollDirection="down" for now to get rid of the TS error
+        */
+    }
+    {
+        /*
+            in Astro you exclude elements from view transitions with transition:persist
+
+            // ==============================
+            // part 4 - fade in the nav on initial paint and only on the initial paint
+            // ==============================
+
+            transition:animate="none" stops Astro from re-animating the nav on page swaps
+            and this is an Astro-specific directive that tells ClientRouter explicitly :
+            " don't apply your default page-transition animation to this element during swaps "
+
+            see main-layout.astro, _global.scss and nav.jsx for parts 1, 2 and 3
+        */
+    }
+    <Header
+        scrollDirection="down"
+        client:load 
+        transition:persist
+        transition:animate="none" 
+    />
+
+    {
+        /*
+            // ==============================
+            // main
+            // ==============================
+        */
+    }
+    <main>
+        {
+            /*
+                // ==============================
+                // given my setup in main-layout.astro, { children } below is <slot />
+                // ==============================
+            */
+        }
+        <slot />
+    </main>
+
+    {
+        /*
+            // ==============================
+            // footer
+            // ==============================
+            client:idle is the sweet spot :
+
+            Hydrates when browser is idle — after critical content loads
+            Better than client:load — doesn't block initial render
+            More reliable than client:visible with transition:persist
+            Footer is ready by the time user scrolls there
+        */
+    }
+    <Footer client:idle transition:persist />
+
+</div>
+
+
+{
+    /*
+        // ==============================
+        // script tag
+        // ==============================
+
+        // ==============================
+        // this code will page sure our hero video restarts when navigating back to the home page
+        // ==============================
+
+        On initial page load :
+    
+        Page loads
+        → Server renders HTML including <video> elements
+        → Videos start playing ( browser handles this natively )
+        → React hydrates
+        → useEffect runs → sets up interval, animations, setTimeout sequences
+        → Everything works
+
+        On navigation back to home page ( without the script ) :
+
+        ClientRouter swaps page content
+        → astro:page-load fires
+        → React hydrates
+        → useEffect runs → sets up interval etc.
+        → BUT videos never get restarted ← problem
+        → Nothing triggers video.load() and video.play()
+        → Videos stay blank
+
+        On navigation back to home page ( with the script ) :
+
+        ClientRouter swaps page content
+        → astro:page-load fires
+        → Layout script runs immediately
+        → video.load() and video.play() restart the videos ← trigger
+        → React hydrates
+        → useEffect runs → sets up interval, animations, setTimeout sequences
+        → Everything works
+
+        Your summary is perfect :
+
+        The script is the trigger that restarts the raw video elements
+        React/useEffect then takes over to handle all the complex logic — intervals, animations, state
+        Without the trigger, React has no reason to restart the videos on navigation
+        The two work together — plain JS handles the immediate video restart, React handles everything else
+    */
+}
+<script>
+
+    document.addEventListener( 'astro:page-load', () => {
+
+        // test
+        // console.log( 'astro:page-load fired' );
+
+        // small delay to let React hydrate
+        setTimeout( () => {
+
+            // select all the videos in the dom
+            const videos = document.querySelectorAll( 'video' );
+
+            // loop through each video and then play each video
+            videos.forEach( video => {
+
+                video.load();
+                /*
+                    // try to play the video
+                    video.play()
+                        .then( () => { // playing successfully } )
+                        .catch( () => { // failed silently, no error thrown } );
+                */
+                video.play().catch( () => {} );
+
+            } ); // end of videos.forEach()
+
+        }, 0 ); // end of setTimeout() // I removed the 300ms and the videos still worked on navigation back to the home page
+
+    } ); // end of document.addEventListener()
+
+</script>
+
+
+{
+    /*
+        // ==============================
+        // script tag
+        // ==============================
+
+        // ==============================
+        // this code will make sure that whenever we reload the page, we start at the top
+        // of the page and this code will make sure whenever we navigate, we start at the
+        // top of the page
+        // ==============================
+    */
+}
+<script>
+
+    if ( history.scrollRestoration ) {
+
+        history.scrollRestoration = 'manual';
+
+    } // end of if ()
+
+    // runs on page reload
+    window.scrollTo( { top : 0, behavior : 'instant' } );
+
+    // runs on every navigation
+    document.addEventListener( 'astro:page-load', () => {
+
+        window.scrollTo( { top : 0, behavior : 'instant' } );
+
+    } );
+
+    // runs after page content swaps - catches edge cases like iOS Chrome ( hopefully )
+    document.addEventListener( 'astro:after-swap', () => {
+
+        window.scrollTo( { top : 0, behavior : 'instant' } );
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop            = 0;
+
+    } );
+
+</script>
+
+
+{
+    /*
+        // ==============================
+        // script tag
+        // ==============================
+
+        // ==============================
+        // use the astro:before-preparation event to detect browser back button and thereby
+        // remove the view transition names before navigating back to the home page and
+        // this prevents the morph animation from showing up when navigating back to the
+        // home page 
+        //
+        // ( see the nav-v1.jsx file for details on removing this animation when
+        // clicking on the home page link )         
+        //
+        // ( see the side-menu.jsx file for details on removing this animation when
+        // clicking on the home page link in the side menu )
+        // ==============================
+    */
+}
+<script>
+
+    document.addEventListener( 'astro:before-preparation', ( e ) => {
+
+        // browser back button triggers 'traverse'
+        if ( e.navigationType === 'traverse' ) {
+
+            const contactPageH1             = document.querySelector( '.contact-page-h1' ) as HTMLElement;
+            const contactPageImageUnderline = document.querySelector( '.contact-page-image-underline' ) as HTMLElement;
+            const contactPageYellowBox      = document.querySelector( '.contact-page-yellow-box' ) as HTMLElement;
+            const contactPageBlueBox        = document.querySelector( '.contact-page-blue-box' ) as HTMLElement;
+
+            if ( contactPageH1             ) ( contactPageH1.style as any ).viewTransitionName              = 'none';
+            if ( contactPageImageUnderline ) ( contactPageImageUnderline.style as any ).viewTransitionName  = 'none';
+            if ( contactPageYellowBox      ) ( contactPageYellowBox.style as any ).viewTransitionName       = 'none';
+            if ( contactPageBlueBox        ) ( contactPageBlueBox.style as any ).viewTransitionName         = 'none';
+
+            const categoryPageH1             = document.querySelector( '.category-page-h1' ) as HTMLElement;
+            const categoryPageImageUnderline = document.querySelector( '.category-page-image-underline' ) as HTMLElement;
+            const categoryPagePicture        = document.querySelector( '.category-page-picture' ) as HTMLElement;
+
+            if ( categoryPageH1             ) ( categoryPageH1.style as any ).viewTransitionName             = 'none';
+            if ( categoryPageImageUnderline ) ( categoryPageImageUnderline.style as any ).viewTransitionName = 'none';
+            if ( categoryPagePicture        ) ( categoryPagePicture.style as any ).viewTransitionName        = 'none';
+
+        }
+
+    } );
+
+</script>
+
+
+

@@ -1,0 +1,78 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../../styles/_mixins.scss' as *;
+@use '../../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// highlight text container
+// ==============================
+
+.highlightTextContainer {
+
+    // ==============================
+    // container > span 1
+    // ==============================
+
+    > span:nth-child( 1 ) {
+
+        @include text-large-dark;
+
+        background-image : linear-gradient( to right, transparent 50%, var( --yellow-130 ) 50% ); // needed for the hightlighted text animation
+        background-size  : 200%; // needed for the hightlighted text animation
+
+    } // end of container > span1
+
+    // ==============================
+    // container > span 2
+    // ==============================
+
+    > span:nth-child( 2 ) {
+
+        @include text-large-dark;
+
+    } // end of container > span2
+
+    // ==============================
+    // container > a
+    // ==============================
+
+    > a {
+
+        @include text-large-dark;
+
+        color                 : var( --blue-100 );
+        text-decoration       : underline;
+        text-underline-offset : 0.5rem;
+
+        @media all and ( max-width : $bp-1920 ) {
+
+            color           : var( --blue-100 );
+            text-decoration : none;
+        
+        } // end of container > a > bp-1920
+
+        &:hover {
+
+            cursor : pointer;
+
+        } // end of container > a > &:hover
+
+    } // end of container > a
+
+} // end of container
+
+

@@ -1,0 +1,328 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+// ==============================
+// @property ( use @property to transition the linear gradient on hover )
+// ==============================
+
+@property --c1 {
+    syntax        : '<color>';
+    initial-value : rgba( 0, 125, 240, 1 );
+    inherits      : false;
+}
+  
+@property --c2 {
+    syntax        : '<color>';
+    initial-value : rgba( 0, 91, 234, 1 );
+    inherits      : false;
+}
+
+
+
+
+
+
+// ==============================
+// nav container
+// ==============================
+
+.navContainer {
+
+    // parent
+    grid-column : 2 / 22;
+
+    // children
+    display         : flex;
+    align-items     : center;
+    justify-content : space-between;
+
+    // ==============================
+    // z-index notes
+    // ==============================
+
+    /*
+        ( 1 ) for the nav to sit on top of the background div and the home page container,
+        we made the following z-index adjustment :
+        ( adjustment 1 ) nav container ( see nav.module.scss ) : z-index of 2
+        ( 2 ) for the side menu to sit on top of the background div and the home page container,
+        we made the following z-index adjustment :
+        ( adjustment 2 ) side menu container ( see side-menu.module.scss ) : z-index of 3
+        ( 3 ) for the hamburger menu to sit on top of the background div, the home page container
+        and the side menu container we made the following z-index adjustment :
+        ( adjustment 3 ) hamburger menu container ( see hamburger-menu.module.scss ) : z-index of 4
+    */
+    z-index : 2;
+    width  : min( 192.0rem, 100% ); // browser will select the smaller of 192.0rem or 100%
+    // width   : min( 144.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
+    margin  : 0 auto;
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        display : grid; // remove display : flex; for smaller screens
+
+        margin : 3.0rem 0;
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // container > div 1 ( nav container left )
+    // ==============================
+
+    .navContainerLeft {
+
+        display               : grid;
+        grid-template-columns : auto auto;
+        align-items           : center;
+        grid-gap              : 0 1.0rem;
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            padding : 0 0 0.65rem 0; // needed to add a little spacing between the company name
+            // and nav items in order maintain spacing consistency
+    
+        } // end of container > div1 > bp-1280
+
+        > span {
+
+            font-size : 3.50rem;
+
+        } // end of container > div1 > span
+
+        > a {
+
+            font-family : var( --font-display-5 );
+            font-size   : 2.85rem;
+            font-weight : 700;
+            color       : var( --black );
+
+            // active, focus selectors for the a tag
+            &:active, &:focus {
+
+                // on mobile devices, safari was putting a think white background around my clicks
+                // and I found the answer on how to solve this problem from stackoverflow :
+                // " https://stackoverflow.com/questions/9784350/mobile-safari-tap-and-hold-a-link-it-will-show-a-gray-shadow-how-to-disable-it?rq=3 "
+                -webkit-tap-highlight-color : rgba( 0, 0, 0, 0 );
+            
+            } // end of container > div1 > a > &:active, &:focus
+    
+        } // end of container > div1 > a
+
+    } // end of container > div1 > a
+
+    // ==============================
+    // container > div2 ( nav container right )
+    // ==============================
+
+    .navContainerRight {
+
+        // ==============================
+        // list
+        // ==============================
+
+        > ul {
+
+            // children
+            display     : flex; // make the navigation tabs line up horizontally
+            align-items : center; // make sure all the tabs are in the horizontal center of the container
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                display       : grid;
+                justify-items : left;
+        
+            } // end of container > div2 > ul > bp-1280
+    
+            // ==============================
+            // the navigation tabs
+            // ==============================
+    
+            > li {
+
+                > a {
+
+                    display : block; // needed for animation
+                    padding : 1.5rem 2.2rem; // needed to add a box around the text and the user
+                    // can see the box on hover
+
+                    font-family : var( --font-display-5 );
+                    font-size   : 2.10rem;
+                    font-weight : 700;
+                    color       : var(--black );
+
+                    transition : all 0.2s ease-out; // provide for a nice hover animation
+
+                    @media all and ( max-width : $bp-1280 ) {
+
+                        padding : 1.5rem 2.2rem 1.5rem 0; // remove left padding on smaller screens
+                
+                    } // end of container > div2 > ul > li > a > bp-1280
+
+                    &:hover {
+
+                        border-radius : 0.6rem;
+
+                        background-color : rgba( 255, 255, 255, 0.05 );
+
+                        cursor : pointer;
+
+                        // move the nav item up just a little to add a nice hover effect
+                        transform: translate3d( 0, -0.3rem, 0 );
+
+                        // remove the animation effect for screen sizes under 1376 pixels
+                        @media all and ( max-width : $bp-1376 ) {
+
+                            background-color : inherit;
+
+                            transform: none;
+                    
+                        }  // end of container > div2 > ul > li > a > &:hover > bp-1376
+
+                    } // end of container > div2 > ul > li > a > &:hover
+
+                    // active, focus selectors for the navigation tabs
+                    &:active, &:focus {
+
+                        // on mobile devices, safari was putting a think white background around my clicks
+                        // and I found the answer on how to solve this problem from stackoverflow :
+                        // " https://stackoverflow.com/questions/9784350/mobile-safari-tap-and-hold-a-link-it-will-show-a-gray-shadow-how-to-disable-it?rq=3 "
+                        -webkit-tap-highlight-color : rgba( 0, 0, 0, 0 );
+                    
+                    } // end of container > div2 > ul > li > a > &:active, &:focused
+    
+                } // end of container > div2 > ul > li > a
+
+            } // end of container > div2 > ul > li
+
+            // ==============================
+            // container > shop item cart icon
+            // ==============================
+            
+            li:nth-child( 5 ) {
+
+                position : relative;
+
+                // ==============================
+                // container > shop item cart icon > cart item count
+                // ==============================
+
+                > a {
+
+                    display : flex; // needed to remove extra spacing underneth the a element
+                    margin  : 0 0 0.55rem 0;
+
+                    > span {
+
+                        // attach the cart item count to the cart icon on the lower right side
+                        position : absolute;
+                        top      : 3.50rem;
+                        left     : 4.00rem;
+                        padding  : 0.20rem 0.9rem;
+
+                        border-radius : 50%;
+
+                        font-family : var( --font-display-5 );
+                        font-size   : 2.10rem;
+                        font-weight : 700;
+                        color       : var( --white );
+
+                        background : linear-gradient( to top, rgba( 0, 125, 240, 1 ) 0%, rgba( 0, 91, 234, 1 ) 100% );  // had to do this because of conflicting styles between astro product and my global styles
+
+                        @media all and ( max-width : $bp-1280 ) {
+
+                            left : 1.80rem;
+                    
+                        } // end of container > div2 > ul > li:nth-child( 5 ) > a > span > bp-1280
+
+                    } // end of container > div2 > ul > li:nth-child( 5 ) > a > span
+
+                } // end of container > div2 > ul > li:nth-child( 5 ) > a
+
+                a:has( span ) {
+
+                    margin : 0 0 0.55rem 0; // visual preference
+
+                    @media all and ( max-width : $bp-1280 ) {
+
+                        margin-bottom : 1.50rem; // needed to provide extra bottom spacing between the cart number
+                        // and the next li element so that the spacing doesn't get bunched up when starting from
+                        // zero and adding items to cart
+                
+                    } // end of container > div2 > ul > li:nth-child( 5 ) > a > span > bp-1280
+
+                } // end of container > nav > a:nth-child( 5 ) > a:has( span )
+
+            } // end of container > div2 > ul > li:nth-child( 5 )
+
+            // ==============================
+            // container > cart item initials
+            // ==============================
+
+            li:nth-child( 7 ) {
+
+                > span {
+
+                    display : block; // needed to make sure spacing doesn't collaspe when using span
+                    margin  : 0 0 0 1.1rem; // visual preference, just to provide some extra spacing so as to
+                    // maintain visual consistency
+                    padding : 1.5rem 2.2rem;
+
+                    border-radius : 50%;
+
+                    font-family     : var( --font-display-5 );
+                    font-size       : 2.10rem;
+                    font-weight     : 700;
+                    color           : rgba( 245, 245, 245, 1 );
+                    text-decoration : none;
+
+                    // ==============================
+                    // use the @property rule to animate the linear gradient on hover - part 1
+                    // ==============================
+
+                    background : linear-gradient( to top, var( --c1 ) 0%, var( --c2 ) 100% );
+
+                    cursor     : pointer;
+
+                    // ==============================
+                    // use the @property rule to animate the linear gradient on hover - part 2
+                    // ==============================
+
+                    transition : --c1 0.5s ease-out, --c2 0.5s ease-out !important;
+
+                    @media all and ( max-width : $bp-1280 ) {
+
+                        margin : 1.5rem 0 0 0;
+                
+                    } // end of container > div2 > ul > li:nth-child( 6 ) > bp-1280
+
+                    &:hover, &:active {
+
+                        // ==============================
+                        // use the @property rule to animate the linear gradient on hover - part 3
+                        // ==============================
+
+                        --c1 : rgba( 44, 79, 151, 1 );
+                        --c2 : var( --purple-150 ); 
+
+                    } // end of container > div2 > ul > li:nth-child( 6 ) > :hover, :active
+
+                } // end of container > div2 > ul > li:nth-child( 6 ) > span
+
+            } // end of container > div2 > ul > li:nth-child( 6 )
+
+        } // end of container > div2 > ul
+
+    } // end of container > div2
+
+} // end of container
+

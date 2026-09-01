@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+
+<!-- remember, this file is state of the art and add to it as needed, and v5 has many sections we could take and add to this one, just
+make it sure it matches this one -->
+
+<!-- this is need for creating background images, rounded buttons, etc. in Outlook -->
+<html lang="en" dir="ltr" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+        <meta name="format-detection" content="telephone=no, date=no, address=no, email=no, url=no">
+        <!-- this is needed for iOS 10 - 14, where some messages we're being scaled off the screen -->
+        <meta name="x-apple-disable-message-reformatting">
+        <meta name="color-scheme" content="light dark">
+        <title>🍂 A Seasonal Thank You - Just for You 🍂</title>
+        <!-- as of 2-17-25, the font in all my email clients look very much the same; however, I'm guessing that Gmail is using Roboto, Apple Mail is using Roboto since
+        Apple Mail supports web fonts and Outlook is using Helvetica based on uncommenting out the Roboto web font below and signaling the use of Helvetica in the mso
+        statement below -->
+        <!-- as of 2-17-25, it appears that the media queries for reducing the padding in the footer are working in all email clients except Android 13 Pixel 6 - Yahoo -->
+        <!-- remember, without this code commented out, older versions of Outlook will ignore the Roboto font and use New Times Roman and this code caused older versions of Outlook to use the fallback font or Helvetica -->
+        <!-- see the following article for details : https://stackoverflow.com/questions/70935901/html-email-mso-conditional-trick -->
+        <!-- remember, Gmail supports Roboto, Apple mail does not and Outlook does not -->
+        <!-- remember, Roboto looks great in Gmail -->
+        <!-- remember, the downside with this approach is that the font works but does not render well in iOS 16.7 Apple mail email clients and the users that most likely are using
+        16.7 are users with iPhones version 8 or X and everyone else with version 7 and below are stuck at iOS version 15 and below and everyone else with phones above X are most
+        likely using version 17 and above and iPhone 8 came out in 2017 and iPhone X came out in 2017 -->
+        <!-- remember, default font on Android is Roboto -->
+        <!-- according to StatCounter, in September of 2024, iOS version 16.6 and 16.7 accounted for about 5.68% of the iOS version market so maybe 6% will see an add font in
+        Apple mail whereas, call it 30% - 50% of users may be using gmail on their iPhone and those users will see Roboto versus Helvetica if we removed the Roboto link below -->
+        <!-- according to StatCounter, in January of 2025, iOS version 16.7 accounted for about 2.52% of the iOS version market so maybe 2.5% will see an add font in
+        Apple mail whereas, call it 30% - 50% of users may be using gmail on their iPhone and those users will see Helvetica versus Roboto if we removed the Roboto link below -->
+        <!-- remember, this also seemed to fix the weird font rendering in Samsung mail - S20 Android and A10 Android -->
+        <!--[if !mso]><!-->
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <!--<![endif]-->
+
+        <!--[if mso]>
+            <noscript>
+                <xml>
+                    <o:OfficeDocumentSettings>
+                        <o:PixelsPerInch>96</o:PixelsPerInch>
+                    </o:OfficeDocumentSettings>
+                </xml>
+            </noscript>
+        <![endif]-->
+
+        <!-- remember, we had to limit this style block to 8192 characters since " Gmail also eliminates your style block if it exceeds 8192 characters. " and see the following article
+        for details : " https://www.emailonacid.com/blog/article/email-development/12_things_you_must_know_when_developing_for_gmail_and_gmail_mobile_apps-2/ " -->
+        <!-- since the total style block exceeded 8192 characters, I had to create 2 styles blocks, knowing the Gmail will ignore style block 2 -->
+        <!-- style block 1 -->
+        <style type="text/css">
+            table {
+                border-spacing  : 0;
+                border-collapse : collapse;
+            }
+            td {
+                padding : 0;
+            }
+            p {
+                font-size   : 18px;
+                line-height : 1.6;
+            }
+            img {
+                border : 0;
+            }
+            a {
+                font-size       : 18px;
+                color           : #374151;
+                text-decoration : none;
+            }
+            /* again, we don't use the button class in this template */
+            a.button {
+                transition : all 0.5s ease-out !important;
+            }
+            /* in email clients where hover doesn't work we will not see the hover */
+            a.button:hover {
+                /* need border for dark mode */
+                border : 1px solid #666666 !important;
+
+                background-color : #666666 !important;
+            }
+            /* this is for Apple iOS link color and text-decoration correction */
+            a[ x-apple-data-detectors=true ] {
+                color           : inherit !important;
+                text-decoration : inherit !important;
+            }
+            /* this is for those instances when Outlook creates its own telephone number color and this solves the problem for Outlook mobile email clients
+            but not for Outlook desktop clients and see this article for details : " https://www.litmus.com/blog/how-to-remove-blue-links-in-html-emails " */
+            .bluelinks a {
+                color           : inherit !important; 
+                text-decoration : none !important; 
+            }
+            /* this is so we can reduce the hero image font size for mobile devices */
+            .hero-image-font-1 {
+                font-size   : 42px;
+                font-weight : bold;
+            }
+            /* this is so we can reduce the hero image font size for mobile devices */
+            .hero-image-font-2 {
+                font-size   : 40px;
+                font-weight : bold;
+            }
+            /* this is so we can reduce the schedule an appointment font size and line height slightly for mobile devices */
+            .schedule-an-appt-text {
+                font-size : 23px;
+            }
+            /* this is for Zimbra */
+            span.Object {
+                color : inherit !important;
+            }
+            span.Object-hover {
+                color           : inherit !important;
+                text-decoration : none !important;
+            }
+            /* this is for gmail so that we see white text on top of images in dark mode for iOS gmail email clients */
+            /* so far I can't get this to work */
+            u + .body > div > div > table > tr:nth-child( 2 ) > td > table > tr > td > table > tr > td > table > tr > td > div > div.gmail-blend- {
+                background     : #000 !important;
+                mix-blend-mode : difference !important;
+            }
+            /* this is for gmail so that we see white text on top of images in dark mode for iOS gmail email clients */
+            /* so far I can't get this to work */
+            u + .body .gmail-blend-screen {
+                background     : #000 !important;
+                mix-blend-mode : screen !important;
+            }
+            /* this is for gmail so that we see white text on top of images in dark mode for iOS gmail email clients */
+            /* so far I can't get this to work */
+            u + .body .gmail-blend-difference {
+                background     : #000 !important;
+                mix-blend-mode : difference !important;
+            }
+            /* this is for Outlook so that it maintains centering and line height */
+            .ExternalClass {
+                width : 100%;
+            }
+            .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+                line-height : 100%;
+            }
+            /* remember, no spaces before and after the colon in your media query declaration, please see " https://stackoverflow.com/questions/49701247/how-do-i-write-a-media-query-for-gmail " */
+            /* media queries */
+            @media screen and ( max-width: 600px ) {
+                /* reduce the hero image font size for mobile devices */
+                .hero-image-font-1 {
+                    font-size : 34px;
+                }
+                /* reduce the hero image font size for mobile devices */
+                .hero-image-font-2 {
+                    font-size : 32px;
+                }
+                /* reduce the schedule an appointment font size and line height slightly for mobile devices */
+                .schedule-an-appt-text {
+                    font-size   : 22px !important;
+                    line-height : 31px !important;
+                }
+                /* reduce the padding around unscribe block for mobile devices */
+                .footer-lightmode-padding-top-under600px {
+                    padding : 20px 30px 10px 30px !important;
+                }
+                .footer-lightmode-padding-bottom-under600px {
+                    padding : 10px 30px 20px 30px !important;
+                }
+            }
+            @media screen and ( max-width: 500px ) {
+
+            }
+            @media screen and ( max-width: 400px ) {
+
+            }
+        </style>
+
+        <!-- style block 2 -->
+        <style type="text/css">
+            :root {
+                color-scheme : light dark;
+            }
+            /* see the following answer in stackoverflow on dark mode : https://stackoverflow.com/questions/60624498/how-to-disable-html-email-from-adjusting-with-dark-mode?rq=3 */
+            /* see the following article for great dark mode tips : https://www.litmus.com/blog/the-ultimate-guide-to-dark-mode-for-email-marketers */
+            /* remember, Gmail does not support the prefers-color-scheme media query */
+            @media ( prefers-color-scheme : dark ) {
+                body, table, .darkmode-background {
+                    color : #c4ccda !important;
+
+                    background : #2d2d2d !important;
+                    /* didn't like how sharp and unattractive black was in Apple mail and even if I go with a black background Apple is still adding
+                    an outer background that is slightly different than black so until I can figure out what the background color is for Apple dark mode
+                    I will stick with my preferred background color of #2d2d2d
+                    background : #000 !important; */
+                }
+                /* remember, [ data-ogsc ] is for Outlook and is more of an insurance policy since the media query above seems to work pretty well */
+                [ data-ogsc ] body, table, .darkmode-background {
+                    color : #c4ccda !important;
+
+                    background : #2d2d2d !important;
+                    /* didn't like how sharp and unattractive black was in Apple mail and even if I go with a black background Apple is still adding
+                    an outer background that is slightly different than black so until I can figure out what the background color is for Apple dark mode
+                    I will stick with my preferred background color of #2d2d2d
+                    background : #000 !important; */
+                }
+                .darkmode-background-text-color {
+                    color : #f5f5f5 !important;
+
+                    background : #2d2d2d !important;
+                }
+                /* remember, [ data-ogsc ] is for Outlook and is more of an insurance policy since the media query above seems to work pretty well */
+                [ data-ogsc ] .darkmode-background-text-color {
+                    color : #f5f5f5 !important;
+
+                    background : #2d2d2d !important;
+                }
+                .darkmode-text-color {
+                    color : #ffffff !important;
+                }
+                /* remember, [ data-ogsc ] is for Outlook and is more of an insurance policy since the media query above seems to work pretty well */
+                [ data-ogsc ] .darkmode-text-color {
+                    color : #ffffff !important;
+                }
+                .darkmode-transparent {
+                    background-color : transparent !important;
+                }
+                /* remember, [ data-ogsc ] is for Outlook and is more of an insurance policy since the media query above seems to work pretty well */
+                [ data-ogsc ] .darkmode-transparent {
+                    background-color : transparent !important;
+                }
+                /* again, we don't use the gradient class in this template */
+                .gradient {
+                    color : #ffffff !important;
+
+                    background : linear-gradient( 225deg, #62ffe8 0%, #37a3bd 20%, #247dab 39%, #0a4691 72%, #003087 100% ) !important;
+                    /* fallback in case linear-gradient does not work */
+                    background : #005bea !important;
+                }
+                /* remember, [ data-ogsc ] is for Outlook and is more of an insurance policy since the media query above seems to work pretty well */
+                [ data-ogsc ] .gradient {
+                    color : #ffffff !important;
+
+                    background : linear-gradient( 225deg, #62ffe8 0%, #37a3bd 20%, #247dab 39%, #0a4691 72%, #003087 100% ) !important;
+                    /* fallback in case linear-gradient does not work */
+                    background : #005bea !important;
+                }
+                .darkmode-padding {
+                    padding : 0 30px 0 30px !important;
+                }
+                /* remember, [ data-ogsc ] is for Outlook and is more of an insurance policy since the media query above seems to work pretty well */
+                [ data-ogsc ] .darkmode-padding {
+                    padding : 0 30px 0 30px !important;
+                }
+            }
+            @media ( prefers-color-scheme : dark) and ( min-width : 601px ) {
+                .footer-darkmode-padding-over600px {
+                    padding : 0 30px 0 30px !important;
+                }
+                /* remember, [ data-ogsc ] is for Outlook and is more of an insurance policy since the media query above seems to work pretty well */
+                [ data-ogsc ] .footer-darkmode-padding-over600px {
+                    padding : 0 30px 0 30px !important;
+                }
+            }
+            @media ( prefers-color-scheme : dark) and ( max-width : 600px ) {
+                .footer-darkmode-padding-top-under600px {
+                    padding : 0 30px 10px 30px !important;
+                }
+                /* remember, [ data-ogsc ] is for Outlook and is more of an insurance policy since the media query above seems to work pretty well */
+                [ data-ogsc ] .footer-darkmode-padding-top-under600px {
+                    padding : 0 30px 10px 30px !important;
+                }
+                .footer-darkmode-padding-bottom-under600px {
+                    padding : 10px 30px 0 30px !important;
+                }
+                /* remember, [ data-ogsc ] is for Outlook and is more of an insurance policy since the media query above seems to work pretty well */
+                [ data-ogsc ] .footer-darkmode-padding-bottom-under600px {
+                    padding : 10px 30px 0 30px !important;
+                }
+            }
+        </style>
+
+        <!-- add background and remove the Roboto custom font for Outlook -->
+        <!-- remember, Gmail supports Roboto, Apple mail does not and Outlook does not -->
+
+        <!--[if mso]>
+            <style type="text/css">
+                body { background-color: #ffffff !important; }
+                body, table, td, p, a { font-family: Helvetica, Arial, sans-serif !important; }
+                table { border-spacing: 0 !important; border-collapse: collapse !important; }
+            </style>
+        <![endif]-->
+
+    </head>
+
+    <body class="body" xml:lang="en" style="min-width: 100%; margin: 0; padding: 0; background-color: #ffffff;">
+
+        <!-- reinforce the stying to the body tag and keep the table contained -->
+        <div style="width: 100%; margin: 0 auto; table-layout: fixed; font-family: 'Roboto', Helvetica, Arial, sans-serif; font-size: 18px; color: #374151;">
+
+            <!-- set the table max width to 600px; otherwise table will have a max width of 100% and center table -->
+            <div style="max-width: 600px; margin: 0 auto; font-family: 'Roboto', Helvetica, Arial, sans-serif; font-size: 18px; color: #374151;">
+
+                <!-- remove the pre header text from showing up in the browser or in certain circumstances -->
+                <!-- use &zwnj;&nbsp;&#847; as spaces to prevent the body content from showing up in the preheader text -->
+                <div style="display: none; max-width: 0px; max-height: 0px; overflow: hidden; font-size: 0; color: #fafdfe; mso-line-height-rule: exactly; line-height: 0px; opacity: 0; mso-hide: all;">
+                    🎉 Your sndwch order receipt 🎉
+                </div>
+
+                <!-- this mso statement is for older Outlook email clients -->
+                <!--[if mso]>
+                    <table width="600" align="center" style="border-spacing: 0; border-collapse: collapse; color: #374151;" role="presentation">
+                    <tr>
+                    <td style="padding: 0;">
+                <![endif]-->
+
+                <!-- main table -->
+                <!-- remember, without the font-size: 16px;, the Gmail hero text font and the schedule an appointment font will not render correctly ( they are too large ) and
+                I think this is because Gmail can not read our media queries so I think it is using font-size: 16px; as a hint as to how to size certain html elements that do
+                not have inline syles or some value that Gmail can read in the stylesheet above; therefore, with font-size: 16px; Gmail may be rendering the HTML elements at 100%;
+                whereas, with a font-size: 18px; Gmail may be rendering the same HTML elememts at 112.5% or Gmail is rendering the HTML elements based on the desktop style
+                in the stylesheet above -->
+                <table align="center" style="width: 100%; max-width: 600px; margin: 0 auto; padding: 0; border-spacing: 0; border-collapse: collapse; font-family: 'Roboto', Helvetica, Arial, sans-serif; font-size: 16px; background-color: #ffffff; color: #374151;" role="presentation">
+
+                    <!-- section 1 -->
+                    <!-- view email in browser instead -->
+                    <tr>
+                        <!-- define padding for the row in td tag -->
+                        <td style="padding: 0;">
+                            <table width="100%" style="border-spacing: 0;" role="presentation">
+
+                                <!-- title -->
+                                <tr>
+                                    <td class="darkmode-transparent" style="padding: 20px; background-color: #ffffff;">
+                                        <p class="darkmode-background-text-color" style="margin: 0; font-size: 12px; color: #374151; line-height: 21.0px; text-align: center;">Trouble viewing this email? <a href="{{url}}" style="font-size: 12px; color: #007df0; text-decoration: underline;">View in browser instead.</a></p>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- end of view email in browser instead -->
+
+                    <!-- section 2 -->
+                    <!-- receipt -->
+                        {{receipt}}
+                    <!-- receipt -->
+
+                    <!-- section 3 -->
+                    <!-- items ordered title -->
+                    <tr>
+                        <!-- padding and add background-color: #ffffff; for Outlook -->
+                        <td class="darkmode-transparent" style="padding: 0px 30px 0px 30px; background-color: #ffffff;">
+                            <table width="100%" style="border-spacing: 0;" role="presentation">
+        
+                                <!-- row 1 -->
+                                <tr>
+                                    <!-- padding between content -->
+                                    <td style="padding: 0px 0px 2.5px 0px; text-align: left;">
+                                        <p class="darkmode-background-text-color" style="margin: 0; font-size: 20px; color: #374151;  line-height: 28.8px; text-decoration: none !important;"><b>Your order</b></p>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- items ordered title -->
+
+                    <!-- section 4 -->
+                    <!-- images and basic information for each order and no text on top -->
+                        {{sandwichRows}}
+                    <!-- images and basic information for each order and no text on top -->
+
+                    <!-- section 5 -->
+                    <!-- offer 1 -->
+                    <tr>
+                        <!-- padding and add background-color: #ffffff; for Outlook -->
+                        <td class="darkmode-transparent" style="padding: 20px 0 40px 0; background-color: #ffffff;">
+                            <table width="100%" style="border-spacing: 0;" role="presentation">
+
+                                <!-- row 1 -->
+                                <tr>
+                                    <!-- padding between content -->
+                                    <!-- remember, we had to use &#8203; inside the telephone number in order to remove the blue background in iOS 14 plus dark mode -->
+                                    <!-- remember, we had to use &#8203; inside the date in order to remove the underline in iOS 14 plus dark mode Yahoo -->
+                                    <!-- good green color : #eaf2ee99; #f5f7f6 but went with the grey instead and matched the footer -->
+                                    <!-- column wrapper and padding -->
+                                    <td class="darkmode-transparent" style="padding: 0; font-size: 0; background-color: #f3f4f6;">
+
+                                        <!-- column 1 -->
+                                        <table width="100%" style="border-spacing: 0;" role="presentation">
+
+                                            <!-- row 1 -->
+                                            <tr>
+                                                <!-- remember, &#39; works in Outlook and all other emails clients and use this instead of &apos; since &apos; does not work in Outlook -->
+                                                <!-- from stackoverflow : " That being said if you have to support legacy browsers or writing HTML emails for Outlook then you're best sticking to &#39; "-->
+                                                <!-- padding between content -->
+                                                <td class="darkmode-padding" style="padding: 20px 30px 20px 30px;">
+                                                    <p class="darkmode-background-text-color" style="margin: 0; font-size: 18px; color: #374151; line-height: 28.8px; text-decoration: none !important;">To show our appreciation for being part of the Sndwch family, we&#39;re offering <b>10% off all sandwiches</b> for the Thanksgiving holiday! The sale starts November 22 and ends December 1.</p>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- offer 1 -->
+
+                    <!-- section 6 -->
+                    <!-- background image and no text on top -->
+                    <tr>
+                        <!-- remember, our background image needs to be 600 by 899 -->
+                        <!-- remember, this image has a transparent background so that it works in both light and dark modes -->
+                        <td background="https://res.cloudinary.com/sandstone1/image/upload/v1775959603/sndwch-shop-v4_h4rpwi.png" width="600" height="235" style="background-position: center top; background-repeat: no-repeat;">
+
+                            <!-- remember, we have to put the anchor element inside the td tag -->
+                            <!-- this element will make it so that the user can click anywhere on the image and be directed to text the clinic to set up an appointment -->
+                            <!-- remember, for this to work we had to add style="display: block; width: 100%; max-width: 600px; height: 235px;" and display: block;
+                            gives the user the ability to click anywhere on the image and be directed to place a call or text and without width: 100%; max-width: 600px; or at least
+                            width : 100%; this will not work on mobile devices and what happens is the font becomes super small because the anchor element is going outside the
+                            bounds of the email -->
+                            <a href="tel:3855584042" target="_self" style="display: block; width: 100%; max-width: 600px; height: 235px;">
+
+                                <!-- remember #1 -->
+                                <!-- remember, vml is needed in order for background images to work in Outlook ( more specifically, Outlook from 2007 - 2013 ) -->
+                                <!-- remember, I decided not to add an anchor element inside the mso statement below since everything worked fine in my testing
+                                without the need to add the anchor element inside the mso statement below and in the best case it would have only helped Outlook from 2007 - 2013 -->
+                                <!-- from https://www.emailonacid.com/blog/article/email-development/conditional-css-code/ : " You can code your emails with Vector Markup Language
+                                (VML), but it only works in older versions of Outlook ( 2007-2013 ) " -->
+                                <!-- <a href="tel:+8019994860" target="_self" style="display: block; width: 100%; max-width: 450pt; height: 176.25pt;"></a> -->
+
+                                <!-- remember #2 -->
+                                <!-- remember, our image has a transparent background and in order for the tranparent background to work in desktop Outlook, we have to set the fill
+                                value to false or fill="false"; otherwise, desktop Outlook is adding a white background to the image in both light and dark modes -->
+
+                                <!--[if mso]>
+                                    <v:image xmlns:v="urn:schemas-microsoft-com:vml" fill="false" stroke="false" style="display: inline-block; width: 450pt; height: 176.25pt; border: 0; background-position: center top;" src="https://res.cloudinary.com/sandstone1/image/upload/v1758468219/email_phone_number_60_kgwdye.png" alt="Hero Image" />
+                                    <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="display: inline-block; position: absolute; width: 450pt; height: 176.25pt; border: 0;">
+                                    <v:fill opacity="0%" color="#000000" />
+                                    <v:textbox inset="0,0,0,0">
+                                <![endif]-->
+
+                                <!--[if mso]>
+                                    </v:textbox>
+                                    </v:rect>
+                                <![endif]-->
+
+                            </a>
+
+                        </td>
+                     </tr>
+                    <!-- background image and no text on top -->
+
+                    <!-- section 7 -->
+                    <!-- website link and follow us -->
+                    <tr>
+                        <!-- padding and add background-color: #ffffff; for Outlook -->
+                        <td class="darkmode-transparent" style="padding: 40px 30px 40px 30px; background-color: #ffffff;">
+                            <table width="100%" style="border-spacing: 0;" role="presentation">
+
+                                <!-- row 1 -->
+                                <tr>
+                                    <!-- padding between content -->
+                                    <td style="padding: 0 0 20px 0; text-align: left;">
+                                        <p class="darkmode-background-text-color" style="margin: 0; font-size: 18px; color: #374151; line-height: 28.8px; text-decoration: none !important;">Want to see what we&apos;re stacking today? Explore our full lineup of signature builds at <a href="https://sndwch-shop.netlify.app/" target="_blank" style="font-size: 18px; color: #007df0; text-decoration: underline;">sndwch-shop.netlify.app</a> or join the community on Instagram for a behind-the-scenes look at the shop</p>
+                                    </td>
+                                </tr>
+
+                                <!-- for social media icons, remember, if we have more than one icon we may want to change the ink color to something that is consistent across all icons
+                                and looks good in both light mode and dark mode,  such as —blue-77 ( #0096c0 ), and consider changing the ink color using clip studio paint
+                                and see the following article for design technique #1 : “ https://www.litmus.com/blog/the-ultimate-guide-to-dark-mode-for-email-marketers “ and
+                                and see the following video for how to change the ink color in clip studio paint : https://www.youtube.com/watch?v=C99ruC4CF7E&t=146s -->
+                                <!-- row 2 -->
+                                <tr>
+                                    <!-- padding between content -->
+                                    <td style="padding: 0 0 0 0; text-align: left;">
+                                        <!-- width and border required for Outlook -->
+                                        <!-- remember, border: 0; is for Outlook and make sure no borders appear around the image -->
+                                        <!-- remember, we can control size of the icon by changing the width value -->
+                                        <!-- remember, we have to put vertical-align: bottom; on the image in order to remove the extra spacing at the bottom of the image
+                                        and see the following for more details on this solution : " https://stackoverflow.com/questions/3197601/white-space-at-bottom-of-anchor-tag " -->
+                                        <a href="https://www.instagram.com/billcimikoskimd/" target="_blank" style="margin: 0 10px 0 0;"><img src="https://res.cloudinary.com/sandstone1/image/upload/v1743706876/instagram_icon_03_zehjyl.png" alt="Instagram" width="42" style="border: 0; vertical-align: bottom;"></a>
+                                        <!-- width and border required for Outlook -->
+                                        <!-- remember, border: 0; is for Outlook and make sure no borders appear around the image -->
+                                        <!-- remember, we can control size of the icon by changing the width value -->
+                                        <!-- remember, we have to put vertical-align: bottom; on the image in order to remove the extra spacing at the bottom of the image
+                                        and see the following for more details on this solution : " https://stackoverflow.com/questions/3197601/white-space-at-bottom-of-anchor-tag " -->
+                                        <!-- comment out for now - TikToc and see previous files for details -->
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- website link and follow us -->
+
+                    <!-- section 8 -->
+                    <!-- background image and no text on top -->
+                    <tr>
+                        <!-- remember, our background image needs to be 600 by 336 and use background-color as a fallback -->
+                        <td background="https://images.unsplash.com/photo-1558326567-98ae2405596b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=600&q=80&crop=entropy" width="600" height="600" style="background-position: center top; background-repeat: no-repeat;">
+
+                            <!-- remember, vml is needed in order for background images to work in Outlook -->
+
+                            <!--[if mso]>
+                                <v:image xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="display: inline-block; width: 450pt; height: 450pt; border: 0; background-position: center top;" src="https://res.cloudinary.com/sandstone1/image/upload/v1758339976/email_photo_bill_01_cfni2o.jpg" alt="Hero Image" />
+                                <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="display: inline-block; position: absolute; width: 450pt; height: 450pt; border: 0;">
+                                <v:fill opacity="0%" color="#000000" />
+                                <v:textbox inset="0,0,0,0">
+                            <![endif]-->
+
+                            <!--[if mso]>
+                                </v:textbox>
+                                </v:rect>
+                            <![endif]-->
+
+                        </td>
+                     </tr>
+                    <!-- end of background image and text on top -->
+
+                    <!-- section 9 -->
+                    <!-- footer -->
+                    <tr>
+                        <!-- padding and add background-color: #ffffff; for Outlook -->
+                        <!-- make padding top 40px to match the padding bottom 40px from section 3 -->
+                        <!-- remember, if we do not have an image then make padding top 0px -->
+                        <td class="darkmode-transparent" style="padding: 40px 0 20px 0; background-color: #ffffff;">
+                            <table width="100%" style="border-spacing: 0;" role="presentation">
+
+                                <tr>
+                                    <!-- column wrapper and padding -->
+                                    <td class="darkmode-transparent" style="padding: 0; font-size: 0; background-color: #f3f4f6;">
+
+                                        <!-- need this mso statement so the tables will stack next to each other in Outlook -->
+
+                                        <!--[if mso]>
+                                            <table width="100%" style="border-spacing: 0;" role="presentation">
+                                            <tr>
+                                            <td width="300" valign="top" style="padding: 0;">
+                                        <![endif]-->
+
+                                        <!-- column 1 -->
+                                        <table width="100%" style="display: inline-block; width: 100%; max-width: 300px; vertical-align: top; border-spacing: 0;" role="presentation">
+                                            <tr>
+                                                <!-- remember, Gmail will ignore the dark mode styling and use the footer-lightmode-padding-top-under600px class styles in both
+                                                lightmode and darkmode, which is fine since Gmail uses the shaded bordering in any case; whereas in dark mode, Apple Mail removes the
+                                                shaded bordering; therefore, we need to apply different styling for dark mode in Apple Mail when using shaded bordering -->
+                                                <!-- padding around content -->
+                                                <td class="footer-lightmode-padding-top-under600px footer-darkmode-padding-top-under600px footer-darkmode-padding-over600px" style="padding: 20px 30px 20px 30px;">
+
+                                                    <!-- content -->
+                                                    <table style="border-spacing: 0; text-align: left;" role="presentation">
+                                                        <!-- row 1 -->
+                                                        <tr>
+                                                            <!-- padding between content -->
+                                                            <td style="padding: 0 0 4px 0; text-align: left;">
+                                                                <h2 class="darkmode-background-text-color" style="margin: 0; font-size: 15px; font-weight: bold; color: #1F2937;">Sndwch Shop</h2>
+                                                            </td>
+                                                        </tr>
+                                                        <!-- row 2 -->
+                                                        <tr>
+                                                            <!-- padding between content -->
+                                                            <td style="padding: 0 0 0 0; line-height: 21px; text-align: left;">
+                                                                <p class="darkmode-background-text-color" style="margin: 0; font-size: 14px; color: #374151; line-height: 21.0px; text-decoration: none !important;">10&#8203;800 South 750 West</p>
+                                                            </td>
+                                                        </tr>
+                                                        <!-- row 3 -->
+                                                        <tr>
+                                                            <!-- padding between content -->
+                                                            <td style="padding: 0 0 0 0; line-height: 21px; text-align: left;">
+                                                                <p class="darkmode-background-text-color" style="margin: 0; font-size: 14px; color: #374151; line-height: 21.0px; text-decoration: none !important;">S&#8203;uite 550</p>
+                                                            </td>
+                                                        </tr>
+                                                        <!-- row 4 -->
+                                                        <tr>
+                                                            <!-- padding between content -->
+                                                            <td style="padding: 0 0 0 0; line-height: 21px; text-align: left;">
+                                                                <p class="darkmode-background-text-color" style="margin: 0; font-size: 14px; color: #374151; line-height: 21.0px; text-decoration: none !important;">S&#8203;andy, UT 84070</p>
+                                                            </td>
+                                                        </tr>
+                                                        <!-- row 5 -->
+                                                        <tr>
+                                                            <!-- padding between content -->
+                                                            <td style="padding: 0 0 0 0; line-height: 21px; text-align: left;">
+                                                                <p class="darkmode-background-text-color" style="margin: 0; font-size: 14px; color: #374151; line-height: 21.0px; text-decoration: none !important;">U&#8203;nited States of America</p>
+                                                            </td>
+                                                        </tr>
+
+                                                    </table>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <!--[if mso]>
+                                            </td><td width="300" valign="top" style="padding: 0;">
+                                        <![endif]-->
+
+                                        <!-- column 2 -->
+                                        <table width="100%" style="display: inline-block; width: 100%; max-width: 300px; vertical-align: top; border-spacing: 0;" role="presentation">
+                                            <tr>
+                                                <!-- remember, Gmail will ignore the dark mode styling and use the footer-lightmode-padding-top-under600px class styles in both
+                                                lightmode and darkmode, which is fine since Gmail uses the shaded bordering in any case; whereas in dark mode, Apple Mail removes the
+                                                shaded bordering; therefore, we need to apply different styling for dark mode in Apple Mail when using shaded bordering -->
+                                                <!-- padding around content -->
+                                                <td class="footer-lightmode-padding-bottom-under600px footer-darkmode-padding-bottom-under600px footer-darkmode-padding-over600px" style="padding: 20px 30px 20px 30px;">
+
+                                                    <!-- content -->
+                                                    <table style="border-spacing: 0; text-align: left;" role="presentation">
+                                                         <!-- row 1 -->
+                                                         <tr>
+                                                            <!-- padding between content -->
+                                                            <td style="padding: 0 0 15px 0;">
+                                                                <p class="darkmode-background-text-color" style="margin: 0; font-size: 14px; color: #374151; line-height: 21.0px;">You received this email because you signed up on our website or made a purchase from us.</p>
+                                                            </td>
+                                                        </tr>
+
+                                                        <!-- the unsubscribe link is not needed for transactional emails and Postmark recommends keeping transactional streams "clean" -->
+                                                        <!-- row 2 -->
+                                                        <!--
+                                                            <tr>
+                                                                // padding between content
+                                                                <td style="padding: 0 0 0 0;">
+                                                                    <p style="margin: 0; font-size: 14px; line-height: 21.0px;">
+                                                                        <a href="{$unsubscribe}" style="font-size: 14px; color: #007df0; text-decoration: underline;">Unsubscribe</a>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                        -->
+                                                    </table>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <!--[if mso]>
+                                            </td>
+                                            </tr>
+                                            </table>
+                                        <![endif]-->
+
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- end of footer -->
+
+                </table>
+
+                <!--[if mso]>
+                    </td>
+                    </tr>
+                    </table>
+                <![endif]-->
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>

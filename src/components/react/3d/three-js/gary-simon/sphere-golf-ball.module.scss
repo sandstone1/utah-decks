@@ -1,0 +1,249 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../../styles/_mixins.scss' as *;
+@use '../../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+// ==============================
+// keyframes
+// ==============================
+
+// ==============================
+// build the animation
+// ==============================
+
+// ==============================
+// create a hand move gesture that goes back and forth so that users know they
+// can rotate the 3D sphere
+// ==============================
+
+@keyframes hand-move {
+
+    0% {
+        transform : translateX( -6.0rem ); // mathmatically this does not make sense but
+        // it looks good
+
+        // and remember, we starting at -3.0rem since by the time we actually see the icon
+        // it has already moved to the right so this looks better
+
+        // and remember, we tried to delay the animation and this resulted in a bad
+        // user experience
+    }
+
+    5% {
+        transform : translateX( 2.0rem );
+    }
+
+    15% {
+        transform : translateX( -6.0rem ); // mathmatically this does not make sense but
+        // it looks good
+    }
+
+    25% {
+        transform : translateX( 2.0rem );
+    }
+
+    35% {
+        opacity   : 1;
+        transform : translateX( -6.0rem ); // mathmatically this does not make sense but
+        // it looks good
+    }
+
+    45% {
+        opacity   : 1;
+        transform : translateX( 2.0rem );
+    }
+
+    55% {
+        opacity   : 1;
+        transform : translateX( -6.0rem );
+    }
+
+    65% {
+        opacity   : 1;
+        transform : translateX( 2.0rem );
+    }
+
+    75% {
+        opacity   : 1;
+        transform : translateX( -6.0rem );
+    }
+
+    85% {
+        opacity   : 1;
+        transform : translateX( 2.0rem );
+    }
+
+    95% {
+        opacity   : 1;
+        transform : translateX( -6.0rem );
+    }
+
+    100% {
+        opacity   : 0;
+        transform : translateX( 0 );
+    }
+
+} // end of hand-move
+
+
+
+
+
+
+// ==============================
+// sphere golf ball container
+// ==============================
+
+.sphereGolfBallContainer {
+
+    // parent
+    grid-area   : div1;
+    grid-column : 1 / -1; // needed in order to fill the parent container\
+
+    // children
+    display : grid;
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // remember, there are 2 things we want to accomplish :
+    // 1 - allow the wrapper div to position against the parent div and thereby
+    // shrink as needed
+    // 2 - we want to center the wrapper div ( see below for details )
+    // ==============================
+
+    // ==============================
+    // " grid-template-columns " is needed so that the wrapper div ( i.e. child ) can position
+    // against the parent ( i.e. this div ) by using " grid-column : 2 / 22; " and this allows
+    // the background declared below to span across the entire container or the entire site and
+    // this also allows the wrapper div to dynamically contain its children within the
+    // " grid-column : 2 / 22; " context so that as the screen size shrinks the wrapper div
+    // container and all its children containers or divs will automatically shrink as well
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    // justify-items : center; // this is needed to center the h1 element and the sphere
+    // on smaller screens
+
+    padding  : 12.0rem 0 12.0rem 0; // add some spacing to the top and bottom
+
+    // remember, " grid-column : 1 / -1; " allows the background image to span the entire screen
+    // background-image : url( /images/lama_bg_01.jpeg );
+
+    // remember, " grid-column : 1 / -1; " allows the background image to span the entire screen
+    background-image : url( /images/lama_bg_01.jpeg );
+    // background : var( --black );
+    // background : radial-gradient(#363508, #000000);
+    // background : radial-gradient( rgba( 33, 27, 129, 1 ), rgba( 16, 24, 32, 1 ) );
+    // background : radial-gradient( #2f2890, var( --black ) );
+    // background : var( --background-lg-39 ); // good one
+    background : var( --background-lg-40 );
+
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 1 / -1; // position against the parent and remember, in
+        // threejs this is needed to center the canvas
+
+        position : relative; // needed for hand move font icon
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > h1
+        // ==============================
+
+        > h1 {
+
+            @include h1-light-title;
+
+            margin     : 0 0 0 0;
+            padding    : 0 0 0 0;
+            text-align : center;
+
+            @media all and ( max-width : $bp-620 ) {
+
+                padding    : 0 0 2.25rem 0; // needed for smaller screens to give some
+                // spacing between the h1 element and the 3d object
+        
+            } // end of container > div1 > h1 > bp-620
+
+        } // container > div1 > h2
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > div 1
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            display       : grid; // this is needed to center the canvas
+            justify-items : center; // this is needed to center the canvas
+
+        } // end of container > div1 > div1
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > div 2 ( hand move font icon wrapper div )
+        // ==============================
+
+        > div:nth-child( 3 ) {
+
+            position : absolute;
+            top      : 50%;
+            left     : 50%;
+
+            // forwards stop the animation after 3 seconds and I start the animation inside
+            // the three.js function using JavaScript
+            animation            : hand-move 5.0s linear forwards;
+            animation-play-state : paused;
+
+            @media all and ( max-width : $bp-1440 ) {
+
+                // display : none;
+
+            } // end of container > div1 > div2 > bp-1280
+            
+        } // end of container > div1 > div2
+
+    } // end of container > div1
+
+} // end of container
+
+

@@ -1,0 +1,249 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+// ==============================
+// contact video container
+// ==============================
+
+.contactVideoContainer {
+
+    // ==============================
+    // div 21 in the index.js file
+    // ==============================
+
+    // parent
+    grid-area   : div21;
+    grid-column : 1 / -1; // needed in order to fill the parent container\
+
+    position : relative; // needed for div1::after and div2
+
+    // ==============================
+    // container > div 1 > video
+    // ==============================
+
+    > .contactVideoContainerDiv1 > video {
+
+        // ==============================
+        // remember, here we just need the video or poster image to fill the
+        // parent container
+        // ==============================
+
+        display : block; // this removed the extra spacing at the bottom
+        width   : 100%; // needed for the video to fill the parent container
+        height  : 100rem; // give the div1 > video a specific height and this looks
+        // better than auto
+
+        object-fit : cover; // this will cause the video to cover the entire container
+
+        // ==============================
+        // give the source or video a height to prevent page jumping
+        // ==============================
+
+        > source {
+
+            display : block;
+            height  : 100rem; // give the source a specific height
+
+        } // end of container > div1 > video > source
+
+    } // end of container > div1 > video
+
+    // ==============================
+    // container > div 1 ::after
+    // ==============================
+
+    // ==============================
+    // purpose : place a blue overlay over the video by using ::after and
+    // " position : absolute "
+    // ==============================
+
+    // instead of doing a separate div, we can use the pseudo element ::after to achieve
+    // the  same effect
+    > .contactVideoContainerDiv1::after {
+
+        content  : '';
+        position : absolute;
+        top      : 0;
+        left     : 0;
+        right    : 0;
+        bottom   : 0;
+
+        background-color : var( --blue-265 ); // visual preference
+        mix-blend-mode   : multiply;
+        opacity          : 0.75; // visual preference
+
+    } // end of container > div1::after
+
+    // ==============================
+    // container > div 2
+    // ==============================
+
+    > .contactVideoContainerDiv2 {
+
+        // ==============================
+        // remember, div 2's position is determined by #1 - #4 below
+        // ==============================
+
+        position  : absolute; // #1 - this will center div2 on top of div1
+        top       : 50%;      // #2 - this will center div2 on top of div1
+        left      : 50%;      // #3 - this will center div2 on top of div1
+
+        // ==============================
+        // remember, with this video layout, we need to define the width of div 2
+        // ==============================
+
+        // ==============================
+        // remember,
+        // 1 - with "  width : min( 60.0rem, calc( 100vw - 12rem ) ); " the div 2 width
+        // will be the smaller of 60.0rem or calc( 100vw - 12rem ) and the calc( 100vw - 12rem )
+        // width matches exactly the " grid-column : 2 / 22; " width so div 2 will stay within
+        // the bounds of 2 / 22 and shrink automatically as needed, which is what we want
+        // ==============================
+
+        width     : min( 60.0rem, calc( 100vw - 12rem ) ); // browser will select the smaller of 60.0rem or calc( 100vw - 12rem )
+        padding   : 8rem 10rem; // visual preference
+
+        transform : translate( -50%, -50% ); // #4 - this will center div2 on top of div1
+
+        transition : background-color 0.3s ease-out; // needed for the hover of
+        // the glassmorphism card effect
+
+        // ==============================
+        // glassmorphism card effect for the content box
+        // that is centered inside the video container
+        // ==============================
+
+        // ==============================
+        // option #1
+        // option #2 used the ::after pseudo class and is commented out below
+        // ==============================
+
+        // ==============================
+        // remember, this code came from the " https://ui.glass/generator/ " website
+        // ==============================
+
+        border        : 1px solid rgba( 209, 213, 219, 0.3 );
+        border-radius : 6px;
+
+        background-color : rgba( 255, 255, 255, 0.60 );
+
+        backdrop-filter         : blur( 16px ) saturate( 180% );
+        -webkit-backdrop-filter : blur( 16px ) saturate( 180% ); // have to use for safari
+
+        // ==============================
+        // end of glassmorphism card effect
+        // ==============================
+
+        &:hover {
+
+            background-color : rgba( 255, 255, 255, 0.9 );
+
+        } // end of container > div2 > &:hover
+
+        @media all and ( max-width : $bp-620 ) {
+
+            padding : 6.0rem 6.0rem; // visual preference
+
+        } // end of container > div2 > bp-620
+
+        @media all and ( max-width : $bp-480 ) {
+
+            padding : 5.0rem 5.0rem; // visual preference
+
+        } // end of container > div2 > bp-480
+
+        @media all and ( max-width : $bp-375 ) {
+
+            padding : 4.0rem 4.0rem; // visual preference
+
+        } // end of container > div2 > bp-375
+
+        h2 {
+
+            @include h2-dark-title;
+
+            margin : 0 0 2.5rem 0; // visual preference
+
+            text-align : center;
+
+            @media all and ( max-width : $bp-620 ) {
+
+                text-align : left; // visual preference
+    
+            } // end of container > div2 > bp-620
+
+        } // end of container > div2 > h2
+
+        > p {
+
+            @include text-large-dark;
+
+            margin : 0 0 4.0rem 0; // visual preference
+
+        } // end of container > div2 > p
+
+    } // end of container > div2 > div1
+
+/*
+    // ==============================
+    // option #1 is used above
+    // option #2 is used below
+    // ==============================
+
+    // ==============================
+    // div 2 ::after
+    // ==============================
+
+    // ==============================
+    // purpose : place a white background behind the div2 text by using ::after and
+    // " position : absolute " and " z-index : -1 "
+    // ==============================
+
+    // instead of doing a separate div, we can use the pseudo element ::after to achieve the
+    // same effect
+    > .contactVideoContainerDiv2::after {
+
+        content  : '';
+        position : absolute;
+        top      : 0;
+        right    : 0;
+        left     : 0;
+        bottom   : 0;
+        z-index  : -1; // put this overlay behind the h2 and p elements in the stacking context
+
+        border-radius : 6px;
+
+        background-color : var( --white );
+        opacity          : 0.9;
+
+        transition : opacity 0.3s ease-out;
+
+        // this produces a message shape but I didn't like it
+        // clip-path : polygon( 0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75% );
+
+    } // end of container > div2::after
+
+    // ==============================
+    // div 2 :hover::after
+    // or div 2 on hover
+    // ==============================
+
+    > .contactVideoContainerDiv2:hover::after {
+
+        opacity : 1;
+
+    } // end of container > div2:hover::after
+*/
+
+} // end of container
+

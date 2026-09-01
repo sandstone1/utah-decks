@@ -1,0 +1,554 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+// ==============================
+// keyframes
+// ==============================
+
+// ==============================
+// purpose : rotate the globe font icon 360 degrees and continue to spin the globe infinitely
+// ==============================
+
+@keyframes rotate360 {
+
+    0% {
+
+        transform : rotate3d( 0, 0, 0 );
+
+    }
+
+    100% {
+        
+        transform : rotate3d( 0, 1, 0, 360deg );
+
+    }
+
+} // end of rotate360
+
+
+
+
+
+
+
+
+
+// ==============================
+// pricing container
+// ==============================
+
+.pricingContainer {
+
+    // ==============================
+    // div 4 in the index.js file
+    // ==============================
+
+    // parent
+    grid-area   : div4;
+    grid-column : 1 / -1; // position against the parent
+
+    // children
+    display               : grid;
+    grid-template-rows    : repeat( 6, auto );
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // remember, there are 2 things we want to accomplish :
+    // 1 - allow the wrapper div to position against the parent div and thereby
+    // shrink as needed
+    // 2 - we want to center the wrapper div ( see below for details )
+    // ==============================
+
+    // ==============================
+    // " grid-template-columns " is needed so that the wrapper div ( i.e. child ) can position
+    // against the parent ( i.e. this div ) by using " grid-column : 2 / 22; " and this allows
+    // the background declared below to span across the entire container or the entire site and
+    // this also allows the wrapper div to dynamically contain its children within the
+    // " grid-column : 2 / 22; " context so that as the screen size shrinks the wrapper div
+    // container and all its children containers or divs will automatically shrink as well
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    justify-items         : center;
+
+    // ==============================
+    // remember, I had to add " position : relative; " for the absolutely positioned
+    // svg shape div below to work
+    // ==============================
+
+    position : relative;
+    padding  : 12.0rem 0 12.0rem 0;
+
+    // background : var( --gray-210 );
+    background : var( --gray-190 );
+    // background : var( --yellow-30 );
+    // background : var( --green-22 );
+    // background : var( --green-10 );
+    // background : var( --pink-20 );
+    // background : var( --blue-59 );
+    background : var( --gray-230 );
+
+/*
+    // ==============================
+    // set background gradient on the text and then animate the gradient
+    // ==============================
+
+    // ==============================
+    // please see the following article for details :
+    // " https://www.sitepoint.com/css-animate-text-gradients-patterns/?ref=web-design-weekly.com "
+    // ==============================
+
+    background-image : linear-gradient( 
+        45deg,
+        var( --blue-100 ),
+        var( --blue-800 ),
+        var( --blue-100 ),
+        var( --purple-150 ),
+        var( --blue-100 ),
+        var( --blue-800 ),
+        var( --blue-100 )
+    );
+
+    // need background size for background-image to work
+    background-size : 300% 100%;
+
+    // animate the text
+    animation-name            : textGradientAnimation;
+    animation-duration        : 10s;
+    animation-timing-function : linear;
+    animation-delay           : 0;
+    animation-iteration-count : infinite;
+    animation-direction       : alternate;
+
+    // ==============================
+    // end of set background gradient on the text and then animate the gradient
+    // ==============================
+*/
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent
+
+        // ==============================
+        // #1 - have to add to parent in order for the <AnimatingGradientBlur /> to work
+        //
+        // " z-index  : 0; " will allow the negative z-index in the animating-gradient-blur
+        // file to work
+        // ==============================
+    
+        z-index  : 0;
+
+        // ==============================
+        // remember, 
+        // 1 - with " grid-column : 2 / 22; " and " width : min( 80.0rem, 100% ); ",
+        // the children content will stay within the bounds of 2 / 22 and shrink
+        // as needed
+        // 2 - and the children content will be the smaller of 80.0rem or 100%
+        // ==============================
+
+        width  : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+        // margin : 0 auto;
+
+        // ==============================
+        // container > div 1 > h2
+        // ==============================
+
+        > h2 {
+
+            @include h2-dark-title;
+
+            margin : 0 0 4.0rem 0;
+
+            text-align : left;
+
+        } // end of container > div1 > h2
+
+        // ==============================
+        // container > div 1 > div 1 ( wrapper div )
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            // children
+            display               : grid;
+            grid-template-rows    : repeat( 4, auto );
+            grid-template-columns : repeat( 3, auto );
+            align-items           : center;
+            grid-gap              : 3.0rem 3.0rem; // create some spacing between the cards
+            grid-template-areas   : "span1 span2 p1"
+                                    "h61   h61   h61"
+                                    "ul    ul    ul"
+                                    "div   div   div";
+
+            // ==============================
+            // #2 - have to add to parent in order for the <AnimatingGradientBlur /> to work
+            //
+            // " position : relative; " will allow the absolutely positioned pseudo elements in the
+            // animating-gradient-blur file to attach themselves to this div
+            // ==============================
+
+            position : relative;
+
+            // ==============================
+            // create a white background for a card effect with the following 3 properties
+            // ==============================
+
+            padding : 3.0rem; // property #1
+
+            border-radius : 6px; // property #2
+
+            background : var( --white ); // property #3
+    
+            // ==============================
+            // end of white background
+            // ==============================
+
+            @media all and ( max-width : $bp-480 ) {
+
+                grid-template-rows  : repeat( 6, auto );
+                grid-template-areas : "span1 span1 span1"
+                                      "span2 span2 span2"
+                                      "p1    p1    p1"
+                                      "h61   h61   h61"
+                                      "ul    ul    ul"
+                                      "div   div   div";
+
+            } // end of container > div1 > hr > bp-480
+
+            @media all and ( max-width : $bp-480 ) {
+
+                // ==============================
+                // create a white background for a card effect with the following 3 properties
+                // ==============================
+
+                padding : 0; // property #1
+
+                border        : none; // property #4
+                border-radius : 0; // property #2
+
+                background : none; // property #3
+
+                // ==============================
+                // end of white background
+                // ==============================
+
+            } // end of container > div1 > hr > bp-480
+
+/*
+            // ==============================
+            // container > div 1 > div 1 > span:nth-child( 1 ) ( font icon )
+            // ==============================
+
+            > span:nth-child( 1 ) {
+
+                // parent
+                grid-area : span1;
+
+                color : var( --blue-100 ); // visual preference
+
+                // ==============================
+                // amination to rotate the globe font icon ( see the keyframe above )
+                // ==============================
+
+                animation : rotate360 6.0s linear infinite;
+
+                // ==============================
+                // end of amination to rotate the globe font icon
+                // ==============================
+
+                @media all and ( max-width : $bp-480 ) {
+
+                    justify-self : center;
+    
+                } // end of container > div1 > div1 > span1 > bp-480
+
+            } // end of container > div1 > div1 > span1
+*/
+
+            // ==============================
+            // container > div 1 > div 1 > span:nth-child( 1 ) ( 3d sphere )
+            // ==============================
+
+            > span:nth-child( 1 ) {
+
+                // parent
+                grid-area : span1;
+
+                display       : grid; // needed to center the sphere and remember to define
+                // the width in the sphere.module.scss file
+                justify-items : center; // needed to center the sphere and remember to define
+                // the width in the sphere.module.scss file
+
+            } // end of container > div1 > div1 > span1
+
+            // ==============================
+            // container > div 1 > div 1 > span:nth-child( 2 ) ( border )
+            // ==============================
+
+            > span:nth-child( 2 ) {
+
+                // parent
+                grid-area : span2;
+
+                width  : 1px;
+                height : 2.5rem;
+
+                background-color : var( --gray-765 ); // visual preference
+
+                @media all and ( max-width : $bp-480 ) {
+
+                    justify-self : center;
+
+                    width  : 48px;
+                    height : 1px;
+    
+                    background-color : var( --gray-375 ); // visual preference
+
+                } // end of container > div1 > div1 > span2 > bp-480
+
+            } // end of container > div1 > div1 > span2
+
+            // ==============================
+            // container > div 1 > div 1 > p:nth-child( 3 )
+            // ==============================
+
+            > p:nth-child( 3 ) {
+
+                // parent
+                grid-area : p1;
+
+                @include text-large-dark;
+
+                margin : 0;
+
+                color : var( --blue-100 );
+
+            } // end of container > div1 > div1 > p:nth-child( 3 )
+
+            // ==============================
+            // container > div 1 > div 1 > h6:nth-child( 4 )
+            // ==============================
+
+            > h6:nth-child( 4 ) {
+
+                // parent
+                grid-area : h61;
+
+                @include h6-dark;
+
+                margin : 0;
+
+            } // end of container > div1 > div1 > h6:nth-child( 4 )
+
+            // ==============================
+            // container > div 1 > div 1 > ul ( the list )
+            // ==============================
+
+            > ul {
+
+                // parent
+                grid-area : ul;
+
+                padding : 0 0 0 1.6rem;
+
+                list-style-type : disc; // override the global stylesheet in this case
+                // list-style-position: outside; // make sure the disc markers are located
+                // the content box
+
+                > li {
+
+                    @include text-base-dark;
+
+                    margin  : 0 0 0 0; // cancel default margin for text-base-dark
+                    padding : 0 0 1.2rem 0.6rem;
+
+                    > ul {
+    
+                        padding : 1.2rem 0 0 1.6rem;
+
+                        list-style-type : circle; // override the global stylesheet in this case
+                        // list-style-position: outside; // make sure the disc markers are located
+                        // the content box
+    
+                        > li {
+    
+                            @include text-small-dark;
+        
+                            margin  : 0 0 0 0; // cancel default margin for text-base-dark
+                            padding : 0 0 1.2rem 0.6rem;
+
+                            font-size : 1.75rem;
+        
+                        } // end of container > div1 > div1 > ul > li > ul > li
+    
+                        > li:last-child {
+
+                            padding : 0 0 0 0.6rem;
+        
+                        } // end of container > div1 > div1 > ul > li > ul > li:last-child
+
+                    } // end of container > div1 > div1 > ul > li > ul
+
+                } // end of container > div1 > div1 > ul > li
+
+                > li:last-child {
+
+                    padding : 0 0 0 0.6rem;
+
+                } // end of container > div1 > div1 > ul > li:last-child
+
+            } // end of container > div1 > div1 > ul
+
+            // ==============================
+            // container > div 1 > div 1 > div 1
+            // ==============================
+
+            > div:nth-child( 6 ) {
+
+                // parent
+                grid-area : div;
+
+                // ==============================
+                // create a white background for a card effect with the following 3 properties
+                // ==============================
+
+                padding : 3.0rem; // property #1
+
+                border        : 0.75px solid var( --gray-340 ); // property #4
+                border-radius : 6px; // property #2
+
+                background : var( --gray-325 ); // property #3
+
+                // ==============================
+                // end of white background
+                // ==============================
+
+                > h6 {
+
+                    @include h6-dark;
+
+                    margin : 0 0 2.0rem 0;
+
+                    font-weight : 700;
+
+                } // end of container > div1 > div1 > div1 > h6
+
+                // ==============================
+                // container > div 1 > div 1 > div 1 > ul ( the technologies used list )
+                // ==============================
+
+                > ul {
+
+                    @media all and ( max-width : $bp-620 ) {
+
+                        width : 30.0rem; // make a line break so we move the mongodb, threejs
+                        // and sass icons to the second line so that the spacing between the
+                        // icons works
+    
+                    } // end of container > div1 > div1 > div1 > ul > svg:nth-child( 5 ) > bp-620
+
+                    @media all and ( max-width : $bp-480 ) {
+
+                        width : 100%; // change back to 100% and make responsive
+    
+                    } // end of container > div1 > div1 > div1 > ul > svg:nth-child( 5 ) > bp-480
+
+                    > svg {
+
+                        margin : 0 2.0rem 0 0;
+
+                    } // end of container > div1 > div1 > div1 > ul > svg
+
+                    > svg:nth-child( 5 ) {
+
+                        margin : 0 1.3rem 0 0; // compensate for odd padding on the github icon
+
+                        @media all and ( max-width : $bp-620 ) {
+
+                            margin : 0 2.0rem 0 0; // when the icons move to 2 lines then
+                            // even out the spacing by putting margin right back to 2.0rem
+        
+                        } // end of container > div1 > div1 > div1 > ul > svg:nth-child( 5 ) > bp-620
+
+                    } // end of container > div1 > div1 > div1 > ul > svg:nth-child( 5 )
+
+                    > svg:nth-child( 6 ) {
+
+                        margin : 0 1.0rem 0 0; // compensate for odd padding on the mongodb icon
+
+                        @media all and ( max-width : $bp-620 ) {
+
+                            margin : 0 2.0rem 0 0; // when the icons move to 2 lines then
+                            // even out the spacing by putting margin right back to 2.0rem
+        
+                        } // end of container > div1 > div1 > div1 > ul > svg:nth-child( 6 ) > bp-620
+
+                    } // end of container > div1 > div1 > div1 > ul > svg:nth-child( 6 )
+
+                    > svg:nth-child( 7 ) {
+
+                        margin : 0 1.7rem 0 0; // compensate for odd padding on the threejs icon
+
+                        @media all and ( max-width : $bp-620 ) {
+
+                            margin : 0 2.0rem 0 0; // when the icons move to 2 lines then
+                            // even out the spacing by putting margin right back to 2.0rem
+        
+                        } // end of container > div1 > div1 > div1 > ul > svg:nth-child( 7 ) > bp-620
+
+                    } // end of container > div1 > div1 > div1 > ul > svg:nth-child( 7 )
+
+                } // end of container > div1 > div1 > div1 > ul
+
+            } // end of container > div1 > div1 > div1
+
+        } // end of container > div1 > div1
+
+    } // end of container > div1
+
+} // end of container
+

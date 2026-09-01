@@ -1,0 +1,920 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+// ==============================
+// keyframes
+// ==============================
+
+// ==============================
+// purpose : rotate the globe font icon 360 degrees and continue to spin the globe infinitely
+// ==============================
+
+@keyframes rotate360 {
+
+    0% {
+
+        transform : rotate3d( 0, 0, 0, 0 );
+
+    }
+
+    100% {
+        
+        transform : rotate3d( 0, 1, 0, 360deg );
+
+    }
+
+} // end of rotate360
+
+
+
+
+
+
+
+// ==============================
+// pricing container
+// ==============================
+
+.pricingContainer {
+
+    // ==============================
+    // div 10 in the index.js file
+    // ==============================
+
+    // parent
+    grid-area   : div10;
+    grid-column : 1 / -1; // position against the parent
+
+    // children
+    display               : grid;
+    grid-template-rows    : auto;
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // remember, there are 2 things we want to accomplish :
+    // 1 - allow the wrapper div to position against the parent div and thereby
+    // shrink as needed
+    // 2 - we want to center the wrapper div ( see below for details )
+    // ==============================
+
+    // ==============================
+    // " grid-template-columns " is needed so that the wrapper div ( i.e. child ) can position
+    // against the parent ( i.e. this div ) by using " grid-column : 2 / 22; " and this allows
+    // the background declared below to span across the entire container or the entire site and
+    // this also allows the wrapper div to dynamically contain its children within the
+    // " grid-column : 2 / 22; " context so that as the screen size shrinks the wrapper div
+    // container and all its children containers or divs will automatically shrink as well
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    justify-items         : center;
+
+    // ==============================
+    // remember, I had to add " position : relative; " for the absolutely positioned
+    // svg shape div below to work
+    // ==============================
+
+    // ==============================
+    // remember, I had to make 5 changes to this file in order for the pseudo elements in the
+    // animating-gradient-background.nodule.scss file to work
+    //
+    // 1 - I had to add " position : relative; " to the parent in order for the
+    // absolutely position pseudo elements in the animating-gradient-background.module.scss file
+    // to work
+    // 2 - I had to add a dark background to the parent or var( --blue-800 )
+    // 3 - I had to add a z-index of 1 to the card or sibling in order for the white card to sit
+    // above the radial gradients
+    // 4 - I had to change the h1 in the sibling below from h1-dark to h1-light
+    // 5 - I had to change the background color of the svg shape in the following container div
+    // ==============================
+
+    position : relative;
+    z-index  : 3;
+    padding  : 12.0rem 0 12.0rem 0;
+
+    background : var( --blue-800 );
+    // background : var( --blue-850 );
+    // background : var( --black );
+    // background : var( --gray-872 );
+    // background : var( --blue-850 );
+    // background : var( --blue-83 );
+    // background : var( --blue-84 );
+    // background : var( --blue-85-2 );
+
+    background-size       : cover;
+    background-blend-mode : multiply;
+    background-color      : var( --blue-85-2 );
+
+    // ==============================
+    // fallback jpeg image
+    // ==============================
+
+    background-image : linear-gradient( to bottom, rgba( 13, 58, 216, 0.0 ) 0%,  rgba( 13, 58, 216, 1.0 ) 25%, rgba( 0, 30, 75, 1.0 ) 100% ), url( /images/mj_boardwalk_01_2560.jpg );
+    // background-position   : center; // in this case, it looked better not having
+    // " background-position : center "
+/*
+    @media all and ( max-width : $bp-1920 ) {
+
+        background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_1920.jpeg );
+        background-position : 50% 50%;
+
+    } // end of bp-1920
+
+    @media all and ( max-width : $bp-1536 ) {
+
+        background-image : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_1536.jpeg );
+
+    } // end of bp-1536
+
+    @media all and ( max-width : $bp-1440 ) {
+
+        background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_1440.jpeg );
+        background-position : 50% 85%;
+
+    } // end of bp-1440
+
+*/
+    @media all and ( max-width : $bp-1376 ) {
+        
+        background-image    : linear-gradient( to bottom, rgba( 13, 58, 216, 0.0 ) 0%,  rgba( 13, 58, 216, 1.0 ) 25%, rgba( 0, 30, 75, 1.0 ) 100% ), url( /images/mj_boardwalk_01_1376.jpg );
+        background-position : 50% 90%;
+
+    } // end of bp-1376
+/*
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        align-content : start; // when the content goes vertical, change align-content
+        // to start and add some top padding for better spacing between the header and
+        // the hero home page container
+
+        // ==============================
+        // important!!
+        // ==============================
+
+        // ==============================
+        // remember, to make the " height : auto; " and bottom padding of 12.0rem
+        // work properly we had to comment out " bottom : 0 " above; otherwise, there
+        // was no way to provide any spacing at the bottom of the container unless we
+        // added a specific height to the container and then modified the height at
+        // different breakpoints
+        // ==============================
+
+        // ==============================
+        // even then, I found that iphone rendered the spacing different ( i.e. incorrectly )
+        // than androids and desktop
+        // ==============================
+
+        height : auto; // change to " height : auto " once the content container
+        // expands beyond a height of 100vh and that way all mobile devices will render
+        // the container spacing in the same way
+
+        padding : 160px 0 12.0rem 0; // add some bottom padding in conjunction
+        // with " height : auto " 
+
+        // this is an cropped image
+        background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_1280.jpeg );
+        background-position : 80% 0%; // remember, once the content goes vertical then only x value matters
+
+    } // end of bp-1280
+
+    @media all and ( max-width : $bp-1032 ) {
+
+        // this is an cropped image
+        background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_1032.jpeg );
+        background-position : 90% 0%;
+
+    } // end of bp-1032
+
+    @media all and ( max-width : $bp-920 ) {
+
+        // this is an cropped image
+        background-image : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_920.jpeg );
+
+    } // end of bp-920
+
+    @media all and ( max-width : $bp-768 ) {
+
+        // this is an cropped image
+        background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_768.jpeg );
+        background-position : 70% 0%;
+
+    } // end of bp-768
+
+
+    @media all and ( max-width : $bp-620 ) {
+
+        // this is an cropped image
+        background-image : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_620.jpeg );
+
+    } // end of bp-620
+*/
+    @media all and ( max-width : $bp-480 ) {
+
+        // this is an cropped image
+        background-image    : linear-gradient( to bottom, rgba( 13, 58, 216, 0.0 ) 0%,  rgba( 13, 58, 216, 1.0 ) 25%, rgba( 0, 30, 75, 1.0 ) 100% ), url( /images/mj_boardwalk_01_480.jpg );
+        background-position : 95% 0%;
+
+    } // end of bp-480
+/*
+    @media all and ( max-width : $bp-480 ) {
+
+        // this is an cropped image
+        background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_480.jpeg );
+        background-position : 95% 0%;
+
+    } // end of bp-480
+
+    @media all and ( max-width : $bp-375 ) {
+
+        // this is an cropped image
+        background-image : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_375.jpeg );
+
+    } // end of bp-375
+*/
+    // ==============================
+    // webp image
+    // ==============================
+
+    // this code comes from the article :
+    // " https://www.js-craft.io/blog/css-fallbacks-for-webp-background-images-with-supports/ "
+    @supports ( background-image : linear-gradient( to bottom, rgba( 13, 58, 216, 0.0 ) 0%,  rgba( 13, 58, 216, 1.0 ) 25%, rgba( 0, 30, 75, 1.0 ) 100% ), url( /images/mj_boardwalk_01_2560.webp ) ) {
+
+        background-image : linear-gradient( to bottom, rgba( 13, 58, 216, 0.0 ) 0%,  rgba( 13, 58, 216, 1.0 ) 25%, rgba( 0, 30, 75, 1.0 ) 100% ), url( /images/mj_boardwalk_01_2560.webp );
+/*
+        @media all and ( max-width : $bp-1920 ) {
+
+            background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_1920.webp );
+            background-position : 50% 50%;
+    
+        } // end of bp-1920
+
+        @media all and ( max-width : $bp-1536 ) {
+
+            background-image : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_1536.webp );
+    
+        } // end of bp-1536
+    
+        @media all and ( max-width : $bp-1440 ) {
+    
+            background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_1440.webp );
+            background-position : 50% 85%;
+
+        } // end of bp-1440
+*/
+        @media all and ( max-width : $bp-1376 ) {
+    
+            background-image    : linear-gradient( to bottom, rgba( 13, 58, 216, 0.0 ) 0%,  rgba( 13, 58, 216, 1.0 ) 25%, rgba( 0, 30, 75, 1.0 ) 100% ), url( /images/mj_boardwalk_01_1376.webp );
+            background-position : 50% 90%;
+
+        } // end of bp-1376
+/*
+        @media all and ( max-width : $bp-1280 ) {
+
+            align-content : start; // when the content goes vertical, change align-content
+            // to start and add some top padding for better spacing between the header and
+            // the hero home page container
+    
+            // ==============================
+            // important!!
+            // ==============================
+    
+            // ==============================
+            // remember, to make the " height : auto; " and bottom padding of 12.0rem
+            // work properly we had to comment out " bottom : 0 " above; otherwise, there
+            // was no way to provide any spacing at the bottom of the container unless we
+            // added a specific height to the container and then modified the height at
+            // different breakpoints
+            // ==============================
+    
+            // ==============================
+            // even then, I found that iphone rendered the spacing different ( i.e. incorrectly )
+            // than androids and desktop
+            // ==============================
+    
+            height : auto; // change to " height : auto " once the content container
+            // expands beyond a height of 100vh and that way all mobile devices will render
+            // the container spacing in the same way
+    
+            padding : 160px 0 12.0rem 0; // add some bottom padding in conjunction
+            // with " height : auto " 
+    
+            // this is an cropped image
+            background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_1280.webp );
+            background-position : 80% 0%; // remember, once the content goes vertical then only x value matters
+
+        } // end of bp-1280
+
+        @media all and ( max-width : $bp-1032 ) {
+
+            // this is an cropped image
+            background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_1032.webp );
+            background-position : 90% 0%;
+
+        } // end of bp-1032
+    
+        @media all and ( max-width : $bp-920 ) {
+
+            // this is an cropped image
+            background-image : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_920.webp );
+
+
+        } // end of bp-920
+    
+        @media all and ( max-width : $bp-768 ) {
+
+            // this is an cropped image
+            background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_768.webp );
+            background-position : 70% 0%;
+
+        } // end of bp-768
+    
+        @media all and ( max-width : $bp-620 ) {
+
+            // this is an cropped image
+            background-image : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_620.webp );
+    
+        } // end of bp-620
+*/
+        @media all and ( max-width : $bp-480 ) {
+
+            // this is an cropped image
+            background-image    : linear-gradient( to bottom, rgba( 13, 58, 216, 0.0 ) 0%,  rgba( 13, 58, 216, 1.0 ) 25%, rgba( 0, 30, 75, 1.0 ) 100% ), url( /images/mj_boardwalk_01_480.webp );
+            background-position : 95% 0%;
+
+        } // end of bp-480
+/*
+        @media all and ( max-width : $bp-375 ) {
+
+            // this is an cropped image
+            // background-image : url( /images/monte_carlo_01_375.webp );
+    
+        } // end of bp-375
+*/
+    } // end of container > div2 > div1 > h1 > @supports
+
+
+/*
+    // ==============================
+    // set background gradient on the text and then animate the gradient
+    // ==============================
+
+    // ==============================
+    // please see the following article for details :
+    // " https://www.sitepoint.com/css-animate-text-gradients-patterns/?ref=web-design-weekly.com "
+    // ==============================
+
+    background-image : linear-gradient( 
+        45deg,
+        var( --blue-100 ),
+        var( --blue-800 ),
+        var( --blue-100 ),
+        var( --purple-150 ),
+        var( --blue-100 ),
+        var( --blue-800 ),
+        var( --blue-100 )
+    );
+
+    // need background size for background-image to work
+    background-size : 300% 100%;
+
+    // animate the text
+    animation-name            : textGradientAnimation;
+    animation-duration        : 10s;
+    animation-timing-function : linear;
+    animation-delay           : 0;
+    animation-iteration-count : infinite;
+    animation-direction       : alternate;
+
+    // ==============================
+    // end of set background gradient on the text and then animate the gradient
+    // ==============================
+*/
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent
+
+        // ==============================
+        // had to add a z-index of 1 so that the white card sits above the radial gradients in the
+        // animating-gradient-background.module.scss file
+        // ==============================
+
+        z-index : 1;
+        width   : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+
+        opacity: 0; // needed for the opacity and slide up animation
+
+        // ==============================
+        // container > div 1 > h2
+        // ==============================
+
+        > h2 {
+
+            @include h2-light-title;
+
+            margin : 0 0 4.0rem 0;
+
+            text-align : left;
+
+        } // end of container > div1 > h2
+
+        // ==============================
+        // container > div 1 > div 2 ( wrapper div ) ( glassmorphism card )
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            // children
+            display               : grid;
+            grid-template-rows    : repeat( 3, auto );
+            grid-template-columns : 0.35fr 0.35fr 0.15fr 0.15fr;
+            align-items           : center;
+            grid-gap              : 3.0rem 6.0rem; // create some spacing between the cards
+            grid-template-areas   :"div1 div1 div1 div1"
+                                    "h3  h3   div4 div4"
+                                    "ul  ul   div4 div4";
+    
+            // ==============================
+            // glassmorphism card effect for the content box
+            // ==============================
+    
+            // ==============================
+            // option #1
+            // option #2 used the ::after pseudo class and is commented out below
+            // ==============================
+    
+            // ==============================
+            // remember, this code came from the " https://ui.glass/generator/ " website
+            // ==============================
+/*
+            border        : 1px solid rgba( 209, 213, 219, 0.3 );
+            border-radius : 6px;
+    
+            background-color : rgba( 255, 255, 255, 0.80 );
+    
+            backdrop-filter         : blur( 16px ) saturate( 180% );
+            -webkit-backdrop-filter : blur( 16px ) saturate( 180% ); // have to use for safari up to 17.7
+*/
+            // ==============================
+            // end of glassmorphism card effect
+            // ==============================
+
+            @media all and ( max-width : $bp-768 ) {
+
+                grid-template-rows    : repeat( 3, auto );
+                grid-template-columns : repeat( 3, auto );
+                grid-gap              : 3.0rem 0; // create some spacing between the cards
+                grid-template-areas   : "div1 div1 div1"
+                                        "h3   h3   h3"
+                                        "ul   ul   ul";
+
+            } // end of container > div1 > div2 > bp-768
+
+            @media all and ( max-width : $bp-480 ) {
+
+                grid-template-rows    : repeat( 3, auto );
+                grid-template-columns : repeat( 3, auto );
+                grid-gap              : 3.0rem 0; // create some spacing between the cards
+                grid-template-areas   : "div1 div1 div1"
+                                        "h3   h3   h3"
+                                        "ul   ul   ul";
+/*
+                // ==============================
+                // remove the glassmorphism card effect with the following 5 properties
+                // ==============================
+
+                padding : 0; // property #1
+
+                border        : none; // property #2
+                border-radius : 0; // property #3
+
+                background : none; // property #4
+
+                backdrop-filter         : none; // property #5
+                -webkit-backdrop-filter : none; // have to use for safari up to 17.7 and property #5
+
+                // ==============================
+                // end of remove the glassmorphism card effect
+                // ==============================
+*/
+            } // end of container > div1 > div2 > bp-480
+
+            // ==============================
+            // container > div 1 > div 2 > div 1 ( picture and quote )
+            // ==============================
+
+            > div:nth-child( 1 ) {
+
+                // parent
+                grid-area : div1;
+
+                // children
+                display               : grid;
+                grid-template-rows    : auto auto;
+                grid-template-columns : 1fr;
+                align-items           : center;
+                justify-items         : center;
+                grid-gap              : 0 0;
+
+                position : relative; // needed for absolutely positioned p tag
+                width    : 36.0rem; // needed to provide proper spacing
+
+                margin : 0 0 0 -2.1rem;
+
+                @media all and ( max-width : $bp-920 ) {
+
+                    margin : 0 0 0 -2.1rem;
+
+                } // end of container > div1 > div2 > div1 > bp-920
+
+                @media all and ( max-width : $bp-620 ) {
+
+                    width  : 32.0rem;
+                    margin : 0 0 0 0;
+
+                } // end of container > div1 > div2 > div1 > bp-620
+
+                @media all and ( max-width : $bp-480 ) {
+
+                    width  : 32.0rem;
+                    margin : 0 0 0 -0.8rem;
+
+                } // end of container > div1 > div2 > div1 > bp-480
+
+                @media all and ( max-width : 400px ) {
+
+                    width  : 28.0rem;
+                    margin : 0 0 0 0;
+
+                } // end of container > div1 > div2 > div1 > 400px
+
+                @media all and ( max-width : 350px ) {
+
+                    width  : 212px;
+                    margin : 0 0 0 0;
+
+                } // end of container > div1 > div2 > div1 > 350px
+
+                // ==============================
+                // container > div 1 > div 2 > div 1 > picture 1 ( --grayish picture of Benjamin Franklin )
+                // ==============================
+
+                > picture:nth-child( 1 ) {
+
+                    display : none;
+
+                    opacity : 0.25;
+
+                    @media all and ( max-width : $bp-480 ) {
+
+                        display : none;
+                        margin  : 0 0 0 -0.5rem;
+
+                        opacity : 0.45;
+
+                    } // end of container > div1 > div2 > div1 > picture1 > bp-480
+
+                    @media all and ( max-width : 400px ) {
+
+                        margin : 0 0 0 -2.0rem;
+
+                    } // end of container > div1 > div2 > div1 > picture1 > 400px
+
+                    > img {
+
+                        display : block; // remove the bottom spacing
+
+                    } // end of container > div1 > div2 > div1 > picture1 > img
+
+                } // end of container > div1 > div2 > div1 > picture1
+
+                // ==============================
+                // container > div 1 > div 2 > div 1 > picture 2 ( --blackish picture of Benjamin Franklin )
+                // ==============================
+
+                > picture:nth-child( 2 ) {
+
+                    // display : block;
+                    display : none;
+
+                    opacity : 0.25;
+
+                    @media all and ( max-width : $bp-480 ) {
+
+                        // display : block;
+                        display : none;
+
+                        margin  : 0 0 0 -0.5rem;
+
+                        opacity : 0.45;
+
+                    } // end of container > div1 > div2 > div1 > picture2 > bp-480
+
+                    @media all and ( max-width : 400px ) {
+
+                        margin : 0 0 0 -2.0rem;
+
+                    } // end of container > div1 > div2 > div1 > picture2 > 400px
+
+                    > img {
+
+                        display : block; // remove the bottom spacing
+
+                    } // end of container > div1 > div2 > div1 > picture2 > img
+
+                } // end of container > div1 > div2 > div1 > picture2
+
+                // ==============================
+                // container > div 1 > div 2 > div 1 > p ( quote )
+                // ==============================
+
+                > p {
+
+                    @include text-large-light;
+
+                    margin : 2.0rem 0;
+
+                    // position : absolute; // do this to center p on top of the picture
+                    // top      : 68px; // the div has a 200px height and p tag is 64px
+                    // high so to get the p element to be in the dead center of the parent
+                    // div we need to start the p tag 68px from the top
+                    // top      : 83px; // the div has a 230px height ( 200 + 30 padding ) and
+                    // the p tag is 64px high so to get the p element to be in the dead center
+                    // of the parent div we need to start the p tag 83px from the top
+
+                    font-weight : 600;
+                    // color       : var( --blue-100 );
+                    // color       : var( --black );
+
+                    @media all and ( max-width : $bp-480 ) {
+
+                        @include text-large-light;
+
+                        padding : 0;
+
+                        font-weight : 450;
+        
+                    } // end of container > div1 > div2 > div1 > p > bp-480
+
+                } // end of container > div1 > div2 > div1 > p
+
+            } // end of container > div1 > div2 > div1
+
+            // ==============================
+            // container > div 1 > div 2 > h3:nth-child( 2 ) ( title )
+            // ==============================
+
+            > h3:nth-child( 2 ) {
+
+                // parent
+                grid-area : h3;
+
+                @include h8-light;
+
+                margin : 1.0rem 0 0 0;
+
+                @media all and ( max-width : $bp-480 ) {
+
+                    @include h6-light;
+
+                    margin : 0 0 0 0;
+
+                } // end of container > div1 > div2 > h3:nth-child( 2 ) > bp-480
+
+            } // end of container > div1 > div2 > h3:nth-child( 2 )
+
+            // ==============================
+            // container > div 1 > div 2 > ul:nth-child( 3 ) ( the list )
+            // ==============================
+
+            > ul:nth-child( 3 ) {
+
+                // parent
+                grid-area : ul;
+
+                padding : 0 0 0 1.6rem;
+
+                list-style-type : disc; // override the global stylesheet in this case
+                // list-style-position: outside; // make sure the disc markers are located
+                // the content box
+
+                > li {
+
+                    @include text-base-light;
+
+                    margin  : 0 0 0 0; // cancel default margin for text-base-light
+                    padding : 0 0 1.2rem 0.6rem;
+
+                    @media all and ( max-width : $bp-480 ) {
+
+                        @include text-base-light;
+
+                        margin  : 0 0 0 0; // cancel default margin for text-base-light
+                        padding : 0 0 1.2rem 0.6rem;
+
+                    } // end of container > div1 > div2 > ul3 > li > bp-480
+
+                    > ul {
+    
+                        padding : 1.2rem 0 0 1.6rem;
+
+                        list-style-type : circle; // override the global stylesheet in this case
+                        // list-style-position: outside; // make sure the disc markers are located
+                        // the content box
+
+                        > li {
+
+                            @include text-small-light;
+
+                            margin  : 0 0 0 0; // cancel default margin for text-base-light
+                            padding : 0 0 1.2rem 0.6rem;
+
+                            font-size : 1.75rem;
+
+                            @media all and ( max-width : $bp-480 ) {
+
+                                @include text-small-light;
+
+                                margin  : 0 0 0 0; // cancel default margin for text-base-light
+                                padding : 0 0 1.2rem 0.6rem;
+    
+                                font-size : 1.75rem;
+
+                            } // end of container > div1 > div2 > ul3 > li > ul > li > bp-480
+
+                        } // end of container > div1 > div2 > ul3 > li > ul > li
+    
+                        > li:last-child {
+
+                            padding : 0 0 0 0.6rem;
+        
+                        } // end of container > div1 > div2 > ul3 > li > ul > li:last-child
+
+                    } // end of container  > div1 > div2 > ul3 > li > ul
+
+                } // end of container  > div1 > div2 > ul3 > li
+
+                > li:last-child {
+
+                    padding : 0 0 0 0.6rem;
+
+                } // end of container  > div1 > div2 > ul3 > li:last-child
+
+            } // end of container  > div1 > div2 > ul3
+
+        } // end of container > div1 > div2
+
+    } // end of container > div1
+
+    // ==============================
+    // container > div 2 ( wave shape )
+    // ==============================
+
+    // ==============================
+    // wave shape div
+    // ==============================
+
+    // remember, this information came from the following video :
+    // " https://www.youtube.com/watch?v=lPJVi797Uy0&t=396s " and timestamp : 6.21
+
+    // and in accordance with the above video, I used the following tool to create the wave
+    // shape and the tool is called Custom Shape Dividers and located at :
+    // " https://www.shapedivider.app/ "
+
+    // the css code below and the html code in this file came from the following
+    // website : " https://www.shapedivider.app/ " and to get this generated code
+    // we used the following set up :
+
+    /*
+        Shape      : Waves
+        Color      : #FFFFFF ( initial color until I changed it below )
+        Flip       : No
+        Invert     : No
+        Top/bottom : Top
+        Height     : 150px
+        Width      : 100%
+    */
+
+    // remember, I had to add " position : relative " to the parent container and I had
+    // to change the path fill color to match the body background color
+
+    > div:nth-child( 2 ) {
+
+        display : none;
+
+        position : absolute;
+        bottom   : -15.0rem; // this will put the shape at the top of the container
+        left     : 0;
+        z-index  : 3; // place the svg shape on a layer above the map
+        width    : 100%;
+
+        line-height : 0;
+
+        overflow : hidden;
+
+        > svg {
+
+            display  : block;
+            position : relative;
+            width    : calc( 100% + 1.3px );
+            height   : 15.0rem; // changed this from the default 150px to 15.0rem
+
+            transform : rotateY( 0deg ); // this flips the wave
+    
+            @media all and ( max-width : $bp-1032 ) {
+
+                height : 9.0rem; // make sure we flatten the wave as the screen size
+                // shrinks
+
+            } // end of container > div1 > svg > bp-1032
+
+            @media all and ( max-width : $bp-768 ) {
+
+                height : 8.0rem; // make sure we flatten the wave as the screen size
+                // shrinks
+
+            } // end of container > div1 > svg > bp-768
+
+            @media all and ( max-width : $bp-620 ) {
+
+                height : 7.0rem; // make sure we flatten the wave as the screen size
+                // shrinks
+
+            } // end of container > div1 > svg > bp-620
+
+            @media all and ( max-width : $bp-480 ) {
+
+                height : 5.5rem; // make sure we flatten the wave as the screen size
+                // shrinks
+
+            } // end of container > div1 > svg > bp-480
+
+            @media all and ( max-width : $bp-375 ) {
+
+                height : 4.5rem; // make sure we flatten the wave as the screen size
+                // shrinks
+        
+            } // end of container > div1 > svg > bp-375
+
+            > path {
+
+                fill : var( --blue-800 ); // this is same color as the background
+                // color for the proceeding div
+
+            } // end of container > div1 > svg > path
+
+        } // end of container > div1 > svg
+
+    } // end of container > div1
+
+} // end of container
+

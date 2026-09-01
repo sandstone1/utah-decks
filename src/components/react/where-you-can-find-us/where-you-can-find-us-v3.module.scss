@@ -1,0 +1,241 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+// ==============================
+// where you can find us container
+// ==============================
+
+.whereYouCanFindUsContainer {
+
+        // ==============================
+        // div 7 in the index.js file
+        // ==============================
+
+        // parent
+        grid-area   : div7;
+        grid-column : 1 / -1; // position against the parent
+
+        // children
+        display               : grid;
+        grid-template-rows    : repeat( 6, auto );
+
+        // ==============================
+        // note 
+        // ==============================
+
+        // ==============================
+        // remember, there are 2 things we want to accomplish :
+        // 1 - allow the wrapper div to position against the parent div and thereby
+        // shrink as needed
+        // 2 - we want to center the wrapper div ( see below for details )
+        // ==============================
+
+        // ==============================
+        // " grid-template-columns " is needed so that the wrapper div ( i.e. child ) can position
+        // against the parent ( i.e. this div ) by using " grid-column : 2 / 22; " and this allows
+        // the background declared below to span across the entire container or the entire site and
+        // this also allows the wrapper div to dynamically contain its children within the
+        // " grid-column : 2 / 22; " context so that as the screen size shrinks the wrapper div
+        // container and all its children containers or divs will automatically shrink as well
+        // ==============================
+
+        grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+        // ==============================
+        // remember, I can center the wrapper div by using either " justify-items : center; "
+        // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+        // wrapper div
+        // ==============================
+
+        justify-items         : center;
+
+        // ==============================
+        // remember, I had to add " position : relative; " for the absolutely positioned
+        // svg shape div below to work
+        // ==============================
+
+        position : relative;
+        padding  : 12.0rem 0 12.0rem 0;
+
+        background : var( --gray-325 );
+        // background : var( --gray-326 );
+        // background : var( --gray-290 );
+        // background : var( --gray-230 );
+        // background : var( --gray-280 );
+        // background : var( --background-lg-13 );
+        background : var( --gray-308 );
+        background : var( --background-lg-35 );
+        // background : var( --yellow-20 );
+        // background : var( --gray-800 );
+
+        // ==============================
+        // tighten up side margins
+        // ==============================
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                    repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                    minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+        } // end of container > bp-1280
+
+        // ==============================
+        // end of tighten up side margins
+        // ==============================
+
+        // ==============================
+        // wave shape div
+        // ==============================
+
+        // remember, this information came from the following video :
+        // " https://www.youtube.com/watch?v=lPJVi797Uy0&t=396s " and timestamp : 6.21
+
+        // and in accordance with the above video, I used the following tool to create the wave
+        // shape and the tool is called Custom Shape Dividers and located at :
+        // " https://www.shapedivider.app/ "
+
+        // the css code below and the html code in this file came from the following
+        // website : " https://www.shapedivider.app/ " and to get this generated code
+        // we used the following set up :
+
+        /*
+            Shape      : Waves
+            Color      : #FFFFFF ( initial color until I changed it below )
+            Flip       : No
+            Invert     : No
+            Top/bottom : Top
+            Height     : 150px
+            Width      : 100%
+        */
+
+        // remember, I had to add " position : relative " to the parent container and I had
+        // to change the path fill color to match the body background color
+
+        // ==============================
+        // container > div 1
+        // ==============================
+
+        > div:nth-child( 1 ) {
+
+            position : absolute;
+            top      : 0; // this will put the shape at the top of the container
+            left     : 0;
+            width    : 100%;
+
+            line-height : 0;
+
+            overflow : hidden;
+
+            > svg {
+
+                display  : block;
+                position : relative;
+                width    : calc( 100% + 1.3px );
+                height   : 10.0rem; // changed this from the default 102px to 10.0rem
+
+                @media all and ( max-width : $bp-1032 ) {
+
+                    height : 8.0rem; // make sure we flatten the wave as the screen size
+                    // shrinks
+
+                } // end of container > div1 > svg > bp-1032
+
+                @media all and ( max-width : $bp-768 ) {
+
+                    height : 6.0rem; // make sure we flatten the wave as the screen size
+                    // shrinks
+
+                } // end of container > div1 > svg > bp-768
+
+                @media all and ( max-width : $bp-620 ) {
+
+                    height : 5.0rem; // make sure we flatten the wave as the screen size
+                    // shrinks
+
+                } // end of container > div1 > svg > bp-620
+
+                @media all and ( max-width : $bp-480 ) {
+
+                    height : 4.0rem; // make sure we flatten the wave as the screen size
+                    // shrinks
+
+                } // end of container > div1 > svg > bp-480
+
+                @media all and ( max-width : $bp-375 ) {
+
+                    height : 3.0rem; // make sure we flatten the wave as the screen size
+                    // shrinks
+            
+                } // end of container > div1 > svg > bp-375
+
+                > path {
+
+                    // fill : var( --gray-230 ); // this is same color as the background
+                    // color for the proceeding div
+
+                    fill : var( --blue-800 ); // this is same color as the background
+                    // color for the proceeding div
+
+                } // end of container > div1 > svg > path
+
+            } // end of container > div1 > svg
+
+        } // end of container > div1
+
+        // ==============================
+        // end of tilt shape div
+        // ==============================
+
+        // ==============================
+        // container > div 2
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            // parent
+            grid-column : 2 / 22; // position against the parent
+
+            width : min( 144.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                width  : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+
+            } // end of container > div2 > bp-1280
+
+            // ==============================
+            // container > div 2 > h2
+            // ==============================
+
+            > h2 {
+
+                @include h2-dark-title;
+
+            } // end of container > div2 > h2
+
+            // ==============================
+            // container > div 2 > div
+            // ==============================
+
+            > div {
+
+                margin : 1.5rem 0 4.0rem 0; // follow the spacing from Enchanting Apps
+
+            } // end of container > div2 > div
+
+        } // end of container > div2
+
+} // end of container
+

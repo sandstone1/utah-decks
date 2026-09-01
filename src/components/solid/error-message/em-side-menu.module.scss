@@ -1,0 +1,55 @@
+
+
+
+// ==============================
+// PARTIAL IMPORTS
+// ==============================
+
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+.errorMessageContainer {
+
+    position : relative;
+    height   : auto;
+    padding  : 2.0rem;
+
+    border-radius : 3px;
+
+    // red gradiant
+    background : var( --em-background-1 );
+
+    @media all and ( max-width : $bp-1920 ) {
+
+        padding : 4.0rem 6.0rem;
+
+    } // end of container > bp-1920
+
+    @media all and ( max-width : $bp-375 ) {
+
+        padding : 4.0rem 2.0rem;
+
+    } // end of container > bp-375
+
+    > h3 {
+
+        font-family : var( --font-primary-5 );
+        font-size   : 1.75rem;
+        font-weight : 400;
+        color       : var( --gray-900 );
+
+    } // end of container > h3
+
+    > span {
+
+        position : absolute;
+        top      : 8px;
+        right    : 8px;
+
+        cursor : pointer;
+
+    } // end of container > span
+
+} // end of container
+

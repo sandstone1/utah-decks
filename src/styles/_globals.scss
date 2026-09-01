@@ -1,0 +1,1900 @@
+
+
+// ==============================
+// PARTIAL IMPORTS
+// ==============================
+
+@use './_mixins.scss' as *;
+@use './_responsive_breakpoints.scss' as *;
+@use './_fonts.scss' as *;
+
+
+
+
+
+
+
+// ==============================
+// THIS IS CODE TO FADE IN THE NAVIGATION ON INITIAL PAGE LOAD
+// ==============================
+
+// ==============================
+// PART 3 - FADE IN THE NAV ON INITIAL PAINT AND ONLY ON THE INITIAL PAINT
+// ==============================
+
+// see main-layout.astro, nav.jsx and layout.astro for parts 1, 2 and 4
+
+/*
+    The opacity: 0 is declared directly in this rule itself — it's a static property,
+    not part of the animation. So the moment this selector matches ( which, per the
+    last explanation, is from the very first paint, since the script set the attribute
+    before <body> rendered ), the browser applies opacity: 0 immediately as a plain
+    CSS property — same as any other CSS declaration. The animation property is separate
+    and layered on top : it doesn't create the initial hidden state, it changes opacity
+    over time starting from wherever it currently is ( which is already 0, because the line
+    right below it set that ).
+*/
+@keyframes initialOnlyFade {
+
+    to { 
+        opacity : 1;
+    }
+
+}
+
+// by default, the nav appears instantly
+#site-navbar {
+
+    opacity : 1;
+
+}
+
+// we only delay and fade if this is the absolute first time the browser paints the site
+
+/*
+    Here's what's really happening, step by step :
+
+    This CSS rule is always present in the stylesheet, on every single page load, forever.
+    It says: "if <html> currently has the attribute data-initial-load on it, and there's
+    an element with id site-navbar, apply this fade animation." That's the entire rule —
+    it's a conditional style, not a timer.
+
+    The <script is:inline> in <body> ( in main-layout.astro ) is what decides whether
+    <html> gets that attribute at all, and it only adds it during a genuine first-session
+    load ( because it checks sessionStorage first ). On a repeat navigation, the script's
+    if check fails, and the attribute is simply never added.
+
+    Timing-wise, the reason this avoids a flash isn't because the CSS "knows" it's the
+    first paint — it's because the <script> runs and sets the attribute before the browser
+    has painted <body> at all, since it's placed as literally the first thing inside <body>,
+    before your <Layout>/nav even renders. By the time the browser gets to actually painting
+    the <nav> element for the first time, the attribute is already sitting on <html> — so
+    this CSS rule matches from the very first frame, with opacity: 0 applied immediately,
+    no gap where it's visible then hidden.
+*/
+html[ data-initial-load ] #site-navbar {
+
+    // this is where opacity is set to 0
+    opacity   : 0;
+    animation : initialOnlyFade 600ms ease-out 300ms forwards;
+
+}
+
+// ==============================
+// END OF THIS IS CODE TO FADE IN THE NAVIGATION ON INITIAL PAGE LOAD
+// ==============================
+
+
+
+
+
+// ==============================
+// CHANGES - SEE BELOW
+// ==============================
+
+// ==============================
+// REMEMBER, SINCE WE DECLARED OUR FONT AND COLOR VARIABLES IN THE :ROOT
+// ELEMENT BELOW AND SINCE THESE VARIABLES WORK ACCROSS THE ENTIRE SITE BY
+// JUST DECLARING THEM INSIDE THE :ROOT ELEMENT BELOW, WE CAN SAFELY DELETE
+// THE _COLOR_VARIABLES.SCSS AND _FONT_VARIABLES.SCSS FILES
+// ==============================
+
+
+// ==============================
+// REMEMBER, IN ORDER FOR THE FONTS TO WORK IN PRODUCTION, I HAD TO ADD THE FONTS TO
+// THE HEAD TAG IN THE _DOCUMENT.JS FILE AND I HAD TO EMBED THE FONTS USING THE <LINK> 
+// ELEMENT SINCE @IMPORT DID NOT WORK
+// ==============================
+
+// ==============================
+// THEREFORE, COMMENT OUT THE 2 IMPORTS BELOW
+// ==============================
+
+// ==============================
+// FONT STYLES
+// ==============================
+
+// @import url( "https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;1,400&family=Nothing+You+Could+Do&family=Nunito:ital,wght@0,300;1,300&family=Open+Sans+Condensed:wght@300&family=Open+Sans:wght@300;400;700;800&family=Rancho&family=Roboto:wght@100;300;400;900&family=Source+Sans+Pro:wght@200;300;400;700;900&display=swap" );
+
+// @import url( 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap&family=Roboto+Flex:wght@100..1000&display=swap' );
+
+
+
+
+
+// ==============================
+// VIEW TRANSITION API
+// ==============================
+
+// ==============================
+// remember, I have not been able to get this to work
+// ==============================
+
+// ==============================
+// remember, this results in a basic fade out and fade in effect when moving between
+// pages ( see the app-enchanted-ratings.js file for details )
+// ==============================
+
+/*
+::view-transition-old( root ) {
+
+    animation : 350ms cubic-bezier( 0, 0, 0.2, 1 ) both fade-out;
+
+} // ::view-transition-old( root )
+
+::view-transition-new( root ) {
+
+    animation : 350ms cubic-bezier( 0, 0, 0.2, 1 ) both fade-in;
+    // mix-blend-mode : normal;
+
+} // ::view-transition-new( root )
+
+@keyframes fade-in {
+
+    from {
+        opacity : 0;
+    }
+
+    to {
+        opacity : 1;
+    }
+
+} // end of fade-in
+
+@keyframes fade-out {
+
+    from {
+        opacity : 1;
+    }
+
+    to {
+        opacity : 0;
+    }
+
+} // end of fade-out
+
+
+::view-transition-old( root ),
+::view-transition-new( root ) {
+
+  animation-duration : 5s;
+
+}
+*/
+
+// ==============================
+// end of view transition api
+// ==============================
+
+
+
+
+// ==============================
+// BASIC STYLE RULES FOR THIS SITE
+// ==============================
+
+// 1 - h1 - 8.5rem / 900 weight / site heading
+// 2 - h1 - 4.0rem for screens > bp-768 / 700 weight / gray-870
+// 2 - h1 - 32px for screens <= bp-768 / 700 weight / gray-870 ( remember, to hard code 32px )
+// ( remember, MailerLite went from 3rem or 48px to 2.25rem or 36px at bp-1280 and then went from 2.25rem or 36px to 1.875rem or 30px at bp-768 )
+// ( remember, Medium went from 42px to 32px at bp-728 )
+// ( remember, ConvertKit went from 2.75rem or 44px to 2.25rem or 36px at bp-768 )
+// ( remember, Apple went from 56px to 48px at bp-1068 to 32px at bp-734 )
+// 2 - h1 - 4.0rem for screens / this will scale down to 32px on smaller screens / 700 weight
+// 3 - h2 - 3.6rem / 700 weight
+// 4 - h3 - 3.2rem / 700 weight
+// 5 - h4 - 2.85rem / 700 weight
+// 6 - h5 - 2.55rem / 700 weight
+// 7 - large text - li, p / 2.0rem / 400 weight / gray-770
+// 7 - large text will shrink to 1.8rem or 18px at bp-768
+// ( remember, MailerLite keep its font size at 20px through mobile to large desktop )
+// ( remember, Medium font size went from 20px to 18px at bp-728 )
+// ( remember, ConvertKit font size went from 18px to 16px at bp-728 )
+// 7 - normal text - li, p / 1.85rem / 400 weight / gray-770
+// 8 - nav - 2.0rem / 400 weight / white 
+// 10 - spacing ( general ) - 12.0rem
+// 11 - spacing ( between header and page title ) - 8.0rem in most cases / 12.0rem in certain cases
+// 12 - spacing ( title with text or image underneth ) - 6.0rem or 9.0rem
+// 13 - spacing ( between main div items for large or small screens ) - 8.0rem or 9.0rem
+// 14 - spacing ( between sub main div items for small screens ) - 6.0rem
+// 15 - spacing ( between cards ) - 6rem or 9 rem
+// 16 - spacing ( h1 and text ) - 1.5rem ( MailerLite is 1.5rem )
+// 17 - 224px width at a 320px screen size ( this is 100% of 2 / 22 main element )
+// 19 - width - a good width for large text ( also, is 100% responsive ) is " width : min( 80.0rem, 100% ); " // browser will select the smaller of 80.0rem or 100%
+// 20 - width - a good width for normal text ( also, is 100% responsive ) is " width : min( 65.0rem, 100% ); " // browser will select the smaller of 65.0rem or 100%
+// 21 - background colors - going from --white to --gray-230 is good ( this is what MailerLite does on their homepage )
+// 22 - background colors - going from --gray-290 to --background-lg-11 is good
+// 23 - background colors - going from --background-lg-8 to --white is good
+// 24 - background colors - all these blues are great : --background-lg-8, background-lg-3, background-lg-2
+// 25 - background colors - all these gray gradients are good : background-lg-13, background-lg-11
+// 26 - background colors - all these grays are good : --gray-230, --gray-290
+
+
+// for e-commerce detail related pages, think about taking text from 2.0rem / 1.85rem
+// to 1.8rem / 1.6rem or even 1.8rem for headings and 1.4rem for text and these sizes stay
+// constant accross desktop, tablet and mobile ( MailerLite did this )
+
+
+
+// ==============================
+// MAILERLITE FONT SIZES ( based on tailwind font sizes )
+// ==============================
+
+// on desktop :
+
+// 1 - h1 ( hero h1 ) - 4rem or 64px                               / line-height - 1rem or 16px
+// 2 - h2 ( non hero h2 ) 3rem or 48px                             / line-height - 1.25rem or 20px
+// 3 - text xl ( most of the text is this size ) - 1.25rem or 20px / line-height - 1.625rem or 26px
+// 4 - text lg - 1.125rem or 18px                                  / line-height - 1.75rem or 28px
+// 5 - text base - 1rem or 16px                                    / line-height - 1.5rem or 24px
+// 6 - text sm - 0.875rem or 14px                                  / line-height - 1.25rem or 20px
+// 7 - text xs - 0.75rem or 12px                                   / line-height - 1rem or 16px
+// 8 - text button - 1rem or 16px                                  / line-height - 1.25rem or 20px
+
+// 9 - text inside dashboard pages - 1.8rem for headings and 1.4rem for text
+
+// on iPad : 
+
+// 1 - h1 ( hero h1 ) - 3rem or 48px                               / line-height - 1rem or 16px
+// 2 - h2 ( non hero h2 ) 2.25rem or 36px                          / line-height - 1.25rem or 20px
+// 3 - text xl ( most of the text is this size ) - 1.25rem or 20px / line-height - 1.625rem or 26px
+// 4 - text lg - 1.125rem or 18px                                  / line-height - 1.75rem or 28px
+// 5 - text base - 1rem or 16px                                    / line-height - 1.5rem or 24px
+// 6 - text sm - 0.875rem or 14px                                  / line-height - 1.25rem or 20px
+// 7 - text xs - 0.75rem or 12px                                   / line-height - 1rem or 16px
+// 8 - text button - 1rem or 16px                                  / line-height - 1.25rem or 20px
+
+
+// on iPhone :
+
+// 1 - h1 ( hero h1 ) - 2.25rem or 36px                            / line-height - 1rem or 16px
+// 2 - h2 ( non hero h2 ) 1.875rem or 30px                         / line-height - 1.25rem or 20px
+// 3 - text xl ( most of the text is this size ) - 1.25rem or 20px / line-height - 1.625rem or 26px
+// 4 - text lg - 1.125rem or 18px                                  / line-height - 1.75rem or 28px
+// 5 - text base - 1rem or 16px                                    / line-height - 1.5rem or 24px
+// 6 - text sm - 0.875rem or 14px                                  / line-height - 1.25rem or 20px
+// 7 - text xs - 0.75rem or 12px                                   / line-height - 1rem or 16px
+// 8 - text button - 1rem or 16px                                  / line-height - 1.25rem or 20px
+// 8 - text button - 1rem or 16px                                  / line-height - 1.25rem or 20px
+
+
+
+// ==============================
+// TAILWIND RECCOMENDED FONT SIZES / LINE HEIGHTS
+// ==============================
+
+// text-xs
+// font-size   : 0.75rem; /* 12px */
+// line-height : 1rem; /* 16px */
+
+// text-sm
+// font-size   : 0.875rem; /* 14px */
+// line-height : 1.25rem; /* 20px */
+
+// text-base
+// font-size   : 1rem; /* 16px */
+// line-height : 1.5rem; /* 24px */
+
+// text-lg
+// font-size   : 1.125rem; /* 18px */
+// line-height : 1.75rem; /* 28px */
+
+// text-xl
+// font-size   : 1.25rem; /* 20px */
+// line-height : 1.75rem; /* 28px */
+
+// text-2xl
+// font-size   : 1.5rem; /* 24px */
+// line-height : 2rem; /* 32px */
+
+// text-3xl
+// font-size   : 1.875rem; /* 30px */
+// line-height : 2.25rem; /* 36px */
+
+// text-4xl
+// font-size   : 2.25rem; /* 36px */
+// line-height : 2.5rem; /* 40px */
+
+// text-5xl
+// font-size   : 3rem; /* 48px */
+// line-height : 1;
+
+// text-6xl
+// font-size   : 3.75rem; /* 60px */
+// line-height : 1;
+
+// text-7xl
+// font-size   : 4.5rem; /* 72px */
+// line-height : 1;
+
+// text-8xl
+// font-size   : 6rem; /* 96px */
+// line-height : 1;
+
+// text-9xl
+// font-size   : 8rem; /* 128px */
+// line-height : 1;
+
+
+
+// ==============================
+// MEDIUM FONT SIZES
+// ==============================
+
+// 20px text font size on screens over 720px approximately and 18px on screens
+// less than 720px approximately
+
+// text color was rgba( 36, 36, 36, 1 ) and headline color was rgba( 24, 24, 24, 1 )
+
+
+
+
+
+
+// ==============================
+// MY ROOT STYLES
+// ==============================
+
+:root {
+
+    // ==============================
+    // FONT VARIABLES
+    // ==============================
+
+    --font-primary-1  : 'Open Sans', sans-serif;
+    --font-primary-2  : 'Martian Mono', monospace;
+    --font-primary-3  : 'Source Sans Pro', sans-serif;
+    --font-primary-4  : 'Poppins', sans-serif;
+    --font-primary-5  : 'Roboto Flex', sans-serif;
+    --font-display-1  : 'Roboto Condensed', sans-serif;
+    --font-display-2  : 'Roboto Mono', monospace;
+    --font-display-3  : 'Rancho', cursive;
+    --font-display-4  : 'Luckiest Guy', cursive; // this is similar to DynaPuff but I think I like DynaPuff better
+    --font-display-5  : 'DynaPuff', cursive;
+
+    // ==============================
+    // VIEW TRANSITION AND SIDE MENU CROSS FADE DURATION
+    // ==============================
+
+    --view-transition-duration : 300ms;
+
+    // ==============================
+    // COLOR VARIABLES
+    // ==============================
+
+    --white    : rgba( 255, 255, 255, 1 );
+    --gray-100 : rgba( 248, 249, 250, 1 );
+    --gray-200 : rgba( 247, 247, 249, 1 );
+    --gray-300 : rgba( 236, 238, 239, 1 );
+    --gray-400 : rgba( 206, 212, 218, 1 );
+    --gray-500 : rgba( 173, 181, 189, 1 );
+    --gray-600 : rgba( 145, 154, 161, 1 );
+    --gray-700 : rgba( 85, 89, 92, 1 );
+    --gray-800 : rgba( 52, 58, 64, 1 );
+    --gray-900 : rgba( 26, 26, 26, 1 );
+    --black    : rgba( 0, 0, 0, 1 );
+
+
+    --blue-50           : rgba( 240, 255, 255, 1 );
+    --blue-55           : rgba( 240, 248, 255, 1 ); // aliceblue
+    --blue-58           : rgba( 236, 248, 255, 1 ); // betterlinks blue
+    --blue-59           : rgba( 235, 244, 255, 1 ); // good pale hightlight color and goes with yellow-52 and pink-30
+    --blue-60           : rgba( 233, 244, 253, 1 );
+    --blue-61-1         : rgba( 200, 230, 253, 1 ); // great color against --gray-872 background
+    --blue-61-2         : rgba( 195, 225, 248, 1 );
+    --blue-61-3         : rgba( 190, 220, 245, 1 );
+    --blue-62           : rgba( 127, 203, 241, 1 ); // jb color and highlight color
+    --blue-62-1         : rgba( 127, 198, 241, 1 );
+    --blue-63           : rgba( 79, 195, 247, 1 ); // great highlight color and electric blue
+    --blue-64           : rgba( 144, 196, 213, 1 ); // Kevin Powell blue against dark background
+    --blue-66           : rgba( 92, 157, 241, 1 );
+    --blue-68           : rgba( 100, 149, 237, 1); // cornflowerblue
+    --blue-70           : rgba( 62, 166, 243, 1 );
+    --blue-71           : rgba( 55, 150, 241, 1 );
+    --blue-74           : rgba( 45, 137, 239, 1 ); // microsoft favicon blue and good background color for favicon 
+    --blue-75           : rgba( 30, 144, 255, 1 );
+    --blue-76           : rgba( 0, 153, 255, 1 );
+    --blue-76-2         : rgba( 9, 173, 200, 1 );
+    --blue-77           : rgba( 0, 150, 192, 1 ); // David Busell blue and good subdued text color
+    --blue-78           : rgba( 0, 125, 240, 1 ); // great circle or blob color for --gray-872
+    --blue-80           : rgba( 0, 112, 243, 1 );
+    --blue-83           : rgba( 0, 105, 220, 1 );
+    --blue-83-6         : rgba( 25, 81, 184, 1 );
+    --blue-84           : rgba( 0, 74, 173, 1 ); // cobalt blue and good background color for favicons
+    --blue-85           : rgba( 73, 121, 255, 1 );
+    --blue-85-2         : rgba( 13, 58, 216, 1 ); // my gradient background color and very good background color
+    --blue-86           : rgba( 73, 121, 255, 1 );
+    --blue-95           : rgba( 72, 149, 231, 1 ); // great hightlight color for --gray-872
+    --blue-100          : rgba( 62, 139, 221, 1 );
+    --blue-105          : rgba( 66, 139, 202, 1 ); // Lee blue button color
+    --blue-120          : rgba( 66, 103, 178, 1 ); 
+    --blue-200          : rgba( 94, 125, 187, 1 );
+    --blue-250          : rgba( 65, 105, 225, 1 );
+    --blue-255          : rgba( 42, 119, 201, 1 );
+    --blue-260          : rgba( 40, 100, 165, 1 );
+    --blue-265          : rgba( 33, 107, 165, 1 );
+    --blue-275          : rgba( 84, 115, 177, 1 );
+    --blue-295          : rgba( 66, 103, 178, 1 ); 
+    --blue-300          : rgba( 74, 105, 167, 1 );
+    --blue-325          : rgba( 67, 89, 134, 1 );
+    --blue-350          : rgba( 57, 79, 124, 1 );
+    --blue-400          : rgba( 64, 99, 171, 1 );
+    --blue-500          : rgba( 44, 79, 151, 1 );
+    --blue-590          : rgba( 13, 18, 190, 1 );
+    --blue-600          : rgba( 24, 59, 131, 1 );
+    --blue-650          : rgba( 26, 32, 44, 1 ); // good dark background color
+    --blue-700          : rgba( 25, 25, 112, 1 );
+    --blue-710          : rgba( 13, 18, 190, 1 );
+    --blue-725          : rgba( 0, 0, 139, 1 );
+    --blue-750          : rgba( 0, 0, 128, 1 );
+    --blue-790          : rgba( 2, 48, 71, 1 );
+    --blue-795          : rgba( 31, 31, 71, 1 );
+    --blue-800          : rgba( 0, 30, 75, 1 );
+    --blue-850          : rgba( 0, 20, 50, 1 );
+    --blue-webkit-link  : rgba( 0, 0, 238, 1 );
+    --blue-background-1 : rgba( 0, 20, 61, 1 );
+    --blue-background-2 : rgba( 16, 29, 44, 1 );
+    --blue-background-3 : rgba( 15, 50, 85, 1 );
+    --indigo            : rgba( 102, 16, 242, 1 );
+    --purple            : rgba( 111, 66, 193, 1 );
+    --purple-20         : rgba( 244, 236, 255, 1 ); // betterlinks purple
+    --purple-25         : rgba( 250, 230, 250, 1 );
+    --purple-27         : rgba( 217, 150, 241, 1 );
+    --purple-28         : rgba( 192, 132, 252, 1 );
+    --purple-28-5       : rgba( 206, 147, 216, 1 ); // great highlight color
+    --purple-28-8       : rgba( 208, 105, 220, 1 );
+    --purple-28-9       : rgba( 212, 95, 230, 1 );
+    --purple-29         : rgba( 214, 74, 235, 1 );
+    --purple-30         : rgba( 223, 0, 255, 1 );
+    --purple-40         : rgba( 204, 0, 255, 1 );
+    --purple-50         : rgba( 191, 0, 255, 1 );
+    --purple-75         : rgba( 160, 32, 240, 1 );
+    --purple-100        : rgba( 147, 112, 219, 1 );
+    --purple-120        : rgba( 120, 81, 169, 1); // royal purple
+    --purple-130        : rgba( 112, 98, 122, 1 ); // muted purple color and good for the cart
+    --purple-135        : rgba( 138, 13, 216, 1 );
+    --purple-140        : rgba( 113, 13, 216, 1 );
+    --purple-150        : rgba( 102, 51, 153, 1 ); // rebecca purple
+    --purple-200        : rgba( 128, 0, 128, 1 );
+    --purple-220        : rgba( 93, 25, 118, 1 ); // rh purple and great highlight color
+    --purple-240        : rgba( 80, 13, 216, 1 );
+    --purple-250        : rgba( 71, 2, 212, 1 ); // BetterLinks purple and good background color
+    --purple-300        : rgba( 78, 42, 132, 1 ); // northwestern purple
+    --purple-400        : rgba( 48, 25, 52, 1 );
+    --purple-500        : rgba( 26, 14, 46, 1 );
+    --pink-20           : rgba( 255, 239, 255, 1 ); // betterlinks pink
+    --pink-100          : rgba( 252, 0, 255, 1 );
+    --pink-120          : rgba( 255, 0, 200, 1 ); // Kevin Powell highlight color against dark mode background
+    --pink-150          : rgba( 240, 58, 236, 1 ); // Nexio pink and strong highlight color and great against black background
+    --pink-200          : rgba( 232, 62, 140, 1 );
+    --red-25            : rgba( 255, 135, 138, 1 ); // jb color and highlight color
+    --red-26            : rgba( 255, 127, 127, 1 );
+    --red-27            : rgba( 255, 112, 132, 1 ); // David Busell red and goodhighlight color
+    --red-30            : rgba( 255, 80, 55, 1 ); // hw highlight color
+    --red-35            : rgba( 226, 30, 81, 1 );
+    --red-40            : rgba( 238, 30, 41, 1 );
+    --red-50            : rgba( 244, 76, 123, 1 );
+    --red-75            : rgba( 199, 31, 92, 1 ); // Kevin Powell red against dark background
+    --red-95            : rgba( 210, 55, 81, 1 ); // David Busell red and great text color against yellow-30
+    --red-100           : rgba( 210, 53, 69, 1 );
+    --red-150           : rgba( 219, 39, 119, 1 ); // good highlight color
+    --red-160           : rgba( 191, 48, 127, 1 ); // good highlight color
+    --red-200           : rgba( 217, 83, 79, 1 );
+    --red-250           : rgba( 151, 55, 93, 1 );
+    --red-300           : rgba( 190, 43, 59, 1 );
+    --red-400           : rgba( 178, 34, 34, 1 );
+    --maroon-100        : rgba( 128, 0, 0, 1 );
+    --maroon-200        : rgba( 108, 0, 0, 1 );
+    --brown-20          : rgba( 232, 213, 200, 1 );
+    --brown-100         : rgba( 160, 82, 45, 1 );
+    --brown-200         : rgba( 165, 42, 42, 1 );
+    --brown-300         : rgba( 139, 69, 19, 1 );
+    --brown-500         : rgba( 81, 60, 6, 1 );
+    --sienna-dark       : rgba( 140, 62, 35, 1 );
+    --orange-20         : rgba( 255, 239, 239, 1 ); // BetterLinks orange and great highlight color
+    --orange-25         : rgba( 250, 235, 235, 1 );
+    --orange-40         : rgba( 255, 196, 77, 1 );
+    --orange-50         : rgba( 240, 173, 78, 1 ); // review star color
+    --orange-80         : rgba( 255, 192, 41, 1 );
+    --orange-90         : rgba( 255, 172, 21, 1 );
+    --orange-95         : rgba( 255, 165, 0, 1 );
+    --orange-100        : rgba( 255, 152, 1, 1 );
+    --orange-180        : rgba( 235, 139, 61, 1 ); // Kevin Powell highlight color against dark mode background
+    --orange-200        : rgba( 253, 126, 20, 1 );
+    --orange-210        : rgba( 233, 125, 39, 1 ); // good color against dark mode background
+    --yellow-20         : rgba( 255, 250, 245, 1 ); // jb color and great background yellow
+    --yellow-30         : rgba( 255, 250, 240, 1 ); // David Busell yellow and great background color
+    --yellow-40         : rgba( 252, 246, 240, 1 ); // jb color
+    --yellow-42         : rgba( 250, 244, 238, 1 ); // just a little darker than --yellow-40
+    --yellow-44         : rgba( 248, 242, 236, 1 );
+    --yellow-46         : rgba( 246, 245, 222, 1 ); // Brad Frost background color
+    --yellow-50         : rgba( 254, 250, 235, 1 );
+    --yellow-55         : rgba( 255, 242, 217, 1 ); // jb color and highlight color
+    --yellow-60         : rgba( 253, 242, 233, 1 );
+    --yellow-70         : rgba( 240, 234, 228, 1 ); // jb color
+    --yellow-75         : rgba( 255, 249, 189, 1 ); // David Busell yellow and great highlight color
+    --yellow-80         : rgba( 255, 235, 204, 1 );
+    --yellow-100        : rgba( 255, 255, 0, 1 );
+    --yellow-110        : rgba( 255, 235, 197, 1 );
+    --yellow-120        : rgba( 254, 232, 185, 1 );
+    --yellow-130        : rgba( 254, 232, 160, 1); // slightly less vibrant color of yellow than --yellow-150
+    --yellow-150        : rgba( 254, 224, 126, 1 ); // jb color and highlight color
+    --yellow-190        : rgba( 255, 244, 79, 1 );
+    --yellow-200        : rgba( 248, 232, 37, 1 );
+    --yellow-270        : rgba( 255, 206, 27, 1 );
+    --yellow-300        : rgba( 240, 173, 78, 1 );
+    --yellow-400        : rgba( 233, 185, 73, 1 );
+    --khaki             : rgba( 240, 230, 140, 1);
+    --coral             : rgba( 255, 127, 80, 1 );
+    --blue-green-80     : rgba( 82, 227, 247, 1 ); // Nexio blue green color and great highlight color and great against black background
+    --blue-green-100    : rgba( 129, 216, 208, 1 ); // Tiffany blue associated with Tiffany & Co. and great highlight color
+    --blue-green-190    : rgba( 41, 226, 231, 1 ); // Nexio green and strong highlight color and great against dark mode background
+    --blue-green-200    : rgba( 64, 224, 208, 1 ); // great hightlight color and bluish green
+    --blue-green-220    : rgba( 0, 204, 204, 1 );
+    --blue-green-230    : rgba( 57, 204, 204, 1 ); // good highlight color and bluish green
+    --blue-green-240    : rgba( 0, 219, 222, 1 );
+    --blue-green-400    : rgba( 95, 158, 160, 1 ); // cadetblue
+    --blue-green-500    : rgba( 47, 184, 255, 0.42 );
+    --green-05          : rgba( 240, 253, 244, 1 ); // great highlight color
+    --green-06          : rgba( 245, 246, 240, 1 ); // hw green and great background color
+    --green-07          : rgba( 230, 250, 247, 1 ); // BetterLinks green and great highlight color ( green-07 goes with --pink-20. orange-20 and maybe blue-59 )
+    --green-08          : rgba( 234, 242, 238, 1 ); // great hightlight color ( green-08 goes with --yellow-55. purple-20 and blue-59 )
+    --green-10          : rgba( 234, 238, 234, 1 ); // good background color
+    --green-12          : rgba( 227, 255, 217, 1 ); // good highlight color
+    --green-20          : rgba( 172, 210, 204, 1 );
+    --green-22          : rgba( 206, 243, 225, 1 ); // great highlight color
+    --green-23          : rgba( 152, 230, 200, 1 ); // David Busell green and great great great highlight color and along with --yellow-120 the best darker hightlight color
+    --green-23-5        : rgba( 100, 255, 218, 1 ); // great, great highlight color and mint color
+    --green-24          : rgba( 145, 164, 168, 1 ); // good background color
+    --green-25          : rgba( 0, 255, 127, 1 );
+    --green-30          : rgba( 15, 197, 176, 1 ); // Kevin Powell green and good highlight color against dark mode background
+    --green-35          : rgba( 66, 245, 132, 1 ); // Kevin Powell green and good highlight color
+    --green-50          : rgba( 0, 204, 102, 1 );
+    --green-100         : rgba( 75, 191, 115, 1 );
+    --green-200         : rgba( 60, 188, 141, 1 );
+    --green-210         : rgba( 45, 143, 133, 1 );
+    --green-220         : rgba( 37, 117, 98, 1 );
+    --green-240         : rgba( 122, 148, 79, 1 );
+    --green-250         : rgba( 112, 138, 69, 1 ); // greenish olive
+    --green-300         : rgba( 83, 105, 66, 1 );
+    --green-350         : rgba( 85, 107, 47, 1 ); // darkolivegreen
+    --green-400         : rgba( 5, 150, 105, 1 ); // forest green and good text color on some backgrounds
+    --green-440         : rgba( 50, 100, 95, 1 ); // great text highlight color
+    --green-450         : rgba( 30, 90, 95, 1 );
+    --green-500         : rgba( 22, 101, 52, 1 );
+    --green-700         : rgba( 68, 73, 57, 1 );
+    --olive             : rgba( 128, 128, 0, 1 );
+    --gold              : rgba( 212, 162, 50, 1 );
+    --gold-35           : rgba( 230, 190, 100, 1 );
+    --gold-39           : rgba( 230, 184, 77, 1 );
+    --gold-40           : rgba( 220, 185, 80, 1 ); // great hightlight color against gray-872
+    --gold-41           : rgba( 236, 183, 63, 1 );
+    --gold-42           : rgba( 224, 178, 65, 1 );
+    --gold-43           : rgba( 212, 175, 90, 1 );
+    --gold-46           : rgba( 212, 162, 50, 1 );
+    --gold-50           : rgba( 255, 215, 0, 1 ); // Kevin Powell gold and good highlight color against dark mode background
+    --gold-100          : rgba( 198, 153, 99, 1 );
+    --gold-120          : rgba( 212, 175, 55, 1 ); // classic gold
+    --gold-130          : rgba( 212, 162, 50, 1 );
+    --gold-200          : rgba( 178, 132, 81, 1 );
+    --gold-210          : rgba( 197, 150, 40, 1 );
+    --silver            : rgba( 211, 211, 211, 1 ); // silver
+    --teal              : rgba( 32, 201, 151, 1 );
+    --cyan-50           : rgba( 0, 255, 255, 1 ); // aqua or cyan
+    --cyan-80           : rgba( 0, 188, 212, 1 ); // great highlight color against gray-872
+    --cyan-100          : rgba( 31, 155, 207, 1 );
+    --cyan-200          : rgba( 11, 135, 187, 1 );
+    --cyan-300          : rgba( 0, 139, 139, 1 );
+    --slate-gray-100    : rgba( 119, 136, 153, 1 ); 
+    --slate-gray-200    : rgba( 112, 128, 144, 1 );
+    --slate-gray-300    : rgba( 47, 79, 79, 1 );
+    --steel-blue-100    : rgba( 176, 196, 222, 1 );
+    --steel-blue-200    : rgba( 70, 130, 180, 1 );
+    --gray-185          : rgba( 249, 247, 246, 1 );
+    --gray-190          : rgba( 247, 249, 250, 1 );
+    --gray-210          : rgba( 248, 248, 248, 1 );
+    --gray-220          : rgba( 246, 246, 246, 1 );
+    --gray-225          : rgba( 245, 245, 245, 1 );
+    --gray-230          : rgba( 243, 244, 246, 1 ); // good background color for overlaying white boxes
+    --gray-235          : rgba( 242, 243, 244, 1 );
+    --gray-245          : rgba( 240, 241, 242, 1 );
+    --gray-250          : rgba( 240, 241, 243, 1 );
+    --gray-255          : rgba( 240, 240, 240, 1 );
+    --gray-260          : rgba( 239, 239, 241, 1 );
+    --gray-265          : rgba( 238, 239, 240, 1 );
+    --gray-280          : rgba( 241, 244, 249, 1 );
+    --gray-290          : rgba( 233, 237, 240, 1 ); // not as good as bp-230 but still a good background color for overlaying white boxes
+    --gray-308          : rgba( 235, 236, 238, 1 );
+    --gray-310          : rgba( 235, 237, 238, 1 );
+    --gray-316          : rgba( 235, 235, 235, 1 );
+    --gray-318          : rgba( 231, 232, 234, 1 );
+    --gray-320          : rgba( 232, 232, 232, 1 );
+    --gray-322          : rgba( 230, 230, 230, 1 );
+    --gray-324          : rgba( 228, 228, 228, 1 );
+    --gray-325          : rgba( 226, 228, 229, 1 );
+    --gray-326          : rgba( 226, 227, 229, 1 );
+    --gray-335          : rgba( 220, 220, 222, 1 );
+    --gray-340          : rgba( 220, 220, 220, 1 );
+    --gray-342          : rgba( 214, 214, 216, 1 );
+    --gray-345          : rgba( 211, 211, 211, 1 );
+    --gray-350          : rgba( 210, 210, 210, 1 );
+    --gray-355          : rgba( 208, 208, 208, 1 );
+    --gray-375          : rgba( 200, 200, 200, 1 );
+    --gray-475          : rgba( 190, 190, 190, 1 );
+    --gray-525          : rgba( 180, 180, 180, 1 );
+    --gray-550          : rgba( 170, 170, 170, 1 );
+    --gray-650          : rgba( 128, 128, 128, 1 );
+    --gray-675          : rgba( 105, 105, 105, 1 );
+    --gray-725          : rgba( 109, 93, 75, 1 );
+    --gray-735          : rgba( 84, 72, 58, 1 );
+    --gray-740          : rgba( 75, 85, 99, 1 );
+    --gray-750          : rgba( 74, 80, 90, 1 );
+    --gray-755          : rgba( 80, 80, 80, 1 );
+    --gray-765          : rgba( 70, 70, 70, 1 );
+    --gray-770          : rgba( 55, 65, 81, 1 );
+    --gray-775          : rgba( 64, 70, 76, 1 );
+    --gray-780          : rgba( 44, 62, 79, 1 );
+    --gray-785          : rgba( 58, 64, 70, 1 ); // good dark mode background color
+    --gray-835          : rgba( 64, 52, 38, 1 );
+    --gray-850          : rgba( 54, 60, 70, 1 ); // second best dark mode background color
+    --gray-865          : rgba( 40, 50, 60, 1 );
+    --gray-866          : rgba( 39, 47, 59, 1 );
+    --gray-867          : rgba( 38, 46, 58, 1 ); // really great dark mode background color and contrast to gray-872
+    --gray-868          : rgba( 36, 44, 56, 1 ); // really great dark mode background color and contrast to gray-872
+    --gray-868-200      : rgba( 255, 255, 255, 0.0200 ); // good offset lighter color to --gray-872
+    --gray-868-250      : rgba( 255, 255, 255, 0.0250 ); // good offset lighter color to --gray-872
+    --gray-868-275      : rgba( 255, 255, 255, 0.0275 ); // good offset lighter color to --gray-872
+    --gray-868-300      : rgba( 255, 255, 255, 0.0300 ); // good offset lighter color to --gray-872
+    --gray-868-350      : rgba( 255, 255, 255, 0.0350 ); // good offset lighter color to --gray-872
+    --gray-868-700      : rgba( 255, 255, 255, 0.0700 ); // good offset lighter color to --gray-872
+    --gray-870          : rgba( 31, 41, 55, 1 );
+    --gray-871          : rgba( 39, 42, 46, 1 ); 
+    --gray-872          : rgba( 32, 40, 52, 1 ); // best dark mode background color
+    --gray-874          : rgba( 39, 42, 46, 1 ); // Kevin Powell dark mode color
+    --gray-880          : rgba( 40, 40, 40, 1 );
+    --gray-882          : rgba( 26, 36, 46, 1 ); // good dark mode background color
+    --gray-885          : rgba( 26, 32, 44, 1 ); // Lee's dark gray background color
+    --gray-905          : rgba( 29, 30, 32, 1 ); // Kevin Powell dark mode color
+    --gray-950          : rgba( 17, 24, 39, 1 );
+
+
+    --color-stop-1 : rgba( 0, 219, 222, 1 );  
+    --color-stop-2 : rgba( 252, 0, 255, 1 );
+
+    --color-stop-3 : var( --blue-55 );  
+    --color-stop-4 : var( --yellow-50 );
+
+    --color-stop-5 : rgba( 98, 255, 232, 1 );
+    --color-stop-6 : rgba( 55, 163, 189, 1 );
+    --color-stop-7 : rgba( 36, 125, 171, 1 );
+    --color-stop-8 : rgba( 10, 70, 145, 1 );
+    --color-stop-9 : rgba( 0, 48, 135, 1 );
+
+    --color-stop-10 : rgba( 0, 198, 251, 1 );
+    --color-stop-11 : rgba( 0, 125, 240, 1 );
+    --color-stop-12 : rgba( 0, 91, 234, 1 );
+
+    --color-stop-13 : rgba( 45, 153, 179, 1 );
+    --color-stop-14 : rgba( 31, 115, 161, 1 );
+    --color-stop-15 : rgba( 10, 70, 145, 1 );
+    --color-stop-16 : rgba( 0, 48, 135, 1 );
+
+    // ==============================
+    // GRADIENT VARIABLES
+    // ==============================
+
+    // remember the property to use with linear-gradient is " background-image "
+    --background-lg-1   : linear-gradient( to right, rgba( 0, 219, 222, 1 ) 0%, rgba( 252, 0, 255, 1 ) 100% );
+    --background-lg-2   : linear-gradient( to left, rgba( 0, 198, 251, 1 ) 0%, rgba( 0, 125, 240, 1 ) 50%, rgba( 0, 91, 234, 1 ) 100% ); // better for longer screens
+    --background-lg-3   : linear-gradient( to right, rgba( 0, 198, 251, 1 ) 0%, rgba( 0, 125, 240, 1 ) 50%, rgba( 0, 91, 234, 1 ) 100% ); // better for longer screens
+    --background-lg-4   : linear-gradient( 225deg, rgba( 0, 198, 251, 1 ) 0%, rgba( 0, 125, 240, 1 ) 50%, rgba( 0, 91, 234, 1 ) 100% ); // better for longer screens
+    --background-lg-5   : linear-gradient( to top, rgba( 0, 125, 240, 1 ) 0%, rgba( 0, 91, 234, 1 ) 100% ); // better for shorter screens
+    --background-lg-6   : linear-gradient( to left, rgba( 98, 255, 232, 1 ) 0%, rgba( 55, 163, 189, 1 ) 20%, rgba( 36, 125, 171, 1 ) 39%, rgba( 10, 70, 145, 1 ) 72%, rgba( 0, 48, 135, 1 ) 100% );
+    --background-lg-7   : linear-gradient( to right, rgba( 98, 255, 232, 1 ) 0%, rgba( 55, 163, 189, 1 ) 20%, rgba( 36, 125, 171, 1 ) 39%, rgba( 10, 70, 145, 1 ) 72%, rgba( 0, 48, 135, 1 ) 100% );
+    --background-lg-8   : linear-gradient( 225deg, rgba( 98, 255, 232, 1 ) 0%, rgba( 55, 163, 189, 1 ) 20%, rgba( 36, 125, 171, 1 ) 39%, rgba( 10, 70, 145, 1 ) 72%, rgba( 0, 48, 135, 1 ) 100% );
+    --background-lg-9   : linear-gradient( to right top, rgba( 56, 67, 139, 1 ), rgba( 148, 75, 148, 1 ), rgba( 215, 90, 136, 1 ), rgba( 255, 126, 113, 1 ), rgba( 255, 178, 95, 1 ), rgba( 255, 235, 104, 1 ) );
+    --background-lg-10  : linear-gradient( to right top, rgba( 109, 50, 124, 1 ), rgba( 72, 93, 166, 1 ), rgba( 0, 161, 186, 1 ), rgba( 0, 191, 152, 1 ), rgba( 54, 196, 134, 1 ) );
+    --background-lg-11  : linear-gradient( 225deg, rgba( 245, 247, 250, 1 ), rgba( 195, 207, 226, 1 ) 100% ); // good white / light gray color
+    --background-lg-12  : linear-gradient( 135deg, rgba( 245, 247, 250, 1 ), rgba( 195, 207, 226, 1 ) 100% ); // good white / light gray color
+    --background-lg-13  : linear-gradient( 260deg, rgba( 245, 247, 250, 1 ), rgba( 195, 207, 226, 1 ) 100% ); // good white / light gray color
+    --background-lg-14  : radial-gradient( circle at 18.7% 37.8%, rgba( 250, 250, 250, 1 ) 0%, rgba( 225, 234, 238, 1 ) 90% ); // good white / light gray color
+    --background-lg-15  : linear-gradient( 135deg, rgba( 253, 252, 251, 1 ) 0%, rgba( 226, 209, 195, 1 ) 100% ); // good brown color
+    --background-lg-16  : linear-gradient( 91.9deg, rgb( 93, 248, 219 ) 27.8%, rgb( 33, 228, 246 ) 67% );
+    --background-lg-17  : linear-gradient( -20deg, rgba( 233, 222, 250, 1 ) 0%, rgba( 251, 252, 219, 1 ) 100% ); // good yellow color
+    --background-lg-18  : radial-gradient( circle at 10% 20%, rgb( 254, 255, 165 ) 0%, rgb( 255, 232, 182 ) 90% );
+    --background-lg-19  : linear-gradient( 89.1deg, rgba( 251, 0, 83, 1 ) 15.2%, rgba( 179, 146, 231, 1 ) 98.5% );
+    --background-lg-20  : linear-gradient( to right, rgba( 213, 212, 208, 1 ) 0%, rgba( 238, 238, 236, 1 ) 31%, rgba( 239, 238, 236, 1 ) 75%, rgba( 233, 233, 231, 1 ) 100% ); // good beige color
+    --background-lg-21  : linear-gradient( to top, rgba( 213, 212, 208, 1 ) 0%, rgba( 238, 238, 236, 1 ) 31%, rgba( 239, 238, 236, 1 ) 75%, rgba( 233, 233, 231, 1 ) 100% ); // good beige color
+    --background-lg-22  : linear-gradient( to right, rgba( 213, 212, 208, 1 ) 0%, rgba( 238, 238, 236, 1 ) 31%, rgba( 239, 238, 236, 1 ) 70%, rgba( 213, 212, 208, 1 ) 100% ); // good beige color
+    --background-lg-23  : linear-gradient( 44.8deg, rgba( 255, 136, 102, 0.67 ) -53.1%, rgba( 255, 221, 136, 0.28 ) 49% );
+    --background-lg-24  : radial-gradient( 621px at 25.3% 13.8%, rgba( 255, 255, 255, 1 ) 0%, rgba( 234, 236, 255, 1 ) 90% );
+    --background-lg-25  : conic-gradient( from 0deg at 50% 50% in oklab, oklch( 80% .4 222 ) 0%, oklch( 35% .5 313 ) 100% ); // good purple and blue color
+    --background-lg-26  : conic-gradient( from 0deg at 0% 0% in oklab, oklch(80% .4 222) 0%, oklch(35% .5 313) 100% ); // good blue color
+    --background-lg-27  : conic-gradient( from 0deg at 50% 50% in oklch, oklch( 77% 0.50 200 ) 0%, 26%, oklch( 77% 0.50 230 ) 0% 0%, 46%, oklch( 77% 0.50 260 ) 0% 0%, 60%, oklch( 77% 0.50 280 ) 0% 0%, 82%, oklch( 77% 0.50 300 ) 0% 0% ); // good mixture color
+    --background-lg-28  : conic-gradient( from 0deg at 50% 50% in oklch longer hue, oklch( 70% .3 0 ) 0%, oklch( 70% .3 0 ) 100% ); // good mixture coloe
+    --background-lg-29  : conic-gradient( from 0deg at 0% 0% in oklch, oklch( 75% 0.5 156 ) 0%, oklch( 70% 0.5 261 ) 100% ); // good blue green color
+    --background-lg-30  : conic-gradient( from 0deg at 50% 50% in oklch, oklch( 100% .25 160 ) 0%, 26%, oklch( 75% .5 180 ) 0% 0%, 46%, oklch( 75% .5 210 ) 0% 0%, 60%, oklch( 75% .5 230 ) 0% 0%, 82%, oklch( 75% .5 260 ) 0% 0% ); // good blue green mixture color
+    --background-lg-31  : conic-gradient( from 0deg at 50% 50% in oklab, oklch( 80% .4 222 ) 0%, oklch( 80% 0.3 345 ) 100% ); // good pink and blue color
+    --background-lg-32  : linear-gradient( to right in oklab, oklch(80% .4 222) 0%, oklch(80% 0.3 268) 100% ); // good light blue
+    --background-lg-33  : linear-gradient( to left, rgba( 45, 153, 179, 1 ) 0%, rgba( 31, 115, 161, 1 ) 30%, rgba( 10, 70, 145, 1 ) 70%, rgba( 0, 48, 135, 1 ) 100% );
+    --background-lg-34  : linear-gradient( to top, rgba( 0, 198, 251, 1 ) 0%, rgba( 0, 125, 240, 1 ) 50%, rgba( 0, 91, 234, 1 ) 100% ); // better for longer screens
+    --background-lg-35  : linear-gradient( to bottom, var( --gray-308 ) 0%, var( --gray-326 ) 100% ); // nice grey color
+    // remember, with --background-lg-36, we need to include : background-position : center; background-size : cover; background-blend-mode : multiply; background-color : var( --blue-100 );
+    --background-lg-36 : url( data:image/svg+xml;base64,PHN2ZyAgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDE5MjAgMTkyMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pbllNaW4gc2xpY2UiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE4MDUsOTA2Ljg3YTMzLjQ2LDMzLjQ2LDAsMCwxLTI4LjkxLTE2LjY5bC00OS4zNC04NS40NmEzMy40NiwzMy40NiwwLDAsMSwwLTMzLjM4bDQ5LjM0LTg1LjQ2QTMzLjQ2LDMzLjQ2LDAsMCwxLDE4MDUsNjY5LjE5aDk4LjY4YTMzLjM2LDMzLjM2LDAsMCwxLDE2LjI4LDQuMjZWMEgxMzYyLjg1bDE1Ljc5LDI3LjM1YTQyLjEzLDQyLjEzLDAsMCwxLDAsNDJMMTMyMS4wOSwxNjlhNDIuMTIsNDIuMTIsMCwwLDEtMzYuMzgsMjFoLTExNS4xYTQyLjEyLDQyLjEyLDAsMCwxLTM2LjM3LTIxbC01Ny41NS05OS42N2E0Mi4xMyw0Mi4xMywwLDAsMSwwLTQyTDEwOTEuNDgsMGgtMzg5TDcyMSwzMi4xM2EzNS4zMywzNS4zMywwLDAsMSwwLDM1LjI1bC01MS4xMSw4OC41M2EzNS4zNiwzNS4zNiwwLDAsMS0zMC41MywxNy42Mkg1MzcuMTdhMzUuMzYsMzUuMzYsMCwwLDEtMzAuNTMtMTcuNjJMNDU1LjUzLDY3LjM4YTM1LjMzLDM1LjMzLDAsMCwxLDAtMzUuMjVMNDc0LjA4LDBIMFYyNTIuMjdIMTUuN2E1MS4zNyw1MS4zNywwLDAsMSw0NC4zNywyNS42Mmw2Ni4zMiwxMTQuODdhNTEuMzksNTEuMzksMCwwLDEsMiw0Ny4zNWMtLjcsMS4wOS0xLjM4LDIuMTktMiwzLjMyTDYwLDU1OC4zMWMtLjc2LDEuMy0xLjQ3LDIuNjMtMi4xNSw0YTUxLjM3LDUxLjM3LDAsMCwxLTQyLjE5LDIyLjJIMHYzNy4zNUgxNS41M2E1MS4zNyw1MS4zNywwLDAsMSw0NC4zNiwyNS42Mmw2Ni4zMywxMTQuODdhNTEuMzgsNTEuMzgsMCwwLDEsMCw1MS4yM0w1OS44OSw5MjguNDNBNTEuMzgsNTEuMzgsMCwwLDEsMTUuNTMsOTU0SDB2OTY2SDE5MjBWOTAyLjZhMzMuMjYsMzMuMjYsMCwwLDEtMTYuMjgsNC4yN1pNMTM3MC4zOSwyMDYuMDgsMTQzNi43MSw5MS4yYTUxLjM4LDUxLjM4LDAsMCwxLDQ0LjM3LTI1LjYxaDEzMi42NWE1MS4zNiw1MS4zNiwwLDAsMSw0NC4zNiwyNS42MWw2Ni4zMiwxMTQuODhhNTEuMzYsNTEuMzYsMCwwLDEsMCw1MS4yMmwtNjYuMzIsMTE0Ljg4YTUxLjM2LDUxLjM2LDAsMCwxLTQ0LjM2LDI1LjYxSDE0ODEuMDhhNTEuMzgsNTEuMzgsMCwwLDEtNDQuMzctMjUuNjFMMTM3MC4zOSwyNTcuM2E1MS4zNiw1MS4zNiwwLDAsMSwwLTUxLjIyWm0yMTAuNjgsMzk1LjE3LTE2LjkyLDI5LjMxaC0zMy44NGwtMTYuOTItMjkuMzEsMTYuOTItMjkuMzFoMzMuODRaTTczMS4xOCwyMDcsNzk3LjUxLDkyLjE0YTUxLjM4LDUxLjM4LDAsMCwxLDQ0LjM2LTI1LjYxSDk3NC41MmE1MS4zOCw1MS4zOCwwLDAsMSw0NC4zNiwyNS42MUwxMDg1LjIsMjA3YTUxLjMyLDUxLjMyLDAsMCwxLDEsNDkuMzljLS4zMy41Ni0uNjgsMS4xMi0xLDEuNjhMMTAxOC44NSwzNzNjLS4zNS42MS0uNjksMS4yMy0xLDEuODVhNTEuMzgsNTEuMzgsMCwwLDEtNDMuMzEsMjMuOTJIODQxLjg3YTUxLjM3LDUxLjM3LDAsMCwxLTQ0LjM2LTI1LjYyTDczMS4xOCwyNTguMjVhNTEuMzgsNTEuMzgsMCwwLDEsMC01MS4yM1pNNDExLjU4LDM5Mi4zNiw0NzcuOSwyNzcuNDhhNTEuMzcsNTEuMzcsMCwwLDEsNDQuMzYtMjUuNjJINjU0LjkxYTUxLjM5LDUxLjM5LDAsMCwxLDQ0LjM3LDI1LjYyTDc2NS42LDM5Mi4zNmE1MS4zNyw1MS4zNywwLDAsMSwyLDQ3LjI4Yy0uNzcsMS4xOS0xLjUyLDIuMzktMi4yMywzLjYyTDY5OS4wNyw1NTguMTRjLS43NSwxLjMtMS40NSwyLjYyLTIuMTMsNGE1MS4zNiw1MS4zNiwwLDAsMS00MiwyMkg1MjIuMjZBNTEuMzgsNTEuMzgsMCwwLDEsNDc5LDU2MC4xNWMtLjMzLS42Mi0uNjctMS4yNC0xLTEuODVMNDExLjYxLDQ0My40M2MtLjMzLS41Ny0uNjctMS4xMi0xLTEuNjhhNTEuMjgsNTEuMjgsMCwwLDEsMS00OS4zOVpNMTk3LjQzLDIyNS44NmwyNy45LTQ4LjMzYTE4LjUsMTguNSwwLDAsMSwxNi05LjIxaDU1LjhhMTguNDksMTguNDksMCwwLDEsMTYsOS4yMUwzNDEsMjI1Ljg2YTE4LjUxLDE4LjUxLDAsMCwxLDAsMTguNDRsLTI3LjksNDguMzJhMTguNDgsMTguNDgsMCwwLDEtMTYsOS4yMkgyNDEuM2ExOC40OSwxOC40OSwwLDAsMS0xNi05LjIybC0yNy45LTQ4LjMyYTE4LjUxLDE4LjUxLDAsMCwxLDAtMTguNDRaTTkyLDYyOGE1MS4zOCw1MS4zOCwwLDAsMSwwLTUxLjIzTDE1OC4zLDQ2MS44NmE1MS4zOCw1MS4zOCwwLDAsMSw0NC4zNi0yNS42MUgzMzUuMzFhNTEuMzgsNTEuMzgsMCwwLDEsNDQuMzYsMjUuNjFMNDQ2LDU3Ni43NEE1MS4zOCw1MS4zOCwwLDAsMSw0NDYsNjI4TDM3OS42Nyw3NDIuODRhNTEuMzcsNTEuMzcsMCwwLDEtNDQuMzYsMjUuNjJIMjAyLjY2YTUxLjM3LDUxLjM3LDAsMCwxLTQ0LjM2LTI1LjYyWk00MjEuMjYsOTkzLjA5bC01Ny44OCwxMDAuMjZhNDIuNDksNDIuNDksMCwwLDEtMzYuNjksMjEuMThIMjEwLjkzYTQyLjUsNDIuNSwwLDAsMS0zNi42OS0yMS4xOEwxMTYuMzYsOTkzLjA5YTQyLjQ2LDQyLjQ2LDAsMCwxLDAtNDIuMzZsNTcuODgtMTAwLjI1YTQyLjQ4LDQyLjQ4LDAsMCwxLDM2LjY5LTIxLjE4SDMyNi42OWE0Mi40Nyw0Mi40NywwLDAsMSwzNi42OSwyMS4xOGw1Ny44OCwxMDAuMjVBNDIuNDksNDIuNDksMCwwLDEsNDIxLjI2LDk5My4wOVptMjc1LjMyLTYxLjE4YTUxLjM4LDUxLjM4LDAsMCwxLTQxLjg0LDIxLjcySDUyMi4wOUE1MS4zOCw1MS4zOCwwLDAsMSw0NzcuNzMsOTI4TDQxMS40LDgxMy4xNGE1MS4zOCw1MS4zOCwwLDAsMSwwLTUxLjIzTDQ3Ny43Myw2NDdhNTEuMzcsNTEuMzcsMCwwLDEsNDQuMzYtMjUuNjJINjU0Ljc0QTUxLjM3LDUxLjM3LDAsMCwxLDY5OS4xLDY0N2w2Ni4zMywxMTQuODdhNTEuNCw1MS40LDAsMCwxLDIsNDcuMjhjLS44NywxLjMyLTEuNywyLjY2LTIuNSw0TDY5OC42NCw5MjguMUM2OTcuOTEsOTI5LjM2LDY5Ny4yMyw5MzAuNjMsNjk2LjU4LDkzMS45MVptMzg4LDY1Ljg2LTY2LjMzLDExNC44OGE1MS4zOCw1MS4zOCwwLDAsMS00NC4zNiwyNS42MUg4NDEuMjZhNTEuMzgsNTEuMzgsMCwwLDEtNDQuMzYtMjUuNjFMNzMwLjU3LDk5Ny43N2E1MS4zOCw1MS4zOCwwLDAsMSwwLTUxLjIzTDc5Ni45LDgzMS42N2E1MS4zNyw1MS4zNywwLDAsMSw0NC4zNi0yNS42Mkg5NzMuOTFhNTEuMzcsNTEuMzcsMCwwLDEsNDQuMzYsMjUuNjJsNjYuMzMsMTE0Ljg3QTUxLjM4LDUxLjM4LDAsMCwxLDEwODQuNiw5OTcuNzdabS40My0zNzAtNjYuMzIsMTE0Ljg3YTUxLjM5LDUxLjM5LDAsMCwxLTQ0LjM3LDI1LjYySDg0MS42OWE1MS4zNyw1MS4zNywwLDAsMS00NC4zNi0yNS42Mkw3MzEsNjI3LjgxYTUxLjM4LDUxLjM4LDAsMCwxLDAtNTEuMjNMNzk3LjMzLDQ2MS43YTUxLjM2LDUxLjM2LDAsMCwxLDQ0LjM2LTI1LjYxSDk3NC4zNGE1MS4zOCw1MS4zOCwwLDAsMSw0NC4zNywyNS42MUwxMDg1LDU3Ni41OEE1MS4zOCw1MS4zOCwwLDAsMSwxMDg1LDYyNy44MVptMjM4LjQ5LDE2OS43NC0zOC40NSw2Ni41OWEyMiwyMiwwLDAsMS0xOSwxMWgtNzYuODlhMjIsMjIsMCwwLDEtMTktMTFsLTM4LjQ0LTY2LjU5YTIyLDIyLDAsMCwxLDAtMjEuOTRMMTE3MC4xNyw3MDlhMjIsMjIsMCwwLDEsMTktMTFoNzYuODlhMjIsMjIsMCwwLDEsMTksMTFsMzguNDUsNjYuNTlBMjIsMjIsMCwwLDEsMTMyMy41Miw3OTcuNTVabS0yOS40LTIxNC40MkgxMTYxLjQ3YTUxLjM3LDUxLjM3LDAsMCwxLTQ0LjM2LTI1LjYybC02Ni4zMy0xMTQuODdhNTEuMzgsNTEuMzgsMCwwLDEsMC01MS4yM2w2Ni4zMy0xMTQuODhhNTEuMzYsNTEuMzYsMCwwLDEsNDQuMzYtMjUuNjFoMTMyLjY1YTUxLjM2LDUxLjM2LDAsMCwxLDQ0LjM2LDI1LjYxbDY2LjMzLDExNC44OGE1MS4zNiw1MS4zNiwwLDAsMSwwLDUxLjIybC02Ni4zMywxMTQuODhBNTEuMzcsNTEuMzcsMCwwLDEsMTI5NC4xMiw1ODMuMTNaTTE2NjQuNDIsOTg5bC00OS41Niw4NS44NWEzMy43NCwzMy43NCwwLDAsMS0yOS4xMywxNi44MkgxNDg2LjZhMzMuNzEsMzMuNzEsMCwwLDEtMjkuMTItMTYuODJMMTQwNy45MSw5ODlhMzMuNzMsMzMuNzMsMCwwLDEsMC0zMy42M2w0OS41Ny04NS44NWEzMy43MSwzMy43MSwwLDAsMSwyOS4xMi0xNi44Mmg5OS4xM2EzMy43NCwzMy43NCwwLDAsMSwyOS4xMywxNi44Mmw0OS41Niw4NS44NUEzMy43MSwzMy43MSwwLDAsMSwxNjY0LjQyLDk4OVoiLz48L3N2Zz4= );
+    --background-lg-37 : linear-gradient( 180deg, rgba( 235, 247, 255, 1 ) 0%, rgba( 255, 255, 255, 1 ) 100% );
+    --background-lg-38 : linear-gradient( 186.86deg, rgba(38, 207, 255, 1) 0%, rgba(146, 136, 253, 1) 100% );
+    --background-lg-39 : radial-gradient( rgba( 33, 27, 129, 1 ), var( --black ) );
+    --background-lg-40 : radial-gradient( rgba( 33, 27, 129, 1 ), var( --black ) 80% );
+    --background-lg-41 : radial-gradient( rgb(8, 125, 228) 0%, var( --black ) 60% );
+    --background-lg-42-1 : var( --black );
+    --background-lg-42-2 : radial-gradient( 45% 85% at 65% 65%, rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), radial-gradient( 35% 70% at 35% 50%, rgba( 157, 3, 3, 1 ) 0%, rgba( 0, 0, 0, 0 ) 79.09% ); // this has to have the property : background-image
+    --background-lg-42-3 : radial-gradient( 45% 85% at 65% 65%, rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), radial-gradient( 35% 70% at 35% 50%, rgb(1, 126, 88) 0%, rgba( 0, 0, 0, 0 ) 79.09% ); // this has to have the property : background-image
+    --background-lg-42-4 : radial-gradient( 45% 85% at 65% 65%, rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), radial-gradient( 35% 70% at 35% 50%, rgb(91, 1, 126) 0%, rgba( 0, 0, 0, 0 ) 79.09% ); // this has to have the property : background-image
+    --background-lg-42-5 : radial-gradient( 45% 85% at 65% 65%, rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), radial-gradient( 35% 70% at 35% 50%, rgb(126, 1, 116) 0%, rgba( 0, 0, 0, 0 ) 79.09% ); // this has to have the property : background-image
+    --background-lg-42-6 : radial-gradient( 45% 85% at 65% 65%, rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), radial-gradient( 35% 70% at 35% 50%, rgb(112, 0, 163) 0%, rgba( 0, 0, 0, 0 ) 79.09% ); // this has to have the property : background-image
+    --background-lg-42-7 : radial-gradient( 45% 85% at 65% 65%, rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), radial-gradient( 35% 70% at 35% 50%, rgb(2, 116, 131) 0%, rgba( 0, 0, 0, 0 ) 79.09% ); // this has to have the property : background-image
+    --background-lg-42-8 : radial-gradient( 45% 85% at 65% 65%, rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), radial-gradient( 35% 70% at 35% 50%, rgb(2, 90, 131) 0%, rgba( 0, 0, 0, 0 ) 79.09% ); // this has to have the property : background-image
+    --background-lg-42-9 : radial-gradient( 45% 85% at 65% 65%, rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), radial-gradient( 35% 70% at 35% 50%, rgb(116, 2, 36) 0%, rgba( 0, 0, 0, 0 ) 79.09% ); // this has to have the property : background-image
+    --background-lg-43 : radial-gradient( rgb(8, 125, 228) 0%, var( --black ) 40% );
+    --background-lg-44 : linear-gradient( var( --purple ) 0%, var( --blue-300 ) 100% );
+    --background-lg-45 : linear-gradient( var( --purple-150 ) 0%, var( --blue-300 ) 100% );
+    --background-lg-46 : linear-gradient( var( --cyan-200 ) 0%, var( --blue-300 ) 100% );
+    --background-lg-47 : linear-gradient( to right, var( --blue-800 ) 0%, var( --purple-300 ) 100% );
+    --background-lg-48 : linear-gradient( to right, var( --purple-400 ) 0%, rgba( 252, 0, 255, 1 ) 100% );
+    --background-lg-49 : linear-gradient( to right, var( --blue-800 ) 0%, var( --purple-200 ) 100% );
+    --background-lg-50 : linear-gradient( to right, var( --blue-600 ) 0%, var( --purple-200 ) 100% );
+    --background-lg-50-1  : var( --black );
+    --background-lg-50-2  : radial-gradient( 45% 85% at 65% 65%, rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), radial-gradient( 35% 70% at 35% 50%, rgba( 157, 3, 3, 1 ) 0%, rgba( 0, 0, 0, 0 ) 79.09% ); // this has to have the property : background-image
+    --background-lg-50-3  : radial-gradient( 45% 85% at 65% 65%, rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), radial-gradient( 35% 70% at 35% 50%, rgb( 1, 126, 88 ) 0%, rgba( 0, 0, 0, 0 ) 79.09% ); // this has to have the property : background-image
+    --background-lg-50-4  : radial-gradient( 45% 85% at 65% 65%, rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), radial-gradient( 35% 70% at 35% 50%, rgb( 91, 1, 126 ) 0%, rgba( 0, 0, 0, 0 ) 79.09% ); // this has to have the property : background-image
+    --background-lg-50-5  : radial-gradient( 45% 85% at 65% 65%, rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), radial-gradient( 35% 70% at 35% 50%, rgb( 126, 1, 116 ) 0%, rgba( 0, 0, 0, 0 ) 79.09% ); // this has to have the property : background-image
+    --background-lg-50-6  : radial-gradient( 45% 85% at 65% 65%, rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), radial-gradient( 35% 70% at 35% 50%, rgb( 112, 0, 163 ) 0%, rgba( 0, 0, 0, 0 ) 79.09% ); // this has to have the property : background-image
+    --background-lg-50-7  : radial-gradient( 45% 85% at 65% 65%, rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), radial-gradient( 35% 70% at 35% 50%, rgb( 2, 116, 131 ) 0%, rgba( 0, 0, 0, 0 ) 79.09% ); // this has to have the property : background-image
+    --background-lg-50-8  : radial-gradient( 45% 85% at 65% 65%, rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), radial-gradient( 35% 70% at 35% 50%, rgb( 2, 90, 131 ) 0%, rgba( 0, 0, 0, 0 ) 79.09% ); // this has to have the property : background-image
+    --background-lg-50-9  : radial-gradient( 45% 85% at 65% 65%, rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), radial-gradient( 35% 70% at 35% 50%, rgb( 116, 2, 36 ) 0%, rgba( 0, 0, 0, 0 ) 79.09% ); // this has to have the property : background-image
+    --background-lg-50-10 : radial-gradient( 45% 85% at 65% 65%, rgba( 13, 58, 216, 1.0 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), radial-gradient( 35% 70% at 35% 50%, var( --green-210 ) 0%, rgba( 0, 0, 0, 0 ) 79.09% ); // this has to have the property : background-image
+    --background-lg-50-11 : radial-gradient( 45% 85% at 65% 65%, rgba( 13, 58, 216, 1.0 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), radial-gradient( 35% 70% at 35% 50%, var( --purple-150 ) 0%, rgba( 0, 0, 0, 0 ) 79.09% ); // this has to have the property : background-image
+    --background-lg-51 : linear-gradient( to right, var( --blue-800 ) 0%, var( --purple-250 ) 100% );
+    --background-lg-52 : linear-gradient( to right, var( --blue-85 ) 0%, var( --purple-250 ) 100% );
+    --background-lg-53 : linear-gradient( to right, var( --blue-800 ) 0%, var( --blue-85 ) 100% );
+    --background-lg-54 : linear-gradient( to right, var( --purple-250 ) 0%, var( --purple-30 ) 100% );
+    --background-lg-55 : linear-gradient( to bottom, var( --purple-250 ) 0%, var( --purple-30 ) 100% );
+    --background-lg-56 : linear-gradient( to right, var( --purple-300 ) 0%, var( --purple-30 ) 100% );
+    --background-lg-57 : conic-gradient( from 0deg at center, var( --blue-800 ) 0%, var( --blue-80 ) 70% );
+
+    --background-lg-62       : linear-gradient( to bottom, var( --blue-600 ) 0%, var( --cyan-200 ) 100% );
+
+
+    --gray-gradient-right        : linear-gradient( 120deg, rgba( 233, 235, 237, 1 ) 0%, rgba( 249, 247, 247, 1 ) 100% );
+    --gray-gradient-right-hover  : linear-gradient( 120deg, rgba( 228, 230, 232, 1 ) 0%, rgba( 244, 242, 242, 1 ) 100% );
+    --gray-gradient-left         : linear-gradient( 120deg, rgba( 253, 251, 251, 1 ) 0%, rgba( 235, 237, 238, 1 ) 100% );
+    --gray-gradient-left-hover   : linear-gradient( 120deg, rgba( 248, 246, 246, 1 ) 0%, rgba( 230, 232, 233, 1 ) 100% );
+    --gray-gradient-to-top       : linear-gradient( to top, rgba( 223, 233, 243, 1 ) 0%, rgba( 255, 255, 255, 1 ) 100% );
+    --gray-gradient-to-top-hover : linear-gradient( to top, rgba( 218, 228, 238, 1 ) 0%, rgba( 250, 250, 250, 1 ) 100% );
+
+
+    --primary   : $gray-900;
+    --secondary : $white;
+    --success   : $green-100;
+    --info      : $cyan-100;
+    --warning   : $yellow-300;
+    --danger    : $red-200;
+    --light     : $white;
+    --dark      : $gray-800;
+
+
+    --em-background-1 : linear-gradient( 120deg, rgba( 166, 192, 254, 1 ) 0%, rgba( 246, 128, 132, 1 ) 100% );
+    --sm-background-1 : linear-gradient( 60deg, rgba( 150, 222, 218, 1 ) 0%, rgba( 80, 201, 195, 1 ) 100% );
+
+
+    --blue-background-1 : linear-gradient( 90deg, rgba( 15, 50, 85, 1 ) 0%, rgba( 15, 50, 85, 1 ) 50%, rgba( 15, 50, 85, 1 ) 100% );
+    --blue-background-2 : linear-gradient( 90deg, rgba( 35, 70, 105, 1 ) 0%, rgba( 35, 70, 105, 1 ) 50%, rgba( 35, 70, 105, 1 ) 100% );
+    --blue-background-3 : linear-gradient( 90deg, rgba( 30, 96, 128, 1 ) 0%, rgba( 72, 88, 135, 1 ) 50%, rgba( 15, 102, 110, 1 ) 100% );
+    --gray-background-1 : linear-gradient( 90deg, rgba( 61, 71, 98, 1 ) 0%, rgba( 61, 61, 70, 1 ) 50%, rgba( 61, 71, 98, 1 ) 100% );
+    --gray-background-2 : linear-gradient( 90deg, rgba( 22, 30, 51, 1 ) 0%, rgba( 61, 61, 70, 1 ) 50%, rgba( 22, 30, 51, 1 ) 100%);
+    --gray-background-3 : linear-gradient( to bottom, rgba( 61, 71, 98, 1 ),  rgba( 81, 91, 118, 1 ) );
+
+
+    --blue-gradient-1 : linear-gradient( -225deg, rgba( 71, 59, 123, 1 ) 0%, #3584A7 51%, rgba( 53, 132, 167, 1 ) 100% );
+    --blue-gradient-2 : linear-gradient( to right, rgba( 59, 181, 177, 1 ) 0%, rgba( 61, 153, 190, 1 ) 31%, rgba( 86, 49, 122, 1 ) 100% );
+    --blue-gradient-3 : linear-gradient( to top, rgba( 0, 198, 251, 1 ) 0%, rgba( 0, 91, 234, 1 ) 100% );
+    --blue-gradient-4 : linear-gradient(
+        45deg,
+        hsl( 240deg 93% 17% ) 0%,
+        hsl( 224deg 100% 21% ) 11%,
+        hsl( 217deg 100% 24% ) 22%,
+        hsl( 211deg 100% 26% ) 33%,
+        hsl( 205deg 100% 27% ) 44%,
+        hsl( 199deg 100% 28% ) 56%,
+        hsl( 192deg 100% 27% ) 67%,
+        hsl( 184deg 100% 27% ) 78%,
+        hsl( 176deg 100% 28% ) 89%,
+        hsl( 167deg 68% 36% ) 100%
+    );
+    --blue-gradient-5 : linear-gradient(
+        45deg,
+        hsl( 240deg 93% 17% ) 0%,
+        hsl( 229deg 100% 19% ) 11%,
+        hsl( 223deg 100% 20% ) 22%,
+        hsl( 219deg 100% 22% ) 33%,
+        hsl( 215deg 100% 23% ) 44%,
+        hsl( 212deg 100% 25% ) 56%,
+        hsl( 208deg 100% 26% ) 67%,
+        hsl( 205deg 100% 27% ) 78%,
+        hsl( 203deg 100% 28% ) 89%,
+        hsl( 201deg 90% 30% ) 100%
+    );
+    --blue-gradient-6 : linear-gradient(
+        45deg,
+        hsl( 238deg 67% 41% ) 0%,
+        hsl( 230deg 80% 38% ) 11%,
+        hsl( 222deg 100% 34% ) 22%,
+        hsl( 220deg 100% 34% ) 33%,
+        hsl( 218deg 100% 33% ) 44%,
+        hsl( 216deg 100% 33% ) 56%,
+        hsl( 214deg 100% 32% ) 67%,
+        hsl( 212deg 100% 32% ) 78%,
+        hsl( 210deg 100% 31% ) 89%,
+        hsl( 209deg 95% 31% ) 100%
+    );
+    --blue-gradient-7 : linear-gradient(
+        45deg,
+        hsl( 238deg 92% 15% ) 0%,
+        hsl( 224deg 100% 16% ) 11%,
+        hsl( 219deg 100% 17% ) 22%,
+        hsl( 213deg 100% 18% ) 33%,
+        hsl( 209deg 100% 18% ) 44%,
+        hsl( 203deg 100% 18% ) 56%,
+        hsl( 198deg 100% 18% ) 67%,
+        hsl( 192deg 100% 17% ) 78%,
+        hsl( 186deg 100% 17% ) 89%,
+        hsl( 180deg 95% 17% ) 100%
+    );
+    --blue-gradient-8 : linear-gradient(
+        45deg,
+        hsl( 239deg 44% 32% ) 0%,
+        hsl( 230deg 54% 30% ) 11%,
+        hsl( 222deg 65% 27% ) 22%,
+        hsl( 215deg 81% 24% ) 33%,
+        hsl( 210deg 100% 21% ) 44%,
+        hsl( 208deg 100% 21% ) 56%,
+        hsl( 206deg 100% 20% ) 67%,
+        hsl( 204deg 100% 19% ) 78%,
+        hsl( 203deg 100% 18% ) 89%,
+        hsl( 200deg 100% 17% ) 100%
+    );
+    --blue-gradient-9 : linear-gradient(
+        45deg,
+        hsl( 239deg 44% 32% ) 0%,
+        hsl( 228deg 56% 29% ) 11%,
+        hsl( 219deg 72% 25% ) 22%,
+        hsl( 212deg 98% 21% ) 33%,
+        hsl( 210deg 100% 19% ) 44%,
+        hsl( 208deg 100% 18% ) 56%,
+        hsl( 206deg 100% 17% ) 67%,
+        hsl( 203deg 100% 16% ) 78%,
+        hsl( 201deg 100% 14% ) 89%,
+        hsl( 200deg 81% 14% ) 100%
+    );
+    --blue-gradient-10 : linear-gradient(
+        45deg,
+        hsl( 234deg 32% 24% ) 0%,
+        hsl( 227deg 37% 23% ) 11%,
+        hsl( 222deg 42% 22% ) 22%,
+        hsl( 217deg 47% 21% ) 33%,
+        hsl( 214deg 53% 19% ) 44%,
+        hsl( 210deg 59% 18% ) 56%,
+        hsl( 207deg 65% 17% ) 67%,
+        hsl( 205deg 71% 16% ) 78%,
+        hsl( 202deg 76% 15% ) 89%,
+        hsl( 200deg 81% 14% ) 100%
+    );
+    --blue-gradient-11 : linear-gradient( to right, rgba( 0, 219, 222, 1 ) 0%, rgba( 252, 0, 255, 1 ) 100% );
+    --blue-gradient-12 : linear-gradient(
+        45deg,
+        hsl( 240deg 39% 35% ) 0%,
+        hsl( 210deg 100% 31% ) 11%,
+        hsl( 207deg 100% 37% ) 22%,
+        hsl( 203deg 100% 41% ) 33%,
+        hsl( 198deg 100% 43% ) 44%,
+        hsl( 191deg 100% 43% ) 56%,
+        hsl( 180deg 100% 39% ) 67%,
+        hsl( 167deg 100% 43% ) 78%,
+        hsl( 154deg 100% 47% ) 89%,
+        hsl( 141deg 100% 50% ) 100%
+    );
+    --blue-gradient-13 : linear-gradient(
+    45deg,
+        hsl( 240deg 39% 35% ) 0%,
+        hsl( 234deg 42% 37% ) 11%,
+        hsl( 230deg 45% 38% ) 22%,
+        hsl( 226deg 49% 39% ) 33%,
+        hsl( 222deg 53% 40% ) 44%,
+        hsl( 218deg 57% 41% ) 56%,
+        hsl( 215deg 63% 42% ) 67%,
+        hsl( 212deg 69% 42% ) 78%,
+        hsl( 209deg 79% 41% ) 89%,
+        hsl( 205deg 98% 39% ) 100%
+    );
+    --blue-gradient-14 : linear-gradient(
+        45deg,
+        hsl( 205deg 98% 39% ) 0%,
+        hsl( 209deg 79% 41% ) 11%,
+        hsl( 212deg 69% 42% ) 22%,
+        hsl( 215deg 63% 42% ) 33%,
+        hsl( 218deg 57% 41% ) 44%,
+        hsl( 222deg 53% 40% ) 56%,
+        hsl( 226deg 49% 39% ) 67%,
+        hsl( 230deg 45% 38% ) 78%,
+        hsl( 234deg 42% 37% ) 89%,
+        hsl( 240deg 39% 35% ) 100%
+    );
+    --blue-gradient-15 :  linear-gradient(
+        45deg,
+        hsl( 222deg 57% 36% ) 0%,
+        hsl( 220deg 59% 37% ) 11%,
+        hsl( 218deg 62% 38% ) 22%,
+        hsl( 216deg 65% 38% ) 33%,
+        hsl( 214deg 68% 39% ) 44%,
+        hsl( 213deg 71% 40% ) 56%,
+        hsl( 211deg 75% 40% ) 67%,
+        hsl( 209deg 80% 40% ) 78%,
+        hsl( 207deg 87% 40% ) 89%,
+        hsl( 205deg 98% 39% ) 100%
+    );
+    --green-gradient-1 : linear-gradient( to top, rgba( 11, 163, 96, 1) 0%, rgba(60, 186, 146, 1) 100% );
+
+
+    // ==============================
+    // LINEAR EASING FUNCTIONS
+    // ==============================
+
+    --spring-easing   : linear(
+        0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%, 0.723 12.9%, 0.938 16.7%, 1.017,
+        1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%,
+        1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%,
+        0.997 69.8%, 1.003 76.9%, 1.004 83.8%, 1
+    );
+
+    --spring-duration : 1.333s;
+
+    --bounce-easing   : linear(
+        0, 0.004, 0.016, 0.035, 0.063, 0.098, 0.141 13.6%, 0.25, 0.391, 0.563, 0.765,
+        1, 0.891 40.9%, 0.848, 0.813, 0.785, 0.766, 0.754, 0.75, 0.754, 0.766, 0.785,
+        0.813, 0.848, 0.891 68.2%, 1 72.7%, 0.973, 0.953, 0.941, 0.938, 0.941, 0.953,
+        0.973, 1, 0.988, 0.984, 0.988, 1
+    );
+
+    --elastic-easing  : linear(
+        0, 0.218 2.1%, 0.862 6.5%, 1.114, 1.296 10.7%, 1.346, 1.37 12.9%, 1.373,
+        1.364 14.5%, 1.315 16.2%, 1.032 21.8%, 0.941 24%, 0.891 25.9%, 0.877,
+        0.869 27.8%, 0.87, 0.882 30.7%, 0.907 32.4%, 0.981 36.4%, 1.012 38.3%, 1.036,
+        1.046 42.7% 44.1%, 1.042 45.7%, 0.996 53.3%, 0.988, 0.984 57.5%, 0.985 60.7%,
+        1.001 68.1%, 1.006 72.2%, 0.998 86.7%, 1
+    );
+
+    --elastic-duration : 3.400s;
+/*
+    --custom-easing   : linear(
+        0, 0.002, 0.01 3.6%, 0.034, 0.074 9.1%, 0.128 11.4%, 0.194 13.4%, 0.271 15%,
+        0.344 16.1%, 0.544, 0.66 20.6%, 0.717 22.4%, 0.765 24.6%, 0.808 27.3%,
+        0.845 30.4%, 0.883 35.1%, 0.916 40.6%, 0.942 47.2%, 0.963 55%, 0.979 64%,
+        0.991 74.4%, 0.998 86.4%, 1
+    );
+
+    // remember, the following 6 easing functions come from the following article :
+    // " https://www.smashingmagazine.com/2023/09/path-css-easing-linear-function/
+    // and are GreenStock easing functions that are dropped into the css linear()
+    // function
+
+    --elastic-in     : linear(
+        0, 0.0019 13.34%, -0.0056 27.76%, -0.0012 31.86%, 0.0147 39.29%, 0.0161 42.46%,
+        0.0039 46.74%, -0.0416 54.3%, -0.046 57.29%, -0.0357, -0.0122 61.67%, 0.1176 69.29%,
+        0.1302 70.79%, 0.1306 72.16%, 0.1088 74.09%, 0.059 75.99%, -0.0317 78.19%,
+        -0.3151 83.8%, -0.3643 85.52%, -0.3726, -0.3705 87.06%, -0.3463, -0.2959 89.3%,
+        -0.1144 91.51%, 0.7822 97.9%, 1
+    );
+*/
+    --elastic-out    : linear(
+        0, 0.2178 2.1%, 1.1144 8.49%, 1.2959 10.7%, 1.3463 11.81%, 1.3705 12.94%, 1.3726,
+        1.3643 14.48%, 1.3151 16.2%, 1.0317 21.81%, 0.941 24.01%, 0.8912 25.91%,
+        0.8694 27.84%, 0.8698 29.21%, 0.8824 30.71%, 1.0122 38.33%, 1.0357, 1.046 42.71%,
+        1.0416 45.7%, 0.9961 53.26%, 0.9839 57.54%, 0.9853 60.71%, 1.0012 68.14%,
+        1.0056 72.24%, 0.9981 86.66%, 1
+    );
+    
+    --elastic-in-out : linear(
+        0, -0.0028 13.88%, 0.0081 21.23%, 0.002 23.37%, -0.0208 27.14%, -0.023 28.64%,
+        -0.0178, -0.0061 30.83%, 0.0588 34.64%, 0.0651 35.39%, 0.0653 36.07%, 0.0514,
+        0.0184 38.3%, -0.1687 42.21%, -0.1857 43.04%, -0.181 43.8%, -0.1297 44.93%,
+        -0.0201 46.08%, 1.0518 54.2%, 1.1471, 1.1853 56.48%, 1.1821 57.25%, 1.1573 58.11%,
+        0.9709 62%, 0.9458, 0.9347 63.92%, 0.9349 64.61%, 0.9412 65.36%, 1.0061 69.17%,
+        1.0178, 1.023 71.36%, 1.0208 72.86%, 0.998 76.63%, 0.9919 78.77%, 1.0028 86.12%, 1
+    );
+
+    --bounce-easing  : linear(
+        0, 0.0157, 0.0625, 0.1407, 0.25 18.18%, 0.5625, 1 36.36%, 0.8907, 0.8125,
+        0.7657, 0.75, 0.7657, 0.8125, 0.8905, 1, 0.9532, 0.9375, 0.9531, 1, 0.9844, 1
+    );
+    
+    --bounce-in      : linear(
+        0, 0.0117, 0.0156, 0.0117, 0, 0.0273, 0.0468, 0.0586, 0.0625, 0.0586, 0.0468,
+        0.0273, 0 27.27%, 0.1093, 0.1875 36.36%, 0.2148, 0.2343, 0.2461, 0.25, 0.2461,
+        0.2344, 0.2148 52.28%, 0.1875 54.55%, 0.1095, 0, 0.2341, 0.4375, 0.6092, 0.75,
+        0.8593, 0.9375 90.91%, 0.9648, 0.9843, 0.9961, 1
+    );
+        
+    --bounce-out     : linear( 
+        0, 0.0039, 0.0157, 0.0352, 0.0625 9.09%, 0.1407, 0.25, 0.3908, 0.5625, 0.7654,
+        1, 0.8907, 0.8125 45.45%, 0.7852, 0.7657, 0.7539, 0.75, 0.7539, 0.7657, 0.7852,
+        0.8125 63.64%, 0.8905, 1 72.73%, 0.9727, 0.9532, 0.9414, 0.9375, 0.9414, 0.9531,
+        0.9726, 1, 0.9883, 0.9844, 0.9883, 1
+    );
+    
+    --bounce-in-out  : linear(
+        0, 0.0078, 0, 0.0235, 0.0313, 0.0235, 0.0001 13.63%, 0.0549 15.92%, 0.0938,
+        0.1172, 0.125, 0.1172, 0.0939 27.26%, 0.0554 29.51%, 0.0003 31.82%, 0.2192,
+        0.3751 40.91%, 0.4332, 0.4734 45.8%, 0.4947 48.12%, 0.5027 51.35%, 0.5153 53.19%,
+        0.5437, 0.5868 57.58%, 0.6579, 0.7504 62.87%, 0.9999 68.19%, 0.9453, 0.9061,
+        0.8828, 0.875, 0.8828, 0.9063, 0.9451 84.08%, 0.9999 86.37%, 0.9765, 0.9688,
+        0.9765, 1, 0.9922, 1
+    );
+
+    // ==============================
+    // GREENSTOCK EASES WITH CSS LINEAR()
+    // ==============================
+
+    // these linear easing functions came from :
+    // " https://gist.github.com/jh3y/1b3afdfa7af3ebc5668bf169cea17d09 "
+    // and this person did a video or wrote an article about his quest to reverse engineer
+    // the Greenstock easing functions and once he figured it out then he made the list below
+
+    --none           : linear( 0, 1 );
+    --power1-in      : linear( 0, 0.0039, 0.0156, 0.0352, 0.0625, 0.0977, 0.1407, 0.1914, 0.2499, 0.3164, 0.3906 62.5%, 0.5625, 0.7656, 1 );
+    --power1-out     : linear( 0, 0.2342, 0.4374, 0.6093 37.49%, 0.6835, 0.7499, 0.8086, 0.8593, 0.9023, 0.9375, 0.9648, 0.9844, 0.9961, 1 );
+    --power1-in-out  : linear( 0, 0.0027, 0.0106 7.29%, 0.0425, 0.0957, 0.1701 29.16%, 0.2477, 0.3401 41.23%, 0.5982 55.18%, 0.7044 61.56%, 0.7987, 0.875 75%, 0.9297, 0.9687, 0.9922, 1 );
+    --power2-in      : linear( 0, 0.0014 11.11%, 0.0071 19.24%, 0.0188 26.6%, 0.037 33.33%, 0.0634 39.87%, 0.0978 46.07%, 0.1407 52.02%, 0.1925 57.74%, 0.2559 63.49%, 0.3295 69.07%, 0.4135 74.5%, 0.5083 79.81%, 0.6141 85%, 0.7312 90.09%, 1 );
+    --power2-out     : linear( 0, 0.2688 9.91%, 0.3859 15%, 0.4917 20.19%, 0.5865 25.5%, 0.6705 30.93%, 0.7441 36.51%, 0.8075 42.26%, 0.8593 47.98%, 0.9022 53.93%, 0.9366 60.13%, 0.963 66.67%, 0.9812 73.4%, 0.9929 80.76%, 0.9986 88.89%, 1 );
+    --power2-in-out  : linear( 0, 0.0036 9.62%, 0.0185 16.66%, 0.0489 23.03%, 0.0962 28.86%, 0.1705 34.93%, 0.269 40.66%, 0.3867 45.89%, 0.5833 52.95%, 0.683 57.05%, 0.7829 62.14%, 0.8621 67.46%, 0.8991 70.68%, 0.9299 74.03%, 0.9545 77.52%, 0.9735 81.21%, 0.9865 85%, 0.9949 89.15%, 1 );
+    --power3-in      : linear( 0, 0.0039 25%, 0.0117 32.89%, 0.0248 39.68%, 0.0457 46.22%, 0.0743 52.21%, 0.1113 57.77%, 0.1575 63%, 0.218 68.33%, 0.2901 73.39%, 0.3745 78.23%, 0.4718 82.88%, 0.5827 87.37%, 0.7074 91.71%, 0.8462 95.91%, 1 );
+    --power3-out     : linear( 0, 0.1538 4.09%, 0.2926 8.29%, 0.4173 12.63%, 0.5282 17.12%, 0.6255 21.77%, 0.7099 26.61%, 0.782 31.67%, 0.8425 37%, 0.8887 42.23%, 0.9257 47.79%, 0.9543 53.78%, 0.9752 60.32%, 0.9883 67.11%, 0.9961 75%, 1 );
+    --power3-in-out  : linear( 0, 0.0029 13.8%, 0.0184 21.9%, 0.0339 25.51%, 0.0551 28.81%, 0.0827 31.88%, 0.1168 34.76%, 0.1962 39.57%, 0.3005 44.02%, 0.4084 47.53%, 0.6242 53.45%, 0.7493 57.93%, 0.8495 62.97%, 0.8888 65.67%, 0.9213 68.51%, 0.9629 73.9%, 0.9876 80.16%, 0.998 87.5%, 1 );
+    --power4-in      : linear( 0, 0.0024 29.91%, 0.008 38.03%, 0.0179 44.72%, 0.035 51.16%, 0.0595 56.88%, 0.0922 62.08%, 0.1338 66.88%, 0.1914 71.85%, 0.262 76.5%, 0.3461 80.88%, 0.4447 85.04%, 0.5587 89.01%, 0.689 92.82%, 0.8359 96.48%, 1 );
+    --power4-out     : linear( 0, 0.1641 3.52%, 0.311 7.18%, 0.4413 10.99%, 0.5553 14.96%, 0.6539 19.12%, 0.738 23.5%, 0.8086 28.15%, 0.8662 33.12%, 0.9078 37.92%, 0.9405 43.12%, 0.965 48.84%, 0.9821 55.28%, 0.992 61.97%, 0.9976 70.09%, 1 );
+    --power4-in-out  : linear( 0, 0.0012 14.95%, 0.0089 22.36%, 0.0297 28.43%, 0.0668 33.43%, 0.0979 36.08%, 0.1363 38.55%, 0.2373 43.07%, 0.3675 47.01%, 0.5984 52.15%, 0.7121 55.23%, 0.8192 59.21%, 0.898 63.62%, 0.9297 66.23%, 0.9546 69.06%, 0.9733 72.17%, 0.9864 75.67%, 0.9982 83.73%, 1 );
+    --quad-in        : linear( 0, 0.0039, 0.0156, 0.0352, 0.0625, 0.0977, 0.1407, 0.1914, 0.2499, 0.3164, 0.3906 62.5%, 0.5625, 0.7656, 1 );
+    --quad-out       : linear( 0, 0.2342, 0.4374, 0.6093 37.49%, 0.6835, 0.7499, 0.8086, 0.8593, 0.9023, 0.9375, 0.9648, 0.9844, 0.9961, 1 );
+    --quad-in-out    : linear( 0, 0.0027, 0.0106 7.29%, 0.0425, 0.0957, 0.1701 29.16%, 0.2477, 0.3401 41.23%, 0.5982 55.18%, 0.7044 61.56%, 0.7987, 0.875 75%, 0.9297, 0.9687, 0.9922, 1 );
+    --expo-in        : linear( 0, 0.0085 31.26%, 0.0167 40.94%, 0.0289 48.86%, 0.0471 55.92%, 0.0717 61.99%, 0.1038 67.32%, 0.1443 72.07%, 0.1989 76.7%, 0.2659 80.89%, 0.3465 84.71%, 0.4419 88.22%, 0.554 91.48%, 0.6835 94.51%, 0.8316 97.34%, 1 );
+    --expo-out       : linear( 0, 0.1684 2.66%, 0.3165 5.49%, 0.446 8.52%, 0.5581 11.78%, 0.6535 15.29%, 0.7341 19.11%, 0.8011 23.3%, 0.8557 27.93%, 0.8962 32.68%, 0.9283 38.01%, 0.9529 44.08%, 0.9711 51.14%, 0.9833 59.06%, 0.9915 68.74%, 1 );
+    --expo-in-out    : linear( 0, 0.0053 17.18%, 0.0195 26.59%, 0.0326 30.31%, 0.0506 33.48%, 0.0744 36.25%, 0.1046 38.71%, 0.1798 42.62%, 0.2846 45.93%, 0.3991 48.37%, 0.6358 52.29%, 0.765 55.45%, 0.8622 59.3%, 0.8986 61.51%, 0.9279 63.97%, 0.9481 66.34%, 0.9641 69.01%, 0.9856 75.57%, 0.9957 84.37%, 1 );
+    --circ-in        : linear( -0, 0.0048 9.8%, 0.0192 19.5%, 0.043 29.02%, 0.0761 38.26%, 0.1181 47.13%, 0.1685 55.56%, 0.227 63.44%, 0.2929 70.71%, 0.3656 77.3%, 0.4445 83.15%, 0.5285 88.19%, 0.6173 92.39%, 0.7099 95.7%, 0.805 98.08%, 0.9021 99.52%, 1 );
+    --circ-out       : linear( 0, 0.0979 0.48%, 0.195 1.92%, 0.2901 4.3%, 0.3827 7.61%, 0.4715 11.81%, 0.5555 16.85%, 0.6344 22.7%, 0.7071 29.29%, 0.773 36.56%, 0.8315 44.44%, 0.8819 52.87%, 0.9239 61.74%, 0.957 70.98%, 0.9808 80.5%, 0.9952 90.2%, 1 );
+    --circ-in-out    : linear( -0, 0.0033 5.75%, 0.0132 11.43%, 0.0296 16.95%, 0.0522 22.25%, 0.0808 27.25%, 0.1149 31.89%, 0.1542 36.11%, 0.1981 39.85%, 0.2779 44.79%, 0.3654 48.15%, 0.4422 49.66%, 0.5807 50.66%, 0.6769 53.24%, 0.7253 55.37%, 0.7714 58.01%, 0.8142 61.11%, 0.8536 64.65%, 0.9158 72.23%, 0.9619 80.87%, 0.9904 90.25%, 1 );
+    --sine-in        : linear( 0, 0.0035, 0.0141 10.7%, 0.0318 16.09%, 0.0566 21.51%, 0.0885 26.98%, 0.1278 32.53%, 0.2288 43.93%, 0.3563 55.48%, 0.5171 67.92%, 0.7139 81.53%, 1 );
+    --sine-out       : linear( 0, 0.2861 18.47%, 0.4829 32.08%, 0.6437 44.52%, 0.7712 56.07%, 0.8722 67.47%, 0.9115 73.02%, 0.9434 78.49%, 0.9682 83.91%, 0.9859 89.3%, 0.9965, 1 );
+    --sine-in-out    : linear( 0, 0.007 5.35%, 0.0282 10.75%, 0.0638 16.26%, 0.1144 21.96%, 0.1833 28.16%, 0.2717 34.9%, 0.6868 62.19%, 0.775 68.54%, 0.8457 74.3%, 0.9141 81.07%, 0.9621 87.52%, 0.9905 93.8%, 1 );
+    --back-in        : linear( 0, -0.0029 4.31%, -0.0119 9.02%, -0.0837 31.27%, -0.0954 36.64%, -0.0998 41.45%, -0.0951 47.03%, -0.079 52.25%, -0.051 57.19%, -0.0108 61.92%, 0.0515 67.19%, 0.1312 72.27%, 0.2286 77.18%, 0.3445 81.96%, 0.4792 86.62%, 0.633 91.17%, 0.8066 95.63%, 1 );
+    --back-out       : linear( 0, 0.1934 4.37%, 0.367 8.83%, 0.5208 13.38%, 0.6555 18.04%, 0.7714 22.82%, 0.8688 27.73%, 0.9485 32.81%, 1.0108 38.08%, 1.051 42.81%, 1.079 47.75%, 1.0951 52.97%, 1.0998 58.55%, 1.0954 63.36%, 1.0837 68.73%, 1.0119 90.98%, 1.0029 95.69%, 1 );
+    --back-in-out    : linear( 0, -0.0059 4.51%, -0.0418 15.63%, -0.0499 20.72%, -0.0476 23.51%, -0.0395 26.12%, -0.0255 28.59%, -0.0055 30.95%, 0.0281 33.76%, 0.0717 36.47%, 0.1901 41.63%, 0.344 46.32%, 0.6156 52.65%, 0.7495 56.35%, 0.8757 60.97%, 0.9663 65.85%, 1.0006 68.58%, 1.0256 71.43%, 1.0417 74.43%, 1.0493 77.65%, 1.0452 83.02%, 1.0077 94.8%, 1 );
+    --elastic-in     : linear( 0, 0.0019 13.34%, -0.0056 27.76%, -0.0012 31.86%, 0.0147 39.29%, 0.0161 42.46%, 0.0039 46.74%, -0.0416 54.3%, -0.046 57.29%, -0.0357, -0.0122 61.67%, 0.1176 69.29%, 0.1302 70.79%, 0.1306 72.16%, 0.1088 74.09%, 0.059 75.99%, -0.0317 78.19%, -0.3151 83.8%, -0.3643 85.52%, -0.3726, -0.3705 87.06%, -0.3463, -0.2959 89.3%, -0.1144 91.51%, 0.7822 97.9%, 1 );
+    --elastic-out    : linear( 0, 0.2178 2.1%, 1.1144 8.49%, 1.2959 10.7%, 1.3463 11.81%, 1.3705 12.94%, 1.3726, 1.3643 14.48%, 1.3151 16.2%, 1.0317 21.81%, 0.941 24.01%, 0.8912 25.91%, 0.8694 27.84%, 0.8698 29.21%, 0.8824 30.71%, 1.0122 38.33%, 1.0357, 1.046 42.71%, 1.0416 45.7%, 0.9961 53.26%, 0.9839 57.54%, 0.9853 60.71%, 1.0012 68.14%, 1.0056 72.24%, 0.9981 86.66%, 1 );
+    --elastic-in-out : linear( 0, -0.0028 13.88%, 0.0081 21.23%, 0.002 23.37%, -0.0208 27.14%, -0.023 28.64%, -0.0178, -0.0061 30.83%, 0.0588 34.64%, 0.0651 35.39%, 0.0653 36.07%, 0.0514, 0.0184 38.3%, -0.1687 42.21%, -0.1857 43.04%, -0.181 43.8%, -0.1297 44.93%, -0.0201 46.08%, 1.0518 54.2%, 1.1471, 1.1853 56.48%, 1.1821 57.25%, 1.1573 58.11%, 0.9709 62%, 0.9458, 0.9347 63.92%, 0.9349 64.61%, 0.9412 65.36%, 1.0061 69.17%, 1.0178, 1.023 71.36%, 1.0208 72.86%, 0.998 76.63%, 0.9919 78.77%, 1.0028 86.12%, 1 );
+    --bounce-in      : linear( 0, 0.0117, 0.0156, 0.0117, 0, 0.0273, 0.0468, 0.0586, 0.0625, 0.0586, 0.0468, 0.0273, 0 27.27%, 0.1093, 0.1875 36.36%, 0.2148, 0.2343, 0.2461, 0.25, 0.2461, 0.2344, 0.2148 52.28%, 0.1875 54.55%, 0.1095, 0, 0.2341, 0.4375, 0.6092, 0.75, 0.8593, 0.9375 90.91%, 0.9648, 0.9843, 0.9961, 1 );
+    --bounce-out     : linear( 0, 0.0039, 0.0157, 0.0352, 0.0625 9.09%, 0.1407, 0.25, 0.3908, 0.5625, 0.7654, 1, 0.8907, 0.8125 45.45%, 0.7852, 0.7657, 0.7539, 0.75, 0.7539, 0.7657, 0.7852, 0.8125 63.64%, 0.8905, 1 72.73%, 0.9727, 0.9532, 0.9414, 0.9375, 0.9414, 0.9531, 0.9726, 1, 0.9883, 0.9844, 0.9883, 1 );
+    --bounce-in-out  : linear( 0, 0.0078, 0, 0.0235, 0.0313, 0.0235, 0.0001 13.63%, 0.0549 15.92%, 0.0938, 0.1172, 0.125, 0.1172, 0.0939 27.26%, 0.0554 29.51%, 0.0003 31.82%, 0.2192, 0.3751 40.91%, 0.4332, 0.4734 45.8%, 0.4947 48.12%, 0.5027 51.35%, 0.5153 53.19%, 0.5437, 0.5868 57.58%, 0.6579, 0.7504 62.87%, 0.9999 68.19%, 0.9453, 0.9061, 0.8828, 0.875, 0.8828, 0.9063, 0.9451 84.08%, 0.9999 86.37%, 0.9765, 0.9688, 0.9765, 1, 0.9922, 1 );
+
+} // end of :root{}
+
+
+
+
+// ==============================
+// MY BASE STYLES
+// ==============================
+
+// start with a global reset
+* {
+
+    margin  : 0;
+    padding : 0;
+
+    box-sizing : border-box;
+
+    -webkit-tap-highlight-color : transparent; // eliminate the white background
+    // that sometimes surronds an element on the iPad / iPhone click event
+
+}
+
+
+// ==============================
+// HTML - 10% DECREASE AT 1440 AND ANOTHER 10% DECREASE AT 768 FOR A TOTAL OF 20%
+// ==============================
+
+// styles for the html section
+html {
+
+    font-size : 62.5%; // 1 rem = 10px
+
+    scroll-behavior : smooth;
+
+    @media all and ( max-width : $bp-1440 ) {
+
+        // remember we want to reduce the font on smaller screens and we do that by using
+        // media queries and changing the font size, in this case, from
+        // " font-size : 62.5%; " to " font-size : 56.25%; " so for example, if our fonts for
+        // an element was defined at 2rem or 20px on large screens or screens larger than
+        // 1440px, now our font will be reduced by 10% to 18px automatically on small screens
+        // or screens less than 1440px and all this is the result from using this one media query
+
+        // so now 1rem equals 9px
+
+        // I tested this and it works and looks good
+
+        font-size : 56.25%;
+
+    } // end of $bp-1440
+
+    @media all and ( max-width : $bp-768 ) {
+
+        // remember we want to reduce the font on smaller screens and we do that by using
+        // media queries and changing the font size, in this case, from
+        // " font-size : 62.5%; " to " font-size : 50.0%; " so for example, if our fonts for
+        // an element was defined at 2rem or 20px on large screens or screens larger than
+        // 1440px, now our font will be reduced by 20% to 16px ( 50% * 16px = 8px * 2rem = 16px )
+        // automatically on small screens or screens less than or equal to 768px and all this is
+        // the result from using this one media query
+
+        // so now 1rem equals 8px
+
+        // I tested this and it works and looks good
+
+        font-size : 50%;
+
+    } // end of $bp-768
+
+} // end of html
+
+
+// ==============================
+// HTML - 5% DECREASE AT 1440 AND ANOTHER 5% DECREASE AT 768 FOR A TOTAL OF 10%
+// ==============================
+
+// styles for the html section
+html {
+
+    font-size : 62.5%; // 1 rem = 10px
+
+    scroll-behavior : smooth;
+
+    @media all and ( max-width : $bp-1440 ) {
+
+        // remember we want to reduce the font on smaller screens and we do that by using
+        // media queries and changing the font size, in this case, from
+        // " font-size : 62.5%; " to " font-size : 59.375%; " so for example, if our fonts for
+        // an element was defined at 2rem or 20px on large screens or screens larger than
+        // 1440px, now our font will be reduced by 5% to 19px automatically on small screens
+        // or screens less than 1440px and all this is the result from using this one media query
+
+        // so now 1rem equals 9.5px
+
+        // I tested this and it works and looks good
+
+        font-size : 59.375%;
+
+    } // end of $bp-1440
+
+    @media all and ( max-width : $bp-768 ) {
+
+        // remember we want to reduce the font on smaller screens and we do that by using
+        // media queries and changing the font size, in this case, from
+        // " font-size : 62.5%; " to " font-size : 56.25%; " so for example, if our fonts for
+        // an element was defined at 2rem or 20px on large screens or screens larger than
+        // 1440px, now our font will be reduced by 10% to 18px automatically on small screens
+        // or screens less than or equal to 768px and all this is the result from using this
+        // one media query
+
+        // so now 1rem equals 9px
+
+        // I tested this and it works and looks good
+
+        font-size : 56.25%;
+
+    } // end of $bp-768
+
+} // end of html
+
+
+// ==============================
+// HTML - 0% DECREASE AT 1440 AND A 10% DECREASE AT 1032 FOR A TOTAL OF 10%
+// ==============================
+
+// styles for the html section
+html {
+
+    font-size : 62.5%; // 1 rem = 10px
+
+    scroll-behavior     : smooth;
+    // this will prevent the bounce effect and the white background from appearing when you
+    // scroll to the top of the page or bottom on the page on mobile devices
+
+    // ==============================
+    // IMPORTANT!
+    //
+    // remember, " overscroll-behavior : none; " prevented my Google map from scrolling
+    // down the page and past the map on Safari and it took me about 24 hours to discover
+    // this bug
+    // ==============================
+    // overscroll-behavior : none;
+
+    @media all and ( max-width : $bp-1032 ) {
+
+        // remember we want to reduce the font on smaller screens and we do that by using
+        // media queries and changing the font size, in this case, from
+        // " font-size : 62.5%; " to " font-size : 56.25%; " so for example, if our fonts for
+        // an element was defined at 2rem or 20px on large screens or screens larger than
+        // 1032px, now our font will be reduced by 10% to 18px automatically on small screens
+        // or screens less than or equal to 1032px and all this is the result from using this
+        // one media query
+
+        // so now 1rem equals 9px
+
+        // I tested this and it works and looks good
+
+        font-size : 56.25%;
+
+    } // end of $bp-1032
+
+} // end of html
+
+
+/*
+// ==============================
+// HTML - 5% DECREASE AT 1440 AND ANOTHER 5% DECREASE AT 920 FOR A TOTAL OF 10%
+// ==============================
+
+// styles for the html section
+html {
+
+    font-size : 62.5%; // 1 rem = 10px
+
+    scroll-behavior : smooth;
+
+    @media all and ( max-width : $bp-1440 ) {
+
+        // remember we want to reduce the font on smaller screens and we do that by using
+        // media queries and changing the font size, in this case, from
+        // " font-size : 62.5%; " to " font-size : 59.375%; " so for example, if our fonts for
+        // an element was defined at 2rem or 20px on large screens or screens larger than
+        // 1440px, now our font will be reduced by 5% to 19px automatically on small screens
+        // or screens less than 1440px and all this is the result from using this one media query
+
+        // so now 1rem equals 9.5px
+
+        // I tested this and it works and looks good
+
+        font-size : 59.375%;
+
+    } // end of $bp-1440
+
+    @media all and ( max-width : $bp-920 ) {
+
+        // remember we want to reduce the font on smaller screens and we do that by using
+        // media queries and changing the font size, in this case, from
+        // " font-size : 62.5%; " to " font-size : 56.25%; " so for example, if our fonts for
+        // an element was defined at 2rem or 20px on large screens or screens larger than
+        // 1440px, now our font will be reduced by 10% to 18px automatically on small screens
+        // or screens less than or equal to 920px and all this is the result from using this
+        // one media query
+
+        // so now 1rem equals 9px
+
+        // I tested this and it works and looks good
+
+        font-size : 56.25%;
+
+    } // end of $bp-920
+
+} // end of html
+*/
+
+
+// styles for the body section
+body {
+
+    max-width : 100vw; // make sure our width is not bigger than the viewport
+
+    overflow-x : hidden; // get rid of horizontal scroll bar
+
+    font-family : var( --font-primary-5 );
+    font-size   : 1.75rem;
+    font-weight : 400;
+    color       : var( --gray-700 );
+    line-height : 1.6;
+
+    // background : rgba( 227, 227, 232, 1 );
+    // background : rgba( 255, 255, 255, 1 );
+    background : rgba( 246, 246, 246, 1 );
+
+    @media all and ( max-width : $bp-320 ) {
+
+        overflow-x : scroll;
+
+    } // end of $bp-320
+
+} // end of body
+
+
+a {
+
+    color           : var( --blue-83 );
+    text-decoration : none;
+
+} // end of a
+
+
+ul {
+
+    list-style : none;
+
+} // end of ul
+
+
+// w3schools said: " How To Create Responsive Images? If you want the image to scale
+// both up and down on responsiveness, set the CSS width property to 100% and height
+// to auto ( i.e. { width : 100%; height : auto; } ) " and " If you want an image to
+// scale down if it has to, but never scale up to be larger than its original size,
+// use max-width: 100%; ( i.e. { max-width : 100%; height : auto; } ) "
+img {
+
+    max-width : 100%;
+    height    : auto;
+
+} // end of image
+
+
+// special styles to apply to all pages
+input::-moz-focus-inner { // remove input padding in FF
+
+	padding : 0;
+
+    border  : 0;
+
+}
+
+
+// make sure IE10 works in snap mode
+@-ms-viewport {
+
+    width : device-width;
+
+}
+
+
+// when I went to print or save a payment receipt to a pdf file, my left and right
+// sides were getting cut slightly so this block of code fixed that problem
+
+// remember, add this block of code in the scss file where I'm printing
+/*
+    // ==============================
+    // @media print
+    // ==============================
+
+    // when printing, add this block to prevent the left and right sides from being cut off
+
+    // remember, a standard sheet of paper is about 8.5 inches wide, once we subtract
+    // our 0.5in margins, we only have about 7.5 inches of space and 750px is often just
+    // a bit too wide for that, so the printer clips the edges ( 7.5 inches translates to
+    // 720px )
+    @media print {
+
+        display   : block !important;  // grid can sometimes act weird on old printers
+        width     : 100% !important;   // force it to shrink to the paper size
+        max-width : 100% !important;
+        margin    : 0 !important;      // remove the big top margin for the printer
+
+    } // end of container > @media print
+*/
+
+@media print {
+
+    // css at-rule to define page-specific rules when printing web pages,
+    // such as margin per page and page dimensions
+    @page {
+
+        // this creates a safe buffer around the edge of the paper
+
+        // remember, a standard sheet of paper is about 8.5 inches wide, once we subtract
+        // our 0.5in margins, we only have about 7.5 inches of space and 750px is often just
+        // a bit too wide for that, so the printer clips the edges ( 7.5 inches translates to
+        // 720px )
+        margin : 0.5in;
+
+    }
+
+    // when printing, remove the header and footer from the page
+    header, footer {
+
+        display : none !important;
+
+    }
+
+} // end of @media print {}
+
+
+// ==============================
+// VIEW TRANSITIONS
+// ==============================
+
+
+/* DO NOT NEED THIS WITH THE CLIENT ROUTER */
+/*
+    @view-transition {
+        navigation: auto;
+    }
+*/
+
+/* REMEMBER, WE CAN USE CSS OR HTML TO TARGET SPECIFIC ELEMENTS */
+
+/* IN THIS EXAMPLE, EVERYTHING GETS THE DEFAULT CROSS FADE and WE TARGET 2 TITLES ELEMENTS ON 2 DIFFERENT PAGES */
+
+/*
+    ::view-transition-group( root ) {
+        animation-duration        : 250ms; // Astro uses 180ms as the default duration but this seems a little too fast
+        animation-timing-function : ease-in-out; // this is Astro's default easing function
+    }
+
+    ::view-transition-group( main-title ) {
+        animation-duration: 1800ms;
+    }
+*/
+
+/* TARGET SPECIFIC ELEMENTS AND TURN OFF GLOBAL CROSS FACE VIEW TRANSITION */
+
+/* EXAMPLE - MAIN TITLES */
+
+/* this stops the whole page from fading/sliding and now I can just apply a fade
+to specific elements */
+
+/*
+    ::view-transition-old( root ),
+    ::view-transition-new( root ) {
+        animation      : none;
+        mix-blend-mode : normal;
+    }
+
+    ::view-transition-group( main-title ) {
+        animation-duration: 1200ms;
+    }
+*/
+
+/*
+    // step 1 - commment out
+    ::view-transition-group( root ) {
+        animation-duration : 1800ms;
+    }
+
+    // step 2 - add
+    ::view-transition-old( root ),
+    ::view-transition-new( root ) {
+        animation      : none;
+        mix-blend-mode : normal;
+    }
+
+    // step 3 - add
+    ::view-transition-group( main-title ) {
+        animation-duration: 1200ms;
+    }
+
+    // step 4 - add
+    // pages/index.astro
+    <h1 transition:name="main-title">
+
+    // step 5 - add
+    // pages/shop.astro
+    <h1 transition:name="main-title">{ post.data.title }</h1>
+*/
+
+/* END OF TARGET SPECIFIC ELEMENTS AND TURN OFF GLOBAL VIEW TRANSITIONS */
+
+/* FADE */
+
+
+    ::view-transition-old( root ),
+    ::view-transition-new( root ) {
+        animation-duration        : var( --view-transition-duration );
+        animation-timing-function : ease-out;
+    }
+
+    ::view-transition-old( root ) {
+        animation-name : fade-out;
+    }
+
+    ::view-transition-new( root ) {
+        animation-name : fade-in;
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity : 0;
+        }
+        to {
+            opacity : 1;
+        }
+    }
+
+    @keyframes fade-out {
+        from {
+            opacity : 1;
+        }
+        to {
+            opacity : 0;
+        }
+    }
+
+
+/* END OF FADE */
+
+
+/* SCALE */
+
+/*
+    ::view-transition-old( root ) {
+        animation-name : scale-out;
+    }
+
+    ::view-transition-new( root ) {
+        animation-name : scale-in;
+    }
+
+    @keyframes scale-in {
+        from {
+            scale : 0;
+        }
+        to {
+            scale : 1;
+        }
+    }
+
+    @keyframes scale-out {
+        from {
+            scale : 1;
+        }
+        to {
+            scale : 0;
+        }
+    }
+*/
+
+/* END OF SCALE */
+
+/* SLIDE TO THE LEFT */
+/*
+
+    ::view-transition-old( root ) {
+        animation-name : slide-out;
+    }
+
+    ::view-transition-new( root ) {
+        animation-name : slide-in;
+    }
+
+    @keyframes slide-in {
+        from {
+            translate : 100vw 0;
+        }
+        to {
+            translate : 0 0;
+        }
+    }
+
+    @keyframes slide-out {
+        from {
+            translate : 0 0;
+        }
+        to {
+            translate : -100vw 0;
+        }
+    }
+
+    ::view-transition-group( fixed-header ) {
+        animation : none;
+    }
+
+    ::view-transition-old( fixed-header ),
+    ::view-transition-new( fixed-header ) {
+        animation      : none;
+        mix-blend-mode : normal;
+    }
+
+    // in header
+    /* use this name to turn off the view transition animation for the header element */
+    /* view-transition-name: fixed-header;
+*/
+
+/* END OF SLIDE TO THE LEFT */
+
+/* SLIDE UP */
+
+/*
+    ::view-transition-old( root ) {
+        animation-name : slide-out;
+    }
+
+    ::view-transition-new( root ) {
+        animation-name : slide-in;
+    }
+
+    @keyframes slide-in {
+        from {
+            translate : 0 100vw;
+        }
+        to {
+            translate : 0 0;
+        }
+    }
+
+    @keyframes slide-out {
+        from {
+            translate : 0 0;
+        }
+        to {
+            translate : 0 -100vw;
+        }
+    }
+
+    ::view-transition-group( fixed-header ) {
+        animation : none;
+    }
+
+    ::view-transition-old( fixed-header ),
+    ::view-transition-new( fixed-header ) {
+        animation      : none;
+        mix-blend-mode : normal;
+    }
+
+    // in header
+    /* use this name to turn off the view transition animation for the header element */
+    /* view-transition-name: fixed-header;
+*/
+
+/* END OF SLIDE UP */
+
+/* CIRCLE IN */
+
+/* by leaving old( root ) out, the new ( root ) we just cover the old page with the new page */
+
+/*
+    // keep the old page underneth but turn off the animation
+    ::view-transition-old( root ) {
+        animation-name : none;
+    }
+        
+    ::view-transition-new( root ) {
+        animation-name : circle-in;
+    }
+
+/* start from the middle top */
+/*
+    @keyframes circle-in {
+        from { 
+            clip-path: circle( 0% at 50% 0% );
+        }
+        to { 
+            clip-path: circle( 120% at 50% 0% );
+        }
+    }
+*/
+
+/* END OF CIRCLE IN */
+
+/* ROTATING CUBE */
+
+/* remember, to make this work, I have to comment out :
+
+    1 - ::view-transition-group( root ) {
+        animation-duration : 1800ms;
+    }
+
+    2 - ::view-transition-group( main-title ) {
+        animation-duration: 1800ms;
+    }
+
+    3 - transition:name="main-title" on the index.astro h1
+
+    4 - transition:name="main-title" on the shop.astro h1
+
+    5 - view-transition-name: fixed-header; in the header {} below
+
+*/
+
+/*
+::view-transition {
+    background : #555;
+}
+
+::view-transition-image-pair( root ) {
+    perspective        : 2500px;
+    perspective-origin : center;
+    transform-style    : preserve-3d;
+    transform-origin   : 50% 50% 100vw;
+    filter             : drop-shadow( 0px 0px 6px hsl( 165deg 11% 3% ) )
+                         drop-shadow( 0px 0px 25px hsl( 165deg 11% 3%/50% ) );
+}
+
+::view-transition-old( root ),
+::view-transition-new( root ) {
+    animation : 1.5s
+        linear(
+            0,
+            0.324 9.1%,
+            0.584 18.6%,
+            0.782 28.6%,
+            0.858 33.8%,
+            0.92 39.2%,
+            0.997 49.5%,
+            1.021 55.1%,
+            1.033 61%,
+            1.035 71.7%,
+            1
+        );
+    transform-style     : preserve-3d;
+    transform-origin    : 50% 50% 0;
+    /*   perspective: 800px; */ /*
+    transform           : translateZ( -50vw ) scale(var( --scale )) rotatey( var( --rotation ) ) translatez( 50vw );
+    backface-visibility : hidden;
+}
+
+::view-transition-old( root ) {
+    animation-name : reveal-out;
+}
+
+::view-transition-new( root ) {
+    animation-name : reveal-in;
+}
+
+@property --rotation {
+    syntax        : "<angle>";
+    inherits      : false;
+    initial-value : 0deg;
+}
+
+@property --scale {
+    syntax        : "<number>";
+    inherits      : false;
+    initial-value : 1;
+}
+
+@keyframes reveal-in {
+    from {
+        --rotation                : -90deg;
+        animation-timing-function : ease-in-out;
+    }
+    15% {
+        --scale    : 0.8;
+        --rotation : -90deg;
+    }
+    85% {
+        --scale                   : 0.8;
+        --rotation                : 0deg;
+        animation-timing-function : ease-in-out;
+    }
+    to {
+        --rotation : 0deg;
+    }
+}
+
+@keyframes reveal-out {
+    from {
+        --rotation                : 0deg;
+        animation-timing-function : ease-in-out;
+    }
+    15% {
+        --scale                   : 0.8;
+        --rotation                : 0deg;
+    }
+    85% {
+        --scale                   : 0.8;
+        --rotation                : 90deg;
+        animation-timing-function : ease-in-out;
+    }
+    to {
+        --rotation : 90deg;
+    }
+}
+*/
+
+/* END OF ROTATING CUBE */
+
+
+
+/* ANIMATING THE SERVICE CARDS TO THE CATEGORY PAGES */
+
+
+// forward navigation
+::view-transition-old( category-page-h1 ),
+::view-transition-new( category-page-h1 ),
+::view-transition-old( category-page-p2 ),
+::view-transition-new( category-page-p2 ),
+::view-transition-old( category-page-picture ),
+::view-transition-new( category-page-picture ) {
+
+    animation-duration        : 400ms;
+    animation-timing-function : ease-out;
+
+    @media ( max-width : $bp-768 ) {
+
+        animation-duration        : 600ms;
+        animation-timing-function : ease-out;
+
+    }
+
+}
+
+@keyframes slide-in-x {
+    from {
+        transform : translateX( 200px );
+        opacity   : 0;
+    }
+    to {
+        transform : translateX( 0 );
+        opacity   : 1;
+    }
+}
+
+
+/* END OF ANIMATING THE SERVICE CARDS TO THE CATEGORY PAGES */
+
+
+
+/* ANIMATING THE CONTACT BLOB AND VIDEO CONTACT CONTAINER TO THE CONTACT PAGE */
+
+// forward navigation
+::view-transition-old( contact-page-h1 ),
+::view-transition-new( contact-page-h1 ),
+::view-transition-old( contact-page-image-underline ),
+::view-transition-new( contact-page-image-underline ),
+::view-transition-old( contact-page-yellow-box ),
+::view-transition-new( contact-page-yellow-box ),
+::view-transition-old( contact-page-blue-box ),
+::view-transition-new( contact-page-blue-box ) {
+
+    animation-duration        : 400ms;
+    animation-timing-function : cubic-bezier( 0.4, 0, 0.2, 1 );
+    
+    @media ( max-width : $bp-768 ) {
+    
+        animation-duration        : 600ms;
+        animation-timing-function : cubic-bezier( 0.4, 0, 0.2, 1 );
+
+    }
+
+}
+
+/* END OF ANIMATING THE CONTACT BLOB TO THE CONTACT PAGE */
+
+
+
+
+
+

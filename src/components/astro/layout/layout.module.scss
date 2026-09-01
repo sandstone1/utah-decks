@@ -1,0 +1,102 @@
+
+
+
+// ==============================
+// partial imports
+// ==============================
+
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+// ==============================
+// layout container
+// ==============================
+
+.layoutContainer {
+
+    // children
+    display               : grid; // 1st layer => this container
+    /*
+    grid-template-rows    : 160px                                        // row 1 - 2   ( row 1 )
+                            minmax( calc( 100vh - 380px ), min-content ) // row 2 - 3   ( row 2 ) ( minmax( ... ) makes the footer sticky )
+                            220px;                                       // row 3 - 4   ( row 3 )
+    */
+    // from Kevon Powell, see about 1:58 : " https://www.youtube.com/watch?v=JHregeIsjPQ "
+    min-height            : 100vh;
+    min-height            : 100dvh;
+    grid-template-rows    : 160px // 104.63px
+                            1fr
+                            auto;
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // now let's place all the grid items inside our layout by setting the " grid-area " property
+    // for each grid item
+    grid-template-areas   :
+    // 1       2       3        4        5        6        7        8        9        10       11       12       13       14       15        16        17        18       19       20       21       22     
+    // col 1   col 2   col 3    col 4    col 5    col 6    col 7    col 8    col 9    col 10   col 11   col 12   col 13   col 14   col 15    col 16    col 17    col 18   col 19   col 20   col 21   col 22 
+    "  header  header  header   header   header   header   header   header   header   header   header   header   header   header   header    header    header    header   header   header   header   header "  // row 1
+    "  main    main    main     main     main     main     main     main     main     main     main     main     main     main     main      main      main      main     main     main     main     main   "  // row 2
+    "  footer  footer  footer   footer   footer   footer   footer   footer   footer   footer   footer   footer   footer   footer   footer    footer    footer    footer   footer   footer   footer   footer "; // row 3
+
+    // remember, . = full bleed
+    justify-content : center;
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    @media all and ( max-width : 426px ) {
+
+        grid-template-rows : 205px // needed since the title and hamburger menu went vertical at this breakpoint
+                             1fr
+                             auto;
+
+    } // end of container > 426px
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    > main {
+
+        // parent
+        grid-area : main;
+
+        // children
+        display               : grid;
+        grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+        justify-content       : center; // needed to center content or the grid for screen sizes under 375px
+
+        // ==============================
+        // tighten up side margins
+        // ==============================
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                    repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                    minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+    
+        } // end of container > main > bp-1280
+
+        // ==============================
+        // end of tighten up side margins
+        // ==============================
+
+    } // end of container > main
+
+} // end of container
+

@@ -1,0 +1,307 @@
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+// ==============================
+// keyframes 1
+// ==============================
+
+// ==============================
+// infinite scroll animation
+// ==============================
+
+// ==============================
+// purpose : provide the animation for the infinite scroll
+// ==============================
+
+@keyframes infiniteScroll {
+
+    0% {
+
+        transform : translateX( 0% );
+
+    }
+
+    100% {
+
+        transform : translateX( -100% );
+
+    }
+
+} // end of rotate
+
+
+
+
+
+
+
+
+// ==============================
+// infinite scroll container
+// ==============================
+
+.infiniteScrollContainer {
+
+    // parent
+    grid-area   : div5;
+    grid-column : 1 / -1; // position against the parent
+
+    // children
+    display               : grid;
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // 1 - in the content div use grid-column to position against the parent grid and until we
+    // can use sub grid we may need to duplicate the parent grid and bring it down to the
+    // content div where we can position against it
+    // 2 - now our content div is sitting empty inside the parent grid we need to give the
+    // content div a width and height so we can create the content box and
+    // 3 - then set up a grid within the content box so that we can layout the content
+    // inside the content box as needed and
+    // 4 - the only cavet to 3 above, is that sometimes we need to go with a horizontal layout
+    // and in those cases, flexbox may be the better choice than css grid
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    // min-height : 100vh;
+
+     // provide some extra bottom padding for this component and remember 2 divs below this
+     // component we have a div with top and bottom padding of 18rem
+     padding : 12.0rem 0 18.0rem 0;
+
+    // ==============================
+    // background
+    // ==============================
+
+    // background : var( --yellow-40 );
+    background : var( --gray-872 );
+    // background : var( --gray-850 );
+    // background-image : linear-gradient( to bottom, rgba( 32, 40, 52, 1.0),  rgba( 32, 40, 52, 1.0 ) );
+    background-image : linear-gradient( to bottom, rgba( 32, 40, 52, 0.975 ),  rgba( 32, 40, 52, 0.975 ) ), url( /images/mj_tree_bark_04_500.webp );
+    background-size  : cover;
+
+    // ==============================
+    // end of background
+    // ==============================
+
+    // make sure a user can not tap on the screen and inadvertently move the city boxes during
+    // the scrolling process
+    pointer-events : none;
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // remove or decrease the opacity of the tree bark background on mobile devices
+    // ==============================
+
+    @media all and ( max-width : $bp-620 ) {
+
+        background-image : linear-gradient( to bottom, rgba( 32, 40, 52, 1.0),  rgba( 32, 40, 52, 1.0 ) );
+        // background-image : linear-gradient( to bottom, rgba( 32, 40, 52, 0.965 ),  rgba( 32, 40, 52, 0.965 ) ), url( /images/mj_tree_bark_04_500.webp );
+    
+    } // end of container > bp-620
+
+    // ==============================
+    // end of remove or decrease the decrease opacity of the tree bark background on mobile devices
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+        display               : grid;
+        grid-template-columns : 1fr;
+        align-content         : center;
+        justify-items         : center;
+        grid-template-areas   : "div1"
+                                "div2";
+
+        opacity : 0; // need for the intersection observer animation
+
+        > div:nth-child( 1 ) {
+
+            // parent
+            grid-area : div1;
+    
+            display : grid;    
+            width   : min( 80.0rem, 100% ); // needed in order to left justify the h2
+    
+            // ==============================
+            // container > div 1 > h2
+            // ==============================
+    
+            > h2 {
+    
+                @include h2-light-title;
+    
+                margin : 0 0 4.0rem 0;
+
+                > span {
+
+                    // font-style : italic;
+                    //color      : var( --yellow-130 );     // #4
+                    // color      : var( --yellow-150 );
+                    //color      : var( --red-25 );         // #5
+                    // color      : var( --green-30 );
+                    //color      : var( --cyan-50 );
+                    // color      : var( --gold-50 );
+                    //color      : var( --blue-green-80 );
+                    color      : var( --blue-62-1 );        // #1 or #2
+                    // color      : var( --blue-68 );
+                    color : var( --green-23-5 );          // #1 or #2
+                    // color : var( --cyan-80 );
+                    //color : var( --purple-28-5 );          // #3
+
+                } // end of container > div 1 > div 1 > h2 > span
+    
+            } // end of container > div 1 > div 1 > h2
+    
+        } // container > div 1 > div 1
+
+        // ==============================
+        // container > div 2
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            // parent
+            grid-area : div2;
+
+            display    : flex; // this makes div 1 and div 2 sit side by side horizontally
+            width      : 100%; // we need the infinite scroll container to sit inside our layout
+            // ( see container above )
+            overflow-x : hidden; // prevents any horizontal overflow from affecting the document width
+            // and causing layout problems on mobile devices
+
+            // apply the mask which gives both ends a fade out effect
+            -webkit-mask : linear-gradient( 90deg, transparent, white 20%, white 80%, transparent );
+            mask         : linear-gradient( 90deg, transparent, white 20%, white 80%, transparent );
+
+            // ==============================
+            // container > div 1 > div 2 > div:nth-child( 1 ), > div:nth-child( 2 ) ( group 1 & group 2 )
+            // ==============================
+
+            > div:nth-child( 1 ), > div:nth-child( 2 ) {
+
+                display : flex; // makes the cards inside each group sit side by side horizontally
+                gap     : 0 4.0rem; // provide a 4.0rem gap between items and visual preference
+                padding : 0 4.0rem 0 0; // had to add padding-right for the all the items to
+                // line up correctly on scroll ( this sits between the last item for group 1 and
+                // the first item for group 2 )
+
+                // ==============================
+                // infinite scroll animation
+                // ==============================
+
+                // ==============================
+                // since we are using a JavaScript to animate our items, we turned off the css
+                // animate solution and this worked great except on mobile devices there was a
+                // quick flash on 2 of the items when the animation reset to 0
+                // ==============================
+
+                // animation : infiniteScroll 35s linear infinite;
+
+                // the memory cost for all 3 GPU promotional techiques is tiny and the smoothness
+                // benefit is real
+
+                // ==============================
+                // will-change
+                // use either will-change or translateZ( 0 ) to " promote elements that you plan to
+                // animate "
+                // see the following article for details :
+                // " https://web.dev/articles/stick-to-compositor-only-properties-and-manage-layer-count " 
+                // ==============================
+
+                will-change : transform;
+
+                // ==============================
+                // end of will-change
+                // ==============================
+
+                // ==============================
+                // 2 more GPU promotion techniques
+                // ==============================
+
+                // Safari specific GPU promotion trick and small cost, meaningful benefit on iOS
+                backface-visibility : hidden;
+                // forces immediate GPU layer promotion before JavaScript even starts and redundant
+                // with will-change on Chrome / Firefox but Safari sometimes needs both
+                transform           : translateZ( 0);
+
+                // ==============================
+                // end of 2 more GPU promotion techniques
+                // ==============================
+
+                // ==============================
+                // container > div 1 > div 2 > div:nth-child( 1 ), > div:nth-child( 2 ) ( group 1 & group 2 ) > cards
+                // ==============================
+
+                > .cards {
+
+                    @include text-base-light;
+
+                    margin  : 0 0 0 0; // cancel the default margin for text-base-light
+                    padding : 2.0rem 4.0rem; // add some padding for the box background effect
+
+                    background-color: var( --gray-868-300 );
+                    
+                    white-space : nowrap; // add this to prevent individual items from wrapping
+                    // into 2 lines
+
+                } // end of container > div 1 > div 2 > div 1, div 2 > .cards
+
+            } // end of container > div 1 > div 2 > div 1, div 2
+
+        } // end of container > div 1 > div 2
+
+    } // end of container > div 1
+
+} // container
+

@@ -1,0 +1,427 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../styles/_mixins.scss' as *;
+@use '../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// keyframes 1
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+@keyframes move-1 {
+
+    from {
+
+        // see step 70 of the app-cimikoski-stem-cells.js for a border radius definition
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 100px to the
+        // left and 50px up from its initial position
+        transform : translate( -100px, -50px ) rotate( -90deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 100px down from its starting position
+
+        // the ending rotate of -10deg will rotate the blob up and to the left
+        transform : translate( 500px, 100px ) rotate( -10deg );
+
+    } // end of to
+  
+} // end of move-1
+
+
+// ==============================
+// keyframes 2
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-2 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 850px, 50px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 900px, -50px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-2
+
+
+// ==============================
+// keyframes 3
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-3 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 725px, 25px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 800px, -50px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-3
+
+
+// ==============================
+// keyframes 4
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-4 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 650px, 25px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 625px, 0px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-4
+
+
+// ==============================
+// keyframes 5
+// ==============================
+
+// ==============================
+// rotate the circle
+// ==============================
+
+// ==============================
+// purpose : rotate the circle
+// ==============================
+
+@keyframes rotate-1 {
+
+    from {
+
+        transform : rotate( 0deg );
+
+    } // end of from
+  
+    to {
+
+        transform : rotate( 360deg );
+
+    } // end of to
+  
+} // end of rotate-1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// circle container
+// ==============================
+
+.circleContainer {
+
+    display : none;
+    width   : 88.0rem;
+    height  : 88.0rem;
+    z-index : 0;
+
+    border-radius : 50%;
+
+    // background : var( --orange-20 );
+    // background : var( --purple-150 );
+    // background : var( --purple-300 );
+    background : var( --blue-85-2 );
+
+    // background-image : linear-gradient( to bottom, rgba( 61, 71, 98, 0.0 ),  rgba( 81, 91, 118, 0.0 ) ), url( /textures/linen.png );
+    // background-color : var( --gray-190 );
+    // background-image : linear-gradient( to bottom, rgba( 235, 244, 255, 0.00 ),  rgba( 235, 244, 255, 0.00 ) ), url( /textures/brick_wall.png );
+    background-image : linear-gradient( to bottom, rgba( 13, 58, 216, 0.2 ),  rgba( 13, 58, 216, 0.2 ) ), url( /textures/brick_wall.png ); // blue-85-2
+    //background-image : linear-gradient( to bottom, rgba( 78, 42, 132, 0.5 ),  rgba( 78, 42, 132, 0.5 ) ), url( /textures/brick_wall.png );
+    //background-image : linear-gradient( to bottom, rgba( 102, 51, 153, 0.2 ),  rgba( 102, 51, 153, 0.2 ) ), url( /textures/whitey_02.png );
+    // background-image : linear-gradient( to bottom, rgba( 102, 51, 153, 0.2 ),  rgba( 102, 51, 153, 0.2 ) ), url( /textures/tapestry.png );
+    // background-image : linear-gradient( to bottom, rgba( 102, 51, 153, 0.2 ),  rgba( 102, 51, 153, 0.2 ) ), url( /textures/paper_1.png );
+    // background-image : linear-gradient( to bottom, rgba( 102, 51, 153, 0.2 ),  rgba( 102, 51, 153, 0.2 ) ), url( /textures/natural_paper.png );
+    //background-image : linear-gradient( to bottom, rgba( 102, 51, 153, 0.2 ),  rgba( 102, 51, 153, 0.2 ) ), url( /textures/random_grey_variations.png );
+    //background-image : linear-gradient( to bottom, rgba( 102, 51, 153, 0.4 ),  rgba( 102, 51, 153, 0.4 ) ), url( /textures/fabric_plaid.png );
+    //background-image : linear-gradient( to bottom, rgba( 102, 51, 153, 0.2 ),  rgba( 102, 51, 153, 0.2 ) ), url( /textures/45_degree_fabric_light.png );
+    // background-image : conic-gradient( from 0deg at center, var( --purple-150 ) 70%, var( --purple-220 ) 0% );
+
+    // ==============================
+    // animation
+    // ==============================
+
+    animation-name            : rotate-1;
+    animation-duration        : 25000ms;
+    animation-timing-function : linear;
+    animation-delay           : 0ms;
+    animation-iteration-count : infinite; // this is the default but leave here for reference purposes
+    animation-fill-mode       : forwards;
+
+    clip-path : inset( 0 ); // this will clip any of the background that falls outside
+    // the container
+
+    @media all and ( max-width : $bp-2080 ) {
+
+        width  : 65.0rem;
+        height : 65.0rem;
+
+    } // end of container > bp-2080
+
+    @media all and ( max-width : $bp-1536 ) {
+
+        width  : 60.0rem;
+        height : 60.0rem;
+
+    } // end of container > bp-1536
+
+    @media all and ( max-width : $bp-1376 ) {
+
+        width  : 60.0rem;
+        height : 60.0rem;
+
+    } // end of container > bp-1376
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        width  : 55.0rem;
+        height : 55.0rem;
+
+    } // end of container > bp-1280
+
+    @media all and ( max-width : $bp-920 ) {
+
+        width  : 50.0rem;
+        height : 50.0rem;
+
+    } // end of container > bp-920
+
+    @media all and ( max-width : $bp-768 ) {
+
+        width  : 50.0rem;
+        height : 50.0rem;
+
+    } // end of container > bp-768
+
+    @media all and ( max-width : $bp-620 ) {
+
+
+        /*
+        // see the first anwser to stackoverflow :
+        // " https://stackoverflow.com/questions/8508275/how-to-center-a-position-absolute-element "
+
+        top    : 26.0rem;
+        left   : 0; // center absolutely positioned div
+        right  : 0; // center absolutely positioned div
+        width  : 33.0rem;
+        height : 33.0rem;
+        margin : 20.0rem auto 0 auto; // center absolutely positioned div
+        */
+
+        width  : 45.0rem;
+        height : 45.0rem;
+
+    } // end of container > bp-620
+
+    @media all and ( max-width : $bp-480 ) {
+
+        display : block;
+        width   : 44.0rem;
+        height  : 44.0rem;
+
+    } // end of container > bp-480
+
+    // remember, these breakpoints and numbers were revised so at 460px the blob would touch
+    // the edge of the screen
+    @media all and ( max-width : 450px ) {
+
+        width  : 40.0rem;
+        height : 40.0rem;
+
+    } // end of container > 460px
+
+    // remember, these breakpoints and numbers were revised so at 420px the blob would touch
+    // the edge of the screen
+    @media all and ( max-width : 425px ) {
+
+        width  : 38.0rem;
+        height : 38.0rem;
+
+    } // end of container > 420px
+
+    // remember, these breakpoints and numbers were revised so at 400px the blob would touch
+    // the edge of the screen
+    @media all and ( max-width : 400px ) {
+
+        width  : 37.0rem;
+        height : 37.0rem;
+
+    } // end of container > 400px
+
+    // remember, these breakpoints and numbers were revised so at 375px the blob would touch
+    // the edge of the screen
+    @media all and ( max-width : $bp-375 ) {
+
+        width  : 36.0rem;
+        height : 36.0rem;
+
+    } // end of container > bp-375
+
+    // remember, these breakpoints and numbers were revised to provide for a blob that worked
+    // and looked good
+    @media all and ( max-width : 350px ) {
+
+        width  : 34.0rem;
+        height : 34.0rem;
+
+    } // end of container > 350px
+
+    // remember, these breakpoints and numbers were revised to provide for a blob that worked
+    // and looked good
+    @media all and ( max-width : 330px ) {
+
+        width  : 32.0rem;
+        height : 32.0rem;
+
+    } // end of container > 330px
+
+} // end of container
+
+

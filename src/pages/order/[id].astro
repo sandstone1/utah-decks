@@ -1,0 +1,334 @@
+---
+
+// remember the 3 dashes above HAVE TO START ON LINE 1
+
+
+// ==============================
+// Imports
+// ==============================
+
+// import in getEntru
+import { getEntry } from 'astro:content';
+// import in the main layout
+import Layout from '../../layouts/main-layout.astro';
+// import in the database connection
+import { db } from '../../lib/db';
+// import in the formatCurrency function
+import { formatCurrency } from '../../utils/format-currency';
+// import in our styles
+import styles from './[id].module.scss';
+
+
+// ==============================
+// 1 - grab the id or orderId from the URL
+// ==============================
+const { id } = Astro.params;
+
+// we have to prove to TS that id is not undefined; otherwise, we are geting an error in
+// arg : [ id ] below
+
+// ==============================
+// Id check
+// ==============================
+
+// instead of doing a check here, we could have done :
+// args : [ id! ] and "!" tells TS: " I know what I'm doing, trust me. "
+if ( !id ) {
+
+    return Astro.redirect('/404');
+
+} // end of if
+
+// ==============================
+// 2 - Fetch the main order
+// ==============================
+
+// we need check the order first to make sure we have an actual order and if we don't
+// then redirect the user to a 404 page
+const orderResult = await db.execute(
+    {
+        sql  : 'SELECT * FROM orders WHERE id = ?',
+        args : [ id ]
+    }
+);
+
+// get the order
+const order = orderResult.rows[ 0 ];
+
+// ==============================
+// Order check
+// ==============================
+
+// if there is no order then redirect the user to a 404 page
+if ( !order ) {
+
+    return Astro.redirect( '/404' );
+
+} // end of if
+
+// ==============================
+// Got the order - proceed forward
+// ==============================
+
+// ==============================
+// 3 - Fetch the cart items for this order
+// ==============================
+const itemsResult = await db.execute(
+    {
+        sql  : 'SELECT * FROM order_items WHERE orderId = ?',
+        args : [ id ]
+    }
+);
+
+// ==============================
+// 4 - Enrich the items with Content Collection data
+// ==============================
+
+// use .map() alone when we are just changing data that is already there; use
+// await Promise.all( map(...) ) when our loop has to fetch new data ( like
+// getEntry or a database call ) and remember, Promise.all( map(...) ) is much
+// faster than doing the looping individually
+const enrichedItems = await Promise.all(
+
+    itemsResult.rows.map( async ( item : any ) => {
+
+        // grab the full product details using the productId
+
+        // remember, Astro is use to productId being a string so we need convert our
+        // productId from a number to a string
+
+        // remmeber, in pages/blog/[ id ], we used the following code :
+
+        // get id from Astro.params for a fresh lookup
+        // const { id } = Astro.params;
+
+        // fetch the entry again to ensure it's live and valid
+        // const entry = await getEntry( 'blog', id );
+
+        // render out the content
+        // const { Content } = await render( entry ); 
+
+        // here, we doing the same thing; we are getting one item from the products collection
+        // by the productId to identify which item to get and the using Astro's built in
+        // getEntry() function to get all the product information for that particular product
+
+        // item.productId?.toString() is returning 1.0 and we need it to be 1 to match out product
+        // id of 1
+        const idToSearch = Math.floor( item.productId ).toString();
+
+        // use getEntry to get the product
+        const product = await getEntry( 'products', idToSearch );
+
+        // console.log out the id and make sure it is a whole number
+        console.log( 'Found product id:', idToSearch );
+
+        // return the cart items and the product information
+        return {
+            ...item,
+            product: product?.data // this gives us the .title, description, .image, etc.
+        };
+
+    })
+
+); // end of enrichedItems
+
+---
+
+<Layout>
+
+    {
+        /*
+            // ==============================
+            // container
+            // ==============================
+        */
+    }
+    <section class={ styles.orderReviewContainer }>
+
+        <div>
+
+            <h1>Review Your Order</h1>
+            <p>Order ID: { id }</p>
+
+            <div>
+
+                {
+                    /*
+                        // ==============================
+                        // container - order items
+                        // ==============================
+                    */
+                }
+                { 
+                    enrichedItems.map( ( item : any ) => (
+
+                        <div>
+
+                            <img src={ item.product?.image.src } alt={ item.product?.image.alt } />
+
+                            <div>
+                                <h3>{ item.product?.title }</h3>
+                                <p>Quantity: { item.quantity }</p>
+                                <p>Price: { formatCurrency( item.priceAtPurchase ) }</p>
+                            </div>
+
+                        </div>
+
+                    ) )
+                }
+
+            </div>
+
+            {
+                /*
+                    // ==============================
+                    // container - order details
+                    // ==============================
+                */
+            }
+            <div>
+
+                <h2>Total: { formatCurrency( order.totalPrice as any ) }</h2>
+
+                {
+                    /*
+                        // ==============================
+                        // get order id and pass it the script below
+                        // ==============================
+                    */
+                }
+                <button id="pay-button" data-order-id={ id }>
+                    Place Order &nbsp;&#62;&#62;
+                </button>
+
+                {
+                    /*
+                        // ==============================
+                        // post request script to stripe checkout session api endpoint
+                        // ==============================
+                    */
+                }
+                <script>
+
+                    // this code runs only in the browser
+                    const payButton = document.getElementById( 'pay-button' );
+
+                    // STEP 1
+                    // listen for the click event
+                    payButton?.addEventListener( 'click', async () => {
+        
+                        // get the order id
+                        // remember,  Browser JavaScript can read any attribute that starts with data-
+                        // and in JS the "kebab-case" data-order-id automatically becomes "camelCase"
+                        // orderId
+                        const orderId = payButton.dataset.orderId;
+
+                        // STEP 2
+                        // create our endpoint
+                        const endpoint = `/api/stripe/checkout/post/create-checkout-session`;
+
+                        // create our data object
+
+                        // create our config object
+
+                        // disable the button to prevent double-clicks
+                        payButton.innerText     = "Processing...";
+                        payButton.style.opacity = "0.5";
+
+                        // try catch
+                        try {
+
+                            // STEP 3
+                            // make the fetch request and save the result to the const called res
+                            const res = await fetch(
+
+                                endpoint,
+
+                                // include the config object
+                                {
+                                    method : 'POST',
+                                    body   : JSON.stringify(
+                                        {
+                                            orderId : orderId
+                                        }
+                                    ),
+                                    headers : {
+                                        'Content-Type' : 'application/json'
+                                    }
+                                }
+                            );
+
+                            // STEP 4(a)
+                            // first, check to see if there is a request error
+                            if ( !res.ok ) {
+
+                                // STEP 4(b)
+                                // the fetch request above returns a response object and then we can apply the
+                                // json(); method to the reponse object and this will convert the response
+                                // object into a JavaScript object that we can use and we will call this JavaScript
+                                // object " data " and the data object in this case is the response we get back from
+                                // the api route
+                                const data = await res.json();
+
+                                // STEP 4(c)
+                                // console.log out the error message
+                                console.error( "Stripe Error:", data.message )
+
+                                // STEP 4(d)
+                                // alert the user something went wrong
+                                alert( data.message );
+
+                                // STEP 4(e)
+                                // re enable the button 
+                                payButton.innerText     = "Place Order & Pay";
+                                payButton.style.opacity = "1";
+
+                            } else {
+
+                                // STEP 5(a)
+                                // the fetch request above returns a response object and then we can apply the
+                                // json(); method to the reponse object and this will convert the response
+                                // object into a JavaScript object that we can use and we will call this JavaScript
+                                // object " data " and the data object in this case is the response we get back from
+                                // the api route
+                                const data = await res.json();
+
+                                // STEP 5(b)
+                                // console.log out data for the moment
+                                console.log( data );
+
+                                if ( data.url ) {
+
+                                    // redirect the user to Stripe's hosted payment page and
+                                    // do not use navigate since this redirect is going to a
+                                    // stripe hosted page
+                                    window.location.href = data.url;
+
+                                } // end of if
+
+                            } // end of if else
+
+                        } catch ( error ) {
+
+                            // STEP 6
+                            // handle network error
+
+                            // console.log out an error message
+                            console.error( "Fetch Error:", error );
+                            // alert the user
+                            alert( "Network error. Please try again." );
+
+                        } // end of try catch
+
+                    } );
+
+                </script>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</Layout>
+

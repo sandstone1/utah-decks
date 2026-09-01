@@ -1,0 +1,51 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+// ==============================
+// notice container
+// ==============================
+
+.noticeContainer1 {
+
+    margin : 2.50rem 0 0 0;
+
+    font-family : var( --font-primary-5 );
+    font-size   : 1.70rem;
+    font-style  : italic;
+    font-weight : 400;
+	color       : var( --purple-130 );
+
+} // end of container
+
+
+.noticeContainer2 {
+
+    margin : 1.5rem 0 0 0;
+
+    font-family : var( --font-primary-5 );
+    font-size   : 1.70rem;
+    font-style  : italic;
+    font-weight : 400;
+	color       : var( --purple-130 );
+
+    > a {
+
+        text-decoration : underline;
+
+    } // end of container > a
+
+} // end of container

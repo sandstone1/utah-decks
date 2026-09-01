@@ -1,0 +1,37 @@
+
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+// ==============================
+// spinner container
+// ==============================
+
+.spinnerContainer {
+
+    // children
+    display               : grid;
+    grid-template-rows    : auto;
+    grid-template-columns : 1fr;
+    align-content         : center; // needed to center the element
+    justify-content       : center; // needed to center the element
+
+    height : 80.0rem; // match the height of the Google Map container
+
+} // end of spinner container
+
+
+
+
+// ==============================
+// remember, the styles for the Google map are found in the mapContainer class in the
+// global.scss file 
+// ==============================
+

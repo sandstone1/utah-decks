@@ -1,0 +1,427 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../styles/_mixins.scss' as *;
+@use '../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// keyframes 1
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+@keyframes move-1 {
+
+    from {
+
+        // see step 70 of the app-cimikoski-stem-cells.js for a border radius definition
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 100px to the
+        // left and 50px up from its initial position
+        transform : translate( -100px, -50px ) rotate( -90deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 100px down from its starting position
+
+        // the ending rotate of -10deg will rotate the blob up and to the left
+        transform : translate( 500px, 100px ) rotate( -10deg );
+
+    } // end of to
+  
+} // end of move-1
+
+
+// ==============================
+// keyframes 2
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-2 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 850px, 50px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 900px, -50px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-2
+
+
+// ==============================
+// keyframes 3
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-3 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 725px, 25px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 800px, -50px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-3
+
+
+// ==============================
+// keyframes 4
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-4 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 650px, 25px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 625px, 0px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// blob container
+// ==============================
+
+.blobContainer {
+
+    display : none;
+
+    position : absolute;
+    top      : 120.0%;
+    left     : 80.0%;
+    width    : 55.0rem;
+    height   : 55.0rem;
+    // z-index  : -1; // place behind container and testimonials
+
+    // make the shape not completely round
+    border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+    // create a circle
+    // background : radial-gradient( circle 600px at 20% 20%, rgba( 255, 165, 0, 0.25 ) 70%, rgba( 0, 0, 0, 0.6 ) 100% ); // --orange-95
+    // background : radial-gradient( circle 600px at 20% 20%, rgba( 255, 112, 132, 0.15 ) 70%, rgba( 0, 0, 0, 0.4 ) 100% ); // --red-27
+    //background : radial-gradient( circle 600px at 20% 20%, rgba( 102, 51, 153, 0.25 ) 70%, rgba( 0, 0, 0, 0.4 ) 100% ); // --purple-150
+    // background : radial-gradient( circle 600px at 20% 20%, rgba( 78, 42, 132, 0.35 ) 70%, rgba( 0, 0, 0, 0.4 ) 100% ); // --purple-300
+    background : radial-gradient( circle 600px at 20% 20%, rgba( 254, 224, 126, 0.25 ) 70%, rgba( 0, 0, 0, 0.4 ) 100% ); // --yellow-150
+    // background : radial-gradient( circle 600px at 20% 20%, rgba( 82, 227, 247, 0.15 ) 70%, rgba( 0, 0, 0, 0.4 ) 100% ); // --blue-green-80
+    background : radial-gradient( circle 600px at 20% 20%, rgba( 13, 58, 216, 0.125 ) 70%, rgba( 0, 0, 0, 0.4 ) 100% ); // --blue-85-2
+    // background : radial-gradient( circle 600px at 20% 20%, rgba( 127, 203, 241, 0.25 ) 70%, rgba( 0, 0, 0, 0.4 ) 100% ); // --blue-62
+    // background : radial-gradient( circle 600px at 20% 20%, rgba( 0, 105, 220, 0.25 ) 70%, rgba( 0, 0, 0, 0.4 ) 100% ); // --blue-83
+    //background : radial-gradient( circle 600px at 20% 20%, rgba( 0, 74, 173, 0.25 ) 70%, rgba( 0, 0, 0, 0.4 ) 100% ); // --blue-84
+    // background : radial-gradient( circle 600px at 20% 20%, rgba( 151, 55, 93, 0.15 ) 70%, rgba( 0, 0, 0, 0.4 ) 100% ); // --red-250
+    // background : radial-gradient( circle 600px at 20% 20%, rgba( 48, 25, 52, 0.25 ) 70%, rgba( 0, 0, 0, 0.4 ) 100% ); // --purple-400
+    // background : radial-gradient( circle 600px at 20% 20%, rgba( 248, 232, 37, 0.25 ) 70%, rgba( 0, 0, 0, 0.4 ) 100% ); // --yellow-200
+
+    // create a blue blur around the edges of the circle
+    filter : blur( 12.0rem );
+
+    // ==============================
+    // if I want to create a perfect circle
+    // ==============================
+    // z-index : -1;
+
+    // border-radius : 50%;
+
+    // background : var( --orange-20 );
+    // ==============================
+    // end of if I want to create a perfect circle
+    // ==============================
+
+    // animation-name            : move-2;
+    // animation-duration        : 15s; // took the duration down from 25s to 10s since I reduced the amount of movement
+    // animation-direction       : alternate;
+    // animation-iteration-count : infinite;
+
+    // ==============================
+    // remember, using the " filter : blur( 3.0rem ); " property in Safari caused massive
+    // performance problems but after applying " transform : translateZ( 0 ); " the
+    // performance problems went away
+    // ==============================
+
+    // ==============================
+    // see the following answers in stackoverflow for details :
+    // " https://stackoverflow.com/questions/44662417/css-filter-is-very-slow-on-safari-with-different-order-can-someone-explain "
+    // or more specially, see this anwser :
+    /*
+        Use CSS property on element with blur
+
+        transform: translateZ(0)
+
+        to make CSS render on GPU
+    */
+    // ==============================
+
+    // transform : translateZ( 0 ); // this makes the css render on the GPU, which is what we want
+
+    // ==============================
+    // remember, will-change does basically the same thing as the translateZ( 0 ) hack
+    // and see the follow article for details :
+    // " https://stackoverflow.com/questions/48862283/js-animation-performance-with-will-change-vs-transformz0 "
+    //
+    // and one of the answers said : " will-change basically does the same thing (as of today)
+    // as the translateZ( 0 ) hack: it pulls the element out onto a new rendering layer.
+    // The difference is that will-change is telling the browser your intent, namely, that you
+    // will be changing this property; whereas with translateZ(0) that is merely a coincidental
+    // side effect. So will-change is just a more modern way of accomplishing the same thing "
+    // ==============================
+
+    // ==============================
+    // testing this in Safari shows that it really works and without it my gradient background
+    // animation is super choppy
+    // ==============================
+
+    will-change : transform;
+
+    @media all and ( max-width : $bp-2080 ) {
+
+        top    : 120.0%;
+        left   : 75.0%;
+        width  : 55.0rem;
+        height : 55.0rem;
+
+    } // end of container > bp-2080
+
+    @media all and ( max-width : $bp-1920 ) {
+
+        top    : 120.0%;
+        left   : 75.0%;
+        width  : 55.0rem;
+        height : 55.0rem;
+
+    } // end of container > bp-1920
+
+    @media all and ( max-width : $bp-1536 ) {
+
+        top    : 120.0%;
+        right  : 55.0%;
+        width  : 55.0rem;
+        height : 55.0rem;
+
+        background : radial-gradient( circle 600px at 20% 20%, rgba( 13, 58, 216, 0.15 ) 70%, rgba( 0, 0, 0, 0.4 ) 100% ); // --blue-85-2
+
+    } // end of container > bp-1536
+
+    @media all and ( max-width : $bp-1376 ) {
+
+        top    : 120.0%;
+        left   : 0.0%;
+        width  : 55.0rem;
+        height : 55.0rem;
+
+        background : radial-gradient( circle 600px at 20% 20%, rgba( 13, 58, 216, 0.15 ) 70%, rgba( 0, 0, 0, 0.4 ) 100% ); // --blue-85-2
+
+    } // end of container > bp-1$bp-1376
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        // display : none;
+        top    : 120.0%;
+        left   : -5.0%;
+        width  : 55.0rem;
+        height : 55.0rem;
+
+    } // end of container > bp-1280
+
+    @media all and ( max-width : $bp-1032 ) {
+
+        top    : 120.0rem;
+        left   : -5.0%;
+        width  : 55.0rem;
+        height : 55.0rem;
+
+        background : radial-gradient( circle 600px at 20% 20%, rgba( 13, 58, 216, 0.15 ) 70%, rgba( 0, 0, 0, 0.4 ) 100% ); // --blue-85-2
+
+    } // end of container > bp-1032
+
+    @media all and ( max-width : $bp-768 ) {
+
+        left   : -30.0%;
+        width  : 55.0rem;
+        height : 55.0rem;
+
+        background : radial-gradient( circle 600px at 20% 20%, rgba( 13, 58, 216, 0.15 ) 70%, rgba( 0, 0, 0, 0.4 ) 100% ); // --blue-85-2
+
+    } // end of container > bp-768
+
+    @media all and ( max-width : $bp-620 ) {
+
+        top    : 120.0rem;
+        left   : -30.0%;
+        width  : 45.0rem;
+        height : 55.0rem;
+
+        background : radial-gradient( circle 600px at 20% 20%, rgba( 13, 58, 216, 0.15 ) 70%, rgba( 0, 0, 0, 0.4 ) 100% ); // --blue-85-2
+
+    } // end of container > bp-620
+
+    @media all and ( max-width : $bp-480 ) {
+
+        top  : 120.0rem;
+        left : -35.0%;
+
+        background : radial-gradient( circle 600px at 20% 20%, rgba( 13, 58, 216, 0.15 ) 70%, rgba( 0, 0, 0, 0.4 ) 100% ); // --blue-85-2
+
+    } // end of container > bp-480
+
+    @media all and ( max-width : 420px ) {
+
+        left : -40.0%;
+
+        background : radial-gradient( circle 600px at 20% 20%, rgba( 13, 58, 216, 0.15 ) 70%, rgba( 0, 0, 0, 0.4 ) 100% ); // --blue-85-2
+
+    } // end of container > 420px
+
+    @media all and ( max-width : $bp-375 ) {
+
+        left   : -45.0%;
+        width  : 45.0rem;
+        height : 55.0rem;
+
+        background : radial-gradient( circle 600px at 20% 20%, rgba( 13, 58, 216, 0.125 ) 70%, rgba( 0, 0, 0, 0.4 ) 100% ); // --blue-85-2
+
+    } // end of container > bp-375
+
+} // end of container
+
+

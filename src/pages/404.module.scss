@@ -1,0 +1,164 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../styles/_mixins.scss' as *;
+@use '../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+// ==============================
+// not found container
+// ==============================
+
+.notFoundContainer {
+
+    // parent
+    grid-column : 1 / -1; // position this container against the main container
+    // and do this so that the child elements take up the entire screen horizontally
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // 1 - in the content or wrapper div use grid-column to position against the parent grid and
+    // remember we may need to duplicate the parent grid and bring it down to the content or
+    // wrapper div
+    // 2 - now our content div is sitting empty inside the parent grid we need to give the
+    // content div a width and height so we can create the content box and
+    // 3 - then set up a grid within the content box so that we can layout the content
+    // inside the content box as needed and
+    // 4 - the only cavet to 3 above, is that sometimes we need to go with a horizontal layout
+    // and in those cases, flexbox may be the better choice than css grid and
+    // 5 - only do the grid-template-columns : minmax( 8rem, 1fr ) ... when the direct child is a
+    // content div
+    // ==============================
+
+    display               : grid;
+    grid-template-rows    : auto;
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    justify-items       : center;
+
+    padding : 12.0rem 0 12.0rem 0;
+
+    // ==============================
+    // background
+    // ==============================
+
+    // background : var( --white );
+    background : var( ---yellow-20 );
+
+    // ==============================
+    // end of background
+    // ==============================
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 2 ) {
+
+        // ==============================
+        // create the content box
+        // ==============================
+    
+        // parent
+        grid-column : 2 / 22; // position against the parent
+
+        // children
+        display               : grid;
+        grid-template-rows    : repeat( 4, auto );
+        grid-template-columns : 1fr;
+        gap                   : 3.0rem 0;
+        grid-template-areas   : "h1"
+                                "img2"
+                                "p3"
+                                "p4";
+
+        width : min( 65.0rem, 100% ); // browser will select the smaller of 65.0rem or 100%
+
+        > h1 {
+
+            // parent
+            grid-area : h1;
+
+            @include h1-dark-title;
+    
+        } // end of container > div2 > h1
+    
+        > img {
+    
+            // parent
+            grid-area : img2;
+
+            display : block;
+            width   : 100%;
+    
+        } // end of container > div2 > img
+
+        > p:nth-child( 3 ) {
+
+            // parent
+            grid-area : p3;
+
+            @include text-base-dark;
+    
+        } // end of container > div2 > p1
+
+        > p:nth-child( 4 ) {
+
+            // parent
+            grid-area : p4;
+
+            > a {
+
+                @include text-base-light;
+
+                color           : var( --blue-83 );
+                text-decoration : underline;;
+
+            } // end of container > div2 > p2 > a
+
+        } // end of container > div2 > p2
+
+    } // end of container > div2
+
+} // end of container
+

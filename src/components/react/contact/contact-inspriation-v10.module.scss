@@ -1,0 +1,682 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// keyframes 1
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+@keyframes move-1 {
+
+    from {
+
+        // see step 70 of the app-cimikoski-stem-cells.js for a border radius definition
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 100px to the
+        // left and 50px up from its initial position
+        transform : translate( -100px, -50px ) rotate( -90deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 100px down from its starting position
+
+        // the ending rotate of -10deg will rotate the blob up and to the left
+        transform : translate( 500px, 100px ) rotate( -10deg );
+
+    } // end of to
+  
+} // end of move-1
+
+
+// ==============================
+// keyframes 2
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-2 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 700px, 100px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 400px, -50px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-2
+
+
+// ==============================
+// keyframes 3
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-3 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 650px, 100px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 500px, -50px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-3
+
+
+// ==============================
+// keyframes 4
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-4 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 550px, 50px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 535px, -50px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-4
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// contact inspriation container
+// ==============================
+
+.contactInspriationContainer {
+
+    // ==============================
+    // div 9 in the page.js file
+    // ==============================
+
+    // parent
+    grid-area   : div9;
+    grid-column : 1 / -1; // position against the parent
+
+    // children
+    display                 : grid;
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // remember, there are 2 things we want to accomplish :
+    // 1 - allow the wrapper div to position against the parent div and thereby
+    // shrink as needed
+    // 2 - we want to center the wrapper div ( see below for details )
+    // ==============================
+
+    // ==============================
+    // " grid-template-columns " is needed so that the wrapper div ( i.e. child ) can position
+    // against the parent ( i.e. this div ) by using " grid-column : 2 / 22; " and this allows
+    // the background declared below to span across the entire container or the entire site and
+    // this also allows the wrapper div to dynamically contain its children within the
+    // " grid-column : 2 / 22; " context so that as the screen size shrinks the wrapper div
+    // container and all its children containers or divs will automatically shrink as well
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    // center the title and image div below
+    align-content         : center;
+    justify-items         : center;
+
+    position   : relative;
+    // allow the container to fill up the window horizontally if the window is larger that
+    // 100.0rem and this looks great
+    min-height : 100.0rem;
+    height     : 100vh;
+    padding    : 12.0rem 0 12.0rem 0;
+
+    // ==============================
+    // background
+    // ==============================
+
+    // background : var( --blue-800 );
+    background : var( --gray-872 );
+
+    // prevent the blob from leaking into the footer
+    overflow : hidden;
+
+    // ==============================
+    // end of background
+    // ==============================
+
+    // needed in order to prevent the blob from overflowing into the space below the footer
+    // overflow : hidden;
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+/*
+    @media all and ( max-width : $bp-768 ) {
+
+        height : 100.0rem; // visual preference
+
+    } // end of container > bp-768
+
+    @media all and ( max-width : $bp-620 ) {
+
+        height : 95.0rem; // visual preference
+
+    } // end of container > bp-620
+
+    @media all and ( max-width : $bp-480 ) {
+
+        height : 90.0rem; // visual preference
+
+    } // end of container > bp-480
+
+    @media all and ( max-width : 420px ) {
+
+        height : 85.0rem; // visual preference
+
+    } // end of container > 420px
+
+    @media all and ( max-width : $bp-375 ) {
+
+        height : 85.0rem; // visual preference
+
+    } // end of container > bp-375
+*/
+
+    // ==============================
+    // content div
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+        // children
+        display            : grid;
+        // had to add min-content in order to remove the extra spacing between the text and the
+        // image
+        grid-template-rows : min-content;
+        align-content      : start;
+        justify-items      : center;
+
+        /*
+            remember, the code below does the same thing as the code above
+
+            display        : flex;
+            flex-direction : column;
+            align-items    : start;
+            justify-items  : center;
+        */
+
+        z-index : 1; // make this div sit on top of the rotating box and the blob but we
+        // decide to make the blob be on top of the image
+        width   : min( 144.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
+
+        // ==============================
+        // container > div 1 > h2
+        // ==============================
+
+        > h2 {
+
+            @include h4-light-title; // even though were using an h2 tag for Google, we need to
+            // reduce the font size so we are using h4-light-title
+
+            margin : 0 0 4.0rem 0;
+
+            text-align : center;
+
+            @media all and ( max-width : $bp-620 ) {
+
+                line-height : 1.6; // override the mixin and keep the line height at 1.6
+
+            } // end of container div1 > h2 > bp-620
+
+        } // end of container > div1 > h2
+
+        > picture {
+
+            > img {
+
+                display : block;
+
+                width  : 100%;
+                height : 100%; 
+
+                // create a round picture so that the image isn't so large
+                // border-radius : 50%;
+
+                // now let add the object-fit property and remember for object-fit to work we have to add
+                // the width and the height to the element
+
+                // by using these 3 key value pairs inside the image element or " width : 100%; "
+                // and " height : 100%; " and " object-fit : cover; " we see that each image now fills up
+                // one grid cell and one grid cell only
+
+                object-fit : cover;
+
+            } // end of container > div3 > picture  > img
+
+        } // end of container > div3 > picture 
+
+    } // end of container > div1
+
+    // ==============================
+    // container > div 2 ( blob or square slowing moving around )
+    // ==============================
+
+    // ==============================
+    // remember, the inspiration for this blob came from : " https://codepen.io/thedevenv/pen/JjrXayd "
+    // ==============================
+
+    > div:nth-child( 2 ) {
+
+        // display : none;
+
+        position : absolute;
+        top      : 17.5%;
+        right    : 45.0%;
+        width    : 240.0rem;
+        height   : 240.0rem;
+        z-index  : 1;
+
+        background     : linear-gradient( 180deg, var( --blue-green-500 ) 31.77%, var( --blue-66 ) 100% );
+        background     : linear-gradient( 180deg, rgba( 47, 184, 255, 1.0 ) 31.77%, rgba( 92, 157, 241, 1.0 ) 100% );
+        background     : rgba( 92, 157, 241, 1.0 ); // this is only one I could get to work in Firefox
+
+        // remember, frpm web.dev : " If you use color-dodge, it lightens the background color to reflect
+        // the source color. Pure black colors see no effect from this mode. " and this is why we can
+        // see through the background color, in part, to see the image behind the background color
+        mix-blend-mode : color-dodge; // this provided for a very nice effect
+
+        animation-name            : move-2;
+        animation-duration        : 10s; // took the duration down from 25s to 10s since I reduced the amount of movement
+        animation-direction       : alternate;
+        animation-iteration-count : infinite;
+
+        // ==============================
+        // notes from another file but this applies here since the color dodge effect goes
+        // away after about 20 seconds on my iPad and I'm assuming this is a performance issue
+        // since the color dodge effect works fine on my iMac
+        // ==============================
+
+        // ==============================
+        // remember, using the " filter : blur( 3.0rem ); " property in Safari caused massive
+        // performance problems but after applying " transform : translateZ( 0 ); " the
+        // performance problems went away
+        // ==============================
+
+        // ==============================
+        // see the following answers in stackoverflow for details :
+        // " https://stackoverflow.com/questions/44662417/css-filter-is-very-slow-on-safari-with-different-order-can-someone-explain "
+        // or more specially, see this anwser :
+        /*
+            Use CSS property on element with blur
+
+            transform: translateZ(0)
+
+            to make CSS render on GPU
+        */
+        // ==============================
+
+        // transform : translateZ( 0 ); // this makes the css render on the GPU, which is what we want
+
+        // ==============================
+        // remember, will-change does basically the same thing as the translateZ( 0 ) hack
+        // and see the follow article for details :
+        // " https://stackoverflow.com/questions/48862283/js-animation-performance-with-will-change-vs-transformz0 "
+        //
+        // and one of the answers said : " will-change basically does the same thing (as of today)
+        // as the translateZ( 0 ) hack: it pulls the element out onto a new rendering layer.
+        // The difference is that will-change is telling the browser your intent, namely, that you
+        // will be changing this property; whereas with translateZ(0) that is merely a coincidental
+        // side effect. So will-change is just a more modern way of accomplishing the same thing "
+        // ==============================
+
+        // ==============================
+        // testing this in Safari shows that it really works and without it my gradient background
+        // animation is super choppy
+        // ==============================
+
+        will-change : transform;
+
+        @media all and ( max-width : 2250px ) {
+
+            top    : 20.0%;
+            right  : 40.0%;
+            width  : 250.0rem;
+            height : 250.0rem;
+    
+        } // end of container > div2 > 2250px
+
+        @media all and ( max-width : $bp-1920 ) {
+
+            right  : 40.0%;
+            width  : 230.0rem;
+            height : 230.0rem;
+
+        } // end of container > div2 > bp-1920
+
+        @media all and ( max-width : $bp-1536 ) {
+
+            top    : 15.0%;
+            right  : 45.0%;
+            width  : 230.0rem;
+            height : 230.0rem;
+    
+        } // end of container > div2 > bp-1536
+
+        @media all and ( max-width : $bp-1376 ) {
+
+            top    : 15.0%;
+            right  : 40.0%;
+            width  : 230.0rem;
+            height : 230.0rem;
+    
+        } // end of container > div2 > bp-1376
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            right  : 40.0%;
+            width  : 220.0rem;
+            height : 220.0rem;
+    
+        } // end of container > div2 > bp-1280
+
+        @media all and ( max-width : $bp-1032 ) {
+
+            right : 50.0%;
+
+            animation-name     : move-3;
+            animation-duration : 7.5s;
+    
+        } // end of container > div2 > bp-1032
+
+        @media all and ( max-width : $bp-920 ) {
+
+            top    : 12.5%;
+            right  : 60.0%;
+            width  : 200.0rem;
+            height : 200.0rem;
+
+        } // end of container > div2 > bp-920
+
+        @media all and ( max-width : $bp-768 ) {
+
+            // display : none;
+
+            top    : 10.0%;
+            right  : 70.0%;
+            width  : 200.0rem;
+            height : 200.0rem;
+
+            animation-name     : move-4;
+            animation-duration : 7.5s;
+
+        } // end of container > div2 > bp-768
+
+        @media all and ( max-width : 710px ) {
+
+            right  : 85.0%;
+            width  : 150.0rem;
+            height : 150.0rem;
+
+        } // end of container > div2 > 710px
+
+        @media all and ( max-width : $bp-620 ) {
+
+            right  : 95.0%;
+            width  : 150.0rem;
+            height : 150.0rem;
+
+        } // end of container > div2 > bp-620
+
+        @media all and ( max-width : 570px ) {
+
+            right  : 105.0%;
+            width  : 150.0rem;
+            height : 150.0rem;
+    
+        } // end of container > div2 > 570px
+
+        @media all and ( max-width : 520px ) {
+
+            right  : 110.0%;
+            width  : 150.0rem;
+            height : 150.0rem;
+    
+        } // end of container > div2 > 520px
+
+        @media all and ( max-width : $bp-480 ) {
+
+            right  : 125.0%;
+            width  : 150.0rem;
+            height : 150.0rem;
+    
+        } // end of container > div2 > bp-480
+
+        @media all and ( max-width : 460px ) {
+
+            top    : 7.5%;
+            right  : 130.0%;
+            width  : 150.0rem;
+            height : 150.0rem;
+    
+        } // end of container > div2 > 460px
+
+        @media all and ( max-width : 438px ) {
+
+            top    : 7.5%;
+            right  : 135.0%;
+            width  : 150.0rem;
+            height : 150.0rem;
+    
+        } // end of container > div2 > 440px
+
+        @media all and ( max-width : 420px ) {
+
+            right  : 140.0%;
+            width  : 150.0rem;
+            height : 150.0rem;
+    
+        } // end of container > div2 > 420px
+
+        @media all and ( max-width : 410px ) {
+
+            right  : 145.0%;
+            width  : 150.0rem;
+            height : 150.0rem;
+    
+        } // end of container > div2 > 410px
+
+        @media all and ( max-width : 380px ) {
+
+            top    : 7.5%;
+            right  : 150.0%;
+            width  : 150.0rem;
+            height : 150.0rem;
+    
+        } // end of container > div2 > 380px
+
+        @media all and ( max-width : 350px ) {
+
+            top    : 7.5%;
+            right  : 160.0%;
+            width  : 150.0rem;
+            height : 150.0rem;
+    
+        } // end of container > div2 > 350px
+
+        @media all and ( max-width : 330px ) {
+
+            top    : 7.5%;
+            right  : 165.0%;
+            width  : 150.0rem;
+            height : 150.0rem;
+    
+        } // end of container > div2 > 330px
+    
+    } // end of container > div2
+
+} // end of container
+

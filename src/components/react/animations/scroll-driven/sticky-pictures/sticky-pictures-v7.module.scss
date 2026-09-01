@@ -1,0 +1,1968 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../../styles/_mixins.scss' as *;
+@use '../../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// keyframes 1
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+@keyframes move-1 {
+
+    from {
+
+        // see step 70 of the app-cimikoski-stem-cells.js for a border radius definition
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 100px to the
+        // left and 50px up from its initial position
+        transform : translate( -100px, -50px ) rotate( -90deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 100px down from its starting position
+
+        // the ending rotate of -10deg will rotate the blob up and to the left
+        transform : translate( 500px, 100px ) rotate( -10deg );
+
+    } // end of to
+  
+} // end of move-1
+
+
+// ==============================
+// keyframes 2
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-2 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 700px, 100px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 400px, -50px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-2
+
+
+// ==============================
+// keyframes 3
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-3 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-3 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 650px, 100px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 500px, -50px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-3
+
+
+// ==============================
+// keyframes 4
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-4 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-4 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 550px, 50px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 535px, -50px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-4
+
+
+// ==============================
+// keyframes 5
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the square around the container
+// ==============================
+
+@keyframes move-5 {
+
+    from {
+
+        // see step 70 of the app-cimikoski-stem-cells.js for a border radius definition
+
+        // the border radius create the square shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this will start the square 100px to the
+        // left and 50px up from its initial position
+        transform : translate( -100px, -50px ) rotate( -90deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the square shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this move the square to its ending position
+        // or 500px to the right and 100px down from its starting position
+
+        // the ending rotate of -10deg will rotate the square up and to the left
+        transform : translate( 500px, 100px ) rotate( -10deg );
+
+    } // end of to
+  
+} // end of move-5
+
+
+// ==============================
+// keyframes 6
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the square around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-6 {
+
+    from {
+
+        // the border radius create the square shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this will start the square 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 0, 50px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the square shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this move the square to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the square down and to the right
+        transform : translate( 50px, -50px ) rotate( -270deg );
+
+    } // end of to
+  
+} // end of move-6
+
+
+// ==============================
+// keyframes 7
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the square around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-7 {
+
+    from {
+
+        // the border radius create the square shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this will start the square 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 0, 25px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the square shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this move the square to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the square down and to the right
+        transform : translate( 50px, -50px ) rotate( -270deg );
+
+    } // end of to
+  
+} // end of move-7
+
+
+// ==============================
+// keyframes 8
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the square around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-8 {
+
+    from {
+
+        // the border radius create the square shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this will start the square 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 0, 25px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the square shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this move the square to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the square down and to the right
+        transform : translate( 0, -50px ) rotate( -270deg );
+
+    } // end of to
+  
+} // end of move-8
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// sticky pictures container
+// ==============================
+
+.stickyPicturesContainer {
+
+    // ==============================
+    // div 8 in the index.js file
+    // ==============================
+
+    // parent
+    grid-area   : div8;
+    grid-column : 1 / -1; // position against the parent
+
+    // children
+    display               : grid;
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // 1 - in the content div use grid-column to position against the parent grid and until we
+    // can use sub grid we may need to duplicate the parent grid and bring it down to the
+    // content div where we can position against it
+    // 2 - now our content div is sitting empty inside the parent grid we need to give the
+    // content div a width and height so we can create the content box and
+    // 3 - then set up a grid within the content box so that we can layout the content
+    // inside the content box as needed and
+    // 4 - the only cavet to 3 above, is that sometimes we need to go with a horizontal layout
+    // and in those cases, flexbox may be the better choice than css grid
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    align-items           : start;
+    // justify-items         : center; // this makes the box half in the viewport and half out
+
+    position : relative;
+
+
+    height   : 850.0rem; // visual preference and needed for position sticky
+    // height   : 400rem; // changed the visual preference later so the a user can scroll down the
+    // page immediately after the last card leaves the top of the page and the user can scroll
+    // through this container on the way up the page faster than before and I think this is a
+    // better user experience but we still need a relatively large height for position sticky
+
+
+    // padding  : 12.0rem 0 12.0rem 0;
+    padding : 0 0 0 0; // put the padding on the wrapper div in this case so that
+    // the sticky div has 12.0rem of top padding between the content and the top of the browser
+    // and 12.0rem of padding at the bottom and do this so we don't see the background color
+    // of --gray-872 at the bottom but the 12.0rem of bottom padding is still there
+    z-index  : -1; // remember, we needed to put this container behind the 3d containers;
+    // otherwise, this container was showing up as the background in the 3d container sections
+
+    // ==============================
+    // background
+    // ==============================
+
+    // background : var( --gray-230 );
+    // background : var( --yellow-40 );
+    // background : var( --blue-83 );
+    // background : var( --blue-795 );
+    // background : conic-gradient( from 0deg at center, var( --blue-800 ) 0%, var( --blue-80 ) 70% );
+    background : var( --gray-872 );
+    // background : var( --blue-800 );
+
+    // ==============================
+    // end of background
+    // ==============================
+
+    // ==============================
+    // shrink the height for smaller screen sizes
+    // ==============================
+
+    @media all and ( max-width : $bp-2080 ) {
+
+        height : 500.0rem; // visual preference and needed for position sticky
+        // height : 375rem; // visual preference and needed for position sticky
+
+    } // end of container > bp-2080
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div {
+
+        // parent
+        grid-column : 1 / -1; // position against the parent
+
+        // children
+        display               : grid;
+        grid-template-rows    : repeat( 3, max-content ); // needed to use max-content so that
+        // the divs below the title lined up underneth the title and with
+        // " grid-template-rows : auto " that was not happenind
+
+        // ==============================
+        // note 
+        // ==============================
+
+        // ==============================
+        // 1 - in the content div use grid-column to position against the parent grid and until we
+        // can use sub grid we may need to duplicate the parent grid and bring it down to the
+        // content div where we can position against it
+        // 2 - now our content div is sitting empty inside the parent grid we need to give the
+        // content div a width and height so we can create the content box and
+        // 3 - then set up a grid within the content box so that we can layout the content
+        // inside the content box as needed and
+        // 4 - the only cavet to 3 above, is that sometimes we need to go with a horizontal layout
+        // and in those cases, flexbox may be the better choice than css grid
+        // ==============================
+
+        grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+        // ==============================
+        // remember, I can center the wrapper div by using either " justify-items : center; "
+        // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+        // wrapper div
+        // ==============================
+
+        align-items           : start;
+        justify-items         : center; // center the rudder, square and cube
+
+        // ==============================
+        // declare " position : sticky " here
+        // ==============================
+
+        // ==============================
+        // IMPORTANT!
+        // 
+        // remember, the key to make position sticky work is to have a parent component with
+        // a set height or a height that is scrollable and then set the " position : sticky; "
+        // on one of the children divs and give it a " top : 0; " and then give this div
+        // a height and now this div will become sticky
+        // ==============================
+
+        position : sticky;
+        top      : 0;
+        height   : 100vh; // 100vh seems like the right height to give to a sticky div
+        padding  : 12.0rem 0 12.0rem 0; // put the container padding here and this is more for reference
+        // to make sure our padding is correct
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > div 1 ( words animation )
+        // ==============================
+
+        > div:nth-child( 1 ) {
+
+            // parent
+            grid-column : 2 / 22; // position against the parent
+
+            // children
+            display               : grid;
+            grid-template-rows    : auto;
+            grid-template-columns : 1fr;
+            align-self            : start;
+            justify-self          : center;
+            gap                   : 2.0rem 0;
+            grid-template-areas   : "h2";
+
+            z-index : -1; // make this div sit on top of the rotating box and the blob
+            width   : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+
+            // opacity : 0; // needed for the opacity and slide up animation
+
+            // ==============================
+            // container > div 1 ( wrapper div ) > div1 > h2 ( container title )
+            // ==============================
+
+            > h2 {
+
+                // parent
+                grid-area : h2;
+
+                @include h2-light-title;
+
+                z-index : -1; // set this ahead the rotating box and the blob so that when the
+                // cards flow upwards they go behind the h2
+
+                @media all and ( max-width : $bp-920 ) {
+
+                    line-height : 1.3;
+
+                } // end of container > div1 > div1 > h2 > bp-920
+
+                > span {
+
+                    // give the animation a little more speed and bounce coming in
+                    transform : translateX( 20.0rem );
+
+                    > span {
+
+                        // font-style : italic;
+                        color      : var( --green-23-5 );
+
+                    } // end of container > div1 > div1 > h2 > span > span
+
+                } // end of container > div1 > div1 > h2 > span
+
+            } // end of container > div1 > div1 > h2
+
+        } // end of container > div1 > div1
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > div 2 ( rudder )
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            // parent
+            grid-column : 1 / -1; // position against the parent
+
+            position : static; // default value
+            width    : 52.5rem;
+            height   : 52.5rem;
+            z-index  : -1;
+            margin   : 6.0rem 0 0 0;
+
+            border-radius : 1.5rem; // visual preference
+
+            opacity : 0;
+
+            background : var( --blue-80 ); // starting value for darker colored boxes
+            background : rgba( 0, 112, 243, 0 ); // blue-80
+
+            @media all and ( max-width : $bp-2080 ) {
+
+                width  : 47.5rem;
+                height : 47.5rem;
+
+            } // end of container > div1 > div2 > bp-2080
+
+            @media all and ( max-width : $bp-1536 ) {
+
+                width  : 45.0rem;
+                height : 45.0rem;
+
+            } // end of container > div1 > div2 > bp-1536
+
+            @media all and ( max-width : $bp-1376 ) {
+
+                width  : 45.0rem;
+                height : 45.0rem;
+
+            } // end of container > div1 > div2 > bp-1376
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                width  : 42.5rem;
+                height : 42.5rem;
+
+            } // end of container > div1 > div2 > bp-1280
+
+            @media all and ( max-width : $bp-1032 ) {
+
+                width  : 45.0rem;
+                height : 45.0rem;
+
+            } // end of container > div1 > div2 > bp-1032
+
+            @media all and ( max-width : $bp-920 ) {
+
+                width  : 42.5rem;
+                height : 42.5rem;
+
+            } // end of container > div1 > div2 > bp-920
+
+            @media all and ( max-width : $bp-768 ) {
+
+                width  : 40.0rem;
+                height : 40.0rem;
+    
+            } // end of container > div1 > div2 > bp-768
+
+            @media all and ( max-width : $bp-620 ) {
+
+                width  : 35.0rem;
+                height : 35.0rem;
+
+            } // end of container > div1 > div2 > bp-620
+
+            @media all and ( max-width : $bp-480 ) {
+
+                width  : 30.0rem;
+                height : 30.0rem;
+
+            } // end of container > div1 > div2 > bp-480
+
+            @media all and ( max-width : 420px ) {
+
+                width  : 27.5rem;
+                height : 27.5rem;
+
+            } // end of container > div1 > div2 > 420px
+
+            @media all and ( max-width : $bp-375 ) {
+
+                width  : 25.0rem;
+                height : 25.0rem;
+
+            } // end of container > div1 > div2 > bp-375
+
+            @media all and ( max-width : 350px ) {
+
+                width  : 22.5rem;
+                height : 22.5rem;
+
+            } // end of container > div1 > div2 > 350px
+
+            // ==============================
+            // container > div 2 > picture ( rudder )
+            // ==============================
+
+            > picture {
+
+                > img {
+
+                    display : block; // remove the bottom spacing
+
+                    // ==============================
+                    // Make the image stretch horizontally to fit the column height
+                    // ==============================
+
+                    // remember, we added the width and height to the image element in the html file
+                    width  : 100%;
+                    height : 100%;
+                    margin : 0 auto;
+
+                    // now let add the object-fit property and remember for object-fit to work we have to add
+                    // the width and the height to the element
+
+                    // by using these 3 key value pairs inside the image element or " width : 100%; "
+                    // and " height : 100%; " and " object-fit : cover; " we see that each image now fills up
+                    // one grid cell and one grid cell only
+
+                    object-fit : cover;
+
+                } // end of container > div1 > div2 > picture > img
+                
+            } // end of container > div1 > div2 > picture
+
+        } // end of container > div1 > div2
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > div 3 ( cards )
+        // ==============================
+
+        > div:nth-child( 3 ) {
+
+            grid-column : 1 / -1; // position against the parent
+
+            // children
+            display             : grid;
+            justify-items       : center;
+            grid-template-areas : "stack";
+
+            position  : absolute;
+            top       : 30.0rem;
+            left      : 50.0%; // center absolutely positioned div
+            transform : translateX(-50%); // center absolutely positioned div
+            z-index   : -2; // make sure the cards sit behind the h2 words so that when the cards
+            // flow upwards they go behind the h2
+
+            @media all and ( max-width : $bp-2080 ) {
+
+                top : 28.5rem;
+
+            } // end of container > div1 > div3 > bp-2080
+
+            @media all and ( max-width : $bp-1032 ) {
+
+                top : 29.0rem;
+
+            } // end of container > div1 > div3 > bp-1032
+    
+            @media all and ( max-width : $bp-920 ) {
+
+                top : 29.0rem;
+
+            } // end of container > div1 > div3 > bp-920
+
+            @media all and ( max-width : $bp-768 ) {
+
+                top : 30.0rem;
+
+            } // end of container > div1 > div3 > bp-768
+
+            @media all and ( max-width : $bp-620 ) {
+
+                top : 31.0rem;
+
+            } // end of container > div1 > div3 > bp-620
+
+            @media all and ( max-width : $bp-480 ) {
+
+                top : 34.0rem;
+
+            } // end of container > div1 > div3 > bp-480
+
+            @media all and ( max-width : 393px ) {
+
+                top : 38.0rem;
+
+            } // end of container > div1 > div3 > 393px
+
+            @media all and ( max-width : $bp-375 ) {
+
+                top : 38.0rem;
+
+            } // end of container > div1 > div3 > bp-375
+
+            // ==============================
+            // container > div 1 ( wrapper div ) > div 3 > div 1 ( card 1 )
+            // ==============================
+
+            > div:nth-child( 1 ) {
+
+                grid-area : stack;
+
+                // children
+                display     : grid;
+                place-items : center;
+
+                width  : 60.0rem;
+                height : 60.0rem;
+
+                border-radius : 1.5rem; // visual preference
+
+                background : var( --purple-28-8 ); // starting value for darker colored boxes
+
+                opacity   : 0;
+                transform : rotateZ( -30deg );
+
+                @media all and ( max-width : $bp-2080 ) {
+
+                    width  : 45.0rem;
+                    height : 45.0rem;
+
+                } // end of container > div1 > div3 > div1 > bp-2080
+
+                @media all and ( max-width : $bp-1536 ) {
+
+                    width  : 45.0rem;
+                    height : 45.0rem;
+
+                } // end of container > div1 > div3 > div1 > bp-1536
+
+                @media all and ( max-width : $bp-1376 ) {
+
+                    width  : 45.0rem;
+                    height : 45.0rem;
+
+                } // end of container > div1 > div3 > div1 > bp-1376
+
+                @media all and ( max-width : $bp-1280 ) {
+
+                    width  : 42.5rem;
+                    height : 42.5rem;
+
+                } // end of container > div1 > div3 > div1 > bp-1280
+
+                @media all and ( max-width : $bp-1032 ) {
+
+                    width  : 45.0rem;
+                    height : 45.0rem;
+
+                } // end of container > div1 > div3 > div1 > bp-1032
+
+                @media all and ( max-width : $bp-920 ) {
+
+                    width  : 42.5rem;
+                    height : 42.5rem;
+
+                } // end of container > div1 > div3 > div1 > bp-920
+
+                @media all and ( max-width : $bp-768 ) {
+
+                    width  : 40.0rem;
+                    height : 40.0rem;
+        
+                } // end of container > div1 > div3 > div1 > bp-768
+
+                @media all and ( max-width : $bp-620 ) {
+        
+                    width  : 35.0rem;
+                    height : 35.0rem;
+
+                } // end of container > div1 > div3 > div1 > bp-620
+
+                @media all and ( max-width : $bp-480 ) {
+
+                    width  : 30.0rem;
+                    height : 30.0rem;
+
+                } // end of container > div1 > div3 > div1 > bp-480
+
+                @media all and ( max-width : 420px ) {
+
+                    width  : 27.5rem;
+                    height : 27.5rem;
+
+                } // end of container > div1 > div3 > div1 > 420px
+
+                @media all and ( max-width : $bp-375 ) {
+
+                    width  : 25.0rem;
+                    height : 25.0rem;
+        
+                } // end of container > div1 > div3 > div1 > bp-375
+
+                @media all and ( max-width : 350px ) {
+
+                    width  : 22.5rem;
+                    height : 22.5rem;
+
+                } // end of container > div1 > div3 > div1 > 350px
+
+                // ==============================
+                // container > div 1 ( wrapper div ) > div 3 > div 1 ( card 1 ) > picture ( old typewriter )
+                // ==============================
+
+                > picture {
+
+                    > img {
+
+                        display : block; // remove the bottom spacing
+
+                        // ==============================
+                        // Make the image stretch horizontally to fit the column height
+                        // ==============================
+
+                        // remember, we added the width and height to the image element in the html
+                        // file
+                        width  : 80%;
+                        height : 80%;
+                        margin : 0 auto;
+
+                        // this blends my Mid Journey pictures into the background color perfectly
+                        // and makes white pixels completely transparent and keeps black pixels
+                        // visible — works perfectly with black and white illustrations on
+                        // colored backgrounds without needing to remove the background at all
+                        mix-blend-mode : multiply;
+
+                        // now let add the object-fit property and remember for object-fit to work we have to add
+                        // the width and the height to the element
+
+                        // by using these 3 key value pairs inside the image element or " width : 100%; "
+                        // and " height : 100%; " and " object-fit : cover; " we see that each image now fills up
+                        // one grid cell and one grid cell only
+
+                        object-fit : cover;
+
+                    } // end of container > div1 > div3 > div1 > picture > img
+                
+                } // end of container > div1 > div3 > div1 > picture
+
+            } // end of container > div1 > div3 > div1
+
+            // ==============================
+            // container > div 1 ( wrapper div ) > div 3 > div 2 ( card 2 )
+            // ==============================
+
+            > div:nth-child( 2 ) {
+
+                grid-area : stack;
+
+                // children
+                display     : grid;
+                place-items : center;
+
+                width  : 60.0rem;
+                height : 60.0rem;
+
+                border-radius : 1.5rem; // visual preference
+
+                background : var( --orange-50 ); // starting value for darker colored boxes
+
+                opacity   : 0;
+                transform : rotateZ( -20deg );
+
+                @media all and ( max-width : $bp-2080 ) {
+
+                    width  : 45.0rem;
+                    height : 45.0rem;
+
+                } // end of container > div1 > div3 > div2 > bp-2080
+        
+                @media all and ( max-width : $bp-1536 ) {
+
+                    width  : 45.0rem;
+                    height : 45.0rem;
+
+                } // end of container > div1 > div3 > div2 > bp-1536
+
+                @media all and ( max-width : $bp-1376 ) {
+
+                    width  : 45.0rem;
+                    height : 45.0rem;
+
+                } // end of container > div1 > div3 > div2 > bp-1376
+
+                @media all and ( max-width : $bp-1280 ) {
+
+                    width  : 42.5rem;
+                    height : 42.5rem;
+
+                } // end of container > div1 > div3 > div2 > bp-1280
+
+                @media all and ( max-width : $bp-1032 ) {
+
+                    width  : 45.0rem;
+                    height : 45.0rem;
+
+                } // end of container > div1 > div3 > div2 > bp-1032
+
+                @media all and ( max-width : $bp-920 ) {
+
+                    width  : 42.5rem;
+                    height : 42.5rem;
+
+                } // end of container > div1 > div3 > div2 > bp-920
+
+                @media all and ( max-width : $bp-768 ) {
+
+                    width  : 40.0rem;
+                    height : 40.0rem;
+        
+                } // end of container > div1 > div3 > div2 > bp-768
+
+                @media all and ( max-width : $bp-620 ) {
+        
+                    width  : 35.0rem;
+                    height : 35.0rem;
+
+                } // end of container > div1 > div3 > div2 > bp-620
+
+                @media all and ( max-width : $bp-480 ) {
+
+                    width  : 30.0rem;
+                    height : 30.0rem;
+
+                } // end of container > div1 > div3 > div2 > bp-480
+
+                @media all and ( max-width : 420px ) {
+
+                    width  : 27.5rem;
+                    height : 27.5rem;
+
+                } // end of container > div1 > div3 > div2 > 420px
+
+                @media all and ( max-width : $bp-375 ) {
+
+                    width  : 25.0rem;
+                    height : 25.0rem;
+        
+                } // end of container > div1 > div3 > div2 > bp-375
+
+                @media all and ( max-width : 350px ) {
+
+                    width  : 22.5rem;
+                    height : 22.5rem;
+
+                } // end of container > div1 > div3 > div2 > 350px
+
+                // ==============================
+                // container > div 1 ( wrapper div ) > div 3 > div 2 ( card 2 ) > picture ( old camera )
+                // ==============================
+
+                > picture {
+
+                    > img {
+
+                        display : block; // remove the bottom spacing
+
+                        // ==============================
+                        // Make the image stretch horizontally to fit the column height
+                        // ==============================
+
+                        // remember, we added the width and height to the image element in the html
+                        // file
+                        width  : 80%;
+                        height : 80%;
+                        margin : 0 auto;
+
+                        // this blends my Mid Journey pictures into the background color perfectly
+                        // and makes white pixels completely transparent and keeps black pixels
+                        // visible — works perfectly with black and white illustrations on
+                        // colored backgrounds without needing to remove the background at all
+                        mix-blend-mode : multiply;
+    
+                        // now let add the object-fit property and remember for object-fit to work we have to add
+                        // the width and the height to the element
+
+                        // by using these 3 key value pairs inside the image element or " width : 100%; "
+                        // and " height : 100%; " and " object-fit : cover; " we see that each image now fills up
+                        // one grid cell and one grid cell only
+
+                        object-fit : cover;
+
+                    } // end of container > div1 > div3 > div2 > picture > img
+                
+                } // end of container > div1 > div3 > div2 > picture
+
+            } // end of container > div1 > div3 > div2
+
+            // ==============================
+            // container > div 1 ( wrapper div ) > div 3 > div 3 ( card 3 )
+            // ==============================
+
+            > div:nth-child( 3 ) {
+
+                grid-area : stack;
+
+                // children
+                display     : grid;
+                place-items : center;
+
+                width  : 60.0rem;
+                height : 60.0rem;
+
+                border-radius : 1.5rem; // visual preference
+
+                background : var( --green-200 ); // starting value for darker colored boxes
+
+                opacity   : 0;
+                transform : rotateZ( -10deg );
+
+                @media all and ( max-width : $bp-2080 ) {
+
+                    width  : 45.0rem;
+                    height : 45.0rem;
+
+                } // end of container div1 > div3 > div3 > bp-2080
+
+                @media all and ( max-width : $bp-1536 ) {
+
+                    width  : 45.0rem;
+                    height : 45.0rem;
+
+                } // end of container div1 > div3 > div3 > bp-1536
+
+                @media all and ( max-width : $bp-1376 ) {
+
+                    width  : 45.0rem;
+                    height : 45.0rem;
+
+                } // end of container div1 > div3 > div3 > bp-1376
+
+                @media all and ( max-width : $bp-1280 ) {
+
+                    width  : 42.5rem;
+                    height : 42.5rem;
+
+                } // end of container div1 > div3 > div3 > bp-1280
+
+                @media all and ( max-width : $bp-1032 ) {
+
+                    width  : 45.0rem;
+                    height : 45.0rem;
+
+                } // end of container div1 > div3 > div3 > bp-1032
+
+                @media all and ( max-width : $bp-920 ) {
+
+                    width  : 42.5rem;
+                    height : 42.5rem;
+
+                } // end of container div1 > div3 > div3 > bp-920
+
+                @media all and ( max-width : $bp-768 ) {
+
+                    width  : 40.0rem;
+                    height : 40.0rem;
+        
+                } // end of container div1 > div3 > div3 > bp-768
+
+                @media all and ( max-width : $bp-620 ) {
+        
+                    width  : 35.0rem;
+                    height : 35.0rem;
+
+                } // end of container div1 > div3 > div3 > bp-620
+
+                @media all and ( max-width : $bp-480 ) {
+
+                    width  : 30.0rem;
+                    height : 30.0rem;
+
+                } // end of container div1 > div3 > div3 > bp-480
+
+                @media all and ( max-width : 420px ) {
+
+                    width  : 27.5rem;
+                    height : 27.5rem;
+
+                } // end of container div1 > div3 > div3 > 420px
+
+                @media all and ( max-width : $bp-375 ) {
+
+                    width  : 25.0rem;
+                    height : 25.0rem;
+        
+                } // end of container div1 > div3 > div3 > bp-375
+
+                @media all and ( max-width : 350px ) {
+
+                    width  : 22.5rem;
+                    height : 22.5rem;
+
+                } // end of container div1 > div3 > div3 > 350px
+
+                // ==============================
+                // container > div 1 ( wrapper div ) > div 3 > div 3 ( card 3 ) > picture ( bookstore )
+                // ==============================
+
+                > picture {
+
+                    > img {
+
+                        display : block; // remove the bottom spacing
+
+                        // ==============================
+                        // Make the image stretch horizontally to fit the column height
+                        // ==============================
+
+                        // remember, we added the width and height to the image element in the html
+                        // file
+                        width  : 80%;
+                        height : 80%;
+                        margin : 0 auto;
+
+                        // this blends my Mid Journey pictures into the background color perfectly
+                        // and makes white pixels completely transparent and keeps black pixels
+                        // visible — works perfectly with black and white illustrations on
+                        // colored backgrounds without needing to remove the background at all
+                        mix-blend-mode : multiply;
+
+                        // now let add the object-fit property and remember for object-fit to work we have to add
+                        // the width and the height to the element
+
+                        // by using these 3 key value pairs inside the image element or " width : 100%; "
+                        // and " height : 100%; " and " object-fit : cover; " we see that each image now fills up
+                        // one grid cell and one grid cell only
+
+                        object-fit : cover;
+
+                    } // end of container div1 > div3 > div3 > picture > img
+                
+                } // end of container div1 > div3 > div3 > picture
+
+            } // end of container div1 > div3 > div3
+
+            // ==============================
+            // container > div 1 ( wrapper div ) > div 3 > div 4 ( card 4 )
+            // ==============================
+
+            > div:nth-child( 4 ) {
+
+                grid-area : stack;
+        
+                // children
+                display     : grid;
+                place-items : center;
+
+                width  : 60.0rem;
+                height : 60.0rem;
+
+                border-radius : 1.5rem; // visual preference
+        
+                background : var( --blue-78 ); // starting value for darker colored boxes
+
+                opacity   : 0;
+                transform : translateY( 0 ) rotateZ( 0deg );
+
+                @media all and ( max-width : $bp-2080 ) {
+
+                    width  : 45.0rem;
+                    height : 45.0rem;
+
+                } // end of container > div1 > div3 > div4 > bp-2080
+
+                @media all and ( max-width : $bp-1536 ) {
+
+                    width  : 45.0rem;
+                    height : 45.0rem;
+
+                } // end of container > div1 > div3 > div4 > bp-1536
+
+                @media all and ( max-width : $bp-1376 ) {
+
+                    width  : 45.0rem;
+                    height : 45.0rem;
+
+                } // end of container > div1 > div3 > div4 > bp-1376
+
+                @media all and ( max-width : $bp-1280 ) {
+
+                    width  : 42.5rem;
+                    height : 42.5rem;
+
+                } // end of container > div1 > div3 > div4 > bp-1280
+
+                @media all and ( max-width : $bp-1032 ) {
+
+                    width  : 45.0rem;
+                    height : 45.0rem;
+
+                } // end of container > div1 > div3 > div4 > bp-1032
+
+                @media all and ( max-width : $bp-920 ) {
+
+                    width  : 42.5rem;
+                    height : 42.5rem;
+
+                } // end of container > div1 > div3 > div4 > bp-920
+
+                @media all and ( max-width : $bp-768 ) {
+
+                    width  : 40.0rem;
+                    height : 40.0rem;
+        
+                } // end of container > div1 > div3 > div4 > bp-768
+
+                @media all and ( max-width : $bp-620 ) {
+        
+                    width  : 35.0rem;
+                    height : 35.0rem;
+
+                } // end of container > div1 > div3 > div4 > bp-620
+
+                @media all and ( max-width : $bp-480 ) {
+
+                    width  : 30.0rem;
+                    height : 30.0rem;
+
+                } // end of container > div1 > div3 > div4 > bp-480
+
+                @media all and ( max-width : 420px ) {
+
+                    width  : 27.5rem;
+                    height : 27.5rem;
+
+                } // end of container > div1 > div3 > div4 > 420px
+
+                @media all and ( max-width : $bp-375 ) {
+
+                    width  : 25.0rem;
+                    height : 25.0rem;
+        
+                } // end of container > div1 > div3 > div4 > bp-375
+
+                @media all and ( max-width : 350px ) {
+
+                    width  : 22.5rem;
+                    height : 22.5rem;
+
+                } // end of container > div1 > div3 > div4 > 350px
+
+                // ==============================
+                // container > div 1 ( wrapper div ) > div 3 > div 4 ( card 4 ) > picture ( fashionable woman )
+                // ==============================
+
+                > picture {
+
+                    > img {
+
+                        display : block; // remove the bottom spacing
+
+                        // ==============================
+                        // Make the image stretch horizontally to fit the column height
+                        // ==============================
+
+                        // remember, we added the width and height to the image element in the html
+                        // file
+                        width  : 80%;
+                        height : 80%;
+                        margin : 0 auto;
+
+                        // this blends my Mid Journey pictures into the background color perfectly
+                        // and makes white pixels completely transparent and keeps black pixels
+                        // visible — works perfectly with black and white illustrations on
+                        // colored backgrounds without needing to remove the background at all
+                        mix-blend-mode : multiply;
+    
+                        // now let add the object-fit property and remember for object-fit to work we have to add
+                        // the width and the height to the element
+
+                        // by using these 3 key value pairs inside the image element or " width : 100%; "
+                        // and " height : 100%; " and " object-fit : cover; " we see that each image now fills up
+                        // one grid cell and one grid cell only
+
+                        object-fit : cover;
+
+                    } // end of container > div1 > div3 > div4 > picture > img
+                
+                } // end of container > div1 > div3 > div4 > picture
+
+            } // end of container > div1 > div3 > div4
+
+        } // end of container > div1 > div3
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > div 4 ( image background )
+        // ==============================
+
+        > div:nth-child( 4 ) {
+
+            display : block;
+            z-index : -2; // remember, this container has to sit behind the parent container
+            // which has a z-index of -1
+
+            position : absolute;
+            top      : 0;
+            left     : 0;
+            right    : 0;
+            bottom   : 0;
+
+            opacity : 0;
+
+            // ==============================
+            // fallback jpg image
+            // ==============================
+
+            background-image      : linear-gradient( to bottom, rgba( 0, 30, 75, 0.6 ),  rgba( 0, 30, 75, 0.6 ) ), url( /images/sunset_02_2560.jpg );
+            background-position   : 0% 70%; // remember, the background-position property sets the starting position of a background image and by default,
+            // a background-image is placed at the top-left corner of an element
+            background-size       : cover;
+            background-blend-mode : multiply;
+            background-color      : var( --blue-75 );
+
+            // ==============================
+            // webp image
+            // ============================== 
+
+            // this code comes from the article :
+            // " https://www.js-craft.io/blog/css-fallbacks-for-webp-background-images-with-supports/ "
+            @supports ( background-image : linear-gradient( to bottom, rgba( 0, 30, 75, 0.6 ),  rgba( 0, 30, 75, 0.6 ) ), url( /images/sunset_02_2560.webp ) ) {
+
+                background-image      : linear-gradient( to bottom, rgba( 0, 30, 75, 0.6 ),  rgba( 0, 30, 75, 0.6 ) ), url( /images/sunset_02_2560.webp );
+                background-position   : 30% 70%; // remember, the background-position property sets the starting position of a background image and by default,
+                // a background-image is placed at the top-left corner of an element
+                background-size       : cover;
+                background-blend-mode : multiply;
+                background-color      : var( --blue-75 );
+
+                filter : brightness( 1.2 ); // adjust the brightness of the picture
+
+                @media all and ( max-width : $bp-1536 ) {
+
+                    background-image      : linear-gradient( to bottom, rgba( 0, 30, 75, 0.6 ),  rgba( 0, 30, 75, 0.6 ) ), url( /images/sunset_02_1536.webp );
+                    background-position   : 30% 70%; // remember, the background-position property sets the starting position of a background image and by default,
+                    // a background-image is placed at the top-left corner of an element
+                    background-size       : cover;
+                    background-blend-mode : multiply;
+                    background-color      : var( --blue-75 );
+
+                } // end of container > div1 > div4 > bp-1536
+
+                @media all and ( max-width : $bp-1376 ) {
+
+                    background-position : 30% 70%; // remember, the background-position property sets the starting position of a background image and by default,
+                    // a background-image is placed at the top-left corner of an element
+
+                } // end of container > div1 > div4 > bp-1376
+
+                @media all and ( max-width : $bp-1032 ) {
+
+                    background-image      : linear-gradient( to bottom, rgba( 0, 30, 75, 0.6 ),  rgba( 0, 30, 75, 0.6 ) ), url( /images/sunset_02_1032.webp );
+                    background-position   : 30% 70%; // remember, the background-position property sets the starting position of a background image and by default,
+                    // a background-image is placed at the top-left corner of an element
+                    background-size       : cover;
+                    background-blend-mode : multiply;
+                    background-color      : var( --blue-75 );
+
+                } // end of container > div1 > div4 > bp-1032
+
+                @media all and ( max-width : $bp-768 ) {
+
+                    background-position : 30% 70%; // remember, the background-position property sets the starting position of a background image and by default,
+                    // a background-image is placed at the top-left corner of an element
+
+                } // end of container > div1 > div4 > bp-768
+
+                @media all and ( max-width : $bp-620 ) {
+
+                    background-position : 30% 70%; // remember, the background-position property sets the starting position of a background image and by default,
+                    // a background-image is placed at the top-left corner of an element
+
+                } // end of container > div1 > div4 > bp-620
+
+                @media all and ( max-width : $bp-480 ) {
+
+                    background-image      : linear-gradient( to bottom, rgba( 0, 30, 75, 0.6 ),  rgba( 0, 30, 75, 0.6 ) ), url( /images/sunset_02_480.webp );
+                    background-position   : 30% 70%; // remember, the background-position property sets the starting position of a background image and by default,
+                    // a background-image is placed at the top-left corner of an element
+                    background-size       : cover;
+                    background-blend-mode : multiply;
+                    background-color      : var( --blue-75 );
+
+                } // end of container > div1 > div4 > bp-480
+
+            } // end of container > div1 > div4 > @supports
+
+        } // end of container > div1 > div4
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > div 5 ( animating backgrounds )
+        // ==============================
+
+        > div:nth-child( 5 ) {
+
+            display : block; // hide the blob and show the animating backgrounds
+            z-index : -2; // remember, this container has to sit behind the parent container
+            // which has a z-index of -1
+
+            opacity : 0;
+
+        } // end of container > div1 > div5
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > div 6 ( square )
+        // ==============================
+
+        // ==============================
+        // remember, the reason we had to declare the square styling here
+        // versus in a separate component is due to the color dodge only
+        // rendering correctly when it is declared on the parent div and not in
+        // a child div or child component
+        // ==============================
+
+        > div:nth-child( 6 ) {
+
+            display : none; // since we added the rotating cube, let's remove the rotating square
+            // unless we have meet the conditions as specified in the useEffect hook 3 and the if
+            // statement as detailed on the corresponding page
+
+            position : absolute;
+            top      : 32.5rem;
+            z-index  : -2;
+            width    : 52.5rem;
+            height   : 52.5rem;
+
+            opacity : 0;
+
+            // ==============================
+            // remember, this works fine in Chrome and Sarafi but it does not work correctly in Firefox 
+            // ==============================
+
+            background      : linear-gradient( 180deg, var( --blue-green-500 ) 31.77%, var( --blue-66 ) 100% );
+
+            // ==============================
+            // remember, this piece of code will only apply to Firefox and Chrome and Sarafi will ignore it
+            // ==============================
+
+            // use this piece of code to turn off the animation for Firefox since as of 6-10-24
+            // Firefox does not support @property and once it does and people have migrated to
+            // using new versions ( maybe a year from now? ) then take this piece of code out
+            // and see the article for details on targeting Firefox browsers :
+            // " https://stackoverflow.com/questions/952861/targeting-only-firefox-with-css?noredirect=1&lq=1
+            @-moz-document url-prefix() {
+
+                background : rgba( 47, 184, 255, 0.75 ); // this is only one I could get to work in Firefox
+
+            } // end @-moz-document url-prefix()
+
+            // remember, frpm web.dev : " If you use color-dodge, it lightens the background color to reflect
+            // the source color. Pure black colors see no effect from this mode. " and this is why we can
+            // see through the background color, in part, to see the image behind the background color
+            mix-blend-mode : color-dodge; // this provided for a very nice effect
+    
+            // transition                : 1s cubic-bezier( 0.07, 0.8, 0.16, 1 ); // this cubic-bezier starts off really fast
+            // and slows down ( see how it looks here : https://www.w3schools.com/cssref/tryit.php?filename=trycss_func_cubic-bezier2 )
+            // and remmeber, the transition is only needed if we have a hover state
+
+            animation-name            : move-6;
+            animation-duration        : 15.0s; // took the duration down from 25s to 10s since I reduced the amount of movement
+            animation-direction       : alternate;
+            animation-iteration-count : infinite;
+
+            @media all and ( max-width : $bp-2080 ) {
+
+                width  : 50.0rem;
+                height : 50.0rem;
+
+            } // end of container > div1 > div6 > bp-2080
+
+            @media all and ( max-width : $bp-1920 ) {
+
+                width  : 45.0rem;
+                height : 45.0rem;
+
+            } // end of container > div1 > div6 > bp-1920
+
+            @media all and ( max-width : $bp-1536 ) {
+
+                width  : 45.0rem;
+                height : 45.0rem;
+
+            } // end of container > div1 > div6 > bp-1536
+
+            @media all and ( max-width : $bp-1376 ) {
+
+                width  : 45.0rem;
+                height : 45.0rem;
+
+            } // end of container > div1 > div6 > bp-1376
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                width  : 40.0rem;
+                height : 40.0rem;
+
+            } // end of container > div1 > div6 > bp-1280
+
+            @media all and ( max-width : $bp-1032 ) {
+
+                animation-name     : move-7;
+                animation-duration : 15.0s;
+
+            } // end of container > div1 > div6 > bp-1032
+
+            @media all and ( max-width : $bp-920 ) {
+
+                width  : 37.5rem;
+                height : 37.5rem;
+
+            } // end of container > div1 > div6 > bp-920
+
+            @media all and ( max-width : $bp-768 ) {
+
+                width  : 35.0rem;
+                height : 35.0rem;
+
+                animation-name     : move-8;
+                animation-duration : 15.0s;
+
+            } // end of container > div1 > div6 > bp-768
+
+            @media all and ( max-width : $bp-620 ) {
+
+                width  : 32.5rem;
+                height : 32.5rem;
+
+            } // end of container > div1 > div6 > bp-620
+
+            @media all and ( max-width : $bp-480 ) {
+
+                top    : 37.5rem;
+                width  : 27.5rem;
+                height : 27.5rem;
+
+            } // end of container > div1 > div6 > bp-480
+
+            @media all and ( max-width : 430px ) {
+
+                width  : 25.0rem;
+                height : 25.0rem;
+
+            } // end of container > div1 > div6 > 420px
+
+            @media all and ( max-width : 395px ) {
+
+                top    : 42.5rem;
+                width  : 22.5rem;
+                height : 22.5rem;
+
+            } // end of container > div1 > div6 > 395px
+
+            @media all and ( max-width : $bp-375 ) {
+
+                width  : 21.5rem;
+                height : 21.5rem;
+
+            } // end of container > div1 > div6 > bp-375
+
+            @media all and ( max-width : 350px ) {
+
+                width  : 20.0rem;
+                height : 20.0rem;
+
+            } // end of container > div1 > div6 > 350px
+
+        } // end of container > div1 > div6
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > div 7 ( cube )
+        // ==============================
+
+        > div:nth-child( 7 ) {
+
+            position  : absolute;
+            z-index   : -2; // make sure the cube sit behind the h2 words so that when the cards
+            // flow upwards they go behind the h2
+
+            opacity : 0;
+
+        } // end of container > div1 > div7
+
+    } // end of container > div1
+
+} // end of container
+
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// save this wave shape div since it has the bottom wave to it, making it
+// easier to have an unsual gradient to this div
+// ==============================
+
+
+/*
+{
+    /*
+        // ==============================
+        // wave shape
+        // ==============================
+    
+}
+{
+    /*
+        // ==============================
+        // container > div 5 ( wave container )
+        // ==============================
+    
+}
+<div>
+
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+
+        {
+            /*
+                <linearGradient id="linear-gradient-index-2">
+                    <stop offset="0%" stopColor="var( --color-stop-16 )" />
+                    <stop offset="30%" stopColor="var( --color-stop-15 )" />
+                    <stop offset="70%" stopColor="var( --color-stop-14 )" />
+                    <stop offset="100%" stopColor="var( --color-stop-13 )" />
+                </linearGradient>
+            
+        }
+
+        {
+            /*
+                from : https://developer.mozilla.org/en-US/docs/Web/SVG/Element/pattern
+
+                "<pattern>
+
+                The <pattern> element defines a graphics object which can be redrawn at repeated
+                x- and y-coordinate intervals ("tiled") to cover an area.
+
+                The <pattern> is referenced by the fill and/or stroke attributes on other graphics
+                elements to fill or stroke those elements with the referenced pattern."
+
+                from : https://developer.mozilla.org/en-US/docs/Web/SVG/Element/defs
+
+                "<defs>
+                
+                The <defs> element is used to store graphical objects that will be used at a later time.
+                Objects created inside a <defs> element are not rendered directly. To display them you
+                have to reference them (with a <use> element for example)."
+            
+        }
+
+        <defs>
+            <pattern id="texture-whitey" patternUnits="userSpaceOnUse" width="100" height="100">
+                <image href="/textures/whitey.png" x="0" y="0" width="100" height="100" />
+            </pattern>
+        </defs>
+
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+
+    </svg>
+
+</div>
+*/
+
+
+
+/*
+    // ==============================
+    // wave shape div
+    // ==============================
+
+    // ==============================
+    // version 1 with a flatter grade than version 2
+    // ==============================
+
+    // remember, this information came from the following video :
+    // " https://www.youtube.com/watch?v=lPJVi797Uy0&t=396s " and timestamp : 6.21
+
+    // and in accordance with the above video, I used the following tool to create the wave
+    // shape and the tool is called Custom Shape Dividers and located at :
+    // " https://www.shapedivider.app/ "
+
+    // the css code below and the html code in this file came from the following
+    // website : " https://www.shapedivider.app/ " and to get this generated code
+    // we used the following set up :
+
+    /*
+        Shape      : Waves
+        Color      : #FFFFFF ( initial color until I changed it below )
+        Flip       : No
+        Invert     : No
+        Top/bottom : Top
+        Height     : 150px
+        Width      : 100%
+    */
+
+    // remember, I had to add " position : relative " to the parent container and I had
+    // to change the path fill color to match the body background color
+
+    // ==============================
+    // container > div 5 ( wave shape )
+    // ==============================
+/*
+    > div:nth-child( 5 ) {
+
+        position : absolute;
+        // top      : 0; // this will put the shape at the top of the container
+        bottom   : 0;
+        left     : 0;
+        width    : 100%;
+
+        line-height : 0;
+
+        overflow : hidden;
+
+        > svg {
+
+            display  : block;
+            position : relative;
+            width    : calc( 100% + 1.3px );
+            height   : 15.0rem; // changed this from the default 150px to 15.0rem
+
+            // transform : rotateY( 0 );
+            transform : rotate( 180deg );
+
+            @media all and ( max-width : $bp-1032 ) {
+
+                height : 9.0rem; // make sure we flatten the wave as the screen size
+                // shrinks
+
+            } // end of container > div5 > svg > bp-1032
+
+            @media all and ( max-width : $bp-768 ) {
+
+                height : 8.0rem; // make sure we flatten the wave as the screen size
+                // shrinks
+
+            } // end of container > div5 > svg > bp-768
+
+            @media all and ( max-width : $bp-620 ) {
+
+                height : 7.0rem; // make sure we flatten the wave as the screen size
+                // shrinks
+
+            } // end of container > div5 > svg > bp-620
+
+            @media all and ( max-width : $bp-480 ) {
+
+                height : 5.5rem; // make sure we flatten the wave as the screen size
+                // shrinks
+
+            } // end of container > div5 > svg > bp-480
+
+            @media all and ( max-width : $bp-375 ) {
+
+                height : 4.5rem; // make sure we flatten the wave as the screen size
+                // shrinks
+        
+            } // end of container > div5 > svg > bp-375
+
+            // ==============================
+            // use an image for the fill
+            // ==============================
+
+            // this solution came from the following stackoverflow answer :
+            // " https://stackoverflow.com/questions/3796025/fill-svg-path-element-with-a-background-image "
+
+            // from the article : " You can do it by making the background into a pattern: "
+
+            // so the solution was to :
+
+            /*
+                <defs>
+                    <pattern id="img1" patternUnits="userSpaceOnUse" width="100" height="100">
+                        <image href="wall.jpg" x="0" y="0" width="100" height="100" />
+                    </pattern>
+                </defs>
+
+                Adjust the width and height according to your image, then reference it from the path like this:
+
+                <path d="M5,50 l0,100 l100,0 l0,-100 l-100,0 M215,100 a50,50 0 1 1 -100,0 50,50 0 1 1 100,0 M265,50 l50,100 l-100,0 l50,-100 z" fill="url(#img1)" />
+            */
+
+            // I slightly modified the code above and it works pretty well but for some reason
+            // I don't see the detailed lines within the shape section but it is the same color
+/*
+            > path {
+
+                // fill : url( #texture-whitey ) gray; // this is same texture as the
+                // texrture for the proceeding div and I included a fallback color in case
+                // the image does not show
+
+                fill : var( --yellow-20 ); // this is same color as the
+                // background color for the proceeding div
+
+            } // end of container > div5 > svg > path
+
+        } // end of container > div5 > svg
+
+    } // end of container > div5
+*/
+

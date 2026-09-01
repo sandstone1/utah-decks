@@ -1,0 +1,128 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../../styles/_mixins.scss' as *;
+@use '../../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+// ==============================
+// fade in animation container
+// ==============================
+
+.fadeInAnimationContainer {
+
+    // parent
+    grid-column : 1 / -1; // position against the parent
+
+    // children
+    display               : grid;
+    grid-template-rows    : repeat( 6, auto );
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // 1 - in the content div use grid-column to position against the parent grid and until we
+    // can use sub grid we may need to duplicate the parent grid and bring it down to the
+    // content div where we can position against it
+    // 2 - now our content div is sitting empty inside the parent grid we need to give the
+    // content div a width and height so we can create the content box and
+    // 3 - then set up a grid within the content box so that we can layout the content
+    // inside the content box as needed and
+    // 4 - the only cavet to 3 above, is that sometimes we need to go with a horizontal layout
+    // and in those cases, flexbox may be the better choice than css grid
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    justify-items        : center;
+
+    padding : 12.0rem 0 12.0rem 0; // provide some spacing
+
+    // ==============================
+    // background
+    // ==============================
+
+    // background : var( --gray-230 );
+    background : var( --yellow-40 );
+
+    // ==============================
+    // end of background
+    // ==============================
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+        width : min( 80.0rem, 100% ); // browser will select the smaller of 80rem or 100%
+
+        // ==============================
+        // container > div 1 > h2
+        // ==============================
+
+        > h2 {
+
+            @include h2-dark-title;
+
+            margin : 0 0 1.5rem 0;
+
+        } // end of container > div1 > h2
+
+        // ==============================
+        // container > div 1 > p
+        // ==============================
+
+        > p {
+
+            @include text-large-dark;
+
+            padding : 0 0 2.0rem 0;
+
+        } // end of container > div1 > p
+
+    } // container > div1
+
+} // container
+
+

@@ -1,0 +1,120 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../../styles/_mixins.scss' as *;
+@use '../../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// highlight text container
+// ==============================
+
+.highlightTextContainer {
+
+    // ==============================
+    // container > a:nth-child( 1 )
+    // ==============================
+
+    > a:nth-child( 1 ) {
+
+        @include text-large-light;
+
+        display  : inline-flex;
+        position : relative;
+
+        font-weight     : 400;
+        text-decoration : none;
+
+        /*
+            I revised v3 so that the animation happened on the scroll event and not the hover event
+            and it worked pretty well ( see highlight-text-v3.js for more details on this animation
+        */
+
+        // this is the container and it slide in from the left
+        > span:nth-child( 1 ) {
+
+            position : absolute;
+            top      : 0;
+            left     : 0;
+
+            overflow : hidden;
+
+        } // end of container > a:nth-child( 1 ) > span:nth-child( 1 )
+
+        // this is the text and it slides in from the right
+        > span:nth-child( 1 )::before {
+
+            display : inline-flex;
+
+            font-weight : 400;
+            color       : var( --yellow-150 );
+            // text-decoration : underline;
+
+            transform  : translateX( 100% );
+            transition : transform 400ms ease-out;
+
+            // the text
+            content : attr( data-content );
+
+        } // end of container > a:nth-child( 1 ) > > span:nth-child( 1 )::before
+
+        // add class here and in the JS and this helps create the animation effect
+        span:nth-child( 1 ).isRevealed::before {
+
+            transform : translateX( 0 );
+
+        } // end of container > a:nth-child( 1 ) > &:hover span:nth-child( 1 ):before
+
+    } // end of container > a:nth-child( 1 )
+
+    // ==============================
+    // container > span:nth-child( 2 )
+    // ==============================
+
+    > span:nth-child( 2 ) {
+
+        @include text-large-light;
+
+    } // end of container > span:nth-child( 2 )
+
+    // ==============================
+    // container > a:nth-child( 3 )
+    // ==============================
+
+    > a:nth-child( 3 ) {
+
+        @include text-large-light;
+
+        // color                 : var( --blue-85-2 );
+        text-decoration       : underline;
+        // text-underline-offset : 0.2rem;
+
+        @media all and ( max-width : $bp-1920 ) {
+
+            color : var( --gray-225 );
+        
+        } // end of container > a:nth-child( 3 ) > bp-1920
+
+        &:hover {
+
+            cursor : pointer;
+
+        } // end of container > a:nth-child( 3 ) > &:hover
+
+    } // end of container > a:nth-child( 3 )
+
+} // end of container
+
+

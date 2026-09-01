@@ -1,0 +1,919 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@import '@/styles/_mixins.scss';
+@import '@/styles/_responsive_breakpoints.scss';
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// keyframes
+// ==============================
+
+// ==============================
+// purpose : fade in the postcard on page load and fade in the container when the bp is
+// 620 or below
+// ==============================
+
+@keyframes fade-in-animation {
+
+    from {
+
+        opacity : 0;
+
+    }
+
+    to {
+
+        opacity : 1;
+
+    }
+
+} // end of fade-in-animation
+
+// ==============================
+// purpose : fade in and slide in the wrapper div on page load
+// ==============================
+
+@keyframes fade-in-slide-in-animation-x {
+
+    from {
+
+        opacity   : 0;
+        transform : translateX( -15.0rem );
+
+    }
+
+    to {
+
+        opacity   : 1;
+        transform : translateX( 0 );
+
+    }
+
+} // end of fade-in-slide-in-animation-x
+
+// ==============================
+// purpose : fade in and slide in the wrapper div on page load for Firefox browsers or
+// browsers that do not support the view transitions API
+// ==============================
+
+@keyframes fade-in-slide-in-animation-y {
+
+    from {
+
+        opacity   : 0;
+        transform : translateY( 6.0rem );
+
+    }
+
+    to {
+
+        opacity   : 1;
+        transform : translateY( 0 );
+
+    }
+
+} // end of fade-in-slide-in-animation-y
+
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// contact us other container
+// ==============================
+
+.contactUsOtherContainer {
+
+    // parent
+    grid-column : 1 / -1; // position against the parent
+
+    // children
+    display               : grid;
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // 1 - in the content div use grid-column to position against the parent grid and until we
+    // can use sub grid we may need to duplicate the parent grid and bring it down to the
+    // content div where we can position against it
+    // 2 - now our content div is sitting empty inside the parent grid we need to give the
+    // content div a width and height so we can create the content box and
+    // 3 - then set up a grid within the content box so that we can layout the content
+    // inside the content box as needed and
+    // 4 - the only cavet to 3 above, is that sometimes we need to go with a horizontal layout
+    // and in those cases, flexbox may be the better choice than css grid
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    justify-items         : center;
+
+    // ==============================
+    // remember, we had to add some extra padding to this div in  order to keep the
+    // spacing consistent ( see the parallax.contact.module.scss file for details
+    // ==============================
+
+    padding : 12.0rem 0 0 0;
+
+    // ==============================
+    // background
+    // ==============================
+
+    // background : var( --gray-230 );
+    // background : var( --yellow-20 );
+    background : var( --yellow-40 );
+
+    // ==============================
+    // end of background
+    // ==============================
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+    grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent
+
+        // children
+        display               : grid;
+        grid-template-rows    : auto;
+        grid-template-columns : 1fr;
+
+        width   : min( 184.0rem, 100% ); // browser will select the smaller of 184.0rem or 100%
+        padding : 0 0 12.0rem 0;
+
+        // ==============================
+        // animation
+        // ==============================
+
+        opacity : 0; // this needed so that we don't momentarily see the page content
+
+        // ==============================
+        // the browser does not support the view transition API
+        // ==============================
+
+        // this came from " https://www.smashingmagazine.com/2023/12/view-transitions-api-ui-animations-part1/ "
+        @supports not ( view-transition-name : none ) {
+
+            animation-name            : fade-in-slide-in-animation-y;
+            animation-duration        : 300ms;
+            animation-timing-function : ease-out; // standard easing
+            animation-delay           : 0ms;
+            animation-iteration-count : 1; // this is the default but leave here for reference purposes
+            animation-fill-mode       : forwards;
+
+        } // end of @supports
+
+        // ==============================
+        // browser supports the view transition API
+        // ==============================
+
+        animation-name            : fade-in-slide-in-animation-x;
+        animation-duration        : 400ms;
+        animation-timing-function : ease-out; // standard easing
+        animation-delay           : 1300ms;
+        animation-iteration-count : 1; // this is the default but leave here for reference purposes
+        animation-fill-mode       : forwards;
+
+        // ==============================
+        // end of animation
+        // ==============================
+
+        @media all and ( max-width : $bp-1376 ) {
+
+            opacity : 0; // this needed so that we don't momentarily see the page content
+
+            // ==============================
+            // the browser does not support the view transition API
+            // ==============================
+    
+            // this came from " https://www.smashingmagazine.com/2023/12/view-transitions-api-ui-animations-part1/ "
+            @supports not ( view-transition-name : none ) {
+    
+                animation-name            : fade-in-slide-in-animation-y;
+                animation-duration        : 300ms;
+                animation-timing-function : ease-out; // standard easing
+                animation-delay           : 0ms;
+                animation-iteration-count : 1; // this is the default but leave here for reference purposes
+                animation-fill-mode       : forwards;
+    
+            } // end of @supports
+    
+            // ==============================
+            // browser supports the view transition API
+            // ==============================
+    
+            animation-name            : fade-in-slide-in-animation-y;
+            animation-duration        : 300ms;
+            animation-timing-function : ease-out; // standard easing
+            animation-delay           : 0ms;
+            animation-iteration-count : 1; // this is the default but leave here for reference purposes
+            animation-fill-mode       : forwards;
+    
+            // ==============================
+            // end of animation
+            // ==============================
+
+        } // end of container > div1 > bp-1376
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            width : min( 38.0rem, 100% ); // browser will select the smaller of 38.0rem or 100%
+            // and remember, we reduced the width to 38.0rem so we could left justify the content
+            // and center it on the page and the centering was different than a typical content
+            // div with a width of " width : min( 80.0rem, 100% ); "
+
+        } // end of container > div1 > bp-1280
+
+        @media all and ( max-width : $bp-620 ) {
+
+            // ==============================
+            // the browser does not support the view transition API
+            // ==============================
+
+            // this came from " https://www.smashingmagazine.com/2023/12/view-transitions-api-ui-animations-part1/ "
+            @supports not ( view-transition-name : none ) {
+
+                animation-name            : fade-in-animation;
+                animation-duration        : 300ms;
+                animation-timing-function : ease-out; // standard easing
+                animation-delay           : 0ms;
+                animation-iteration-count : 1; // this is the default but leave here for reference purposes
+                animation-fill-mode       : forwards;
+
+            } // end of @supports
+
+            // ==============================
+            // browser supports the view transition API
+            // ==============================
+
+            animation-name            : fade-in-animation;
+            animation-duration        : 300ms;
+            animation-timing-function : ease-out; // standard easing
+            animation-delay           : 0ms;
+            animation-iteration-count : 1; // this is the default but leave here for reference purposes
+            animation-fill-mode       : forwards;
+
+        } // end of container > bp-620
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > div 1 ( wrapper div )
+        // ==============================
+
+        > div:nth-child( 1 ) {
+
+            // children
+            display               : grid;
+            grid-template-rows    : auto;
+            grid-template-columns : 1fr 1fr;
+            align-content         : center;
+            justify-items         : center;
+            gap                   : 0 24.0rem;
+            grid-template-areas   : "div1 ."
+                                    "div2 div3";
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                // children
+                grid-template-columns : 1fr;
+                justify-items         : left;
+                gap                   : 0 0;
+                grid-template-areas   : "div1"
+                                        "div2"
+                                        "div3";
+
+            } // end of container > div1 > div1 > bp-1280
+
+            // ==============================
+            // container > div 1 ( wrapper div ) > div 1 ( wrapper div ) > div 1 ( wrapper div )
+            // ==============================
+
+            > div:nth-child( 1 ) {
+
+                // parent
+                grid-area : div1;
+
+                width : 207.8px; // in order to get the div to line up with div2 below we had
+                // to make the width the same as the width for div2
+
+                > h1 {
+        
+                    @include h1-dark-title;
+
+                } // end of container > div1 > div1 > div1 > h1
+
+                // ==============================
+                // container > div 1 ( wrapper div ) > div 1 ( wrapper div ) > div 1 > div:nth-child( 2 ) ( image & background circle )
+                // ==============================
+
+                > div:nth-child( 2 ) {
+
+                    // children
+                    display               : grid;
+                    grid-template-rows    : auto;
+                    grid-template-columns : 1fr;
+
+                    position : relative;    
+                    width    : 512px; // in order to maintain the image size, we have to give it
+                    // a width equal to the width in image element
+                    margin   : 0 0 0 -3.1rem; // this alined the image with the h1 and div2
+                    padding  : 1.0rem 0 2.1rem 0; // add top margin to make the spacing above and below
+                    // the picture consistent
+
+                    @media all and ( max-width : $bp-1280 ) {
+
+                        width  : 51.2rem;
+                        margin : 0 0 0 -2.8rem; // move the image so that it lines up with
+                        // the h1 and div2
+
+                    } // end of container > div1 > div1 > div1 > > div:nth-child( 2 ) > bp-1280
+
+                    @media all and ( max-width : $bp-1280 ) {
+
+                        margin : 0 0 0 -2.9rem; // move the image so that it lines up with
+                        // the h1 and div2
+
+                    } // end of container > div1 > div1 > div1 > > div:nth-child( 2 ) > bp-1280
+
+                    @media all and ( max-width : $bp-768 ) {
+
+                        width  : 44.0rem;
+                        margin : 0 0 0 -2.4rem; // move the image so that it lines up with
+                        // the h1 and div2
+
+                    } // end of container > div1 > div1 > div1 > > div:nth-child( 2 ) > bp-768
+
+                    @media all and ( max-width : $bp-620 ) {
+
+                        width  : 40.0rem;
+                        margin : 0 0 0 -2.2rem; // move the image so that it lines up with
+                        // the h1 and div2
+
+                    } // end of container > div1 > div1 > div1 > > div:nth-child( 2 ) > bp-620
+
+                    @media all and ( max-width : $bp-480 ) {
+
+                        width  : 38.0rem;
+                        margin : 0 0 0 -2.1rem; // move the image so that it lines up with
+                        // the h1 and div2
+
+                    } // end of container > div1 > div1 > div1 > > div:nth-child( 2 ) > bp-480
+
+                    @media all and ( max-width : 440px ) {
+
+                        width  : 36.0rem; // make the image smaller so that it fits within the
+                        // grid boundaries
+                        margin : 0 0 0 -1.95rem; // move the image so that it lines up with
+                        // the h1 and div2
+
+                    } // end of container > div1 > div1 > div1 > > div:nth-child( 2 ) > bp-480
+
+                    @media all and ( max-width : 430px ) {
+
+                        width  : 33.0rem; // make the image smaller so that it fits within the
+                        // grid boundaries
+                        margin : 0 0 0 -1.80rem; // move the image so that it lines up with
+                        // the h1 and div2
+
+                    } // end of container > div1 > div1 > div2 > 430px
+
+                    @media all and ( max-width : 400px ) {
+
+                        width  : 31.0rem; // make the image smaller so that it fits within the
+                        // grid boundaries
+                        margin : 0 0 0 -1.70rem; // move the image so that it lines up with
+                        // the h1 and div2
+
+                    } // end of container > div1 > div1 > div1 > > div:nth-child( 2 ) > 400px
+
+                    @media all and ( max-width : $bp-375 ) {
+
+                        width   : 28.0rem; // make the image smaller so that it fits within the
+                        // grid boundaries
+                        margin  : 0 0 0 -1.55rem; // move the image so that it lines up with
+                        // the rest of the content
+
+                    } // end of container > div1 > div1 > div1 > > div:nth-child( 2 ) > bp-375
+
+                    @media all and ( max-width : 350px ) {
+
+                        width : 212px; // make the image smaller so that it fits within the
+                        // grid boundaries
+                        margin  : 0 0 0 -1.20rem; // move the image so that it lines up with
+                        // the rest of the content
+
+                    } // end of container > div1 > div1 > div1 > > div:nth-child( 2 ) > 350px
+
+                    > picture > img {
+    
+                        display : block; // remove the extra bottom spacing
+
+                    } // end of container > div1 > div1 > div1 > > div:nth-child( 2 ) > picture > img
+
+                    // ==============================
+                    // container > div 1 ( wrapper div ) > div 1 ( wrapper div ) > div 1 > div:nth-child( 2 ) > div:nth-child( 2 ) ( grayish blue round background circle )
+                    // ==============================
+    
+                    > div:nth-child( 2 ) {
+    
+                        position : absolute;
+                        top      : -5.0rem;
+                        left     : -55.0rem;
+                        z-index  : -2; // if the 2 circles overlap, put this circle behind the
+                        // other circle
+                        width  : 50.0rem;
+                        height : 50.0rem;
+
+                        border-radius : 50%;
+
+                        background : var( --gray-230 );
+
+                        @media all and ( max-width : 2450px ) {
+
+                            top    : 8.0rem;
+                            left   : 58.0rem;
+                            width  : 44.0rem;
+                            height : 44.0rem;
+
+                        } // end of container > div1 > div1 > div1 > div:nth-child( 2 ) > div:nth-child( 2 ) > 2350px
+
+                        @media all and ( max-width : $bp-2080 ) {
+
+                            top    : 8.0rem;
+                            left   : 56.0rem;
+                            width  : 42.0rem;
+                            height : 42.0rem;
+
+                        } // end of container > div1 > div1 > div1 > div:nth-child( 2 ) > div:nth-child( 2 ) > bp-2080
+
+                        @media all and ( max-width : $bp-1920 ) {
+
+                            top    : 9.0rem;
+                            left   : 53.0rem;
+                            width  : 41.0rem;
+                            height : 41.0rem;
+
+                        } // end of container > div1 > div1 > div1 > div:nth-child( 2 ) > div:nth-child( 2 ) > bp-1920
+
+                        @media all and ( max-width : $bp-1728 ) {
+
+                            top    : 11.0rem;
+                            left   : 53.0rem;
+                            width  : 40.0rem;
+                            height : 40.0rem;
+
+                        } // end of container > div1 > div1 > div1 > div:nth-child( 2 ) > div:nth-child( 2 ) > $bp-1728
+
+                        @media all and ( max-width : $bp-1536 ) {
+
+                            top    : 12.0rem;
+                            left   : 53.0rem;
+                            width  : 38.0rem;
+                            height : 38.0rem;
+
+                        } // end of container > div1 > div1 > div1 > div:nth-child( 2 ) > div:nth-child( 2 ) > bp-1536
+
+                        @media all and ( max-width : $bp-1440 ) {
+
+                            top    : 13.0rem;
+                            left   : 56.0rem;
+                            width  : 36.0rem;
+                            height : 36.0rem;
+
+                        } // end of container > div1 > div1 > div1 > div:nth-child( 2 ) > div:nth-child( 2 ) > bp-1440
+
+                        @media all and ( max-width : $bp-1376 ) {
+
+                            top    : 16.0rem;
+                            left   : 62.0rem;
+                            width  : 34.0rem;
+                            height : 34.0rem;
+
+                        } // end of container > div1 > div1 > div1 > div:nth-child( 2 ) > div:nth-child( 2 ) > bp-1376
+
+                        @media all and ( max-width : $bp-1280 ) {
+
+                            top    : 0.0rem;
+                            left   : -22.0rem;
+                            width  : 27.0rem;
+                            height : 27.0rem;
+
+                        } // end of container > div1 > div1 > div1 > div:nth-child( 2 ) > div:nth-child( 2 ) > bp-1280
+
+                        @media all and ( max-width : $bp-1032 ) {
+
+                            top    : 0.0rem;
+                            left   : -20.0rem;
+                            width  : 26.0rem;
+                            height : 26.0rem;
+
+                        } // end of container > div1 > div1 > div1 > div:nth-child( 2 ) > div:nth-child( 2 ) > bp-1032
+
+                        @media all and ( max-width : $bp-920 ) {
+
+                            top    : 2.0rem;
+                            left   : -13.5rem;
+                            width  : 20.0rem;
+                            height : 20.0rem;
+
+                        } // end of container > div1 > div1 > div1 > div:nth-child( 2 ) > div:nth-child( 2 ) > bp-920
+
+                        @media all and ( max-width : $bp-768 ) {
+
+                            top    : 41.0rem;
+                            left   : 30.0rem;
+                            width  : 19.0rem;
+                            height : 19.0rem;
+
+                        } // end of container > div1 > div1 > div1 > div:nth-child( 2 ) > div:nth-child( 2 ) > bp-768
+
+                        @media all and ( max-width : $bp-620 ) {
+
+                            top    : 38.0rem;
+                            left   : 25.0rem;
+                            width  : 16.0rem;
+                            height : 16.0rem;
+
+                        } // end of container > div1 > div1 > div1 > div:nth-child( 2 ) > div:nth-child( 2 ) > bp-620
+
+                        @media all and ( max-width : $bp-480 ) {
+
+                            top    : 38.0rem;
+                            left   : 22.0rem;
+                            width  : 12.0rem;
+                            height : 12.0rem;
+
+                        } // end of container > div1 > div1 > div1 > div:nth-child( 2 ) > div:nth-child( 2 ) > bp-480
+
+                        @media all and ( max-width : 440px ) {
+
+                            top    : 35.0rem;
+                            left   : 20.0rem;
+                            width  : 10.0rem;
+                            height : 10.0rem;
+
+                        } // end of container > div1 > div1 > div1 > div:nth-child( 2 ) > div:nth-child( 2 ) > 440px
+
+                        @media all and ( max-width : 430px ) {
+    
+                            top    : 33.0rem;
+                            left   : 20.0rem;
+                            width  : 10.0rem;
+                            height : 10.0rem;
+
+                        } // end of container > div1 > div1 > div1 > div:nth-child( 2 ) > div:nth-child( 2 ) > 430px
+
+                        @media all and ( max-width : 400px ) {
+
+                            top    : 32.0rem;
+                            left   : 17.0rem;
+                            width  : 10.0rem;
+                            height : 10.0rem;
+
+                        } // end of container > div1 > div1 > div1 > div:nth-child( 2 ) > div:nth-child( 2 ) > 400px
+
+                        @media all and ( max-width : $bp-375 ) {
+
+                            top    : 30.0rem;
+                            left   : 14.0rem;
+                            width  : 9.0rem;
+                            height : 9.0rem;
+
+                        } // end of container > div1 > div1 > div1 > div:nth-child( 2 ) > div:nth-child( 2 ) > bp-375
+
+                        @media all and ( max-width : 358px ) {
+
+                            display : none;
+
+                        } // end of container > div1 > div1 > div1 > div:nth-child( 2 ) > div:nth-child( 2 ) > 358px
+
+                    } // end of container > div1 > div1 > div1 > div:nth-child( 2 ) > div:nth-child( 2 )
+
+                } // end of container > div1 > div1 > div1 > div:nth-child( 2 )
+
+            } // end of container > div1 > div1 > div1
+            
+            // ==============================
+            // container > div 1 ( wrapper div ) > div 1 ( wrapper div ) > div:nth-child( 2 ) ( contact information )
+            // ==============================
+
+            > div:nth-child( 2 ) {
+    
+                // parent
+                grid-area : div2;
+
+            } // end of container > div1 > div1 > div2
+
+            // ==============================
+            // container > div 1 ( wrapper div ) > div 1 ( wrapper div ) > div:nth-child( 3 ) ( contact form )
+            // ==============================
+
+            > div:nth-child( 3 ) {
+    
+                // parent
+                grid-area : div3;
+
+                width  : min( 38.0rem, 100% ); // browser will select the smaller of 38.0rem or 100%
+
+            } // end of container > div1 > div1 > div3
+
+        } // end of container > div1 > div1
+
+    } // end of container > div1
+
+    // ==============================
+    // container > div 2 Google map )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 2 ) {
+
+        // parent
+        grid-column : 1 / -1; // position against the parent
+
+    } // end of container > div2
+
+    // ==============================
+    // container > div 3 ( contact inspriation )
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div ) > div 3 ( postcard image )
+    // ==============================
+
+    > div:nth-child( 3 ) {
+
+        position : absolute;
+        top      : 24.0rem;
+        left     : 76.0%;
+
+        // ==============================
+        // animation
+        // ==============================
+
+        opacity : 0; // this needed so that we don't momentarily see the page content
+
+        // ==============================
+        // the browser does not support the view transition API
+        // ==============================
+
+        // this came from " https://www.smashingmagazine.com/2023/12/view-transitions-api-ui-animations-part1/ "
+        @supports not ( view-transition-name : none ) {
+
+            animation-name            : fade-in-animation;
+            animation-duration        : 1000ms;
+            animation-timing-function : ease-out; // standard easing
+            animation-delay           : 700ms;
+            animation-iteration-count : 1; // this is the default but leave here for reference purposes
+            animation-fill-mode       : forwards;
+
+        } // end of @supports
+
+        // ==============================
+        // browser supports the view transition API
+        // ==============================
+
+        animation-name            : fade-in-animation;
+        animation-duration        : 1000ms;
+        animation-timing-function : ease-out; // standard easing
+        animation-delay           : 1400ms;
+        animation-iteration-count : 1; // this is the default but leave here for reference purposes
+        animation-fill-mode       : forwards;
+
+        // ==============================
+        // end of animation
+        // ==============================
+
+        @media all and ( max-width : $bp-2080 ) {
+
+            position : absolute;
+            top      : 24.0rem;
+            left     : 76.0%;
+
+            width : 18.0%;
+
+        } // end of container > div1 > div3 > bp-2080
+
+        @media all and ( max-width : $bp-1920 ) {
+
+            position : absolute;
+            top      : 24.0rem;
+            left     : 75.0%;
+
+            width : 19.0%;
+
+        } // end of container > div1 > div3 > bp-1920
+
+        @media all and ( max-width : $bp-1728 ) {
+
+            position : absolute;
+            top      : 24.0rem;
+            left     : 73.0%;
+
+            width : 20.0%;
+
+        } // end of container > div1 > div3 > $bp-1728
+
+        @media all and ( max-width : $bp-1536 ) {
+
+            position : absolute;
+            top      : 24.0rem;
+            left     : 72.5%;
+
+            width : 20.5%;
+
+        } // end of container > div1 > div3 > bp-1536
+
+        @media all and ( max-width : $bp-1376 ) {
+
+            position : absolute;
+            top      : 24.0rem;
+            left     : 73.0%;
+
+            width : 21.0%;
+
+            transform : rotate( 0deg );
+
+            // ==============================
+            // animation
+            // ==============================
+
+            opacity : 0; // this needed so that we don't momentarily see the page content
+
+            // ==============================
+            // the browser does not support the view transition API
+            // ==============================
+
+            // this came from " https://www.smashingmagazine.com/2023/12/view-transitions-api-ui-animations-part1/ "
+            @supports not ( view-transition-name : none ) {
+
+                animation-name            : fade-in-animation;
+                animation-duration        : 1000ms;
+                animation-timing-function : ease-out; // standard easing
+                animation-delay           : 200ms;
+                animation-iteration-count : 1; // this is the default but leave here for reference purposes
+                animation-fill-mode       : forwards;
+
+            } // end of @supports
+
+            // ==============================
+            // browser supports the view transition API
+            // ==============================
+
+            animation-name            : fade-in-animation;
+            animation-duration        : 1000ms;
+            animation-timing-function : ease-out; // standard easing
+            animation-delay           : 200ms;
+            animation-iteration-count : 1; // this is the default but leave here for reference purposes
+            animation-fill-mode       : forwards;
+
+            // ==============================
+            // end of animation
+            // ==============================
+
+        } // end of container > div1 > div3 > bp-1376
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            position : absolute;
+            top      : 24.0rem;
+            left     : 71.0%;
+
+            width : 22.0%;
+
+        } // end of container > div1 > div3 > bp-1280
+
+        @media all and ( max-width : $bp-1032 ) {
+
+            position : absolute;
+            top      : 24.0rem;
+            left     : 69.0%;
+
+            width : 24.0%;
+
+        } // end of container > div1 > div3 > bp-1032
+
+        @media all and ( max-width : $bp-920 ) {
+
+            position : absolute;
+            top      : 24.0rem;
+            left     : 67.5%;
+
+            width : 25.0%;
+
+        } // end of container > div1 > div3 > bp-920
+
+        @media all and ( max-width : $bp-768 ) {
+
+            position : absolute;
+            top      : 24.0rem;
+            left     : 65.0%;
+
+            width : 27.0%;
+
+        } // end of container > div1 > div3 > bp-768
+
+        @media all and ( max-width : $bp-620 ) {
+
+            position : absolute;
+            top      : 24.0rem;
+            left     : 64.0%;
+
+            width : 29.0%;
+
+        } // end of container > div1 > div3 > bp-620
+
+        @media all and ( max-width : $bp-480 ) {
+
+            position : absolute;
+            top      : 24.0rem;
+            left     : 59.0%;
+
+            width : 34.0%;
+
+        } // end of container > div1 > div3 > bp-480
+
+        @media all and ( max-width : 440px ) {
+
+            position : absolute;
+            top      : 24.0rem;
+            left     : 58.0%;
+
+            width : 35.0%;
+
+        } // end of container > div1 > div3 > 440px
+
+        @media all and ( max-width : $bp-375 ) {
+
+            position : absolute;
+            top      : 24.5rem;
+            left     : 60.0%;
+
+            width : 34.0%;
+
+        } // end of container > div1 > div3 > bp-375
+
+        @media all and ( max-width : 358px ) {
+
+            display : none;
+
+        } // end of container > div1 > div3 > 358px
+
+    } // end of container > div1 > div3
+
+} // end of container

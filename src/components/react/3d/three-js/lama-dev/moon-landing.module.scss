@@ -1,0 +1,70 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../../styles/_mixins.scss' as *;
+@use '../../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+// ==============================
+// moon landing 3d container
+// ==============================
+
+.moonLandingContainer {
+
+    // children
+    display  : block;
+    position : absolute;
+    top      : -4.0%;
+    left     : -5.0%;
+    // in order to display the 3D component correctly, we needed to apply a width
+    // of 100% and a height of 100%
+    width    : 100%; 
+    height   : 100%;
+
+    opacity    : 0;
+    transition : opacity 1.5s ease-out;
+
+    transform : scale( 1.1 );
+
+    @media all and ( max-width : $bp-1920 ) {
+
+        display  : block;
+        position : absolute;
+        top      : -8.0%;
+        left     : -5.0%;
+
+        transform : scale( 1.1 );
+
+        transition : opacity 1.5s ease-out;
+
+    } // end of container > bp-1920
+
+    @media all and ( max-width : $bp-1440 ) {
+
+        display  : block;
+        position : absolute;
+        top      : -9.0%;
+        left     : -5.0%;
+
+        transform : scale( 1.1 );
+
+        transition : opacity 1.5s ease-out;
+
+    } // end of container > bp-1440
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        display : none;
+
+    } // end of container > bp-1280
+
+} // end of container
+
+

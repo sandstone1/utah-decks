@@ -1,0 +1,11 @@
+Model Information:
+* title:	House_09_Cell_Shading
+* source:	https://sketchfab.com/3d-models/house-09-cell-shading-8c19f685d15f4096b518a41dbcae5294
+* author:	Cyril Limoges Athiel (https://sketchfab.com/athiel)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "House_09_Cell_Shading" (https://sketchfab.com/3d-models/house-09-cell-shading-8c19f685d15f4096b518a41dbcae5294) by Cyril Limoges Athiel (https://sketchfab.com/athiel) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

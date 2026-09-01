@@ -1,0 +1,484 @@
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+// ==============================
+// contact informaion container
+// ==============================
+
+.contactInformationContainer {
+
+    // ==============================
+    // remember, this container just needs to sit inside the parent container
+    // ==============================
+
+    max-width : 38.0rem; // set a max width for the container and set the same max-width
+    // for the contact form container and remember, we had to set max-width and not
+    // width so that the content would shrink on smaller screens
+
+    position : relative;
+
+    // ==============================
+    // container > h2
+    // ==============================
+
+    > h2 {
+
+        @include h2-dark-title;
+
+        margin : 0 0 2.0rem 0;
+
+    } // end of container > h2
+
+    // ==============================
+    // container > div:nth-child( 2 ) ( call anytime )
+    // ==============================
+
+    > div:nth-child( 2 ) {
+
+        // children
+        display               : grid;
+        grid-template-rows    : auto;
+        grid-template-columns : 1fr;
+
+        margin  : 3.75rem 0 0 0; // visual preference
+        //padding : 4.0rem;
+
+        //background-color : var( --yellow-55 );
+
+        > h6 {
+
+            @include h8-dark;
+
+            font-size   : 2.0rem;
+            font-weight : 550;
+
+        } // end of container > div:nth-child( 2 ) > h6
+
+        > a {
+
+            @include text-large-dark;
+
+            font-weight : 600;
+            color       : var( --blue-83 );
+
+        } // end of container > div:nth-child( 2 ) > a
+
+    } // end of container > div:nth-child( 2 )
+
+    // ==============================
+    // container > div:nth-child( 3 ) ( email us )
+    // ==============================
+
+    > div:nth-child( 3 ) {
+
+        // children
+        display               : grid;
+        grid-template-rows    : auto;
+        grid-template-columns : 1fr;
+
+        margin : 5.0rem 0 0 0; // visual preference
+
+        > h6 {
+
+            @include h8-dark;
+
+            font-size   : 2.0rem;
+            font-weight : 550;
+
+        } // end of container > div:nth-child( 3 ) > h6
+
+        > a {
+
+            @include text-base-dark;
+
+            color           : var( --blue-265 );
+            text-decoration : underline;
+
+        } // end of container > div:nth-child( 3 ) > a
+
+    } // end of container > div:nth-child( 3 )
+
+    // ==============================
+    // container > div:nth-child( 4 ) ( visit us )
+    // ==============================
+
+    > div:nth-child( 4 ) {
+
+        // children
+        display               : grid;
+        grid-template-rows    : auto;
+        grid-template-columns : 1fr;
+
+        margin : 5.0rem 0 0 0; // visual preference
+
+        > h6 {
+
+            @include h8-dark;
+
+            margin : 0 0 0.3rem 0;
+
+            font-size   : 2.0rem;
+            font-weight : 550;
+
+        } // end of container > div:nth-child( 4 ) > h6
+
+        > address {
+
+            @include text-base-dark;
+
+            font-style : normal; // take out the italic default style
+
+            > span {
+
+                display : block;
+
+            } // end of container > div:nth-child( 4 ) > address > span
+
+        } // end of container > div:nth-child( 4 ) > address
+
+    } // end of container > div:nth-child( 4 )
+
+    // ==============================
+    // container > div:nth-child( 5 ) ( business hours )
+    // ==============================
+
+    > div:nth-child( 5 ) {
+
+        // children
+        display               : grid;
+        grid-template-rows    : auto;
+        grid-template-columns : 1fr;
+
+        margin : 5.0rem 0 0 0; // visual preference
+
+        > h6 {
+
+            @include h8-dark;
+
+            margin : 0 0 0.3rem 0;
+
+            font-size   : 2.0rem;
+            font-weight : 550;
+
+        } // end of container > div:nth-child( 5 ) > h6
+
+        > span {
+
+            @include text-base-dark;
+
+            font-size : 1.75rem;
+
+        } // end of container > div:nth-child( 5 ) > span
+
+        > span:nth-child( 3 ) {
+
+            margin : 0 0 1.0rem 0;
+
+        } // end of container > div:nth-child( 5 ) > span:nth-child( 3 )
+
+    } // end of container > div:nth-child( 5 )
+
+    // ==============================
+    // container > div:nth-child( 6 ) ( follow us )
+    // ==============================
+
+    > div:nth-child( 6 ) {
+
+        // children
+        display               : grid;
+        grid-template-rows    : auto;
+        grid-template-columns : 1fr;
+
+        margin : 5.0rem 0 0 0; // visual preference
+
+        > h6 {
+
+            @include h8-dark;
+
+            font-size   : 2.0rem;
+            font-weight : 550;
+
+        } // end of container > div:nth-child( 6 ) > h6
+
+        // ==============================
+        // ul
+        // ==============================
+
+        > ul {
+
+            // children
+            display               : grid;
+            grid-template-rows    : auto;
+            grid-template-columns : repeat( 3, min-content );
+            grid-template-areas   : "li1 li2 li3";
+
+            margin : 0 0 0 -2.2rem; // we had to move the social icons to the left by
+            // -2.2rem in order to align the left social icon with the left border of the
+            // container
+
+            // ==============================
+            // ul > li > a
+            // ==============================
+
+            > li > a {
+
+                color : var( --blue-265 ); // visual preference
+
+            } // end of container > div:nth-child( 6 ) > ul > li > a
+
+            // ==============================
+            // social icons
+            // ==============================
+
+            > li:nth-child( 1 ) {
+
+                // parent
+                grid-area : li1;
+
+                display : block; // needed for animation
+                padding : 1.5rem 2.2rem; // needed for animation
+
+                transition : all 0.2s ease-out; // needed for animation
+
+                // ==============================
+                // hover animation
+                // ==============================
+
+                // hover and active selectors for the navigation tabs
+                &:hover, &:active {
+
+                    border-radius : 6px;
+
+                    background-color : rgba( 255, 255, 255, 0.5 ); // visual preference
+
+                    // move the background color up just a little to add a nice hoover effect
+                    transform : translate3d( 0, -3px, 0 );
+                    cursor    : pointer;
+
+                    // remove the animation effect for screen sizes under 1280 pixels
+                    @media all and ( max-width : $bp-1280 ) {
+
+                        background-color : inherit;
+
+                        transform: none;
+                
+                    } // end of container > div:nth-child( 6 ) > ul > li:nth-child( 1 ) > &:hover, &:active > bp-1280
+
+                } // end of container > div:nth-child( 6 ) > ul > li:nth-child( 1 ) > &:hover, &:active
+
+            } // end of container > div:nth-child( 6 ) > ul > li:nth-child( 1 )
+
+            > li:nth-child( 2 ) {
+
+                // parent
+                grid-area : li2;
+
+                display : block; // needed for animation
+                padding : 1.5rem 2.2rem; // needed for animation
+
+                transition : all 0.2s ease-out; // needed for animation
+
+                // ==============================
+                // hover animation
+                // ==============================
+
+                // hover and active selectors for the navigation tabs
+                &:hover, &:active {
+
+                    border-radius : 6px;
+
+                    background-color : rgba( 255, 255, 255, 0.5 ); // visual preference
+
+                    // move the background color up just a little to add a nice hoover effect
+                    transform: translate3d( 0, -3px, 0 );
+
+                    cursor: pointer;
+
+                    // remove the animation effect for screen sizes under 1280 pixels
+                    @media all and ( max-width : $bp-1280 ) {
+
+                        background-color : inherit;
+
+                        transform: none;
+                
+                    } // end of container > div:nth-child( 6 ) > ul > li:nth-child( 2 ) > &:hover, &:active > bp-1280
+
+                } // end of container > div:nth-child( 6 ) > ul > li:nth-child( 2 ) > &:hover, &:active
+
+            } // end of container > div:nth-child( 6 ) > ul > li:nth-child( 2 )
+/*
+            > li:nth-child( 3 ) {
+
+                // parent
+                grid-area : li3;
+
+                display : block; // needed for animation
+                padding : 1.5rem 2.2rem; // needed for animation
+
+                transition : all 0.2s ease-out; // needed for animation
+
+                // ==============================
+                // hover animation
+                // ==============================
+
+                // hover and active selectors for the navigation tabs
+                &:hover, &:active {
+
+                    border-radius : 6px;
+
+                    background-color : rgba( 255, 255, 255, 0.5 ); // visual preference
+
+                    // move the background color up just a little to add a nice hoover effect
+                    transform : translate3d( 0, -3px, 0 );
+                    cursor    : pointer;
+
+                    // remove the animation effect for screen sizes under 1280 pixels
+                    @media all and ( max-width : $bp-1280 ) {
+
+                        background-color : inherit;
+
+                        transform: none;
+                
+                    } // end of container > div:nth-child( 6 ) > ul > li:nth-child( 3 ) > &:hover, &:active > bp-1280
+
+                } // end of container > div:nth-child( 6 ) > ul > li:nth-child( 3 ) > &:hover, &:active
+
+            } // end of container > div:nth-child( 6 ) > ul > li:nth-child( 3 )
+*/
+        } // end of container > div:nth-child( 6 ) > ul
+
+    } // end of container > div:nth-child( 6 )
+
+    // ==============================
+    // container > hr ( the dividing border )
+    // ==============================
+
+    > hr {
+
+        // children
+        display : none; // display the hr element or border
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            // children
+            display : block; // display the hr element or border
+            width   : 100%; // make the border smaller than the content
+            margin  : 4.5rem 0 6.0rem 0;  // remember, we had to account
+            // for 1.5rem padding on the bottom of the social icons in order
+            // to center the dividing border between the top container and
+            // the bottom container
+
+            border : 0.75px solid var( --gray-340 ); // this will override the default
+            // border styling
+
+        } // end of container > hr > bp-1280
+
+    } // end of container > hr
+
+    // ==============================
+    // container > div:nth-child( 8 ) ( orange round background circle )
+    // ==============================
+
+    > div:nth-child( 8 ) {
+
+        // display : none;
+
+        position : absolute;
+        top      : 10.0rem;
+        left     : -35.0rem;
+        width    : 90.0rem;
+        height   : 90.0rem;
+
+        z-index : -1;
+
+        border-radius : 50%;
+
+        background : var( --orange-20 );
+
+        @media all and ( max-width : $bp-1920 ) {
+
+            left   : -20.0rem;
+            width  : 70.0rem;
+            height : 70.0rem;
+
+        } // end of container > div:nth-child( 8 ) > bp-1920
+
+        @media all and ( max-width : $bp-1536 ) {
+
+            left   : -16.0rem;
+            width  : 60.0rem;
+            height : 60.0rem;
+
+        } // end of container > div:nth-child( 8 ) > bp-1536
+
+        @media all and ( max-width : $bp-1376 ) {
+
+            left   : -14.0rem;
+            width  : 55.0rem;
+            height : 55.0rem;
+
+        } // end of container > div:nth-child( 8 ) > bp-1376
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            left   : -15.0rem;
+            width  : 70.0rem;
+            height : 70.0rem;
+
+        } // end of container > div:nth-child( 8 ) > bp-1280
+
+        @media all and ( max-width : $bp-768 ) {
+
+            left   : -8.0rem;
+            width  : 50.0rem;
+            height : 50.0rem;
+
+        } // end of container > div:nth-child( 8 ) > bp-768
+
+        @media all and ( max-width : $bp-620 ) {
+
+            left   : -2.0rem;
+            width  : 41.0rem;
+            height : 41.0rem;
+
+        } // end of container > div:nth-child( 8 ) > bp-620
+
+        @media all and ( max-width : $bp-480 ) {
+
+            left   : 0.0rem;
+            width  : 32.0rem;
+            height : 32.0rem;
+
+        } // end of container > div:nth-child( 8 ) > bp-480
+
+        @media all and ( max-width : 400px ) {
+
+            left   : 0.0rem;
+            width  : 29.0rem;
+            height : 29.0rem;
+
+        } // end of container > div:nth-child( 8 ) > 400px
+
+        @media all and ( max-width : $bp-375 ) {
+
+            left   : 0.0rem;
+            width  : 22.0rem;
+            height : 22.0rem;
+
+        } // end of container > div:nth-child( 8 ) > bp-375
+
+    } // end of container > div:nth-child( 8 )
+
+} // end of container
+
+

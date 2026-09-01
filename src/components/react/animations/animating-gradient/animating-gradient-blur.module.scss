@@ -1,0 +1,177 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../styles/_mixins.scss' as *;
+@use '../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+// ==============================
+// @property rule
+// ==============================
+
+// ==============================
+// purpose : by using the @property rule, we can animate the gradient using keyframes,
+// pseudo elements, linear graident, radial gradients, conic gradients and css animations
+// ==============================
+
+@property --gradient-angle {
+
+    syntax        : "<angle>";
+    inherits      : false;
+    initial-value : 0deg;
+
+} // end of @property
+
+
+
+
+
+// ==============================
+// keyframes 1
+// ==============================
+
+// ==============================
+// rotate animating gradient
+// ==============================
+
+// ==============================
+// purpose : rotate the animating gradient
+// ==============================
+
+@keyframes rotation {
+
+    0% {
+
+        --gradient-angle : 0deg;
+
+    }
+
+    100% {
+
+        --gradient-angle : 360deg;
+
+    }
+
+} // end of rotate
+
+
+
+
+
+
+// ==============================
+// animating graident blur container
+// ==============================
+
+.animatingGradientBlurContainer {
+
+    @media all and ( max-width : $bp-480 ) {
+
+        display : none;
+
+    } // end of container > bp-480
+
+    > div::before, div::after {
+
+        content  : '';
+        position : absolute;
+
+        // option 1 - animating background gradient on the card or container
+        // ------------------------
+        // works in Safari
+        // ------------------------
+        // inset     : 0; // do this for an animating background gradient on the card or container
+        // z-index   : 0; // just here for reference and do not declare z-index : 0; in the parent
+        // clip-path : inset( 0 ); // this will clip the blur that surronds the card and we
+        // will only see the animating graident on the card itself
+
+        // option 2 - animating border gradient
+        // ------------------------
+        // works in Safari
+        // ------------------------
+        inset     : -1.0rem; // do this for an animating border
+        z-index   : -1; // do this for an animating border gradient and remember we need to
+        // declare z-index : 0; in the container element above
+        clip-path : inset( 0 ); // this will clip the blur that surronds the border on the
+        // card and we will only see the animating graident border
+
+        // option 3 - animating background gradient that sits behind the card and no border
+        // ------------------------
+        // does not work in Safari ( Safari will not animate the blur )
+        // ------------------------
+        // inset   : 0; // do this and " z-index  : -1; " do this for an animating background gradient
+        // that sits behind the card and there is no border
+        // z-index : -1; // do this for an animating background gradient that sits behind the card and
+        // remember we need to declare z-index : 0; in the container element above
+
+        border-radius : 0.6rem;
+
+        // background : conic-gradient( from var( --gradient-angle ) at center, var( --purple-75 ), var( --blue-600 ), var( --blue-100 ), var( --blue-600 ), var( --purple-75 ) );
+        // background : conic-gradient( from var( --gradient-angle ) at center, var( --purple-150 ), var( --blue-600 ), var( --blue-100 ), var( --blue-600 ), var( --purple-150 ) );
+        // background : conic-gradient( from var( --gradient-angle ) at center, var( --purple-300 ), var( --blue-600 ), var( --blue-100 ), var( --blue-600 ), var( --purple-300 ) );
+        // background : conic-gradient( from var( --gradient-angle ) at center, rgba( 147, 112, 219, 1 ), rgba( 64, 224, 208, 1 ) );
+        // background : conic-gradient( from var( --gradient-angle ) at center, var( --purple-75 ), var( --blue-100 ) );
+        // background : conic-gradient( from var( --gradient-angle ) at center, var( --purple-100 ), var( --blue-green-200 ) );
+        background : conic-gradient( from var( --gradient-angle ) at center, var( --purple-100 ), var( --blue-100 ) ); // best for the border and good blur gradient
+
+        animation : rotation 10s linear infinite;
+
+    } // end of container::before, container::after
+
+    > div::after {
+
+        filter : blur( 3.0rem );
+
+        // ==============================
+        // remember, using the " filter : blur( 3.0rem ); " property in Safari caused massive
+        // performance problems but after applying " transform : translateZ( 0 ); " the
+        // performance problems went away
+        // ==============================
+
+        // ==============================
+        // see the following answers in stackoverflow for details :
+        // " https://stackoverflow.com/questions/44662417/css-filter-is-very-slow-on-safari-with-different-order-can-someone-explain "
+        // or more specially, see this anwser :
+        /*
+            Use CSS property on element with blur
+
+            transform: translateZ(0)
+
+            to make CSS render on GPU
+        */
+        // ==============================
+
+        // transform : translateZ( 0 ); // this makes the css render on the GPU, which is what we want
+
+        // ==============================
+        // remember, will-change does basically the same thing as the translateZ( 0 ) hack
+        // and see the follow article for details :
+        // " https://stackoverflow.com/questions/48862283/js-animation-performance-with-will-change-vs-transformz0 "
+        //
+        // and one of the answers said : " will-change basically does the same thing (as of today)
+        // as the translateZ( 0 ) hack: it pulls the element out onto a new rendering layer.
+        // The difference is that will-change is telling the browser your intent, namely, that you
+        // will be changing this property; whereas with translateZ(0) that is merely a coincidental
+        // side effect. So will-change is just a more modern way of accomplishing the same thing "
+        // ==============================
+
+        // ==============================
+        // testing this in Safari shows that it really works and without it my gradient background
+        // animation is super choppy
+        // ==============================
+
+        will-change : transform;
+
+    } // end of container::after
+
+} // end of container
+

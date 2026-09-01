@@ -1,0 +1,51 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+// ==============================
+// add to cart button
+// ==============================
+
+.addToCartButton {
+
+    display : block;
+    margin  : 1.0rem 0 0 0;
+    padding : 0.75rem 1.5rem;
+
+    border        : 0;
+    border-radius : 0.50rem;
+
+    font-family     : var( --font-primary-5 );
+    font-size       : 1.80rem;
+    font-weight     : 700;
+    color           : var( --white );
+    text-decoration : none;
+
+    background-color : var( --black );
+    transition       : background-color 0.3s ease-out;
+
+    &:hover {
+
+        cursor           : pointer;
+        background-color : var( --purple-350 );
+
+    } // end of container > div1 > section:nth-child( 1 ) > div > a > &:hover
+
+    &:is( :active, :focus ) {
+
+        outline        : 2px solid var( --black );
+        outline-offset : 4px;
+
+    } // end of container > div1 > section:nth-child( 1 ) > div > a > &:is( :active, :focus )
+
+} // end of addToCartButton

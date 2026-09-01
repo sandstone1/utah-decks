@@ -1,0 +1,190 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../../../../styles/_mixins.scss' as *;
+@use '../../../../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+// ==============================
+// apollo 11 3d container
+// ==============================
+
+.apollo11Container {
+
+    // parent
+    grid-area   : div1;
+    grid-column : 1 / -1; // needed in order to fill the parent container
+
+    // children
+    display       : grid; // needed to center the object
+    justify-items : center; // needed to center the object
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // remember, there are 2 things we want to accomplish :
+    // 1 - allow the wrapper div to position against the parent div and thereby
+    // shrink as needed
+    // 2 - we want to center the wrapper div ( see below for details )
+    // ==============================
+
+    // ==============================
+    // " grid-template-columns " is needed so that the wrapper div ( i.e. child ) can position
+    // against the parent ( i.e. this div ) by using " grid-column : 2 / 22; " and this allows
+    // the background declared below to span across the entire container or the entire site and
+    // this also allows the wrapper div to dynamically contain its children within the
+    // " grid-column : 2 / 22; " context so that as the screen size shrinks the wrapper div
+    // container and all its children containers or divs will automatically shrink as well
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    // justify-items : center;
+
+    padding : 12.0rem 0 12.0rem 0;
+
+    // remember, " grid-column : 1 / -1; " allows the background image to span the entire screen
+    // background-image : var( --background-lg-34 );
+    background : var( --background-lg-41 );
+    // background       : var( --background-lg-42-1 );
+    // background-image : var( --background-lg-42-9 );
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 1 / -1; // position against the parent and remember, in
+        // R3F this is needed to center the canvas
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > h2
+        // ==============================
+
+        > h2 {
+
+            @include h2-light-title;
+
+            margin     : 0 0 0 0;
+            padding    : 0 0 0 0;
+            text-align : center;
+
+            @media all and ( max-width : $bp-620 ) {
+
+                padding    : 0 0 2.25rem 0; // needed for smaller screens to give some
+                // spacing between the h2 element and the 3d object
+        
+            } // end of container > div1 > h2 > bp-620
+
+        } // container > div1 > h2
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > h2.on3dPage
+        // ==============================
+
+        // ==============================
+        // remember, this class name is tied into useEffect 3
+        // ==============================
+
+        > h2.on3dPage {
+
+            @include h1-light-title;
+
+            margin     : 0 0 0 0;
+            padding    : 0 0 0 0;
+            text-align : center;
+
+            @media all and ( max-width : $bp-620 ) {
+
+                padding    : 0 0 2.25rem 0; // needed for smaller screens to give some
+                // spacing between the h2 element and the 3d object
+        
+            } // end of container > div1 > h2.on3dPage > bp-620
+
+        } // container > div1 > h2.on3dPage
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > div 1
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            width  : 800px; // need to give the canvas container a specified width at
+            // each breakpoint
+            height : 800px; // need to give the canvas container a specified height at
+            // each breakpoint
+
+            @media all and ( max-width : $bp-1032 ) {
+                
+                width  : 600px;
+                height : 600px;
+    
+            } // end of container > div1 > div1 > bp-1032
+
+            @media all and ( max-width : $bp-620 ) {
+                
+                width  : 360px; // had to shrink the width and height so users
+                // have more room to scroll
+                height : 360px;
+    
+            } // end of container > div1 > div1 > bp-620
+    
+            @media all and ( max-width : $bp-375 ) {
+    
+                width  : 280px;
+                height : 280px;
+    
+            } // end of container > div1 > div1 > bp-375
+    
+            // ==============================
+            // container > div 1 ( wrapper div ) > div 1 > canvas
+            // ==============================
+/*
+            > canvas {
+
+
+            } // end of container > div1 > div1 > canvas
+*/
+
+        } // end of container > div1 > div1
+
+    } // end of container > div1
+
+} // end of container
+
+

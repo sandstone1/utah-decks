@@ -1,0 +1,798 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+// ==============================
+// keyframes 1
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+@keyframes move-1 {
+
+    from {
+
+        // see step 70 of the app-cimikoski-stem-cells.js for a border radius definition
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 100px to the
+        // left and 50px up from its initial position
+        transform : translate( -100px, -50px ) rotate( -90deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 100px down from its starting position
+
+        // the ending rotate of -10deg will rotate the blob up and to the left
+        transform : translate( 500px, 100px ) rotate( -10deg );
+
+    } // end of to
+  
+} // end of move-1
+
+
+// ==============================
+// keyframes 2
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-2 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 850px, 50px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 900px, -50px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-2
+
+
+// ==============================
+// keyframes 3
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-3 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 725px, 25px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 800px, -50px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-3
+
+
+// ==============================
+// keyframes 4
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-4 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 650px, 25px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 625px, 0px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-4
+
+
+
+
+
+
+
+
+
+// ==============================
+// real estate broker website container
+// ==============================
+
+.realEstateBrokerWebsiteContainer {
+
+    // ==============================
+    // div 11 in the index.js file
+    // ==============================
+
+    // parent
+    grid-area   : div12;
+    grid-column : 1 / -1; // position against the parent
+
+    // children
+    display               : grid;
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // remember, there are 2 things we want to accomplish :
+    // 1 - allow the wrapper div to position against the parent div and thereby
+    // shrink as needed
+    // 2 - we want to center the wrapper div ( see below for details )
+    // ==============================
+
+    // ==============================
+    // " grid-template-columns " is needed so that the wrapper div ( i.e. child ) can position
+    // against the parent ( i.e. this div ) by using " grid-column : 2 / 22; " and this allows
+    // the background declared below to span across the entire container or the entire site and
+    // this also allows the wrapper div to dynamically contain its children within the
+    // " grid-column : 2 / 22; " context so that as the screen size shrinks the wrapper div
+    // container and all its children containers or divs will automatically shrink as well
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    justify-items         : center;
+
+    // ==============================
+    // remember, I had to add " position : relative; " for the absolutely positioned
+    // svg shape div below to work
+    // ==============================
+
+    position : relative;
+    padding  : 12.0rem 0 12.0rem 0;
+    padding  : 0 0 0 0; // step : 1 - adding padding back in once we have a new site ready
+    // to fill this div ( see step 2 below )
+
+    background : var( --gray-335 );
+    // background : var( --yellow-20 );
+    // background : var( --gray-290 );
+
+    background : var( --gray-865 );
+    background : var( --blue-background-2 );
+    background : rgba( 16, 29, 44, 1 );
+    background : rgba( 20, 33, 48, 1 );
+    background : rgba( 24, 34, 44, 1 );
+    background : rgba( 26, 36, 46, 1 );
+    background : var( --gray-882 );
+    background : var( --gray-872 );
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-768 ) {
+
+        background : var( --gray-872 );
+
+    } // end of container > bp-768
+
+    // ==============================
+    // wave shape div
+    // ==============================
+
+    // remember, this information came from the following video :
+    // " https://www.youtube.com/watch?v=lPJVi797Uy0&t=396s " and timestamp : 6.21
+
+    // and in accordance with the above video, I used the following tool to create the wave
+    // shape and the tool is called Custom Shape Dividers and located at :
+    // " https://www.shapedivider.app/ "
+
+    // the css code below and the html code in this file came from the following
+    // website : " https://www.shapedivider.app/ " and to get this generated code
+    // we used the following set up :
+
+    /*
+        Shape      : Waves
+        Color      : #FFFFFF ( initial color until I changed it below )
+        Flip       : No
+        Invert     : No
+        Top/bottom : Top
+        Height     : 150px
+        Width      : 100%
+    */
+
+    // remember, I had to add " position : relative " to the parent container and I had
+    // to change the path fill color to match the body background color
+
+    // ==============================
+    // container > div 1
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        position : absolute;
+        top      : 0; // this will put the shape at the top of the container
+        left     : 0;
+        width    : 100%;
+
+        line-height : 0;
+
+        overflow : hidden;
+
+        > svg {
+
+            display  : block;
+            position : relative;
+            width    : calc( 100% + 1.3px );
+            height   : 15.0rem; // changed this from the default 150px to 15.0rem
+
+            @media all and ( max-width : $bp-1032 ) {
+
+                height : 9.0rem; // make sure we flatten the wave as the screen size
+                // shrinks
+
+            } // end of container > div1 > svg > bp-1032
+
+            @media all and ( max-width : $bp-768 ) {
+
+                height : 8.0rem; // make sure we flatten the wave as the screen size
+                // shrinks
+
+            } // end of container > div1 > svg > bp-768
+
+            @media all and ( max-width : $bp-620 ) {
+
+                height : 7.0rem; // make sure we flatten the wave as the screen size
+                // shrinks
+
+            } // end of container > div1 > svg > bp-620
+
+            @media all and ( max-width : $bp-480 ) {
+
+                height : 5.5rem; // make sure we flatten the wave as the screen size
+                // shrinks
+
+            } // end of container > div1 > svg > bp-480
+
+            @media all and ( max-width : $bp-375 ) {
+
+                height : 4.5rem; // make sure we flatten the wave as the screen size
+                // shrinks
+        
+            } // end of container > div1 > svg > bp-375
+
+            > path {
+
+                fill : var( --gray-872 ); // this is same color as the background
+                // color for the proceeding div
+
+            } // end of container > div1 > svg > path
+
+        } // end of container > div1 > svg
+
+    } // end of container > div1
+
+    // ==============================
+    // end of wave shape div
+    // ==============================
+
+    // ==============================
+    // container > div 2 ( wrapper div )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 2 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+        // children
+        display               : grid;
+        display               : none; // step : 2 - turn this off once we have a new site ready
+        // to fill this div
+
+        grid-template-rows    : repeat( 4, auto );
+        grid-template-columns : 1fr;
+        grid-template-areas   : "h3"
+                                "border"
+                                "div1"
+                                "div2";
+
+        z-index : 1; // position the blob or sqaure behind this div
+        width   : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+
+        // ==============================
+        // container > div 2 > h3
+        // ==============================
+
+        > h3 {
+
+            @include h3-light-title;
+
+            margin : 0 0 3.0rem 0;
+
+        } // end of container > div2 > h3
+
+        // ==============================
+        // container > div 2 > div 1
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            > h5 {
+
+                @include h5-light-title;
+
+                margin : 0 0 2.0rem 0;
+
+            } // end of container > div2 > div1 > h5
+
+            // ==============================
+            // container > div 2 > div 1 > ul ( the list )
+            // ==============================
+
+            > ul {
+
+                padding : 0 0 0 1.6rem;
+
+                list-style-type : disc; // override the global stylesheet in this case
+                // list-style-position: outside; // make sure the disc markers are located
+                // the content box
+
+                > li {
+
+                    @include text-base-light;
+
+                    margin : 0 0 2.0rem 0;
+
+                    > a {
+
+                        @include text-base-light;
+
+                        margin : 0 0 0 0;
+
+                        text-decoration : underline;
+
+                    } // end of container > div2 > div1 > ul > li > a
+
+                } // end of container > div2 > div1 > ul > li
+
+                > li:last-child {
+
+                    margin : 0 0 0 0;
+
+                } // end of container > div2 > div1 > ul > li:last-child
+
+                // ==============================
+                // container > div 2 > div 1 > ul > span ( show tech details )
+                // ==============================
+
+                > span {
+
+                    display : block;
+                    padding : 2.0rem 2.0rem 2.0rem 2.0rem;
+
+                    border        : 0.75px solid var( --gray-200 );
+                    border-radius : 6px;
+
+                    @include text-base-light;
+
+                    margin : 0 0 2.0rem 0;
+
+                    cursor : pointer;
+
+                } // end of container > div2 > div1 > ul > span
+
+                // ==============================
+                // container > div 2 > div 1 > ul > a > img 1
+                // ==============================
+
+                > a > img.realEstateBrokerWebsiteContainerImage1 {
+
+                    padding : 0 0 1.0rem 0;
+
+                } // end of container > div2 > div1 > ul > a > image 1
+
+            } // end of container > div2 > div1 > ul
+
+        } // end of container > div2 > div1
+
+    } // end of container > div2
+/*
+    // ==============================
+    // container > div 3 ( blob or square slowing moving around )
+    // ==============================
+
+    // ==============================
+    // remember, the inspiration for this blob came from : " https://codepen.io/thedevenv/pen/JjrXayd "
+    // ==============================
+
+    > div:nth-child( 3 ) {
+
+        position : absolute;
+        top      : 15.0rem;
+        right    : 95.0%;
+        width    : 45.0rem;
+        height   : 45.0rem;
+        z-index  : 0;
+
+        background     : linear-gradient( 180deg, var( --blue-green-500 ) 31.77%, var( --blue-66 ) 100% );
+        background     : linear-gradient( 180deg, var( --purple-120 ) 31.77%, var( --purple-150 ) 100% );
+        mix-blend-mode : color-dodge; // this provided for a very nice effect
+
+        // transition                : 1s cubic-bezier( 0.07, 0.8, 0.16, 1 ); // this cubic-bezier starts off really fast
+        // and slows down ( see how it looks here : https://www.w3schools.com/cssref/tryit.php?filename=trycss_func_cubic-bezier2 )
+        // and remmeber, the transition is only needed if we have a hover state
+
+        animation-name            : move-2;
+        animation-duration        : 15s; // took the duration down from 25s to 10s since I reduced the amount of movement
+        animation-direction       : alternate;
+        animation-iteration-count : infinite;
+
+        @media all and ( max-width : $bp-2080 ) {
+
+            top    : 15.0rem;
+            right  : 60.0%;
+            width  : 40.0rem;
+            height : 40.0rem;
+
+        } // end of container > div3 > bp-2080
+
+        @media all and ( max-width : $bp-1728 ) {
+
+            top   : 15.0rem;
+            right : 70.0%;
+    
+        } // end of container > div3 > bp-1728
+
+        @media all and ( max-width : $bp-1536 ) {
+
+            top    : 15.0rem;
+            right  : 72.5%;
+            width  : 35.0rem;
+            height : 35.0rem;
+    
+        } // end of container > div3 > bp-1536
+
+        @media all and ( max-width : $bp-1376 ) {
+
+            top    : 15.0rem;
+            right  : 75.0%;
+            width  : 30.0rem;
+            height : 30.0rem;
+    
+        } // end of container > div3 > bp-1376
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            top    : 12.0rem;
+            right  : 92.0%;
+    
+        } // end of container > div3 > bp-1280
+
+        @media all and ( max-width : $bp-1032 ) {
+
+            top   : 12.0rem;
+            right : 95.0%;
+
+            animation-name     : move-3;
+            animation-duration : 15.0s;
+    
+        } // end of container > div3 > bp-1032
+
+        @media all and ( max-width : $bp-920 ) {
+
+            top    : 12.0rem;
+            right  : 110.0%;
+            width  : 25.0rem;
+            height : 25.0rem;
+    
+        } // end of container > div3 > bp-920
+
+        @media all and ( max-width : $bp-768 ) {
+
+            display : none; // at this point, I think having the blob makes the design
+            // too busy
+
+            top    : 8.0rem;
+            right  : 110.0%;
+            width  : 35.0rem;
+            height : 35.0rem;
+
+            animation-name     : move-4;
+            animation-duration : 15.0s;
+
+        } // end of container > div3 > bp-768
+
+        @media all and ( max-width : $bp-620 ) {
+
+            top    : 8.0rem;
+            right  : 140.0%;
+            width  : 30.0rem;
+            height : 30.0rem;
+
+        } // end of container > div3 > bp-620
+
+        @media all and ( max-width : $bp-480 ) {
+
+            top    : 24.0rem;
+            right  : 165.0%;
+            width  : 30.0rem;
+            height : 30.0rem;
+    
+        } // end of container > div3 > bp-480
+
+        @media all and ( max-width : 410px ) {
+
+            top    : 24.0rem;
+            right  : 240.0%;
+            width  : 27.5rem;
+            height : 27.5rem;
+    
+        } // end of container > div3 > 410px
+
+        @media all and ( max-width : 380px ) {
+
+            top    : 24.0rem;
+            right  : 190.0%;
+            width  : 25.0rem;
+            height : 25.0rem;
+    
+        } // end of container > div3 > 380px
+
+        @media all and ( max-width : 350px ) {
+
+            top    : 24.0rem;
+            right  : 215.0%;
+            width  : 22.5rem;
+            height : 22.5rem;
+    
+        } // end of container > div3 > 350px
+
+    } // end of container > div3
+*/
+
+/*
+    // ==============================
+    // container > div 3 ( orange round background circle )
+    // ==============================
+
+    > div:nth-child( 3 ) {
+
+        // display : none;
+
+        position : absolute;
+        top      : 10.0rem;
+        left     : -35.0rem;
+        width    : 90.0rem;
+        height   : 90.0rem;
+
+        z-index : 0;
+
+        border-radius : 50%;
+
+        //opacity : 0.2;
+
+        background : var( --orange-20 );
+
+        background : var( --purple-150 );
+
+        clip-path : inset( 0 ); // this will clip any of the background that falls outside
+        // the container
+
+        @media all and ( max-width : $bp-1920 ) {
+
+            left   : -20.0rem;
+            width  : 70.0rem;
+            height : 70.0rem;
+
+        } // end of container > div3 > bp-1920
+
+        @media all and ( max-width : $bp-1536 ) {
+
+            left   : -16.0rem;
+            width  : 60.0rem;
+            height : 60.0rem;
+
+        } // end of container > div3 > bp-1536
+
+        @media all and ( max-width : $bp-1376 ) {
+
+            left   : -14.0rem;
+            width  : 55.0rem;
+            height : 55.0rem;
+
+        } // end of container > div3 > bp-1376
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            left   : -15.0rem;
+            width  : 70.0rem;
+            height : 70.0rem;
+
+        } // end of container > div3 > bp-1280
+
+        @media all and ( max-width : $bp-768 ) {
+
+            //top    : 25.0rem;
+            left   : -8.0rem;
+            width  : 50.0rem;
+            height : 50.0rem;
+
+        } // end of container > div3 > bp-768
+
+        @media all and ( max-width : $bp-620 ) {
+
+            left   : -2.0rem;
+            width  : 41.0rem;
+            height : 41.0rem;
+
+        } // end of container > div3 > bp-620
+
+        @media all and ( max-width : $bp-480 ) {
+
+            left   : 0.0rem;
+            width  : 32.0rem;
+            height : 32.0rem;
+
+        } // end of container > div3 > bp-480
+
+        @media all and ( max-width : 400px ) {
+
+            left   : 0.0rem;
+            width  : 29.0rem;
+            height : 29.0rem;
+
+        } // end of container > div3 > 400px
+
+        @media all and ( max-width : $bp-375 ) {
+
+            left   : 0.0rem;
+            width  : 22.0rem;
+            height : 22.0rem;
+
+        } // end of container > div3 > bp-375
+
+    } // end of container > div3
+*/
+
+    // ==============================
+    // container > div 3 ( orange round background circle )
+    // ==============================
+
+    // see the circle/circle-v1.js file for details
+
+} // end of container
+

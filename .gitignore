@@ -1,0 +1,57 @@
+# build output
+dist/
+
+# generated types
+.astro/
+
+# netlify stuff
+.netlify/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+# misc
+app-utah-decks.js
+
+# turso / local sqlite databases
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+
+# vite / cache
+.vite/
+temp/
+
+# typescript
+*.tsbuildinfo
+
+# editors
+.vscode/
+!.vscode/extensions.json
+*.code-workspace
+.idea/
+.vs/
+
+# environment variables - add these as a catch-all for safety
+*.env
+*.env.*
+!.env.example
+
+# turso
+database/*.db-wal
+database/*.db-shm
+

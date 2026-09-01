@@ -1,0 +1,636 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../../styles/_mixins.scss' as *;
+@use '../../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+// ==============================
+// 3d models container
+// ==============================
+
+.threeDModelsContainer {
+
+    // parent
+    grid-area   : div13;
+    grid-column : 1 / -1; // needed in order to fill the parent container\
+
+    // children
+    display               : grid;
+    grid-template-rows    : repeat( 5, auto );
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // remember, there are 2 things we want to accomplish :
+    // 1 - allow the wrapper div to position against the parent div and thereby
+    // shrink as needed
+    // 2 - we want to center the wrapper div ( see below for details )
+    // ==============================
+
+    // ==============================
+    // " grid-template-columns " is needed so that the wrapper div ( i.e. child ) can position
+    // against the parent ( i.e. this div ) by using " grid-column : 2 / 22; " and this allows
+    // the background declared below to span across the entire container or the entire site and
+    // this also allows the wrapper div to dynamically contain its children within the
+    // " grid-column : 2 / 22; " context so that as the screen size shrinks the wrapper div
+    // container and all its children containers or divs will automatically shrink as well
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    // justify-items         : center;
+
+    // remember, " grid-column : 1 / -1; " allows the background image to span the entire screen
+    background-image : url( /images/lama_bg_01.jpeg );
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 1 / -1; // position against the parent
+
+        // children
+        display               : grid;
+        grid-template-rows    : auto;
+        grid-template-columns : 50% 50%;
+        grid-template-areas   : "div3 div3"
+                                "div4 div4"
+                                "div1 div2";
+
+        // ==============================
+        // remember, 
+        // 1 - with " grid-column : 2 / 22; " and " width : min( 80.0rem, 100% ); ",
+        // the children content will stay within the bounds of 2 / 22 and shrink
+        // as needed
+        // 2 - and the children content will be the smaller of 80.0rem or 100%
+        // ==============================
+
+        // width  : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+
+        padding : 12.0rem 0 12.0rem 0;
+
+        @media all and ( max-width : $bp-1920 ) {
+
+            // parent
+            grid-column : 2 / 22; // position against the parent
+
+            // children
+            grid-template-columns : 1fr;
+            grid-template-areas   : "div3"
+                                    "div4"
+                                    "div2"
+                                    "div1";
+    
+        } // end of container > bp-1920
+
+        @media all and ( max-width : $bp-1280 ) {
+           
+            grid-template-areas : "h1"
+                                  "div3"
+                                  "div4"
+                                  "div2"
+                                  "div1";
+    
+        } // end of container > bp-1280
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > h1
+        // ==============================
+
+        > h1 {
+
+            // parent
+            grid-area : h1;
+
+            // children
+            display : none;
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                display      : grid;
+                justify-self : center; // remember, we had to do justify-self here and not
+                // on the parent element since it would erase our 3D model
+                //align-self : start; // remove the default height
+    
+                width   : 30.0rem; // this needs to match the width of the instructional
+                // text and the color buttons
+                padding : 0 0 2.25rem 0; // needed for smaller screens to give some
+                // spacing on the right and left side
+    
+                @include h1-light-title;
+    
+                margin     : 0 0 0 0;
+                text-align : center;
+
+            } // end of container > div1 > h1 > bp-1280
+    
+            @media all and ( max-width : $bp-375 ) {
+
+                width : 25.0rem; // this needs to match the width of the instructional
+                // text and the color buttons
+
+            } // end of container > div1 > h1 > bp-375
+
+        } // container > div1 > h1
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > div 1 ( 3D model labels )
+        // ==============================
+
+        > .threeDModelsContainerDiv1Div1 {
+
+            // parent
+            grid-area   : div1;
+
+            // children
+            display         : grid;
+            align-content   : center; // make the labels center on large screens
+            justify-content : center; // center the ul horizontally
+
+            // ==============================
+            // 3D model labels unordered list
+            // ==============================
+
+            > ul {
+
+                display               : grid;
+                grid-template-rows    : repeat( 3, auto );
+                grid-template-columns : 1fr;
+                grid-gap              : 8.0rem 0;
+
+                @media all and ( max-width : $bp-1280 ) {
+
+                    grid-gap : 0;
+
+                } // end of container > div1 > div1 > ul > bp-1280
+
+                > li {
+
+                    // ==============================
+                    // create a hollow text effect
+                    // ==============================
+
+                    font-family    : var( --font-primary-4 );
+                    font-size      : 9.0rem;
+                    font-weight    : 800;
+                    color          : transparent;
+                    letter-spacing : 0.2rem;
+                    line-height    : 1.075;
+
+                    cursor              : pointer;
+                    -webkit-text-stroke : 1px var( --gray-220 );
+
+                    // ==============================
+                    // end of create a hollow text effect
+                    // ==============================
+
+                    @media all and ( max-width : $bp-1920 ) {
+
+                        font-size : 7.25rem; // reduce this font slightly to better match the
+                        // reduction in the h1
+            
+                    } // end of container > div1 > div1 > ul > li > bp-1920
+
+                    @media all and ( max-width : $bp-1440 ) {
+
+                        font-size : 6.5rem; // reduce this font slightly to better match the
+                        // reduction in the h1
+            
+                    } // end of container > div1 > div1 > ul > li > bp-1440
+            
+                    @media all and ( max-width : $bp-1376 ) {
+
+                        font-size : 5.5rem; // reduce this font slightly to better match the
+                        // reduction in the h1
+            
+                    } // end of container > div1 > div1 > ul > li > bp-1376
+
+                    @media all and ( max-width : $bp-1280 ) {
+
+                        font-size : 4.0rem; // reduce this font slightly to better match the
+                        // reduction in the h1
+            
+                    } // end of container > div1 > div1 > ul > li > bp-1280
+
+                    @media all and ( max-width : $bp-1032 ) {
+
+                        font-size : 3.8rem; // reduce this font slightly to better match the
+                        // reduction in the h1
+            
+                    } // end of container > div1 > div1 > ul > li > bp-1032
+
+                    @media all and ( max-width : $bp-620 ) {
+            
+                        font-size : 3.4rem; // reduce this font slightly to better match the
+                        // reduction in the h1
+            
+                    } // end of container > div1 > div1 > ul > li > bp-620
+            
+                    @media all and ( max-width : $bp-480 ) {
+            
+                        font-size   : 3.2rem; // reduce this font slightly to better match the
+                        // reduction in the h1
+            
+                    } // end of container > div1 > div1 > ul > li > bp-480
+
+                    @media all and ( max-width : $bp-375 ) {
+            
+                        font-size : 3.0rem; // reduce this font slightly to better match the
+                        // reduction in the h1
+            
+                    } // end of container > div1 > div1 > ul > li > bp-375
+
+                } // end of container > div1 > div1 > l1
+
+            } // end of container > div1 > div1 > ul
+
+        } // container > div1 > div1
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > div 2 ( 3D models )
+        // ==============================
+
+        .threeDModelsContainerDiv1Div2 {
+
+            // parent
+            grid-area   : div2;
+
+            position : relative;
+            height   : 80.0rem; // visual preference
+
+            @media all and ( max-width : $bp-1920 ) {
+
+                height : 60.0rem; // visual preference
+
+            } // end of container > div1 > div2 > bp-1920
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                height : 50.0rem; // visual preference
+
+            } // end of container > div1 > div2 > bp-1280
+
+            @media all and ( max-width : $bp-480 ) {
+
+                height : 30.0rem; // visual preference
+
+            } // end of container > div1 > div2 > bp-480
+
+        } // end of container > div1 > div2
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > div 3 ( instructional text )
+        // ==============================
+
+        .threeDModelsContainerDiv1Div3 {
+
+            // parent
+            grid-area : div3;
+
+            // children
+            display      : grid;
+            justify-self : end; // remember, we had to do justify-self here and not
+            // on the parent element since it would erase our 3D model
+
+            padding : 0 10.0vw 3.5rem 0;
+
+            @media all and ( max-width : $bp-1920 ) {
+
+                padding : 0 0 3.5rem 0;
+
+            } // end of container > div1 > div3 > bp-1920
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                justify-self : center;
+
+            } // end of container > div1 > div3 > bp-1280
+
+            > p {
+
+                width   : 30.0rem;
+                padding : 2.0rem 2.0rem 2.0rem 2.0rem;
+
+                border-radius : 6px;
+
+                @include text-base-dark;
+
+                margin : 0 0 0 0;
+
+                color : var( --white );
+
+                background : var( --blue-83 );
+
+                @media all and ( max-width : $bp-375 ) {
+
+                    width : 25.0rem;
+    
+                } // end of container > div1 > div3 > p > bp-375
+    
+            } // container > div1 > div3 > p
+
+        } // end of container > div1 > div3
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > div 4 ( button colors )
+        // ==============================
+
+        .threeDModelsContainerDiv1Div4 {
+
+            // parent
+            grid-area : div4;
+
+            // children
+            display      : grid;
+            justify-self : end; // remember, we had to do justify-self here and not
+            // on the parent element since it would erase our 3D model
+
+            z-index : 1; // make the button clickable by giving them a higher z-index
+            padding : 0 10.0vw 0 0;
+
+            @media all and ( max-width : $bp-1920 ) {
+
+                // ==============================
+                // remember, at screen sizes below 1920px, the width of the container
+                // and all the elements inside the container is determined by the parent
+                // grid width or " grid-column : 2 / 22; "; therefore, we can remove
+                // all padding
+                // ==============================
+
+                padding : 0 0 0 0;
+
+            } // end of container > div1 > div4 > bp-1920
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                justify-self : center; // remember, we had to do justify-self here and not
+                // on the parent element since it would erase our 3D model
+
+            } // end of container > div4 > bp-1280
+
+            // ==============================
+            // button colors unordered list
+            // ==============================
+
+            > ul {
+
+                // children
+                display         : flex;
+                justify-content : space-between;
+
+                width : 30.0rem; // this needs to match the width of the instructional
+                // text
+                
+                @media all and ( max-width : $bp-375 ) {
+
+                    width : 25.0rem; // this needs to match the width of the instructional
+                    // text
+
+                } // end of container > div1 > div4 > ul > bp-375
+
+                > button:nth-child( 1 ) {
+
+                    padding : 2.0rem 2.5rem 2.0rem 2.5rem;
+
+                    border        : none;
+                    border-radius : 6px;
+        
+                    cursor : pointer;
+
+                } // end of container > div1 > div4 > ul > button:nth-child( 1 )
+
+                > button:nth-child( 2 ) {
+
+                    padding : 2.0rem 2.5rem 2.0rem 2.5rem;
+
+                    border        : none;
+                    border-radius : 6px;
+        
+                    cursor : pointer;
+    
+                } // end of container > div1 > div4 > ul > button:nth-child( 2 )
+
+                > button:nth-child( 3 ) {
+
+                    padding : 2.0rem 2.5rem 2.0rem 2.5rem;
+
+                    border        : none;
+                    border-radius : 6px;
+        
+                    cursor : pointer;
+
+                } // end of container > div1 > div4 > ul > button:nth-child( 3 )
+
+                > button:nth-child( 4 ) {
+
+                    padding : 2.0rem 2.5rem 2.0rem 2.5rem;
+
+                    border        : none;
+                    border-radius : 6px;
+        
+                    cursor : pointer;
+
+                } // end of container > div1 > div4 > ul > button:nth-child( 4 )
+
+                > button:nth-child( 5 ) {
+
+                    padding : 2.0rem 2.5rem 2.0rem 2.5rem;
+
+                    border        : none;
+                    border-radius : 6px;
+        
+                    cursor : pointer;
+
+                } // end of container > div1 > div4 > ul > button:nth-child( 5 )
+
+            } // end of container > div1 > div4 > ul
+
+        } // end of container > div1 > div4
+
+    } // end of container > div1
+
+} // end of container
+
+
+
+
+/*
+
+    // ==============================
+    // COOL TEXT ANIMATION EFFECT
+    // ==============================
+
+    // ==============================
+    // part 1
+    // ==============================
+
+    // ==============================
+    // keyframes
+    // ==============================
+
+    // ==============================
+    // create a text animation effect - part 1
+    // ==============================
+
+    @keyframes move-text {
+
+        from {
+            width : 0%;
+        }
+
+        to {
+            width : 100%;
+        }
+
+    } // end of @keyframes move-text
+
+    // ==============================
+    // create a text animation effect - part 1
+    // ==============================
+
+
+
+    // ==============================
+    // part 2
+    // ==============================
+
+    // ==============================
+    // create a text animation effect - part 2
+    // ==============================
+
+    &:hover {
+
+        &::after {
+
+            animation : move-text 0.5s linear both; // see Keyframe above
+
+        } // end of container > div1 > ul > li:hover::after
+
+    } // end of container > div1 > ul > li:hover
+
+    // ==============================
+    // end of create a text animation effect - part 2
+    // ==============================
+
+
+
+    // ==============================
+    // part 3
+    // ==============================
+
+    > li:nth-child( 1 )::after {
+
+        // ==============================
+        // create a text animation effect - part 3
+        // ==============================
+
+        position : absolute;
+        top      : 0;
+        left     : 0;
+        width    : 0;
+
+        color : var( --yellow-60 );
+        
+        // in order for the animation to work, we both " overflow : hidden; " and
+        // " white-space : nowrap; "
+        overflow    : hidden;
+        white-space : nowrap;
+
+        content : "Apollo 11";
+
+        // ==============================
+        // end of create a text animation effect - part 3
+        // ==============================
+
+    } // end of container > div1 > l1:nth-child( 1 )
+
+    > li:nth-child( 2 )::after {
+
+        // ==============================
+        // create a text animation effect - part 3
+        // ==============================
+
+        position : absolute;
+        top      : 0;
+        left     : 0;
+        width    : 0;
+
+        color : var( --yellow-60 );
+        
+        // in order for the animation to work, we both " overflow : hidden; " and
+        // " white-space : nowrap; "
+        overflow    : hidden;
+        white-space : nowrap;
+
+        content : "Polaroid Camera";
+
+        // ==============================
+        // end of create a text animation effect - part 3
+        // ==============================
+
+    } // end of container > div1 > l1:nth-child( 2 )
+
+    > li:nth-child( 3 )::after {
+
+        // ==============================
+        // create a text animation effect - part 3
+        // ==============================
+
+        position : absolute;
+        top      : 0;
+        left     : 0;
+        width    : 0;
+
+        color : var( --yellow-60 );
+        
+        // in order for the animation to work, we both " overflow : hidden; " and
+        // " white-space : nowrap; "
+        overflow    : hidden;
+        white-space : nowrap;
+
+        content : "Product Design";
+
+        // ==============================
+        // end of create a text animation effect - part 3
+        // ==============================
+
+    } // end of container > div1 > l1:nth-child( 3 )
+
+*/

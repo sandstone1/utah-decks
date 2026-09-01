@@ -1,0 +1,1434 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../styles/_mixins.scss' as *;
+@use '../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+// ==============================
+// hero image component - notes
+// ==============================
+
+// ==============================
+// note #1
+// ==============================
+
+// ==============================
+// remember, we determined the height of the hero home page container and then passed
+// that height value up to the parent ( i.e. the index.js file ) and then in the index
+// file we set the top margin for the div2 h1 and this pushed the div2 content down
+// below the hero home page container and this made everything work as expected
+// ==============================
+
+// ==============================
+// files :
+// components/hero/hero-home-page.js ( see useEffect #2 )
+// pages/index.js ( see passParentToChildHeightHandlerFunction )
+// ==============================
+
+
+
+
+// ==============================
+// note #2
+// ==============================
+
+// ==============================
+// remember, since the hero home page component using absolute positioning we left
+// the component out of the grid-template-rows and grid-template-areas calculations
+// in the homePageContainer div
+// ==============================
+
+
+
+// ==============================
+// note #3
+// ==============================
+
+// ==============================
+// remember, in the hero home page component we did the following :
+// 1 - we had to comment out " bottom : 0 " in the hero home page container and then
+// 2 - we had to set height to 100vh for screen sizes above bp-1280 and then
+// 3 - we had to set height to auto and bottom padding to 12.0rem for screen sizes
+// at or below bp-1280 ( remember, at small screen sizes our content overflowed into
+// div 2 ); otherwise, there was no way to provide any spacing at the bottom of the
+// container unless we added a specific height to the container and then modified the
+// height at different breakpoints
+// ==============================
+
+// ==============================
+// and even then, we found that iphone rendered the spacing different ( i.e. incorrectly )
+// than androids and desktop
+// ==============================
+
+
+
+
+
+
+
+
+
+// ==============================
+// keyframes
+// ==============================
+
+// ==============================
+// elastic animation
+// ==============================
+
+// ==============================
+// option 2
+// use the css animation property to animate the hero container on page load
+// ==============================
+
+@keyframes animate-on-page-load {
+
+    from {
+
+        opacity   : 0;
+        scale     : 0.96 1;
+        translate : 0 5rem;
+
+    }
+
+    to {
+
+        opacity   : 1;
+        scale     : 1 1;
+        translate : 0 0;
+
+    }
+
+} // end of animate-on-page-load
+
+// ==============================
+// fallback for non mobile devices
+// ==============================
+
+@keyframes animate-on-page-load-fallback-non-mobile {
+
+    from {
+
+        opacity   : 0;
+        translate : 0 3.0rem;
+
+    }
+
+    to {
+
+        opacity   : 1;
+        translate : 0 0;
+
+    }
+
+} // end of animate-on-page-load-fallback-non-mobile
+
+// ==============================
+// fallback for mobile devices
+// ==============================
+
+@keyframes animate-on-page-load-fallback-mobile {
+
+    from {
+
+        opacity : 0;
+
+    }
+
+    to {
+
+        opacity : 1;
+
+    }
+
+} // end of animate-on-page-load-fallback-mobile
+
+// ==============================
+// end of elastic animation
+// ==============================
+
+// ==============================
+// end of Keyframes
+// ==============================
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// hero container
+// ==============================
+
+.heroContainer {
+
+    // children
+    display               : grid;
+    grid-template-rows    : repeat( 3, auto );
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+    align-content         : center;
+    justify-items         : center;
+    grid-template-areas   : "h1"
+                            "div"
+                            "p";
+    align-content         : center;
+    justify-items         : center;
+
+    height : 100vh; // set height equal to 100vh for larger screens and then switch
+    // to auto once the content overflows the 100vh container and this happens at
+    // bp-1032
+
+    // ==============================
+    // z-index notes
+    // ==============================
+
+    /*
+        ( 1 ) for the nav to sit on top of the background div and the home page container,
+        we made the following z-index adjustment :
+        ( adjustment 1 ) nav container ( see nav.module.scss ) : z-index of 1
+        ( 2 ) for the side menu to sit on top of the nav, we made the following z-index
+        adjustment :
+        ( adjustment 2 ) side menu container ( see side-menu.module.scss ) : z-index of 2
+    */
+
+    // ==============================
+    // wrap the background image over the header and hero home page container
+    // ==============================
+
+    position : absolute;
+    left     : 0;
+    top      : 0;
+    right    : 0;
+    // bottom   : 0; // important!! ( see the notes below )
+
+    // ==============================
+    // fallback jpeg image
+    // ==============================
+
+    background-image      : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_2560.jpeg );
+    // background-position   : center; // in this case, it looked better not having
+    // " background-position : center "
+    background-size       : cover;
+    background-blend-mode : multiply;
+    background-color      : var( --blue-75 );
+
+    @media all and ( max-width : $bp-1920 ) {
+
+        background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_1920.jpeg );
+        background-position : 50% 50%;
+
+    } // end of bp-1920
+
+    @media all and ( max-width : $bp-1536 ) {
+
+        background-image : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_1536.jpeg );
+
+    } // end of bp-1536
+
+    @media all and ( max-width : $bp-1440 ) {
+
+        background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_1440.jpeg );
+        background-position : 50% 85%;
+
+    } // end of bp-1440
+
+    @media all and ( max-width : $bp-1376 ) {
+
+        background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_1376.jpeg );
+        background-position : 50% 90%;
+
+    } // end of bp-1376
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        align-content : start; // when the content goes vertical, change align-content
+        // to start and add some top padding for better spacing between the header and
+        // the hero home page container
+
+        // ==============================
+        // important!!
+        // ==============================
+
+        // ==============================
+        // remember, to make the " height : auto; " and bottom padding of 12.0rem
+        // work properly we had to comment out " bottom : 0 " above; otherwise, there
+        // was no way to provide any spacing at the bottom of the container unless we
+        // added a specific height to the container and then modified the height at
+        // different breakpoints
+        // ==============================
+
+        // ==============================
+        // even then, I found that iphone rendered the spacing different ( i.e. incorrectly )
+        // than androids and desktop
+        // ==============================
+
+        height : auto; // change to " height : auto " once the content container
+        // expands beyond a height of 100vh and that way all mobile devices will render
+        // the container spacing in the same way
+
+        padding : 160px 0 12.0rem 0; // add some bottom padding in conjunction
+        // with " height : auto " 
+
+        // this is an cropped image
+        background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_1280.jpeg );
+        background-position : 80% 0%; // remember, once the content goes vertical then only x value matters
+
+    } // end of bp-1280
+
+    @media all and ( max-width : $bp-1032 ) {
+
+        // this is an cropped image
+        background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_1032.jpeg );
+        background-position : 90% 0%;
+
+    } // end of bp-1032
+
+    @media all and ( max-width : $bp-920 ) {
+
+        // this is an cropped image
+        background-image : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_920.jpeg );
+
+    } // end of bp-920
+
+    @media all and ( max-width : $bp-768 ) {
+
+        // this is an cropped image
+        background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_768.jpeg );
+        background-position : 70% 0%;
+
+    } // end of bp-768
+
+
+    @media all and ( max-width : $bp-620 ) {
+
+        // this is an cropped image
+        background-image : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_620.jpeg );
+
+    } // end of bp-620
+
+    @media all and ( max-width : $bp-480 ) {
+
+        // this is an cropped image
+        background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_480.jpeg );
+        background-position : 95% 0%;
+
+    } // end of bp-480
+
+    @media all and ( max-width : $bp-375 ) {
+
+        // this is an cropped image
+        background-image : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_375.jpeg );
+
+    } // end of bp-375
+
+    // ==============================
+    // webp image
+    // ==============================
+
+    // this code comes from the article :
+    // " https://www.js-craft.io/blog/css-fallbacks-for-webp-background-images-with-supports/ "
+    @supports ( background-image : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_2560.webp ) ) {
+
+        background-image : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_2560.webp );
+
+        @media all and ( max-width : $bp-1920 ) {
+
+            background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_1920.webp );
+            background-position : 50% 50%;
+    
+        } // end of bp-1920
+
+        @media all and ( max-width : $bp-1536 ) {
+
+            background-image : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_1536.webp );
+    
+        } // end of bp-1536
+    
+        @media all and ( max-width : $bp-1440 ) {
+    
+            background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_1440.webp );
+            background-position : 50% 85%;
+
+        } // end of bp-1440
+    
+        @media all and ( max-width : $bp-1376 ) {
+    
+            background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_1376.webp );
+            background-position : 50% 90%;
+
+        } // end of bp-1376
+    
+        @media all and ( max-width : $bp-1280 ) {
+
+            align-content : start; // when the content goes vertical, change align-content
+            // to start and add some top padding for better spacing between the header and
+            // the hero home page container
+    
+            // ==============================
+            // important!!
+            // ==============================
+    
+            // ==============================
+            // remember, to make the " height : auto; " and bottom padding of 12.0rem
+            // work properly we had to comment out " bottom : 0 " above; otherwise, there
+            // was no way to provide any spacing at the bottom of the container unless we
+            // added a specific height to the container and then modified the height at
+            // different breakpoints
+            // ==============================
+    
+            // ==============================
+            // even then, I found that iphone rendered the spacing different ( i.e. incorrectly )
+            // than androids and desktop
+            // ==============================
+    
+            height : auto; // change to " height : auto " once the content container
+            // expands beyond a height of 100vh and that way all mobile devices will render
+            // the container spacing in the same way
+    
+            padding : 160px 0 12.0rem 0; // add some bottom padding in conjunction
+            // with " height : auto " 
+    
+            // this is an cropped image
+            background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_1280.webp );
+            background-position : 80% 0%; // remember, once the content goes vertical then only x value matters
+
+        } // end of bp-1280
+
+        @media all and ( max-width : $bp-1032 ) {
+
+            // this is an cropped image
+            background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_1032.webp );
+            background-position : 90% 0%;
+
+        } // end of bp-1032
+    
+        @media all and ( max-width : $bp-920 ) {
+
+            // this is an cropped image
+            background-image : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_920.webp );
+
+
+        } // end of bp-920
+    
+        @media all and ( max-width : $bp-768 ) {
+
+            // this is an cropped image
+            background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_768.webp );
+            background-position : 70% 0%;
+
+        } // end of bp-768
+    
+        @media all and ( max-width : $bp-620 ) {
+
+            // this is an cropped image
+            background-image : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_620.webp );
+    
+        } // end of bp-620
+    
+        @media all and ( max-width : $bp-480 ) {
+
+            // this is an cropped image
+            background-image    : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_480.webp );
+            background-position : 95% 0%;
+
+        } // end of bp-480
+
+        @media all and ( max-width : $bp-375 ) {
+
+            // this is an cropped image
+            background-image : linear-gradient( to bottom, rgba( 61, 71, 98, 0.75 ),  rgba( 81, 91, 118, 0.75 ) ), url( /images/monte_carlo_01_375.webp );
+    
+        } // end of bp-375
+
+    } // end of container > div2 > div1 > h1 > @supports
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // h1
+    // ==============================
+
+    > h1 {
+
+        // parent
+        grid-area   : h1;
+        grid-column : 2 / 22;
+
+        @include h1-light-hero;
+
+        margin : 6.0rem 0 4.0rem 0; // this will move the h1 down 6.0rem from the bottom of the
+        // header container and visual preference
+
+        // needed for the start of the animation
+        opacity : 0;
+
+        // ==============================
+        // will-change
+        // use either will-change or translateZ( 0 ) to " promote elements that you plan to
+        // animate "
+        // see the following article for details :
+        // " https://web.dev/articles/stick-to-compositor-only-properties-and-manage-layer-count " 
+        // ==============================
+
+        will-change : transform;
+
+        // ==============================
+        // end of will-change
+        // ==============================
+
+        // ==============================
+        // fallback animation
+        // ==============================
+
+        // ==============================
+        // option 1
+        // use the css animation property to animate the hero container on page load
+        // ==============================
+
+        // ==============================
+        // remember, older versions of Chrome and Safari do not support the linear function
+        // so we need a fallback
+        // ==============================
+
+        // ==============================
+        // fallback animation - non mobile
+        // ==============================
+
+        animation-name            : animate-on-page-load-fallback-non-mobile;
+        animation-duration        : 600ms;
+        animation-timing-function : ease-out; // standard easing
+        animation-delay           : 300ms;
+        animation-iteration-count : 1; // this is the default but leave here for reference purposes
+        animation-fill-mode       : forwards;
+
+        // ==============================
+        // end of fallback animation - non mobile
+        // ==============================
+
+        // ==============================
+        // fallback animation - mobile
+        // ==============================
+
+        // ==============================
+        // for fallback on mobile devices, just fade in the elements since
+        // " transform : translateY( ); " results in a janky user experience
+        // on mobile devices
+        // ==============================
+
+        @media all and ( max-width : $bp-480 ) {
+
+            animation-name            : animate-on-page-load-fallback-mobile;
+            animation-duration        : 1000ms;
+            animation-timing-function : ease-out; // standard easing
+            animation-delay           : 300ms;
+            animation-iteration-count : 1; // this is the default but leave here for reference purposes
+            animation-fill-mode       : forwards;
+
+        } // end of container > div > h1 > bp-480
+
+        // ==============================
+        // end of fallback animation - mobile
+        // ==============================
+
+        // ==============================
+        // end of fallback animation
+        // ==============================
+
+        // ==============================
+        // elastic animation
+        // ==============================
+
+        // ==============================
+        // option 2
+        // use the css animation property to animate the hero container on page load
+        // ==============================
+
+        // ==============================
+        // remember, I liked the spring animation too but as much as the elastic animation
+        // but Safari does not do a good job with the spring easing interpolation
+        // ==============================
+
+        // ==============================
+        // see Enchanted Ratings for an example of how to implement the spring animation
+        // ==============================
+
+        // ==============================
+        // use @supports to target browsers that support the linear() easing function that
+        // interpolates linearly between multiple points and if the browser does not support
+        // this easing function then provide a fallback animation ( see above )
+        // ==============================
+
+        @supports ( animation-timing-function: linear(
+            0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%, 0.723 12.9%, 0.938 16.7%, 1.017,
+            1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%,
+            1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%,
+            0.997 69.8%, 1.003 76.9%, 1.004 83.8%, 1
+        ) ) {
+
+            animation-name            : animate-on-page-load;
+            animation-duration        : var( --elastic-duration );
+            animation-timing-function : var( --elastic-easing );
+            animation-delay           : 500ms;
+            animation-iteration-count : 1; // this is the default but leave here for reference purposes
+            animation-fill-mode       : forwards;
+
+
+        } // end of @supports
+
+        // ==============================
+        // end of elastic animation
+        // ==============================
+
+        // ==============================
+        // end of initial animation - see useEffect #1
+        // ==============================
+
+        @media all and ( max-width : $bp-1440 ) {
+
+            font-size : 5.4rem; // reduce this font slightly to better match the
+            // reduction in the h1
+
+        } // end of container > div1 > h1:nth-child( 1 ) > bp-1440
+
+        @media all and ( max-width : $bp-768 ) {
+
+            font-size : 5.2rem; // reduce this font slightly
+
+        } // end of container > div1 > h1:nth-child( 1 ) > bp-768
+
+        @media all and ( max-width : $bp-620 ) {
+
+            font-size : 4.8rem; // reduce this font slightly
+
+        } // end of container > div1 > h1:nth-child( 1 ) > bp-620
+
+        @media all and ( max-width : $bp-480 ) {
+
+            font-size : 4.6rem; // reduce this font slightly
+
+        } // end of container > div1 > h1:nth-child( 1 ) > bp-480
+
+    } // end of container > h1
+
+    // ==============================
+    // card elements
+    // ==============================
+
+    > div {
+
+        // ==============================
+        // remember, 
+        // 1 - with " grid-column : 2 / 22; " and " width : min( 80.0rem, 100% ); ",
+        // the children content will stay within the bounds of 2 / 22 and shrink
+        // automatically and as needed
+        // 2 - and the children content will be the smaller of 80.0rem or 100%
+        // ==============================
+
+        // parent
+        grid-area   : div;
+        grid-column : 2 / 22;
+
+        // children
+        display               : grid;
+        grid-template-rows    : auto;
+        grid-template-columns : auto auto auto;
+        justify-content       : center;
+        justify-items         : center;
+        grid-gap              : 0 2.0rem;
+        grid-template-areas   : "div1 div2 div3";
+
+        margin : 0 0 4.0rem 0;
+
+        width : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            grid-gap              : 2.0rem 0;
+            grid-template-areas   : "div1"
+                                    "div2"
+                                    "div3";
+    
+        } // end of container > div > bp-1280
+
+        // ==============================
+        // needed in order to keep the card element within the parent grid or 212px
+        // this is change #1 and see change #2 below
+        // ==============================
+
+        @media all and ( max-width : $bp-375 ) {
+
+            width  : 212px;
+            height : auto;
+    
+        } // end of container > div > bp-375
+
+        // ==============================
+        // card element 1
+        // ==============================
+
+        > div:nth-child( 1 ) {
+
+            // parent
+            grid-area : div1;
+
+            // children
+            display             : grid;
+            grid-template-areas : "img"
+                                  "h2";
+            justify-content     : center;
+
+            padding : 3.9rem; // create boxes that will not exceed 80.0rem in total
+
+            border-radius : 6px;
+
+            text-align: center;
+
+            background : rgba( 255, 255, 255, 0.1 );
+
+            // background : var( --blue-75 );
+
+            transition : background-color 0.3s ease-out;
+
+            // needed for the start of the animation
+            opacity : 0;
+
+            // ==============================
+            // will-change
+            // use either will-change or translateZ( 0 ) to " promote elements that you plan to
+            // animate "
+            // see the following article for details :
+            // " https://web.dev/articles/stick-to-compositor-only-properties-and-manage-layer-count " 
+            // ==============================
+
+            will-change : transform;
+
+            // ==============================
+            // end of will-change
+            // ==============================
+
+            // ==============================
+            // fallback animation
+            // ==============================
+
+            // ==============================
+            // option 1
+            // use the css animation property to animate the hero container on page load
+            // ==============================
+
+            // ==============================
+            // remember, older versions of Chrome and Safari do not support the linear function
+            // so we need a fallback
+            // ==============================
+
+            // ==============================
+            // fallback animation - non mobile
+            // ==============================
+
+            animation-name            : animate-on-page-load-fallback-non-mobile;
+            animation-duration        : 600ms;
+            animation-timing-function : ease-out; // standard easing
+            animation-delay           : 500ms;
+            animation-iteration-count : 1; // this is the default but leave here for reference purposes
+            animation-fill-mode       : forwards;
+
+            // ==============================
+            // end of fallback animation - non mobile
+            // ==============================
+
+            // ==============================
+            // fallback animation - mobile
+            // ==============================
+
+            // ==============================
+            // for fallback on mobile devices, just fade in the elements since
+            // " transform : translateY( ); " results in a janky user experience
+            // on mobile devices
+            // ==============================
+
+            @media all and ( max-width : $bp-480 ) {
+
+                animation-name            : animate-on-page-load-fallback-mobile;
+                animation-duration        : 1000ms;
+                animation-timing-function : ease-out; // standard easing
+                animation-delay           : 500ms;
+                animation-iteration-count : 1; // this is the default but leave here for reference purposes
+                animation-fill-mode       : forwards;
+
+            } // end of container > div > h1 > bp-480
+
+            // ==============================
+            // end of fallback animation - mobile
+            // ==============================
+
+            // ==============================
+            // end of fallback animation
+            // ==============================
+
+            // ==============================
+            // elastic animation
+            // ==============================
+
+            // ==============================
+            // option 2
+            // use the css animation property to animate the hero container on page load
+            // ==============================
+
+            // ==============================
+            // remember, I liked the spring animation too but as much as the elastic animation
+            // but Safari does not do a good job with the spring easing interpolation
+            // ==============================
+
+            // ==============================
+            // see Enchanted Ratings for an example of how to implement the spring animation
+            // ==============================
+
+            // ==============================
+            // use @supports to target browsers that support the linear() easing function that
+            // interpolates linearly between multiple points and if the browser does not support
+            // this easing function then provide a fallback animation ( see above )
+            // ==============================
+
+            @supports ( animation-timing-function: linear(
+                0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%, 0.723 12.9%, 0.938 16.7%, 1.017,
+                1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%,
+                1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%,
+                0.997 69.8%, 1.003 76.9%, 1.004 83.8%, 1
+            ) ) {
+
+                animation-name            : animate-on-page-load;
+                animation-duration        : var( --elastic-duration );
+                animation-timing-function : var( --elastic-easing );
+                animation-delay           : 650ms;
+                animation-iteration-count : 1; // this is the default but leave here for reference purposes
+                animation-fill-mode       : forwards;
+
+            } // end of @supports
+
+            // ==============================
+            // end of elastic animation
+            // ==============================
+
+            // ==============================
+            // needed in order to keep the card element within the parent grid or 212px
+            // this is change #2 and see change #1 above
+            // ==============================
+
+            @media all and ( max-width : $bp-375 ) {
+
+                width  : 212px;
+                height : auto;
+        
+            } // end of container > div > div:nth-child( 1 ) > bp-375
+
+            // ==============================
+            // created an empty div so that we could bring in a background image
+            // and then transform the image
+            // ==============================
+
+            > div {
+
+                // parent
+                grid-area : img;
+
+                width  : 17.5rem; // visual preference
+                height : 17.5rem; // visual preference
+                margin : 0 0 2.0rem 0;
+
+                background-image      : linear-gradient( to bottom, rgba( 61, 71, 98, 0.05 ),  rgba( 81, 91, 118, 0.05 ) ), url( /images/rocket-01-small-size.png );
+                background-size       : cover;
+                background-blend-mode : luminosity; // the luminosity looked great and much better
+                // than multiply in this case
+                background-color      : var( --blue-100 ); // visual preference
+        
+            } // end of container > div > div:nth-child( 1 ) > div
+        
+            > h2 {
+        
+                // parent
+                grid-area : h2;
+
+                font-family    : var( --font-primary-5 );
+                font-size      : 2.15rem; // create boxes that will not exceed 80.0rem in total
+                font-weight    : 400;
+                color          : var( --gray-316 ); // visual preference
+                letter-spacing : 1px; // visual preference
+                line-height    : 1.3; // visual preference
+        
+            } // end of container > div > div:nth-child( 1 ) > h2
+
+        } // end of container > div > div:nth-child( 1 )
+
+        // ==============================
+        // card element 2
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            // parent
+            grid-area : div2;
+
+            // children
+            display             : grid;
+            grid-template-areas : "img"
+                                  "h2";
+            justify-content     : center;
+
+            padding : 3.9rem; // create boxes that will not exceed 80.0rem in total
+
+            border-radius : 6px;
+
+            text-align: center;
+
+            background : rgba( 255, 255, 255, 0.1 );
+
+            transition : background-color 0.3s ease-out;
+
+            // needed for the start of the animation
+            opacity : 0;
+
+            // ==============================
+            // will-change
+            // use either will-change or translateZ( 0 ) to " promote elements that you plan to
+            // animate "
+            // see the following article for details :
+            // " https://web.dev/articles/stick-to-compositor-only-properties-and-manage-layer-count " 
+            // ==============================
+
+            will-change : transform;
+
+            // ==============================
+            // end of will-change
+            // ==============================
+
+            // ==============================
+            // fallback animation
+            // ==============================
+
+            // ==============================
+            // option 1
+            // use the css animation property to animate the hero container on page load
+            // ==============================
+
+            // ==============================
+            // remember, older versions of Chrome and Safari do not support the linear function
+            // so we need a fallback
+            // ==============================
+
+            // ==============================
+            // fallback animation - non mobile
+            // ==============================
+
+            animation-name            : animate-on-page-load-fallback-non-mobile;
+            animation-duration        : 600ms;
+            animation-timing-function : ease-out; // standard easing
+            animation-delay           : 500ms;
+            animation-iteration-count : 1; // this is the default but leave here for reference purposes
+            animation-fill-mode       : forwards;
+
+            // ==============================
+            // end of fallback animation - non mobile
+            // ==============================
+
+            // ==============================
+            // fallback animation - mobile
+            // ==============================
+
+            // ==============================
+            // for fallback on mobile devices, just fade in the elements since
+            // " transform : translateY( ); " results in a janky user experience
+            // on mobile devices
+            // ==============================
+
+            @media all and ( max-width : $bp-480 ) {
+
+                animation-name            : animate-on-page-load-fallback-mobile;
+                animation-duration        : 1000ms;
+                animation-timing-function : ease-out; // standard easing
+                animation-delay           : 500ms;
+                animation-iteration-count : 1; // this is the default but leave here for reference purposes
+                animation-fill-mode       : forwards;
+
+            } // end of container > div > h1 > bp-480
+
+            // ==============================
+            // end of fallback animation - mobile
+            // ==============================
+
+            // ==============================
+            // end of fallback animation
+            // ==============================
+
+            // ==============================
+            // elastic animation
+            // ==============================
+
+            // ==============================
+            // option 2
+            // use the css animation property to animate the hero container on page load
+            // ==============================
+
+            // ==============================
+            // remember, I liked the spring animation too but as much as the elastic animation
+            // but Safari does not do a good job with the spring easing interpolation
+            // ==============================
+
+            // ==============================
+            // see Enchanted Ratings for an example of how to implement the spring animation
+            // ==============================
+
+            // ==============================
+            // use @supports to target browsers that support the linear() easing function that
+            // interpolates linearly between multiple points and if the browser does not support
+            // this easing function then provide a fallback animation ( see above )
+            // ==============================
+
+            @supports ( animation-timing-function: linear(
+                0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%, 0.723 12.9%, 0.938 16.7%, 1.017,
+                1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%,
+                1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%,
+                0.997 69.8%, 1.003 76.9%, 1.004 83.8%, 1
+            ) ) {
+
+                animation-name            : animate-on-page-load;
+                animation-duration        : var( --elastic-duration );
+                animation-timing-function : var( --elastic-easing );
+                animation-delay           : 650ms;
+                animation-iteration-count : 1; // this is the default but leave here for reference purposes
+                animation-fill-mode       : forwards;
+
+            } // end of @supports
+
+            // ==============================
+            // end of elastic animation
+            // ==============================
+
+            // ==============================
+            // needed in order to keep the card element within the parent grid or 212px
+            // this is change #2 and see change #1 above
+            // ==============================
+
+            @media all and ( max-width : $bp-375 ) {
+
+                width  : 212px;
+                height : auto;
+        
+            } // end of container > div > div:nth-child( 1 ) > bp-375
+
+            // ==============================
+            // created an empty div so that we could bring in a background image
+            // and then transform the image
+            // ==============================
+
+            > div {
+
+                // parent
+                grid-area : img;
+
+                width  : 17.5rem; // visual preference
+                height : 17.5rem; // visual preference
+                margin : 0 0 2.0rem 0;
+
+                background-image      : linear-gradient( to bottom, rgba( 61, 71, 98, 0.05 ),  rgba( 81, 91, 118, 0.05 ) ), url( /images/web-development-01-small-size.png );
+                background-size       : cover;
+                background-blend-mode : luminosity; // the luminosity looked great and much better
+                // than multiply in this case
+                background-color      : var( --blue-100 ); // visual preference
+
+            } // end of container > div > div:nth-child( 2 ) > div
+        
+            > h2 {
+        
+                // parent
+                grid-area : h2;
+
+                font-family    : var( --font-primary-5 );
+                font-size      : 2.15rem; // create boxes that will not exceed 80.0rem in total
+                font-weight    : 400;
+                color          : var( --gray-316 ); // visual preference
+                letter-spacing : 1px; // visual preference
+                line-height    : 1.3; // visual preference
+        
+            } // end of container > div > div:nth-child( 2 ) > h2
+
+        } // end of div:nth-child( 2 )
+
+        // ==============================
+        // card element 3
+        // ==============================
+
+        > div:nth-child( 3 ) {
+
+            // parent
+            grid-area : div3;
+
+            // children
+            display             : grid;
+            grid-template-areas : "img"
+                                  "h2";
+            justify-content     : center;
+
+            padding : 3.9rem; // create boxes that will not exceed 80.0rem in total
+
+            border-radius : 6px;
+
+            text-align: center;
+
+            background : rgba( 255, 255, 255, 0.1 );
+
+            transition : background-color 0.3s ease-out;
+
+            // needed for the start of the animation
+            opacity : 0;
+
+            // ==============================
+            // will-change
+            // use either will-change or translateZ( 0 ) to " promote elements that you plan to
+            // animate "
+            // see the following article for details :
+            // " https://web.dev/articles/stick-to-compositor-only-properties-and-manage-layer-count " 
+            // ==============================
+
+            will-change : transform;
+
+            // ==============================
+            // end of will-change
+            // ==============================
+
+            // ==============================
+            // fallback animation
+            // ==============================
+
+            // ==============================
+            // option 1
+            // use the css animation property to animate the hero container on page load
+            // ==============================
+
+            // ==============================
+            // remember, older versions of Chrome and Safari do not support the linear function
+            // so we need a fallback
+            // ==============================
+
+            // ==============================
+            // fallback animation - non mobile
+            // ==============================
+
+            animation-name            : animate-on-page-load-fallback-non-mobile;
+            animation-duration        : 600ms;
+            animation-timing-function : ease-out; // standard easing
+            animation-delay           : 500ms;
+            animation-iteration-count : 1; // this is the default but leave here for reference purposes
+            animation-fill-mode       : forwards;
+
+            // ==============================
+            // end of fallback animation - non mobile
+            // ==============================
+
+            // ==============================
+            // fallback animation - mobile
+            // ==============================
+
+            // ==============================
+            // for fallback on mobile devices, just fade in the elements since
+            // " transform : translateY( ); " results in a janky user experience
+            // on mobile devices
+            // ==============================
+
+            @media all and ( max-width : $bp-480 ) {
+
+                animation-name            : animate-on-page-load-fallback-mobile;
+                animation-duration        : 1000ms;
+                animation-timing-function : ease-out; // standard easing
+                animation-delay           : 500ms;
+                animation-iteration-count : 1; // this is the default but leave here for reference purposes
+                animation-fill-mode       : forwards;
+
+            } // end of container > div > h1 > bp-480
+
+            // ==============================
+            // end of fallback animation - mobile
+            // ==============================
+
+            // ==============================
+            // end of fallback animation
+            // ==============================
+
+            // ==============================
+            // elastic animation
+            // ==============================
+
+            // ==============================
+            // option 2
+            // use the css animation property to animate the hero container on page load
+            // ==============================
+
+            // ==============================
+            // remember, I liked the spring animation too but as much as the elastic animation
+            // but Safari does not do a good job with the spring easing interpolation
+            // ==============================
+
+            // ==============================
+            // see Enchanted Ratings for an example of how to implement the spring animation
+            // ==============================
+
+            // ==============================
+            // use @supports to target browsers that support the linear() easing function that
+            // interpolates linearly between multiple points and if the browser does not support
+            // this easing function then provide a fallback animation ( see above )
+            // ==============================
+
+            @supports ( animation-timing-function: linear(
+                0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%, 0.723 12.9%, 0.938 16.7%, 1.017,
+                1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%,
+                1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%,
+                0.997 69.8%, 1.003 76.9%, 1.004 83.8%, 1
+            ) ) {
+
+                animation-name            : animate-on-page-load;
+                animation-duration        : var( --elastic-duration );
+                animation-timing-function : var( --elastic-easing );
+                animation-delay           : 650ms;
+                animation-iteration-count : 1; // this is the default but leave here for reference purposes
+                animation-fill-mode       : forwards;
+
+            } // end of @supports
+
+            // ==============================
+            // end of elastic animation
+            // ==============================
+
+            // ==============================
+            // needed in order to keep the card element within the parent grid or 212px
+            // this is change #2 and see change #1 above
+            // ==============================
+
+            @media all and ( max-width : $bp-375 ) {
+
+                width  : 212px;
+                height : auto;
+        
+            } // end of container > div > div:nth-child( 1 ) > bp-375
+
+            // ==============================
+            // created an empty div so that we could bring in a background image
+            // and then transform the image
+            // ==============================
+
+            > div {
+
+                // parent
+                grid-area : img;
+
+                width  : 17.5rem; // visual preference
+                height : 17.5rem; // visual preference
+                margin : 0 0 2.0rem 0;
+
+                background-image      : linear-gradient( to bottom, rgba( 61, 71, 98, 0.35 ),  rgba( 81, 91, 118, 0.35 ) ), url( /images/design-01-small-size.png );
+                background-size       : cover;
+                background-blend-mode : luminosity; // the luminosity looked great and much better
+                // than multiply in this case
+                background-color      : var( --blue-100 ); // visual preference
+
+            } // end of container > div > div:nth-child( 3 ) > div
+
+            > h2 {
+        
+                // parent
+                grid-area : h2;
+
+                font-family    : var( --font-primary-5 );
+                font-size      : 2.15rem; // create boxes that will not exceed 80.0rem in total
+                font-weight    : 400;
+                color          : var( --gray-316 ); // visual preference
+                letter-spacing : 1px; // visual preference
+                line-height    : 1.3; // visual preference
+        
+            } // end of container > div > div:nth-child( 3 ) > h2
+
+        } // end of div:nth-child( 3 )
+
+    }  // end of container > div
+
+    // ==============================
+    // p
+    // ==============================
+
+    > p {
+
+        // ==============================
+        // remember, 
+        // 1 - with " grid-column : 2 / 22; " the children content will stay within the bounds
+        // of 2 / 22 and shrink automatically and as needed
+        // 2 - with " width : min( 80.0rem, 100% ); " the children content will be the smaller
+        // of 80.0rem or 100%
+        // ==============================
+
+        // parent
+        grid-area   : p;
+        grid-column : 2 / 22;
+
+        // from : " https://www.joshwcomeau.com/css/full-bleed/ "
+        // " Research has shown that the ideal line length is about 65 characters.
+        // Anywhere between 45 and 85 is generally seen as acceptable, in the context
+        // of a roman alphabet. "
+        max-width : min( 80.0rem, 65ch ); // browser will select the smaller of 80.0rem or 100%
+
+        font-family    : var( --font-primary-5 );
+        font-size      : 2.05rem;
+        font-weight    : 200;
+        color          : var( --gray-225 );
+        letter-spacing : 2px;
+        text-align     : center; // keep the text centered
+
+        // needed for the start of the animation
+        opacity : 0;
+
+        // ==============================
+        // will-change
+        // use either will-change or translateZ( 0 ) to " promote elements that you plan to
+        // animate "
+        // see the following article for details :
+        // " https://web.dev/articles/stick-to-compositor-only-properties-and-manage-layer-count " 
+        // ==============================
+
+        will-change : transform;
+
+        // ==============================
+        // end of will-change
+        // ==============================
+
+        // ==============================
+        // fallback animation
+        // ==============================
+
+        // ==============================
+        // option 1
+        // use the css animation property to animate the hero container on page load
+        // ==============================
+
+        // ==============================
+        // remember, older versions of Chrome and Safari do not support the linear function
+        // so we need a fallback
+        // ==============================
+
+        // ==============================
+        // fallback animation - non mobile
+        // ==============================
+
+        animation-name            : animate-on-page-load-fallback-non-mobile;
+        animation-duration        : 600ms;
+        animation-timing-function : ease-out; // standard easing
+        animation-delay           : 700ms;
+        animation-iteration-count : 1; // this is the default but leave here for reference purposes
+        animation-fill-mode       : forwards;
+
+        // ==============================
+        // end of fallback animation - non mobile
+        // ==============================
+
+        // ==============================
+        // fallback animation - mobile
+        // ==============================
+
+        // ==============================
+        // for fallback on mobile devices, just fade in the elements since
+        // " transform : translateY( ); " results in a janky user experience
+        // on mobile devices
+        // ==============================
+
+        @media all and ( max-width : $bp-480 ) {
+
+            animation-name            : animate-on-page-load-fallback-mobile;
+            animation-duration        : 1000ms;
+            animation-timing-function : ease-out; // standard easing
+            animation-delay           : 700ms;
+            animation-iteration-count : 1; // this is the default but leave here for reference purposes
+            animation-fill-mode       : forwards;
+
+        } // end of container > div > h1 > bp-480
+
+        // ==============================
+        // end of fallback animation - mobile
+        // ==============================
+
+        // ==============================
+        // end of fallback animation
+        // ==============================
+
+        // ==============================
+        // elastic animation
+        // ==============================
+
+        // ==============================
+        // option 2
+        // use the css animation property to animate the hero container on page load
+        // ==============================
+
+        // ==============================
+        // remember, I liked the spring animation too but as much as the elastic animation
+        // but Safari does not do a good job with the spring easing interpolation
+        // ==============================
+
+        // ==============================
+        // see Enchanted Ratings for an example of how to implement the spring animation
+        // ==============================
+
+        // ==============================
+        // use @supports to target browsers that support the linear() easing function that
+        // interpolates linearly between multiple points and if the browser does not support
+        // this easing function then provide a fallback animation ( see above )
+        // ==============================
+
+        @supports ( animation-timing-function: linear(
+            0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%, 0.723 12.9%, 0.938 16.7%, 1.017,
+            1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%,
+            1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%,
+            0.997 69.8%, 1.003 76.9%, 1.004 83.8%, 1
+        ) ) {
+
+            animation-name            : animate-on-page-load;
+            animation-duration        : var( --elastic-duration );
+            animation-timing-function : var( --elastic-easing );
+            animation-delay           : 800ms;
+            animation-iteration-count : 1; // this is the default but leave here for reference purposes
+            animation-fill-mode       : forwards;
+
+        } // end of @supports
+
+        // ==============================
+        // end of elastic animation
+        // ==============================
+
+    } // end of container > p
+
+} // end of container
+
+

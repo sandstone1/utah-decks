@@ -1,0 +1,281 @@
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+
+// ==============================
+// buttonMobile
+// ==============================
+
+.buttonMobile {
+
+    display : none;
+
+    @media all and ( max-width : $bp-768 ) {
+
+        display : block;
+
+        position : fixed;
+        top      : 3.0rem;
+        right    : 3.5rem;
+        z-index  : 5;
+
+        padding       : 1.0rem 2.0rem;
+        border-radius : 5.0rem;
+        border        : none;
+        outline       : none; // this removes the blue focus ring around the shopping icon
+        // after pressing the escape key to close the cart
+
+        font-family : var( --font-display-5 );
+        font-size   : 2.4rem;
+        font-weight : 700;
+        color       : var( --blue-83 );
+
+        background : var( --yellow-52 );
+        //background : var( --blue-59 );
+        background : var( --background-lg-75 );
+        //background : var( --background-lg-76 );
+        background : var( --purple-26 );
+
+        cursor     : pointer;
+
+        > svg {
+
+            margin : 0 1.0rem 0 0;
+
+            font-size : 3.2rem;
+
+            vertical-align : -0.8rem;
+
+        } // end of .buttonMobile > bp-768 > svg
+
+    } // end of .buttonMobile > bp-768
+
+    @media all and ( max-width : $bp-480 ) {
+
+        > svg {
+
+            margin : 0;
+
+            font-size : 4.25rem;
+
+            vertical-align : -1.2rem;
+
+        } // end of .buttonMobile > bp-480 > svg
+    
+    } // end of .buttonMobile > bp-480
+
+} // end of .buttonMobile
+
+
+
+
+
+
+// ==============================
+// cart container
+// ==============================
+
+.cartContainer {
+
+    // parent
+    grid-area : cart;
+
+	position   : sticky;
+    align-self : start; // my sticky element stopped working since the parent is display : grid; - " If
+    // the parent is a Flexbox or Grid container, the sticky child might be stretching to the full height
+    // of the row. The Fix: Add align-self: start; to the sticky element so it isn't "locked" to the full
+    // height of the parent. "    
+	top        : 2.0rem; // this is to provide some top padding once the user starts scrolling
+	margin     : 0;
+
+	font-size : 1.65rem; // visual preference and match course styles
+
+    @media all and ( max-width : $bp-768 ) {
+
+        // position: sticky; // with option 2, we only need position: sticky and no bottom margin declaration
+
+        position: fixed;
+        top     : 9.5rem;
+        right   : 3.5rem;
+
+        width   : 30.0rem;
+        z-index : 10;
+        padding : 2.0rem;
+
+        // cover iPhone's liquid glass area
+        padding-bottom : calc( 2.0rem + env( safe-area-inset-bottom ) );
+
+        background-color : var( --white );
+
+        box-shadow : 0 -4px 10px rgba( 0, 0, 0, 0.05 );
+
+    } // end of container > bp-768
+
+    @media all and ( max-width : $bp-480 ) {
+
+        top : 10.5rem;
+
+    } // end of container > bp-480
+
+    > h2 {
+
+        font-size : 2.6rem; // visual preference and match course styles
+        color     : var( --black );
+
+    } // end of container > h2
+
+    // ==============================
+    // container > cart items
+    // ==============================
+
+    > ul {
+
+        margin  : 1.0rem 0; // visual preference
+
+        border-top : 1px solid var( --purple-26 );
+
+        list-style : none;
+
+        > li {
+
+            display               : grid;
+            grid-template-columns : 2.0rem 1fr 4.0rem 4.0rem;
+            padding               : 0.85rem 0; // visual preference
+        
+            border-bottom : 1px solid var( --purple-26 );
+
+            font-variant : tabular-nums; // great font for the cart and the numbers are made
+            // equal width, while the letters remain proportional, beautiful and easy to read
+
+            > span:nth-child( 1 ) {
+
+                color : var( --purple-130 );
+
+            } // end of container > ul > li > span:nth-child( 1 )
+    
+            > span:nth-child( 2 ) {
+
+                font-weight : 500;
+	            color       : var( --black );
+
+            } // end of container > ul > li > span:nth-child( 2 )
+
+            > span:nth-child( 3 ) > button {
+
+                border : 0;
+
+                font-size   : 1.8rem;
+                font-weight : 900;
+                color       : var( --purple-130 );
+
+                background : none;
+
+            } // end of container > ul > li > span:nth-child( 3 )
+
+            > span:nth-child( 4 ) {
+
+                color      : var( --purple-130 );
+                text-align : right;
+
+            } // end of container > ul > li > span:nth-child( 4 )
+
+        } // end of container > ul > li
+
+    } // end of container > ul
+
+    // ==============================
+    // container > cart details
+    // ==============================
+
+    > div:nth-child( 3 ) {
+
+        font-size : 1.65rem;
+        color     : var( --black );
+
+        > p:nth-child( 1 ), p:nth-child( 2 ), p:nth-child( 3 ) {
+
+            display         : flex;
+            justify-content : space-between;
+            margin          : 0.50rem 0 0;
+
+            > span {
+
+                margin-right : auto; // use this to push the delete text to the right
+
+            } // end of container > div:nth-child( 3 ) > p:nth-child( 1 ), p:nth-child( 2 ), p:nth-child( 3 ) > span
+
+        }  // end of container > div:nth-child( 3 ) > p:nth-child( 1 ), p:nth-child( 2 ), p:nth-child( 3 )
+
+        // styles just for the second span element
+        > p:nth-child( 2 ) {
+        
+            > del {
+
+                margin : 0 1.0rem 0 0;
+    
+                font-weight : 300;
+                color       : var( --purple-130 );
+    
+            } // end of container > div:nth-child( 3 ) > p:nth-child( 2 ) > del
+
+            // ins stands for inserted text and this automatically puts an underline underneth your text
+            > ins {
+
+                font-weight : 500;
+                color       : var( --purple-130 );
+    
+            } // end of container > div:nth-child( 3 ) > p:nth-child( 2 ) > ins
+
+        } // end of container > div:nth-child( 3 ) > p:nth-child( 2 )
+
+        > p:nth-child( 4 ) > button {
+
+            display : block;
+            margin  : 1.5rem 0 0 0;
+            padding : 0.75rem 1.5rem;
+        
+            border        : 0;
+            border-radius : 0.50rem;
+
+            font-family     : var( --font-primary-5 );
+            font-size       : 1.80rem;
+            font-weight     : 700;
+            color           : var( --white );
+            text-decoration : none;
+        
+            background-color : var( --black );
+            transition       : background-color 0.3s ease-out;
+
+            &:hover {
+
+                cursor           : pointer;
+                background-color : var( --purple-350 );
+
+            } // end of container > div:nth-child( 3 ) > p:nth-child( 4 ) > &:hover
+
+            &:is( :active, :focus ) {
+
+                outline        : 2px solid var( --black );
+                outline-offset : 4px;
+
+            } // end of container > div:nth-child( 3 ) > p:nth-child( 4 ) > &:is( :active, :focus )
+
+        } // end of container > div:nth-child( 3 ) > p:nth-child( 4 )
+
+    } // end of container > div:nth-child( 3 )
+
+} // end of container
+

@@ -1,0 +1,77 @@
+---
+
+// ==============================
+// imports
+// ==============================
+
+// import in page layout
+import Layout from '../layouts/main-layout.astro';
+// import in the Hero header component
+import HeroHeaderComponent from '../components/react/hero/hero-header';
+// import in our styles
+import styles from './404.module.scss';
+
+---
+
+<Layout>
+
+    {
+        /*
+            // ==============================
+            // container
+            // ==============================
+        */
+    }
+    <div class={ styles.notFoundContainer }>
+
+        <HeroHeaderComponent client:load />
+
+        <div>
+
+            <h1>Sorry, that page can't be found</h1>
+
+
+            {
+                /*
+                    // ==============================
+                    // container > div 1 > div 2 ( wrapper div ) > div 1 > picture 1 ( bluish picture of Benjamin Franklin )
+                    // ==============================
+
+                    // ==============================
+                    // remember, add the width and height to the image tag so
+                    // that the content below this div does not appear for a
+                    // split second on page load
+                    // ==============================
+
+                    // ==============================
+                    // remember, in order to make the width and height responsive,
+                    // we had to set the width percentage in the css file and on
+                    // the parent div
+                    // ==============================
+                */
+            }
+            <picture>
+                <source 
+                    srcset={ '/images/404_06_650.webp' }
+                    type={ 'image/webp' }
+                />
+                <img
+                    src={ '/images/404_06_650.png' }
+                    width={ '650px' }
+                    height={ '650px' }
+                    fetchpriority={ 'high' }
+                    alt={ 'A robot staring a map looking surprised and lost' }
+                />
+            </picture>
+
+            <p>Looks like the page you requested doesn't exist.</p>
+
+            <p><a href="/">&larr; back home</a></p>
+
+
+        </div>
+
+    </div>
+
+</Layout>
+

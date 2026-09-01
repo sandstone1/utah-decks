@@ -1,0 +1,396 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../styles/_mixins.scss' as *;
+@use '../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// keyframes 1
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+@keyframes move-1 {
+
+    from {
+
+        // see step 70 of the app-cimikoski-stem-cells.js for a border radius definition
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this will start the blob 100px to the
+        // left and 50px up from its initial position
+        transform : translate( -100px, -50px ) rotate( -90deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 100px down from its starting position
+
+        // the ending rotate of -10deg will rotate the blob up and to the left
+        transform : translate( 500px, 100px ) rotate( -10deg );
+
+    } // end of to
+  
+} // end of move-1
+
+
+// ==============================
+// keyframes 2
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-2 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 0, 50px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 50px, -50px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-2
+
+
+// ==============================
+// keyframes 3
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-3 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 0, 25px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 50px, -50px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-3
+
+
+// ==============================
+// keyframes 4
+// ==============================
+
+// ==============================
+// move the animating gradient
+// ==============================
+
+// ==============================
+// purpose : move the blob around the container
+// ==============================
+
+// ==============================
+// remember, I reduced the distance traveled in move-2 so that the blog would not create
+// layout errors when resizing the window
+// ==============================
+
+@keyframes move-4 {
+
+    from {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 24% 76% 35% 65% / 27% 36% 64% 73%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this will start the blob 600px to the
+        // right and 100px down from its initial position
+        transform : translate( 0, 25px ) rotate( -20deg );
+
+    } // end of from
+  
+    to {
+
+        // the border radius create the blob shape; otherwise, without the border
+        // radius we have a square
+        // border-radius : 76% 24% 33% 67% / 68% 55% 45% 32%;
+        border-radius : 0.6rem;
+
+        // remember, translate( x, y ) and this move the blob to its ending position
+        // or 500px to the right and 50px up from its starting position
+
+        // the ending rotate of -100deg will rotate the blob down and to the right
+        transform : translate( 0, -50px ) rotate( -100deg );
+
+    } // end of to
+  
+} // end of move-4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// square container ( square slowing moving around )
+// ==============================
+
+// ==============================
+// remember, the inspiration for this blob came from : " https://codepen.io/thedevenv/pen/JjrXayd "
+// ==============================
+
+.squareContainer {
+
+    // parent
+    grid-column : 1 / -1;
+
+    position : absolute;
+    top      : 8.0rem;
+    right    : 150px; // this is just enough to keep the box on the screen at all time and to the right
+    width    : 60.0rem;
+    height   : 60.0rem;
+
+    // ==============================
+    // remember, this works fine in Chrome and Sarafi but it does not work correctly in Firefox 
+    // ==============================
+
+    background     : linear-gradient( 180deg, var( --blue-green-500 ) 31.77%, var( --blue-66 ) 100% );
+
+    // ==============================
+    // remember, this piece of code will only apply to Firefox and Chrome and Sarafi will ignore it
+    // ==============================
+
+    // use this piece of code to turn off the animation for Firefox since as of 6-10-24
+    // Firefox does not support @property and once it does and people have migrated to
+    // using new versions ( maybe a year from now? ) then take this piece of code out
+    // and see the article for details on targeting Firefox browsers :
+    // " https://stackoverflow.com/questions/952861/targeting-only-firefox-with-css?noredirect=1&lq=1
+    @-moz-document url-prefix() {
+
+        background : rgba( 47, 184, 255, 0.75 ); // this is only one I could get to work in Firefox
+
+    } // end @-moz-document url-prefix()
+
+    // remember, frpm web.dev : " If you use color-dodge, it lightens the background color to reflect
+    // the source color. Pure black colors see no effect from this mode. " and this is why we can
+    // see through the background color, in part, to see the image behind the background color
+    mix-blend-mode : color-dodge; // this provided for a very nice effect
+
+    // transition                : 1s cubic-bezier( 0.07, 0.8, 0.16, 1 ); // this cubic-bezier starts off really fast
+    // and slows down ( see how it looks here : https://www.w3schools.com/cssref/tryit.php?filename=trycss_func_cubic-bezier2 )
+    // and remmeber, the transition is only needed if we have a hover state
+
+    animation-name            : move-2;
+    animation-duration        : 15.0s; // took the duration down from 25s to 10s since I reduced the amount of movement
+    animation-direction       : alternate;
+    animation-iteration-count : infinite;
+
+    @media all and ( max-width : $bp-2080 ) {
+
+        width  : 55.0rem;
+        height : 55.0rem;
+
+    } // end of container > bp-2080
+
+    @media all and ( max-width : $bp-1536 ) {
+
+        width  : 50.0rem;
+        height : 50.0rem;
+
+    } // end of container > bp-1536
+
+    @media all and ( max-width : $bp-1376 ) {
+
+        width  : 50.0rem;
+        height : 50.0rem;
+
+    } // end of container > bp-1376
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        width  : 45.0rem;
+        height : 45.0rem;
+
+    } // end of container > bp-1280
+
+    @media all and ( max-width : $bp-1032 ) {
+
+        right : 140px; // this is just enough to keep the box on the screen at all time and to the right
+
+        animation-name     : move-3;
+        animation-duration : 15.0s;
+
+    } // end of container > bp-1032
+
+    @media all and ( max-width : $bp-920 ) {
+
+        right  : 125px; // this is just enough to keep the box on the screen at all time and to the right
+        width  : 40.0rem;
+        height : 40.0rem;
+
+    } // end of container > bp-920
+
+    @media all and ( max-width : $bp-768 ) {
+
+        right  : 100px; // this is just enough to keep the box on the screen at all time and to the right
+        width  : 37.5rem;
+        height : 37.5rem;
+
+        animation-name     : move-4;
+        animation-duration : 15.0s;
+
+    } // end of container > bp-768
+
+    @media all and ( max-width : $bp-620 ) {
+
+        // ==============================
+        // center square
+        // ==============================
+
+        // see the number 1 answer in stackover on how to center an absolutely positioned
+        // element :
+        // " https://stackoverflow.com/questions/8508275/how-to-center-a-position-absolute-element "
+        right  : 0;
+        left   : 0;
+        width  : 35.0rem;
+        height : 35.0rem;
+        margin : 0 auto;
+
+    } // end of container > bp-620
+
+    @media all and ( max-width : $bp-480 ) {
+
+        width  : 30.0rem;
+        height : 30.0rem;
+
+    } // end of container > bp-480
+
+    @media all and ( max-width : 430px ) {
+
+        width  : 27.5rem;
+        height : 27.5rem;
+
+    } // end of container > 420px
+
+    @media all and ( max-width : 395px ) {
+
+        width  : 25.0rem;
+        height : 25.0rem;
+
+    } // end of container > 395px
+
+    @media all and ( max-width : $bp-375 ) {
+
+        width  : 22.5rem;
+        height : 22.5rem;
+
+    } // end of container > bp-375
+
+    @media all and ( max-width : 350px ) {
+
+        width  : 20.0rem;
+        height : 20.0rem;
+
+    } // end of container > 350px
+
+} // end of container
+
+

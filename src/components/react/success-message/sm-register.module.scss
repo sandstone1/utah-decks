@@ -1,0 +1,46 @@
+
+
+
+// ==============================
+// PARTIAL IMPORTS
+// ==============================
+
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+// ==============================
+// SUCCESS MESSAGE CONTAINER
+// ==============================
+
+.successMessageContainer {
+
+    position : relative;
+    padding  : 4.0rem 6.0rem;
+
+    border-radius : 3px;
+
+    // green gradiant
+    background : var( --sm-background-1 );
+
+    > h3 {
+
+        font-family : var( --font-primary-5 );
+        font-size   : 1.75rem;
+        font-weight : 400;
+        color       : var( --gray-900 );
+
+    } // end of container > h3
+
+    > span {
+
+        position : absolute;
+        top      : 8px;
+        right    : 8px;
+
+        cursor : pointer;
+
+    } // end of container > span
+
+} // end of container
+

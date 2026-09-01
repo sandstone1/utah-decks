@@ -1,0 +1,191 @@
+
+
+
+
+// ==============================
+// notes
+// ==============================
+
+// ==============================
+// please see the following article for a good overview of radial gradients :
+// " https://www.programiz.com/css/radial-gradient "
+// ==============================
+
+// ==============================
+// please see the following stackoverflow answer on how to create a circular
+// gradient with a blur using css :
+// " Css create a circular gradient with a blur " and
+// " https://stackoverflow.com/questions/71765281/css-create-a-circular-gradient-with-blur "
+// ==============================
+
+
+
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+// ==============================
+// shapes container
+// ==============================
+
+.shapesContainer {
+
+    // ==============================
+    // container > div 1
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        position : absolute; // give the gradient a position within the container
+        top      : 83.0rem;
+        right    : 30.0rem;
+        width    : 25.0rem; // give the gradient a width and height
+        height   : 25.0rem;
+
+        display     : grid;
+        place-items : center;
+
+        @media all and ( max-width : $bp-1536 ) {
+
+            right : 60.0%;
+
+        } // end of container > div1 > bp-1536
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            right : 62.5%;
+
+        } // end of container > div1 > bp-1280
+
+        @media all and ( max-width : $bp-920 ) {
+
+            right : 65.0%;
+
+        } // end of container > div1 > bp-920
+
+        @media all and ( max-width : $bp-620 ) {
+
+            right : 52.5%;
+
+        } // end of container > div1 > bp-620
+
+        @media all and ( max-width : $bp-480 ) {
+
+            right : 50.0%;
+
+        } // end of container > div1 > bp-480
+
+        @media all and ( max-width : $bp-375 ) {
+            
+            top   : 90.5rem;
+            right : 40.0%;
+
+        } // end of container > div1 > bp-375
+
+        > div {
+
+            width   : 100%;
+            height  : 100%;
+
+            border-radius : 50%;
+
+            // white, --blue-green-200, --blue-green-200
+            background-image : radial-gradient( circle at center, rgba( 255, 255, 255, 0 ), rgba( 64, 224, 208, 0.75 ) 1%, rgba( 64, 224, 208, 0.50 ) 50% );
+
+            filter           : blur( 4.5rem );
+
+            @media all and ( max-width : $bp-1536 ) {
+
+                // white, --blue-green-200, --blue-green-200
+                background-image : radial-gradient( circle at center, rgba( 255, 255, 255, 0 ), rgba( 64, 224, 208, 0.25 ) 1%, rgba( 64, 224, 208, 0.50 ) 50% );
+
+            } // end of container > div1 > div1 > bp-1536
+
+        } // end of container > div1 > div1
+
+    } // end of container > div1
+
+    // ==============================
+    // container > div 2
+    // ==============================
+
+    > div:nth-child( 2 ) {
+
+        position : absolute; // give the gradient a position within the container
+        top      : 105.0rem;
+        right    : 8.0rem;
+        width    : 50.0rem; // give the gradient a width and height
+        height   : 50.0rem;
+
+        display     : grid;
+        place-items : center;
+
+        @media all and ( max-width : $bp-1536 ) {
+
+            top   : 102.5rem;
+            right : 42.5%;
+
+        } // end of container > div2 > bp-1536
+
+        @media all and ( max-width : $bp-768 ) {
+
+            right : 37.5%;
+
+        } // end of container > div2 > bp-768
+
+        @media all and ( max-width : $bp-620 ) {
+
+            right : 25.0%;
+
+        } // end of container > div2 > bp-620
+
+        @media all and ( max-width : $bp-480 ) {
+
+            right : 12.5%;
+
+        } // end of container > div2 > bp-480
+
+        @media all and ( max-width : $bp-375 ) {
+
+            top   : 110.0rem;
+            right : 10.0%;
+
+        } // end of container > div2 > bp-375
+
+        > div {
+
+            width   : 100%;
+            height  : 100%;
+
+            border-radius : 50%;
+
+            // white, purple-100, purple-100
+            background-image : radial-gradient( circle at center, rgba( 255, 255, 255, 0 ), rgba( 147, 112, 219, 0.75 ) 1%, rgba( 147, 112, 219, 0.50 ) 50% );
+            filter           : blur( 4.5rem );
+
+            @media all and ( max-width : $bp-1536 ) {
+
+                // white, purple-100, purple-100
+                background-image : radial-gradient( circle at center, rgba( 255, 255, 255, 0 ), rgba( 147, 112, 219, 0.25 ) 1%, rgba( 147, 112, 219, 0.15 ) 50% );
+
+            } // end of container > div2 > div1 > bp-1536
+
+        } // end of container > div2 > div1
+
+    } // end of container > div2
+
+} // end of container
+

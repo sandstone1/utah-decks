@@ -1,0 +1,133 @@
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+// ==============================
+// header container
+// ==============================
+
+.headerContainer {
+
+    // parent
+    grid-area : header;
+
+    // children
+    display               : grid;
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+    align-items           : center;
+    justify-content       : center;
+
+    margin : 0 0 0 0;
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // once the nav left ( i.e. company name and logo ) and nav right
+    // ( i.e. hamburger menu ) go vertical then we need to adjust the placement
+    // of the content that sits inside the header ( i.e. the nav element )
+    // so that we push the nav element down so that we have some spacing above
+    // the nav left div or above the company name and logo and the top of the
+    // website screen
+    // ==============================
+
+    @media all and ( max-width : $bp-620 ) {
+
+        align-content : end;
+
+        margin : 0 0 1.0rem 0;
+
+    } // end of container > bp-620
+
+    // ==============================
+    // IMPORTANT!!
+    // decided to turn off the show and hide header for this project and it would be more useful
+    // to go with a position : sticky header for a typical site or an ecommerce site ( Airbnb uses
+    // position sticky )
+    // ==============================
+
+    // ==============================
+    // but keep the code in the layout section as reference in case we ever decide to go back to
+    // this header solution
+    // ==============================
+
+    // ==============================
+    // for our hero section, we would want the header background to be transparent at the top
+    // of the page but as we start to scroll down, we would change the background to maybe
+    // var( --gray-600 ) using our scroll logic below and keep it at var( --gray-600 ) on the
+    // way down the page and on the way up the page until we get to the top of the page
+    // and then we would change the background back to transparent
+    // ( see https://www.logospropertycare.com/ for an example of this effect )
+    // ==============================
+/*
+    // ==============================
+    // this is code for showing and hiding the header component on scroll up and scroll down
+    // ==============================
+
+    position : fixed;
+    top      : 0;
+    left     : 0;
+    z-index  : 20; // give it a high z-index so it overrides all other z-indexes
+    
+    // we have to add back in height
+    height : 160px;
+
+    // transition the showing and hiding of the header component
+    transition : all 400ms ease-out;
+
+    // this style is propagated  by code inside the useEffect hook 11 inside the index.js file
+
+    // remember, & makes this .headerContainer.scrollUp vs .headerContainer . scrollUp and is
+    // needed in order for the add or remove class to work in the useEffect hook in header.js
+    &.scrollUp {
+
+        // provide the background for the header
+        background : linear-gradient( to top, rgba( 0, 125, 240, 1 ) 0%, rgba( 0, 91, 234, 1 ) 100% ); // better for shorter screens
+
+        // filter : drop-shadow( offset-x offset-y blur-radius color );
+        filter : drop-shadow( 0 -10px 20px rgba( 170, 170, 170, 1 ) );
+
+    }// end of container > &.scroll-up
+
+    // this style is propagated by code inside the useEffect hook 11 inside the index.js file
+
+    // remember, & makes this .headerContainer.scrollUp vs .headerContainer . scrollUp and is
+    // needed in order for the add or remove class to work in the useEffect hook in header.js
+    &.scrollDown {
+
+        // hide the header off screen and the transition will move it up gracefully as we scroll
+        // down
+        transform : translate3d( 0, -100%, 0 );
+    
+    } // end of container > &.scroll-down
+
+    // ==============================
+    // END OF this is code for showing and hiding the header component on scroll up and scroll
+    // down
+    // ==============================
+*/
+
+} // end of container
+

@@ -1,0 +1,56 @@
+
+
+
+// ==============================
+// PARTIAL IMPORTS
+// ==============================
+
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+// ==============================
+// SUCCESS MESSAGE CONTAINER
+// ==============================
+
+.successMessageContainer {
+
+    position : relative;
+    margin   : 0 0 3.0rem 0;
+    padding  : 4.0rem 6.0rem;
+
+    border-radius : 3px;
+
+    // green gradiant
+    background : var( --sm-background-1 );
+
+    @media all and ( max-width : $bp-480 ) {
+
+        padding  : 4.0rem 3.0rem;
+
+    } // end of container > bp-480
+
+    > h3 {
+
+        font-family : var( --font-primary-5 );
+        font-size   : 1.75rem;
+        font-weight : 400;
+        color       : var( --gray-900 );
+
+        white-space : pre-line; // this key value pair plus using " \n " will create a line
+        // break inside the h3 element
+
+    } // end of container > h3
+
+    > span {
+
+        position : absolute;
+        top      : 8px;
+        right    : 8px;
+
+        cursor : pointer;
+
+    } // end of container > span
+
+} // end of container
+

@@ -1,0 +1,822 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// our process container
+// ==============================
+
+.ourProcessContainer {
+
+    // ==============================
+    // div 9 in the index.js file
+    // ==============================
+
+    // parent
+    grid-area   : div9; // refer to parent for details on div3
+    grid-column : 1 / -1; // center against the parent grid
+
+    // children
+    display               : grid;
+    grid-template-rows    : auto;
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // remember, there are 2 things we want to accomplish :
+    // 1 - allow the wrapper div to position against the parent div and thereby
+    // shrink as needed
+    // 2 - we want to center the wrapper div ( see below for details )
+    // ==============================
+
+    // ==============================
+    // " grid-template-columns " is needed so that the wrapper div ( i.e. child ) can position
+    // against the parent ( i.e. this div ) by using " grid-column : 2 / 22; " and this allows
+    // the background declared below to span across the entire container or the entire site and
+    // this also allows the wrapper div to dynamically contain its children within the
+    // " grid-column : 2 / 22; " context so that as the screen size shrinks the wrapper div
+    // container and all its children containers or divs will automatically shrink as well
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    justify-items         : center;
+
+    // ==============================
+    // remember, I had to add " position : relative; " for the absolutely positioned
+    // svg shape div below to work
+    // ==============================
+
+    position : relative;
+    z-index  : 1;
+    padding  : 12.0rem 0 12.0rem 0;
+
+    // ==============================
+    // background
+    // ==============================
+
+    // background : var( --gray-230 );
+
+    // background : var( --blue-64 );
+    // background : var( --blue-62 );
+    // background : var( --yellow-60 );
+    //background : var( --green-10 );
+    // background : var( --green-20 );
+    // background : var( --background-lg-2 );
+    // background : var( --gray-190 );
+    // background : var( --background-lg-38 );
+    // background : var( --blue-75 );
+    // background       : var( --background-lg-42-1 );
+    // background-image : var( --background-lg-42-2 );
+    // background : var( --background-lg-46 );
+
+    // background  : url( /textures/kindajean.png );
+    // background  : url( /textures/whitey.png );
+    // background  : url( /textures/light_toast.png );
+    // background  : url( /textures/linen.png );
+
+    // background : var( --blue-59 );
+    // background : var( --yellow-55 );
+    // background : var( --green-10 );
+    background : var( --yellow-20 );
+    // background : var( --yellow-30 );
+    // background : var( --yellow-40 );
+    // background : var( --green-06 ); // great background color and it warms up the site;
+    // however, does not mesh as well as --gray-230 when you have white blocks on the top
+    // of the background but that's not appliable in this case since we are using
+    // --green-23 or none as the background
+    background : var( --gray-872 );
+    //background : var( --gray-850 );
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+        // children
+        display               : grid;
+        grid-template-rows    : auto auto;
+        grid-template-columns : 1fr;
+        grid-gap              : 2.0rem 0;
+        grid-template-areas   : "h2"
+                                "div";
+
+        // make this section sit above the animating gradient
+        z-index : 1;
+        width   : min( 192.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
+
+        @media all and ( max-width : $bp-1536 ) {
+
+            width   : min( 144.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
+
+        } // end of container > div1 > bp-1536
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            width   : min( 80.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
+
+        } // end of container > div1 > bp-1280
+
+        > h2 {
+
+            // parent
+            grid-area : h2;
+
+            @include h2-light-title;
+
+            opacity : 0; // needed for the opacity and slide up animation
+
+            @media all and ( max-width : $bp-1728 ) {
+
+                opacity : 1; // decided to remove the slide in animation for mobile devices
+    
+            } // end of container > div1 > h2 > bp-1728
+
+            @media all and ( max-width : $bp-1536 ) {
+
+                justify-self : left;
+    
+            } // end of container > div1 > h2 > bp-1536
+
+        }  // end of container > div1 > h2
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges )
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            // parent
+            grid-area : div;
+
+            display               : grid;
+            grid-template-rows    : repeat( 2, auto );
+            grid-template-columns : 1fr 1fr 1fr;
+            grid-gap              : 12.0rem 12.0rem;
+            grid-template-areas   : "div1 div2 div3"
+                                    "div4    .    .";
+
+            @media all and ( max-width : $bp-1728 ) {
+
+                grid-template-rows    : repeat( 2, auto );
+                grid-template-columns : 1fr 1fr;
+                grid-gap              : 12.0rem 12.0rem;
+                grid-template-areas   : "div1 div2"
+                                        "div3 div4";
+    
+            } // end of container > div1 > div2 > bp-1728
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                grid-template-rows    : repeat( 4, auto );
+                grid-template-columns : 1fr;
+                grid-gap              : 12.0rem 0;
+                grid-template-areas   : "div1"
+                                        "div2"
+                                        "div3"
+                                        "div4";
+    
+            } // end of container > div1 > div2 > bp-1280
+
+            // ==============================
+            // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges ) > div 1 ( badge 1 )
+            // ==============================
+
+            > div:nth-child( 1 ) {
+
+                // parent
+                grid-area : div1;
+
+                // children
+                display               : grid;
+                grid-template-rows    : auto auto 1fr;
+                grid-template-columns : 1fr;
+                align-content         : start;
+                grid-gap              : 2.0rem 0;
+                grid-template-areas   : "h3"
+                                        "p2"
+                                        "picture";
+
+                margin : 0;
+        
+                // ==============================
+                // create a card
+                // ==============================
+
+                padding : 6.0rem;
+
+                border-radius : 6px;
+
+                background : var( --yellow-120 );
+
+                // ==============================
+                // end of create a card
+                // ==============================
+
+                opacity: 0; // needed for the opacity and slide in animation
+
+                @media all and ( max-width : $bp-1728 ) {
+
+                    opacity : 1; // decided to remove the slide in animation for smaller devices
+        
+                } // end of container > div1 > div2 > div1 > bp-1728
+
+                @media all and ( max-width : $bp-1280 ) {
+
+                    grid-template-columns : 2fr 1fr;
+                    grid-gap              : 2.0rem 6.0rem;
+                    grid-template-areas   : "h3      h3"
+                                            "p2 picture";
+        
+                } // end of container > div1 > div2 > div1 > bp-1280
+
+                @media all and ( max-width : $bp-768 ) {
+
+                    display               : grid;
+                    grid-template-rows    : auto auto 1fr;
+                    grid-template-columns : 1fr;
+                    align-items           : start;
+                    grid-gap              : 2.0rem 0;
+                    grid-template-areas   : "h3"
+                                            "p2"
+                                            "picture";
+
+                    opacity : 1; // decided to remove the slide in animation for mobile devices
+
+                }  // end of container > div1 > div2 > div1 > bp-768
+
+                @media all and ( max-width : 359px ) {
+
+                    padding : 4.0rem 3.3rem;
+    
+                } // end of container > div1 > div2 > div1 > 359px
+
+                // ==============================
+                // container > div 1 > div 2 > div 1 > h3
+                // ==============================
+
+                > h3 {
+
+                    // parent
+                    grid-area : h3;
+
+                    @include h4-dark-title;
+
+                    line-height : 1.3; // visual preference and needed for when the
+                    // h1 splits into 2 lines
+
+                } // end of container > div1 > div2 > div1 > h3
+
+                // ==============================
+                // container > div 1 > div 2 > div 1 > p
+                // ==============================
+
+                > p:nth-child( 2 ) {
+
+                    // parent
+                    grid-area : p2;
+
+                    @include text-base-dark;
+
+                    margin : 0 0 2.0rem 0;
+
+                } // end of container > div1 > div2 > div1 > p
+
+                // ==============================
+                // container > div 1 > div 2 > div 1 > picture
+                // ==============================
+
+                > picture {
+
+                    // parent
+                    grid-area : picture;
+
+                    align-self   : end; 
+                    justify-self : center;
+
+                    @media all and ( max-width : $bp-768 ) {
+
+                        justify-self : center;
+        
+                    } // end of container > div1 > div2 > div1 > picture > bp-768
+
+                    > img {
+
+                        display : block;
+
+                        // this blends my Mid Journey pictures into the background color perfectly
+                        // and makes white pixels completely transparent and keeps black pixels
+                        // visible — works perfectly with black and white illustrations on
+                        // colored backgrounds without needing to remove the background at all
+                        mix-blend-mode : multiply;
+
+                        border-radius : 6px;
+
+                    } // end of container > div1 > div2 > div1 > picture > img
+
+                } // end of container > div1 > div2 > div1 > picture
+
+            } // end of container > div1 > div2 > div1
+
+            // ==============================
+            // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges ) > div 2 ( badge 2 )
+            // ==============================
+
+            > div:nth-child( 2 ) {
+
+                // parent
+                grid-area : div2;
+
+                // children
+                display               : grid;
+                grid-template-rows    : auto auto 1fr;
+                grid-template-columns : 1fr;
+                align-content         : start;
+                grid-gap              : 2.0rem 0;
+                grid-template-areas   : "h3"
+                                        "p2"
+                                        "picture";
+
+                margin : 0;
+        
+                // ==============================
+                // create a card
+                // ==============================
+
+                padding : 6.0rem;
+
+                border-radius : 6px;
+
+                background : var( --yellow-120 );
+
+                // ==============================
+                // end of create a card
+                // ==============================
+
+                opacity: 0; // needed for the opacity and slide in animation
+
+                @media all and ( max-width : $bp-1728 ) {
+
+                    opacity : 1; // decided to remove the slide in animation for smaller devices
+        
+                } // end of container > div1 > div2 > div2 > bp-1728
+
+                @media all and ( max-width : $bp-1280 ) {
+
+                    grid-template-columns : 2fr 1fr;
+                    grid-gap              : 2.0rem 6.0rem;
+                    grid-template-areas   : "h3      h3"
+                                            "p2 picture";
+        
+                } // end of container > div1 > div2 > div2 > bp-1280
+
+                @media all and ( max-width : $bp-768 ) {
+
+                    display               : grid;
+                    grid-template-rows    : repeat( 3, auto );
+                    grid-template-columns : 1fr;
+                    align-items           : start;
+                    grid-gap              : 2.0rem 0;
+                    grid-template-areas   : "h3"
+                                            "p2"
+                                            "picture";
+
+                    opacity : 1; // decided to remove the slide in animation for mobile devices
+
+                }  // end of container > div1 > div2 > div2 > bp-768
+
+                @media all and ( max-width : 359px ) {
+
+                    padding : 4.0rem 3.3rem;
+    
+                } // end of container > div1 > div2 > div2 > 359px
+
+                // ==============================
+                // container > div 1 > div 2 > div 2 > h3
+                // ==============================
+
+                > h3 {
+
+                    // parent
+                    grid-area : h3;
+
+                    @include h4-dark-title;
+
+                    line-height : 1.3; // visual preference and needed for when the
+                    // h1 splits into 2 lines
+
+                } // end of container > div1 > div2 > div2 > h3
+
+                // ==============================
+                // container > div 1 > div 2 > div 2 > p
+                // ==============================
+
+                > p:nth-child( 2 ) {
+
+                    // parent
+                    grid-area : p2;
+
+                    @include text-base-dark;
+
+                    margin : 0 0 2.0rem 0;
+
+                } // end of container > div1 > div2 > div2 > p
+
+                // ==============================
+                // container > div 1 > div 2 > div 2 > picture
+                // ==============================
+
+                > picture {
+
+                    // parent
+                    grid-area : picture;
+
+                    align-self   : end; 
+                    justify-self : center;
+
+                    @media all and ( max-width : $bp-768 ) {
+
+                        justify-self: center;
+        
+                    } // end of container > div1 > div2 > div2 > picture > bp-768
+
+                    > img {
+
+                        display : block;
+
+                        // this blends my Mid Journey pictures into the background color perfectly
+                        // and makes white pixels completely transparent and keeps black pixels
+                        // visible — works perfectly with black and white illustrations on
+                        // colored backgrounds without needing to remove the background at all
+                        mix-blend-mode : multiply;
+
+                        border-radius : 6px;
+
+                    } // end of container > div1 > div2 > div2 > picture > img
+
+                } // end of container > div1 > div2 > div2 > picture
+
+            } // end of container > div1 > div2 > div2
+
+            // ==============================
+            // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges ) > div 3 ( badge 3 )
+            // ==============================
+
+            > div:nth-child( 3 ) {
+
+                // parent
+                grid-area : div3;
+
+                // children
+                display               : grid;
+                grid-template-rows    : auto auto 1fr;
+                grid-template-columns : 1fr;
+                align-content         : start;
+                grid-gap              : 2.0rem 0;
+                grid-template-areas   : "h3"
+                                        "p2"
+                                        "picture";
+
+                margin : 0;
+        
+                // ==============================
+                // create a card
+                // ==============================
+
+                padding : 6.0rem;
+
+                border-radius : 6px;
+
+                background : var( --yellow-120 );
+
+                // ==============================
+                // end of create a card
+                // ==============================
+
+                opacity: 0; // needed for the opacity and slide in animation
+
+                @media all and ( max-width : $bp-1728 ) {
+
+                    background : var( --blue-62-1 );
+                    opacity    : 1; // decided to remove the slide in animation for smaller device
+        
+                } // end of container > div1 > div2 > div3 > bp-1728
+
+                @media all and ( max-width : $bp-1280 ) {
+
+                    grid-template-columns : 2fr 1fr;
+                    grid-gap              : 2.0rem 6.0rem;
+                    grid-template-areas   : "h3      h3"
+                                            "p2 picture";
+        
+                } // end of container > div1 > div2 > div3 > bp-1280
+
+                @media all and ( max-width : $bp-768 ) {
+
+                    display               : grid;
+                    grid-template-rows    : repeat( 3, auto );
+                    grid-template-columns : 1fr;
+                    align-items           : start;
+                    grid-gap              : 2.0rem 0;
+                    grid-template-areas   : "h3"
+                                            "p2"
+                                            "picture";
+
+                    opacity : 1; // decided to remove the slide in animation for mobile devices
+
+                }  // end of container > div1 > div2 > div3 > bp-768
+
+                @media all and ( max-width : 359px ) {
+
+                    padding : 4.0rem 3.3rem;
+    
+                } // end of container > div1 > div2 > div3 > 359px
+
+                // ==============================
+                // container > div 1 > div 2 > div 3 > h3
+                // ==============================
+
+                > h3 {
+
+                    // parent
+                    grid-area : h3;
+
+                    @include h4-dark-title;
+
+                    line-height : 1.3; // visual preference and needed for when the
+                    // h1 splits into 2 lines
+
+                } // end of container > div1 > div2 > div3 > h3
+
+                // ==============================
+                // container > div 1 > div 2 > div 3 > p
+                // ==============================
+
+                > p:nth-child( 2 ) {
+
+                    // parent
+                    grid-area : p2;
+
+                    @include text-base-dark;
+
+                    margin : 0 0 2.0rem 0;
+
+                } // end of container > div1 > div2 > div3 > p
+
+                // ==============================
+                // container > div 1 > div 2 > div 3 > picture
+                // ==============================
+
+                > picture {
+
+                    // parent
+                    grid-area : picture;
+
+                    align-self   : end; 
+                    justify-self : center;
+
+                    @media all and ( max-width : $bp-768 ) {
+
+                        justify-self: center;
+        
+                    } // end of container > div1 > div2 > div3 > picture > bp-768
+
+                    > img {
+
+                        display : block;
+
+                        // this blends my Mid Journey pictures into the background color perfectly
+                        // and makes white pixels completely transparent and keeps black pixels
+                        // visible — works perfectly with black and white illustrations on
+                        // colored backgrounds without needing to remove the background at all
+                        mix-blend-mode : multiply;
+
+                        border-radius : 6px;
+
+                    } // end of container > div1 > div2 > div3 > picture > img
+
+                } // end of container > div1 > div2 > div3 > picture
+
+            } // end of container > div1 > div2 > div3
+
+            // ==============================
+            // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges ) > div 4 ( badge 4 )
+            // ==============================
+
+            > div:nth-child( 4 ) {
+
+                // parent
+                grid-area : div4;
+
+                // children
+                display               : grid;
+                grid-template-rows    : auto auto 1fr;
+                grid-template-columns : 1fr;
+                align-content         : start;
+                grid-gap              : 2.0rem 0;
+                grid-template-areas   : "h3"
+                                        "p2"
+                                        "picture";
+
+                margin : 0;
+        
+                // ==============================
+                // create a card
+                // ==============================
+
+                padding : 6.0rem;
+
+                border-radius : 6px;
+
+                // background : var( --yellow-120 );
+                background : var( --blue-62-1 );
+
+                // ==============================
+                // end of create a card
+                // ==============================
+
+                opacity: 0; // needed for the opacity and slide in animation
+
+                @media all and ( max-width : $bp-1728 ) {
+
+                    opacity : 1; // decided to remove the slide in animation for smaller device
+        
+                } // end of container > div1 > div2 > div4 > bp-1728
+
+                @media all and ( max-width : $bp-1280 ) {
+
+                    grid-template-columns : 2fr 1fr;
+                    grid-gap              : 2.0rem 6.0rem;
+                    grid-template-areas   : "h3      h3"
+                                            "p2 picture";
+        
+                } // end of container > div1 > div2 > div4 > bp-1280
+
+                @media all and ( max-width : $bp-768 ) {
+
+                    display               : grid;
+                    grid-template-rows    : repeat( 3, auto );
+                    grid-template-columns : 1fr;
+                    align-items           : start;
+                    grid-gap              : 2.0rem 0;
+                    grid-template-areas   : "h3"
+                                            "p2"
+                                            "picture";
+
+                    opacity : 1; // decided to remove the slide in animation for mobile devices
+
+                }  // end of container > div1 > div2 > div4 > bp-768
+
+                @media all and ( max-width : 359px ) {
+
+                    padding : 4.0rem 3.3rem;
+    
+                } // end of container > div1 > div2 > div4 > 359px
+
+                // ==============================
+                // container > div 1 > div 2 > div 4 > h3
+                // ==============================
+
+                > h3 {
+
+                    // parent
+                    grid-area : h3;
+
+                    @include h4-dark-title;
+
+                    line-height : 1.3; // visual preference and needed for when the
+                    // h1 splits into 2 lines
+
+                } // end of container > div1 > div2 > div4 > h3
+
+                // ==============================
+                // container > div 1 > div 2 > div 4 > p
+                // ==============================
+
+                > p:nth-child( 2 ) {
+
+                    // parent
+                    grid-area : p2;
+
+                    @include text-base-dark;
+
+                    margin : 0 0 2.0rem 0;
+
+                } // end of container > div1 > div2 > div4 > p
+
+                // ==============================
+                // container > div 1 > div 2 > div 4 > picture
+                // ==============================
+
+                > picture {
+
+                    // parent
+                    grid-area : picture;
+
+                    align-self   : end; 
+                    justify-self : center;
+
+                    @media all and ( max-width : $bp-768 ) {
+
+                        justify-self: center;
+        
+                    } // end of container > div1 > div2 > div4 > picture > bp-768
+
+                    > img {
+
+                        display : block;
+
+                        // this blends my Mid Journey pictures into the background color perfectly
+                        // and makes white pixels completely transparent and keeps black pixels
+                        // visible — works perfectly with black and white illustrations on
+                        // colored backgrounds without needing to remove the background at all
+                        mix-blend-mode : multiply;
+
+                        border-radius : 6px;
+
+                    } // end of container > div1 > div2 > div4 > picture > img
+
+                } // end of container > div1 > div2 > div4 > picture
+
+            } // end of container > div1 > div2 > div4
+
+        } // end of container > div1 > div2
+
+    } // end of container > div1
+
+    // ==============================
+    // container > div 2 ( animating backgrounds )
+    // ==============================
+
+    > div:nth-child( 2 ) {
+
+        display : block; // hide the blob and show the animating backgrounds
+        z-index : -1; // remember, this container has to sit behind the parent container
+        // which has a z-index of 1
+
+        opacity : 1;
+
+    } // end of container > div2
+
+} // end of container
+

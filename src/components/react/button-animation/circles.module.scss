@@ -1,0 +1,80 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+// ==============================
+// circles container
+// ==============================
+
+.circlesContainer {
+
+    // ==============================
+    // container > div1 ( wrapper div )
+    // ==============================
+
+    // ==============================
+    // button particle animation
+    // ==============================
+
+    > div {
+
+        // needed for the particle element to work properly
+        position : relative;
+
+        // ==============================
+        // remember, we created this element inside the handleParticleClick function
+        // ==============================
+
+        > particle {
+
+            // remember : " Absolute positioning is done relative to the first relatively
+            // ( or absolutely ) positioned parent element. In the case when there is no
+            // positioned parent element, the element that has position set to absolute
+            // will be positioned related directly to the HTML element ( the page itself ). "
+
+            position : absolute; // needed to attach each particle to the parent element
+
+            border-radius : 50%; // round the particles
+
+            opacity : 0; // make sure we can not see the particles initially
+
+            pointer-events : none; // make sure no one can click on the particle
+            // while animating
+
+        } // end of container > div1 > particle
+
+        > a {
+
+            // display : grid; // this makes the button span the entire width of the parent
+            // container
+
+            max-width : 60.0rem;
+            padding   : 1.0rem 0 0 0; // given the bottom spacing of the h1, in order to get
+            // the same spacing between all the rows we added a top padding to this element
+
+            > button {
+
+                @include button-v7();
+
+            } // end of container > div1 > a > button
+
+        } // end of container > div1 > a
+
+    } // end of container > div1
+
+    // ==============================
+    // end of button particle animation
+    // ==============================
+
+} // end of container
+

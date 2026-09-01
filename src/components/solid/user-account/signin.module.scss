@@ -1,0 +1,461 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+// ==============================
+// spinner container
+// ==============================
+
+.spinnerContainer {
+
+    // parent
+    grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+    // children
+    display       : grid;
+    align-content : center; // use margin top to vertically align the message
+
+    width  : min( 50.0rem, 100% );
+    height : 500px;
+    margin : 0 auto;
+
+    @media all and ( max-width : $bp-1032 ) {
+
+        height : 901.77px; // match the height of the contact form container
+
+    } // end of spinner container > bp-1032
+
+    @media all and ( max-width : $bp-768 ) {
+
+        height : 900.74px; // match the height of the contact form container
+
+    } // end of spinner container > bp-768
+
+    @media all and ( max-width : $bp-620 ) {
+
+        height : 894.05px; // match the height of the contact form container
+
+    } // end of spinner container > bp-620
+
+    @media all and ( max-width : 385px ) {
+
+        height : 914.02px; // match the height of the contact form container
+
+    } // end of spinner container > 385px
+
+} // end of spinner container
+
+
+
+// ==============================
+// error message container
+// ==============================
+
+.errorMessageContainer {
+
+    // parent
+    grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+    // children
+    display       : grid;
+    align-content : center; // use margin top to vertically align the message
+
+    width  : min( 65.0rem, 100% );
+    height : 500px;
+    margin : 0 auto;
+
+    @media all and ( max-width : $bp-1032 ) {
+
+        height : 901.77px; // match the height of the contact form container
+
+    } // end of error message container > bp-1032
+
+    @media all and ( max-width : $bp-768 ) {
+
+        height : 900.74px; // match the height of the contact form container
+
+    } // end of error message container > bp-768
+
+    @media all and ( max-width : $bp-620 ) {
+
+        height : 894.05px; // match the height of the contact form container
+
+    } // end of error message container > bp-620
+
+    @media all and ( max-width : 385px ) {
+
+        height : 914.02px; // match the height of the contact form container
+
+    } // end of error message container > 385px
+
+} // end of error message container
+
+
+
+// ==============================
+// success message container
+// ==============================
+
+.successMessageContainer {
+
+    // parent
+    grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+    // children
+    display       : grid;
+    align-content : center; // use margin top to vertically align the message
+
+    width  : min( 65.0rem, 100% );
+    height : 500px;
+    margin : 0 auto;
+
+    @media all and ( max-width : $bp-1032 ) {
+
+        height : 901.77px; // match the height of the contact form container
+
+    } // end of success container > bp-1032
+
+    @media all and ( max-width : $bp-768 ) {
+
+        height : 900.74px; // match the height of the contact form container
+
+    } // end of success container > bp-768
+
+    @media all and ( max-width : $bp-620 ) {
+
+        height : 894.05px; // match the height of the contact form container
+
+    } // end of success container > bp-620
+
+    @media all and ( max-width : 385px ) {
+
+        height : 914.02px; // match the height of the contact form container
+
+    } // end of success message container > 385px
+
+} // end of success message container
+
+
+
+// ==============================
+// sign in form container ( wrapper div )
+// ==============================
+
+.signInFormContainer {
+
+    // parent
+    grid-column : 2 / 22; // need to position against the parent in order to center the container
+
+    // children
+    display               : grid;
+    grid-template-rows    : auto;
+    grid-template-columns : 1fr;
+    grid-template-areas   : "h5"
+                            "form";
+
+    // ==============================
+    // remember, this container just needs to sit inside the parent container
+    // ==============================
+
+    min-width : 30.0rem;
+    max-width : 38.0rem; // set a max width for the container and set the same max-width
+    // for the contact information container and remember, we had to set max-width and
+    // not width so that the content would shrink on smaller screens
+    margin    : 12.0rem auto;
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        margin : 12.0rem 0; // left justify content
+
+    } // end of container > bp-1280
+
+    @media all and ( max-width : $bp-375 ) {
+
+        min-width : 23.0rem; // make sure elements shrinks to 212px at bp-320
+
+    } // end of container > bp-375
+
+    // ==============================
+    // container > h5
+    // ==============================
+
+    > h5 {
+
+        // parent
+        grid-area : h5;
+
+        @include h5-dark;
+
+    } // end of container > h5
+
+    // ==============================
+    // container > form
+    // ==============================
+
+    > form {
+
+        // parent
+        grid-area : form;
+
+        margin : 3.75rem 0 0 0;
+
+        // ==============================
+        // container > form > email input container
+        // ==============================
+
+        > div:nth-child( 1 ) {
+
+            position : relative; // needed for the label
+
+            // ==============================
+            // container > form > email input container > input element
+            // ==============================
+
+            > input {
+
+                display : block;
+                width   : 100%;
+                margin  : 0;
+                padding : 10px 10px 10px 0;
+
+                border        : none;
+                border-radius : 0;
+                border-bottom : 1px solid var( --gray-475 );
+
+                @include text-base-dark;
+
+                background : none;
+
+                &:focus {
+
+                    outline : none;
+
+                } // container > form > email input container > input > &:focus
+
+                // The general sibling combinator (~) separates two selectors and matches the
+                // second element only if it follows the first element (though not necessarily
+                // immediately), and both are children of the same parent
+
+                // what this says below is that whenever the user focuses inside the input element
+                // we want to use the general sibling combinator to target the form input label
+                // element and give the label an opacity of 0 and use a transition is give the
+                // movement a nice feel
+                &:focus ~ .signInFormContainerFormEmailInputContainerLabel {
+
+                    @include shrinkLabel-dark();
+
+                }  // container > form > email input container > input > &:focus ~ label
+
+            } // container > form > email input container > input
+
+            // handle the browser autofill
+            input:-webkit-autofill,
+            input:-webkit-autofill:hover, 
+            input:-webkit-autofill:focus, 
+            input:-webkit-autofill:active {
+
+                transition              : background-color 0s ease-out 50000s; // just needed to set the delay to a very high number
+                // -webkit-text-fill-color : var( --gray-225 );
+                -webkit-text-fill-color : var( --gray-770 );
+
+            } // container > form > email input container > input:webkit-autofill
+
+            // ==============================
+            // container > form > email input container > label element
+            // ==============================
+
+            .signInFormContainerFormEmailInputContainerLabel {
+
+                position : absolute;
+                top      : 10px;
+                left     : 0px;
+
+                @include text-base-dark;
+
+                pointer-events : none;
+                transition     : all 300ms ease; // transition : all will target the top,
+                // font-size and color properties
+
+            } // container > form > email input container > label
+
+            // ==============================
+            // container > form > email input container > label shrink
+            // ==============================
+
+            .signInFormContainerFormEmailInputContainerLabelShrink {
+
+                position : absolute;
+                top      : -20px;
+                left     : 0px;
+
+                @include text-extra-small-dark;
+
+                font-size   : 1.45rem;
+            
+            } // container > form > email input container > label shrink
+
+        } // container > form > email input container
+
+        // ==============================
+        // container > form > password input container
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            position : relative; // needed for the label
+            margin   : 5.0rem 0 0 0; // visual preference
+
+            // ==============================
+            // container > form > password input container > input element
+            // ==============================
+
+            > input {
+
+                display : block;
+                width   : 100%;
+                margin  : 0;
+                padding : 10px 10px 10px 0;
+
+                border        : none;
+                border-radius : 0;
+                border-bottom : 1px solid var( --gray-475 );
+
+                @include text-base-dark;
+
+                background : none;
+
+                &:focus {
+
+                    outline : none;
+
+                } // end of container > form > div3 > input > &:focus
+
+                // The general sibling combinator (~) separates two selectors and matches the
+                // second element only if it follows the first element (though not necessarily
+                // immediately), and both are children of the same parent
+
+                // what this says below is that whenever the user focuses inside the input element
+                // we want to use the general sibling combinator to target the form input label
+                // element and give the label an opacity of 0 and use a transition is give the
+                // movement a nice feel
+                &:focus ~ .signInFormContainerFormPasswordInputContainerLabel {
+
+                    @include shrinkLabel-dark();
+
+                } // end of container > form > password input container > input > &:focus ~ label
+
+            } // end of container > form > password input container > input
+
+            // handle the browser autofill
+            input:-webkit-autofill,
+            input:-webkit-autofill:hover, 
+            input:-webkit-autofill:focus, 
+            input:-webkit-autofill:active {
+
+                transition              : background-color 0s ease-out 50000s; // just needed to set the delay to a very high number
+                // -webkit-text-fill-color : var( --gray-225 );
+                -webkit-text-fill-color : var( --gray-770 );
+
+            } // container > form > password input container > input:webkit-autofill
+
+            // ==============================
+            // container > form > password input container > label element
+            // ==============================
+
+            .signInFormContainerFormPasswordInputContainerLabel {
+
+                position : absolute;
+                top      : 10px;
+                left     : 0px;
+
+                @include text-base-dark;
+
+                pointer-events : none;
+                transition     : all 300ms ease; // transition : all will target the top,
+                // font-size and color properties
+
+            } // end of container > form > password input container > label
+
+            // ==============================
+            // container > form > password input container > label shrink
+            // ==============================
+
+            .signInFormContainerFormPasswordInputContainerLabelShrink {
+
+                position : absolute;
+                top      : -20px;
+                left     : 0px;
+
+                @include text-extra-small-dark;
+
+                font-size   : 1.45rem;
+            
+            } // end of container > form > password input container > label shrink
+
+        } // end of container > form > password input container
+
+        // ==============================
+        // container > form > button container
+        // ==============================
+
+        .signInFormContainerFormButtonContainer {
+
+            // children
+            display : grid; // display grid makes the button span the entire width of the
+            // parent container
+            margin : 4.0rem 0 0 0; // visual preference
+
+            > button {
+
+                @include button-v5();
+
+                background : var( --blue-83 ); // visual preference
+
+                &:hover {
+
+                    background : rgba( 0, 125, 240, 1 );
+
+                } // end of container > form > button container > button > &:hover
+
+            } // end of container > form > button container > button
+
+        } // end of container > form > button container
+
+    } // end of container > form
+
+    // ==============================
+    // sign in link
+    // ==============================
+
+    .signInFormContainerFormSignInContainer {
+
+        margin  : 2.5rem 0 0 0;
+
+        font-family : var( --font-primary-5 );
+        font-size   : 1.75rem;
+        font-weight : 400;
+        color       : var( --gray-650 );
+
+        > a {
+
+            text-decoration : underline;
+
+        } // end of container > a
+
+    } // end of container
+
+} // end of container
+

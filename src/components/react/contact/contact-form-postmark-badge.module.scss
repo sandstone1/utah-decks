@@ -1,0 +1,801 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+// ==============================
+// spinner container
+// ==============================
+
+.spinnerContainer {
+
+    // parent
+    grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+    // children
+    display       : grid;
+    align-content : center; // use margin top to vertically align the message
+
+    width  : min( 50.0rem, 100% );
+    height : 1100.8px;
+    margin : 0 auto;
+
+    @media all and ( max-width : $bp-1032 ) {
+
+        height : calc( ( 120 * 0.9 ) + 888.30 ) + px; // match the height of the contact form container
+
+    } // end of spinner container > bp-1032
+
+    @media all and ( max-width : $bp-768 ) {
+
+        height : calc( ( 120 * 0.9 ) + 881.90 ) + px; // match the height of the contact form container
+
+    } // end of spinner container > bp-768
+
+    @media all and ( max-width : $bp-620 ) {
+
+        height : calc( ( 120 * 0.9 ) + 876.80 ) + px; // match the height of the contact form container
+
+    } // end of spinner container > bp-620
+
+    @media all and ( max-width : 440px ) {
+
+        height : calc( ( 120 * 0.9 ) + 866.80 ) + px; // match the height of the contact form container
+
+    } // end of spinner container > 440px
+
+    @media all and ( max-width : 430px ) {
+
+        height : calc( ( 120 * 0.9 ) + 856.80 ) + px; // match the height of the contact form container
+
+    } // end of spinner container > 430px
+
+    @media all and ( max-width : 414px ) {
+
+        height : calc( ( 120 * 0.9 ) + 840.80 ) + px; // match the height of the contact form container
+
+    } // end of spinner container > 414px
+
+    @media all and ( max-width : 400px ) {
+
+        height : calc( ( 120 * 0.9 ) + 826.80 ) + px; // match the height of the contact form container
+
+    } // end of spinner container > 400px
+
+    @media all and ( max-width : 390px ) {
+
+        height : calc( ( 120 * 0.9 ) + 816.80 ) + px; // match the height of the contact form container
+
+    } // end of spinner container > 390px
+
+    @media all and ( max-width : $bp-375 ) {
+
+        height : calc( ( 120 * 0.9 ) + 821.95 ) + px; // match the height of the contact form container
+
+    } // end of spinner container > bp-375
+
+    @media all and ( max-width : 360px ) {
+
+        height : calc( ( 120 * 0.9 ) + 806.95 ) + px; // match the height of the contact form container
+
+    } // end of spinner container > 360px
+
+    @media all and ( max-width : 340px ) {
+
+        height : calc( ( 120 * 0.9 ) + 786.95 ) + px; // match the height of the contact form container
+
+    } // end of spinner container > 340px
+
+    @media all and ( max-width : 320px ) {
+
+        height : calc( ( 120 * 0.9 ) + 766.95 ) + px; // match the height of the contact form container
+
+    } // end of spinner container > 320px
+
+} // end of spinner container
+
+
+
+// ==============================
+// error message container
+// ==============================
+
+.errorMessageContainer {
+
+    // parent
+    grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+    // children
+    display       : grid;
+    align-content : center; // use margin top to vertically align the message
+
+    width  : min( 50.0rem, 100% );
+    height : 1100.8px;
+    margin : 0 auto;
+
+    @media all and ( max-width : $bp-1032 ) {
+
+        height : calc( ( 120 * 0.9 ) + 888.30 ) + px; // match the height of the contact form container
+
+    } // end of error message > bp-1032
+
+    @media all and ( max-width : $bp-768 ) {
+
+        height : calc( ( 120 * 0.9 ) + 881.90 ) + px; // match the height of the contact form container
+
+    } // end of error message container > bp-768
+
+    @media all and ( max-width : $bp-620 ) {
+
+        height : calc( ( 120 * 0.9 ) + 876.80 ) + px; // match the height of the contact form container
+
+    } // end of error message container > bp-620
+
+    @media all and ( max-width : 440px ) {
+
+        height : calc( ( 120 * 0.9 ) + 866.80 ) + px; // match the height of the contact form container
+
+    } // end of error message container > 440px
+
+    @media all and ( max-width : 430px ) {
+
+        height : calc( ( 120 * 0.9 ) + 856.80 ) + px; // match the height of the contact form container
+
+    } // end of error message container > 430px
+
+    @media all and ( max-width : 414px ) {
+
+        height : calc( ( 120 * 0.9 ) + 840.80 ) + px; // match the height of the contact form container
+
+    } // end of error message container > 414px
+
+    @media all and ( max-width : 400px ) {
+
+        height : calc( ( 120 * 0.9 ) + 826.80 ) + px; // match the height of the contact form container
+
+    } // end of error message container > 400px
+
+    @media all and ( max-width : 390px ) {
+
+        height : calc( ( 120 * 0.9 ) + 816.80 ) + px; // match the height of the contact form container
+
+    } // end of error message container > 390px
+
+    @media all and ( max-width : $bp-375 ) {
+
+        height : calc( ( 120 * 0.9 ) + 821.95 ) + px; // match the height of the contact form container
+
+    } // end of error message container > bp-375
+
+    @media all and ( max-width : 360px ) {
+
+        height : calc( ( 120 * 0.9 ) + 806.95 ) + px; // match the height of the contact form container
+
+    } // end of error message container > 360px
+
+    @media all and ( max-width : 340px ) {
+
+        height : calc( ( 120 * 0.9 ) + 786.95 ) + px; // match the height of the contact form container
+
+    } // end of error message container > 340px
+
+    @media all and ( max-width : 320px ) {
+
+        height : calc( ( 120 * 0.9 ) + 766.95 ) + px; // match the height of the contact form container
+
+    } // end of error message container > 320px
+
+} // end of error message container
+
+
+
+// ==============================
+// success message container
+// ==============================
+
+.successMessageContainer {
+
+    // parent
+    grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+    // children
+    display       : grid;
+    align-content : center; // use margin top to vertically align the message
+
+    width  : min( 50.0rem, 100% );
+    height : 1100.8px;
+    margin : 0 auto;
+
+    @media all and ( max-width : $bp-1032 ) {
+
+        height : calc( ( 120 * 0.9 ) + 888.30 ) + px; // match the height of the contact form container
+
+    } // end of success message container > bp-1032
+
+    @media all and ( max-width : $bp-768 ) {
+
+        height : calc( ( 120 * 0.9 ) + 881.90 ) + px; // match the height of the contact form container
+
+    } // end of success message container > bp-768
+
+    @media all and ( max-width : $bp-620 ) {
+
+        height : calc( ( 120 * 0.9 ) + 876.80 ) + px; // match the height of the contact form container
+
+    } // end of success message container > bp-620
+
+    @media all and ( max-width : 440px ) {
+
+        height : calc( ( 120 * 0.9 ) + 866.80 ) + px; // match the height of the contact form container
+
+    } // end of success message container > 440px
+
+    @media all and ( max-width : 430px ) {
+
+        height : calc( ( 120 * 0.9 ) + 856.80 ) + px; // match the height of the contact form container
+
+    } // end of success message container > 430px
+
+    @media all and ( max-width : 414px ) {
+
+        height : calc( ( 120 * 0.9 ) + 840.80 ) + px; // match the height of the contact form container
+
+    } // end of success message container > 414px
+
+    @media all and ( max-width : 400px ) {
+
+        height : calc( ( 120 * 0.9 ) + 826.80 ) + px; // match the height of the contact form container
+
+    } // end of success message container > 400px
+
+    @media all and ( max-width : 390px ) {
+
+        height : calc( ( 120 * 0.9 ) + 816.80 ) + px; // match the height of the contact form container
+
+    } // end of success message container > 390px
+
+    @media all and ( max-width : $bp-375 ) {
+
+        height : calc( ( 120 * 0.9 ) + 821.95 ) + px; // match the height of the contact form container
+
+    } // end of success message container > bp-375
+
+    @media all and ( max-width : 360px ) {
+
+        height : calc( ( 120 * 0.9 ) + 806.95 ) + px; // match the height of the contact form container
+
+    } // end of success message container > 360px
+
+    @media all and ( max-width : 340px ) {
+
+        height : calc( ( 120 * 0.9 ) + 786.95 ) + px; // match the height of the contact form container
+
+    } // end of success message container > 340px
+
+    @media all and ( max-width : 320px ) {
+
+        height : calc( ( 120 * 0.9 ) + 766.95 ) + px; // match the height of the contact form container
+
+    } // end of success message container > 320px
+
+} // end of success message container
+
+
+
+
+
+// ==============================
+// contact form container ( wrapper div )
+// ==============================
+
+.contactFormContainer {
+
+    // parent
+    grid-area   : div1;
+    grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+    // children
+    display               : grid;
+    grid-template-rows    : repeat( 2, auto );
+    grid-template-columns : 1fr;
+    grid-template-areas   : "h1"
+                            "picture"
+                            "form";
+
+    position : relative; // this is needed for the absolutely positioned orange circle below
+    margin   : 0 auto 12.0rem auto; // provide some spacing between this div and the contact
+    // inspriation div
+
+    width : min( 38.0rem, 100% ); // browser will select the smaller of 38.0rem or 100%
+
+    opacity : 0; // needed for the fade in and slide up animation
+
+    will-change : transform;
+
+    // ==============================
+    // container > h1
+    // ==============================
+
+    > h1 {
+
+        // parent
+        grid-area : h1;
+
+        @include h1-dark-title;
+
+        z-index : 1;
+        margin  : 0 0 0 0; // remember, the margin between the h1 and the name input
+        // container is contained in the name input container
+
+        text-align : left;
+
+    } // end of container > h1
+
+    // ==============================
+    // container > picture
+    // ==============================
+
+    > picture {
+
+        // parent
+        grid-area : picture;
+
+        z-index : 1;
+        margin  : 0.5rem 0 -2.5rem 0; // add top margin to make the spacing above and below
+        // the picture consistent
+
+        @media all and ( max-width : $bp-620 ) {
+
+            margin  : 1.0rem 0 -2.5rem 0; // add top margin to make the spacing above and below
+            // the picture consistent
+
+        } // end of container > picture > bp-620
+
+        > img {
+
+            display : block; // remove the bottom spacing
+
+        } // end of container > picture > img
+        
+    } // end of container > picture
+
+    // ==============================
+    // container > form
+    // ==============================
+
+    > form {
+
+        // parent
+        grid-area : form;
+
+        z-index : 1;
+
+        // ==============================
+        // container > form > name input container
+        // ==============================
+
+        .contactFormContainerFormNameInputContainer {
+
+            position : relative; // needed for the label
+            margin   : 5.0rem 0 0 0; // visual preference and remember, the email top was
+            // 5.0rem, the textarea margin top was 6.0rem and the button margin top was 6.0rem
+
+            // ==============================
+            // container > form > name input container > input element
+            // ==============================
+
+            > input {
+
+                display : block;
+                width   : 100%;
+                margin  : 0;
+                padding : 10px 10px 10px 0;
+
+                border        : none;
+                border-radius : 0;
+                border-bottom : 1px solid var( --gray-475 );
+
+                @include text-base-dark;
+
+                // background : var( --gray-230 );
+                background : var( --yellow-20 );
+
+                &:focus {
+
+                    outline : none;
+
+                } // end of container > form > name input container > input > &:focus
+
+                // The general sibling combinator (~) separates two selectors and matches the
+                // second element only if it follows the first element (though not necessarily
+                // immediately), and both are children of the same parent
+
+                // what this says below is that whenever the user focuses inside the input element
+                // we want to use the general sibling combinator to target the form input label
+                // element and give the label an opacity of 0 and use a transition is give the
+                // movement a nice feel
+                &:focus ~ .contactFormContainerFormNameInputContainerLabel {
+
+                    @include shrinkLabel-dark();
+
+                }  // end of container > form > name input container > input > &:focus ~ label
+
+            } // end of container > form > name input container > input
+
+            // ==============================
+            // container > form > name input container > label element
+            // ==============================
+
+            .contactFormContainerFormNameInputContainerLabel {
+
+                position : absolute;
+                top      : 10px;
+                left     : 0px;
+
+                @include text-base-dark;
+
+                pointer-events : none;
+                transition     : all 300ms ease; // transition : all will target the top,
+                // font-size and color properties
+
+            } // end of container > form > name input container > label
+
+            // ==============================
+            // container > form > name input container > label shrink
+            // ==============================
+
+            .contactFormContainerFormNameInputContainerLabelShrink {
+
+                position : absolute;
+                top      : -20px;
+                left     : 0px;
+
+                @include text-extra-small-dark;
+
+                font-size   : 1.45rem;
+            
+            } // end of container > form > name input container > label shrink
+
+        } // end of container > form > name input container
+
+        // ==============================
+        // container > form > email input container
+        // ==============================
+
+        .contactFormContainerFormEmailInputContainer {
+
+            position : relative; // needed for the label
+            margin   : 5.0rem 0 0 0; // visual preference and remember, the name margin top was
+            // 5.0rem, the textarea margin top was 6.0rem and the button margin top was 6.0rem
+
+            // ==============================
+            // container > form > email input container > input element
+            // ==============================
+
+            > input {
+
+                display : block;
+                width   : 100%;
+                margin  : 0;
+                padding : 10px 10px 10px 0;
+
+                border        : none;
+                border-radius : 0;
+                border-bottom : 1px solid var( --gray-475 );
+
+                @include text-base-dark;
+
+                // background : var( --gray-230 );
+                background : var( --yellow-20 );
+
+                &:focus {
+
+                    outline : none;
+
+                } // end of container > form > email input container > input > &:focus
+
+                // The general sibling combinator (~) separates two selectors and matches the
+                // second element only if it follows the first element (though not necessarily
+                // immediately), and both are children of the same parent
+
+                // what this says below is that whenever the user focuses inside the input element
+                // we want to use the general sibling combinator to target the form input label
+                // element and give the label an opacity of 0 and use a transition is give the
+                // movement a nice feel
+                &:focus ~ .contactFormContainerFormEmailInputContainerLabel {
+
+                    @include shrinkLabel-dark();
+
+                } // end of container > form > email input container > input > &:focus ~ label
+
+            } // end of container > form > email input container > input
+
+            // ==============================
+            // container > form > email input container > label element
+            // ==============================
+
+            .contactFormContainerFormEmailInputContainerLabel {
+
+                position : absolute;
+                top      : 10px;
+                left     : 0px;
+
+                @include text-base-dark;
+
+                pointer-events : none;
+                transition     : all 300ms ease; // transition : all will target the top,
+                // font-size and color properties
+
+            } // end of container > form > email input container > label
+
+            // ==============================
+            // container > form > email input container > label shrink
+            // ==============================
+
+            .contactFormContainerFormEmailInputContainerLabelShrink {
+
+                position : absolute;
+                top      : -20px;
+                left     : 0px;
+
+                @include text-extra-small-dark;
+
+                font-size   : 1.45rem;
+            
+            } // end of container > form > email input container > label shrink
+
+        } // end of container > form > email input container
+
+        // ==============================
+        // container > form > text area box container
+        // ==============================
+
+        .contactFormContainerFormTextAreaContainer {
+
+            position : relative; // needed for the textbox label
+            margin   : 6.0rem 0 0 0; // visual preference and remember, the name margin top was
+            // 5.0rem, the email margin top was 5.0rem and the button margin top was 6.0rem
+
+            // ==============================
+            // container > form > text area box container > text area box
+            // ==============================
+
+            > textarea {
+
+                display : block;
+                width   : 100%;
+                padding : 1.2rem 1.2rem 1.2rem 1.2rem;
+
+                border        : 1px solid var( --gray-475 );
+                border-radius : 4px;
+
+                @include text-base-dark;
+
+                // background : var( --gray-230 );
+                background : var( --yellow-20 );
+
+                &:focus {
+
+                    outline : none;
+
+                } // end of container > form > text area container > textarea > &:focus
+
+                // The general sibling combinator (~) separates two selectors and matches the
+                // second element only if it follows the first element (though not necessarily
+                // immediately), and both are children of the same parent
+
+                // what this says below is that whenever the user focuses inside the input element
+                // we want to use the general sibling combinator to target the form input label
+                // element and give the label an opacity of 0 and use a transition is give the
+                // movement a nice feel
+                &:focus ~ .contactFormContainerFormTextAreaContainerLabel {
+
+                    opacity : 0; // erase the text when the cursor is in the textarea box
+
+                }  // end of container > form > text area container > textarea > &:focus ~ label
+
+            } // end of container > form > text area container > textarea
+
+            // ==============================
+            // container > form > text area box container > label element
+            // ==============================
+
+            .contactFormContainerFormTextAreaContainerLabel {
+
+                position : absolute;
+                top      : 1.2rem;
+                left     : 1.2rem;
+
+                @include text-base-dark;
+
+                pointer-events : none;
+                transition     : opacity 200ms ease;
+
+                // provide some space on the right side of the text box so that
+                // the text is not right up against the container and this only
+                // happens on small screens
+                @media all and ( max-width : $bp-375 ) {
+
+                    right : 1.8rem; // visual preference
+
+                } // end of container > form > text area container > label > bp-375
+
+            } // end of container > form > text area container > label
+
+            // ==============================
+            // container > form > text area box container > label shrink
+            // ==============================
+
+            .contactFormContainerFormTextAreaContainerLabelShrink {
+
+                display : none;
+            
+            } // end of container > form > text area container > label shrink
+
+        } // end of container > form > text area container
+
+        // ==============================
+        // container > form > div4 ( Google reCAPTCHA badge ) > div > div ( Google styling for the badge is here )
+        // ==============================
+
+        > div:nth-child( 4 ) > div > div {
+
+            // see below for the notes from the Wasatch Front Local
+            // contact-form-postmark-badge-long.module.scss file
+
+            // ==============================
+            // remember, the ReCAPTCHA component and " size="invisible" " was breaking our layout
+            // when using translate to animate the page load ( see the pages/get-featured.module.scss
+            // file for details on the animation )
+            //
+            // to fix this, we added the 2 lines of code below which brought the invisible
+            // ReCAPTCHA component inside the form container on smaller devices and this was
+            // enough to prevent the layout issues we were having when using translate to animate
+            // the page load
+            //
+            // one of the layout issues we were having, for reference, is that the side menu would
+            // not open all the way and maybe open 50% or so and the other main issue was we could
+            // not resize the browser without causing the entire layout to break
+            // ==============================
+
+            // see below for the notes from the Ranking Made Easy
+            // service-recovery-contact-form.module.scss file
+
+            // for some reason the badge was not attached to the page container and working
+            // like it did for the Enchanting Apps contact form, where it attached itself to
+            // the bottom right corner of the page; instead, the badge was attaching itself
+            // to the bottom right corner of the service recovery contact form container with
+            // the right part extending beyound the service recovery contact form container,
+            // causing layout problems when I resized the browser
+
+            // and I could not figure out why the badge's position behaved one way in Enchanting
+            // Apps and another way in Ranking Made Easy
+
+            // on 1-4-25, I figured out why badge's position behaved one way in Enchanting
+            // Apps and another way in Ranking Made Easy and that was because in Enchanting
+            // Apps I did not have the slide up animation and when I added the slide up
+            // animation to the contact page in Enchanting Apps then the layout problems from
+            // the reCAPTCHA badge started
+
+            // nevertheless, in Ranking Made Easy this was causing serious layout problems
+            // when I resized the browser, even though the badge was not visible, it was
+            // still taking up space
+
+            // to fix this issue the service recovery contact form container had to contain
+            // the entire badge inside its borders and to make that happen I had to manually
+            // move the badge and I did that by targeting the div where Google was styling
+            // the badge and by adding the 2 key value pairs below
+            position : fixed !important;
+            right    : 0px !important;
+
+        } // container > form > div7 > div > div
+
+        // ==============================
+        // container > form > Google reCAPTCHA text
+        // ==============================
+
+        .contactFormContainerFormGoogleReCAPTCHAText {
+
+            font-size : 1.4rem;
+
+            > p > a {
+
+                color : var( --blue-83 );
+
+            } // end of container > form > Google reCAPTCHA text > p > a
+
+        } // end of container > form > Google reCAPTCHA text
+
+        // ==============================
+        // container > form > button container
+        // ==============================
+
+        .contactFormContainerFormButtonContainer {
+
+            // children
+            display : grid; // display grid makes the button span the entire width of the
+            // parent container
+            margin : 4.0rem 0 0 0; // visual preference
+
+            > button {
+
+                @include button-v7();
+
+            } // end of container > form > button container > button
+
+        } // end of container > form > button container
+
+    } // end of container > form
+
+    // ==============================
+    // container > div ( orange background circle )
+    // ==============================
+
+    > div:nth-child( 4 ) {
+
+        position : absolute;
+        top      : 0.0rem;
+        left     : -75.0rem;
+        width    : 55.0rem;
+        height   : 55.0rem;
+
+        z-index : 0;
+
+        border-radius : 50%;
+
+        background : var( --orange-20 );
+
+        @media all and ( max-width : $bp-2080 ) {
+
+            top    : 2.0rem;
+            left   : -65.0rem;
+            width  : 50.0rem;
+            height : 50.0rem;
+
+        } // end of container > div:nth-child( 4 ) > bp-2080
+
+        @media all and ( max-width : $bp-1920 ) {
+
+            top    : 5.0rem;
+            left   : -55.0rem;
+            width  : 40.0rem;
+            height : 40.0rem;
+
+        } // end of container > div:nth-child( 4 ) > bp-1920
+
+        @media all and ( max-width : $bp-1728 ) {
+
+            top    : 8.0rem;
+            left   : -44.0rem;
+            width  : 30.0rem;
+            height : 30.0rem;
+
+        } // end of container > div:nth-child( 4 ) > bp-1728
+
+        @media all and ( max-width : $bp-1440 ) {
+
+            top    : 8.0rem;
+            left   : -36.0rem;
+            width  : 25.0rem;
+            height : 25.0rem;
+
+        } // end of container > div:nth-child( 4 ) > bp-1440
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            display : none;
+
+        } // end of container > div:nth-child( 4 ) > bp-1280
+
+    } // end of container > div:nth-child( 4 )
+
+} // end of container
+

@@ -1,0 +1,126 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+// ==============================
+// shop items ( cart items ) container
+// ==============================
+
+.shopItemsContainer {
+
+    // ==============================
+    // create the content box
+    // ==============================
+
+    // ==============================
+    // cards that wrap, if needed
+    // ==============================
+
+    grid-area : cart-items;
+
+    display               : grid;
+    grid-template-columns : repeat( auto-fill, minmax( 30rem, 1fr ) ); // this will create the cards
+    gap                   : 6.0rem 0;
+
+    z-index : 0;
+
+    @media all and ( max-width : $bp-768 ) {
+
+        grid-template-columns : 1fr; // remove any extra right spacing caused by the value above
+        // since this was causing our layout to break at bp-320
+
+        margin : 0 0 -1.1rem 0; // we had to add a margin top of 7.1rem to move the sticky cart
+        // down a little bit when at the top of the page; therefore, we had to add a negative
+        // margin here in order to keep the spacing at 6.0rem between the cart tiems and the cart
+        // when you get to the bottom of page
+
+    } // end of container > bp-768
+
+    @media all and ( max-width : 445px ) {
+
+        margin : 0 0 -5.0rem 0;
+
+    } // end of container > 445px
+
+    @media all and ( max-width : $bp-375 ) {
+
+        margin : 0 0 -4.0rem 0;
+
+    } // end of container > bp-375
+
+    @media all and ( max-width : 329px ) {
+
+        margin : 0 0 -7.5rem 0;
+
+    } // end of container > 329px
+
+    // ==============================
+    // container > cart item
+    // ==============================
+
+    > div {
+
+        width : 25.0rem; // make the div shrink and this represents the image width and the
+        // images are coming in a 250px
+
+        @media all and ( max-width : $bp-375 ) {
+
+            width : 23.0rem;
+
+        } // end of container > div > bp-375
+    
+        > img {
+
+            // to make images shrink responsively, we need to use the max-width: 100%; and height: auto; combo
+            // or max-width : 100%; height : 100%; and object-fit : 100%;
+            display   : block; // remove the inline gap at the bottom
+            max-width : 100%; // this allows the image to shrink, but not grow larger than its real size
+            height    : auto; // this keeps the image from looking "squashed"
+
+            // now let's add the object-fit property and remember for object-fit to work we have to add
+            // the width and the height to the element
+
+            // by using these 3 key value pairs inside the image element or " width : 100%; "
+            // and " height : 100%; " and " object-fit : cover; " we see that each image now fills up
+            // one grid cell and one grid cell only
+
+            object-fit : cover; // good for image cropping
+
+        } // end of container > div > img
+
+        > h2 {
+
+            margin : 1.0rem 0 0; // visual preference
+
+            font-size   : 2.1rem;
+            color       : var( --black );
+            line-height : 1.45; // visual preference
+
+        } // end of container > div > h2
+
+        > p {
+
+            margin : 0.25rem 0 0; // visual preference
+
+            font-size   : 1.80rem;
+            color       : var( --black );
+
+        } // end of container > div > p
+
+    } // end of container > div
+
+} // end of container
+

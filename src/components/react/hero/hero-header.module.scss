@@ -1,0 +1,41 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+// ==============================
+// hero header container
+// ==============================
+
+.heroHeaderContainer {
+
+    height : 160px; // match the height of the header
+
+    // ==============================
+    // Image hero element that lays on behind the header element and whatever page we are on
+    // ==============================
+
+    position : absolute;
+    left     : 0;
+    top      : 0;
+    right    : 0;
+    bottom   : 0;
+
+    background : linear-gradient( to top, rgba( 0, 125, 240, 1 ) 0%, rgba( 0, 91, 234, 1 ) 100% ); // better for shorter screens
+
+    @media all and ( max-width : 426px ) {
+
+        height : 205px;
+
+    } // end of container > 426px
+
+} // end of container
+

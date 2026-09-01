@@ -1,0 +1,29 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../../../styles/_mixins.scss' as *;
+@use '../../../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+// ==============================
+// sphere container
+// ==============================
+
+.sphereContainer {
+
+    // parent
+
+    // children
+
+    width : 15.0rem; // need to define the width for the 3d sphere and the
+    // sphere will sit inside the center of the box by default
+
+} // end of container
+
+

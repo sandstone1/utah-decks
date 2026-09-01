@@ -1,0 +1,414 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../styles/_mixins.scss' as *;
+@use '../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+// ==============================
+// success container
+// ==============================
+
+.successContainer {
+
+    // ==============================
+    // @media print
+    // ==============================
+
+    // when printing, add this block to prevent the left and right sides from being cut off
+
+    // remember, a standard sheet of paper is about 8.5 inches wide, once we subtract
+    // our 0.5in margins, we only have about 7.5 inches of space and 750px is often just
+    // a bit too wide for that, so the printer clips the edges ( 7.5 inches translates to
+    // 720px )
+    @media print {
+
+        display   : block !important;  // grid can sometimes act weird on old printers
+        position  : absolute !important; // force the content out of the flex/grid flow
+        top       : 0 !important; // move the content to the top of the page
+        width     : 100% !important; // force it to shrink to the paper size
+        max-width : 100% !important;
+        margin    : 0 !important; // remove the 12.0rem top margin for the printer
+
+        .stripeP {
+
+            margin : 0 !important; // remove the small bottom margin
+
+        }
+
+        .printReceiptButton {
+
+            display : none !important; // remove the print button when printing and this removes the margins as well
+
+        }
+
+        .companyLogoName {
+
+            display : block !important; // display the company logo / name at the botton of the page when printing
+
+        }
+
+    } // end of container > @media print
+
+    // parent
+    grid-column : 1 / -1; // position this container against the main container
+    // and do this so that the child elements take up the entire screen horizontally
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // 1 - in the content or wrapper div use grid-column to position against the parent grid and
+    // remember we may need to duplicate the parent grid and bring it down to the content or
+    // wrapper div
+    // 2 - now our content div is sitting empty inside the parent grid we need to give the
+    // content div a width and height so we can create the content box and
+    // 3 - then set up a grid within the content box so that we can layout the content
+    // inside the content box as needed and
+    // 4 - the only cavet to 3 above, is that sometimes we need to go with a horizontal layout
+    // and in those cases, flexbox may be the better choice than css grid and
+    // 5 - only do the grid-template-columns : minmax( 8rem, 1fr ) ... when the direct child is a
+    // content div
+    // ==============================
+
+    display               : grid;
+    grid-template-rows    : auto;
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    justify-items       : center;
+
+    margin : 12.0rem 0;
+
+    // ==============================
+    // background
+    // ==============================
+
+    background : var( --white );
+
+    // ==============================
+    // end of background
+    // ==============================
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // ==============================
+        // create the content box
+        // ==============================
+    
+        // parent
+        grid-column : 2 / 22; // position against the parent
+
+        // children
+        display               : grid;
+        grid-template-rows    : repeat( 5, auto );
+        grid-template-columns : 1fr;
+        // gap                   : 3.0rem 0; // remember, when we got to print this receipt, the printer will not honor the gap property here
+        grid-template-areas   : "div1"
+                                "h1"
+                                "p3"
+                                "div4"
+                                "p5";
+
+        width : min( 65.0rem, 100% ); // browser will select the smaller of 65.0rem or 100%
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            justify-self : start;
+
+        } // end of container > div1 > bp-1280
+
+        // ==============================
+        // paid status emblem
+        // ==============================
+
+        > div:nth-child( 1 ) {
+
+            // parent
+            grid-area : div1;
+
+            margin : 0 0 6.0rem 0;
+
+            text-align : left;
+
+            > span {
+
+                display     : inline-flex; // make the span fit its contents and no more
+                align-items : center;
+                gap         : 0.55rem;
+                padding     : 0.55rem 1.1rem;
+
+                border        : 1px solid var( --green-205 );
+                border-radius : 100.0rem; // pill shape
+
+                font-family    : var( --font-primary-5 );
+                font-weight    : 700;
+                font-size      : 1.50rem;
+                color          : var( --green-400 );
+                text-transform : uppercase;
+                letter-spacing : 0.1rem;
+
+                background-color : var( --green-055 );
+        
+            } // end of container > div1 > div:nth-child( 1 ) > span
+
+        } // end of container > div1 > div:nth-child( 1 )
+
+        > h1 {
+
+            // parent
+            grid-area : h1;
+
+            margin : 0 0 3.0rem 0;
+
+            font-family : var( --font-display-5 );
+            font-size   : 3.85rem;
+            font-weight : 700;
+            color       : var( --black );
+
+        } // end of container > div1 > h1
+
+        > p:nth-child( 3 ) {
+
+            // parent
+            grid-area : p3;
+
+            margin : 0 0 3.0rem 0;
+
+            font-family : var( --font-primary-5 );
+            font-size   : 1.80rem;
+            font-weight : 400;
+            color       : var( --black );
+
+        } // end of container > div1 > p:nth-child( 3 )
+
+        // ==============================
+        // monospace receipt
+        // ==============================
+
+        > div:nth-child( 4 ) {
+
+            // parent
+            grid-area : div4;
+
+            display : grid;
+            padding : 3.0rem 0;
+
+            border-top    : 1px dashed rgba( 160, 160, 160, 1 );
+            border-bottom : 1px dashed rgba( 160, 160, 160, 1 );
+
+            font-family : ui-monospace, monospace;
+            font-size   : 1.80rem;
+            font-weight : 400;
+            color       : var( --black );
+
+            > h1 {
+
+                margin : 0 0 1.0rem 0;
+
+                font-family : ui-monospace, monospace;
+                font-size   : 2.0rem;
+                font-weight : 700;
+                color       : var( --black );
+
+            } // end of container > div1 > div:nth-child( 4 ) > h1
+
+            > p:nth-child( 2 ), p:nth-child( 3 )  {
+
+                margin : 0 0 0.25rem 0;
+    
+            } // end of container > div1 > div:nth-child( 4 ) > p:nth-child( 2 ), p:nth-child( 3 )
+
+            > ul:nth-child( 4 ) > li {
+
+                margin : 0 0 0.25rem 0;
+    
+            } // end of container > div1 > div:nth-child( 4 ) > ul:nth-child( 4 )
+
+            > div:nth-child( 5 )  {
+
+                // border
+                > span {
+
+                    display : block;
+                    width   : 50%;
+                    margin  : 1.0rem 0;
+
+                    border : 1px solid rgba( 220, 220, 220, 1 );
+
+                } // end of container > div1 > div:nth-child( 4 ) > div:nth-child( 5 ) > span
+
+                > div {
+
+                    margin : 0 0 0.25rem 0;
+
+                } // end of container > div1 > div:nth-child( 4 ) > div:nth-child( 5 ) > span
+
+            } // end of container > div1 > div:nth-child( 4 ) > div:nth-child( 5 )
+
+            > div:nth-child( 6 ) {
+
+                display : block; // display grid makes the button span the entire width of the
+                // parent container; do block to make it just fill up its text
+
+                margin : 1.5rem 0 0 0; // visual preference and remember, the email top margin was
+                // 4.0rem
+
+                > button {
+
+                    // change this button code later when I get into another project
+
+                    padding : 0.6rem 1.2rem; // visual preference
+
+                    border        : 1px solid var( --gray-870 );
+                    border-radius : 0.6rem;
+
+                    font-family : ui-monospace, monospace;
+                    font-size   : 1.80rem;
+                    font-weight : 400;
+                    color       : var( --gray-870 );
+                    text-align  : center;
+                
+                    background-color : transparent;
+
+                    // had to do " outline : none; " in order to get rid of the weird outline or coloring
+                    // around the button element after clicking the button
+                    outline    : none;
+                    transition : all 0.3s ease-out; // provide for a nice hover animation
+                
+                    // this will prevent the hover state from sticking to the button after clicking
+                    // on the button in Sarafi on the iPhone and see the following article for
+                    // details : " https://css-tricks.com/solving-sticky-hover-states-with-media-hover-hover/ "
+                
+                    // the artcle says : " Your typical touch screen mobile device will fail that
+                    // media query, the style won’t apply, and you’ll avoid the sticky problem. "
+                    @media ( hover : hover ) {
+                
+                        // hover and active selectors
+                        &:hover, &:active {
+                
+                            cursor : pointer;
+                
+                        } // end of container > div1 > div:nth-child( 4 ) > div:nth-child( 6 ) > button > @media ( hover: hover ) > &:hover, &:active
+                
+                    } // end of container > div1 > div:nth-child( 4 ) > div:nth-child( 6 ) > button > @media ( hover: hover )
+        
+                } // end of container > div1 > div:nth-child( 4 ) > div:nth-child( 6 ) > button
+            
+            } // end of container > div1 > div:nth-child( 4 ) > div:nth-child( 6 )
+
+        } // end of container > div1 > div:nth-child( 4 )
+
+        // ==============================
+        // email confirmation details
+        // ==============================
+
+        > p:nth-child( 5 ) {
+
+            // parent
+            grid-area : p5;
+
+            margin : 3.0rem 0 0 0;
+
+            font-family : ui-monospace, monospace;
+            font-size   : 1.45rem;
+            font-weight : 400;
+            color       : var( --black );
+
+        } // end of container > div1 > p:nth-child( 5 )
+
+        // ==============================
+        // company logo / name ( only show when printing ) 
+        // ==============================
+
+        > div:nth-child( 6 ) {
+
+            display : none;
+            margin  : 3.0rem 0 0 0;
+
+            > span:nth-child( 1 ) {
+
+                margin : 0 1.0rem 0 0;
+
+                font-size : 3.50rem;
+
+            } // end of container > div1 > > span:nth-child( 1 )
+
+            > span:nth-child( 2 ) {
+
+                font-family    : var( --font-display-5 );
+                font-size      : 2.85rem;
+                font-weight    : 700;
+                color          : var( --black );
+                vertical-align : 8px; // since we can't use display : grid; for printing, we use
+                // vertical-align to align the items vertically
+
+            } // end of container > div1 > > span:nth-child( 2 )
+
+        } // end of container > div1 > div:nth-child( 6 )
+
+        /*
+            > a:nth-child( 7 ) {
+
+                margin : 1.5rem 0 0 0;
+
+                // color           : var( --gray-870 );
+                text-decoration : underline;
+
+                transition : hover 300ms ease;
+
+                &:hover {
+
+                    color : var( --blue-78 ); // great link color
+
+                } // end of register container > a:hover
+
+            } // end of container > div1 > a:nth-child( 6 )
+        */
+
+    } // end of container > div1
+
+} // end of container
+

@@ -1,0 +1,1002 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+// ==============================
+// primary markets container
+// ==============================
+
+.primaryMarketsContainer {
+
+    // ==============================
+    // this container is div 4 in the index.js file
+    // ==============================
+
+    // parent
+    grid-area   : div4;
+    grid-column : 1 / -1; // position against the parent
+
+    // children
+    display               : grid;
+    grid-template-rows    : repeat( 6, auto );
+    grid-template-columns : minmax( 6rem, 1fr )                        // col 1 - 2   ( column 1 )
+                            repeat( 10, minmax( min-content, 12rem ) ) // col 2 - 12  ( column 2 - 11 )
+                            minmax( 6rem, 1fr );                       // col 12 - 13 ( column 12 )
+
+    // ==============================
+    // remember, I had to add " position : relative; " for the absolutely positioned
+    // svg shape div below to work
+    // ==============================
+
+    position : relative;
+    padding  : 15.0rem 0 12.0rem 0; // added an extra 3rem to the top padding to give it a
+    // extra room and this was a visual preference
+
+    background : var( --gray-335 );
+
+    // ==============================
+    // tilt shape div
+    // ==============================
+
+    // remember, this information came from the following video :
+    // " https://www.youtube.com/watch?v=lPJVi797Uy0&t=396s " and timestamp : 6.21
+
+    // and in accordance with the above video, I used the following tool to create the wave
+    // shape and the tool is called Custom Shape Dividers and located at :
+    // " https://www.shapedivider.app/ "
+
+    // the css code below and the html code in this file came from the following
+    // website : " https://www.shapedivider.app/ " and to get this generated code
+    // we used the following set up :
+
+    /*
+        Shape      : Waves
+        Color      : #FFFFFF ( initial color until I changed it below )
+        Flip       : No
+        Invert     : No
+        Top/bottom : Top
+        Height     : 150px
+        Width      : 100%
+    */
+
+    // remember, I had to add " position : relative " to the parent container and I had
+    // to change the path fill color to match the body background color
+
+    // ==============================
+    // container > div 1
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        position : absolute;
+        top      : 0; // this will put the shape at the top of the container
+        left     : 0;
+        width    : 100%;
+
+        line-height : 0;
+
+        overflow : hidden;
+
+        > svg {
+
+            display  : block;
+            position : relative;
+            width    : calc( 100% + 1.3px );
+            height   : 10.0rem; // changed this from the default 102px to 10.0rem
+
+            @media all and ( max-width : $bp-1032 ) {
+
+                height : 8.0rem; // make sure we flatten the wave as the screen size
+                // shrinks
+
+            } // end of container > div1 > svg > bp-1032
+
+            @media all and ( max-width : $bp-768 ) {
+
+                height : 6.0rem; // make sure we flatten the wave as the screen size
+                // shrinks
+
+            } // end of container > div1 > svg > bp-768
+
+            @media all and ( max-width : $bp-620 ) {
+
+                height : 5.0rem; // make sure we flatten the wave as the screen size
+                // shrinks
+
+            } // end of container > div1 > svg > bp-620
+
+            @media all and ( max-width : $bp-480 ) {
+
+                height : 4.0rem; // make sure we flatten the wave as the screen size
+                // shrinks
+
+            } // end of container > div1 > svg > bp-480
+
+            @media all and ( max-width : $bp-375 ) {
+
+                height : 3.0rem; // make sure we flatten the wave as the screen size
+                // shrinks
+        
+            } // end of container > div1 > svg > bp-375
+
+            > path {
+
+                fill : var( --gray-210 ); // this is same color as the background
+                // color for the proceeding div
+
+            } // end of container > div1 > svg > path
+
+        } // end of container > div1 > svg
+
+    } // end of container > div1
+
+    // ==============================
+    // end of tilt shape div
+    // ==============================
+
+    // ==============================
+    // container > div 2
+    // ==============================
+
+    > div:nth-child( 2 ) {
+
+        // ==============================
+        // remember, 
+        // 1 - with " grid-column : 2 / 22; " and " width : min( 80.0rem, 100% ); ",
+        // the children content will stay within the bounds of 2 / 22 and shrink
+        // automatically and as needed
+        // 2 - and the children content will be the smaller of 80.0rem or 100%
+        // ==============================
+
+        // parent
+        grid-column : 2 / 22; // position against the parent
+
+        width  : min( 144.0rem, 100% ); // browser will select the smaller of 120.0rem or 100%
+        margin : 0 auto;
+
+        @media all and ( max-width : $bp-1032 ) {
+
+            width  : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+
+        } // end of container > div2 > bp-1032
+
+        // ==============================
+        // container > div 2 > h2
+        // ==============================
+
+        > h2 {
+
+            // ==============================
+            // hero font option 1 ( same font as the rest of the site )
+            // ==============================
+
+            font-family    : var( --font-primary-5 );
+            font-size      : 6.25rem;
+            font-weight    : 800;
+            color          : var( --gray-225 ); // fallback color
+            letter-spacing : 1px;
+            line-height    : 80px; // visual preference
+            text-align     : center;
+
+            // ==============================
+            // how to use a linear gradient as the color for text
+            // ==============================
+
+            // ==============================
+            // text masking or knockout text
+            // ==============================
+
+            // the information for this effect came from the following video :
+            // " https://www.youtube.com/watch?v=f3mwKLXpOLk&list=PL4-IK0AVhVjMI45pE9oE47wj-7AZLNnK "
+            // timestamp 9:32
+
+            // here we are using text masking or knockout text to create this effect
+
+            // remember, Kevin used the following properties to create his text masking :
+
+            /*
+                background-image : var( --gradient );
+                background-clip  : text;
+                color            : transparent;
+            */
+
+            // but I thought this was incomplete, so I used the key value pairs
+            // recommended in the css tricks article :
+            // " https://css-tricks.com/how-to-do-knockout-text/ "
+
+/*
+            background              : linear-gradient( to top, var( --blue-85 ) 0%, var( --blue-100 ) 100% ); // better for shorter screens
+            -webkit-background-clip : text; // need the -webkit prefix for Chrome, Edge
+            background-clip         : text; // need background-clip for Safari and Firefox
+            -webkit-text-fill-color : transparent; // need the -webkit-text-fill-color property for all browsers
+*/
+
+            // ==============================
+            // text masking or knockout text description
+            // ==============================
+
+            // this information comes from :
+            // " https://css-tricks.com/how-to-do-knockout-text/ "
+
+            /*
+
+                " There are a couple of ways to do knockout text (text that appears
+                cut out, such that you can see a background behind it) on the web. "
+
+                " -webkit-background-clip: text;
+                This is a non-standardized property, but it was invented to do just
+                this. The beauty is that you can pair it with
+                -webkit-text-fill-color: transparent; so that you’re only “hiding”
+                the text in a browser that can do the clipping. "
+            */
+            
+            /*
+                .clip-text-maybe {
+
+                    /* if we can clip, do it */ /*
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+
+                    /* what will show through the text
+                        ~ or ~
+                        what will be the background of that element */ /*
+                    background: whatever;
+
+                    /* fallback text color
+                        ~ or ~
+                        the actual color of text, so it better work on the background */ /*
+                    color: red;
+
+                }
+            */
+
+            /*
+                " mix-blend-mode: screen;
+                
+                This is the new one I hadn’t seen before! CSS blending is fairly new.
+                It allows you to blend elements on top of other elements like you
+                would layer styles in Photoshop ( e.g. “screen”, “multiply”, “lighten”,
+                etc. )
+
+                Done just right, you can blend an image right on top of text without
+                affecting the “real” background. "
+            */
+
+            // from caniuse : " background-clip / Non-standard method of clipping a
+            // background image to the foreground text. "
+
+            // remember, instead of using an actual image as our background, I
+            // could have used a linear gradient as our background; however, I liked
+            // the background image better than the background linear gradients that
+            // I tried since the background image I chose provided for a more varied
+            // texture on the text
+
+            // ==============================
+            // end of text masking or knockout text description
+            // ==============================
+
+            color : var( --gray-100 ); // fallback color if -webkit-background-clip and
+            // -webkit-text-fill-color don't work then the text will be this color
+
+            // 50 32 or 50 80 for color-9
+            // 50 32 or 50 10 for color-15
+            // 50 50 for color-18
+            // 50 70 for color-30
+            // 50 50 for color-32
+            // 50 55 for color-33
+            // 50 60 or 50 80 for color-39
+            // 50 80 for color-42
+            // 50 40 for color-43
+            // 50 70 for color-46
+            // 50 40 or 50 80 for color-47
+            // 50 35 for color-56
+            // 50 19 for color-57
+
+            background-image        : url( /colors/color-15.jpeg ); // bring in the
+            // background image that will show through the text and had to experiment
+            // with different backgrounds to get one I liked
+            background-position     : 50% 32.0%; // remember, I had to move the vertical
+            // percentage around in order to get the background image colors that I wanted
+            background-repeat       : no-repeat;
+            background-size         : cover;      
+            -webkit-background-clip : text; // need the -webkit prefix for Chrome, Edge
+            background-clip         : text; // need background-clip for Safari and Firefox
+            -webkit-text-fill-color : transparent; // need the -webkit-text-fill-color property
+            // for all browsers
+            mix-blend-mode          : multiply; // the lighten provided for a nice color
+            // to show through the text; however, " mix-blend-mode : luminosity; " worked
+            // pretty well too
+
+            // ==============================
+            // end of how to use a linear gradient as the color for text
+            // ==============================
+
+            @media all and ( max-width : $bp-768 ) {
+
+                line-height : 1.3; // visual preference
+
+            } // end of container > div2 > h2 > bp-768
+
+            @media all and ( max-width : $bp-620 ) {
+
+                
+                background-position : 50% 10.0%; // remember, I had to move the vertical
+                // percentage around in order to get the background image colors that I wanted
+
+            } // end of container > div2 > h2 > bp-620
+
+            @media all and ( max-width : $bp-375 ) {
+
+                font-size : 5.6rem; // visual preference
+
+            } // end of container > div2 > h2 > bp-375
+
+        } // end of container > div2 > h2
+
+        // ==============================
+        // container > div 2 > hr
+        // ==============================
+
+        > hr {
+
+            // remember, we want the border to be smaller than the container
+
+            // children
+            display : block; // display the hr element or border
+            width   : 40.0rem; // make the border smaller than the content
+            margin  : 0.5px auto 6.0rem auto; // center the border inside the
+            // container and provide some spacing
+
+            border : 0.75px solid var( --gray-375 ); // this will override the default
+            // border styling
+
+            @media all and ( max-width : $bp-620 ) {
+
+                width : 15.0rem; // make the border smaller than the content
+
+            } // end of container > div2 > hr > bp-620
+
+        } // end of container > div2 > hr
+
+        // ==============================
+        // container > div 2 > p:nth-child( 3 )
+        // ==============================
+
+        > p:nth-child( 3 ) {
+
+            // max-width : min( 80.0rem, 75ch ); // from : " https://www.joshwcomeau.com/css/full-bleed/ "
+            // " Research has shown that the ideal line length is about 65 characters.
+            // Anywhere between 45 and 85 is generally seen as acceptable, in the context
+            // of a roman alphabet. "
+            // margin    : 0 auto;
+            padding   : 0 0 4.0rem 0;
+
+            font-family    : var( --font-primary-5 );
+            font-size      : 2.05rem;
+            font-weight    : 400;
+            color          : var( --gray-765 );
+
+        } // end of container > div2 > p:nth-child( 3 )
+
+        // ==============================
+        // container > div 2 > div1 ( wrapper div )
+        // ==============================
+
+        > div:nth-child( 4 ) {
+
+            // children
+            display               : grid;
+            grid-template-rows    : repeat( 2, auto );
+            grid-template-columns : 1fr 1fr;
+            grid-gap              : 6.0rem 6.0rem; // create some spacing between the cards
+            grid-template-areas   : "card1 card2"
+                                    "card3 card4";
+
+            margin : 0 auto;
+
+            @media all and ( max-width : $bp-1032 ) {
+
+                grid-template-rows    : repeat( 4, auto );
+                grid-template-columns : 1fr;
+                grid-gap              : 6.0rem 0; // create some spacing between the 4 cards
+                grid-template-areas   : "card1"
+                                        "card2"
+                                        "card3"
+                                        "card4";
+
+            } // end of container > div2 > div1 > bp-1032
+
+            // ==============================
+            // card 1
+            // ==============================
+
+            > .primaryMarketsContainerDiv2Div1Card1 {
+
+                // parent
+                grid-area : card1;
+
+                // children
+                display               : grid;
+                grid-template-columns : 1fr;
+
+                // ==============================
+                // create a white background for a card effect with the following 3 properties
+                // ==============================
+
+                padding    : 3.0rem; // property #1
+
+                border-radius : 6px; // property #2
+
+                background : var( --white ); // property #3
+
+                // ==============================
+                // end of white background
+                // ==============================
+
+                // ==============================
+                // background image
+                // ==============================
+
+                // ==============================
+                // note : remember, using an img tag in the html and then using a ::before pseudo
+                // element with a background-color : $cyan-50; and mix-blend-mode : multiply;
+                // results in the same effect as using
+                // background-image : url( /images/salt_lake_city_trax_01_small.jpg );
+                // and background-position : center; and background-size : cover; and
+                // background-blend-mode : multiply; and background-color : $cyan-50; and with
+                // no img tag in the html
+                // ==============================
+
+                > div {
+
+                    position : relative;
+
+                    > h4 {
+
+                        // see the following article for details on " How To Place Text in Image "
+                        // " https://www.w3schools.com/howto/howto_css_image_text.asp "
+                        position : absolute; // center text #1 
+                        top      : 50%; // center text #2
+                        left     : 50%; // center text #3
+
+                        padding : 0.5rem 1.0rem;
+
+                        border : 1px solid var( --white );
+                        border-radius : 6px;
+
+                        font-family : var( --font-primary-5 );
+                        font-size   : 3.0rem;
+                        font-weight : 500;    
+                        color       : var( --white );
+                        text-align  : center;
+
+                        transform : translate( -50%, -50% ); // center text #4
+
+                        @media all and ( max-width : $bp-480 ) {
+
+                            padding : 1.25rem 1.0rem; // visual preference
+
+                            line-height : 1.1; // visual preference
+    
+                        } // end of container > div2 > div1 > card1 > div > h4 > bp-480
+
+                    } // end of container > div2 > div1 > card1 > div > h4
+
+                    > picture, img {
+
+                        display : block;
+                        
+                        width   : 51.0rem; // we had to set an exact width in order for all
+                        // the images to fill the container horizontally; otherwise, as we
+                        // changed the viewport width, the width of certain images would become
+                        // different than the other images and I believe this had something to
+                        // do with the instrinsic image ratio even though each image had the
+                        // same intrinsic size of 776px * 527px ( i.e. this is a rendered
+                        // aspect ratio of 3:2 )
+                        height  : auto;
+
+                        object-fit : cover;
+
+                        @media all and ( max-width : $bp-1440 ) {
+
+                            // the trick to making the image fill the container is set the
+                            // " width : 100% "and " height : auto " and then each picture
+                            // needs to be the same width and height or 776px * 527px
+                            width  : 100%;
+                            height : auto;
+
+                        } // end of container > div2 > div1 > card1 > div > img > bp-1440
+
+                        @media all and ( max-width : $bp-620 ) {
+
+                            height : 38.0rem; // keep a minimum height and visual preference
+
+                        } // end of container > div2 > div1 > card1 > div > img > bp-620
+
+                        @media all and ( max-width : $bp-480 ) {
+
+                            height : 34.0rem; // keep a minimum height and visual preference
+
+                        } // end of container > div2 > div1 > card1 > div > img > bp-480
+
+                    } // end of container > div2 > div1 > card1 > div > img
+
+                } // end of container > div2 > div1 > card1 > div
+
+                // ==============================
+                // background image overlay using mix-blend-mode
+                // ==============================
+
+                > div::before {
+
+                    content  : '';
+                    position : absolute;
+                    top      : 0;
+                    left     : 0;
+                    right    : 0;
+                    bottom   : 0;
+
+                    background-image : linear-gradient( to bottom, rgba( 61, 71, 98, 0.35 ),  rgba( 81, 91, 118, 0.35 ) );
+                    mix-blend-mode   : multiply;
+                    background-color : var( --cyan-50 ); // visual preference
+
+                } // end of container > div2 > div1 > card1 > div::before
+
+                // ==============================
+                // keep for reference purposes
+                // ==============================
+/*
+                > div {
+
+                    width  : 100%;
+                    height : 40.0rem;
+
+                    background-image      : linear-gradient( to bottom, rgba( 61, 71, 98, 0.05 ),  rgba( 81, 91, 118, 0.05 ) ), url( /images/salt_lake_city_02.jpg );
+                    background-position   : center;
+                    background-size       : cover;
+                    background-blend-mode : multiply;
+                    background-color      : var( --blue-100 );
+
+                }// end of container > div2 > div1 > card1 > div
+*/
+
+            } // end of container > div2 > div1 > card1
+
+            // ==============================
+            // card 2
+            // ==============================
+
+            > .primaryMarketsContainerDiv2Div1Card2 {
+
+                // parent
+                grid-area : card2;
+
+                // children
+                display               : grid;
+                grid-template-columns : 1fr;
+
+                // ==============================
+                // create a white background for a card effect with the following 3 properties
+                // ==============================
+
+                padding    : 3.0rem; // property #1
+
+                border-radius : 6px; // property #2
+
+                background : var( --white ); // property #3
+
+                // ==============================
+                // end of white background
+                // ==============================
+
+                // ==============================
+                // background image
+                // ==============================
+
+                // ==============================
+                // note : remember, using an img tag in the html and then using a ::before pseudo
+                // element with a background-color : $cyan-50; and mix-blend-mode : multiply;
+                // results in the same effect as using
+                // background-image : url( /images/salt_lake_city_trax_01_small.jpg );
+                // and background-position : center; and background-size : cover; and
+                // background-blend-mode : multiply; and background-color : $cyan-50; and with
+                // no img tag in the html
+                // ==============================
+
+                > div {
+
+                    position : relative;
+
+                    > h4 {
+
+                        // see the following article for details on " How To Place Text in Image "
+                        // " https://www.w3schools.com/howto/howto_css_image_text.asp "
+                        position : absolute; // center text #1 
+                        top      : 50%; // center text #2
+                        left     : 50%; // center text #3
+
+                        padding : 0.5rem 1.0rem;
+
+                        border : 1px solid var( --white );
+                        border-radius : 6px;
+
+                        font-family : var( --font-primary-5 );
+                        font-size   : 3.0rem;
+                        font-weight : 500;    
+                        color       : var( --white );
+                        text-align  : center;
+
+                        transform : translate( -50%, -50% ); // center text #4
+
+                        @media all and ( max-width : $bp-480 ) {
+
+                            padding : 1.25rem 1.0rem; // visual preference
+
+                            line-height : 1.1; // visual preference
+    
+                        } // end of container > div2 > div1 > card2 > div > h4 > bp-480
+
+                    } // end of container > div2 > div1 > card2 > div > h4
+
+                    > picture, img {
+
+                        display : block;
+                        
+                        width   : 51.0rem; // we had to set an exact width in order for all
+                        // the images to fill the container horizontally; otherwise, as we
+                        // changed the viewport width, the width of certain images would become
+                        // different than the other images and I believe this had something to
+                        // do with the instrinsic image ratio even though each image had the
+                        // same intrinsic size of 776px * 527px ( i.e. this is a rendered
+                        // aspect ratio of 3:2 )
+                        height  : auto;
+
+                        object-fit : cover;
+
+                        @media all and ( max-width : $bp-1440 ) {
+
+                            // the trick to making the image fill the container is set the
+                            // " width : 100% "and " height : auto " and then each picture
+                            // needs to be the same width and height or 776px * 527px
+                            width  : 100%;
+                            height : auto;
+
+                        } // end of container > div2 > div1 > card1 > div > img > bp-1440
+
+                        @media all and ( max-width : $bp-620 ) {
+
+                            height : 38.0rem; // keep a minimum height and visual preference
+
+                        } // end of container > div2 > div1 > card2 > div > img > bp-620
+
+                        @media all and ( max-width : $bp-480 ) {
+
+                            height : 34.0rem; // keep a minimum height and visual preference
+
+                        } // end of container > div2 > div1 > card2 > div > img > bp-480
+
+                    } // end of container > div2 > div1 > card2 > div > img
+
+                } // end of container > div2 > div1 > card2 > div
+
+                // ==============================
+                // background image overlay using mix-blend-mode
+                // ==============================
+
+                > div::before {
+
+                    content  : '';
+                    position : absolute;
+                    top      : 0;
+                    left     : 0;
+                    right    : 0;
+                    bottom   : 0;
+
+                    background-image : linear-gradient( to bottom, rgba( 61, 71, 98, 0.35 ),  rgba( 81, 91, 118, 0.35 ) );
+                    mix-blend-mode   : multiply;
+                    background-color : var( --cyan-50 ); // visual preference
+
+                } // end of container > div2 > div1 > card2 > div::before
+
+            } // end of container > div2 > div1 > card2
+
+            // ==============================
+            // card 3
+            // ==============================
+
+            > .primaryMarketsContainerDiv2Div1Card3 {
+
+                // parent
+                grid-area : card3;
+
+                // children
+                display               : grid;
+                grid-template-columns : 1fr;
+
+                // ==============================
+                // create a white background for a card effect with the following 3 properties
+                // ==============================
+
+                padding    : 3.0rem; // property #1
+
+                border-radius : 6px; // property #2
+
+                background : var( --white ); // property #3
+
+                // ==============================
+                // end of white background
+                // ==============================
+
+                // ==============================
+                // background image
+                // ==============================
+
+                // ==============================
+                // note : remember, using an img tag in the html and then using a ::before pseudo
+                // element with a background-color : $cyan-50; and mix-blend-mode : multiply;
+                // results in the same effect as using
+                // background-image : url( /images/salt_lake_city_trax_01_small.jpg );
+                // and background-position : center; and background-size : cover; and
+                // background-blend-mode : multiply; and background-color : $cyan-50; and with
+                // no img tag in the html
+                // ==============================
+
+                > div {
+
+                    position : relative;
+
+                    > h4 {
+
+                        // see the following article for details on " How To Place Text in Image "
+                        // " https://www.w3schools.com/howto/howto_css_image_text.asp "
+                        position : absolute; // center text #1 
+                        top      : 50%; // center text #2
+                        left     : 50%; // center text #3
+
+                        padding : 0.5rem 1.0rem;
+
+                        border : 1px solid var( --white );
+                        border-radius : 6px;
+
+                        font-family : var( --font-primary-5 );
+                        font-size   : 3.0rem;
+                        font-weight : 500;    
+                        color       : var( --white );
+                        text-align  : center;
+
+                        transform : translate( -50%, -50% ); // center text #4
+
+                        @media all and ( max-width : $bp-480 ) {
+
+                            padding : 1.25rem 1.0rem; // visual preference
+
+                            line-height : 1.1; // visual preference
+    
+                        } // end of container > div2 > div1 > card3 > div > h4 > bp-480
+
+                    } // end of container > div2 > div1 > card3 > div > h4
+
+                    > picture, img {
+
+                        display : block;
+                        
+                        width   : 51.0rem; // we had to set an exact width in order for all
+                        // the images to fill the container horizontally; otherwise, as we
+                        // changed the viewport width, the width of certain images would become
+                        // different than the other images and I believe this had something to
+                        // do with the instrinsic image ratio even though each image had the
+                        // same intrinsic size of 776px * 527px ( i.e. this is a rendered
+                        // aspect ratio of 3:2 )
+                        height  : auto;
+
+                        object-fit : cover;
+
+                        @media all and ( max-width : $bp-1440 ) {
+
+                            // the trick to making the image fill the container is set the
+                            // " width : 100% "and " height : auto " and then each picture
+                            // needs to be the same width and height or 776px * 527px
+                            width  : 100%;
+                            height : auto;
+
+                        } // end of container > div2 > div1 > card1 > div > img > bp-1440
+
+                        @media all and ( max-width : $bp-620 ) {
+
+                            height : 38.0rem; // keep a minimum height and visual preference
+
+                        } // end of container > div2 > div1 > card3 > div > img > bp-620
+
+                        @media all and ( max-width : $bp-480 ) {
+
+                            height : 34.0rem; // keep a minimum height and visual preference
+
+                        } // end of container > div2 > div1 > card3 > div > img > bp-480
+
+                    } // end of container > div2 > div1 > card3 > div > img
+
+                } // end of container > div2 > div1 > card3 > div
+
+                // ==============================
+                // background image overlay using mix-blend-mode
+                // ==============================
+
+                > div::before {
+
+                    content  : '';
+                    position : absolute;
+                    top      : 0;
+                    left     : 0;
+                    right    : 0;
+                    bottom   : 0;
+
+                    background-image : linear-gradient( to bottom, rgba( 61, 71, 98, 0.35 ),  rgba( 81, 91, 118, 0.35 ) );
+                    mix-blend-mode   : multiply;
+                    background-color : var( --cyan-50 ); // visual preference
+
+                } // end of container > div2 > div1 > card3 > div::before
+
+            } // end of container > div2 > div1 > card3
+
+            // ==============================
+            // card 4
+            // ==============================
+
+            > .primaryMarketsContainerDiv2Div1Card4 {
+
+                // parent
+                grid-area : card4;
+
+                // children
+                display               : grid;
+                grid-template-columns : 1fr;
+
+                // ==============================
+                // create a white background for a card effect with the following 3 properties
+                // ==============================
+
+                padding    : 3.0rem; // property #1
+
+                border-radius : 6px; // property #2
+
+                background : var( --white ); // property #3
+
+                // ==============================
+                // end of white background
+                // ==============================
+
+                @media all and ( max-width : $bp-1032 ) {
+
+                    // the trick to making the image fill the container is set the
+                    // " width : 100% "and " height : auto " and then each picture
+                    // needs to be the same width and height or 776px * 527px and
+                    // remember we have a width of 776px since that is the width at
+                    // bp-1032 or the largest width at any breakpoint
+                    width  : 100%;
+                    height : auto;
+
+                } // end of container > div2 > div1 > card4 > div > img > bp-1032
+
+                // ==============================
+                // background image
+                // ==============================
+
+                // ==============================
+                // note : remember, using an img tag in the html and then using a ::before pseudo
+                // element with a background-color : $cyan-50; and mix-blend-mode : multiply;
+                // results in the same effect as using
+                // background-image : url( /images/salt_lake_city_trax_01_small.jpg );
+                // and background-position : center; and background-size : cover; and
+                // background-blend-mode : multiply; and background-color : $cyan-50; and with
+                // no img tag in the html
+                // ==============================
+
+                > div {
+
+                    position : relative;
+
+                    > h4 {
+
+                        // see the following article for details on " How To Place Text in Image "
+                        // " https://www.w3schools.com/howto/howto_css_image_text.asp "
+                        position : absolute; // center text #1 
+                        top      : 50%; // center text #2
+                        left     : 50%; // center text #3
+
+                        padding : 0.5rem 1.0rem;
+
+                        border : 1px solid var( --white );
+                        border-radius : 6px;
+
+                        font-family : var( --font-primary-5 );
+                        font-size   : 3.0rem;
+                        font-weight : 500;    
+                        color       : var( --white );
+                        text-align  : center;
+
+                        transform : translate( -50%, -50% ); // center text #4
+
+                        @media all and ( max-width : $bp-480 ) {
+
+                            padding : 1.25rem 1.0rem; // visual preference
+
+                            line-height : 1.1; // visual preference
+    
+                        } // end of container > div2 > div1 > card4 > div > h4 > bp-480
+
+                    } // end of container > div2 > div1 > card4 > div > h4
+
+                    > picture, img {
+
+                        display : block;
+                        
+                        width   : 51.0rem; // we had to set an exact width in order for all
+                        // the images to fill the container horizontally; otherwise, as we
+                        // changed the viewport width, the width of certain images would become
+                        // different than the other images and I believe this had something to
+                        // do with the instrinsic image ratio even though each image had the
+                        // same intrinsic size of 776px * 527px ( i.e. this is a rendered
+                        // aspect ratio of 3:2 )
+                        height  : auto;
+
+                        object-fit : cover;
+
+                        @media all and ( max-width : $bp-1440 ) {
+
+                            // the trick to making the image fill the container is set the
+                            // " width : 100% "and " height : auto " and then each picture
+                            // needs to be the same width and height or 776px * 527px
+                            width  : 100%;
+                            height : auto;
+
+                        } // end of container > div2 > div1 > card1 > div > img > bp-1440
+
+                        @media all and ( max-width : $bp-620 ) {
+
+                            height : 38.0rem; // keep a minimum height and visual preference
+
+                        } // end of container > div2 > div1 > card4 > div > img > bp-620
+
+                        @media all and ( max-width : $bp-480 ) {
+
+                            height : 34.0rem; // keep a minimum height and visual preference
+
+                        } // end of container > div2 > div1 > card4 > div > img > bp-480
+
+                    } // end of container > div2 > div1 > card4 > div > img
+
+                } // end of container > div2 > div1 > card4 > div
+
+                // ==============================
+                // background image overlay using mix-blend-mode
+                // ==============================
+
+                > div::before {
+
+                    content  : '';
+                    position : absolute;
+                    top      : 0;
+                    left     : 0;
+                    right    : 0;
+                    bottom   : 0;
+
+                    background-image : linear-gradient( to bottom, rgba( 61, 71, 98, 0.35 ),  rgba( 81, 91, 118, 0.35 ) );
+                    mix-blend-mode   : multiply;
+                    background-color : var( --cyan-50 ); // visual preference
+
+                } // end of container > div2 > div1 > card4 > div::before
+
+            } // end of container > div2 > div1 > card4
+
+        } // end of container > div2 > div1
+
+    } // end of container > div2
+
+} // end of container

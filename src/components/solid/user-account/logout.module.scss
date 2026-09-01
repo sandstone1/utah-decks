@@ -1,0 +1,137 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+// ==============================
+// logout container
+// ==============================
+
+.logoutContainer {
+
+    // ==============================
+    // container > button ( logout button )
+    // ==============================
+
+    > button {
+
+        display : block; // needed for animation
+        padding : 1.5rem 2.2rem; // needed to add a box around the text and the user
+        // can see the box on hover
+
+        border : none; // remove the border around the button
+
+        font-family : var( --font-display-5 );
+        font-size   : 2.10rem;
+        font-weight : 700;
+        color       : var(--black );
+
+        transition : all 0.2s ease-out; // provide for a nice hover animation
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            padding : 1.5rem 2.2rem 1.5rem 0; // remove left padding on smaller screens
+
+        } // end of container > a > bp-1280
+
+        &:hover {
+
+            border-radius : 0.6rem;
+
+            background-color : rgba( 255, 255, 255, 0.05 );
+
+            cursor : pointer;
+
+            // move the nav item up just a little to add a nice hover effect
+            transform: translate3d( 0, -0.3rem, 0 );
+
+            // remove the animation effect for screen sizes under 1376 pixels
+            @media all and ( max-width : $bp-1376 ) {
+
+                background-color : inherit;
+
+                transform: none;
+        
+            } // end of container > button > &:hover > bp-1376
+
+        } // end of container > button > &:hover
+
+        // active, focus selectors for the navigation tabs
+        &:active, &:focus {
+
+            // on mobile devices, safari was putting a think white background around my clicks
+            // and I found the answer on how to solve this problem from stackoverflow :
+            // " https://stackoverflow.com/questions/9784350/mobile-safari-tap-and-hold-a-link-it-will-show-a-gray-shadow-how-to-disable-it?rq=3 "
+            -webkit-tap-highlight-color : rgba( 0, 0, 0, 0 );
+        
+        } // end of container > button > &:active, &:focused
+
+    } // end of container > button
+
+    // ==============================
+    // container > a ( sign in anchor tag )
+    // ==============================
+
+    > a {
+
+        display : block; // needed for animation
+        padding : 1.5rem 2.2rem; // needed to add a box around the text and the user
+        // can see the box on hover
+
+        font-family : var( --font-display-5 );
+        font-size   : 2.10rem;
+        font-weight : 700;
+        color       : var(--black );
+
+        transition : all 0.2s ease-out; // provide for a nice hover animation
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            padding : 1.5rem 2.2rem 1.5rem 0; // remove left padding on smaller screens
+
+        } // end of container > a > bp-1280
+
+        &:hover {
+
+            border-radius : 0.6rem;
+
+            background-color : rgba( 255, 255, 255, 0.05 );
+
+            cursor : pointer;
+
+            // move the nav item up just a little to add a nice hover effect
+            transform: translate3d( 0, -0.3rem, 0 );
+
+            // remove the animation effect for screen sizes under 1376 pixels
+            @media all and ( max-width : $bp-1376 ) {
+
+                background-color : inherit;
+
+                transform: none;
+        
+            } // end of container > a > &:hover > bp-1376
+
+        } // end of container > a > &:hover
+
+        // active, focus selectors for the navigation tabs
+        &:active, &:focus {
+
+            // on mobile devices, safari was putting a think white background around my clicks
+            // and I found the answer on how to solve this problem from stackoverflow :
+            // " https://stackoverflow.com/questions/9784350/mobile-safari-tap-and-hold-a-link-it-will-show-a-gray-shadow-how-to-disable-it?rq=3 "
+            -webkit-tap-highlight-color : rgba( 0, 0, 0, 0 );
+        
+        } // end of container > a > &:active, &:focused
+
+    } // end of container > a
+
+} // end of container
+

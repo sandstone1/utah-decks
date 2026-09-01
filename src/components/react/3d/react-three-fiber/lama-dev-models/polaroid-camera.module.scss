@@ -1,0 +1,40 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../../styles/_mixins.scss' as *;
+@use '../../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+// ==============================
+// polaroid camera 3d container
+// ==============================
+
+.cameraContainer {
+ 
+    // children
+    display  : block;
+    // in order to display the 3D component correctly, we needed to apply a width
+    // of 100% and a height of 100%
+    width    : 100%; 
+    height   : 100%;    
+
+    opacity    : 0;
+    transition : opacity 1.5s ease-out;
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        display : none;
+
+    } // end of container > bp-1280
+
+} // end of container
+
+

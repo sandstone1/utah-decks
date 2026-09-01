@@ -1,0 +1,882 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../../styles/_mixins.scss' as *;
+@use '../../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+// ==============================
+// keyframes
+// ==============================
+
+// ==============================
+// elastic animation
+// ==============================
+
+// ==============================
+// option 2
+// use the css animation property to animate the hero container on page load
+// ==============================
+
+@keyframes animate-on-page-load {
+
+    from {
+
+        opacity   : 0;
+        scale     : 0.99 1;
+        translate : 0 8.0rem;
+
+    }
+
+    to {
+
+        opacity   : 1;
+        scale     : 1 1;
+        translate : 0 0;
+
+    }
+
+} // end of animate-on-page-load
+
+// ==============================
+// fallback for non mobile devices
+// ==============================
+
+@keyframes animate-on-page-load-fallback-non-mobile {
+
+    from {
+
+        opacity   : 0;
+        translate : 0 3.0rem;
+
+    }
+
+    to {
+
+        opacity   : 1;
+        translate : 0 0;
+
+    }
+
+} // end of animate-on-page-load-fallback-non-mobile
+
+// ==============================
+// fallback for mobile devices
+// ==============================
+
+@keyframes animate-on-page-load-fallback-mobile {
+
+    from {
+
+        opacity : 0;
+
+    }
+
+    to {
+
+        opacity : 1;
+
+    }
+
+} // end of animate-on-page-load-fallback-mobile
+
+// ==============================
+// end of elastic animation
+// ==============================
+
+
+// ==============================
+// keyframe 4
+// =============================
+
+// ==============================
+// fade in animation
+// ==============================
+
+// ==============================
+// purpose : fade in the hero container on page load, thereby giving the hero section time
+// to set up
+// ==============================
+
+@keyframes fade-in {
+
+    from {
+
+        opacity : 0;
+
+    }
+
+    to {
+
+        opacity : 1;
+
+    }
+
+} // end of fade-in
+
+
+// ==============================
+// keyframe 5
+// =============================
+
+// ==============================
+// slide out animation
+// ==============================
+
+// ==============================
+// purpose : slide the overlay div background color off the screen on page load or when
+// navigating to the home page, thereby giving the hero section time to set up
+// ==============================
+
+@keyframes slide-out-on-page-load {
+
+    from {
+
+        opacity   : 1;
+        scale     : 1 1;
+        transform : translateX( 0% );
+
+    }
+
+    to {
+
+        opacity   : 1;
+        scale     : 1 1;
+        transform : translateX( -100% ); // not why this is 50% and not 100%
+
+    }
+
+} // end of slide-out-on-page-load
+
+
+// ==============================
+// keyframe 6
+// =============================
+
+// ==============================
+// fade out and slide out animation
+// ==============================
+
+// ==============================
+// purpose : fade the overlay div background color off the screen on page load and
+// when navigating to the home page, thereby giving the hero section time to set up
+// ==============================
+
+@keyframes fade-out-slide-out-home-page-nav {
+
+    from {
+
+        opacity   : 1;
+        scale     : 1 1;
+        transform : translateX( 0% );
+
+    }
+
+    to {
+
+        opacity   : 0;
+        scale     : 1 1;
+        transform : translateX( -100% ); // not why this is 50% and not 100%
+
+    }
+
+} // end of fade-out-slide-out-home-page-nav
+
+// ==============================
+// end of keyframes
+// ==============================
+
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// hero image container
+// ==============================
+
+.heroImageContainer {
+
+    // parent
+    grid-area   : div1; // needed in order for the parent container
+    grid-column : 1 / -1; // needed in order to fill the parent container
+
+    // children
+    display               : grid;
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // 1 - in the content div use grid-column to position against the parent grid and until we
+    // can use sub grid we may need to duplicate the parent grid and bring it down to the
+    // content div where we can position against it
+    // 2 - now our content div is sitting empty inside the parent grid we need to give the
+    // content div a width and height so we can create the content box and
+    // 3 - then set up a grid within the content box so that we can layout the content
+    // inside the content box as needed and
+    // 4 - the only cavet to 3 above, is that sometimes we need to go with a horizontal layout
+    // and in those cases, flexbox may be the better choice than css grid
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    align-content       : center;
+    justify-items       : center;
+
+    // needed in order to center the content
+    position : absolute;
+    left     : 0;
+    top      : 0;
+    right    : 0;
+    // bottom   : 0; // important!! ( see the notes below )
+
+    z-index : 1;
+
+    // ==============================
+    // height
+    // ==============================
+
+    // ==============================
+    // on larger screens, set the height of the hero container to 100vh or 100svh and this
+    // will make the background image span the entire screen or viewport and only span the
+    // viewport and we want this effect on larger screens
+    // ==============================
+
+    height : 100vh; // make sure to adjust the margin top for the next container
+
+    // ==============================
+    // @supports
+    // ==============================
+
+    // use @supports to test for " 100svh "
+
+    // see the following article for details on @supports : 
+    // " https://css-tricks.com/how-supports-works/ "
+    @supports ( height : 100svh ) {
+
+        min-height : max( 100.0rem, 100svh );
+        // height : 100svh; // remember, svh stands for smallest virewport height and unlike
+        // 100vh, which causes the hero container to overflow into div2 on some mobiles
+        // devices, 100svh takes into account any mobile bars, etc. and seems to work
+        // pretty well
+
+        // remember, 100svh and 100vh are the same on desktop since desktops don't have
+        // any mobile bars, etc. to contend with
+
+        // make sure to adjust the margin top for the next container
+
+    } // end of container > @supports ( height : 100svh )
+
+    // ==============================
+    // end of @supports
+    // ==============================
+
+    // for shorter screens, make sure change align-content to start and add padding top
+    // and we do the same omce max-width equals 1376px
+    /*
+        So practically, for your CSS math specifically :
+
+        Most common actual height: 1080px (physical), but the CSS viewport height the
+        browser reports is usually a bit less than that once you subtract the browser
+        chrome ( address bar, bookmarks bar, etc. ) — typically landing somewhere
+        around 900–950px of visible content height in a maximized browser window.
+
+        1366×768 is still common enough to design around, especially for older/budget
+        laptops — it represents over 10% of desktop users in the US even now.
+
+        1536×864 (the Windows-scaled version) is worth treating as its own real
+        breakpoint target since it's increasingly common due to display scaling, not
+        just a rare edge case.
+
+        A reasonable design baseline, combining these: treat ~900px viewport height as
+        your "typical laptop" target for anything height-dependent
+    */
+    @media all and ( max-height : 1079px ) {
+
+        align-content : start; // visual preference
+
+        padding : calc( 160px + 12.0rem ) 0 0 0; // add some spacing between the header and the content divs
+    
+    } // end of container > ( max-height : 1000px )
+
+    // ==============================
+    // end of height
+    // ==============================
+
+    // ==============================
+    // background color
+    // ==============================
+
+    // this the best color that match the first video and will use this as my background
+    // color and hopefully save a network request by eliminating 
+    // background-image : url( /images/lama_bg_01.webp );
+    // background-color : rgba( 17, 11, 84, 1 );
+
+    background-size       : cover;
+    background-blend-mode : multiply;
+    // background-color      : rgba( 13, 58, 216, 1.0 );
+    // background-color      : rgba( 0, 74, 173, 1.0 );
+    background-color      : var( --blue-590 );
+    // background-color      : var( --blue-600 );
+    background-color      : var( --blue-725 );
+    // background-color      : var( --blue-750 );
+    // background-color      : var( --blue-800 );
+    // background-color      : rgba( 0, 0, 155, 1.0 );
+
+    // ==============================
+    // end of background color
+    // ==============================
+
+    // ==============================
+    // fallback jpeg image
+    // ==============================
+
+    background-image : url( /images/mj_stem_cells_03_2560.jpg );
+
+    @media all and ( max-width : $bp-1376 ) {
+        
+        background-image : url( /images/mj_stem_cells_03_1376.jpg );
+
+    } // end of bp-1376
+
+    @media all and ( max-width : $bp-480 ) {
+
+        // this is an cropped image
+        background-image    : url( /images/mj_stem_cells_04_480.jpg );
+
+    } // end of bp-480
+
+    // ==============================
+    // end of fallback jpeg image
+    // ==============================
+
+    // ==============================
+    // webp image
+    // ==============================
+
+    // this code comes from the article :
+    // " https://www.js-craft.io/blog/css-fallbacks-for-webp-background-images-with-supports/ "
+    @supports ( background-image : url( /images/mj_stem_cells_03_2560.webp ) ) {
+
+        background-image : url( /images/mj_stem_cells_03_2560.webp );
+        //background-image : url( /images/mj_window_01.png );
+        //background-image : url( /images/mj_med_spa_03.png );
+        //background-image : url( /images/mj_med_spa_03.png );
+
+        @media all and ( max-width : $bp-1376 ) {
+    
+            background-image : url( /images/mj_stem_cells_03_1376.webp );
+
+        } // end of bp-1376
+
+        @media all and ( max-width : $bp-480 ) {
+
+            // this is an cropped image
+            background-image : url( /images/mj_stem_cells_04_480.webp );
+
+        } // end of bp-480
+
+    } // end of container > @supports
+
+    // ==============================
+    // end of webp image
+    // ==============================
+
+    // ==============================
+    // remember, at bp-1376 and below we changed 100svh to 100rem or a fixed height and we
+    // did this so that we could fix the hero section content jumping that was caused by
+    // the disappearing address bar ( resulting in a terrible user experience) when scrolling
+    // up and down on the hero section and the content jumping did not happen on Safari but
+    // did happen on Chrome
+    // ==============================
+
+    // this is for the 2024 iPad Pro 13 inch with a viewport size of 1032 x 1376
+    @media all and ( max-width : $bp-1376 ) {
+
+        align-content : start; // visual preference
+
+        // added a little extra, given all the content in this hero section
+        height     : 100.0rem; // make sure to adjust the margin top for the next container
+        min-height : 100vh;
+        padding    : calc( 160px + 12.0rem ) 0 0 0; // add some spacing between the header and the content divs
+
+    } // end of container > end of bp-1376
+
+    // ==============================
+    // end of height
+    // ==============================
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+        // remember, we are trying to match the most common height value by screen size according
+        // StatCounter in the 1032 to 1280 range and in this range the height values become
+        // smaller so in this case we want to make sure we have enough height for the 2024 iPad
+        // Pro 11 or 834 * 1091
+        // height     : 83.4rem; // make sure to adjust the margin top for the next container
+        // added a little extra, given all the content in this hero section
+        height     : 100.0rem; // make sure to adjust the margin top for the next container
+        min-height : 100vh;
+
+    } // end of container > end of bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // height
+    // ==============================
+
+    // remember, we are trying to match the most common height values by screen size according
+    // StatCounter and in this case we are looking at common screen sizes for tablets
+    @media all and ( max-width : $bp-1032 ) {
+
+        height : calc( 137.6rem * 1.1 ); // make sure to adjust the margin top for the next container
+
+    } // end of container > end of bp-1032
+
+    // remember, we are trying to match the most common height values by screen size according
+    // StatCounter and in this case we are looking at common screen sizes for tablets
+    @media all and ( max-width : $bp-920 ) {
+
+        height : calc( 128.0rem * 1.1 ); // make sure to adjust the margin top for the next container
+
+    } // end of container > end of bp-920
+
+    // remember, we are trying to match the most common height values by screen size according
+    // StatCounter and in this case we are looking at common screen sizes for mobile devices
+    // or more specially, make sure we have enough height for the latest iPhones or 440 x 956
+
+    // 105.16rem works out to 956px on a mobile device
+    @media all and ( max-width : $bp-620 ) {
+
+        height  : 116.00rem; // make sure to adjust the margin top for the next container
+        // and had to change from 105.16 to 116.00 to make sure we had enough room to fit
+        // all the content
+        padding : calc( 160px + 11.1rem ) 0 0 0; // add some spacing between the header and the content divs
+        // and remmeber changed padding to 11.1rem from 12.0rem since the header height changed to 151px
+        // from 160px
+
+    } // end of container > bp-620
+
+    // 105.16rem works out to 956px on a mobile device
+    @media all and ( max-width : $bp-480 ) {
+
+        height : 130.00rem; // make sure to adjust the margin top for the next container
+        // and had to change from 105.16 to 130.00 to make sure we had enough room to fit
+        // all the content
+
+    } // end of container > bp-480
+
+    // 105.16rem works out to 956px on a mobile device
+    @media all and ( max-width : 426px ) {
+
+        padding : calc( 160px + 13.0rem ) 0 0 0; // add some spacing between the header and the content divs
+
+    } // end of container > 426px
+
+    // ==============================
+    // remember, in this case, we keep the height at 105.16rem in order to prevent the content
+    // from spilling over into the next div
+    // ==============================
+
+    // remember, we are trying to match the most common height values by screen size according
+    // StatCounter and in this case we are looking at common screen sizes for mobile devices
+    // or more specially, make sure we reduce the height for mobile devices at or below bp-375
+    // and more specifically we want to target the viewport size of 375 * 812 since according
+    // to StatCounter this screen size is the most popular screen size for any mobile phone on
+    // the market in November 2024
+
+    // 90.3rem works out to 812.7px on a mobile device
+    @media all and ( max-width : $bp-375 ) {
+
+        // needed for this project in order for the content not to spill over to the next div
+        height : 145.0rem; // make sure to adjust the margin top for the next container
+
+    } // end of container > bp-375
+
+    // ==============================
+    // end of height
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div for hero content that slide in )
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent
+
+        display       : grid;
+        justify-items : center;
+
+        @media all and ( min-width: 376px ) and ( max-width: 382px ) {
+
+            min-height: 438.19px !important; // !important likely needed to override the grid/JS-calculated height for this range only
+
+        }// container > div 1 > 376px - 382px
+
+        @media all and ( min-width: 372px ) and ( max-width: 375px ) {
+
+            min-height: 423.07px !important; // !important likely needed to override the grid/JS-calculated height for this range only
+
+        }// container > div 1 > 376px - 382px
+
+        // ==============================
+        // container > div 1 > div 1
+        // ==============================
+
+        // ==============================
+        // content div
+        // ==============================
+
+        > div:nth-child( 1 ) {
+    
+            // children
+            display               : grid;
+            grid-template-rows    : repeat( 2, auto );
+            grid-template-columns : 1fr;
+            align-items           : center;
+            justify-items         : center;
+            gap                   : 2.0rem 0; // remove the 4.0rem row gap since the spacing looks a
+            // little more even given given that this div stretches to fill the space
+            grid-template-areas   : "h1"
+                                    "h5";
+    
+            width   : min( 105.0rem, 100% ); // browser will select the smaller of 105.0rem or 100%
+            z-index : 1; // needed in order to appear on top
+    
+            // ==============================
+            // IMPORTANT!
+            //
+            // if using gsap, make sure the first video content div's opcity is set to 0 so
+            // that the h1 and h5 elements do not suddenly appear and then disappear right
+            // before the gsap animation
+            // ==============================
+            opacity : 0;
+    
+            @media all and ( max-width : $bp-1440 ) {
+    
+                width : min( 90.0rem, 100% ); // browser will select the smaller of 90.0rem or 100%
+        
+            } // end of container > div1 > div1 > bp-1440
+
+            // ==============================
+            // container > div 1 > h1
+            // ==============================
+    
+            > h1 {
+    
+                // parent
+                grid-area : h1;
+    
+                @include h1-light-hero;
+    
+                // ==============================
+                // will-change
+                // use either will-change or translateZ( 0 ) to " promote elements that you plan to
+                // animate "
+                // see the following article for details :
+                // " https://web.dev/articles/stick-to-compositor-only-properties-and-manage-layer-count " 
+                // ==============================
+    
+                will-change : opacity, transform;
+    
+                // ==============================
+                // end of will-change
+                // ==============================
+    
+            } // end of container > div1 > div1 > h1
+    
+            // ==============================
+            // container > div 1 > h5
+            // ==============================
+    
+            > h5 {
+    
+                // parent
+                grid-area : h5;
+    
+                @include h5-light;
+    
+                font-weight    : 650;
+                letter-spacing : 0.2rem;
+                text-align     : center;
+    
+                // ==============================
+                // will-change
+                // use either will-change or translateZ( 0 ) to " promote elements that you plan to
+                // animate "
+                // see the following article for details :
+                // " https://web.dev/articles/stick-to-compositor-only-properties-and-manage-layer-count " 
+                // ==============================
+    
+                will-change : opacity, transform;
+    
+                // ==============================
+                // end of will-change
+                // ==============================
+    
+            } // end of container > div1 > div1 > h5
+
+        }  // end of container > div1 > div1
+    
+    } // end of container div1
+
+    // ==============================
+    // container > div 2
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 2 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent
+
+        // children
+        display          : flex;
+        align-items      : center;
+        justify-content  : center;
+        gap              : 0 4.0rem;
+
+        z-index : 1; // needed in order to appear on top
+        width   : min( 100.0rem, 100% ); // browser will select the smaller of 100.0rem or 100%
+        margin  : 4.0rem 0 0 0;
+
+        // ==============================
+        // IMPORTANT!
+        //
+        // if using gsap, make sure the second video content div's opcity is set to 0 so
+        // that the h2 and h5 elements do not suddenly appear and then disappear right
+        // before the gsap animation
+        // ==============================
+       //  opacity : 0;
+
+        @media all and ( max-width : $bp-1440 ) {
+
+            width : min( 90.0rem, 100% ); // browser will select the smaller of 90.0rem or 100%
+    
+        } // end of container > div2 > bp-1440
+
+        @media all and ( max-width : $bp-620 ) {
+
+            display               : grid;
+            align-content         : center;
+            justify-content       : center;
+            gap                   : 4.0rem 0;
+    
+        } // end of container > div2 > bp-620
+
+        // ==============================
+        // container > div 2 > div 1
+        // ==============================
+
+        > div:nth-child( 1 ) {
+
+            // children
+            // display : none; // we initially need to hide div2
+            display : grid;
+
+            border        : 0.075rem solid var( --gold-42 );
+            border-radius : 0.6rem;
+
+            // opacity : 0;
+
+            > a {
+
+                padding : 1.725rem 2.925rem; // given a 0.05 rem border, we need to substract 0.05rem
+                // from the button padding in order to equal the size of the first button
+    
+                font-family    : var( --font-primary-5 );
+                font-size      : 1.85rem;
+                font-weight    : 600;
+                color          : var( --gold-42 );
+                letter-spacing : 1px;
+                text-align     : center;
+
+                background : none;
+
+                transition : all 0.2s ease-out; // provide for a nice hover animation
+
+                // hover selector for the navigation tabs
+                &:hover {
+
+                    border-radius : 0.6rem;
+
+                    background-color : rgba( 255, 255, 255, 0.01 );
+
+                    cursor : pointer;
+
+                    // move the nav item up just a little to add a nice hover effect
+                    transform : translate3d( 0, -0.2rem, 0 );
+
+                    // remove the animation effect for screen sizes under 1376 pixels
+                    @media all and ( max-width : $bp-1376 ) {
+
+                        background-color : inherit;
+
+                        transform: none;
+                
+                    } // end of container > div2 > div1 > a, .phone-icon > &:hover > bp-1376
+
+                } // end of container > div2 > div1 > a, .phone-icon > &:hover
+
+            } // end of container > div2 > div2 > a
+
+        } // end of container > div2 > div1
+
+        // ==============================
+        // container > div 2 > div 2
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            // display : none; // we initially need to hide div2
+            display : grid;
+
+            border        : 0.075rem solid var( --gold-42 );
+            border-radius : 0.6rem;
+
+            // opacity : 0;
+
+            > a {
+
+                padding : 1.725rem 2.925rem; // given a 0.05 rem border, we need to substract 0.05rem
+                // from the button padding in order to equal the size of the first button
+
+                font-family    : var( --font-primary-5 );
+                font-size      : 1.85rem;
+                font-weight    : 600;
+                color          : var( --gold-42 );
+                letter-spacing : 1px;
+                text-align     : center;
+
+                background : none;
+
+                transition : all 0.2s ease-out; // provide for a nice hover animation
+
+                // hover selector for the navigation tabs
+                &:hover {
+
+                    border-radius : 0.6rem;
+
+                    background-color : rgba( 255, 255, 255, 0.01 );
+
+                    cursor : pointer;
+
+                    // move the nav item up just a little to add a nice hover effect
+                    transform : translate3d( 0, -0.2rem, 0 );
+
+                    // remove the animation effect for screen sizes under 1376 pixels
+                    @media all and ( max-width : $bp-1376 ) {
+
+                        background-color : inherit;
+
+                        transform: none;
+                
+                    } // end of container > div2 > div1 > a, .phone-icon > &:hover > bp-1376
+
+                } // end of container > div2 > div1 > a, .phone-icon > &:hover
+
+                > svg {
+
+                    // transform : rotate( 30deg );
+    
+                } // end of container > div2 > div2 > a > svg
+
+            } // end of container > div2 > div2 > a
+
+        } // end of container > div2 > div2
+
+    } // end of container > div2
+
+    // ==============================
+    // container > div 3
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 3 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent
+
+        // children
+        display         : flex;
+        align-items     : center;
+        justify-content : center;
+        gap             : 0 4.0rem;
+
+        z-index : 1; // needed in order to appear on top
+        width   : min( 100.0rem, 100% ); // browser will select the smaller of 100.0rem or 100%
+        margin  : 4.0rem 0 0 0;
+
+        @media all and ( max-width : $bp-620 ) {
+
+            display               : grid;
+            align-content         : center;
+            justify-content       : center;
+            gap                   : 4.0rem 0;
+    
+        } // end of container > div2 > bp-620
+
+        > div:nth-child( 1 ) {
+    
+            @include text-small-light;
+
+        } // end of container > div3 > div1
+
+        > div:nth-child( 2 ) {
+    
+            @include text-small-light;
+
+        } // end of container > div3 > div2
+
+        > div:nth-child( 3 ) {
+    
+            @include text-small-light;
+
+        } // end of container > div3 > div3
+
+    } // end of container > div3
+
+} // end of container
+

@@ -1,0 +1,103 @@
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+/*
+
+    the infomation on svg hamburger menu came from the following video by Kevin Powell :
+    " https://www.youtube.com/watch?v=R00QiudbD4Y&t=1129s "
+
+    remember, there are things we can do with svgs that we just can't do with a div or span tag
+
+*/
+
+
+
+// ==============================
+// hamburger menu container
+// ==============================
+
+.hamburgerMenuContainer {
+
+    position : relative; // remember, by default elements are set to " position : static "
+    // and this will prevent the z-index from working 
+    width    : 100px; // had to specify the hamburger menu width and height in order to give
+    // the hamburger menu item a nice large clickable box ( remember the svg itself is
+    // 50px * 50px ) 
+    height   : 100px;
+    z-index  : 3; // remember, the side-menu container has a z-index of 2; therefore,
+    // we need to give the hamburger menu container a z-index greater than 2 in order
+    // for the hamburger menu to be place on top of the side menu
+    padding  : 2px 0 0 30px; // for whatever reason, I had to push the hamburger menu item
+    // down a little in order to get it pefectly centered with the Next logo and remember
+    // I was able to use the " align-items : center " style declaration inside Chrome dev
+    // tools and then cursor over the " align-items : center " style declaration inside
+    // Chrome dev tools in order to visually center the logo with the hamburger menu item
+
+    // also, had to push the hamburger menu item to the right a little in order to align
+    // the hamburger menu item to the right side of the container and this is because the
+    // width of the button is 100px but the actual hamburger menu item is 40px wide and
+    // this is why the padding left had be 30px
+
+    @media all and ( max-width : $bp-920 ) {
+
+        // padding : 0 0 10px 30px;
+
+    } // end of container > bp-920
+
+    // ==============================
+    // remember, this style is here so that we can better fit the hamburger menu inside
+    // header
+    // ==============================
+
+    @media all and ( max-width : $bp-620 ) {
+
+        width   : 50px;
+        height  : 50px;
+        padding : 0 0 0 0;
+
+    } // end of container > bp-620
+
+    > button {
+
+        width  : 100px; // had to specify the button width and height so that it matched
+        // the width and height of the parent container and this keeped the svg located in
+        // the right place
+        height : 100px;
+
+        border : none; // had to remove the border since the button element was adding
+        // a border automatically
+
+        background : transparent; // had to remove the default button background color
+        // in order to not override the side menu background color
+
+        outline : none; // just in case we get an outline on the click event
+
+        // ==============================
+        // remember, this style is here so that we can better fit the hamburger menu inside
+        // header
+        // ==============================
+
+        @media all and ( max-width : $bp-620 ) {
+
+            width  : 50px;
+            height : 50px;
+
+        } // end of container > button > bp-620
+
+        > svg {
+
+            fill : var( --white ); // add the color for the hamburger menu bars
+
+        } // end of container > button > svg
+
+    } // end of container > button
+
+} // end of container
+
+

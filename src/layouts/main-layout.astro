@@ -1,0 +1,203 @@
+---
+
+// ==============================
+// fonts
+// ==============================
+
+// import in our Google fonts ( great for optimizing speed and minimizing layout shift )
+// and roboto-flex is a variable font so one import gives you all weights but roboto-condensed
+// is a non-variable font and comes in fixed weights so we need to import each weight separately
+
+// remember, fontsource-variable/roboto-flex did not match the Google fonts roboto flex; however,
+// the fontsource/roboto-condensed matched the Google fonts roboto condensed
+
+// after testing this set up using the font source code below and only importing roboto flex with
+// Google fonts, I found the render blocking delay was the same ( 750ms ) no matter what set up
+// I was using - whether it be this set up below and importing roboto flex or my set up before,
+// where I was importing in martian mono, roboto condensed and roboto flex through Google fonts
+
+// import "@fontsource-variable/roboto-flex/full.css";
+// import '@fontsource-variable/roboto-flex/index.css'; 
+// import '@fontsource-variable/roboto-flex';
+/*
+import '@fontsource/roboto-condensed/100.css';
+import '@fontsource/roboto-condensed/200.css';
+import '@fontsource/roboto-condensed/300.css';
+import '@fontsource/roboto-condensed/400.css';
+import '@fontsource/roboto-condensed/500.css';
+import '@fontsource/roboto-condensed/600.css';
+import '@fontsource/roboto-condensed/700.css';
+import '@fontsource/roboto-condensed/800.css';
+import '@fontsource/roboto-condensed/900.css';
+import '@fontsource/dynapuff/700.css';
+import '@fontsource/dynapuff/400.css';
+*/
+
+
+// ==============================
+// imports
+// ==============================
+
+// according to AI : " If you want to eliminate that blink/refresh entirely, you must use the
+// ClientRouter. It is the only way to keep the browser "alive" between pages so that the
+// transition is 100% seamless. "
+import { ClientRouter } from 'astro:transitions';
+// import in the Layout component
+import Layout from '../components/astro/layout/layout.astro';
+// import in our global scss file
+import '../styles/_globals.scss';
+
+// ==============================
+// astro.locals
+// ==============================
+
+// get user and then pass it to our script below so that we can update the $user store
+const { user } = Astro.locals;
+
+---
+
+<html lang="en">
+	<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+        <meta name="msapplication-TileColor" content="#2d89ef" />
+        <meta name="theme-color" content="#0d1117" />
+        <meta name="google-site-verification" content="uCB70dKpRmaWIBixy56gyqt3fN72H_flMdgN9V0RPbE" />
+
+        <!-- favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v2=https://enchantingapps.com/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v2=https://enchantingapps.com/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v2=https://enchantingapps.com/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest?v2=https://enchantingapps.com/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg?v2=https://enchantingapps.com/safari-pinned-tab.svg" color="#2d89ef" />
+        <link rel="shortcut icon" href="/favicon.ico?v2=https://enchantingapps.com/favicon.ico" />
+
+        <!-- font preload — only preload fonts that are actually needed immediately / above-the-fold -->
+        <!-- self-hosting removes the extra hop ( Google's CDN → their font file ) and preloading removes the extra wait -->
+        <!-- remember, we had go to Google Fonts and then download the Roboto Flex Variable font zip file and then
+        unzip the file and then take the 1.7 mb .ttf file and convert that file into a woff2 file and that is the file
+        listed below -->
+        <link
+            rel="preload"
+            href="/fonts/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+
+        {
+            /*
+                Google web fonts
+                
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true" />
+                <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet" />
+            */
+        }
+
+        <!-- page specific meta tags -->
+        <!-- this allows individual pages to inject their own page-specific meta
+        tags ( title, description, og tags etc. ) into the head from each page -->
+        <!-- ---
+            // src/pages/index.astro
+            import Layout from '../layouts/Layout.astro';
+            ---
+            <Layout>
+                <meta slot="head" name="description" content="Your description" />
+                <title slot="head">Home | Enchanting Apps</title>
+                page content here
+            </Layout>
+        -->
+        <slot name="head" />
+
+        <!-- client router for view transitions -->
+        <ClientRouter />
+
+        <!-- speed optimization -->
+        <style is:inline>
+            .hero-video-container {
+                background-color : rgba( 17, 11, 84, 1 );
+            }
+        </style>
+
+        <!-- google tag manager -->
+        <script is:inline define:vars={ { gtmId : import.meta.env.PUBLIC_GOOGLE_TAG_MANAGER_ID } }>
+            // @ts-nocheck
+            setTimeout( () => {
+                ( function( w, d, s, l, i ) {
+                    w[ l ] = w[ l ] || [];
+                    w[ l ].push( { 'gtm.start': new Date().getTime(), event: 'gtm.js' } );
+                    var f = d.getElementsByTagName( s )[ 0 ],
+                    j = d.createElement( s ),
+                    dl = l != 'dataLayer' ? '&l=' + l : '';
+                    j.async = true;
+                    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                    f.parentNode.insertBefore( j, f );
+                } )( window, document, 'script', 'dataLayer', gtmId );
+            }, 3000 );
+        </script>
+
+    </head>
+
+	<body>
+
+        <!-- part 1 - fade in the nav on initial paint and only on the initial paint -->
+        <!-- see nav.jsx, _global.scss and layout.astro for parts 2, 3 and 4 -->
+        <script is:inline>
+            // this will evaluate to true during the initial paint and then locks in the
+            // initial paint
+            if ( !sessionStorage.getItem( 'hasLoadedOnce' ) ) {
+
+                document.documentElement.setAttribute( 'data-initial-load', 'true' );
+
+                sessionStorage.setItem( 'hasLoadedOnce', 'true' );
+
+            } // end of if
+        </script>
+
+        <!-- google tag manager noscript fallback -->
+        <noscript>
+            <iframe
+                src={ `https://www.googletagmanager.com/ns.html?id=${ import.meta.env.PUBLIC_GOOGLE_TAG_MANAGER_ID }` }
+                height="0"
+                width="0"
+                style="display: none; visibility: hidden;"
+            />
+        </noscript>
+
+        <Layout>
+
+            <slot />
+
+        </Layout>
+
+        <!-- this div serves as the invisible bridge between the server and the browser -->
+        <!-- get the server user data and bring it into a hidden div -->
+        <!-- data-user is a custom HTML data attribute that stores the user object as a JSON string baked into the HTML at build time by the server -->
+        <!-- JSON.stringify( user ?? null ) — converts the user object to a string like { "id": "123", "name": "Bob", ... } or null if no user -->
+        <div id="user-data" data-user={ JSON.stringify( user ?? null ) } style="display:none"></div>
+
+        <script>
+
+            // import in our $user nanostore
+            import { $user } from '../stores/user.ts';
+
+            // fires on every page load and navigation and this is needed for ClientRouter
+            document.addEventListener( 'astro:page-load', () => {
+    
+                // get the div
+                const el = document.getElementById( 'user-data' );
+                // el?.dataset.user reads the data-user attribute value and then JSON.parse()
+                // converts the JSON string back into a JavaScript object
+                const user = JSON.parse( el?.dataset.user || 'null' );
+                // populates the $user nanostore so all our components can access it
+                $user.set( user );
+
+            });
+
+        </script>
+
+	</body>
+
+</html>
+

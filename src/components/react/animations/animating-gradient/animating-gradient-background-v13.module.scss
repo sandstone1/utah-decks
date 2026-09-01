@@ -1,0 +1,706 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../styles/_mixins.scss' as *;
+@use '../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+// ==============================
+// @property rule
+// ==============================
+
+// ==============================
+// purpose : by using the @property rule, we can animate the gradient using keyframes,
+// pseudo elements, linear graident, radial gradients, conic gradients and css animations
+// ==============================
+
+@property --gradient-angle {
+
+    syntax        : "<angle>";
+    inherits      : false;
+    initial-value : 0deg;
+
+} // end of @property
+
+
+@property --gradient-percentage-x-1 {
+
+    syntax        : "<percentage>";
+    inherits      : false;
+    initial-value : 20%;
+
+} // end of @property
+
+
+@property --gradient-percentage-y-1 {
+
+    syntax        : "<percentage>";
+    inherits      : false;
+    initial-value : 10%;
+
+} // end of @property
+
+
+@property --gradient-percentage-x-2 {
+
+    syntax        : "<percentage>";
+    inherits      : false;
+    initial-value : 20%;
+
+} // end of @property
+
+
+@property --gradient-percentage-y-2 {
+
+    syntax        : "<percentage>";
+    inherits      : false;
+    initial-value : 55%;
+
+} // end of @property
+
+
+@property --gradient-percentage-x-3 {
+
+    syntax        : "<percentage>";
+    inherits      : false;
+    initial-value : 20%;
+
+} // end of @property
+
+
+@property --gradient-percentage-y-3 {
+
+    syntax        : "<percentage>";
+    inherits      : false;
+    initial-value : 10%;
+
+} // end of @property
+
+
+
+
+// ==============================
+// keyframes 1
+// ==============================
+
+// ==============================
+// rotate animating gradient
+// ==============================
+
+// ==============================
+// purpose : rotate the animating gradient
+// ==============================
+
+@keyframes rotation {
+
+    0% {
+
+        --gradient-angle : 0deg;
+
+    }
+
+    100% {
+
+        --gradient-angle : 360deg;
+
+    }
+
+} // end of rotate
+
+
+// ==============================
+// keyframes 2
+// ==============================
+
+// ==============================
+// animate or move the gradient circle 1
+// ==============================
+
+// ==============================
+// purpose : move the circle around the card
+// ==============================
+
+@keyframes movement-1 {
+
+    0% {
+
+        --gradient-percentage-x-1 : 20%;
+        --gradient-percentage-y-1 : 50%;
+
+    }
+
+    50% {
+
+        --gradient-percentage-x-1 : 25%;
+        --gradient-percentage-y-1 : 55%;
+
+    }
+
+    100% {
+
+        --gradient-percentage-x-1 : 30%;
+        --gradient-percentage-y-1 : 50%;
+
+    }
+
+} // end of movement-1
+
+
+// ==============================
+// keyframes 3
+// ==============================
+
+// ==============================
+// animate or move the gradient circle 2
+// ==============================
+
+// ==============================
+// purpose : move the circle around the card
+// ==============================
+
+@keyframes movement-2 {
+
+    0% {
+
+        --gradient-percentage-x-2 : 30%;
+        --gradient-percentage-y-2 : 65%;
+
+    }
+
+    50% {
+
+        --gradient-percentage-x-2 : 50%;
+        --gradient-percentage-y-2 : 75%;
+
+    }
+
+    100% {
+
+        --gradient-percentage-x-2 : 90%;
+        --gradient-percentage-y-2 : 80%;
+
+    }
+
+} // end of movement-2
+
+
+// ==============================
+// keyframes 4
+// ==============================
+
+// ==============================
+// animate or move the gradient circle 3
+// ==============================
+
+// ==============================
+// purpose : move the circle around the card
+// ==============================
+
+@keyframes movement-3 {
+
+    0% {
+
+        --gradient-percentage-x-1 : 33%;
+        --gradient-percentage-y-1 : 0%;
+
+    }
+
+    50% {
+
+        --gradient-percentage-x-1 : 33%;
+        --gradient-percentage-y-1 : 5%;
+
+    }
+
+    100% {
+
+        --gradient-percentage-x-1 : 33%;
+        --gradient-percentage-y-1 : 0%;
+
+    }
+
+} // end of movement-3
+
+
+// ==============================
+// animate or move the gradient circle 1 ( for smaller screen sizes )
+// ==============================
+
+// ==============================
+// purpose : move the circle around the card
+// ==============================
+
+@keyframes movement-4 {
+
+    0% {
+
+        --gradient-percentage-x-1 : 20%;
+        --gradient-percentage-y-1 : 55%;
+
+    }
+
+    50% {
+
+        --gradient-percentage-x-1 : 25%;
+        --gradient-percentage-y-1 : 60%;
+
+    }
+
+    100% {
+
+        --gradient-percentage-x-1 : 30%;
+        --gradient-percentage-y-1 : 55%;
+
+    }
+
+} // end of movement-4
+
+
+// ==============================
+// animate or move the gradient circle 1 ( for smaller screen sizes )
+// ==============================
+
+// ==============================
+// purpose : move the circle around the card
+// ==============================
+
+@keyframes movement-5 {
+
+    0% {
+
+        --gradient-percentage-x-1 : 20%;
+        --gradient-percentage-y-1 : 60.0%;
+
+    }
+
+    50% {
+
+        --gradient-percentage-x-1 : 25%;
+        --gradient-percentage-y-1 : 65.0%;
+
+    }
+
+    100% {
+
+        --gradient-percentage-x-1 : 30%;
+        --gradient-percentage-y-1 : 60.0%;
+
+    }
+
+} // end of movement-5
+
+
+// ==============================
+// animate or move the gradient circle 1 ( for smaller screen sizes )
+// ==============================
+
+// ==============================
+// purpose : move the circle around the card
+// ==============================
+
+@keyframes movement-6 {
+
+    0% {
+
+        --gradient-percentage-x-1 : 20%;
+        --gradient-percentage-y-1 : 65%;
+
+    }
+
+    50% {
+
+        --gradient-percentage-x-1 : 25%;
+        --gradient-percentage-y-1 : 70%;
+
+    }
+
+    100% {
+
+        --gradient-percentage-x-1 : 30%;
+        --gradient-percentage-y-1 : 65%;
+
+    }
+
+} // end of movement-6
+
+
+// ==============================
+// animate or move the gradient circle 1 ( for smaller screen sizes )
+// ==============================
+
+// ==============================
+// purpose : move the circle around the card
+// ==============================
+
+@keyframes movement-7 {
+
+    0% {
+
+        --gradient-percentage-x-1 : 20%;
+        --gradient-percentage-y-1 : 70%;
+
+    }
+
+    50% {
+
+        --gradient-percentage-x-1 : 25%;
+        --gradient-percentage-y-1 : 75%;
+
+    }
+
+    100% {
+
+        --gradient-percentage-x-1 : 30%;
+        --gradient-percentage-y-1 : 70%;
+
+    }
+
+} // end of movement-7
+
+
+// ==============================
+// keyframes 8
+// ==============================
+
+// ==============================
+// animate or move the gradient circle 3
+// ==============================
+
+// ==============================
+// purpose : move the circle around the card
+// ==============================
+
+@keyframes movement-8 {
+
+    0% {
+
+        --gradient-percentage-x-1 : 27%;
+        --gradient-percentage-y-1 : 0%;
+
+    }
+
+    50% {
+
+        --gradient-percentage-x-1 : 27%;
+        --gradient-percentage-y-1 : 5%;
+
+    }
+
+    100% {
+
+        --gradient-percentage-x-1 : 27%;
+        --gradient-percentage-y-1 : 0%;
+
+    }
+
+} // end of movement-8
+
+
+// ==============================
+// keyframes 9
+// ==============================
+
+// ==============================
+// animate or move the gradient circle 3
+// ==============================
+
+// ==============================
+// purpose : move the circle around the card
+// ==============================
+
+@keyframes movement-9 {
+
+    0% {
+
+        --gradient-percentage-x-1 : 20%;
+        --gradient-percentage-y-1 : 0%;
+
+    }
+
+    50% {
+
+        --gradient-percentage-x-1 : 20%;
+        --gradient-percentage-y-1 : 5%;
+
+    }
+
+    100% {
+
+        --gradient-percentage-x-1 : 20%;
+        --gradient-percentage-y-1 : 0%;
+
+    }
+
+} // end of movement-9
+
+
+// ==============================
+// keyframes 10
+// ==============================
+
+// ==============================
+// animate or move the gradient circle 3
+// ==============================
+
+// ==============================
+// purpose : move the circle around the card
+// ==============================
+
+@keyframes movement-10 {
+
+    0% {
+
+        --gradient-percentage-x-1 : 0%;
+        --gradient-percentage-y-1 : 0%;
+
+    }
+
+    50% {
+
+        --gradient-percentage-x-1 : 0%;
+        --gradient-percentage-y-1 : 5%;
+
+    }
+
+    100% {
+
+        --gradient-percentage-x-1 : 00%;
+        --gradient-percentage-y-1 : 0%;
+
+    }
+
+} // end of movement-10
+
+
+
+
+
+
+
+// ==============================
+// animating graident background container
+// ==============================
+
+.animatingGradientBackgroundContainer {
+
+
+    > div::before, div::after {
+
+        content  : '';
+        position : absolute;
+
+        // option 1 - animating background gradient on the card or container
+        // ------------------------
+        // works in Safari
+        // ------------------------
+        inset     : 0; // do this for an animating background gradient on the card or container
+        z-index   : -2; // remember, this container has to sit behind the sticky pictures v3 container
+        // which has a z-index of -1
+        clip-path : inset( 0 ); // this will clip any blur that surrounds the container
+        // ( however, since this is a container I don't think this is needed but will keep here
+        // just in case ) so that we only see the animating graident on the container itself
+
+        // option 2 - animating border gradient
+        // ------------------------
+        // works in Safari
+        // ------------------------
+        // inset     : -1.0rem; // do this for an animating border
+        // z-index   : -1; // do this for an animating border gradient and remember we need to
+        // declare z-index : 0; in the parent
+        // clip-path : inset( 0 ); // this will clip the blur that surronds the border on the
+        // card so that we will only see the animating gradient border
+
+        // option 3 - animating background gradient or blur that sits behind the card and no border
+        // ------------------------
+        // does not work in Safari ( Safari will not animate the blur )
+        // ------------------------
+        // inset   : 0; // do this and " z-index  : -1; " for an animating background gradient
+        // that sits behind the card and create a blur effect around the white card
+        // z-index : -1; // remember we need to declare z-index : 0; in the parent
+
+        // ------------------------
+        // background : conic-gradient( from var( --gradient-angle ) at center, var( --blue-green-240 ), var( --pink-100 ), var( --blue-green-240 ), var( --blue-100 ), var( --pink-100 ), var( --blue-green-240 ) );
+        // background : conic-gradient( from var( --gradient-angle ) at center, var( --purple-300 ), var( --blue-800 ), var( --blue-100 ), var( --blue-800 ), var( --purple-300 ) );
+        // animation : rotation 20s linear infinite;
+        // ------------------------
+
+        background : 
+            // radial-gradient( circle 1100px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), // --blue-85-2
+            // radial-gradient( circle 500px at var( --gradient-percentage-x-2 ) var( --gradient-percentage-y-2 ), rgba( 45, 143, 133, 0.4 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), // green-210
+            radial-gradient( circle 525px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 100, 255, 218, 0.15 ) 0%, rgba( 0, 0, 0, 0 ) 100% ) // --green-23-5
+        ;
+
+        // use this piece of code to turn off the animation for Firefox since as of 6-10-24
+        // Firefox does not support @property and once it does and people have migrated to
+        // using new versions ( maybe a year from now? ) then take this piece of code out
+        // and see the article for details on targeting Firefox browsers :
+        // " https://stackoverflow.com/questions/952861/targeting-only-firefox-with-css?noredirect=1&lq=1
+        @-moz-document url-prefix() {
+    
+            // animation : none;
+
+        } // end @-moz-document url-prefix()
+
+        animation : movement-1 12s linear infinite alternate, movement-2 12s linear infinite alternate, movement-3 12s linear infinite alternate;
+
+        @media all and ( max-width : $bp-1920 ) {
+
+            // change the size of the radial gradients
+            background : 
+                // radial-gradient( circle 850px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                // radial-gradient( circle 500px at var( --gradient-percentage-x-2 ) var( --gradient-percentage-y-2 ), var( --green-210 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                radial-gradient( circle 475px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 100, 255, 218, 0.15 ) 0%, rgba( 0, 0, 0, 0 ) 100% ) // --green-23-5
+            ;
+
+        } // end of container > div::before, div::after > bp-1920
+
+        @media all and ( max-width : $bp-1536 ) {
+
+            // change the size of the radial gradients
+            background : 
+                // radial-gradient( circle 720px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                // radial-gradient( circle 500px at var( --gradient-percentage-x-2 ) var( --gradient-percentage-y-2 ), var( --green-210 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                radial-gradient( circle 400px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 100, 255, 218, 0.15 ) 0%, rgba( 0, 0, 0, 0 ) 100% ) // --green-23-5
+            ;
+
+            animation : movement-4 12s linear infinite alternate, movement-2 12s linear infinite alternate, movement-8 12s linear infinite alternate;
+
+        } // end of container > div::before, div::after > bp-1536
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            // change the size of the radial gradients
+            background : 
+                // radial-gradient( circle 650px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                // radial-gradient( circle 500px at var( --gradient-percentage-x-2 ) var( --gradient-percentage-y-2 ), var( --green-210 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                radial-gradient( circle 400px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 100, 255, 218, 0.15 ) 0%, rgba( 0, 0, 0, 0 ) 100% ) // --green-23-5
+            ;
+
+            animation : movement-4 12s linear infinite alternate, movement-2 12s linear infinite alternate, movement-9 12s linear infinite alternate;
+
+        } // end of container > div::before, div::after > bp-1280
+
+        @media all and ( max-width : $bp-1032 ) {
+
+            // change the size of the radial gradients
+            background : 
+                // radial-gradient( circle 650px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                // radial-gradient( circle 500px at var( --gradient-percentage-x-2 ) var( --gradient-percentage-y-2 ), var( --green-210 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                radial-gradient( circle 450px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 100, 255, 218, 0.15 ) 0%, rgba( 0, 0, 0, 0 ) 100% ) // --green-23-5
+            ;
+
+            animation : movement-4 12s linear infinite alternate, movement-2 12s linear infinite alternate, movement-10 12s linear infinite alternate;
+
+        } // end of container > div::before, div::after > bp-1032
+
+        @media all and ( max-width : $bp-920 ) {
+
+            // change the size of the radial gradients
+            background : 
+                // radial-gradient( circle 550px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                // radial-gradient( circle 500px at var( --gradient-percentage-x-2 ) var( --gradient-percentage-y-2 ), var( --green-210 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                radial-gradient( circle 400px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 100, 255, 218, 0.15 ) 0%, rgba( 0, 0, 0, 0 ) 100% ) // --green-23-5
+            ;
+
+            animation : movement-4 12s linear infinite alternate, movement-2 12s linear infinite alternate, movement-10 12s linear infinite alternate;
+
+        } // end of container > div::before, div::after > bp-920
+
+        @media all and ( max-width : $bp-768 ) {
+
+            // change the size of the radial gradients
+            background : 
+                // radial-gradient( circle 550px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                // radial-gradient( circle 500px at var( --gradient-percentage-x-2 ) var( --gradient-percentage-y-2 ), var( --green-210 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                radial-gradient( circle 400px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 100, 255, 218, 0.15 ) 0%, rgba( 0, 0, 0, 0 ) 100% ) // --green-23-5
+            ;
+
+            animation : movement-5 12s linear infinite alternate, movement-2 12s linear infinite alternate, movement-10 12s linear infinite alternate;
+
+        } // end of container > div::before, div::after > bp-768
+
+        @media all and ( max-width : $bp-480 ) {
+
+            // change the size of the radial gradients
+            background : 
+                // radial-gradient( circle 450px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                // radial-gradient( circle 500px at var( --gradient-percentage-x-2 ) var( --gradient-percentage-y-2 ), var( --green-210 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                radial-gradient( circle 350px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 100, 255, 218, 0.15 ) 0%, rgba( 0, 0, 0, 0 ) 100% ) // --green-23-5
+            ;
+
+            animation : movement-6 12s linear infinite alternate, movement-2 12s linear infinite alternate, movement-10 12s linear infinite alternate;
+
+        } // end of container > div::before, div::after > bp-480
+
+        @media all and ( max-width : $bp-375 ) {
+
+            // change the size of the radial gradients
+            background : 
+                // radial-gradient( circle 400px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                // radial-gradient( circle 500px at var( --gradient-percentage-x-2 ) var( --gradient-percentage-y-2 ), var( --green-210 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                radial-gradient( circle 350px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 100, 255, 218, 0.15 ) 0%, rgba( 0, 0, 0, 0 ) 100% ) // --green-23-5
+            ;
+
+            animation : movement-7 12s linear infinite alternate, movement-2 12s linear infinite alternate, movement-10 12s linear infinite alternate;
+
+        } // end of container > div::before, div::after > bp-375
+
+    } // end of container > div::before, div::after
+
+    > div::after {
+
+        filter : blur( 6.0rem );
+
+        // ==============================
+        // remember, using the " filter : blur( 3.0rem ); " property in Safari caused massive
+        // performance problems but after applying " transform : translateZ( 0 ); " the
+        // performance problems went away
+        // ==============================
+
+        // ==============================
+        // see the following answers in stackoverflow for details :
+        // " https://stackoverflow.com/questions/44662417/css-filter-is-very-slow-on-safari-with-different-order-can-someone-explain "
+        // or more specially, see this anwser :
+        /*
+            Use CSS property on element with blur
+
+            transform: translateZ(0)
+
+            to make CSS render on GPU
+        */
+        // ==============================
+
+        // transform : translateZ( 0 ); // this makes the css render on the GPU, which is what we want
+
+        // ==============================
+        // remember, will-change does basically the same thing as the translateZ( 0 ) hack
+        // and see the follow article for details :
+        // " https://stackoverflow.com/questions/48862283/js-animation-performance-with-will-change-vs-transformz0 "
+        //
+        // and one of the answers said : " will-change basically does the same thing (as of today)
+        // as the translateZ( 0 ) hack: it pulls the element out onto a new rendering layer.
+        // The difference is that will-change is telling the browser your intent, namely, that you
+        // will be changing this property; whereas with translateZ(0) that is merely a coincidental
+        // side effect. So will-change is just a more modern way of accomplishing the same thing "
+        // ==============================
+
+        // ==============================
+        // testing this in Safari shows that it really works and without it my gradient background
+        // animation is super choppy
+        // ==============================
+
+        will-change : transform;
+
+    } // end of container > div::after
+
+} // end of container
+

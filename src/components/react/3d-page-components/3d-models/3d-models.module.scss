@@ -1,0 +1,225 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../styles/_mixins.scss' as *;
+@use '../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+// ==============================
+// 3D models page container
+// ==============================
+
+.threeDModelsPageContainer {
+
+    // parent
+    grid-column : 1 / -1; // center the contact page against the <main> grid
+
+    // children
+    display : grid;
+
+    // ==============================
+    // notes
+    // ==============================
+
+    // ==============================
+    // remember, there are 2 things we want to accomplish :
+    // 1 - allow the wrapper div to position against the parent div and thereby
+    // shrink as needed
+    // 2 - we want to center the wrapper div ( see below for details )
+    // ==============================
+
+    // ==============================
+    // " grid-template-columns " is needed so that the wrapper div ( i.e. child ) can position
+    // against the parent ( i.e. this div ) by using " grid-column : 2 / 22; " and this allows
+    // the background declared below to span across the entire container or the entire site and
+    // this also allows the wrapper div to dynamically contain its children within the
+    // " grid-column : 2 / 22; " context so that as the screen size shrinks the wrapper div
+    // container and all its children containers or divs will automatically shrink as well
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    //justify-items         : center;
+    grid-template-areas   : "div1"
+                            "div2"
+                            "div3"
+                            "div4";
+
+    padding : 0 0 0 0; // make sure div1 is underneth the nav section
+
+    background : var( --background-lg-41 );
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        margin : -160px 0 0 0; // this wraps the background color from this div underneth the
+        // header, thereby giving the header or nav section and this div the same background
+        // color, which is what we want
+
+        padding : calc( 160px + 8.0rem ) 0 12.0rem 0; // add padding equal to the header height
+        // and then add 8.0rem for visual preference
+
+    } // container > div10
+
+} // end of container
+
+
+// ==============================
+// 3D models new page container
+// ==============================
+
+.threeDModelsNewPageContainer {
+
+    // display : none; // remmember to comment this out when we run
+    // the progress bar
+
+    // remember, the z-index of 1 will cause this div to lay on top
+    // of the page container above on initial page load and during
+    // the progress bar running from 0 to 100
+    position : absolute;
+    top      : 0;
+    left     : 0;
+    z-index  : 1;
+    width    : 100vw;
+    height   : 100vh;
+
+    position : fixed; // had to do " position : fixed; " so that the user
+    // could not scroll down the page when the progress bar was animating
+
+    background : var( --background-lg-41 );
+    // background : var( --black );
+
+    // ==============================
+    // container > div1 ( wrapper div )
+    // ==============================
+
+    > div {
+
+        display       : grid;
+        align-content : center;
+        justify-items : center;
+
+        width  : 100vw;
+        height : 100vh;
+
+        // ==============================
+        // container > div1 ( wrapper div ) > div1 ( progress bar wrapper )
+        // ==============================
+
+        > div {
+
+            // children
+            display       : grid;
+            align-content : center;
+
+            position : relative;
+            width    : 22.5vw; // visual preference
+            height   : 4.0rem; // visual preference
+
+            background : var( --gray-340 );
+
+            @media all and ( max-width : $bp-1536 ) {
+
+                width : 25.0vw; // visual preference
+
+            } // end of container > div1 > div1 > bp-1536
+
+            @media all and ( max-width : $bp-1376 ) {
+
+                width : 27.5vw; // visual preference
+
+            } // end of container > div1 > div1 > bp-1376
+
+            @media all and ( max-width : $bp-1032 ) {
+
+                width : 32.5vw; // visual preference
+
+            } // end of container > div1 > div1 > bp-1032
+
+            @media all and ( max-width : $bp-768 ) {
+
+                width : 37.5vw; // visual preference
+
+            } // end of container > div1 > div1 > bp-768
+
+            @media all and ( max-width : $bp-620 ) {
+
+                width : 50vw; // visual preference
+
+            } // end of container > div1 > div1 > bp-620
+
+            @media all and ( max-width : $bp-480 ) {
+
+                width : 55vw; // visual preference
+
+            } // end of container > div1 > div1 > bp-480
+
+            @media all and ( max-width : $bp-375 ) {
+
+                width : 60vw; // visual preference
+
+            } // end of container > div1 > div1 > bp-375
+
+            // ==============================
+            // container > div1 ( wrapper div ) > div1 ( progress bar wrapper ) > div1 ( progress bar )
+            // ==============================
+            > div {
+
+                // position : absolute;
+                width    : 0.0rem; // the initial blue part of the progress bar will be 1.0 rem
+                height   : 4.0rem; // match the height of the container
+
+                background-color : var( --blue-95 ); // visual preference
+
+            } // end of container > div1 > div1 > div1
+
+        } // end of container > div1 > div1
+
+        // ==============================
+        // container > div1 ( wrapper div ) > label
+        // ==============================
+
+        > label {
+
+            @include text-base-light;
+
+            margin : 2.0rem 0 0 0;
+
+        } // end of container > div1 > label
+
+    } // end of container > div1
+
+} // end of container
+
+

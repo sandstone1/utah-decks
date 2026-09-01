@@ -1,0 +1,127 @@
+
+
+
+// ==============================
+// PARTIAL IMPORTS
+// ==============================
+
+@use '../../../styles/_responsive_breakpoints.scss' as *;;
+
+
+
+// ==============================
+// SPINNER CONTAINER
+// ==============================
+
+.spinnerContainer {
+
+    // children
+    display         : grid; // layer depends on where the spinner is being used
+    align-content   : center;
+    justify-content : center;
+
+    > .spinnerContainerMain {
+
+        position : relative;
+        width    : 85px;
+        height   : 85px;
+
+        > .spinnerContainerMainDiv1 {
+
+            position : absolute;
+            width    : 100%;
+            height   : 100%;
+
+            border           : 14px solid transparent; // create a transparent border
+            border-top-color : var( --white ); // override the tranparent color
+            // of the border on the top portion
+            border-radius    : 50%; // make border circular
+
+            // create the animation effect
+            // duration is 1.2 seconds and the speed curve is linear and we want the spinner
+            // to continuing repeating infinitely
+            animation : spinnerRotateOne 1.2s linear infinite;
+
+        } // end of container > main > div1
+
+        > .spinnerContainerMainDiv2 {
+
+            position : absolute;
+            width    : 100%;
+            height   : 100%;
+
+            border              : 14px solid transparent; // create a transparent border
+            border-bottom-color : var( --white ); // override the tranparent color
+            // of the border on the top portion
+            border-radius       : 50%; // make border circular
+
+            // create the animation effect
+            // duration is 1.2 seconds and the speed curve is linear and we want the spinner
+            // to continuing repeating infinitely
+            animation : spinnerRotateTwo 1.2s linear infinite;
+
+        } // end of container > main > div2
+
+    } // end of container > main
+
+} // end of container
+
+
+
+// ==============================
+// build the animation
+// ==============================
+
+// create an animation for the top portion of the border
+@keyframes spinnerRotateOne {
+
+    0% {
+
+        transform    : rotate( 0deg );
+        border-width : 14px;
+
+    }
+
+    50% {
+
+        transform    : rotate( 180deg );
+        border-width : 1px;
+
+    }
+
+    100% {
+
+        transform    : rotate( 360deg );
+        border-width : 14px;
+
+    }
+
+} // end of SpinnerRotateOne
+
+
+// create an animation for the bottom portion of the border
+@keyframes spinnerRotateTwo {
+
+    0% {
+
+        transform    : rotate( 0deg );
+        border-width : 1px;
+
+    }
+
+    50% {
+
+        transform    : rotate( 180deg );
+        border-width : 14px;
+
+    }
+
+    100% {
+
+        transform    : rotate( 360deg );
+        border-width : 1px;
+
+    }
+
+} // end of SpinnerRotateTwo
+

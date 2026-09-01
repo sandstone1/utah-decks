@@ -1,0 +1,622 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+// ==============================
+// keyframes 1
+// ==============================
+
+// ==============================
+// rotate the circle
+// ==============================
+
+// ==============================
+// purpose : rotate the circle
+// ==============================
+
+@keyframes rotate-1 {
+
+    from {
+
+        transform : rotate( 0deg );
+
+    } // end of from
+  
+    to {
+
+        transform : rotate( 360deg );
+
+    } // end of to
+  
+} // end of rotate-1
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// what we do container
+// ==============================
+
+.whatWeDoContainer {
+
+    // ==============================
+    // div 3 in the index.js file
+    // ==============================
+
+    // parent
+    grid-area   : div3;
+    grid-column : 1 / -1; // position against the parent
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // 1 - in the content div use grid-column to position against the parent grid and until we
+    // can use sub grid we may need to duplicate the parent grid and bring it down to the
+    // content div where we can position against it
+    // 2 - now our content div is sitting empty inside the parent grid we need to give the
+    // content div a width and height so we can create the content box and
+    // 3 - then set up a grid within the content box so that we can layout the content
+    // inside the content box as needed and
+    // 4 - the only cavet to 3 above, is that sometimes we need to go with a horizontal layout
+    // and in those cases, flexbox may be the better choice than css grid
+    // ==============================
+
+    display               : grid;
+    grid-template-rows    : auto;
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    justify-items         : center;
+
+    position : relative; // needed for wave shape
+    padding  : 12.0rem 0 12.0rem 0;
+
+    // ==============================
+    // background
+    // ==============================
+
+    background : var( --blue-83 );
+    background : var( --blue-84 );
+    // background : var( --blue-85-2 );
+    // background : var( --blue-85-2 );
+    background : var( --gray-872 );
+    // background : var( --yellow-20 );
+
+    // ==============================
+    // end of background
+    // ==============================
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+        // children
+        display               : grid;
+        grid-template-rows    : auto auto;
+        grid-template-columns : 1fr;
+        grid-gap              : 2.0rem 0;
+        grid-template-areas   : "h2"
+                                "div";
+
+        // make this section sit above the animating gradient
+        z-index : 1;
+        width   : min( 144.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
+
+        // opacity : 0; // needed for the opacity and slide up animation
+
+        > h2 {
+
+            // parent
+            grid-area : h2;
+
+            @include h2-light-title;
+
+            opacity : 0; // needed for the opacity and slide up animation
+
+        }  // end of container > div1 > h2
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges )
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            // parent
+            grid-area : div;
+
+            display               : grid;
+            grid-template-rows    : auto;
+            // remember, the minumum has to be large enough to fill the container; otherwise,
+            // it will leave some room on the right side
+            grid-template-columns : repeat( auto-fit, minmax( 60.0rem, 1fr ) );
+            gap                   : 8.0rem 6.0rem;
+
+            @media all and ( max-width : $bp-1440 ) {
+
+                grid-template-columns : repeat( auto-fit, minmax( 40.0rem, 1fr ) );
+        
+            } // end of container > div1 > div2 > bp-1440
+
+            @media all and ( max-width : $bp-620 ) {
+
+                grid-template-columns : repeat( auto-fit, minmax( 35.0rem, 1fr ) );
+        
+            } // end of container > div1 > div2 > bp-620
+
+            @media all and ( max-width : $bp-480 ) {
+
+                grid-template-columns : repeat( auto-fit, minmax( 22.0rem, 1fr ) );
+        
+            } // end of container > div1 > div2 > bp-480
+
+            // ==============================
+            // badge 1
+            // ==============================
+
+            > div:nth-child( 1 ) {
+
+                display               : grid;
+                grid-template-rows    : repeat( 3, auto );
+                grid-template-columns : 1fr;
+                align-content         : start;
+                grid-gap              : 2.0rem 0;
+
+                padding : 4.0rem;
+
+                border-radius : 0.6rem;
+
+                background : var( --yellow-55 ); // great color for --yellow-20 background
+                background : var( --yellow-120 );
+
+                opacity: 0; // needed for the opacity and slide in animation
+
+                > h3 {
+
+                    @include h4-dark-title;
+
+                    margin : 0.5rem 0 0 0;
+
+                    line-height : 1.3;
+
+                } // end of container > div1 > div:nth-child( 2 ) > div:nth-child( 1 ) > h3
+
+                > p {
+
+                    @include text-base-dark;
+
+                    > span {
+
+                        color           : var( --blue-83 );
+                        text-decoration : underline;
+
+                    } // end of container > div1 > div:nth-child( 2 ) > div:nth-child( 1 ) > p > span
+
+                } // end of container > div1 > div:nth-child( 2 ) > div:nth-child( 1 ) > p
+
+            } // end of container > div1 > div:nth-child( 2 ) > div:nth-child( 1 )
+            
+            // ==============================
+            // badge 2
+            // ==============================
+
+            > div:nth-child( 2 ) {
+
+                display               : grid;
+                grid-template-rows    : repeat( 3, auto );
+                grid-template-columns : 1fr;
+                align-content         : start;
+                grid-gap              : 2.0rem 0;
+
+                padding : 4.0rem;
+
+                border-radius : 0.6rem;
+
+                // background : var( --green-07 );
+                // background : var( --green-08 ); // great color for --yellow-20 background
+                background : var( --green-20 );
+                background : var( --yellow-120 );
+
+                opacity: 0; // needed for the opacity and slide in animation
+
+                // ==============================
+                // rotate the font icon
+                // ==============================
+
+                > span {
+
+                    display : grid;   
+                    width   : 4.0rem;
+                    height  : 4.0rem;
+                    margin  : 0 auto;
+
+                    // ==============================
+                    // animation
+                    // ==============================
+
+                    // animation-name            : rotate-1;
+                    animation-duration        : 10000ms;
+                    animation-timing-function : linear;
+                    animation-delay           : 0ms;
+                    animation-iteration-count : infinite; // this is the default but leave here for reference purposes
+                    animation-fill-mode       : forwards;
+
+                }
+
+                > h3 {
+
+                    @include h4-dark-title;
+
+                    margin : 0.5rem 0 0 0;
+
+                    line-height : 1.3;
+
+                } // end of container > div1 > div:nth-child( 2 ) > div:nth-child( 2 ) > h3
+
+                > p {
+
+                    @include text-base-dark;
+
+                } // end of container > div1 > div:nth-child( 2 ) > div:nth-child( 2 ) > p
+
+            } // end of container > div1 > div:nth-child( 2 ) > div:nth-child( 2 )
+
+            // ==============================
+            // badge 3
+            // ==============================
+
+            > div:nth-child( 3 ) {
+
+                display               : grid;
+                grid-template-rows    : repeat( 3, auto );
+                grid-template-columns : 1fr;
+                align-content         : start;
+                grid-gap              : 2.0rem 0;
+
+                padding : 4.0rem;
+
+                border-radius : 0.6rem;
+
+                // background : var( --pink-20 );
+                // background : var( --gray-230 ); // great color for --yellow-20 background
+                // background : var( --gray-355 );
+                background : var( --steel-blue-100 );
+                background : var( --blue-62-1 );
+
+                opacity: 0; // needed for the opacity and slide in animation
+
+                > h3 {
+
+                    @include h4-dark-title;
+
+                    margin : 0.5rem 0 0 0;
+
+                    line-height : 1.3;
+
+                } // end of container > div1 > div:nth-child( 2 ) > div:nth-child( 3 ) > h3
+
+                > p {
+
+                    @include text-base-dark;
+
+                } // end of container > div1 > div:nth-child( 2 ) > div:nth-child( 3 ) > p
+
+            } // end of container > div1 > div:nth-child( 2 ) > div:nth-child( 3 )
+
+            // ==============================
+            // badge 4
+            // ==============================
+
+            > div:nth-child( 4 ) {
+
+                display               : grid;
+                grid-template-rows    : repeat( 3, auto );
+                grid-template-columns : 1fr;
+                align-content         : start;
+                grid-gap              : 2.0rem 0;
+
+                padding : 4.0rem;
+
+                border-radius : 0.6rem;
+
+                // background : var( --pink-20 );
+                background : var( --blue-59 ); // great color for --yellow-20 background
+                // background : var( --blue-62 );
+                background : var( --blue-62-1 );
+
+                opacity: 0; // needed for the opacity and slide in animation
+
+                > h3 {
+
+                    @include h4-dark-title;
+
+                    margin : 0.5rem 0 0 0;
+
+                    line-height : 1.3;
+
+                } // end of container > div1 > div:nth-child( 2 ) > div:nth-child( 4 ) > h3
+
+                > p {
+
+                    @include text-base-dark;
+
+                } // end of container > div1 > div:nth-child( 2 ) > div:nth-child( 4 ) > p
+
+            } // end of container > div1 > div:nth-child( 2 ) > div:nth-child( 4 )
+
+            // ==============================
+            // badge 5
+            // ==============================
+
+            > div:nth-child( 5 ) {
+
+                display               : grid;
+                grid-template-rows    : repeat( 3, auto );
+                grid-template-columns : 1fr;
+                align-content         : start;
+                grid-gap              : 2.0rem 0;
+
+                padding : 4.0rem;
+
+                border-radius : 0.6rem;
+
+                // background : var( --pink-20 );
+                background : var( --purple-20 ); // great color for --yellow-20 background
+                background : var( --purple-27 );
+
+                opacity: 0; // needed for the opacity and slide in animation
+
+                > h3 {
+
+                    @include h4-dark-title;
+
+                    margin : 0.5rem 0 0 0;
+
+                    line-height : 1.3;
+
+                } // end of container > div1 > div:nth-child( 2 ) > div:nth-child( 5 ) > h3
+
+                > p {
+
+                    @include text-base-dark;
+
+                    > a {
+
+                        color                 : var( --gray-770 );
+                        text-decoration       : underline;
+                        text-underline-offset : 0.25rem;
+
+                    } // end of container > div1 > div:nth-child( 2 ) > div:nth-child( 5 ) > p > a
+
+                } // end of container > div1 > div:nth-child( 2 ) > div:nth-child( 5 ) > p
+
+            } // end of container > div1 > div:nth-child( 2 ) > div:nth-child( 5 )
+
+        } // end of container > div1 > div:nth-child( 2 )
+
+    } // end of container > div1
+
+    // ==============================
+    // container > div 2 ( wrapper div ) ( case study )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 2 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+        z-index : 1; // sits above the animating gradient
+        width   : min( 80.0rem, 100% ); // browser will select the smaller of 80rem or 100%
+        margin  : 24.0rem 0 0 0;
+
+        // ==============================
+        // container > div 2 > h2:nth-child( 1 )
+        // ==============================
+
+        > h2:nth-child( 1 ) {
+
+            @include h2-light-title;
+
+            margin : 0 0 1.5rem 0;
+
+        } // end of container > div2 > h2:nth-child( 1 )
+
+        // ==============================
+        // container > div 2 > p:nth-child( 2 ) ( remember, this is an empty p element )
+        // ==============================
+
+        > p:nth-child( 2 ), p:nth-child( 3 ) {
+
+            @include text-large-light;
+
+            margin : 0 0 2.0rem 0;
+
+        } // end of container > div2 > p:nth-child( 2 ), p:nth-child( 3 )
+
+        // ==============================
+        // container > div 2 > p::nth-child( 4 ) ( paragraph plus yellow text )
+        // ==============================
+
+        > p:nth-child( 4 ) {
+
+            @include text-base-large-light;
+
+            margin : 0 0 0.75rem 0;
+            // margin : 0 0 6.0rem 0;
+
+            @media all and ( max-width : $bp-768 ) {
+
+                margin : 0 0 6.0rem 0;
+        
+            } // end of container > div2 > p:nth-child( 4 ) > bp-768
+
+            @media all and ( max-width : 447px ) {
+
+                margin : 0 0 0.75rem 0;
+        
+            } // end of container > div2 > p:nth-child( 4 ) > 447px
+
+            @media all and ( max-width : 365px ) {
+
+                margin : 0 0 6.0rem 0;
+        
+            } // end of container > div2 > p:nth-child( 4 ) > 365px
+
+            > span {
+
+                // font-weight : 600;
+                // color       : var( --blue-62);
+
+                font-size   : 2.2rem;
+                font-weight : 700;
+                color       : var( --yellow-150 );
+
+            } // end of container > div2 > p:nth-child( 4 ) > span
+
+        } // end of container > div2 > p:nth-child( 4 )
+
+        // ==============================
+        // container > div 2 > div::nth-child( 5 ) ( yellow underline )
+        // ==============================
+
+        > div:nth-child( 5 ) {
+
+            width : 45%;
+
+            @media all and ( max-width : $bp-768 ) {
+
+                display : none;
+
+            } // end of container > div2 > p:nth-child( 5 ) > bp-768
+
+            @media all and ( max-width : 447px ) {
+
+                display : block;        
+                width   : 75%;
+
+            } // end of container > div2 > p:nth-child( 5 ) > 447px
+
+            @media all and ( max-width : 365px ) {
+
+                display : none;
+
+            } // end of container > div2 > p:nth-child( 5 ) > 365px
+
+            picture > img {
+
+                display : block; // eliminate spacing under picture
+                margin  : 0 0 6.0rem 0;
+
+            } // end of container > div2 > p:nth-child( 5 ) > picture > img
+
+        } // end of container > div2 > p:nth-child( 5 )
+
+        // ==============================
+        // container > div 2 > picture:nth-child( 5 ) ( Google Map Pack ranking for Utah Stem
+        // Cells on 8-13-25 )
+        // ==============================
+
+        > picture:nth-child( 6 ) {
+
+            // children
+            display       : grid;
+            align-items   : center;
+            justify-items : left;
+
+            > img {
+
+                display : block; // remove the bottom spacing
+
+                // make the picture smaller
+                width  : 100%;
+                height : 100%; 
+
+                // create a round picture so that the image isn't so large
+                // border-radius : 50%;
+
+                // now let add the object-fit property and remember for object-fit to work we have to add
+                // the width and the height to the element
+
+                // by using these 3 key value pairs inside the image element or " width : 100%; "
+                // and " height : 100%; " and " object-fit : cover; " we see that each image now fills up
+                // one grid cell and one grid cell only
+
+                object-fit : cover;
+
+            } // end of container > div2 > picture:nth-child( 6 ) > img
+
+        } // end of container > div2 > picture:nth-child( 6 )
+
+    } // container > div 2
+
+    // ==============================
+    // container > div 3 ( animating backgrounds )
+    // ==============================
+
+    > div:nth-child( 3 ) {
+
+        display : block; // hide the blob and show the animating backgrounds
+        z-index : 0; // remember, this container has to sit behind the parent container
+        // which has a z-index of 1
+
+        opacity : 1;
+
+    } // end of container > div3
+
+} // end of container
+

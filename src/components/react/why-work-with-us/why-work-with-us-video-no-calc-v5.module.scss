@@ -1,0 +1,931 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+@keyframes changeBackgroundColor {
+
+    0% {
+
+        background : var( --gray-872 );
+
+    }
+    100% {
+
+        // background : rgba( 0, 74, 173, 1 );   // var( --blue-84 )
+        // background : rgba( 13, 58, 216, 1 );     // var( --blue-85-2 )
+        background : var( --blue-800 );
+    }
+
+}
+
+
+
+
+
+
+
+
+
+// ==============================
+// why work with us container
+// ==============================
+
+.whyWorkWithUsContainer {
+
+    // parent
+    grid-area   : div7;
+    grid-column : 1 / -1; // position against the parent
+
+    // children
+    display               : grid;
+    grid-template-rows    : repeat( 6, auto );
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // 1 - in the content div use grid-column to position against the parent grid and until we
+    // can use sub grid we may need to duplicate the parent grid and bring it down to the
+    // content div where we can position against it
+    // 2 - now our content div is sitting empty inside the parent grid we need to give the
+    // content div a width and height so we can create the content box and
+    // 3 - then set up a grid within the content box so that we can layout the content
+    // inside the content box as needed and
+    // 4 - the only cavet to 3 above, is that sometimes we need to go with a horizontal layout
+    // and in those cases, flexbox may be the better choice than css grid
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    justify-items        : center;
+
+    position   : relative; // we need this for the absolutely positioned circle
+
+    // ==============================
+    // min height
+    // ==============================
+
+    // min-height : 100vh;
+    padding : 18.0rem 0 18.0rem 0; // provide some extra spacing for this component
+
+    // ==============================
+    // end of min height
+    // ==============================
+
+    // ==============================
+    // background
+    // ==============================
+
+    // background : var( --gray-230 );
+    background : var( --yellow-40 );
+    background : var( --gray-872 );
+    // background-image : linear-gradient( to bottom, rgba( 32, 40, 52, 1.0),  rgba( 32, 40, 52, 1.0 ) );
+    background-image : linear-gradient( to bottom, rgba( 32, 40, 52, 0.975 ),  rgba( 32, 40, 52, 0.975 ) ), url( /images/mj_tree_bark_04_500.webp );
+    background-size  : cover;
+
+    // ==============================
+    // end of background
+    // ==============================
+
+    // ==============================
+    // container animation timeline
+    // ==============================
+
+    // ==============================
+    // change the container background color as the container scrolls
+    // through the viewport
+    // ==============================
+
+    // animation-name            : changeBackgroundColor;
+    animation-timeline        : view();
+    animation-range-start     : cover 35%;
+    animation-range-end       : cover 100%;
+
+    // ==============================
+    // end of container animation timeline
+    // ==============================
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // remove or decrease the opacity of the tree bark background on mobile devices
+    // ==============================
+
+    @media all and ( max-width : $bp-620 ) {
+
+        background-image : linear-gradient( to bottom, rgba( 32, 40, 52, 1.0),  rgba( 32, 40, 52, 1.0 ) );
+        // background-image : linear-gradient( to bottom, rgba( 32, 40, 52, 0.965 ),  rgba( 32, 40, 52, 0.965 ) ), url( /images/mj_tree_bark_04_500.webp );
+    
+    } // end of container > bp-620
+
+    // ==============================
+    // end of remove or decrease the decrease opacity of the tree bark background on mobile devices
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+        z-index : 1;
+        width   : min( 80.0rem, 100% ); // browser will select the smaller of 80rem or 100%
+
+        opacity : 0;
+
+        // ==============================
+        // container > div 1 > h2:nth-child( 1 )
+        // ==============================
+
+        > h2:nth-child( 1 ) {
+
+            @include h2-light-title;
+
+            margin : 0 0 2.0rem 0; // for cards, I added a little extra room or changed the
+            // bottom margin from 1.5rem to 2.0rem
+
+            > span {
+
+                // color : var( --blue-62-1 );
+                color : var( --green-23-5 );
+
+            } // end of container > div 1 > h2:nth-child( 1 ) > span
+
+        } // end of container > div 1 > h2:nth-child( 1 )
+
+        // ==============================
+        // container > div 1 > div:nth-child( 2 ) ( wrapper div )
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            // children
+            display               : grid;
+            grid-template-rows    : repeat( 3, auto );
+            grid-template-columns : 1fr 1fr;
+            grid-gap              : 6.0rem 6.0rem; // create some spacing between the badges
+            grid-template-areas   : "badge1 badge2"
+                                    "badge3 badge4"
+                                    "badge5 badge6";
+
+            position : relative;
+            margin   : 0 auto;
+
+            @media all and ( max-width : $bp-620 ) {
+
+                grid-template-rows    : repeat( 6, auto );
+                grid-template-columns : 1fr;
+                grid-gap              : 6.0rem 0; // create some spacing between the 4 badges
+                grid-template-areas   : "badge1"
+                                        "badge2"
+                                        "badge3"
+                                        "badge4"
+                                        "badge5"
+                                        "badge6";
+
+            } // end of container > div1 > div:nth-child( 3 ) > bp-620
+
+            // ==============================
+            // container > div 1 > div:nth-child( 5 ) > div:nth-child( 1 ) ( badge 1 )
+            // ==============================
+
+            > div:nth-child( 1 ) {
+
+                // parent
+                grid-area : badge1;
+
+                // children
+                display               : grid;
+                grid-template-columns : auto auto 1fr; // make the font icon as wide as the
+                // icon itself and no wider
+                grid-gap              : 0 2.0rem; // visual preference
+                grid-template-areas   : "span1 span2 span3";
+                align-content         : center;
+                align-items           : center;
+
+                z-index : 1; // make the blob lie behind the badge
+
+                // ==============================
+                // create a white background for a card effect with the following 4 properties
+                // ==============================
+
+                min-height : 14.0rem; // make sure all the cards are the same height property #1
+                padding    : 3.0rem; // property #2
+
+                border-radius : 6px; // property #3
+
+                // background : var( --yellow-120 ); // property #4
+                background : var( --gray-868-300 ); // property #4
+
+                // ==============================
+                // end of white background
+                // ==============================
+
+                // ==============================
+                // needed for the intersection observer 1
+                // ==============================
+
+                opacity : 0;
+
+                // ==============================
+                // end of intersection observer 1
+                // ==============================
+
+                // ==============================
+                // font icon
+                // ==============================
+
+                > span:nth-child( 1 ) {
+
+                    // parent
+                    grid-area : span1;
+
+                    // color : var( --gray-765 );
+                    color : var( --gray-340 );
+
+                } // container > div 1 > div 2 > div 1 ( badge 1 ) > span1
+
+                // ==============================
+                // border
+                // ==============================
+
+                > span:nth-child( 2 ) {
+
+                    // parent
+                    grid-area : span2;
+
+                    width  : 1px;
+                    height : 2.5rem;
+
+                    // background-color : var( --gray-650 );
+                    background-color : var( --gray-225 );
+
+                } // container > div 1 > div 2 > div 1 ( badge 1 ) > span2
+
+                // ==============================
+                // title
+                // ==============================
+
+                > span:nth-child( 3 ) {
+
+                    // parent
+                    grid-area : span3;
+
+                    @include text-base-light;
+
+                    margin : 0 0 0 0; // revise the default 2.0rem bottom margin
+
+                    font-weight : 500;
+                    line-height : 1.5;
+
+                } // container > div 1 > div 2 > div 1 ( badge 1 ) > span3
+
+            } // container > div 1 > div 2 > div 1 ( badge 1 )
+
+            // ==============================
+            // container > div 1 > div:nth-child( 5 ) > div:nth-child( 2 ) ( badge 2 )
+            // ==============================
+
+            > div:nth-child( 2 ) {
+
+                // parent
+                grid-area : badge2;
+
+                // children
+                display               : grid;
+                grid-template-columns : auto auto 1fr; // make the font icon as wide as the
+                // icon itself and no wider
+                grid-gap              : 0 2.0rem; // visual preference
+                grid-template-areas   : "span1 span2 span3";
+                align-content         : center;
+                align-items           : center;
+
+                z-index : 1; // make the blob lie behind the badge
+
+                // ==============================
+                // create a white background for a card effect with the following 4 properties
+                // ==============================
+
+                min-height : 14.0rem; // make sure all the cards are the same height property #1
+                padding    : 3.0rem; // property #2
+
+                border-radius : 6px; // property #3
+
+                // background : var( --yellow-120 ); // property #4
+                background : var( --gray-868-300 ); // property #4
+
+                // ==============================
+                // end of white background
+                // ==============================
+
+                // ==============================
+                // needed for the intersection observer 1
+                // ==============================
+
+                opacity : 0;
+
+                // ==============================
+                // end of intersection observer 1
+                // ==============================
+
+                // ==============================
+                // font icon
+                // ==============================
+
+                > span:nth-child( 1 ) {
+
+                    // parent
+                    grid-area : span1;
+
+                    // color : var( --gray-765 );
+                    color : var( --gray-340 );
+
+                } // container > div 1 > div 2 > div 2 ( badge 2 ) > span1
+
+                // ==============================
+                // border
+                // ==============================
+
+                > span:nth-child( 2 ) {
+
+                    // parent
+                    grid-area : span2;
+
+                    width  : 1px;
+                    height : 2.5rem;
+
+                    // background-color : var( --gray-650 );
+                    background-color : var( --gray-225 );
+
+                } // container > div 1 > div 2 > div 2 ( badge 2 ) > span2
+
+                // ==============================
+                // title
+                // ==============================
+
+                > span:nth-child( 3 ) {
+
+                    // parent
+                    grid-area : span3;
+
+                    @include text-base-light;
+
+                    margin : 0 0 0 0; // revise the default 2.0rem bottom margin
+
+                    font-weight : 500;
+                    line-height : 1.5;
+
+                } // container > div 1 > div 2 > div 2 ( badge 2 ) > span3
+
+            } // container > div 1 > div 2 > div 2 ( badge 2 )
+
+            // ==============================
+            // container > div 1 > div:nth-child( 5 ) > div:nth-child( 3 ) ( badge 3 )
+            // ==============================
+
+            > div:nth-child( 3 ) {
+
+                // parent
+                grid-area : badge3;
+
+                // children
+                display               : grid;
+                grid-template-columns : auto auto 1fr; // make the font icon as wide as the
+                // icon itself and no wider
+                grid-gap              : 0 2.0rem; // visual preference
+                grid-template-areas   : "span1 span2 span3";
+                align-content         : center;
+                align-items           : center;
+
+                z-index : 1; // make the blob lie behind the badge
+
+                // ==============================
+                // create a white background for a card effect with the following 4 properties
+                // ==============================
+
+                min-height : 14.0rem; // make sure all the cards are the same height property #1
+                padding    : 3.0rem; // property #2
+
+                border-radius : 6px; // property #3
+
+                // background : var( --yellow-120 ); // property #4
+                background : var( --gray-868-300 ); // property #4
+
+                // ==============================
+                // end of white background
+                // ==============================
+
+                // ==============================
+                // needed for the intersection observer 1
+                // ==============================
+
+                opacity : 0;
+
+                // ==============================
+                // end of intersection observer 1
+                // ==============================
+
+                // ==============================
+                // font icon
+                // ==============================
+
+                > span:nth-child( 1 ) {
+
+                    // parent
+                    grid-area : span1;
+
+                    // color : var( --gray-765 );
+                    color : var( --gray-340 );
+                    // color : var( --blue-95 );
+
+                } // container > div 1 > div 2 > div 3 ( badge 3 ) > span1
+
+                // ==============================
+                // border
+                // ==============================
+
+                > span:nth-child( 2 ) {
+
+                    // parent
+                    grid-area : span2;
+
+                    width  : 1px;
+                    height : 2.5rem;
+
+                    // background-color : var( --gray-650 );
+                    background-color : var( --gray-225 );
+
+                } // container > div 1 > div 2 > div 3 ( badge 3 ) > span2
+
+                // ==============================
+                // title
+                // ==============================
+
+                > span:nth-child( 3 ) {
+
+                    // parent
+                    grid-area : span3;
+
+                    @include text-base-light;
+
+                    margin : 0 0 0 0; // revise the default 2.0rem bottom margin
+
+                    font-weight : 500;
+                    line-height : 1.5;
+
+                } // container > div 1 > div 2 > div 3 ( badge 3 ) > span3
+
+            } // container > div 1 > div 2 > div 3 ( badge 3 )
+
+            // ==============================
+            // container > div 1 > div:nth-child( 5 ) > div:nth-child( 4 ) ( badge 4 )
+            // ==============================
+
+            > div:nth-child( 4 ) {
+
+                // parent
+                grid-area : badge4;
+
+                // children
+                display               : grid;
+                grid-template-columns : auto auto 1fr; // make the font icon as wide as the
+                // icon itself and no wider
+                grid-gap              : 0 2.0rem; // visual preference
+                grid-template-areas   : "span1 span2 span3";
+                align-content         : center;
+                align-items           : center;
+
+                z-index : 1; // make the blob lie behind the badge
+
+                // ==============================
+                // create a white background for a card effect with the following 4 properties
+                // ==============================
+
+                min-height : 14.0rem; // make sure all the cards are the same height property #1
+                padding    : 3.0rem; // property #2
+
+                border-radius : 6px; // property #3
+
+                // background : var( --yellow-120 ); // property #4
+                background : var( --gray-868-300 ); // property #4
+
+                // ==============================
+                // end of white background
+                // ==============================
+
+                // ==============================
+                // needed for the intersection observer 1
+                // ==============================
+
+                opacity : 0;
+
+                // ==============================
+                // end of intersection observer 1
+                // ==============================
+
+                // ==============================
+                // font icon
+                // ==============================
+
+                > span:nth-child( 1 ) {
+
+                    // parent
+                    grid-area : span1;
+
+                    // color : var( --gray-765 );
+                    color : var( --gray-340 );
+
+                } // container > div 1 > div 2 > div 4 ( badge 4 ) > span1
+
+                // ==============================
+                // border
+                // ==============================
+
+                > span:nth-child( 2 ) {
+
+                    // parent
+                    grid-area : span2;
+
+                    width  : 1px;
+                    height : 2.5rem;
+
+                    // background-color : var( --gray-650 );
+                    background-color : var( --gray-225 );
+
+                } // container > div 1 > div 2 > div 4 ( badge 4 ) > span2
+
+                // ==============================
+                // title
+                // ==============================
+
+                > span:nth-child( 3 ) {
+
+                    // parent
+                    grid-area : span3;
+
+                    @include text-base-light;
+
+                    margin : 0 0 0 0; // revise the default 2.0rem bottom margin
+
+                    font-weight : 500;
+                    line-height : 1.5;
+
+                } // container > div 1 > div 2 > div 4 ( badge 4 ) > span3
+
+            } // container > div 1 > div 2 > div 4 ( badge 4 )
+
+            // ==============================
+            // container > div 1 > div:nth-child( 5 ) > div:nth-child( 5 ) ( badge 5 )
+            // ==============================
+
+            > div:nth-child( 5 ) {
+
+                // parent
+                grid-area : badge5;
+
+                // children
+                display               : grid;
+                grid-template-columns : auto auto 1fr; // make the font icon as wide as the
+                // icon itself and no wider
+                grid-gap              : 0 2.0rem; // visual preference
+                grid-template-areas   : "span1 span2 span3";
+                align-content         : center;
+                align-items           : center;
+
+                z-index : 1; // make the blob lie behind the badge
+
+                // ==============================
+                // create a white background for a card effect with the following 4 properties
+                // ==============================
+
+                min-height : 14.0rem; // make sure all the cards are the same height property #1
+                padding    : 3.0rem; // property #2
+
+                border-radius : 6px; // property #3
+
+                // background : var( --yellow-120 ); // property #4
+                background : var( --gray-868-300 ); // property #4
+                // background : rgba( 92, 157, 241, 1 );
+                // background : rgba( 0, 30, 75, 1 );
+
+                // ==============================
+                // end of white background
+                // ==============================
+
+                // ==============================
+                // needed for the intersection observer 1
+                // ==============================
+
+                opacity : 0;
+
+                // ==============================
+                // end of intersection observer 1
+                // ==============================
+
+                // ==============================
+                // font icon
+                // ==============================
+
+                > span:nth-child( 1 ) {
+
+                    // parent
+                    grid-area : span1;
+
+                    // color : var( --gray-765 );
+                    color : var( --gray-340 );
+
+                } // container > div 1 > div 2 > div 5 ( badge 5 ) > span1
+
+                // ==============================
+                // border
+                // ==============================
+
+                > span:nth-child( 2 ) {
+
+                    // parent
+                    grid-area : span2;
+
+                    width  : 1px;
+                    height : 2.5rem;
+
+                    // background-color : var( --gray-650 );
+                    background-color : var( --gray-225 );
+
+                } // container > div 1 > div 2 > div 5 ( badge 5 ) > span2
+
+                // ==============================
+                // title
+                // ==============================
+
+                > span:nth-child( 3 ) {
+
+                    // parent
+                    grid-area : span3;
+
+                    @include text-base-light;
+
+                    margin : 0 0 0 0; // revise the default 2.0rem bottom margin
+
+                    font-weight : 500;
+                    line-height : 1.5;
+
+                } // container > div 1 > div 2 > div 5 ( badge 5 ) > span3
+
+            } // container > div 1 > div 2 > div 5 ( badge 5 )
+
+            // ==============================
+            // container > div 1 > div:nth-child( 5 ) > div:nth-child( 6 ) ( badge 6 )
+            // ==============================
+
+            > div:nth-child( 6 ) {
+
+                // parent
+                grid-area : badge6;
+
+                // children
+                display               : grid;
+                grid-template-columns : auto auto 1fr; // make the font icon as wide as the
+                // icon itself and no wider
+                grid-gap              : 0 2.0rem; // visual preference
+                grid-template-areas   : "span1 span2 span3";
+                align-content         : center;
+                align-items           : center;
+
+                z-index : 1; // make the blob lie behind the badge
+
+                // ==============================
+                // create a white background for a card effect with the following 4 properties
+                // ==============================
+
+                min-height : 14.0rem; // make sure all the cards are the same height property #1
+                padding    : 3.0rem; // property #2
+
+                border-radius : 6px; // property #3
+
+                // background : var( --yellow-120 ); // property #4
+                background : var( --gray-868-300 ); // property #4
+                // background : rgba( 0, 0, 0, 0.7 );
+
+                // ==============================
+                // end of white background
+                // ==============================
+
+                // ==============================
+                // needed for the intersection observer 1
+                // ==============================
+
+                opacity : 0;
+
+                // ==============================
+                // end of intersection observer 1
+                // ==============================
+
+                // ==============================
+                // font icon
+                // ==============================
+
+                > span:nth-child( 1 ) {
+
+                    // parent
+                    grid-area : span1;
+
+                    // color : var( --gray-765 );
+                    color : var( --gray-340 );
+
+                } // container > div 1 > div 2 > div 6 ( badge 6 ) > span1
+
+                // ==============================
+                // border
+                // ==============================
+
+                > span:nth-child( 2 ) {
+
+                    // parent
+                    grid-area : span2;
+
+                    width  : 1px;
+                    height : 2.5rem;
+
+                    // background-color : var( --gray-650 );
+                    background-color : var( --gray-225 );
+
+                } // container > div 1 > div 2 > div 6 ( badge 6 ) > span2
+
+                // ==============================
+                // title
+                // ==============================
+
+                > span:nth-child( 3 ) {
+
+                    // parent
+                    grid-area : span3;
+
+                    @include text-base-light;
+
+                    margin : 0 0 0 0; // revise the default 2.0rem bottom margin
+
+                    font-weight : 500;
+                    line-height : 1.5;
+
+                } // container > div 1 > div 2 > div 6 ( badge 6 ) > span3
+
+            } // container > div 1 > div 2 > div 6 ( badge 6 )
+
+            // ==============================
+            // 3d blob
+            // ==============================
+
+            > div:nth-child( 7 ) {
+
+                display         : grid;
+                align-content   : center; // needed to center the blob
+                justify-content : center; // needed to center the blob
+
+                position : absolute;
+
+                width    : 100%;
+                height   : 100%;
+
+                // ==============================
+                // needed for the intersection observer 1
+                // ==============================
+
+                opacity : 0;
+
+                // ==============================
+                // end of intersection observer 1
+                // ==============================
+
+            } // container > div 1 > div 2 > div 7 ( 3D blob )
+
+            // ==============================
+            // animating backgrounds
+            // ==============================
+
+            > div:nth-child( 8 ) {
+
+                display         : grid;
+                align-content   : center; // needed to center the blob
+                justify-content : center; // needed to center the blob
+
+                position : absolute;
+
+                width    : 100%;
+                height   : 100%;
+
+                z-index : 0; // remember, this container has to sit behind the parent container
+                // which has a z-index of 1
+
+                opacity : 1;
+
+            } // container > div 1 > div 2 > div 8
+
+            // ==============================
+            // container > div 1 > div 2 > div 7 ( picture rocket ship )
+            // ==============================
+
+            > picture {
+
+                position : absolute;
+                left     : 50%;
+                top      : 50%;
+                width    : min( 80.0rem, 100% ); // fill the parent width but do not overflow the
+                // layout
+
+                z-index : -1;
+
+                opacity : 0; // needed for the fade in animation with intersection observer and
+                // had to do this because we need the picture to come in after the badges
+
+                transform : translate( -50%, -50%) ; // centers the circle
+
+                > img {
+
+                    display : block; // remove the bottom spacing
+
+                    // ==============================
+                    // Make the image stretch horizontally to fit the column height
+                    // ==============================
+
+                    // remember, we added the width and height to the image element in the html file
+                    width  : 61.2rem;
+                    height : 40.8rem;
+                    margin : 0 auto;
+
+                    // now let add the object-fit property and remember for object-fit to work we have to add
+                    // the width and the height to the element
+
+                    // by using these 3 key value pairs inside the image element or " width : 100%; "
+                    // and " height : 100%; " and " object-fit : cover; " we see that each image now fills up
+                    // one grid cell and one grid cell only
+
+                    object-fit : cover;
+
+                } // end of container > div2 > picture > img
+                
+            } // end of container > div2 > picture
+           
+        } // container > div 1 > div 2
+
+        // ==============================
+        // container > div 1 > div 3 ( animating circle )
+        // ==============================
+
+        > div:nth-child( 3 ) {
+
+            position  : absolute;
+            left      : 50%;
+            top       : 50%;
+            transform : translate( -50%, -50% ) ; // centers the circle
+
+            opacity : 1;
+
+        } // container > div 1 > div 3
+
+    } // container > div 1
+
+} // container
+

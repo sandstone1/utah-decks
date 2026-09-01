@@ -1,0 +1,144 @@
+
+
+// ==============================
+// Roboto Flex variable font — covers all weights 100–1000 in one file
+// ==============================
+
+// ==============================
+// RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.woff2
+// came from Google Fonts
+// ==============================
+
+@font-face {
+    font-display : swap;
+    font-family  : 'Roboto Flex';
+    font-style   : normal;
+    font-weight  : 100 1000; // range, since it's the variable font file
+    src          : url('/fonts/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.woff2') format('woff2');
+}
+
+
+// ==============================
+// Roboto Condensed variable font — covers all weights 100–900 in one file
+// ==============================
+
+// ==============================
+// RobotoCondensed-VariableFont_wght.woff2 came from Google Fonts
+// ==============================
+
+// ==============================
+// all the fonts below were ever so slightly different than the Google Font import so I decided to
+// use the Roboto Condensed variable font and it matched all the fonts below
+//
+// having said, all the fonts below looked great and were a very close match to the Google Font
+// import
+// ==============================
+
+@font-face {
+    font-display : swap;
+    font-family  : 'Roboto Condensed';
+    font-style   : normal;
+    font-weight  : 100 900;
+    src          : url( '/fonts/RobotoCondensed-VariableFont_wght.woff2' ) format( 'woff2' );
+}
+
+
+
+// ==============================
+// RobotoCondensed-Bold.woff2 came from Google Fonts
+// ==============================
+
+/*
+@font-face {
+    font-display : swap;
+    font-family  : 'Roboto Condensed';
+    font-style   : normal;
+    font-weight  : 700;
+    src          : url( '/fonts/RobotoCondensed-Bold.woff2' ) format( 'woff2' );
+}
+*/
+
+
+/*
+// ==============================
+// Roboto Condensed static font — covers all weights 100–900 in 9 separate files
+// ==============================
+
+// ==============================
+// the 9 fonts below did not come from Google Fonts but matched up perfectly with the 2 font
+// blocks above
+// ==============================
+
+@font-face {
+    font-display : swap;
+    font-family  : 'Roboto Condensed';
+    font-style   : normal;
+    font-weight  : 100;
+    src          : url( '/fonts/roboto-condensed-v31-latin-100.woff2' ) format( 'woff2' );
+}
+
+@font-face {
+    font-display : swap;
+    font-family  : 'Roboto Condensed';
+    font-style   : normal;
+    font-weight  : 200;
+    src          : url( '/fonts/roboto-condensed-v31-latin-200.woff2' ) format( 'woff2' );
+}
+
+@font-face {
+    font-display : swap;
+    font-family  : 'Roboto Condensed';
+    font-style   : normal;
+    font-weight  : 300;
+    src          : url( '/fonts/roboto-condensed-v31-latin-300.woff2' ) format( 'woff2' );
+}
+
+@font-face {
+    font-display : swap;
+    font-family  : 'Roboto Condensed';
+    font-style   : normal;
+    font-weight  : 400;
+    src          : url( '/fonts/roboto-condensed-v31-latin-regular.woff2' ) format( 'woff2' );
+}
+
+@font-face {
+    font-display : swap;
+    font-family  : 'Roboto Condensed';
+    font-style   : normal;
+    font-weight  : 500;
+    src          : url( '/fonts/roboto-condensed-v31-latin-500.woff2' ) format( 'woff2' );
+}
+
+@font-face {
+    font-display : swap;
+    font-family  : 'Roboto Condensed';
+    font-style   : normal;
+    font-weight  : 600;
+    src          : url( '/fonts/roboto-condensed-v31-latin-600.woff2' ) format( 'woff2' );
+}
+
+@font-face {
+    font-display : swap;
+    font-family  : 'Roboto Condensed';
+    font-style   : normal;
+    font-weight  : 700;
+    src          : url( '/fonts/roboto-condensed-v31-latin-700.woff2' ) format( 'woff2' );
+}
+
+@font-face {
+    font-display : swap;
+    font-family  : 'Roboto Condensed';
+    font-style   : normal;
+    font-weight  : 800;
+    src          : url( '/fonts/roboto-condensed-v31-latin-800.woff2' ) format( 'woff2' );
+}
+
+@font-face {
+    font-display : swap;
+    font-family  : 'Roboto Condensed';
+    font-style   : normal;
+    font-weight  : 900;
+    src          : url( '/fonts/roboto-condensed-v31-latin-900.woff2' ) format( 'woff2' );
+}
+*/
+

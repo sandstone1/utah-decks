@@ -1,0 +1,278 @@
+
+
+// ==============================
+// Save for reference
+// ==============================
+
+// ==============================
+// max-width : 65ch;
+// ==============================
+// max-width : 65ch; 
+// " Tailwind Typography applies a 65ch max-width to its text blocks. 65 character
+// width is generally agreed to be the maximum readable width for text; "
+
+// remember, " max-width : 65ch; " is a good rule; however, it did not look good
+// for div1 given the text and images so I let the text fill the container, which
+// started out at 120.0rem
+
+
+// ==============================
+// Nice box shadow
+// ==============================
+
+/*
+// the CSS syntax for box-shadow is
+// " box-shadow: h-offset / v-offset / blur radius / spread radius / color "
+// and only the horizontal and vertical offsets are required
+// the below box shadow is from " https://css-tricks.com/almanac/properties/b/box-shadow/ "
+box-shadow :
+    0 2.8px 2.2px rgba( 0, 0, 0, 0.034 ),
+    0 6.7px 5.3px rgba( 0, 0, 0, 0.048 ),
+    0 12.5px 10px rgba( 0, 0, 0, 0.06 ),
+    0 22.3px 17.9px rgba( 0, 0, 0, 0.072 ),
+    0 41.8px 33.4px rgba( 0, 0, 0, 0.086 ),
+    0 100px 80px rgba( 0, 0, 0, 0.12 )
+;
+*/
+
+
+
+
+
+// ==============================
+// hero image component - notes
+// ==============================
+
+// ==============================
+// note #1
+// ==============================
+
+// ==============================
+// remember, we determined the height of the hero home page container and then passed
+// that height value up to the parent ( i.e. the index.js file ) and then in the index
+// file we set the top margin for the div2 h1 and this pushed the div2 content down
+// below the hero home page container and this made everything work as expected
+// ==============================
+
+// ==============================
+// files :
+// components/hero/hero-home-page.js ( see useEffect #2 )
+// pages/index.js ( see passParentToChildHeightHandlerFunction )
+// ==============================
+
+
+
+
+// ==============================
+// note #2
+// ==============================
+
+// ==============================
+// remember, since the hero home page component using absolute positioning we left
+// the component out of the grid-template-rows and grid-template-areas calculations
+// in the homePageContainer div
+// ==============================
+
+
+
+// ==============================
+// note #3
+// ==============================
+
+// ==============================
+// remember, in the hero home page component we did the following :
+// 1 - we had to comment out " bottom : 0 " in the hero home page container and then
+// 2 - we had to set height to 100vh for screen sizes above bp-920 and then
+// 3 - we had to set height to auto and bottom padding to 12.0rem for screen sizes
+// at or below bp-920 ( remember, at small screen sizes our content overflowed into
+// div 2 ); otherwise, there was no way to provide any spacing at the bottom of the
+// container unless we added a specific height to the container and then modified the
+// height at different breakpoints
+// ==============================
+
+// ==============================
+// and even then, we found that iphone rendered the spacing different ( i.e. incorrectly )
+// than androids and desktop
+// ==============================
+
+
+
+
+
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../styles/_mixins.scss' as *;
+@use '../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+// ==============================
+// see the detailed notes in STEP 58 in the app-wasatch-front-local.js file
+/*
+1 - New site width if it makes sense or where we have 2 or 3 column layouts
+    width - 1920px
+
+    1920px
+
+2 - Historical max site width
+    width - 1440px
+
+    width                 : min( 144.0rem, 100% );
+
+3 - Three column layout ( normal )
+    width - 1920px
+
+    grid-template-columns : ? ? ?;
+    grid-gap              : ? ?;
+    width                 : min( 192.0rem, 100% );
+
+4 - Two column layout ( large ) ( where both columns need to be big - see Enchanting Apps )
+    width - 1840px
+
+    grid-template-columns : min( 80.0rem, 100% ) min( 80.0rem, 100% );      max column 1 width and max column 2 width for a 2 column layout
+    grid-gap              : 0 24.0rem;
+    width                 : min( 184.0rem, 100% );
+
+5 - Two column layout ( normal ) ( where only one column needs to be big and other needs to be small - see Wasatch Front Local )
+    width - 1440px
+
+    grid-template-columns : min( 86.0rem, 100% ) 1fr;                       max column one width for a 2 column layout
+    grid-gap              : ? 15.0rem;
+    width                 : min( 144.0rem, 100% );
+
+6 - One column layout
+    width - 800px
+
+    grid-template-columns : 1fr;
+    width                 : min( 80.0rem, 100% );                           max column width for a one column layout
+*/
+// ==============================
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// home page container
+// ==============================
+
+.homePageContainer {
+
+    // parent
+    grid-column : 1 / -1; // do this so that the child elements take up the entire
+    // screen horizontally
+
+    // children
+    display               : grid;
+    grid-template-rows    : auto;
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+    grid-template-areas   : "div2"
+                            "div3"
+                            "div4"
+                            "div5"
+                            "div6"
+                            "div7"
+                            "div8"
+                            "div9"
+                            "div10"
+                            "div11"
+                            "div12"
+                            "div13"
+                            "div14"
+                            "div15";
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1 - hero home page div
+    // ==============================
+
+    // ==============================
+    // container > div 2 - by the numbers
+    // ==============================
+
+    // ==============================
+    // container > div 3 - what we do
+    // ==============================
+
+    // ==============================
+    // container > div 4 - contact blob
+    // ==============================
+
+    // ==============================
+    // container > div 5 - contact us
+    // ==============================
+
+    // ==============================
+    // container > div 6 - why choose us
+    // ==============================
+
+    // ==============================
+    // container > div 7 - why work with us
+    // ==============================
+
+    // ==============================
+    // container > div 8 - sticky pictures
+    // ==============================
+
+    // ==============================
+    // container > div 9 - our process
+    // ==============================
+
+    // ==============================
+    // container > div 10 - pricing
+    // ==============================
+
+    // ==============================
+    // container > div 11 - where you can find us
+    // ==============================
+
+    // ==============================
+    // container > div 12 - cimikoski stem cells website
+    // ==============================
+
+    // ==============================
+    // container > div 13 - real estate broker website
+    // ==============================
+
+    // ==============================
+    // container > div 14 - ranking made easy website
+    // ==============================
+
+    // ==============================
+    // container > div 15 - contact us video
+    // ==============================
+
+} // end of container
+

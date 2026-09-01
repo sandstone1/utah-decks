@@ -1,0 +1,43 @@
+
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+// ==============================
+// logo enchanting apps stars container
+// ==============================
+
+.logoEnchantingAppsStarsContainer {
+
+    // children
+    display               : grid;
+    grid-template-rows    : auto;
+    grid-template-columns : 1fr;
+    align-items           : center;
+    justify-items         : center;
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    > div:nth-child( 1 ) {
+        
+        // remember, the default image size from Canva is 512px by 512px so setting the width
+        // and height allowed us the change the size of the stars to match the Enchanting Apps
+        // text content
+        width  : 15.0rem;
+        height : 15.0rem;
+
+    } // end of container > div1 > div:nth-child( 1 )
+
+} // end of container
+

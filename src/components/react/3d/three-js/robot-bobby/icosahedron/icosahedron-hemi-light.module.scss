@@ -1,0 +1,153 @@
+
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../../../styles/_mixins.scss' as *;
+@use '../../../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+// ==============================
+// icosahedron container
+// ==============================
+
+.icosahedronContainer {
+
+    // parent
+    grid-area   : div1;
+    grid-column : 1 / -1; // needed in order to fill the parent container\
+
+    // children
+    display : grid;
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // remember, there are 2 things we want to accomplish :
+    // 1 - allow the wrapper div to position against the parent div and thereby
+    // shrink as needed
+    // 2 - we want to center the wrapper div ( see below for details )
+    // ==============================
+
+    // ==============================
+    // " grid-template-columns " is needed so that the wrapper div ( i.e. child ) can position
+    // against the parent ( i.e. this div ) by using " grid-column : 2 / 22; " and this allows
+    // the background declared below to span across the entire container or the entire site and
+    // this also allows the wrapper div to dynamically contain its children within the
+    // " grid-column : 2 / 22; " context so that as the screen size shrinks the wrapper div
+    // container and all its children containers or divs will automatically shrink as well
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    grid-template-areas   : "h1"
+                            "div1";
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    // justify-items : center; // this is needed to center the h1 element and the sphere
+    // on smaller screens
+
+    padding : 12.0rem 0 12.0rem 0;
+
+    // remember, " grid-column : 1 / -1; " allows the background image to span the entire screen
+    background-image : url( /images/lama_bg_01.jpeg );
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // remember, for some reason in threejs, the justify-items key value pair breaks
+    // the visible width of our content on larger screens
+    // ==============================
+
+    @media all and ( max-width : $bp-375 ) {
+
+        justify-items : center; // this is needed to center the h1 element and the sphere
+        // on smaller screens
+
+    } // end of container > bp-375
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 1 / -1; // position against the parent and remember, in
+        // threejs this is needed to center the canvas
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > h1
+        // ==============================
+
+        > h1 {
+
+            @include h1-light-title;
+
+            margin     : 0 0 0 0;
+            padding    : 0 0 0 0;
+            text-align : center;
+
+            @media all and ( max-width : $bp-620 ) {
+
+                padding    : 0 0 2.25rem 0; // needed for smaller screens to give some
+                // spacing between the h1 element and the 3d object
+        
+            } // end of container > div1 > h1 > bp-620
+
+        } // container > div1 > h1
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > div 1
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            display       : grid; // this is needed to center the canvas
+            justify-items : center; // this is needed to center the canvas
+
+            // ==============================
+            // container > div 1 ( wrapper div ) > div 1 > canvas
+            // ==============================
+/*
+            > canvas {
+
+
+            } // end of container > div1 > div1 > canvas
+*/
+
+        } // end of container > div1 > div1
+
+    } // end of container > div1
+
+} // end of container
+
+

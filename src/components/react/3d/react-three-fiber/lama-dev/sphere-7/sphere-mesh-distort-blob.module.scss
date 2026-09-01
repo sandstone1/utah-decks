@@ -1,0 +1,173 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../../../styles/_mixins.scss' as *;
+@use '../../../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+// ==============================
+// sphere mesh distrort blob container
+// ==============================
+
+.sphereMeshDistrortBlobContainer {
+
+    // given the parent div in the index.js file, we no longer need the
+    // container div but will keep it here anyway since we may just want
+    // to place the component into another component without any parent
+    // div and in that case we will need this container and will need
+    // add the following properties :
+
+    /*
+        // children
+        display         : grid;
+        align-items     : center;
+        justify-content : center;
+
+        position : absolute;
+        width    : 100%;
+        height   : 100%;
+    */
+
+    // ==============================
+    // container > div ( 3d sphere )
+    // ==============================
+
+    > div {
+
+        // these numbers were revised for Enchanting Apps
+
+        // remember, these breakpoints and numbers were revised to provide for a blob that worked
+        // and looked good
+        // display : none;
+        width   : 88.0rem;
+        height  : 84.0rem;
+
+        // remember, these breakpoints and numbers were revised to provide for a blob that worked
+        // and looked good
+        @media all and ( max-width : $bp-1536 ) {
+
+            width   : 76.0rem;
+            height  : 78.0rem;
+    
+        } // end of container > div1 > bp-1920
+
+        // remember, these breakpoints and numbers were revised to provide for a blob that worked
+        // and looked good
+        @media all and ( max-width : $bp-768 ) {
+
+            width   : 70.0rem;
+            height  : 72.0rem;
+    
+        } // end of container > div1 > bp-768
+
+        // remember, these breakpoints and numbers were revised to provide for a blob that worked
+        // and looked good
+        @media all and ( max-width : $bp-620 ) {
+
+            width   : 64.0rem;
+            height  : 66.0rem;
+    
+        } // end of container > div1 > bp-620
+
+        // remember, these breakpoints and numbers were revised to provide for a blob that worked
+        // and looked good
+        @media all and ( max-width : 570px ) {
+
+            width  : 59.0rem;
+            height : 66.0rem;
+    
+        } // end of container > div1 > 570px
+
+        // remember, these breakpoints and numbers were revised to provide for a blob that worked
+        // and looked good
+        @media all and ( max-width : 520px ) {
+
+            width  : 52.0rem;
+            height : 66.0rem;
+    
+        } // end of container > div1 > 520px
+
+        // remember, these breakpoints and numbers were revised to provide for a blob that worked
+        // and looked good
+        @media all and ( max-width : $bp-480 ) {
+
+            width  : 50.0rem;
+            height : 64.0rem;
+    
+        } // end of container > div1 > bp-480
+
+        // remember, these breakpoints and numbers were revised so at 460px the blob would touch
+        // the edge of the screen
+        @media all and ( max-width : 460px ) {
+
+            width  : 48.8rem;
+            height : 64.0rem;
+    
+        } // end of container > div1 > 460px
+
+        // remember, these breakpoints and numbers were revised so at 438px the blob would touch
+        // the edge of the screen
+        @media all and ( max-width : 438px ) {
+
+            width  : 46.8rem;
+            height : 64.0rem;
+    
+        } // end of container > div1 > 438px
+
+        // remember, these breakpoints and numbers were revised so at 420px the blob would touch
+        // the edge of the screen
+        @media all and ( max-width : 420px ) {
+
+            width  : 44.5rem;
+            height : 64.0rem;
+    
+        } // end of container > div1 > 420px
+
+        // remember, these breakpoints and numbers were revised so at 400px the blob would touch
+        // the edge of the screen
+        @media all and ( max-width : 400px ) {
+
+            width  : 41.8rem;
+            height : 64.0rem;
+    
+        } // end of container > div1 > 400px
+
+        // remember, these breakpoints and numbers were revised so at 375px the blob would touch
+        // the edge of the screen
+        @media all and ( max-width : $bp-375 ) {
+
+            width  : 39.0rem;
+            height : 54.0rem;
+    
+        } // end of container > div1 > bp-375
+
+        // remember, these breakpoints and numbers were revised to provide for a blob that worked
+        // and looked good
+        @media all and ( max-width : 350px ) {
+
+            width  : 36.0rem;
+            height : 54.0rem;
+    
+        } // end of container > div1 > 350px
+
+        // remember, these breakpoints and numbers were revised to provide for a blob that worked
+        // and looked good
+        @media all and ( max-width : 330px ) {
+
+            width  : 34.0rem;
+            height : 54.0rem;
+    
+        } // end of container > div1 > 330px
+
+    } // container > div1
+
+} // end of container
+
+

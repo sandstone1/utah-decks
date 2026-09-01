@@ -1,0 +1,73 @@
+{
+    "name": "utah decks",
+    "type": "module",
+    "version": "0.0.1",
+    "engines": {
+        "node": ">=22.12.0"
+    },
+    "scripts": {
+        "dev": "astro dev  --port 3038",
+        "build": "astro build",
+        "preview": "astro preview",
+        "astro": "astro"
+    },
+    "dependencies": {
+        "@astrojs/netlify": "8.1.3",
+        "@astrojs/node": "11.0.3",
+        "@astrojs/react": "^4.4.2",
+        "@astrojs/solid-js": "^6.0.1",
+        "@fontsource-variable/roboto-flex": "^5.2.8",
+        "@fontsource/dynapuff": "^5.2.8",
+        "@fontsource/roboto-condensed": "^5.2.8",
+        "@libsql/client": "^0.17.4",
+        "@mailerlite/mailerlite-nodejs": "^1.6.0",
+        "@nanostores/persistent": "^1.3.4",
+        "@nanostores/react": "^1.1.0",
+        "@nanostores/solid": "^1.1.1",
+        "@react-three/drei": "^9.91.0",
+        "@react-three/fiber": "^8.15.12",
+        "@vis.gl/react-google-maps": "^1.5.1",
+        "astro": "7.1.6",
+        "bcryptjs": "^3.0.3",
+        "better-sqlite3": "^12.11.1",
+        "cloudinary": "^2.10.0",
+        "colors": "^1.4.0",
+        "dat.gui": "^0.7.9",
+        "gltf-pipeline": "^4.3.1",
+        "gsap": "^3.15.0",
+        "markdown-it": "^14.3.0",
+        "nanostores": "^1.4.0",
+        "postmark": "^4.0.7",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "react-google-recaptcha": "^3.1.0",
+        "react-icons": "^5.7.0",
+        "sanitize-html": "^2.17.5",
+        "slugify": "^1.6.9",
+        "solid-icons": "^1.2.0",
+        "solid-js": "^1.9.14",
+        "stripe": "^22.0.1",
+        "three": "^0.159.0",
+        "xss": "^1.0.15",
+        "zustand": "^4.5.2"
+    },
+    "devDependencies": {
+        "@types/bcryptjs": "^2.4.6",
+        "@types/better-sqlite3": "^7.6.13",
+        "@types/markdown-it": "^14.1.2",
+        "@types/node": "^26.1.0",
+        "@types/react-google-recaptcha": "^2.1.9",
+        "@types/sanitize-html": "^2.16.1",
+        "@types/three": "^0.185.0",
+        "sass": "^1.101.0"
+    },
+    "overrides": {
+        "sharp": "^0.35.0"
+    },
+    "allowScripts": {
+        "better-sqlite3@12.11.1": true,
+        "@parcel/watcher@2.6.0": true,
+        "esbuild@0.25.12": true,
+        "esbuild@0.28.1": true
+    }
+}

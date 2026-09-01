@@ -1,0 +1,133 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../../../styles/_mixins.scss' as *;
+@use '../../../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// highlight text container
+// ==============================
+
+.highlightTextContainer {
+
+    // ==============================
+    // container > span 1
+    // ==============================
+
+    > span:nth-child( 1 ) {
+
+        // @include text-large-dark;
+        @include text-large-light;
+
+        margin  : 0 0 0 -1.0rem;
+        padding : 0.6rem 1.0rem;
+
+        border-radius : 0.6rem;
+
+        // background-image : linear-gradient( to right, transparent 50%, var( --yellow-130 ) 50% ); // needed for the hightlighted text animation
+        background-size : 200%; // needed for the hightlighted text animation
+
+        // background-image : linear-gradient( to right, transparent 50%, var( --blue-260 ) 50% ); // needed for the hightlighted text animation
+        //background-image : linear-gradient( to right, transparent 50%, var( --blue-84 ) 50% ); // needed for the hightlighted text animation
+        //background-image : linear-gradient( to right, transparent 50%, var( --blue-83 ) 50% ); // needed for the hightlighted text animation
+        // background-image : linear-gradient( to right, transparent 50%, var( --red-250 ) 50% ); // needed for the hightlighted text animation
+        //background-image : linear-gradient( to right, transparent 50%, var( --purple-150 ) 50% ); // needed for the hightlighted text animation
+        //background-image : linear-gradient( to right, transparent 50%, rgb( 53, 95, 86 ) 50% ); // needed for the hightlighted text animation
+        // background-image : linear-gradient( to right, transparent 50%, rgb( 30, 90, 95 ) 50% ); // needed for the hightlighted text animation
+        //background-image : linear-gradient( to right, transparent 50%, rgb( 10, 80, 85 ) 50% ); // needed for the hightlighted text animation
+        //background-image : linear-gradient( to right, transparent 50%, rgb( 177, 130, 0 ) 50% ); // needed for the hightlighted text animation
+        background-image : linear-gradient( to right, transparent 50%, rgb( 111, 78, 46 ) 50% ); // needed for the hightlighted text animation
+        //background-image : linear-gradient( to right, transparent 50%, rgb( 12, 119, 108 ) 50% ); // needed for the hightlighted text animation
+        //background-image : linear-gradient( to right, transparent 50%, rgb( 41, 112, 105 ) 50% ); // needed for the hightlighted text animation
+        // background-image : linear-gradient( to right, transparent 50%, rgb( 41, 112, 101 ) 50% ); // needed for the hightlighted text animation
+        //background-image : linear-gradient( to right, transparent 50%, rgb( 25, 121, 106 ) 50% ); // needed for the hightlighted text animation
+        //background-image : linear-gradient( to right, transparent 50%, rgb( 11, 112, 97 ) 50% ); // needed for the hightlighted text animation
+        //background-image : linear-gradient( to right, transparent 50%, rgb( 115, 78, 46 ) 50% ); // needed for the hightlighted text animation
+        // background-image : linear-gradient( to right, transparent 50%, rgb( 115, 75, 46 ) 50% ); // needed for the hightlighted text animation
+        //background-image : linear-gradient( to right, transparent 50%, rgb( 5, 150, 105 ) 50% ); // needed for the hightlighted text animation
+        //background-image : linear-gradient( to right, transparent 50%, rgb( 160, 82, 45 ) 50% ); // needed for the hightlighted text animation
+        //background-image : linear-gradient( to right, transparent 50%, rgb( 110, 84, 21 ) 50% ); // needed for the hightlighted text animation
+        background-image : linear-gradient( to right, transparent 50%, rgb( 50, 100, 95 ) 50% ); // needed for the hightlighted text animation
+
+        // ==============================
+        // will-change
+        // use either will-change or translateZ( 0 ) to " promote elements that you plan to
+        // animate "
+        // see the following article for details :
+        // " https://web.dev/articles/stick-to-compositor-only-properties-and-manage-layer-count " 
+        // ==============================
+
+        will-change : background-position;
+
+        // ==============================
+        // end of will-change
+        // ==============================
+
+        // once the text goes to 2 lines then turn off the animation and the background image
+        // color
+        @media all and ( max-width : 421px ) {
+
+            margin  : 0 0 0 0;
+            padding : 0.0rem 0.0rem;
+
+            border-radius : 0; // don't really need this but here anyway
+
+            color : var( --gray-225 );
+
+            background-image : none;
+        
+        } // end of container > span1 > bp-1920
+
+    } // end of container > span1
+
+    // ==============================
+    // container > span 2
+    // ==============================
+
+    > span:nth-child( 2 ) {
+
+        @include text-large-light;
+
+    } // end of container > span2
+
+    // ==============================
+    // container > a
+    // ==============================
+
+    > a {
+
+        @include text-large-light;
+
+        text-decoration : underline;
+        // text-underline-offset : 0.2rem;
+
+        @media all and ( max-width : $bp-1920 ) {
+
+            color : var( --gray-225 );
+        
+        } // end of container > a > bp-1920
+
+        &:hover {
+
+            cursor : pointer;
+
+        } // end of container > a > &:hover
+
+    } // end of container > a
+
+} // end of container
+
+

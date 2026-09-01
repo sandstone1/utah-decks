@@ -1,0 +1,664 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// keyframes 1
+// ==============================
+
+// ==============================
+// purpose : animate the star around some text upon entry, giving the
+// text a whimsical effect
+// ==============================
+
+@keyframes orbitStar {
+
+    0%   { offset-distance : 0%;  opacity : 0; }    // star starts at beginning of path, fully visible
+    5%   { opacity : 1; }                           // star has moved slightly along the path and fades in ( opacity: 1 ) — smooth entry
+    65%  { opacity : 1; }                           // star is still fully visible, has traveled 65% of the animation duration
+    75%  { offset-distance : 75%; opacity : 0; }    // star has moved to 75% along the path and fades to invisible
+    100% { offset-distance : 95%; opacity : 0; }    // star is at 95% along the path, still invisible
+
+} // end of keyframes orbitStar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// contact blob container
+// ==============================
+
+.contactBlobContainer {
+
+    // parent
+    grid-area   : div4;
+    grid-column : 1 / -1; // position against the parent
+
+    // children
+    display               : grid;
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // 1 - in the content div use grid-column to position against the parent grid and until we
+    // can use sub grid we may need to duplicate the parent grid and bring it down to the
+    // content div where we can position against it
+    // 2 - now our content div is sitting empty inside the parent grid we need to give the
+    // content div a width and height so we can create the content box and
+    // 3 - then set up a grid within the content box so that we can layout the content
+    // inside the content box as needed and
+    // 4 - the only cavet to 3 above, is that sometimes we need to go with a horizontal layout
+    // and in those cases, flexbox may be the better choice than css grid
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    justify-items         : center;
+
+    position : relative; // needed for the absolutely positioned content
+    // padding  : 12.0rem 0 12.0rem 0; // provide some spacing between this container that the
+    // container above and below this one
+    overflow : hidden;
+
+    // ==============================
+    // background
+    // ==============================
+
+    // background : var( --gray-230 );
+    // background : var( --yellow-20 );
+    background : var( --yellow-40 );
+    background : var( --gray-872 );
+    // background-image : linear-gradient( to bottom, rgba( 32, 40, 52, 1.0),  rgba( 32, 40, 52, 1.0 ) );
+    background-image : linear-gradient( to bottom, rgba( 32, 40, 52, 0.975 ),  rgba( 32, 40, 52, 0.975 ) ), url( /images/mj_tree_bark_04_500.webp );
+
+    // ==============================
+    // end of background
+    // ==============================
+
+    // ==============================
+    // height
+    // ==============================
+
+    // allow the container to fill up the window horizontally if the window is larger that
+    // 100.0rem and this looks great
+    min-height : 100.0rem;
+    height     : 100vh;
+    // padding    : 12.0rem 0 12.0rem 0; // remember, padding doesn't work here
+
+    // ==============================
+    // end of height
+    // ==============================
+
+    // ==============================
+    // background color
+    // ==============================
+
+    background-size       : cover;
+    background-blend-mode : multiply;
+    background-color      : var( --blue-85-2 );
+    // background-color      : rgba( 13, 58, 216, 0.85 );
+    // background-color      : var( --blue-78 );
+    // background-color      : var( --blue-62-1 );
+
+    // ==============================
+    // end of background color
+    // ==============================
+
+    // ==============================
+    // fallback jpeg image
+    // ==============================
+
+    background-image : url( /images/mj_knee_01_2560.jpg );
+
+    @media all and ( max-width : $bp-1728 ) {
+    
+        background-image : url( /images/mj_couple_running_07_1728.jpg );
+
+    }  // end of container > div1 > div 1 > end of bp-1728
+
+    @media all and ( max-width : $bp-1376 ) {
+        
+        background-image : url( /images/mj_couple_running_07_1376.jpg );
+
+    }  // end of container > div1 > div 1 > end of bp-1376
+
+    @media all and ( max-width : $bp-1032 ) {
+    
+        background-image : url( /images/mj_couple_running_07_1032.jpg );
+
+    }  // end of container > div1 > div 1 > end of bp-1032
+
+    @media all and ( max-width : $bp-768 ) {
+    
+        background-image : url( /images/mj_couple_running_07_768.jpg );
+
+    } // end of container > div1 > div 1 > @supports > end of bp-1032
+
+    @media all and ( max-width : $bp-480 ) {
+
+        // this is an cropped image
+        background-image    : url( /images/mj_couple_running_07_480.jpg );
+
+    }  // end of container > div1 > div 1 > end of bp-480
+
+    // ==============================
+    // end of fallback jpeg image
+    // ==============================
+
+    // ==============================
+    // webp image
+    // ==============================
+
+    // this code comes from the article :
+    // " https://www.js-craft.io/blog/css-fallbacks-for-webp-background-images-with-supports/ "
+    @supports ( background-image : url( /images/mj_couple_running_07_2560.webp ) ) {
+
+        background-image : url( /images/mj_couple_running_07_2560.webp );
+        //background-image : url( /images/mj_window_01.png );
+        //background-image : url( /images/mj_med_spa_03.png );
+        //background-image : url( /images/mj_med_spa_04.png );
+
+        @media all and ( max-width : $bp-1728 ) {
+    
+            background-image : url( /images/mj_couple_running_07_1728.webp );
+
+        } // end of container > div1 > div 1 > @supports > end of bp-1728
+
+        @media all and ( max-width : $bp-1376 ) {
+    
+            background-image : url( /images/mj_couple_running_07_1376.webp );
+
+        } // end of container > div1 > div 1 > @supports > end of bp-1376
+
+        @media all and ( max-width : $bp-1032 ) {
+    
+            background-image : url( /images/mj_couple_running_07_1032.webp );
+
+        } // end of container > div1 > div 1 > @supports > end of bp-1032
+
+        @media all and ( max-width : $bp-768 ) {
+    
+            background-image : url( /images/mj_couple_running_07_768.webp );
+
+        } // end of container > div1 > div 1 > @supports > end of bp-1032
+
+        @media all and ( max-width : $bp-480 ) {
+
+            // this is an cropped image
+            background-image : url( /images/mj_couple_running_07_480.webp );
+
+        } // end of container > div1 > div 1 > @supports > end of bp-480
+
+    }  // end of container > div1 > div 1 > @supports
+
+    // ==============================
+    // end of webp image
+    // ==============================
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div for content )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent
+
+        // children
+        display               : grid;
+        grid-template-rows    : auto;
+        grid-template-columns : 1fr;
+        align-content         : center;
+        justify-items         : center;
+        gap                   : 2.0rem 0;
+        grid-template-areas   : "h2"
+                                "a";
+
+        z-index : 1; // put the content on top of the image or blob
+
+        @media all and ( max-width : $bp-1376 ) {
+
+            gap : 0.5rem 0;
+        
+        } // end of container > div1 > bp-1376
+
+        > h2 {
+
+            // parent
+            grid-area : h2;
+
+            @include h1-light-title;
+
+            width : min( 56.0rem, 100% ); // browser will select the smaller of 48.0rem or 100%
+
+            text-align : center;
+
+            > a {
+
+                // parent
+                grid-area : a;
+    
+                @include h1-light-title;
+    
+                color           : var( --gray-225 ) !important;
+                text-align      : center;
+                // text-decoration : underline;
+
+                // animation for the anchor underline
+                background-image    : linear-gradient( currentColor, currentColor );
+                background-size     : 0% 0.3rem;
+                background-position : 0 100%;
+                background-repeat   : no-repeat;
+                transition          : background-size 0.3s ease;
+
+                @media all and ( max-width : $bp-768 ) {
+
+                    display : block; // make sure that the anchor text is on its own line
+                
+                } // end of container > div1 > h2 > a > bp-768
+
+                &:hover {
+
+                    background-size: 100% 0.3rem;
+
+                } // end of container > div1 > h2 > a &:hover
+
+                // use the span element to create a star shape that travels along the
+                // offset-path defined below and animates using the keyframe animation above
+                // and is triggered by the GSAP onComplete callback in the JavaScript
+                > span:nth-of-type( 1 )  {
+
+                    // remember, without top / left — the element stays at its natural static
+                    // position ( where it would have been in normal flow )
+
+                    // since we use offset-path the top / left values don't matter much anyway
+                    // since offset-path takes over and positions the element along the path,
+                    // overriding where the stars would naturally sit
+                    position : absolute;
+                    width    : 15px;
+                    height   : 15px;
+
+                    // create a star shape
+                    clip-path : polygon(
+                        50% 0%, 61% 35%, 98% 35%, 68% 57%,
+                        79% 91%, 50% 70%, 21% 91%, 32% 57%,
+                        2% 35%, 39% 35%
+                    );
+
+                    // needed to start the animation
+                    opacity          : 0;
+                    background-color : var( --white );
+
+                    // this is a closed oval / ellipse shape that starts and ends at the same point
+                    // ( -120, 0 ) and the Z at the end closes the path back to the start
+                    offset-path     : path( 'M -120,0 C -12,0 19.77,0 19.77,32 C 19.77,64 -12,64 -120,64 C -155,64 -155,32 -155,0 C -155,0 -123,0 -120,0 Z' );
+                    /*
+                        Breaking it down :
+
+                        0% — element is at the start of the path ( the M point )
+                        50% — element is halfway along the path
+                        100% — element is at the end of the path
+
+                        It works together with the animation :
+                        
+                        @keyframes orbitStar {
+                            0%   { offset-distance : 0%;  }  // starts at beginning of path
+                            100% { offset-distance : 95%; }  // ends 95% along the path
+                        }
+
+                        So offset-distance: 0% in your CSS is just setting the initial position
+                        before the animation starts
+                    */
+                    offset-distance : 0%;
+                                    
+                    animation-name            : orbitStar;
+                    // animation-delay           : 1.5s; // move animation delay to the js
+                    animation-duration        : 3s;
+                    animation-timing-function : linear;
+                    animation-iteration-count : 1; // one rotation only
+                    animation-fill-mode       : forwards;
+                    animation-play-state      : paused;
+
+                } // end of container > div1 > h2 > a > span:nth-of-type( 1 )
+                
+                > span:nth-of-type( 2 )  {
+
+                    // remember, without top / left — the element stays at its natural static
+                    // position ( where it would have been in normal flow )
+
+                    // since we use offset-path the top / left values don't matter much anyway
+                    // since offset-path takes over and positions the element along the path,
+                    // overriding where the stars would naturally sit
+                    position : absolute;
+                    width    : 16px;
+                    height   : 16px;
+
+                    // create a star shape
+                    clip-path : polygon(
+                        50% 0%, 61% 35%, 98% 35%, 68% 57%,
+                        79% 91%, 50% 70%, 21% 91%, 32% 57%,
+                        2% 35%, 39% 35%
+                    );
+
+                    // needed to start the animation
+                    opacity          : 0;
+                    background-color : var( --purple-30 );
+
+                    // this offser path is an open curved path that spirals downward and to the
+                    // left — it never closes back to the start and gives a falling trajectory
+                    // effect since it has no Z to close it back to the start
+                    offset-path : path( 'M -120,0 C -12,0 19.77,0 19.77,32 C 19.77,50 0,64 -60,80 C -90,95 -120,110 -130,140' );
+                    /*
+                        Breaking it down :
+
+                        0% — element is at the start of the path ( the M point )
+                        50% — element is halfway along the path
+                        100% — element is at the end of the path
+
+                        It works together with the animation :
+                        
+                        @keyframes orbitStar {
+                            0%   { offset-distance : 0%;  }  // starts at beginning of path
+                            100% { offset-distance : 95%; }  // ends 95% along the path
+                        }
+
+                        So offset-distance: 0% in your CSS is just setting the initial position
+                        before the animation starts
+                    */
+                    offset-distance : 0%;
+
+                    animation-name            : orbitStar;
+                    // animation-delay           : 1.7s; // move animation delay to the js
+                    animation-duration        : 3s;
+                    animation-timing-function : linear;
+                    animation-iteration-count : 1; // one rotation only
+                    animation-fill-mode       : forwards;
+                    animation-play-state      : paused;
+
+                } // end of container > div1 > h2 > a > span:nth-of-type( 2 )
+
+                > span:nth-of-type( 3 )  {
+
+                    // remember, without top / left — the element stays at its natural static
+                    // position ( where it would have been in normal flow )
+
+                    // since we use offset-path the top / left values don't matter much anyway
+                    // since offset-path takes over and positions the element along the path,
+                    // overriding where the stars would naturally sit
+                    position : absolute;
+                    width    : 17px;
+                    height   : 17px;
+
+                    // create a star shape
+                    clip-path : polygon(
+                        50% 0%, 61% 35%, 98% 35%, 68% 57%,
+                        79% 91%, 50% 70%, 21% 91%, 32% 57%,
+                        2% 35%, 39% 35%
+                    );
+
+                    // needed to start the animation
+                    opacity          : 0;
+                    background-color : var( --green-25 );
+
+                    // this is a closed oval / ellipse shape that starts and ends at the same point
+                    // ( -120, 0 ) and the Z at the end closes the path back to the start
+                    offset-path     : path( 'M -120,0 C -12,0 19.77,0 19.77,32 C 19.77,64 -12,64 -120,64 C -155,64 -155,32 -155,0 C -155,0 -123,0 -120,0 Z' );
+                    /*
+                        Breaking it down :
+
+                        0% — element is at the start of the path ( the M point )
+                        50% — element is halfway along the path
+                        100% — element is at the end of the path
+
+                        It works together with the animation :
+                        
+                        @keyframes orbitStar {
+                            0%   { offset-distance : 0%;  }  // starts at beginning of path
+                            100% { offset-distance : 95%; }  // ends 95% along the path
+                        }
+
+                        So offset-distance: 0% in your CSS is just setting the initial position
+                        before the animation starts
+                    */
+                    offset-distance : 0%;
+                                    
+                    animation-name            : orbitStar;
+                    // animation-delay           : 1.5s; // move animation delay to the js
+                    animation-duration        : 3s;
+                    animation-timing-function : linear;
+                    animation-iteration-count : 1; // one rotation only
+                    animation-fill-mode       : forwards;
+                    animation-play-state      : paused;
+
+                } // end of container > div1 > h2 > a > span:nth-of-type( 3 )
+
+                > span:nth-of-type( 4 )  {
+
+                    // remember, without top / left — the element stays at its natural static
+                    // position ( where it would have been in normal flow )
+
+                    // since we use offset-path the top / left values don't matter much anyway
+                    // since offset-path takes over and positions the element along the path,
+                    // overriding where the stars would naturally sit
+                    position : absolute;
+                    width    : 19px;
+                    height   : 19px;
+
+                    // create a star shape
+                    clip-path : polygon(
+                        50% 0%, 61% 35%, 98% 35%, 68% 57%,
+                        79% 91%, 50% 70%, 21% 91%, 32% 57%,
+                        2% 35%, 39% 35%
+                    );
+
+                    // needed to start the animation
+                    opacity          : 0;
+                    background-color : var( --yellow-100);
+
+                    // this offser path is an open curved path that spirals downward and to the
+                    // left — it never closes back to the start and gives a falling trajectory
+                    // effect since it has no Z to close it back to the start
+                    offset-path : path( 'M -120,0 C -12,0 19.77,0 19.77,32 C 19.77,50 0,64 -60,80 C -90,95 -120,110 -130,140' );
+                    /*
+                        Breaking it down :
+
+                        0% — element is at the start of the path ( the M point )
+                        50% — element is halfway along the path
+                        100% — element is at the end of the path
+
+                        It works together with the animation :
+                        
+                        @keyframes orbitStar {
+                            0%   { offset-distance : 0%;  }  // starts at beginning of path
+                            100% { offset-distance : 95%; }  // ends 95% along the path
+                        }
+
+                        So offset-distance: 0% in your CSS is just setting the initial position
+                        before the animation starts
+                    */
+                    offset-distance : 0%;
+
+                    animation-name            : orbitStar;
+                    // animation-delay           : 1.7s; // move animation delay to the js
+                    animation-duration        : 3s;
+                    animation-timing-function : linear;
+                    animation-iteration-count : 1; // one rotation only
+                    animation-fill-mode       : forwards;
+                    animation-play-state      : paused;
+
+                } // end of container > div1 > h2 > a > span:nth-of-type( 4 )
+
+                > span:nth-of-type( 5 )  {
+
+                    // remember, without top / left — the element stays at its natural static
+                    // position ( where it would have been in normal flow )
+
+                    // since we use offset-path the top / left values don't matter much anyway
+                    // since offset-path takes over and positions the element along the path,
+                    // overriding where the stars would naturally sit
+                    position : absolute;
+                    width    : 20px;
+                    height   : 20px;
+
+                    // create a star shape
+                    clip-path : polygon(
+                        50% 0%, 61% 35%, 98% 35%, 68% 57%,
+                        79% 91%, 50% 70%, 21% 91%, 32% 57%,
+                        2% 35%, 39% 35%
+                    );
+
+                    // needed to start the animation
+                    opacity          : 0;
+                    background-color : var( --pink-100 );
+
+                    // this is a closed oval / ellipse shape that starts and ends at the same point
+                    // ( -120, 0 ) and the Z at the end closes the path back to the start
+                    offset-path     : path( 'M -120,0 C -12,0 19.77,0 19.77,32 C 19.77,64 -12,64 -120,64 C -155,64 -155,32 -155,0 C -155,0 -123,0 -120,0 Z' );
+                    /*
+                        Breaking it down :
+
+                        0% — element is at the start of the path ( the M point )
+                        50% — element is halfway along the path
+                        100% — element is at the end of the path
+
+                        It works together with the animation :
+                        
+                        @keyframes orbitStar {
+                            0%   { offset-distance : 0%;  }  // starts at beginning of path
+                            100% { offset-distance : 95%; }  // ends 95% along the path
+                        }
+
+                        So offset-distance: 0% in your CSS is just setting the initial position
+                        before the animation starts
+                    */
+                    offset-distance : 0%;
+                                    
+                    animation-name            : orbitStar;
+                    // animation-delay           : 1.5s; // move animation delay to the js
+                    animation-duration        : 3s;
+                    animation-timing-function : linear;
+                    animation-iteration-count : 1; // one rotation only
+                    animation-fill-mode       : forwards;
+                    animation-play-state      : paused;
+
+                } // end of container > div1 > h2 > a > span:nth-of-type( 5 )
+
+                > span:nth-of-type( 6 )  {
+
+                    // remember, without top / left — the element stays at its natural static
+                    // position ( where it would have been in normal flow )
+
+                    // since we use offset-path the top / left values don't matter much anyway
+                    // since offset-path takes over and positions the element along the path,
+                    // overriding where the stars would naturally sit
+                    position : absolute;
+                    width    : 16px;
+                    height   : 16px;
+
+                    // create a star shape
+                    clip-path : polygon(
+                        50% 0%, 61% 35%, 98% 35%, 68% 57%,
+                        79% 91%, 50% 70%, 21% 91%, 32% 57%,
+                        2% 35%, 39% 35%
+                    );
+
+                    // needed to start the animation
+                    opacity          : 0;
+                    background-color : var( --blue-green-80 );
+
+                    // this offser path is an open curved path that spirals downward and to the
+                    // left — it never closes back to the start and gives a falling trajectory
+                    // effect since it has no Z to close it back to the start
+                    offset-path : path( 'M -120,0 C -12,0 19.77,0 19.77,32 C 19.77,50 0,64 -60,80 C -90,95 -120,110 -130,140' );
+                    /*
+                        Breaking it down :
+
+                        0% — element is at the start of the path ( the M point )
+                        50% — element is halfway along the path
+                        100% — element is at the end of the path
+
+                        It works together with the animation :
+                        
+                        @keyframes orbitStar {
+                            0%   { offset-distance : 0%;  }  // starts at beginning of path
+                            100% { offset-distance : 95%; }  // ends 95% along the path
+                        }
+
+                        So offset-distance: 0% in your CSS is just setting the initial position
+                        before the animation starts
+                    */
+                    offset-distance : 0%;
+
+                    animation-name            : orbitStar;
+                    // animation-delay           : 1.7s; // move animation delay to the js
+                    animation-duration        : 3s;
+                    animation-timing-function : linear;
+                    animation-iteration-count : 1; // one rotation only
+                    animation-fill-mode       : forwards;
+                    animation-play-state      : paused;
+
+                } // end of container > div1 > h2 > a > span:nth-of-type( 6 )
+
+            } // end of container > div1 > h2 > a
+
+        } // end of container > div1 > h2
+
+    } // end of container > div1
+
+} // end of container
+

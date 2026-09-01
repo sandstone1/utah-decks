@@ -1,0 +1,84 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+// ==============================
+// confetti movement down container
+// ==============================
+
+.confettiMovementDownContainer {
+
+    // ==============================
+    // container > div1 ( wrapper div )
+    // ==============================
+
+    // ==============================
+    // button particle animation
+    // ==============================
+
+    > div {
+
+        // needed for the particle element to work properly
+        position : relative;
+
+        // ==============================
+        // remember, we created this element inside the handleParticleClick function
+        // ==============================
+
+        > particle {
+
+            // remember : " Absolute positioning is done relative to the first relatively
+            // ( or absolutely ) positioned parent element. In the case when there is no
+            // positioned parent element, the element that has position set to absolute
+            // will be positioned related directly to the HTML element ( the page itself ). "
+
+            position : absolute; // needed to attach each particle to the parent element
+            left     : 50%; // needed in order to center the start point for the animation
+            top      : 50%; // needed in order to center the start point for the animation
+
+            opacity : 0; // make sure we can not see the particles initially
+
+            pointer-events : none; // make sure no one can click on the particle
+            // while animating
+
+        } // end of container > div1 > particle
+
+        > a {
+
+            display : grid; // this makes the button span the entire width of the parent
+            // container
+
+            max-width : 60.0rem;
+
+            > button {
+
+                @include button-v7();
+
+                &:hover {
+                    
+                    background-color : var( --blue-83 );
+
+                }  // end of container > div1 > a > button &:hover
+
+            } // end of container > div1 > a > button
+
+        } // end of container > div1 > a
+
+    } // end of container > div1
+
+    // ==============================
+    // end of button particle animation
+    // ==============================
+
+} // end of container
+
