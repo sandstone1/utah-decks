@@ -3,7 +3,7 @@
 // import in useRef
 import { useRef } from 'react';
 // import in the Nav component
-import Nav from '../nav/nav';
+import Nav from '../nav/nav-v1';
 // import in our stylesheet
 import styles from './header.module.scss';
 

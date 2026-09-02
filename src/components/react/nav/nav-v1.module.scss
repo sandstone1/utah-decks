@@ -1,0 +1,419 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+// ==============================
+// keyframes
+// ==============================
+
+// ==============================
+// fade in animation
+// ==============================
+
+@keyframes fade-in {
+
+    from {
+
+        opacity : 0;
+
+    }
+
+    to {
+
+        opacity : 1;
+
+    }
+
+} // end of fade-in
+
+
+
+
+
+
+
+
+// ==============================
+// nav container
+// ==============================
+
+// remember we have the header css grid styling affecting the nav container flex styling
+.navContainer {
+
+    // parent
+    grid-column : 2 / 22;
+
+    // children
+    display         : flex;
+    justify-content : space-between;
+    align-items     : center;
+
+    // ==============================
+    // z-index notes
+    // ==============================
+
+    /*
+        ( 1 ) for the " Why Work With Us " badges to sit on top of the 3D blob we made the
+        following z-index adjustment :
+        ( adjustment 1 ) badge div 1 - 6 ( see index.module.scss ) : z-index of 1
+        ( 2 ) for the nav to sit on top of the background div, the home page container and the
+        badges we made the following z-index adjustment :
+        ( adjustment 2 ) nav container ( see nav.module.scss ) : z-index of 2
+        ( 3 ) for the side menu to sit on top of the background div, the home page container and
+        the badges we made the following z-index adjustment :
+        ( adjustment 3 ) side menu container ( see side-menu.module.scss ) : z-index of 2
+        ( 4 ) for the hamburger menu to sit on top of the background div, the home page container,
+        the badges and the side menu container we made the following z-index adjustment :
+        ( adjustment 4 ) hamburger menu container ( see hamburger-menu.module.scss ) : z-index of 3
+        ( 5 ) for the 3d Earth h2 and canvas to sit above the starfield, we made the following
+        z-index adjustment :
+        ( adjustment 5 ) wrapper div for the h2 and canvas ( see earth.module.scss ) : z-index of 1
+        ( 6 ) for the side menu to sit on top of the 3d Earth h2 and canvas, we made the following
+        z-index adjustments :
+        ( adjustment 6 ) side menu container ( see side-menu.module.scss ) : z-index of 2 and 
+        ( 7 ) for the side menu to sit on top of the 3d objects container, we made the following
+        z-index adjustments :       
+        ( adjustment 7 ) 3d objects container ( see 3d-objects.module.scss ) : z-index of 0 ( and
+        I'm not sure why I had to set adjustment 7 in order for the side menu to sit on top of the
+        3d Earth h2 and canvas )   
+    */
+    z-index : 2;
+    // width  : min( 192.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
+    width   : min( 144.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
+    margin  : 0 auto;
+
+    overflow : hidden;
+/*
+    // ==============================
+    // fade in the nav container on page load
+    // ==============================
+
+    // ==============================
+    // fade in the nav container when navigation back to the home page from the contact page
+    // ==============================
+
+    opacity : 0; // needed in order for the animation to work
+
+    animation-name            : fade-in;
+    animation-duration        : 600ms;
+    animation-timing-function : ease-out; // standard easing
+    // animation-delay           : 500ms;
+    animation-delay           : 300ms;
+    animation-iteration-count : 1; // this is the default but leave here for reference purposes
+    animation-fill-mode       : forwards;
+*/
+    // ==============================
+    // end of fade in animation
+    // ==============================
+
+    @media all and ( max-width : $bp-620 ) {
+
+        display         : grid;
+        justify-content : center;
+        justify-items   : center;
+/*
+        // ==============================
+        // fade in animation
+        // ==============================
+
+        // ==============================
+        // fade in the nav container on page load
+        // ==============================
+
+        // ==============================
+        // fade in the nav container when navigation back to the home page from the contact page
+        // ==============================
+
+        opacity : 0; // needed in order for the animation to work
+
+        animation-name            : fade-in;
+        animation-duration        : 600ms; // match the header overlay animation slide out duration
+        animation-timing-function : ease-out; // standard easing
+        // animation-delay           : 700ms; // match the header overlay animation slide out delay
+        animation-delay           : 500ms;
+        animation-iteration-count : 1; // this is the default but leave here for reference purposes
+        animation-fill-mode       : forwards;
+
+        // ==============================
+        // end of fade in animation
+        // ==============================
+*/
+    } // end of container.onHomePage > bp-620
+
+
+    // ==============================
+    // container > div1 ( nav container left )
+    // ==============================
+
+    .navContainerLeft {
+
+        > a {
+
+            // children
+            display               : grid;
+            grid-template-columns : auto auto;
+            align-items           : center;
+            grid-gap              : 0 0;
+
+            // active, focus selectors for the a tag
+            &:active, &:focus {
+
+                // on mobile devices, safari was putting a think white background around
+                // my clicks and " outline : none; " is my attempt to not show any browser
+                // outline on a click event
+                outline : 0;
+
+                // on mobile devices, safari was putting a think white background around
+                // my clicks and I found the answer on how to solve this problem from
+                // stackoverflow :
+                // " https://stackoverflow.com/questions/69594393/tapping-links-in-ios-safari-shows-a-thick-white-border-around-element-how-to-g "
+                background-color : transparent;
+
+                // on mobile devices, safari was putting a think white background around
+                // my clicks and I found the answer on how to solve this problem from
+                // stackoverflow :
+                // " https://stackoverflow.com/questions/9784350/mobile-safari-tap-and-hold-a-link-it-will-show-a-gray-shadow-how-to-disable-it?rq=3 "
+                -webkit-tap-highlight-color : rgba( 0, 0, 0, 0 );
+            
+            } // end of container > div1 > a > &:active, &:focus
+
+            @media all and ( max-width : $bp-620 ) {
+
+                grid-template-columns : auto;
+        
+            } // end of container > div1 > a > bp-620
+
+            > div {
+
+                margin : -0.6rem -2.0rem 0 0; // since our div or box is 15.0 rem by 15.0 rem and we
+                // could not adjust the box size without affecting the size of the stars, we
+                // did a negative right margin and this moved the Enchanting Apps text over to
+                // the left and gave the 2 elements better spacing
+
+                @media all and ( max-width : $bp-768 ) {
+
+                    display : none;
+            
+                } // end of container > div1 > a > bp-768
+
+            } // end of container > div1 > a > div
+
+            > h2 {
+
+                display : block;
+                padding : 1.0rem 1.6rem 1.0rem 1.6rem;
+    
+                border-radius : 6px;
+    
+                font-family    : var( --font-display-1 );
+                font-size      : 2.75rem;
+                font-weight    : 300;
+                // font-weight    : 350;
+                font-weight    : 800;
+                color          : var( --gray-225 );
+                letter-spacing : 2px;
+                // text-transform : uppercase;
+
+                background : var( --blue-800 );
+                // background : var( --blue-850 );
+                // background : var( --purple-400 );
+                // background : var( --black );
+                //background : var( --blue-900 );
+                outline    : none;
+    
+                @media all and ( max-width : 426px ) {
+
+                    text-align: center;
+             
+                 } // end of container > div1 > a > 426px
+
+                > span {
+
+                    margin  : 0 0 0 0.6rem;
+                    // padding : 1px 8px 1px 8px;
+                    padding : 0.4rem 1.6rem 0.4rem 1.6rem;
+
+                    border-radius : 4px;
+    
+                    font-family : var( --font-display-1 );
+                    font-size   : 2.75rem;
+                    font-weight : 800;
+                    color       : var( --gray-355 );
+                    // color       : var( --gray-342 );
+                    color       : var( --blue-62-1 );
+                    color       : var( --gray-225 );
+                    letter-spacing : 2px;
+
+                    background : var( --blue-260 );
+                    // background : var( --blue-80 );
+                    // background : var( --blue-83 );
+                    // background : var( --blue-84 );
+                    // background : var( --blue-84 );
+
+                    @media all and ( max-width : 426px ) {
+
+                       display : block;
+                       margin  : 0;
+                
+                    } // end of container > div1 > a > 426px
+    
+                } // end of container > div1 > a > h2 > span
+    
+            } // end of container > div1 > a > h2
+
+        } // end of container > div1 > a
+
+    } // end of container > div1
+
+    // ==============================
+    // container > div2 ( nav container right )
+    // ==============================
+
+    .navContainerRight {
+
+        // ==============================
+        // list
+        // ==============================
+
+        > ul {
+
+            // children
+            display     : flex; // flex will make the navigation tabs line up horizontally
+            align-items : center; // make sure all the tabs are in the horizontal center of
+            // the container
+            gap         : 0 1.0rem;
+
+            // the navigation tabs
+            > li > a {
+
+                display : block; // needed for animation
+                padding : 1.5rem 2.2rem; // visual preference
+
+                @include text-base-large-light;
+
+                font-size       : 1.90rem; // visual preference after looking at Mikey's
+                // computer
+                color           : var( --white ); // visual preference for nav items
+                letter-spacing  : 0.1rem; // visual preference for nav items
+
+                transition : all 0.2s ease-out; // provide for a nice hover animation
+
+                // hover selector for the navigation tabs
+                &:hover {
+
+                    border-radius : 0.6rem;
+
+                    background-color : rgba( 255, 255, 255, 0.05 );
+
+                    cursor : pointer;
+
+                    // move the nav item up just a little to add a nice hover effect
+                    transform: translate3d( 0, -0.3rem, 0 );
+
+                    // remove the animation effect for screen sizes under 1376 pixels
+                    @media all and ( max-width : $bp-1376 ) {
+
+                        background-color : inherit;
+
+                        transform: none;
+                
+                    }  // end of container > div2 > ul > li > > a > &:hover > bp-1376
+
+                } // end of container > div2 > ul > li > > a > &:hover
+
+                // active, focus selectors for the navigation tabs
+                &:active, &:focus {
+
+                    // on mobile devices, safari was putting a think white background around
+                    // my clicks and " outline : none; " is my attempt to not show any browser
+                    // outline on a click event
+                    outline : 0;
+
+                    // on mobile devices, safari was putting a think white background around
+                    // my clicks and I found the answer on how to solve this problem from
+                    // stackoverflow :
+                    // " https://stackoverflow.com/questions/69594393/tapping-links-in-ios-safari-shows-a-thick-white-border-around-element-how-to-g "
+                    background-color : transparent;
+
+                    // on mobile devices, safari was putting a think white background around
+                    // my clicks and I found the answer on how to solve this problem from
+                    // stackoverflow :
+                    // " https://stackoverflow.com/questions/9784350/mobile-safari-tap-and-hold-a-link-it-will-show-a-gray-shadow-how-to-disable-it?rq=3 "
+                    -webkit-tap-highlight-color : rgba( 0, 0, 0, 0 );
+                
+                } // end of container > div2 > ul > li > > a > &:active, &:focused
+
+            } // end of container > div2 > ul > li > a
+    
+            // ==============================
+            // contact menu item
+            // ==============================
+
+            > .navContainerRightContact {
+
+                display : block;
+
+                @media all and ( max-width: $bp-1376 ) {
+
+                    display : none; // correct default for mobile, no flash and css applies
+                    // before paint and before the JS runs
+
+                } // end of container > div2 > ul > li > bp-1376
+
+            } // end of container > div2 > ul > li
+
+            // ==============================
+            // hamburger menu item
+            // ==============================
+
+            > .navContainerRightHamburgerMenu {
+
+                display : none;
+
+                @media all and (max-width: $bp-1376) {
+    
+                    display : block;
+
+                }// end of container > div2 > ul > li > bp-1376
+
+                // ==============================
+                // note
+                // ==============================
+
+                // ==============================
+                // shrink the top and bottom margins of the hamburger menu item below
+                // and then add " align-content : end " in the header component so
+                // that we allow for some spacing between the top of the website and
+                // the nav container left or company name and logo
+                // ==============================
+
+                > a {
+
+                    @media all and ( max-width : $bp-620 ) {
+
+                        padding : 0.8rem 2.2rem 0.8rem 2.2rem; // visual preference
+                
+                    } // end of container > div2 > ul > li > a > bp-620
+
+                } // end of container > div2 > ul > li > a
+
+            } // end of container > div2 > ul > li
+    
+        } // end of container > div2 > ul
+
+    } // end of container > div2
+
+} // end of container
+

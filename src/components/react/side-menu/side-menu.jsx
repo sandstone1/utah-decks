@@ -1435,59 +1435,63 @@ export default function SideMenuComponent( { resetShowSideMenu, showSideMenu } )
                         </a>
                     </li>
 
-                    { /* show the contact at all times */ }
-                    <li>
-                        <a
-                            onClick={ async ( e)  => 
-                                {
-                                    e.preventDefault(); // stop the browser from navigating immediately
+                    { /* show the contact at all times
 
-                                    resetShowSideMenu(); // open or close the side menu and this state is in the Nav
-                                    // component
+                            <li>
+                                <a
+                                    onClick={ async ( e)  => 
+                                        {
+                                            e.preventDefault(); // stop the browser from navigating immediately
 
-                                    // ==============================
-                                    // remove the view transition when navigating
-                                    // ==============================
+                                            resetShowSideMenu(); // open or close the side menu and this state is in the Nav
+                                            // component
 
-                                    // remove the view transition names before navigating
-                                    // and this prevents the morph animation from showing up when navigating
-                                    // back to the contact page
-                                    const contactPageH1             = document.querySelector( '.contact-page-h1' );
-                                    const contactPageImageUnderline = document.querySelector( '.contact-page-image-underline' );
-                                    const contactPageYellowBox      = document.querySelector( '.contact-page-yellow-box' );
-                                    const contactPageBlueBox        = document.querySelector( '.contact-page-blue-box' );
-        
-                                    if ( contactPageH1             ) contactPageH1.style.viewTransitionName              = 'none';
-                                    if ( contactPageImageUnderline ) contactPageImageUnderline.style.viewTransitionName  = 'none';
-                                    if ( contactPageYellowBox      ) contactPageYellowBox.style.viewTransitionName       = 'none';
-                                    if ( contactPageBlueBox        ) contactPageBlueBox.style.viewTransitionName         = 'none';
+                                            // ==============================
+                                            // remove the view transition when navigating
+                                            // ==============================
 
-                                    const categoryPageH1             = document.querySelector( '.category-page-h1' );
-                                    const categoryPageImageUnderline = document.querySelector( '.category-page-image-underline' );
-                                    const categoryPagePicture        = document.querySelector( '.category-page-picture' );
-        
-                                    if ( categoryPageH1             ) categoryPageH1.style.viewTransitionName             = 'none';
-                                    if ( categoryPageImageUnderline ) categoryPageImageUnderline.style.viewTransitionName = 'none';
-                                    if ( categoryPagePicture        ) categoryPagePicture.style.viewTransitionName        = 'none';
+                                            // remove the view transition names before navigating
+                                            // and this prevents the morph animation from showing up when navigating
+                                            // back to the contact page
+                                            const contactPageH1             = document.querySelector( '.contact-page-h1' );
+                                            const contactPageImageUnderline = document.querySelector( '.contact-page-image-underline' );
+                                            const contactPageYellowBox      = document.querySelector( '.contact-page-yellow-box' );
+                                            const contactPageBlueBox        = document.querySelector( '.contact-page-blue-box' );
+                
+                                            if ( contactPageH1             ) contactPageH1.style.viewTransitionName              = 'none';
+                                            if ( contactPageImageUnderline ) contactPageImageUnderline.style.viewTransitionName  = 'none';
+                                            if ( contactPageYellowBox      ) contactPageYellowBox.style.viewTransitionName       = 'none';
+                                            if ( contactPageBlueBox        ) contactPageBlueBox.style.viewTransitionName         = 'none';
 
-                                    // ==============================
-                                    // end of remove the view transition when navigating
-                                    // ==============================
+                                            const categoryPageH1             = document.querySelector( '.category-page-h1' );
+                                            const categoryPageImageUnderline = document.querySelector( '.category-page-image-underline' );
+                                            const categoryPagePicture        = document.querySelector( '.category-page-picture' );
+                
+                                            if ( categoryPageH1             ) categoryPageH1.style.viewTransitionName             = 'none';
+                                            if ( categoryPageImageUnderline ) categoryPageImageUnderline.style.viewTransitionName = 'none';
+                                            if ( categoryPagePicture        ) categoryPagePicture.style.viewTransitionName        = 'none';
 
-                                    // wait for the slide-off animation to finish before navigating
-                                    await new Promise( resolve => setTimeout( resolve, side_menu_cross_fade_duration ) );
+                                            // ==============================
+                                            // end of remove the view transition when navigating
+                                            // ==============================
 
-                                    // now navigate, after the slide has visually completed
-                                    navigate( '/contact' );
-                                } 
-                            } // reset showSideMenu or close the side menu
-                        >
-                            <span>
-                                <FaAddressCard style={ { verticalAlign : '-3.5px', fontSize : '2.4rem', marginRight : '2.0rem' } } />
-                            </span>
-                            Contact
-                        </a>
-                    </li>
+                                            // wait for the slide-off animation to finish before navigating
+                                            await new Promise( resolve => setTimeout( resolve, side_menu_cross_fade_duration ) );
+
+                                            // now navigate, after the slide has visually completed
+                                            navigate( '/contact' );
+                                        } 
+                                    } // reset showSideMenu or close the side menu
+                                >
+                                    <span>
+                                        <FaAddressCard style={ { verticalAlign : '-3.5px', fontSize : '2.4rem', marginRight : '2.0rem' } } />
+                                    </span>
+                                    Contact
+                                </a>
+                            </li>
+
+                        */
+                    }
 
                 </ul>
 

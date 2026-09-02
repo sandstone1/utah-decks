@@ -3,13 +3,11 @@
 // import in the Layout component
 import Layout from '../layouts/main-layout.astro';
 // import in the Hero component
-import HeroComponent from '../components/react/hero-image/index/hero-image-v4';
+import HeroComponent from '../components/react/hero-image/index/hero-image-v5';
 // import in the By The Numbers component
-import ByTheNumbersComponent from '../components/react/by-the-numbers/by-the-numbers-v2';
+import ByTheNumbersComponent from '../components/react/by-the-numbers/by-the-numbers-v3';
 // import in the WhatWeDo component
-import ServicesComponent from '../components/react/services/services-v1';
-// import in the Contact Blob component
-import ContactBlobComponent from '../components/react/contact-blob/contact-blob-v3';
+import ServicesComponent from '../components/react/services/services-v2';
 // import in the Contact Us component
 import ContactUsComponent from '../components/react/contact-us/contact-us-v3';
 // import in the Contact Us component
@@ -62,8 +60,8 @@ import styles from './index.module.scss';
                 {
                     "@context": "http://schema.org",
                     "@type": "LocalBusiness",
-                    "name": "Enchanting Apps",
-                    "url": "https://enchantingapps.com/"
+                    "name": "Utah Decks & Pergolas",
+                    "url": "https://utahdecks.net"
                 }
             )
         }
@@ -71,19 +69,19 @@ import styles from './index.module.scss';
     </script>
 
     <!-- page specific meta tags -->
-    <meta slot="head" name="keywords" content='SEO, search engine optimization, local SEO, AI agent development, AI automation, web development, website design, Lehi Utah, Utah County, Salt Lake City' />
-    <meta slot="head" name="description" content='Struggling to get found online? Enchanting Apps specializes in digital marketing, website development, and AI agents that drive real results for your business.' />
-    <meta slot="head" property="og:image" content='/images/rocket_01_300.jpeg' />
-    <meta slot="head" property="og:title" content='Digital Marketing, Websites & AI Agents | Enchanting Apps' />
-    <meta slot="head" property="og:description" content='Struggling to get found online? Enchanting Apps specializes in digital marketing, website development, and AI agents that drive real results for your business.' />
-    <meta slot="head" property="og:site_name" content='Enchanting Apps' />
-    <meta slot="head" property="og:url" content='https://enchantingapps.com/' />
+    <meta slot="head" name="keywords" content='custom deck builder Salt Lake City, deck builder Utah, custom deck builder Draper Utah, composite deck installation Utah, deck contractor near me, Trex deck installer Utah, TimberTech deck builder Utah, helical pier deck footings, composite deck railing installation, pergola builder Salt Lake County, deck demolition and replacement, custom deck stairs builder, deck builder Salt Lake County, deck builder Utah County, deck builder Davis County, Utah Decks' />
+    <meta slot="head" name="description" content='Custom deck builder serving Salt Lake, Utah & Davis counties. Composite decking, pergolas, and railing — licensed, insured, free estimates.' />
+    <meta slot="head" property="og:image" content='/images/mj_decks_02_1032.jpg' />
+    <meta slot="head" property="og:title" content='Deck Builder in Utah | Utah Decks & Pergolas' />
+    <meta slot="head" property="og:description" content='Custom deck builder serving Salt Lake, Utah & Davis counties. Composite decking, pergolas, and railing — licensed, insured, free estimates.' />
+    <meta slot="head" property="og:site_name" content='Utah Decks & Pergolas' />
+    <meta slot="head" property="og:url" content='https://utahdecks.net' />
     <meta slot="head" property="og:type" content='website' />
     <meta slot="head" property="og:locale" content="en_US" />
-    <link slot="head" rel="canonical" href="https://enchantingapps.com/" />
-    <title slot="head">Digital Marketing, Websites & AI Agents | Enchanting Apps</title>
+    <link slot="head" rel="canonical" href="https://utahdecks.net" />
+    <title slot="head">Deck Builder in Utah | Utah Decks & Pergolas</title>
 
-    <!-- stop Google from crawling this site until I have an address and a doctor on the site -->
+    <!-- stop Google from crawling this site until I have an office address on the site -->
     <!-- remove this line of code and think about updating my public/robots.txt file when I'm ready -->
     <meta name="robots" content="noindex, nofollow" />
 
@@ -130,19 +128,6 @@ import styles from './index.module.scss';
         {
             /*
                 // ==============================
-                // container > div 4
-                //
-                // use my intersection observer, do not use client:visible and client:only="react"
-                // downloads the JS upfront but skips SSR — our internal Intersection Observer
-                // controls exactly when the content appears
-                // ==============================
-            */
-        }
-        <ContactBlobComponent client:only="react" />
-
-        {
-            /*
-                // ==============================
                 // container > div 5
                 // ==============================
             */
@@ -163,9 +148,10 @@ import styles from './index.module.scss';
                 // ==============================
                 // container > div 11
                 // ==============================
+                <WhereYouCanFindUsComponent client:visible />
             */
         }
-        <WhereYouCanFindUsComponent client:visible />
+        
 
         {
             /*
@@ -185,9 +171,9 @@ import styles from './index.module.scss';
                 // downloads the JS upfront but skips SSR — our internal Intersection Observer
                 // controls exactly when the content appears
                 // ==============================
+                <ContactVideoComponent client:load />
             */
         }
-        <ContactVideoComponent client:load />
 
     </div>
 
