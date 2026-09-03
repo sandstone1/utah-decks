@@ -189,6 +189,11 @@ export default function Footer() {
                             // ==============================
                             // container > div 1 > div 2 > div 3 ( contact )
                             // ==============================
+                            <address>
+                                <span>Office address coming soon</span>
+                                <span></span>
+                                <span></span>
+                            </address>
                         */
                     }
                     <div>
@@ -208,9 +213,9 @@ export default function Footer() {
                         <div>
 
                             <address>
-                                <span>Office address coming soon</span>
-                                <span></span>
-                                <span></span>
+                                <span>7287 South Rusty Drive</span><br />
+                                <span>Midvale, UT 84047</span><br />
+                                <span>roger@utahdecks.net</span>
                             </address>
 
                         </div>
