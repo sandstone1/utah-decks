@@ -1,0 +1,91 @@
+---
+
+import Layout from '../layouts/main-layout.astro';
+import HeroHeaderComponent from '../components/react/hero/hero-header-v2.jsx';
+import styles from './terms-and-conditions.module.scss';
+
+---
+
+
+<Layout>
+
+
+    {
+        /*
+            page specific meta tags
+        */
+    }
+    <meta slot="head" name="keywords" content='SEO, search engine optimization, local SEO, AI agent development, AI automation, web development, website design, Lehi Utah, Utah County, Salt Lake City' />
+    <meta slot="head" name="description" content='Struggling to get found online? Utah Decks & Pergolas specializes in digital marketing, website development, and AI agents that drive real results for your business.' />
+    <meta slot="head" property="og:image" content='/images/rocket_01_300.jpeg' />
+    <meta slot="head" property="og:title" content='Terms & Conditions | Enchanting Apps' />
+    <meta slot="head" property="og:description" content='Struggling to get found online? Enchanting Apps specializes in digital marketing, website development, and AI agents that drive real results for your business.' />
+    <meta slot="head" property="og:site_name" content='Enchanting Apps' />
+    <meta slot="head" property="og:url" content='https://enchantingapps.com/terms-and-conditions' />
+    <meta slot="head" property="og:type" content='website' />
+    <meta slot="head" property="og:locale" content="en_US" />
+    <meta slot="head" name="robots" content="noindex, nofollow" />
+    <link slot="head" rel="canonical" href="https://enchantingapps.com/terms-and-conditions" />
+    <title slot="head">Terms & Conditions | Enchanting Apps</title>
+
+    {
+        /*
+            // ==============================
+            // container
+            // ==============================
+        */
+    }
+
+    <div class={ styles.termsAndConditionsContainer }>
+
+        <HeroHeaderComponent client:load />
+
+        {
+            /*
+                // ==============================
+                // container > div 2 ( wrapper div )
+                // ==============================
+            */
+        }
+        <div>
+
+            <h1>Terms & Conditions</h1>
+
+            <p>Last updated: September 2, 2026</p>
+
+            <p>By engaging Utah Decks & Pergolas for any service, you agree to these terms.
+            Questions? Send us a message using our contact form on the
+            <a href="/contact">contact page</a></p>
+
+            <h2>Who We Are</h2>
+
+            <p>Utah Decks & Pergolas is a custom deck building company serving Salt Lake, Utah,
+            and Davis counties.</p>
+
+            <h2>Age Requirement</h2>
+
+            <p>You must be at least 18 years old to engage our services or enter into
+            an agreement with Utah Decks & Pergolas.</p>
+
+            <h2>Third-Party Platforms</h2>
+
+            <p>Our services may involve platforms such as Google, Meta, or other marketing
+            and hosting services. We are not responsible for changes, outages, or policy
+            updates made by those platforms that impact your campaigns or project.</p>
+
+            <h2>Governing Law</h2>
+
+            <p>These terms are governed by the laws of the State of Utah. Any disputes
+            shall be resolved in the courts of Utah County, Utah.</p>
+
+            <h2>Changes to These Terms</h2>
+
+            <p>We may update these terms from time to time. The "Last updated" date
+            at the top will always reflect the most recent version.</p>
+
+        </div>
+
+    </div>
+
+</Layout>
+

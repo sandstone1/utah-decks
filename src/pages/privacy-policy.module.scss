@@ -1,0 +1,419 @@
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../styles/_mixins.scss' as *;
+@use '../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+// ==============================
+// keyframes
+// ==============================
+
+// ==============================
+// purpose : slide up animation on page load
+// ==============================
+
+@keyframes slideUpAnimation {
+
+    from {
+        opacity   : 0;
+        translate : 0 1.25rem;
+    }
+
+    to {
+        opacity   : 1;
+        translate : 0 0;
+    }
+
+} // end of slideUpAnimation
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// privacy policy container
+// ==============================
+
+.privacyPolicyContainer {
+
+    // parent
+    grid-column : 1 / -1; // center the contact page against the <main> grid
+
+    // children
+    display               : grid;
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // remember, there are 2 things we want to accomplish :
+    // 1 - allow the wrapper div to position against the parent div and thereby
+    // shrink as needed
+    // 2 - we want to center the wrapper div ( see below for details )
+    // ==============================
+
+    // ==============================
+    // " grid-template-columns " is needed so that the wrapper div ( i.e. child ) can position
+    // against the parent ( i.e. this div ) by using " grid-column : 2 / 22; " and this allows
+    // the background declared below to span across the entire container or the entire site and
+    // this also allows the wrapper div to dynamically contain its children within the
+    // " grid-column : 2 / 22; " context so that as the screen size shrinks the wrapper div
+    // container and all its children containers or divs will automatically shrink as well
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    justify-items         : center;
+
+    padding : 8.0rem 0 12.0rem 0;
+
+    // ==============================
+    // background
+    // ==============================
+
+    // background : var( --yellow-20 );
+    // background : var( --gray-230 );
+    background : var( --gray-872 );
+
+    // ==============================
+    // end of background
+    // ==============================
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    > div:nth-child( 2 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+        // children
+        display               : grid;
+        grid-template-rows    : repeat( 4, min-content );
+        grid-template-columns : 1fr;
+        justify-items         : left;
+        grid-gap              : 1.0rem 0;
+        grid-template-areas   : "h1"
+                                "p2"
+                                "p3"
+                                "h4"
+                                "p5"
+                                "h6"
+                                "p7"
+                                "h8"
+                                "p9"
+                                "h10"
+                                "ul11"
+                                "h12"
+                                "p13"
+                                "h14"
+                                "p15"
+                                "h16"
+                                "p17"
+                                "h18"
+                                "p19";
+
+        // ==============================
+        // remember, 
+        // 1 - with " grid-column : 2 / 22; " and " width : min( 80.0rem, 100% ); ",
+        // the children content will stay within the bounds of 2 / 22 and shrink
+        // automatically as needed
+        // 2 - and the children content will be the smaller of 80.0rem or 100%
+        // ==============================
+
+        width : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+/*
+        // ==============================
+        // animation
+        // ==============================
+
+        // remember, we got the some of the animation parameters from Ranking Made Easy
+
+        opacity : 0; // this needed so that we don't momentarily see the page content
+
+        animation-name            : slideUpAnimation;
+        animation-duration        : 300ms;
+        animation-timing-function : ease-out; // standard easing
+        animation-delay           : 100ms;
+        animation-iteration-count : 1; // this is the default but leave here for reference purposes
+        animation-fill-mode       : forwards;
+
+        // ==============================
+        // end of animation
+        // ==============================
+*/
+        @media all and ( max-width : $bp-1280 ) {
+
+            // ==============================
+            // remember, 
+            // 1 - with " grid-column : 2 / 22; " and " width : min( 80.0rem, 100% ); ",
+            // the children content will stay within the bounds of 2 / 22 and shrink
+            // automatically as needed
+            // 2 - and the children content will be the smaller of 80.0rem or 100%
+            // ==============================
+
+            width : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+
+        } // end of container > div1 > bp-1280
+    
+        > h1 {
+
+            // parent
+            grid-area : h1;
+
+            @include h1-light-title;
+
+            margin: 0 0 1.0rem 0; 
+
+            text-align : center;
+
+            @media all and ( max-width : $bp-480 ) {
+
+                text-align : start;
+
+            } // end of container > div1 > bp-480
+
+        } // end of container > div1 > h1
+
+        > p:nth-child( 2 ) {
+
+            // parent
+            grid-area : p2;
+
+            @include text-base-light;
+
+        } // end of container > div1 > p:nth-child( 2 )
+    
+        > p:nth-child( 3 ) {
+
+            // parent
+            grid-area : p3;
+
+            @include text-base-light;
+
+            > a {
+
+                color           : var( --blue-62 );
+                text-decoration : underline;
+
+            } // end of container > div1 > p:nth-child( 3 ) > a
+
+        } // end of container > div1 > p:nth-child( 3 )
+
+        > h2:nth-child( 4 ) {
+
+            // parent
+            grid-area : h4;
+
+            @include h7-light;
+
+            margin: 2.0rem 0 0 0; 
+
+        } // end of container > div1 > h2:nth-child( 4 )
+
+        > p:nth-child( 5 ) {
+
+            // parent
+            grid-area : p5;
+
+            @include text-base-light;
+
+        } // end of container > div1 > p:nth-child( 5 )
+
+        > h2:nth-child( 6 ) {
+
+            // parent
+            grid-area : h6;
+
+            @include h7-light;
+
+            margin: 2.0rem 0 0 0; 
+
+        } // end of container > div1 > h2:nth-child( 6 )
+
+        > p:nth-child( 7 ) {
+
+            // parent
+            grid-area : p7;
+
+            @include text-base-light;
+
+        } // end of container > div1 > p:nth-child( 7 )
+
+        > h2:nth-child( 8 ) {
+
+            // parent
+            grid-area : h8;
+
+            @include h7-light;
+
+            margin: 2.0rem 0 0 0; 
+
+        } // end of container > div1 > h2:nth-child( 8 )
+
+        > p:nth-child( 9 ) {
+
+            // parent
+            grid-area : p9;
+
+            @include text-base-light;
+
+            > a {
+
+                color           : var( --blue-62 );
+                text-decoration : underline;
+
+            } // end of container > div1 > p:nth-child( 9 ) > a
+
+        } // end of container > div1 > p:nth-child( 9 )
+
+        > h2:nth-child( 10 ) {
+
+            // parent
+            grid-area : h10;
+
+            @include h7-light;
+
+            margin: 2.0rem 0 0 0; 
+
+        } // end of container > div1 > h2:nth-child( 10 )
+
+        > ul:nth-child( 11 ) {
+
+            // parent
+            grid-area : ul11;
+
+            @include text-base-light;
+
+            margin  : 0 0 0 1.5rem;
+            padding : 0 0 0 2.0rem;
+
+            list-style-type : disc; // override the global stylesheet in this case
+            // and make sure the disc markers are located inside the content box
+
+        } // end of container > div1 > ul:nth-child( 11 )
+
+        > h2:nth-child( 12 ) {
+
+            // parent
+            grid-area : h12;
+
+            @include h7-light;
+
+            margin: 2.0rem 0 0 0; 
+
+        } // end of container > div1 > h2:nth-child( 12 )
+
+        > p:nth-child( 13 ) {
+
+            // parent
+            grid-area : p13;
+
+            @include text-base-light;
+
+        } // end of container > div1 > p:nth-child( 13 )
+
+        > h2:nth-child( 14 ) {
+
+            // parent
+            grid-area : h14;
+
+            @include h7-light;
+
+            margin: 2.0rem 0 0 0; 
+
+        } // end of container > div1 > h2:nth-child( 14 )
+
+        > p:nth-child( 15 ) {
+
+            // parent
+            grid-area : p15;
+
+            @include text-base-light;
+
+        } // end of container > div1 > p:nth-child( 15 )
+
+        > h2:nth-child( 16 ) {
+
+            // parent
+            grid-area : h16;
+
+            @include h7-light;
+
+            margin: 2.0rem 0 0 0; 
+
+        } // end of container > div1 > h2:nth-child( 16 )
+
+        > p:nth-child( 17 ) {
+
+            // parent
+            grid-area : p17;
+
+            @include text-base-light;
+
+        } // end of container > div1 > p:nth-child( 17 )
+
+        > h2:nth-child( 18 ) {
+
+            // parent
+            grid-area : h18;
+
+            @include h7-light;
+
+            margin: 2.0rem 0 0 0; 
+
+        } // end of container > div1 > h2:nth-child( 18 )
+
+        > p:nth-child( 19 ) {
+
+            // parent
+            grid-area : p19;
+
+            @include text-base-light;
+
+        } // end of container > div1 > p:nth-child( 19 )
+
+    } // end of container > div1
+
+} // end of container
+

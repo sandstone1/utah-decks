@@ -164,14 +164,6 @@ export default function Footer() {
                             <div>
                                 <HighlightTextComponentLink2 />
                             </div>
-
-                            <div>
-                                <HighlightTextComponentLink3 />
-                            </div>
-
-                            <div>
-                                <HighlightTextComponentLink4 />
-                            </div>
                         */
                     }
                     <div>
@@ -180,6 +172,14 @@ export default function Footer() {
 
                         <div>
                             <HighlightTextComponentLink1 />
+                        </div>
+
+                        <div>
+                            <HighlightTextComponentLink3 />
+                        </div>
+
+                        <div>
+                            <HighlightTextComponentLink4 />
                         </div>
 
                     </div>
