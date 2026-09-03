@@ -1019,7 +1019,7 @@ export default function ContactFormComponent() {
                                 // ==============================
                             */
                         }
-                        <h3 className={ styles.contactFormContainerH3 }>Contact Us</h3>
+                        <h3 className={ styles.contactFormContainerH3 }>Email Form</h3>
 
                         {
                             /*
@@ -1197,7 +1197,7 @@ export default function ContactFormComponent() {
 
                                     }
                                 >
-                                    Please include your message here
+                                    Describe your deck build
                                 </label>
                             </div>
 
@@ -1283,7 +1283,7 @@ export default function ContactFormComponent() {
                                     type="submit"
                                     className={ styles.contactFormContainerFormButtonContainerButton }
                                 >
-                                    Submit
+                                    Request Service
                                 </button>
                     
                             </div>

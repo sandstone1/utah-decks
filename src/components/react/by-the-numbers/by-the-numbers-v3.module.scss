@@ -32,7 +32,7 @@
 .byTheNumbersContainer {
 
     // parent
-    grid-area   : div2;
+    grid-area   : div3;
     grid-column : 1 / -1; // position against the parent
 
     // children
@@ -64,33 +64,6 @@
     // wrapper div
     // ==============================
 
-    // ==============================
-    // set the top margin
-    // ==============================
-
-    // match the height of the hero video container
-    margin : calc( 100vh - 160px ) 0 0 0;
-
-    // ==============================
-    // @supports
-    // ==============================
-
-    // use @supports to test for " 100svh "
-
-    // see the following article for details on @supports : 
-    // " https://css-tricks.com/how-supports-works/ "
-    @supports ( height : 100svh ) {
-
-        // match the height of the hero video container
-        // margin : calc( 100svh - 160px ) 0 0 0;
-        margin : calc( max( 100.0rem, 100svh ) - 160px ) 0 0 0;
-
-    } // @supports ( height : 100svh )
-
-    // ==============================
-    // end of set the top margin
-    // ==============================
-
     padding  : 12.0rem 0 12.0rem 0; // provide some spacing
 
     // ==============================
@@ -106,21 +79,6 @@
     // ==============================
 
     // ==============================
-    // set the top margin
-    // ==============================
-
-    @media all and ( max-width : $bp-1376 ) {
-
-        // match the height of the hero video container minus the header height
-        margin : calc( max( 100.0rem, 100vh ) - 160px ) 0 0 0;
-
-    } // end of container > bp-1376
-
-    // ==============================
-    // end of set the top margin
-    // ==============================
-
-    // ==============================
     // tighten up side margins
     // ==============================
 
@@ -130,72 +88,10 @@
                                 repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
                                 minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
 
-        // match the height of the hero video container minus the header height
-        // margin : calc( max( 83.4rem, 100vh ) - 160px ) 0 0 0; // picks whichever is larger between
-        // 83.4rem and 100vh then subtracts 160px from it
-        // margin : calc( 83.4rem - 160px ) 0 0 0;
-        margin : calc( max( 100.0rem, 100vh ) - 160px ) 0 0 0;
-
     } // end of container > bp-1280
 
     // ==============================
     // end of tighten up side margins
-    // ==============================
-
-    // ==============================
-    // set the top margin
-    // ==============================
-
-    // 137.6rem * 1.1 = 151.36rem
-    @media all and ( max-width : $bp-1032 ) {
-
-        // match the height of the hero video container minus the header height
-        margin : calc( 151.36rem - 160px ) 0 0 0;
-
-    } // end of container > bp-1032
-
-    // 128.0rem * 1.1 = 140.8rem
-    @media all and ( max-width : $bp-920 ) {
-
-        // match the height of the hero video container minus the header height
-        margin : calc( 140.8rem - 160px ) 0 0 0;
-
-    } // end of container > bp-920
-
-    @media all and ( max-width : $bp-620 ) {
-
-        // match the height of the hero video container minus the header height
-        // margin : calc( 105.16rem - 160px ) 0 0 0;
-        margin : calc( 116.00rem - 160px ) 0 0 0; // had to change from 105.16 to
-        // 116.00 to make sure we had enough room to fit all the content
-
-    } // end of container > bp-620
-
-    @media all and ( max-width : $bp-480 ) {
-
-        // match the height of the hero video container minus the header height
-        // margin : calc( 105.16rem - 160px ) 0 0 0;
-        margin : calc( 130.00rem - 160px ) 0 0 0; // had to change from 105.16 to
-        // 125.00 to make sure we had enough room to fit all the content
-
-    } // end of container > bp-480
-
-    @media all and ( max-width : 426px ) {
-
-        // match the height of the hero video container minus the header height
-        margin : calc( 130.00rem - 205px ) 0 0 0;
-
-    } // end of container > end of 426px
-
-    @media all and ( max-width : $bp-375 ) {
-
-        // match the height of the hero video container minus the header height
-        margin : calc( 145.0rem - 205px ) 0 0 0;
-
-    } // end of container > end of bp-375
-
-    // ==============================
-    // end of set the top margin
     // ==============================
 
     // ==============================
@@ -274,20 +170,27 @@
 
             @media all and ( max-width : $bp-1280 ) {
 
+                display               : grid;
+                grid-template-columns : 1fr 1fr;
+                gap                   : 4.0rem 4.0rem;
+                grid-template-areas   : "div1 div2"
+                                        "div3 div4";
+
                 width : min( 80.0rem, 100% ); // needed in order to left justify the div1 - div4
             
             } // end of container > bp-1280
     
-            @media all and ( max-width : $bp-620 ) {
+            @media all and ( max-width : $bp-768 ) {
 
                 display               : grid;
                 grid-template-columns : 1fr;
                 gap                   : 4.0rem 0;
                 grid-template-areas   : "div1"
                                         "div2"
-                                        "div3";
+                                        "div3"
+                                        "div4";
             
-            } // end of container > bp-620
+            } // end of container > bp-768
 
             // ==============================
             // container > div 1 > div 2 > div 1

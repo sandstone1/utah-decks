@@ -1,0 +1,450 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+// ==============================
+// footer container
+// ==============================
+
+.footerContainer {
+
+    // parent
+    grid-area   : footer;
+    grid-column : 1 / -1; // this will force the footer container to shrink as the
+    // screen size becomes smaller so that at a 320px screen size the container
+    // will be 224px wide, which is what we want
+
+    // children
+    display                 : grid;
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // remember, there are 2 things we want to accomplish :
+    // 1 - allow the wrapper div to position against the parent div and thereby
+    // shrink as needed
+    // 2 - we want to center the wrapper div ( see below for details )
+    // ==============================
+
+    // ==============================
+    // " grid-template-columns " is needed so that the wrapper div ( i.e. child ) can position
+    // against the parent ( i.e. this div ) by using " grid-column : 2 / 22; " and this allows
+    // the background declared below to span across the entire container or the entire site and
+    // this also allows the wrapper div to dynamically contain its children within the
+    // " grid-column : 2 / 22; " context so that as the screen size shrinks the wrapper div
+    // container and all its children containers or divs will automatically shrink as well
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    align-content : center;
+    // center the content below
+    justify-items : center;
+
+    padding : 4.5rem 0 8.0rem 0;
+
+    // ==============================
+    // background
+    // ==============================
+
+    background : var( --gray-220 );
+    // background-image : conic-gradient( from 0deg at center, var( --yellow-44 ), var( --blue-59 ) );
+    //background-image : conic-gradient( from 0deg at center, var( --gray-872 ), var( --gray-775 ) );
+    // background-image : conic-gradient( from 0deg at center, var( --gray-872 ), var( --gray-835 ) );
+    background-image : conic-gradient( from 0deg at center, var( --gray-872 ), var( --gray-800 ) );
+    //background-image : conic-gradient( from 0deg at top, var( --gray-872 ), var( --gray-800 ) );
+    //background-image : conic-gradient( from 0deg at center, var( --gray-872 ), var( --blue-85-2 ) );
+    background-image : conic-gradient( from 0deg at center, var( --gray-872 ) 70%, var( --blue-85-2 ) 0% );
+    //background-image : conic-gradient( from 0deg at center, var( --gray-872 ) 70%, var( --blue-84 ) 0% );
+    // background : var( --brown-20 );
+    // background : var( --gray-290 );
+    // background : var( --gray-335 );
+    // background : var( --yellow-20 );
+    // background : var( --blue-83 );
+    // background-image : conic-gradient( from 0deg at center, var( --blue-green-100 ), var( --yellow-20 ) );
+    // background-image : conic-gradient( from 0deg at center, var( --blue-green-100 ) 70%, var( --yellow-55 ) 0% );
+    // background-image : conic-gradient( from 0deg at center, var( --blue-green-100 ), var( --yellow-55 ) 80% );
+    // background-image : conic-gradient( from 0deg at bottom, var( --blue-green-100 ), var( --yellow-55 ) );
+    // background-image : conic-gradient( from 0deg at center, var( --blue-green-100 ), var( --yellow-55 ) );
+    // background-image : conic-gradient( from 0deg at center, var( --gray-872 ) 50%, var( --blue-84 ) 0% );
+    //background-image : conic-gradient( from 0deg at top, var( --gray-872 ), var( --gray-775 ) );
+    // background-image : conic-gradient( from 0deg at top, var( --gray-872 ), var( --gray-835 ) );
+    // background-image : conic-gradient( from 0deg at top, var( --gray-872 ) 70%, var( --blue-84 ) );
+    background-image : conic-gradient( from 0deg at center, var( --gray-872 ) 70%, var( --gray-800 ) 0% );
+    background : var( --gray-872 );
+
+    // ==============================
+    // end of background
+    // ==============================
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+        width : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+
+        @media all and ( max-width : $bp-920 ) {
+
+            width : min( 40.0rem, 100% ); // browser will select the smaller of 40.0rem or 100%
+    
+        } // end of container > div1 > div1 > bp-920
+
+        // ==============================
+        // container > div 1 > div 1
+        // ==============================
+
+        > div:nth-child( 1 ) {
+
+            display         : flex; // use flexbox to layout the element on the horizontal plane
+            justify-content : left;
+
+            // ==============================
+            // container > div 1 > div 1 > div 1 ( logo and company name )
+            // ==============================
+
+            > div:nth-child( 1 ) {
+
+                margin : 0 0 0 -5.0rem;
+                // margin : 0 0 0 -10.0rem;
+
+                @media all and ( max-width : 419px ) {
+
+                    margin : 3.25rem 0 2.0rem 0;
+            
+                } // end of container > div1 > div1 > div1 > 419px
+    
+                > a {
+        
+                    // children
+                    display               : grid;
+                    grid-template-columns : auto auto;
+                    align-items           : center;
+                    grid-gap              : 0 0;
+        
+                    @media all and ( max-width : $bp-375 ) {
+
+                        grid-template-rows : auto auto;
+                
+                    } // end of container > div 1 > div 1 > div 1 > a > bp-375
+
+                    // active, focus selectors for the a tag
+                    &:active, &:focus {
+        
+                        // on mobile devices, safari was putting a think white background around
+                        // my clicks and " outline : none; " is my attempt to not show any browser
+                        // outline on a click event
+                        outline : 0;
+        
+                        // on mobile devices, safari was putting a think white background around
+                        // my clicks and I found the answer on how to solve this problem from
+                        // stackoverflow :
+                        // " https://stackoverflow.com/questions/69594393/tapping-links-in-ios-safari-shows-a-thick-white-border-around-element-how-to-g "
+                        background-color : transparent;
+        
+                        // on mobile devices, safari was putting a think white background around
+                        // my clicks and I found the answer on how to solve this problem from
+                        // stackoverflow :
+                        // " https://stackoverflow.com/questions/9784350/mobile-safari-tap-and-hold-a-link-it-will-show-a-gray-shadow-how-to-disable-it?rq=3 "
+                        -webkit-tap-highlight-color : rgba( 0, 0, 0, 0 );
+                    
+                    } // end of container > div 1 > div 1 > div 1 > a > &:active, &:focus
+                
+                    > div {
+        
+                        margin : -0.6rem -2.0rem 0 0; // since our div or box is 15.0 rem by 15.0 rem and we
+                        // could not adjust the box size without affecting the size of the stars, we
+                        // did a negative right margin and this moved the Enchanting Apps text over to
+                        // the left and gave the 2 elements better spacing
+
+                        @media all and ( max-width : 419px ) {
+        
+                            display : none;
+                    
+                        } // end of container > div1 > div1 > div1 > a > div > 419px
+        
+                    } // end of container > div1 > div1 > div1 > a > div
+
+                    > h2:nth-child( 2 ) {
+
+                        display : block;
+                        padding : 1.0rem 1.6rem 1.0rem 1.6rem;
+            
+                        border-radius : 6px;
+            
+                        font-family    : var( --font-display-1 );
+                        font-size      : 2.75rem;
+                        font-weight    : 300;
+                        // font-weight    : 350;
+                        font-weight    : 800;
+                        color          : var( --gray-225 );
+                        letter-spacing : 2px;
+                        // text-transform : uppercase;
+        
+                        background : var( --blue-800 );
+                        // background : var( --blue-850 );
+                        // background : var( --purple-400 );
+                        // background : var( --black );
+                        //background : var( --blue-900 );
+                        outline    : none;
+            
+                        @media all and ( max-width : 426px ) {
+        
+                            text-align: center;
+                     
+                         } // end of container > div1 > a > 426px
+
+                        @media all and ( max-width : 340px ) {
+
+                            display : grid;
+    
+                            font-family    : var( --font-primary-5 );
+                            font-size      : 2.75rem;
+                            font-weight    : 700;
+                            color          : var( --gray-225 );
+                            letter-spacing : 2px;
+                            line-height    : 1.3;
+                    
+                        } // end of container > div1 > div1 > div1 > 340px
+
+                        > span {
+            
+                            margin  : 0 0 0 6px;
+                            padding : 1px 8px 1px 8px;
+        
+                            border-radius : 4px;
+            
+                            font-family : var( --font-primary-5 );
+                            font-size   : 2.75rem;
+                            font-weight : 800;
+                            color       : var( --gray-355 );
+                            // color       : var( --gray-342 );
+        
+                            background : var( --blue-260 );
+                            // background : var( --blue-80 );
+                            // background : var( --blue-83 );
+                            // background : var( --blue-84 );
+        
+                        } // end of container > div1 > div1 > div1 > a > h2:nth-child( 2 ) > span
+
+                    } // end of container > div1 > div1 > div1 > a > h2:nth-child( 2 )
+
+                } // end of container > div1 > div1 > div1 > a
+
+            } // end of container > div1 > div1 > div1
+
+        } // end of container > div1 > div1
+
+        // ==============================
+        // container > div 1 > div 2 ( wrapper div for services, important links and contact )
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            display         : flex; // use flexbox to layout the element on the horizontal plane
+            justify-content : space-between;
+
+            margin : 3.0rem 0 6.0rem 0;
+
+            @media all and ( max-width : $bp-920 ) {
+
+                display         : grid; // line the div up vertically
+                justify-content : left;
+                grid-gap        : 4.0rem 0;
+        
+            } // end of container > div1 > div2 > bp-920
+
+            // ==============================
+            // container > div 1 > div 2 > div 1 ( services )
+            // ==============================
+
+            > div:nth-child( 1 ) {
+
+
+                display       : grid; // make the elements line up on top of each other
+                align-content : start;
+                justify-items : left;
+                grid-gap      : 1.0rem 0;
+
+                > h2 {
+
+                    @include h8-light;
+
+                } // end of container > div1 > div2 > div1 > h2
+
+                > p {
+
+                    @include text-small-light;
+
+                    font-weight : 200;
+
+                } // end of container > div1 > div2 > div1 > p
+
+            } // end of container > div1 > div2 > div1
+
+            // ==============================
+            // container > div 1 > div 2 > div 2 ( important links )
+            // ==============================
+
+            > div:nth-child( 2 ) {
+
+                display       : grid; // make the elements line up on top of each other
+                align-content : start;
+                justify-items : left;
+                grid-gap      : 1.0rem 0;
+
+                > h2 {
+
+                    @include h8-light;
+
+                } // end of container > div1 > div2 > div2 > h2
+
+            } // end of container > div1 > div2 > div2
+
+            // ==============================
+            // container > div 1 > div2 > div 3 ( contact )
+            // ==============================
+
+            > div:nth-child( 3 ) {
+
+                display       : grid; // make the elements line up on top of each other
+                align-content : start;
+                justify-items : left;
+                grid-gap      : 1.0rem 0;
+
+                > h2 {
+
+                    @include h8-light;
+
+                } // end of container > div1 > div2 > div3 > h2
+
+                // ==============================
+                // container > div 1 > div2 > div 3 > div 2 ( phone number )
+                // ==============================
+
+                > div:nth-child( 2 ) {
+
+                    > a {
+
+                        font-size   : 1.85rem;
+                        font-weight : 500;
+                        color       : var( --gray-225 );
+
+                    } // end of container > div1 > div2 > div3 > div2 > a
+
+                } // end of container > div1 > div2 > div3 > div2
+
+                // ==============================
+                // container > div 1 > div2 > div 3 > div 3 ( office address )
+                // ==============================
+
+                > div:nth-child( 3 ) {
+
+                    > address > span {
+
+                        @include text-small-light;
+
+                        font-weight : 200;
+                        font-style  : initial;
+
+                    } // end of container > div1 > div2 > div3 > div3 > a
+
+                } // end of container > div1 > div2 > div3 > div3
+
+            } // end of container > div1 > div2 > div3
+
+        } // end of container > div1 > div2
+
+        // ==============================
+        // container > div 1 > div 3 ( copyright information )
+        // ==============================
+
+        > div:nth-child( 3 ) {
+ 
+            // use flexbox to layout the element on the horizontal plane
+            display         : flex;
+            justify-content : left;
+
+            @include text-small-light;
+
+            font-weight : 200;
+
+            > p:nth-child( 1 ) {
+
+                margin : 0 0.8rem 0 0; // create some spacing between the p:nth-child( 1 )
+                // and the p:nth-child( 2 ) element
+
+            } // end of container > div1 > div3 > p:nth-child( 1 )
+
+            > p:nth-child( 1 ), p:nth-child( 2 ) {
+
+                @media all and ( max-width : $bp-920 ) {
+
+                    display: none;
+
+                } // end of container > div1 > div3 > p:nth-child( 1 ), p:nth-child( 1 ) > bp-920
+    
+            } // end of container > div1 > div3 > p:nth-child( 1 ), p:nth-child( 1 )
+
+            > p:nth-child( 3 ) {
+
+                display : none;
+
+                @media all and ( max-width : $bp-920 ) {
+
+                    display: block;
+
+                } // end of container > div1 > div3 > p:nth-child( 3 ) > bp-920
+
+            } // end of container > div1 > div3 > p:nth-child( 3 )
+
+        } // end of container > div1 > div3
+
+    } // end of container > div1
+
+} // end of container
+

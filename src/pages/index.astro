@@ -9,7 +9,7 @@ import ByTheNumbersComponent from '../components/react/by-the-numbers/by-the-num
 // import in the WhatWeDo component
 import ServicesComponent from '../components/react/services/services-v2';
 // import in the Contact Us component
-import ContactUsComponent from '../components/react/contact-us/contact-us-v3';
+import ContactUsComponent from '../components/react/contact-us/contact-us-v6';
 // import in the Contact Us component
 import WhyChooseUsComponent from '../components/react/why-choose-us/why-choose-us-v2';
 
@@ -114,7 +114,7 @@ import styles from './index.module.scss';
                 // ==============================
             */
         }
-        <ByTheNumbersComponent client:visible />
+        <ContactUsComponent client:visible />
 
         {
             /*
@@ -123,25 +123,25 @@ import styles from './index.module.scss';
                 // ==============================
             */
         }
-        <ServicesComponent client:visible />
+        <ByTheNumbersComponent client:visible />
 
         {
             /*
                 // ==============================
-                // container > div 5
+                // container > div 4
                 // ==============================
             */
         }
-        <ContactUsComponent client:visible />
+        <ServicesComponent client:visible />
 
         {
             /*
                 // ==============================
                 // container > div 6
                 // ==============================
+                <WhyChooseUsComponent client:visible />
             */
         }
-        <WhyChooseUsComponent client:visible />
 
         {
             /*

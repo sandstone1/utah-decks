@@ -1,0 +1,695 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+
+// ==============================
+// keyframes
+// ==============================
+
+// ==============================
+// purpose : slide up animation on page load
+// ==============================
+
+@keyframes slideUpAnimation {
+
+    from {
+        opacity   : 0;
+        translate : 0 1.25rem;
+    }
+
+    to {
+        opacity   : 1;
+        translate : 0 0;
+    }
+
+} // end of slideUpAnimation
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// contact us container
+// ==============================
+
+.contactUsContainer {
+
+    // parent
+    grid-area   : div2;
+    grid-column : 1 / -1; // center the contact page against the <main> grid
+
+    // children
+    display               : grid;
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // remember, there are 2 things we want to accomplish :
+    // 1 - allow the wrapper div to position against the parent div and thereby
+    // shrink as needed
+    // 2 - we want to center the wrapper div ( see below for details )
+    // ==============================
+
+    // ==============================
+    // " grid-template-columns " is needed so that the wrapper div ( i.e. child ) can position
+    // against the parent ( i.e. this div ) by using " grid-column : 2 / 22; " and this allows
+    // the background declared below to span across the entire container or the entire site and
+    // this also allows the wrapper div to dynamically contain its children within the
+    // " grid-column : 2 / 22; " context so that as the screen size shrinks the wrapper div
+    // container and all its children containers or divs will automatically shrink as well
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    justify-items         : center;
+
+    // ==============================
+    // set the top margin
+    // ==============================
+
+    // match the height of the hero video container
+    margin : calc( 100vh - 160px ) 0 0 0;
+
+    // ==============================
+    // @supports
+    // ==============================
+
+    // use @supports to test for " 100svh "
+
+    // see the following article for details on @supports : 
+    // " https://css-tricks.com/how-supports-works/ "
+    @supports ( height : 100svh ) {
+
+        // match the height of the hero video container
+        // margin : calc( 100svh - 160px ) 0 0 0;
+        margin : calc( max( 100.0rem, 100svh ) - 160px ) 0 0 0;
+
+    } // @supports ( height : 100svh )
+
+    // ==============================
+    // end of set the top margin
+    // ==============================
+
+    padding : 12.0rem 0 0 0; // create some spacing between the previous container and
+    // this container
+
+    // ==============================
+    // background
+    // ==============================
+
+    background : var( --yellow-20 );
+    // background : var( --gray-230 );
+    //background : var( --gray-872 );
+    // background-image : conic-gradient( from 0deg at center, var( --green-30 ) 50%, var( --blue-80 ) 0% );
+
+    // ==============================
+    // end of background
+    // ==============================
+
+    // ==============================
+    // set the top margin
+    // ==============================
+
+    @media all and ( max-width : $bp-1376 ) {
+
+        // match the height of the hero video container minus the header height
+        margin : calc( max( 100.0rem, 100vh ) - 160px ) 0 0 0;
+
+    } // end of container > bp-1376
+
+    // ==============================
+    // end of set the top margin
+    // ==============================
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+        // match the height of the hero video container minus the header height
+        // margin : calc( max( 83.4rem, 100vh ) - 160px ) 0 0 0; // picks whichever is larger between
+        // 83.4rem and 100vh then subtracts 160px from it
+        // margin : calc( 83.4rem - 160px ) 0 0 0;
+        margin : calc( max( 100.0rem, 100vh ) - 160px ) 0 0 0;
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // set the top margin
+    // ==============================
+
+    // 137.6rem * 1.1 = 151.36rem
+    @media all and ( max-width : $bp-1032 ) {
+
+        // match the height of the hero video container minus the header height
+        margin : calc( 151.36rem - 160px ) 0 0 0;
+
+    } // end of container > bp-1032
+
+    // 128.0rem * 1.1 = 140.8rem
+    @media all and ( max-width : $bp-920 ) {
+
+        // match the height of the hero video container minus the header height
+        margin : calc( 140.8rem - 160px ) 0 0 0;
+
+    } // end of container > bp-920
+
+    @media all and ( max-width : $bp-620 ) {
+
+        // match the height of the hero video container minus the header height
+        // margin : calc( 105.16rem - 160px ) 0 0 0;
+        margin : calc( 116.00rem - 160px ) 0 0 0; // had to change from 105.16 to
+        // 116.00 to make sure we had enough room to fit all the content
+
+    } // end of container > bp-620
+
+    @media all and ( max-width : $bp-480 ) {
+
+        // match the height of the hero video container minus the header height
+        // margin : calc( 105.16rem - 160px ) 0 0 0;
+        margin : calc( 130.00rem - 160px ) 0 0 0; // had to change from 105.16 to
+        // 125.00 to make sure we had enough room to fit all the content
+
+    } // end of container > bp-480
+
+    @media all and ( max-width : 426px ) {
+
+        // match the height of the hero video container minus the header height
+        margin : calc( 130.00rem - 205px ) 0 0 0;
+
+    } // end of container > end of 426px
+
+    @media all and ( max-width : $bp-375 ) {
+
+        // match the height of the hero video container minus the header height
+        margin : calc( 145.0rem - 205px ) 0 0 0;
+
+    } // end of container > end of bp-375
+
+    // ==============================
+    // end of set the top margin
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+        // children
+        display               : grid;
+        grid-template-rows    : auto;
+        grid-template-columns : 1fr;
+        grid-template-areas   : "div1"
+                                "div2";
+
+        width   : min( 172.8rem, 100% ); // browser will select the smaller of 184.0rem or 100%
+        padding : 0 0 12.0rem 0;
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            width : min( 80.0rem, 100% ); // browser will select the smaller of 184.0rem or 100%
+
+        } // end of container > div1 > bp-1280
+
+        // ==============================
+        // container > div 1 > div 1 ( section title )
+        // ==============================
+
+        > div:nth-child( 1 ) {
+
+            // parent
+            grid-area : div1;
+
+            // children
+            display               : grid;
+            grid-template-rows    : auto;
+            grid-template-columns : 1fr;
+            grid-template-areas   : "h2";
+
+            width  : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+            margin : 0 0 4.0rem 0;
+
+            @media all and ( max-width : $bp-620 ) {
+                
+                grid-gap : 1.0rem 0;
+    
+            } // end of container > div1 > div1 > bp-620
+
+            @media all and ( max-width : $bp-480 ) {
+                
+                grid-gap : 1.25rem 0;
+    
+            } // end of container > div1 > div1 > bp-480
+
+            > h2 {
+
+                // parent
+                grid-area : h2;
+
+                @include h2-dark-title;
+
+                text-align : left;
+
+                opacity : 0; // needed for the animation
+
+                @media all and ( max-width : $bp-480 ) {
+
+                    text-align : start;
+
+                } // end of container > div1 > div1 > bp-480
+
+            } // end of container > div1 > div1 > h2
+
+        } // end of container > div1 > div1
+
+        // ==============================
+        // container > div 1 > div 2 ( wrapper div )
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            // parent
+            grid-area : div2;
+
+            // children
+            display               : grid;
+            grid-template-rows    : auto auto;
+            grid-template-columns : 1fr 1fr;
+            align-content         : center;
+            justify-items         : center;
+            gap                   : 12.0rem 12.0rem;
+            grid-template-areas   : "div2-3 div2-1"
+                                    "div2-4 div2-2";
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                // children
+                grid-template-columns : 1fr;
+                gap                   : 12.0rem 0;
+                grid-template-areas   : "div2-3"
+                                        "div2-1"
+                                        "div2-2";
+
+            } // end of container > div1 > div2 > bp-1280
+
+            // ==============================
+            // container > div 1 > div 2 > div 1 ( blue box )
+            // ==============================
+
+            > div:nth-child( 1 ) {
+
+                // parent
+                grid-area : div2-1;
+
+                display               : grid;
+                grid-template-rows    : repeat( 4, auto );
+                grid-template-columns : 1fr;
+                align-content         : start;
+                align-items           : start;
+                grid-gap              : 2.0rem 0;
+                grid-template-areas   : "h3"
+                                        "p"
+                                        "picture1"
+                                        "picture2";
+                
+
+                width   : min( 80.4rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+                padding : 4.0rem;
+
+                border-radius : 4.0rem;
+
+                // ==============================
+                // background
+                // ==============================
+
+                // background : var( --green-23 );
+                // background : var( --blue-59 );
+                // background : var( --blue-62 );
+                background : var( --blue-61-1 );
+                // background : var( --blue-58 );
+                //background : var( --blue-61-3 );
+                // background : var( --blue-58 );
+
+                opacity : 0; // needed for the animation
+
+                > h3 {
+
+                    // parent
+                    grid-area : h3;
+
+                    @include h3-dark-title;
+
+                    // align-self : start; // needed to make sure the box only filled the contents
+                    margin  : 0;
+                    padding : 0;
+
+                } // end of container > div1 > div2 > div1 > h3
+
+                > p {
+
+                    // parent
+                    grid-area : p;
+
+                    @include text-base-dark;
+
+                    // align-self : start; // needed to make sure the box only filled the contents
+
+                } // end of container > div1 > div2 > div1 > p
+        
+                // ==============================
+                // container > div 1 > div 2 > picture ( postcards )
+                // ==============================
+
+                > picture:nth-child( 3 ) {
+
+                    // parent
+                    grid-area : picture1;
+
+                    justify-self : center;
+
+                    > img {
+    
+                        display : block; // remove the bottom spacing
+    
+                        // ==============================
+                        // Make the image stretch horizontally to fit the column height
+                        // ==============================
+    
+                        width  : 100%;
+                        height : 20.0rem;
+    
+                        // now let add the object-fit property and remember for object-fit to work we have to add
+                        // the width and the height to the element
+    
+                        // by using these 3 key value pairs inside the image element or " width : 100%; "
+                        // and " height : 100%; " and " object-fit : cover; " we see that each image now fills up
+                        // one grid cell and one grid cell only
+    
+                        object-fit : cover;
+    
+                        // this blends my Mid Journey pictures into the background color perfectly
+                        // and makes white pixels completely transparent and keeps black pixels
+                        // visible — works perfectly with black and white illustrations on
+                        // colored backgrounds without needing to remove the background at all
+                        mix-blend-mode : multiply;
+    
+                        @media all and ( max-width : $bp-480 ) {
+
+                            height : 20.0rem; // maintain the width and height and screen size shrinks
+
+                        } // end of container > div1 > div2 > div1 > picture3 > img > bp-480
+        
+                        @media all and ( max-width : $bp-375 ) {
+
+                            height : 12.5rem; // maintain the width and height and screen size shrinks
+                
+                        } // end of container > div1 > div2 > div1 > picture3 > img > bp-375
+
+                    } // end of container > div1 > div3 > picture3 > img
+        
+                } // end of container > div1 > div3 > picture3
+
+                > picture:nth-child( 4 ) {
+
+                    // parent
+                    grid-area : picture2;
+        
+                    // children
+                    display         : grid;
+                    justify-content : center;
+
+                    > img { 
+
+                        display : block; // remove the bottom spacing
+
+                        // make sure to give the image a width so when I shrink it as the screen
+                        // size becomes smaller it does not chop off  the top and bottom of
+                        // the image
+                        width  : 12.5rem;
+                        height : 12.5rem;
+
+                        // ==============================
+                        // for some reason, could not get this part to work
+                        // ==============================
+
+                        // ==============================
+                        // Make the image stretch horizontally to fit the column height
+                        // ==============================
+
+                        // remember, we added the width and height to the image element in the html file
+                        // width  : 70%;
+                        // height : 70%;
+                        // center the image inside the parent div
+                        // margin : 0 auto;
+
+                        // now let add the object-fit property and remember for object-fit to work we have to add
+                        // the width and the height to the element
+
+                        // by using these 3 key value pairs inside the image element or " width : 100%; "
+                        // and " height : 100%; " and " object-fit : cover; " we see that each image now fills up
+                        // one grid cell and one grid cell only
+
+                        object-fit : cover;
+
+                        @media all and ( max-width : $bp-768 ) {
+
+                            width  : 12.0rem;
+                            height : 12.0rem;
+
+                        } // end of container > div1 > div2 > div1 > picture4 > img > bp-768
+
+                        @media all and ( max-width : $bp-620 ) {
+
+                            width  : 11.0rem;
+                            height : 11.0rem;
+
+                        } // end of container > div1 > div2 > div1 > picture4 > img > bp-620
+
+                        @media all and ( max-width : $bp-480 ) {
+
+                            width  : 9.5rem;
+                            height : 9.5rem;
+
+                        } // end of container > div1 > div2 > div1 > picture4 > img > bp-480
+        
+                        @media all and ( max-width : $bp-375 ) {
+
+                            width  : 7.0rem;
+                            height : 7.0rem;
+                
+                        } // end of container > div1 > div2 > div1 > picture4 > img > bp-375
+        
+                    } // end of container > div1 > div2 > div1 > picture4 > img
+
+                } // end of container > div1 > div2 > div1 > picture4
+
+            } // end of container > div1 > div2 > div1
+
+            // ==============================
+            // container > div 1 > div 2 > div 2 ( contact form )
+            // ==============================
+
+            > div:nth-child( 2 ) {
+
+                // parent
+                grid-area : div2-2;
+
+                display       : grid; // needed in order to override the default display : block
+                // for the child component container
+                align-content : start;
+
+                > div {
+
+                    margin  : 0 auto 0 auto;
+                    padding : 4.0rem 0 0 0;
+
+                    @media all and ( max-width : $bp-1280 ) {
+
+                        padding : 0;
+            
+                    } // end of container > div1 > div2 > div2 > bp-1280
+        
+                    > h2 {
+
+                        @media all and ( max-width : $bp-480 ) {
+
+                            text-align : left
+                
+                        } // end of container > div1 > div2 > div2 > h2 > bp-480
+
+                    } // end of container > div1 > div2 > div2 > h2
+
+                    form > div > input, textarea {
+
+                        background : var( --yellow-20 );
+        
+                    } // end of container > div1 > div2 > div2 > form > div > input, textarea
+
+                } // end of container > div1 > div2 > div2
+
+            } // end of container > div1 > div2 > div2
+
+            // ==============================
+            // container > div 1 > div 2 > div 3 ( contact information )
+            // ==============================
+
+            > div:nth-child( 3 ) {
+
+                // parent
+                grid-area : div2-3;
+
+                display         : grid; // needed in order to override the default display : block
+                // for the child component container
+                //align-self      : start;
+                justify-content : left;
+
+                width   : min( 80.4rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+                padding : 4.0rem;
+    
+                border-radius : 4.0rem;
+
+                //background-color : var( --yellow-55 );
+                // background-color : var( --yellow-120 );
+                background-color : var( --yellow-110 );
+
+                opacity : 0; // needed for the animation
+
+            } // end of container > div1 > div2 > div3
+
+            // ==============================
+            // container  div 1 > div 2 > div 4 ( deck picture circle )
+            // ==============================
+
+            > div:nth-child( 4 ) {
+
+                // parent
+                grid-area : div2-4;
+    
+                align-self : center;
+
+                width   : 55.0rem;
+                height  : 55.0rem;
+                z-index : 0;
+
+                border-radius : 50%;
+
+                // background : var( --blue-85-2 );
+                background : var( --orange-20 );
+                // background : var( --yellow-55 );
+                // background : var( --gray-225 );
+                // background : var( --purple-150 );
+                // background-image : linear-gradient( to bottom, rgba( 13, 58, 216, 0.20 ),  rgba( 13, 58, 216, 0.20 ) ), url( ../public/textures/brick_wall.png );
+                background : var( --blue-58 );
+                background : var( --blue-59 );
+                // background : var( --yellow-40 );
+                // background : var( --blue-61-1 );
+                // background-image : url( /textures/brick_wall.png );
+
+                > picture:nth-child( 1 ) {
+
+                    justify-self : center;
+
+                    > img {
+    
+                        display : block; // remove the bottom spacing
+    
+                        // ==============================
+                        // Make the image stretch horizontally to fit the column height
+                        // ==============================
+    
+                        width  : 100%;
+                        height : 100%;
+
+                        border-radius : 50%;
+    
+                        // now let add the object-fit property and remember for object-fit to work we have to add
+                        // the width and the height to the element
+    
+                        // by using these 3 key value pairs inside the image element or " width : 100%; "
+                        // and " height : 100%; " and " object-fit : cover; " we see that each image now fills up
+                        // one grid cell and one grid cell only
+    
+                        object-fit : cover;
+    
+                        // this blends my Mid Journey pictures into the background color perfectly
+                        // and makes white pixels completely transparent and keeps black pixels
+                        // visible — works perfectly with black and white illustrations on
+                        // colored backgrounds without needing to remove the background at all
+                        mix-blend-mode : multiply;
+    
+                        @media all and ( max-width : $bp-480 ) {
+
+                            height : 20.0rem; // maintain the width and height and screen size shrinks
+
+                        } // end of container > div1 > div2 > div1 > picture1 > img > bp-480
+        
+                        @media all and ( max-width : $bp-375 ) {
+
+                            height : 12.5rem; // maintain the width and height and screen size shrinks
+                
+                        } // end of container > div1 > div2 > div1 > picture1 > img > bp-375
+
+                    } // end of container > div1 > div3 > picture1 > img
+
+                } // end of container > div1 > div3 > picture1
+
+                @media all and ( max-width : $bp-1280 ) {
+
+                    display : none;
+
+                } // end of container > div1 > div2 > div4 > > bp-1280
+
+            } // end of container > div1 > div2 > div4
+
+        } // end of container > div1 > div2
+
+    } // end of container > div1
+
+} // end of container
+

@@ -62,7 +62,7 @@
     // ==============================
 
     // parent
-    grid-area   : div3;
+    grid-area   : div4;
     grid-column : 1 / -1; // position against the parent
 
     // ==============================
@@ -385,6 +385,8 @@
                         // nearby links
                         overflow : hidden;
 
+                        display : none;
+
                         @include text-base-dark;
 
                         @media all and ( max-width : $bp-620 ) {
@@ -640,6 +642,8 @@
                         // nearby links
                         overflow : hidden;
 
+                        display : none;
+
                         @include text-base-dark;
 
                         @media all and ( max-width : $bp-620 ) {
@@ -778,7 +782,7 @@
 
                 @media all and ( max-width : $bp-1728 ) {
 
-                    background : var( --blue-62-1 );
+                    // background : var( --blue-61-1 );
         
                 } // end of container > div1 > div2 > div3 > bp-1728
 
@@ -901,6 +905,8 @@
                         // clip the absolutely positioned span so that it doesn't bleed outside to other
                         // nearby links
                         overflow : hidden;
+
+                        display : none;
 
                         @include text-base-dark;
 
@@ -1031,7 +1037,7 @@
                 border-radius : 6px;
 
                 // background : var( --yellow-120 );
-                background : var( --blue-62-1 );
+                background : var( --blue-61-1 );
 
                 // ==============================
                 // end of create a card
@@ -1158,6 +1164,8 @@
                         // clip the absolutely positioned span so that it doesn't bleed outside to other
                         // nearby links
                         overflow : hidden;
+
+                        display : none;
 
                         @include text-base-dark;
 
@@ -1288,7 +1296,7 @@
                 border-radius : 6px;
 
                 // background : var( --yellow-120 );
-                background : var( --blue-62-1 );
+                background : var( --blue-61-1 );
 
                 // ==============================
                 // end of create a card
@@ -1298,7 +1306,7 @@
 
                 @media all and ( max-width : $bp-1728 ) {
 
-                    background : var( --purple-27 );
+                    // background : var( --purple-27 );
         
                 } // end of container > div1 > div2 > div5 > bp-1728
     
@@ -1421,6 +1429,8 @@
                         // clip the absolutely positioned span so that it doesn't bleed outside to other
                         // nearby links
                         overflow : hidden;
+
+                        display : none;
 
                         @include text-base-dark;
 
@@ -1551,7 +1561,7 @@
                 border-radius : 6px;
 
                 // background : var( --yellow-120 );
-                background : var( --blue-62-1 );
+                background : var( --blue-61-1 );
 
                 // ==============================
                 // end of create a card
@@ -1561,7 +1571,7 @@
 
                 @media all and ( max-width : $bp-1728 ) {
 
-                    background : var( --purple-27 );
+                    // background : var( --purple-27 );
         
                 } // end of container > div1 > div2 > div6 > bp-1728
     
@@ -1685,6 +1695,8 @@
                         // nearby links
                         overflow : hidden;
 
+                        display : none;
+
                         @include text-base-dark;
 
                         @media all and ( max-width : $bp-620 ) {
@@ -1788,176 +1800,10 @@
     } // end of container > div1
 
     // ==============================
-    // container > div 2 ( wrapper div ) ( case study )
-    // ==============================
-
-    // ==============================
-    // content div
+    // container > div 2 ( animating backgrounds )
     // ==============================
 
     > div:nth-child( 2 ) {
-
-        // parent
-        grid-column : 2 / 22; // position against the parent and see notes in parent above
-
-        z-index : 1; // sits above the animating gradient
-        width   : min( 80.0rem, 100% ); // browser will select the smaller of 80rem or 100%
-        margin  : 24.0rem 0 0 0;
-
-        // ==============================
-        // container > div 2 > h2:nth-child( 1 )
-        // ==============================
-
-        > h2:nth-child( 1 ) {
-
-            @include h2-light-title;
-
-            // margin : 0 0 1.5rem 0;
-            margin : 0 0 4.0rem 0;
-
-        } // end of container > div2 > h2:nth-child( 1 )
-/*
-        // ==============================
-        // container > div 2 > p:nth-child( 2 ) ( remember, this is an empty p element )
-        // ==============================
-
-        > p:nth-child( 2 ), p:nth-child( 3 ) {
-
-            @include text-large-light;
-
-            margin : 0 0 2.0rem 0;
-
-        } // end of container > div2 > p:nth-child( 2 ), p:nth-child( 3 )
-
-        // ==============================
-        // container > div 2 > p::nth-child( 4 ) ( paragraph plus yellow text )
-        // ==============================
-
-        > p:nth-child( 4 ) {
-
-            @include text-base-large-light;
-
-            margin : 0 0 0.75rem 0;
-            // margin : 0 0 6.0rem 0;
-
-            @media all and ( max-width : $bp-768 ) {
-
-                margin : 0 0 6.0rem 0;
-        
-            } // end of container > div2 > p:nth-child( 4 ) > bp-768
-
-            @media all and ( max-width : 447px ) {
-
-                margin : 0 0 0.75rem 0;
-        
-            } // end of container > div2 > p:nth-child( 4 ) > 447px
-
-            @media all and ( max-width : 365px ) {
-
-                margin : 0 0 6.0rem 0;
-        
-            } // end of container > div2 > p:nth-child( 4 ) > 365px
-
-            > span {
-
-                // font-weight : 600;
-                // color       : var( --blue-62);
-
-                font-size   : 2.2rem;
-                font-weight : 700;
-                color       : var( --yellow-150 );
-
-            } // end of container > div2 > p:nth-child( 4 ) > span
-
-        } // end of container > div2 > p:nth-child( 4 )
-
-        // ==============================
-        // container > div 2 > div::nth-child( 5 ) ( yellow underline )
-        // ==============================
-
-        > div:nth-child( 5 ) {
-
-            width : 45%;
-
-            @media all and ( max-width : $bp-768 ) {
-
-                display : none;
-
-            } // end of container > div2 > p:nth-child( 5 ) > bp-768
-
-            @media all and ( max-width : 447px ) {
-
-                display : block;        
-                width   : 75%;
-
-            } // end of container > div2 > p:nth-child( 5 ) > 447px
-
-            @media all and ( max-width : 365px ) {
-
-                display : none;
-
-            } // end of container > div2 > p:nth-child( 5 ) > 365px
-
-            picture > img {
-
-                display : block; // eliminate spacing under picture
-                margin  : 0 0 6.0rem 0;
-
-            } // end of container > div2 > p:nth-child( 5 ) > picture > img
-
-        } // end of container > div2 > p:nth-child( 5 )
-*/
-        // ==============================
-        // container > div 2 > picture:nth-child( 5 ) ( Google Map Pack ranking for Utah Stem
-        // Cells on 8-13-25 )
-        // ==============================
-
-        > picture:nth-child( 2 ) {
-
-            // children
-            display       : grid;
-            align-items   : center;
-            justify-items : left;
-
-            background : var( --blue-62-1 );
-
-            > img {
-
-                display : block; // remove the bottom spacing
-
-                // make the picture smaller
-                width  : 100%;
-                height : 100%; 
-
-                // this blends my Mid Journey pictures into the background color perfectly
-                // and makes white pixels completely transparent and keeps black pixels
-                // visible — works perfectly with black and white illustrations on
-                // colored backgrounds without needing to remove the background at all
-                mix-blend-mode : multiply;
-
-                // create a round picture so that the image isn't so large
-                // border-radius : 50%;
-
-                // now let add the object-fit property and remember for object-fit to work we have to add
-                // the width and the height to the element
-
-                // by using these 3 key value pairs inside the image element or " width : 100%; "
-                // and " height : 100%; " and " object-fit : cover; " we see that each image now fills up
-                // one grid cell and one grid cell only
-
-                object-fit : cover;
-
-            } // end of container > div2 > picture:nth-child( 6 ) > img
-
-        } // end of container > div2 > picture:nth-child( 6 )
-
-    } // container > div 2
-
-    // ==============================
-    // container > div 3 ( animating backgrounds )
-    // ==============================
-
-    > div:nth-child( 3 ) {
 
         display : block; // hide the blob and show the animating backgrounds
         z-index : 0; // remember, this container has to sit behind the parent container
@@ -1969,9 +1815,9 @@
 
             //margin : 40.0rem 0 0 0;
 
-        } // end of container > div2 > p:nth-child( 5 ) > bp-1536
+        } // end of container > div2 > bp-1536
 
-    } // end of container > div3
+    } // end of container > div2
 
 } // end of container
 

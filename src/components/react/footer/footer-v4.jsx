@@ -15,6 +15,12 @@ import HighlightTextComponentLink4 from './highlight-text-link-4';
 import HighlightTextComponentLink5 from './highlight-text-link-5';
 // import in the Highlight text component link 6
 import HighlightTextComponentLink6 from './highlight-text-link-6';
+// import in the Font Awesome phone icon
+import { FaPhoneAlt } from "react-icons/fa";
+// import in the Font Awesome location icon
+import { FaLocationDot } from "react-icons/fa6";
+// import in the Font Awesome clock icon
+import { FaClock } from "react-icons/fa6";
 // import in our stylesheet
 import styles from './footer-v4.module.scss';
 
@@ -113,11 +119,7 @@ export default function Footer() {
                                 <LogoComponent />
                             </div>
                             <h2>
-                                Enchanting
-                                <span>Apps</span>
-                            </h2>
-                            <h2>
-                                Enchanting Apps
+                                Utah Decks & Pergolas
                             </h2>
                         </a>
     
@@ -145,40 +147,31 @@ export default function Footer() {
 
                         <h2>Services</h2>
 
-                        <p>Digital Marketing</p>
-                        <p>Fractional Partner</p>
-                        <p>AI Agents</p>
-                        <p>Websites</p>
-                        <p>Branding</p>
-
-                    </div>
-                    
-                    {
-                        /*
-                            // ==============================
-                            // container > div 1 > div 2 > div 2 ( our 3d work )
-                            // ==============================
-                        */
-                    }
-                    <div>
-
-                        <h2>3D Showcase</h2>
-
-                        <div>
-                            <HighlightTextComponentLink5 />
-                        </div>
-
-                        <div>
-                            <HighlightTextComponentLink6 />
-                        </div>
+                        <p>Custom Decks</p>
+                        <p>Pergolas</p>
+                        <p>Railings & Lighting</p>
+                        <p>Basements</p>
+                        <p>Fireplaces</p>
+                        <p>Design & Planning</p>
 
                     </div>
 
                     {
                         /*
                             // ==============================
-                            // container > div 1 > div 2 > div 3 ( important links )
+                            // container > div 1 > div 2 > div 2 ( important links )
                             // ==============================
+                            <div>
+                                <HighlightTextComponentLink2 />
+                            </div>
+
+                            <div>
+                                <HighlightTextComponentLink3 />
+                            </div>
+
+                            <div>
+                                <HighlightTextComponentLink4 />
+                            </div>
                         */
                     }
                     <div>
@@ -189,16 +182,41 @@ export default function Footer() {
                             <HighlightTextComponentLink1 />
                         </div>
 
+                    </div>
+
+                    {
+                        /*
+                            // ==============================
+                            // container > div 1 > div 2 > div 3 ( contact )
+                            // ==============================
+                        */
+                    }
+                    <div>
+    
+                        <h2>Contact</h2>
+    
                         <div>
-                            <HighlightTextComponentLink2 />
+
+                            <a
+                                href="tel:385-425-2299"
+                            >
+                                385-425-2299
+                            </a>
+
                         </div>
 
                         <div>
-                            <HighlightTextComponentLink3 />
+
+                            <address>
+                                <span>Office address coming soon</span>
+                                <span></span>
+                                <span></span>
+                            </address>
+
                         </div>
 
                         <div>
-                            <HighlightTextComponentLink4 />
+
                         </div>
 
                     </div>
@@ -214,10 +232,10 @@ export default function Footer() {
                 }
                 <div>
 
-                    <p>Copyright &copy; 2026 by Enchanting Apps.</p>
+                    <p>Copyright &copy; 2026 by Utah Decks & Pergolas.</p>
                     <p>All rights reserved.</p>
 
-                    <p>Copyright &copy; 2026 by Enchanting Apps. All rights reserved.</p>
+                    <p>Copyright &copy; 2026 by Utah Decks & Pergolas. All rights reserved.</p>
 
                 </div>
 
