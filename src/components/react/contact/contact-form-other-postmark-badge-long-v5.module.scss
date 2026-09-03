@@ -509,7 +509,7 @@
             } // end of container > form > email input container > label shrink
 
         } // end of container > form > email input container
-
+/*
         // ==============================
         // container > form > phone input container
         // ==============================
@@ -606,12 +606,13 @@
             } // end of container > form > phone input container > label shrink
 
         } // end of container > form > phone input container
-
+*/
         // ==============================
         // container > form > text area box container
         // ==============================
 
-        > div:nth-child( 5 ) {
+        > div:nth-child( 4 ) {
+        // > div:nth-child( 5 ) {
 
             position : relative; // needed for the textbox label
             margin   : 6.0rem 0 0 0; // visual preference
@@ -701,7 +702,8 @@
         // container > form > div6 ( Google reCAPTCHA badge ) > div > div ( Google styling for the badge is here )
         // ==============================
 
-        > div:nth-child( 6 ) > div > div {
+        > div:nth-child( 5 ) > div > div {
+        // > div:nth-child( 6 ) > div > div {
 
             // see below for the notes from the Wasatch Front Local
             // contact-form-postmark-badge-long.module.scss file

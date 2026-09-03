@@ -402,7 +402,7 @@ export async function POST( { request } ) {
     // ==============================
     // phone validation function
     // ==============================
-
+/*
     // this came from
     // " https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript "
     // and was the second answer on the page
@@ -440,7 +440,7 @@ export async function POST( { request } ) {
         );
 
     } // end of if
-
+*/
     // ==============================
     // phone is ok - proceed forward
     // ==============================

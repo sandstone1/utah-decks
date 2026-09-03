@@ -754,7 +754,7 @@ export default function ContactFormComponent() {
         // ==============================
 
         // front end validation
-        if ( firstName === '' || lastName === '' || email === '' || phone === '' || message === '' ) {
+        if ( firstName === '' || lastName === '' || email === '' || /* phone === '' || */ message === '' ) {
 
             // if the user did not enter the required information in the name, email or message
             // field then set a new error message
@@ -855,7 +855,7 @@ export default function ContactFormComponent() {
                         first_name : firstName,
                         last_name  : lastName,
                         email      : email,
-                        phone      : phone,
+                        // phone      : phone,
                         message    : message,
                         token      : token
                     }
@@ -1141,8 +1141,7 @@ export default function ContactFormComponent() {
                                     // ==============================
                                     // input field - phone
                                     // ==============================
-                                */
-                            }
+
                             <div className={ styles.contactFormContainerFormPhoneInputContainer }>
                                 <input
                                     name="phone"
@@ -1166,6 +1165,9 @@ export default function ContactFormComponent() {
                                     Phone ( format: 801&#8203;-555&#8203;-1212 )
                                 </label>
                             </div>
+
+                                */
+                            }
 
                             {
                                 /*
