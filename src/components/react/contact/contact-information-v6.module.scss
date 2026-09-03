@@ -228,7 +228,7 @@
         } // end of container > div3 > div2
 
         // ==============================
-        // container > div3 > div3 ( business hours )
+        // container > div 3 > div 3 ( business hours )
         // ==============================
 
         > div:nth-child( 3 ) {
@@ -298,7 +298,7 @@
 
                     @media all and ( max-width : $bp-1728 ) {
 
-                        display : grid;
+                        // display : grid;
         
                     } // end of container div3 > div3 > picture > bp-1728
 
@@ -339,7 +339,7 @@
                     @media all and ( max-width : $bp-1728 ) {
 
                         // make sure the border only stretches as far as the content
-                        width : fit-content;
+                        // width : fit-content;
         
                     } // end of container div3 > div3 > ul > div1 > bp-1728
 

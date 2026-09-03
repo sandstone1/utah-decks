@@ -1047,7 +1047,7 @@ export default function ServicesComponent() {
                         <p className="service-1-p">
                             We specialize in building high-quality, beautiful decks that are built to last.
                             Every project is crafted with premium composite materials and precise construction,
-                            backed by manufacturer warranties up to 50 years."
+                            backed by manufacturer warranties up to 50 years.
                         </p>
 
                         {
