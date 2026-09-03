@@ -56,13 +56,13 @@
 
     } // end of container > bp-1280
 
-    @media all and ( max-width : 426px ) {
+    @media all and ( max-width : 404px ) {
 
         grid-template-rows : 205px // needed since the title and hamburger menu went vertical at this breakpoint
                              1fr
                              auto;
 
-    } // end of container > 426px
+    } // end of container > 4046px
 
     // ==============================
     // end of tighten up side margins

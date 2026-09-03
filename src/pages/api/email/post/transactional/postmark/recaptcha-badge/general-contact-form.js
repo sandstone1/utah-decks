@@ -480,7 +480,7 @@ export async function POST( { request } ) {
                 "From"          : import.meta.env.POSTMARK_FROM_EMAIL,
                 "To"            : import.meta.env.POSTMARK_TO_EMAIL,
                 "Cc"            : import.meta.env.POSTMARK_TO_EMAIL,
-                "Subject"       : "New Enchanting Apps contact form submission",
+                "Subject"       : "New Utah Decks contact form submission",
                 "HtmlBody"      : `<p style="padding: 20px 0 0 0;">Name: <strong>${ first_name } ${ last_name }</strong></p>
                 <p>Email address: <strong>${ email }</strong></p>
                 <p>Phone number: <strong>${ phone }</strong></p>
@@ -510,7 +510,7 @@ export async function POST( { request } ) {
 
             JSON.stringify( 
             { 
-                message  : 'You have successfully submitted the contact form! Someone will get back to you shortly. Best regards, The Enchanting Apps Team',
+                message  : 'You have successfully submitted the contact form! Someone will call you shortly. Best regards, The Utah Decks Team',
                 response : emalResponseFromPostmark
             } ),
             { 

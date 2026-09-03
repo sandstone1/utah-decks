@@ -229,12 +229,12 @@
                         // background : var( --blue-850 );
                         // background : var( --purple-400 );
                         // background : var( --black );
-                        //background : var( --blue-900 );
+                        background : var( --blue-84 );
                         outline    : none;
             
                         @media all and ( max-width : 426px ) {
         
-                            text-align: center;
+                            // text-align: center;
                      
                          } // end of container > div1 > a > 426px
 
@@ -242,12 +242,8 @@
 
                             display : grid;
     
-                            font-family    : var( --font-primary-5 );
-                            font-size      : 2.75rem;
-                            font-weight    : 700;
-                            color          : var( --gray-225 );
-                            letter-spacing : 2px;
-                            line-height    : 1.3;
+                            font-weight : 700;
+                            line-height : 1.3;
                     
                         } // end of container > div1 > div1 > div1 > 340px
 
@@ -391,9 +387,26 @@
                         font-weight : 200;
                         font-style  : initial;
 
-                    } // end of container > div1 > div2 > div3 > div3 > a
+                    } // end of container > div1 > div2 > div3 > div3 > address > span
 
                 } // end of container > div1 > div2 > div3 > div3
+
+                // ==============================
+                // container > div 1 > div2 > div 3 > div 4 ( business hours )
+                // ==============================
+
+                > div:nth-child( 4 ) {
+
+                    > ul > div > li {
+
+                        @include text-small-light;
+
+                        font-weight : 200;
+                        font-style  : initial;
+
+                    } // end of container > div1 > div2 > div3 > div4 > a
+
+                } // end of container > div1 > div2 > div3 > div4
 
             } // end of container > div1 > div2 > div3
 

@@ -398,7 +398,15 @@
 
                     @include text-base-dark;
 
+                    padding : 0 0 3.0rem 0;
+
                     // align-self : start; // needed to make sure the box only filled the contents
+
+                    @media all and ( max-width : $bp-1280 ) {
+
+                        padding : 0;
+
+                    } // end of container > div1 > div2 > div1 > picture3 > img > bp-1280
 
                 } // end of container > div1 > div2 > div1 > p
         
@@ -412,6 +420,14 @@
                     grid-area : picture1;
 
                     justify-self : center;
+
+                    padding : 0 0 3.0rem 0;
+
+                    @media all and ( max-width : $bp-1280 ) {
+
+                        padding : 0;
+
+                    } // end of container > div1 > div2 > div1 > picture3 > img > bp-1280
 
                     > img {
     

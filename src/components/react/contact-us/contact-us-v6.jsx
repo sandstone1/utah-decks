@@ -634,7 +634,7 @@ export default function ContactUsComponent() {
                         }
                         <picture>
                             <source 
-                                srcset="/images/mj_postcards_01_232.webp"
+                                srcSet="/images/mj_postcards_01_232.webp"
                                 type="image/webp"
                             />
                             <img
@@ -649,7 +649,7 @@ export default function ContactUsComponent() {
         
                         <picture>
                             <source 
-                                srcset="/images/arrow_01_512.png"
+                                srcSet="/images/arrow_01_512.png"
                                 type="image/png"
                             />
                             <img
@@ -719,7 +719,7 @@ export default function ContactUsComponent() {
                         }
                         <picture>
                             <source 
-                                srcset="/images/mj_decks_04_300.webp"
+                                srcSet="/images/mj_decks_04_300.webp"
                                 type="image/webp"
                             />
                             <img

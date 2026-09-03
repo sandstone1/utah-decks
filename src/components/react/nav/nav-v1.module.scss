@@ -230,14 +230,20 @@
                 // background : var( --blue-850 );
                 // background : var( --purple-400 );
                 // background : var( --black );
-                //background : var( --blue-900 );
+                // background : var( --blue-85-2 );
                 outline    : none;
-    
-                @media all and ( max-width : 426px ) {
+
+                @media all and ( max-width : $bp-480 ) {
+
+                    background : var( --blue-84 );
+             
+                 } // end of container > div1 > a > bp-480
+
+                @media all and ( max-width : 404px ) {
 
                     text-align: center;
              
-                 } // end of container > div1 > a > 426px
+                 } // end of container > div1 > a > 404px
 
                 > span {
 
@@ -262,12 +268,12 @@
                     // background : var( --blue-84 );
                     // background : var( --blue-84 );
 
-                    @media all and ( max-width : 426px ) {
+                    @media all and ( max-width : 404px ) {
 
                        display : block;
                        margin  : 0;
                 
-                    } // end of container > div1 > a > 426px
+                    } // end of container > div1 > a > 404px
     
                 } // end of container > div1 > a > h2 > span
     

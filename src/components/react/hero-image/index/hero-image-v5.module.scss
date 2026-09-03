@@ -953,12 +953,6 @@
 
                 } // end of container > div2 > div1 > a, .phone-icon > &:hover
 
-                > svg {
-
-                    // transform : rotate( 30deg );
-    
-                } // end of container > div2 > div2 > a > svg
-
             } // end of container > div2 > div2 > a
 
         } // end of container > div2 > div2
@@ -990,10 +984,10 @@
 
         @media all and ( max-width : $bp-620 ) {
 
-            display               : grid;
-            align-content         : center;
-            justify-content       : center;
-            gap                   : 4.0rem 0;
+            display       : grid;
+            align-content : center;
+            justify-items : center;
+            gap           : 4.0rem 0;
     
         } // end of container > div2 > bp-620
 
