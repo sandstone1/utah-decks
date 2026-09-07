@@ -402,7 +402,7 @@ export async function POST( { request } ) {
     // ==============================
     // phone validation function
     // ==============================
-/*
+
     // this came from
     // " https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript "
     // and was the second answer on the page
@@ -440,7 +440,7 @@ export async function POST( { request } ) {
         );
 
     } // end of if
-*/
+
     // ==============================
     // phone is ok - proceed forward
     // ==============================
@@ -460,7 +460,7 @@ export async function POST( { request } ) {
 
     // in this case, we don't need to define emalResponseFromPostmark since we don't
     // need access to it outside the try catch block
-    // let emalResponseFromPostmark;
+    let emalResponseFromPostmark;
 
     // ==============================
     // try sending the email to Postmark
@@ -474,7 +474,7 @@ export async function POST( { request } ) {
         // send the email to Postmark
         // ==============================
 
-        const emalResponseFromPostmark = await client.sendEmail(
+        emalResponseFromPostmark = await client.sendEmail(
 
             {
                 "From"          : import.meta.env.POSTMARK_FROM_EMAIL,
@@ -490,38 +490,14 @@ export async function POST( { request } ) {
 
         );
 
-        // ==============================
-        // email sent - proceed forward
-        // ==============================
-
-        // ==============================
-        // send the following information back to the browser as part of the server response
-        // ==============================
-        
-        // 201 " indicates that the request has succeeded and has led to the creation of a
-        // resource "
-
-        // the astro / web standard way to send a response
-
-        // and then send back to the browser as part of the server response an object
-        // and use the json data transfer format and remember the object below will be
-        // transformed into json automatically
-        return new Response(
-
-            JSON.stringify( 
-            { 
-                message  : 'You have successfully submitted the contact form! Someone will call you shortly. Best regards, The Utah Decks Team',
-                response : emalResponseFromPostmark
-            } ),
-            { 
-                status  : 201,
-                headers : { 'Content-Type': 'application/json' }
-            }
-
-        );
+        // log this message
+        console.log( 'email to Postmark succeeded' );
 
     } catch ( error ) { // if the email was not sent successfully to Postmark then do the following
 
+        // log this message
+        console.log( 'email to Postmark failed', error );
+    
         // ==============================
         // email not sent - proceed forward
         // ==============================
@@ -545,6 +521,93 @@ export async function POST( { request } ) {
         );
 
     } // end of try catch
+
+    // ==============================
+    // form submission on Postmark is ok - proceed forward
+    // ==============================
+
+    // ==============================
+    // server side validation - #6
+    // ==============================
+
+    // ==============================
+    // GHL - send the same submission to GHL as an inbound webhook
+    // ==============================
+
+    // this runs after Postmark succeeds, and its own success/failure doesn't block
+    // the user-facing response — if GHL's webhook is down, the customer's email
+    // still went through and they should still see a success message
+    try {
+
+        // ==============================
+        // send the email contact information to GHL
+        // ==============================
+    
+        await fetch(
+
+            'https://services.leadconnectorhq.com/hooks/3o7ZhJVGuAbo6mdPBAh9/webhook-trigger/be29648c-8ab8-48fc-934b-56d656fe0885',
+            {
+                method  : 'POST',
+                headers : { 'Content-Type': 'application/json' },
+                body    : JSON.stringify( {
+                    firstName   : first_name,
+                    lastName    : last_name,
+                    email       : email,
+                    phone       : phone,
+                    customData  : {
+                        message : message,
+                        source  : 'website_contact_form'
+                    }
+                } )
+            }
+
+        );
+
+        // note to self
+        console.log( 'GHL webhook succeeded' );
+
+    } catch ( error ) { // if GHL webhook failed then do the following
+
+        // log it, but don't fail the request over this — the customer's email
+        // already went through via Postmark above
+        console.log( 'GHL webhook failed:', error );
+
+    } // end of try catch
+
+    // ==============================
+    // this now sits outside and after both try/catch blocks, so it always runs once Postmark has
+    // succeeded, regardless of what happened with GHL - proceed forward
+    // ==============================
+
+    // ==============================
+    // server side validation - #7
+    // ==============================
+
+    // ==============================
+    // send the following information back to the browser as part of the server response
+    // ==============================
+    
+    // 201 " indicates that the request has succeeded and has led to the creation of a
+    // resource "
+
+    // the astro / web standard way to send a response
+
+    // and then send back to the browser as part of the server response an object
+    // and use the json data transfer format and remember the object below will be
+    // transformed into json automatically
+    return new Response(
+
+        JSON.stringify( 
+        { 
+            message  : 'You have successfully submitted the contact form! Someone will call you shortly. Best regards, The Utah Decks Team',
+            response : emalResponseFromPostmark
+        } ),
+        { 
+            status  : 201,
+            headers : { 'Content-Type': 'application/json' }
+        }
+
+    );
 
 } // end of handler
 

@@ -172,7 +172,7 @@ export default function ContactInformationComponent() {
                         <ul>
                             <div>
                                 <li>Monday - Friday</li>
-                                <li>7:00 am - 5:00 pm</li>
+                                <li>7:00 am - 7:00 pm</li>
                             </div>
                             <div>
                                 <li>Saturday - Sunday</li>

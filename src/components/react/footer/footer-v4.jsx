@@ -213,9 +213,9 @@ export default function Footer() {
                         <div>
 
                             <address>
-                                <span>7287 South Rusty Drive</span><br />
-                                <span>Midvale, UT 84047</span><br />
-                                <span>roger@utahdecks.net</span>
+                                <span>Office address coming soon</span>
+                                <span></span>
+                                <span></span>
                             </address>
 
                         </div>
@@ -224,7 +224,7 @@ export default function Footer() {
 
                             <ul>
                                 <div>
-                                    <li>Monday - Friday: 7:00 am - 5:00 pm</li>
+                                    <li>Monday - Friday: 7:00 am - 7:00 pm</li>
                                 </div>
                                 <div>
                                     <li>Saturday - Sunday: Closed</li>
