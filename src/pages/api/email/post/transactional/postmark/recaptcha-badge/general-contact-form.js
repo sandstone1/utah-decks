@@ -545,7 +545,7 @@ export async function POST( { request } ) {
     
         await fetch(
 
-            'https://services.leadconnectorhq.com/hooks/3o7ZhJVGuAbo6mdPBAh9/webhook-trigger/be29648c-8ab8-48fc-934b-56d656fe0885',
+            'https://services.leadconnectorhq.com/hooks/3o7ZhJVGuAbo6mdPBAh9/webhook-trigger/z9n5StqFhPG9DjZSL6mE',
             {
                 method  : 'POST',
                 headers : { 'Content-Type': 'application/json' },

@@ -242,14 +242,18 @@ export default function Footer() {
                         // ==============================
                         // container > div 1 > div 3
                         // ==============================
+
+                        // the name below matches the bank statement, which is what FB recommended
+                        // and the name of the Certificate of Organization is
+                        // Utah Decks & Pergolas LLC
                     */
                 }
                 <div>
 
-                    <p>Copyright &copy; 2026 by Utah Decks & Pergolas.</p>
+                    <p>Copyright &copy; 2026 by Utah Decks and Pergolas LLC.</p>
                     <p>All rights reserved.</p>
 
-                    <p>Copyright &copy; 2026 by Utah Decks & Pergolas. All rights reserved.</p>
+                    <p>Copyright &copy; 2026 by Utah Decks and Pergolas LLC. All rights reserved.</p>
 
                 </div>
 
