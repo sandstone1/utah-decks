@@ -322,15 +322,15 @@
             
                     } // end of container > div3 > div3 > ul > div > li
             
-                    > li:nth-child( 2 ) {
+                    > li:nth-child( 1 ), li:nth-child( 2 ) {
             
-                        margin : 0 0 1.0rem 0;
+                       margin : 0 0 1.0rem 0;
             
-                    } // end of container > div3 > div3 > ul > div > li2
+                    } // end of container > div3 > div3 > ul > div > li1, li2
 
                 } // end of container > div3 > div3 > ul > div
 
-                > div:nth-child( 1 ) {
+                > div:nth-child( 1 ),  div:nth-child( 2 ) {
 
                     margin : 0 0 1.0rem 0;
 
@@ -341,22 +341,22 @@
                         // make sure the border only stretches as far as the content
                         // width : fit-content;
         
-                    } // end of container div3 > div3 > ul > div1 > bp-1728
+                    } // end of container div3 > div3 > ul > div1, div2 > bp-1728
 
                     @media all and ( max-width : $bp-1280 ) {
 
                         width : 100%;
         
-                    } // end of container div3 > div3 > ul > div1 > bp-1280
+                    } // end of container div3 > div3 > ul > div1, div2 > bp-1280
 
                     @media all and ( max-width : $bp-768 ) {
 
                         // make sure the border only stretches as far as the content
                         width : fit-content;
         
-                    } // end of container div3 > div3 > ul > div1 > bp-768
+                    } // end of container div3 > div3 > ul > div1, div2 > bp-768
 
-                } // end of container > div3 > div3 > ul > div1
+                } // end of container > div3 > div3 > ul > div1, div2
             
             } // end of container > div3 > div3 > ul
 

@@ -227,8 +227,11 @@ export default function Footer() {
                                     <li>Monday - Friday: 7:00 am - 7:00 pm</li>
                                 </div>
                                 <div>
-                                    <li>Saturday - Sunday: Closed</li>
-                                </div>                       
+                                    <li>Saturday: 7:00 am - 12:00 pm</li>
+                                </div>
+                                <div>
+                                    <li>Sunday: Closed</li>
+                                </div>                
                             </ul>
 
                         </div>
@@ -243,9 +246,10 @@ export default function Footer() {
                         // container > div 1 > div 3
                         // ==============================
 
-                        // the name below matches the bank statement, which is what FB recommended
-                        // and the name of the Certificate of Organization is
-                        // Utah Decks & Pergolas LLC
+                        // the name below matches the bank statement, which is what FB recommends
+                        // we use for verification purposes and then FB said to use the Certificate
+                        // of Organization for legal entity purposes and the name on the Certificate
+                        // of Organization is Utah Decks & Pergolas LLC 
                     */
                 }
                 <div>
