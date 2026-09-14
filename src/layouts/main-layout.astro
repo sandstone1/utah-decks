@@ -67,11 +67,11 @@ const { user } = Astro.locals;
 // and the browser discovers and starts downloading the correct hero image size concurrently
 // with your CSS files, shaving seconds off the initial network idle time
 
-const img480  = "/images/mj-decks-02-480.webp";
-const img1032 = "/images/mj-decks-02-1032.webp"; // Note: tracking your file named 1032
-const img1376 = "/images/mj-decks-02-1376.webp";
-const img1728 = "/images/mj-decks-02-1728.webp";
-const img2560 = "/images/mj-decks-02-2560.webp";
+const img480  = "/images/mj_decks_02_480.webp";
+const img1032 = "/images/mj_decks_02_1032.webp"; // Note: tracking your file named 1032
+const img1376 = "/images/mj_decks_02_1376.webp";
+const img1728 = "/images/mj_decks_02_1728.webp";
+const img2560 = "/images/mj_decks_02_2560.webp";
 
 // construct the srcset string using above URLs
 const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img1728 } 1728w, ${ img2560 } 2560w`;
