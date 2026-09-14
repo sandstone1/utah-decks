@@ -89,7 +89,8 @@
         I'm not sure why I had to set adjustment 7 in order for the side menu to sit on top of the
         3d Earth h2 and canvas )   
     */
-    z-index : 2;
+    // z-index : 2;
+    z-index : 3;
     // width  : min( 192.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
     width   : min( 144.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
     margin  : 0 auto;
