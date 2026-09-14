@@ -55,8 +55,17 @@ import '../styles/_globals.scss';
 const { user } = Astro.locals;
 
 // ==============================
+// STEP 1 : LOWERING LCP NUMBERS
+// ==============================
+
+// ==============================
 // preload hero images
 // ==============================
+
+// by moving your responsive image URLs out of the JavaScript component and placing
+// a <link rel="preload"> tag at the very top of your HTML, we bypass the entire queue
+// and the browser discovers and starts downloading the correct hero image size concurrently
+// with your CSS files, shaving seconds off the initial network idle time
 
 const img480  = "/images/mj-decks-02-480.webp";
 const img1032 = "/images/mj-decks-02-1032.webp"; // Note: tracking your file named 1032
@@ -66,6 +75,10 @@ const img2560 = "/images/mj-decks-02-2560.webp";
 
 // construct the srcset string using above URLs
 const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img1728 } 1728w, ${ img2560 } 2560w`;
+
+// ==============================
+// END OF STEP 1 : LOWERING LCP NUMBERS
+// ==============================
 
 ---
 
@@ -182,6 +195,13 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
 
     </head>
 
+    <!--
+        // ==============================
+        // STEP 3 : LOWERING LCP NUMBERS
+        // ==============================
+
+        // add the class="js-loading" to our body tag inside the main-layout.astro file
+    -->
 	<body class="js-loading">
 
         <!-- part 1 - fade in the nav on initial paint and only on the initial paint -->
