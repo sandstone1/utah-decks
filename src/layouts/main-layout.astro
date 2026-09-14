@@ -118,7 +118,7 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
             as="image"
             href={ img2560 } 
             imagesrcset={ srcset }
-            imagesizes="( max-width: 480px ) 100vw, ( max-width: 1032px ) 100vw, ( max-width: 1376px ) 100vw, ( max-width: 1728px ) 100vw, 2560px"
+            imagesizes="( max-width : 480px ) 480px, ( max-width : 1032px ) 1032px, ( max-width : 1376px ) 1376px, ( max-width : 1728px ) 1728px, 2560px"
         />
 
         {
@@ -202,7 +202,7 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
 
         // add the class="js-loading" to our body tag inside the main-layout.astro file
     -->
-	<body class="js-loading">
+	<body>
 
         <!-- part 1 - fade in the nav on initial paint and only on the initial paint -->
         <!-- see nav.jsx, _global.scss and layout.astro for parts 2, 3 and 4 -->

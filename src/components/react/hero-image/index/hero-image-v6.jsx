@@ -557,17 +557,6 @@ export default function HeroImageComponent() {
                     smartWrap : true
                 } );
 
-
-                // ==============================
-                // STEP 4 : LOWERING LCP NUMBERS
-                // ==============================
-
-                // remove the global hiding rule and switch to visibility : visible and
-                // since opacity is now controlled by GSAP ( .set to 0 ), the text remains
-                // hidden perfectly
-                document.body.classList.remove( 'js-loading' );
-                gsap.set( [ '.first-hero-h1', '.first-hero-h5' ], { visibility: 'visible' } );
-
                 // ==============================
                 // first hero h2 and h5
                 // ==============================

@@ -14,42 +14,6 @@
 
 
 
-// ==============================
-// STEP 2 : LOWERING LCP NUMBERS
-// ==============================
-
-// visibility : hidden keeps the Layout Engine Active
-
-// when you hide a parent layout container using opacity: 0 or wait to switch its styles via a
-// React useEffect, the browser's layout engine has to do a massive amount of recalculation
-// work later on
-
-// using the .js-loading class with visibility : hidden acts as an engineering shortcut
-
-// the browser's perspective : it treats the invisible text elements as if they are already
-// fully painted on the screen and thereby it can instantly lock in the final positions of
-// your header, your banner blocks, and your spacing rules on the very first layout frame
-
-// the user's perspective : they see a completely clean, blank staging area that fluidly
-// transitions into a GSAP animation without any jarring jumps, layouts breaking, or content
-// shifting
-
-// ==============================
-// add this code to our global.scss file
-// ==============================
-
-.js-loading .first-hero-h1,
-.js-loading .first-hero-h5 {
-
-    visibility : hidden;
-
-}
-
-// ==============================
-// END OF STEP 2 : LOWERING LCP NUMBERS
-// ==============================
-
-
 
 
 
