@@ -557,8 +557,14 @@ export default function HeroImageComponent() {
                     smartWrap : true
                 } );
 
-                // 3. SEAMLESS HANDOFF: Remove the global hiding rule and switch to visibility: visible
-                // Since opacity is now controlled by GSAP (.set to 0), the text remains hidden perfectly
+
+                // ==============================
+                // STEP 4 : LOWERING LCP NUMBERS
+                // ==============================
+
+                // remove the global hiding rule and switch to visibility : visible and
+                // since opacity is now controlled by GSAP ( .set to 0 ), the text remains
+                // hidden perfectly
                 document.body.classList.remove( 'js-loading' );
                 gsap.set( [ '.first-hero-h1', '.first-hero-h5' ], { visibility: 'visible' } );
 
