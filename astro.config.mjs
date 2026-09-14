@@ -44,7 +44,7 @@ export default defineConfig(
         },
         site    : process.env.SITE || 'http://localhost:3038', // include site url when ready ( right now using Netlify generated url )
         build   : {
-            inlineStylesheets : 'auto' // lets Astro inline small critical CSS directly into the HTML ( no blocking network request ) while still splitting larger stylesheets into separate files
+            inlineStylesheets : 'always' // lets Astro inline small critical CSS directly into the HTML ( no blocking network request ) while still splitting larger stylesheets into separate files
         },
         integrations : [
             // tell Astro exactly which folders belong to which framework
