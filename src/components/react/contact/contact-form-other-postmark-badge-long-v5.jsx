@@ -839,11 +839,26 @@ export default function ContactFormComponent() {
         // create our endpoint
         const endpoint = `/api/email/post/transactional/postmark/recaptcha-badge/general-contact-form`;
 
+        // STEP 4
+        // generate a unique ID for this submission so we don't double count leads in FB
+        // and the eventID will be shared between the browser FB pixel event and the FB
+        // server-side CAPI event
+        const eventId = crypto.randomUUID();
+
+        // fire the browser side lead event to FB, tagged with eventId so a message
+        // gets sent from the browser to FB saying "Lead event happened, ID
+        // = [whatever you generated]." so just one outbound ping to Facebook
+        if ( typeof fbq !== 'undefined' ) {
+
+            fbq( 'track', 'Lead', {}, { eventID : eventId } );
+
+        } // end of if
+
         // create our data object
 
         // create our config object
 
-        // STEP 4
+        // STEP 5
         // make the fetch request and save the result to the const called res
         const res = await fetch(
             endpoint,
@@ -857,7 +872,8 @@ export default function ContactFormComponent() {
                         email      : email,
                         phone      : phone,
                         message    : message,
-                        token      : token
+                        token      : token,
+                        event_id   : eventId 
                     }
                 ),
                 headers : {
@@ -866,11 +882,11 @@ export default function ContactFormComponent() {
             }
         );
 
-        // STEP 5(a)
+        // STEP 6(a)
         // first, check to see if there is a request error
         if ( !res.ok ) {
 
-            // STEP 5(b)
+            // STEP 6(b)
             // the fetch request above returns a response object and then we can apply the
             // json(); method to the reponse object and this will convert the response
             // object into a JavaScript object that we can use and we will call this JavaScript
@@ -878,19 +894,19 @@ export default function ContactFormComponent() {
             // the api route
             const data = await res.json();
 
-            // STEP 5(c)
+            // STEP 6(c)
             // once we get the data, set isLoading to false
             setIsLoading( false );
 
-            // STEP 5(d)
+            // STEP 6(d)
             // console.log data for the moment
             console.log( data );
 
-            // STEP 5(e)
+            // STEP 6(e)
             // set the error message
             setFrontendErrorMessage( data.message );
 
-            // STEP 5(f)
+            // STEP 6(f)
             // reset the component state
             setFirstName( '' );
             setLastName( '' );
@@ -900,7 +916,7 @@ export default function ContactFormComponent() {
 
         } else {
 
-            // STEP 6(a)
+            // STEP 7(a)
             // the fetch request above returns a response object and then we can apply the
             // json(); method to the reponse object and this will convert the response
             // object into a JavaScript object that we can use and we will call this JavaScript
@@ -908,19 +924,19 @@ export default function ContactFormComponent() {
             // the api route
             const data = await res.json();
 
-            // STEP 6(b)
+            // STEP 7(b)
             // once we get the data, set isLoading to false
             setIsLoading( false );
 
-            // STEP 6(c)
+            // STEP 7(c)
             // console.log data for the moment
             console.log( data );
 
-            // STEP 6(d)
+            // STEP 7(d)
             // set the success message
             setFrontendSuccessMessage( data.message );
 
-            // STEP 6(e)
+            // STEP 7(e)
             // reset the component state
             setFirstName( '' );
             setLastName( '' );
@@ -928,7 +944,7 @@ export default function ContactFormComponent() {
             setPhone( '' );
             setMessage( '' );
 
-            // STEP 6(f)
+            // STEP 7(f)
 
             // ==============================
             // dataLayer push

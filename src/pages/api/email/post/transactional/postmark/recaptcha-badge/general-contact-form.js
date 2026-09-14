@@ -101,6 +101,8 @@ import postmark from 'postmark';
 // get the Postmark client constant and we can use this constant to route the user generated
 // email to Postmark and then to the Company specified email address
 const client = new postmark.ServerClient( import.meta.env.POSTMARK_SERVER_TOKEN );
+// we need this package so we can hash the email and phone number before sending them to Meta
+import crypto from 'node:crypto';
 
 
 
@@ -155,6 +157,7 @@ export async function POST( { request } ) {
     const phone      = body.phone;
     const message    = body.message;
     const token      = body.token;
+    const event_id   = body.event_id;
 
     // ==============================
     // server side validation - #1
@@ -556,6 +559,7 @@ export async function POST( { request } ) {
                     phone       : phone,
                     customData  : {
                         message : message,
+                        eventID : event_id,
                         source  : 'website_contact_form'
                     }
                 } )
@@ -575,12 +579,95 @@ export async function POST( { request } ) {
     } // end of try catch
 
     // ==============================
-    // this now sits outside and after both try/catch blocks, so it always runs once Postmark has
-    // succeeded, regardless of what happened with GHL - proceed forward
+    // GHL webhook succeeded - proceed forward
     // ==============================
 
     // ==============================
     // server side validation - #7
+    // ==============================
+
+    // ==============================
+    // this replaces the GHL's "Meta conversion API" workflow action — instead
+    // of letting GHL build and send the lead event to Facebook on our behalf,
+    // this block does that job directly from our own server code
+    // ==============================
+
+    // this block is your own private, direct line to Facebook — doing exactly
+    // what GHL's action was doing with the Meta conversion API, but with the one
+    // critical addition ( event_id ) that GHL's UI didn't let us set
+
+    // so this way let's us set the event id on the server, preventing the double
+    // counting lead problem we were running into before
+    try {
+
+        // the hash helper function and used to hash the email and phone number
+        // and FB needs the hashed versions
+        const hash = ( value ) => {
+
+            // this one line takes a raw value like an email, standardizes it, then
+            // irreversibly scrambles it into a safe format Meta requires before
+            // it'll accept user_data in a conversions API event
+
+            // crypto.createHash( 'sha256' ) creates a new SHA-256 hashing object
+
+            // .digest( 'hex' ) runs the scrambling and outputs the result as a
+            // hexadecimal string that represents the hashed version of our input
+            return crypto.createHash( 'sha256' ).update( value.trim().toLowerCase() ).digest( 'hex' );
+    
+        };
+
+        const fbResponse = await fetch(
+
+            `https://graph.facebook.com/v21.0/2171949420368434/events?access_token=${ import.meta.env.META_ACCESS_TOKEN }`,
+            {
+                method  : 'POST',
+                headers : { 'Content-Type': 'application/json' },
+                body    : JSON.stringify( {
+                    data : [
+                        {
+                            event_name    : 'Lead',
+                            event_time    : Math.floor( Date.now() / 1000 ),
+                            event_id      : event_id,
+                            action_source : 'website',
+                            user_data     : {
+                                // the hashed email ( em ) and phone ( ph ), used to help
+                                // FB match this event to a real person / ad account for attribution
+                                em : [ hash( email ) ],
+                                ph : [ hash( phone.replace( /\D/g, '' ) ) ]
+                            },
+                            custom_data   : {
+                                value     : 30000,
+                                currency  : 'USD'
+                            },
+                            test_event_code : 'TEST45409'
+                        }
+                    ]
+                } )
+            }
+
+        );
+    
+        // see of the fetch call was successful
+        const fbResult = await fbResponse.json();
+        // test
+        console.log( 'Meta CAPI response:', fbResult );
+
+        // console.log( 'Meta CAPI direct call succeeded' );
+
+    } catch ( error ) {
+
+        console.log( 'Meta CAPI direct call failed:', error );
+
+    } // end of try catch
+
+    // ==============================
+    // this now sits outside and after the 3 try/catch blocks above, so it always runs once
+    // Postmark has succeeded, regardless of what happened with GHL webhook or the FB CAPI
+    // call - proceed forward
+    // ==============================
+
+    // ==============================
+    // server side validation - #8
     // ==============================
 
     // ==============================
