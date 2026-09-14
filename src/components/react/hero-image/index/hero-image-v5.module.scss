@@ -608,7 +608,8 @@
             // that the h1 and h5 elements do not suddenly appear and then disappear right
             // before the gsap animation
             // ==============================
-            opacity : 0;
+            // opacity : 0;
+            opacity : 1;
     
             @media all and ( max-width : $bp-1440 ) {
     
@@ -711,7 +712,19 @@
             // before the gsap animation
             // ==============================
             opacity : 0;
-    
+            // opacity : 1;
+
+            @keyframes div2FadeIn {
+                from {
+                    opacity : 0;
+                }
+                to {
+                    opacity : 1;
+                }
+            }
+
+            animation: div2FadeIn 500ms ease-out 9800ms forwards;
+
             @media all and ( max-width : $bp-1440 ) {
     
                 width : min( 90.0rem, 100% ); // browser will select the smaller of 90.0rem or 100%
@@ -820,7 +833,7 @@
         // that the h2 and h5 elements do not suddenly appear and then disappear right
         // before the gsap animation
         // ==============================
-       //  opacity : 0;
+        //  opacity : 0;
 
         @media all and ( max-width : $bp-1440 ) {
 
