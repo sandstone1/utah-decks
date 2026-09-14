@@ -54,6 +54,19 @@ import '../styles/_globals.scss';
 // get user and then pass it to our script below so that we can update the $user store
 const { user } = Astro.locals;
 
+// ==============================
+// preload hero images
+// ==============================
+
+const img480  = "/images/mj-decks-02-480.webp";
+const img1032 = "/images/mj-decks-02-1032.webp"; // Note: tracking your file named 1032
+const img1376 = "/images/mj-decks-02-1376.webp";
+const img1728 = "/images/mj-decks-02-1728.webp";
+const img2560 = "/images/mj-decks-02-2560.webp";
+
+// construct the srcset string using above URLs
+const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img1728 } 1728w, ${ img2560 } 2560w`;
+
 ---
 
 <html lang="en">
@@ -85,6 +98,14 @@ const { user } = Astro.locals;
             as="font"
             type="font/woff2"
             crossorigin
+        />
+
+        <link
+            rel="preload"
+            as="image"
+            href={ img2560 } 
+            imagesrcset={ srcset }
+            imagesizes="( max-width: 480px ) 100vw, ( max-width: 1032px ) 100vw, ( max-width: 1376px ) 100vw, ( max-width: 1728px ) 100vw, 2560px"
         />
 
         {
@@ -161,7 +182,7 @@ const { user } = Astro.locals;
 
     </head>
 
-	<body>
+	<body class="js-loading">
 
         <!-- part 1 - fade in the nav on initial paint and only on the initial paint -->
         <!-- see nav.jsx, _global.scss and layout.astro for parts 2, 3 and 4 -->
