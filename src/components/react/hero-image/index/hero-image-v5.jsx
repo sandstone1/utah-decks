@@ -7,9 +7,9 @@ import { Fragment, useEffect, useRef, useState } from 'react';
 // import in the gsap, ScrollTrigger, SplitText and CustomEase
 import { 
     gsap,
-    ScrollTrigger,
+    // ScrollTrigger,
     SplitText,
-    CustomEase
+    // CustomEase
 } from '../../../../lib/gsap';
 // import in the Bootstrap people icon
 import { BsFillPeopleFill } from "react-icons/bs";
