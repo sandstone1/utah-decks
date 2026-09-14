@@ -249,7 +249,7 @@ export default function HeroImageComponent() {
     // 3 - we had to use document.fonts.ready.then( () => {} to make sure the page is at
     // least partially ready to run the gsap hero text animation code below
     // ==============================
-/*
+
     useEffect( () => {
 
         // ==============================
@@ -279,7 +279,7 @@ export default function HeroImageComponent() {
 
             With client:load Astro SSR runs your component on the server first. GSAP and
             document.fonts.ready don't exist on the server — calling them would throw an error.
-        */ /*
+        */
 
         // only run GSAP on client side and good safety check
         if ( typeof window === 'undefined' ) return;
@@ -305,7 +305,7 @@ export default function HeroImageComponent() {
             You only need fonts to be loaded for SplitText to measure correctly
             No need to wait for videos and images which take much longer
             Fires sooner = animation starts sooner = better user experience
-        */ /*
+        */
         document.fonts.ready.then( () => {
 
             // ==============================
@@ -664,7 +664,7 @@ export default function HeroImageComponent() {
             The clearTimeout in the cleanup function is what bridges that gap — it tells React
             "if this component goes away before the timer fires, cancel the timer so it never
             gets the chance to run against a now-nonexistent element."
-        */ /*
+        */
         return () => {
 
             clearTimeout( timeoutId );
@@ -672,7 +672,7 @@ export default function HeroImageComponent() {
         }; // end of return
 
     }, [] ); // end of useEffect 2
-*/
+
     // ==============================
     // useLoader();
     // ==============================
