@@ -330,6 +330,18 @@
     // ==============================
 
     // ==============================
+    // REMEMBER
+    //
+    // for speed optimization, I moved the images and background color section into the
+    // index.astro file and moved some of the corresponding css into the index.astro file
+    // as well
+    //
+    // therefore, we commented out the code below since this code is now in the index.astro
+    // file
+    // ==============================
+
+/*
+    // ==============================
     // background color
     // ==============================
 
@@ -338,16 +350,102 @@
     // background-image : url( /images/lama_bg_01.webp );
     // background-color : rgba( 17, 11, 84, 1 );
 
-    /*
     background-size       : cover;
     background-blend-mode : multiply;
     background-color      : var( --blue-85-2 );
     background-color      : rgba( 13, 58, 216, 0.80 );
-    */
 
     // ==============================
     // end of background color
     // ==============================
+
+    // ==============================
+    // fallback jpeg image
+    // ==============================
+
+    background-image : url( /images/mj_decks_02_2560.jpg );
+
+    @media all and ( max-width : $bp-1728 ) {
+    
+        background-image : url( /images/mj_decks_02_1728.jpg );
+
+    } // end of bp-1728
+
+    @media all and ( max-width : $bp-1376 ) {
+        
+        background-image : url( /images/mj_decks_02_1376.jpg );
+
+    } // end of bp-1376
+
+    @media all and ( max-width : $bp-1032 ) {
+    
+        background-image : url( /images/mj_decks_02_1032.jpg );
+
+    } // end of bp-1032
+
+    @media all and ( max-width : $bp-480 ) {
+
+        // this is an cropped image
+        background-image    : url( /images/mj_decks_02_480.jpg );
+
+    } // end of bp-480
+
+    // ==============================
+    // end of fallback jpeg image
+    // ==============================
+
+    // ==============================
+    // webp image
+    // ==============================
+
+    // this code comes from the article :
+    // " https://www.js-craft.io/blog/css-fallbacks-for-webp-background-images-with-supports/ "
+    @supports ( background-image : url( /images/mj_decks_02_2560.webp ) ) {
+
+        background-image : url( /images/mj_decks_02_2560.webp );
+
+        @media all and ( max-width : $bp-1728 ) {
+    
+            background-image : url( /images/mj_decks_02_1728.webp );
+
+        } // end of bp-1728
+
+        @media all and ( max-width : $bp-1376 ) {
+    
+            background-image : url( /images/mj_decks_02_1376.webp );
+
+        } // end of bp-1376
+
+        @media all and ( max-width : $bp-1032 ) {
+    
+            background-image : url( /images/mj_decks_02_1032.webp );
+
+        } // end of bp-1032
+
+        @media all and ( max-width : $bp-480 ) {
+
+            // this is an cropped image
+            background-image : url( /images/mj_decks_02_480.webp );
+
+        } // end of bp-480
+
+    } // end of container > @supports
+
+    // ==============================
+    // end of webp image
+    // ==============================
+
+    // ==============================
+    // END OF REMEMBER
+    //
+    // for speed optimization, I moved the images and background color section into the
+    // index.astro file and moved some of the corresponding css into the index.astro file
+    // as well
+    //
+    // therefore, we commented out the code below since this code is now in the index.astro
+    // file
+    // ==============================
+*/
 
     // ==============================
     // remember, at bp-1376 and below we changed 100svh to 100rem or a fixed height and we

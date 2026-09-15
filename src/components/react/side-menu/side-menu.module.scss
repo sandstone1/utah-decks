@@ -113,7 +113,8 @@
     top        : 0;
     right      : 0;
     // bottom   : 0;
-    z-index    : 2; // see nav.module.scss for z-index notes
+    // z-index    : 2; // see nav.module.scss for z-index notes
+    z-index    : 4;
     width      : 0; // set the width in the web animations api
     overflow   : scroll; // make sure the side menu scrolls to the bottom of the side
     // menu container

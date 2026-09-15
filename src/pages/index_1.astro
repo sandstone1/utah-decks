@@ -1,0 +1,203 @@
+---
+
+// ==============================
+// imports
+// ==============================
+
+// import in the Layout component
+import Layout from '../layouts/main-layout.astro';
+// import in the Hero component
+import HeroComponent from '../components/react/hero-image/index/hero-image-v5';
+// import in the By The Numbers component
+import ByTheNumbersComponent from '../components/react/by-the-numbers/by-the-numbers-v3';
+// import in the WhatWeDo component
+import ServicesComponent from '../components/react/services/services-v2';
+// import in the Contact Us component
+import ContactUsComponent from '../components/react/contact-us/contact-us-v6';
+// import in the Contact Us component
+import WhyChooseUsComponent from '../components/react/why-choose-us/why-choose-us-v2';
+
+
+/*
+// import in the Infinite Scroll component
+import InfiniteScrollComponent from '../components/react/infinite-scroll/infinite-scroll-v2';
+// import in the Why Work With Us component
+import WhyWorkWithUsComponent from '../components/react/why-work-with-us/why-work-with-us-video-no-calc-v5';
+// import in the Sticky Pictures component
+import StickyPicturesComponent from '../components/react/animations/scroll-driven/sticky-pictures/sticky-pictures-v9';
+// import in the Our Process dark component
+import OurProcessDarkComponent from '../components/react/our-process/our-process-dark-v3';
+// import in the Our Process light component
+import OurProcessLightComponent from '../components/react/our-process/our-process-light';
+// import in the Pricing component
+import PricingRadialGradientComponent from '../components/react/pricing/pricing-radial-gradient-v5';
+// import in the Where You Can Find Us component
+import WhereYouCanFindUsComponent from '../components/react/where-you-can-find-us/where-you-can-find-us-v4';
+// import in the Cimikoski Stem Cells Website component
+import CimikoskiStemCellsWebsiteComponent from '../components/react/websites/cimikoski-stem-cells-v2';
+// import in the Real Estate Broker Website component
+import RealEstateBrokerWebsiteComponent from '../components/react/websites/real-estate-broker-gray-bg-v2';
+// import in the Ranking Made Easy Website component
+import RankingMadeEasyWebsiteComponent from '../components/react/websites/ranking-made-easy-gradient-bg-v3';
+*/
+
+
+// import in the Where You Can Find Us component
+import WhereYouCanFindUsComponent from '../components/react/where-you-can-find-us/where-you-can-find-us-v6';
+// import in the ContactVideoComponent
+import ContactVideoComponent from '../components/react/contact/contact-video-v2';
+// import in the scss file
+import styles from './index.module.scss';
+
+
+// ==============================
+// hero images
+// ==============================
+
+// define your static image file paths
+const img480  = "/images/mj_decks_02_480.webp";
+const img1032 = "/images/mj_decks_02_1032.webp";
+const img1376 = "/images/mj_decks_02_1376.webp";
+const img1728 = "/images/mj_decks_02_1728.webp";
+const img2560 = "/images/mj_decks_02_2560.webp";
+
+const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img1728 } 1728w, ${ img2560 } 2560w`;
+
+
+---
+
+<Layout>
+
+    {
+        /*
+            Structured data as JSON-LD markup
+        */
+    }
+    <script slot="head" type="application/ld+json"
+        set:html={ 
+            JSON.stringify(
+                {
+                    "@context": "http://schema.org",
+                    "@type": "LocalBusiness",
+                    "name": "Utah Decks & Pergolas",
+                    "url": "https://utahdecks.net"
+                }
+            )
+        }
+    >
+    </script>
+
+    <!-- page specific meta tags -->
+    <meta slot="head" name="keywords" content='custom deck builder Salt Lake City, deck builder Utah, custom deck builder Draper Utah, composite deck installation Utah, deck contractor near me, Trex deck installer Utah, TimberTech deck builder Utah, helical pier deck footings, composite deck railing installation, pergola builder Salt Lake County, deck demolition and replacement, custom deck stairs builder, deck builder Salt Lake County, deck builder Utah County, deck builder Davis County, Utah Decks' />
+    <meta slot="head" name="description" content='Custom deck builder serving Salt Lake, Utah & Davis counties. Composite decking, pergolas, and railing — licensed, insured, free estimates.' />
+    <meta slot="head" property="og:image" content='/images/mj_decks_02_1032.jpg' />
+    <meta slot="head" property="og:title" content='Deck Builder in Utah | Utah Decks & Pergolas' />
+    <meta slot="head" property="og:description" content='Custom deck builder serving Salt Lake, Utah & Davis counties. Composite decking, pergolas, and railing — licensed, insured, free estimates.' />
+    <meta slot="head" property="og:site_name" content='Utah Decks & Pergolas' />
+    <meta slot="head" property="og:url" content='https://utahdecks.net' />
+    <meta slot="head" property="og:type" content='website' />
+    <meta slot="head" property="og:locale" content="en_US" />
+    <link slot="head" rel="canonical" href="https://utahdecks.net" />
+    <title slot="head">Deck Builder in Utah | Utah Decks & Pergolas</title>
+
+    <!-- stop Google from crawling this site until I have an office address on the site -->
+    <!-- remove this line of code and think about updating my public/robots.txt file when I'm ready -->
+    <meta name="robots" content="noindex, nofollow" />
+
+    {
+        /*
+            // ==============================
+            // container
+            // ==============================
+        */
+    }
+    <div class={ styles.homePageContainer }>
+
+        {
+            /*
+                // ==============================
+                // container > div 1
+                //
+                // in order to eliminate initial page jank, the hero component has to be
+                // client:load when using gsap ( see notes in the hero component for details )
+                // ==============================
+            */
+        }
+
+        <!-- images have been stripped out and only the text survives but
+        everything else stays the same -->
+        <HeroComponent client:load />
+            
+
+        {
+            /*
+                // ==============================
+                // container > div 2
+                // ==============================
+            */
+        }
+        <ContactUsComponent client:visible />
+
+        {
+            /*
+                // ==============================
+                // container > div 3
+                // ==============================
+            */
+        }
+        <ByTheNumbersComponent client:visible />
+
+        {
+            /*
+                // ==============================
+                // container > div 4
+                // ==============================
+            */
+        }
+        <ServicesComponent client:visible />
+
+        {
+            /*
+                // ==============================
+                // container > div 6
+                // ==============================
+                <WhyChooseUsComponent client:visible />
+            */
+        }
+
+        {
+            /*
+                // ==============================
+                // container > div 11
+                // ==============================
+                <WhereYouCanFindUsComponent client:visible />
+            */
+        }
+        
+
+        {
+            /*
+                // ==============================
+                // container > div 12
+                // ==============================
+                <CimikoskiStemCellsWebsiteComponent client:load />
+            */
+        }
+
+        {
+            /*
+                // ==============================
+                // container > div 15
+                //
+                // use my intersection observer, do not use client:visible and client:only="react"
+                // downloads the JS upfront but skips SSR — our internal Intersection Observer
+                // controls exactly when the content appears
+                // ==============================
+                <ContactVideoComponent client:load />
+            */
+        }
+
+    </div>
+
+</Layout>
+
