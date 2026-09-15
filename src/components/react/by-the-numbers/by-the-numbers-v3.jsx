@@ -42,6 +42,7 @@ export default function ByTheNumbersComponent() {
     const wrapperRef                = useRef();
     const counterRefGoogleRating    = useRef( null );
     const counterRefYearsExperience = useRef( null );
+    const counterRefHappyCustomers  = useRef( null );
     const counterRefWarranty        = useRef( null );
     const counterRefFreeEstimates   = useRef( null );
 
@@ -647,6 +648,153 @@ export default function ByTheNumbersComponent() {
     // ==============================
 
     // ==============================
+    // purpose - create a counter animation for the number of happy customers
+    // ==============================
+
+    useEffect( () => {
+
+        // ==============================
+        // code block 1
+        // ==============================
+
+        if ( !isIntersecting ) return;
+    
+        // our target is 300+ happy customers
+        const target   = 300;
+        const duration = 4000;
+        // performance.now() returns the current time in milliseconds since the page loaded and is
+        // best for animations
+
+        // records exactly when animation started
+        const start    = performance.now();
+
+        // declare rafId
+        let rafId;
+
+        // ==============================
+        // code block 2
+        // ==============================
+
+        // save this function to the const animate
+
+        // timestamp is a high-precision time value automatically passed by requestAnimationFrame
+        // and it represents the current time in milliseconds since the page loaded
+        const animate = ( timestamp ) => {
+
+            // ==============================
+            // code block 3
+            // ==============================
+
+            /*
+                const start     = performance.now();    // say 1000ms
+                // rAF fires almost immediately
+                const timestamp = 1016ms                // first frame ~16ms later
+                const elapsed   = 1016 - 1000 = 16ms    // not exactly 0
+            */
+            const elapsed  = timestamp - start;
+            /*
+                - Converts elapsed time to a value between 0 and 1
+                - elapsed / duration = how far through the animation
+                ( e.g. 1500 / 3000 = 0.5 = halfway )
+                - Math.min( ..., 1 ) caps it at 1 so it never exceeds 100% — prevents counter
+                going past $1,000,000
+            */
+            const progress = Math.min( elapsed / duration, 1 );
+            
+            // ease out the animation
+            /*
+                - Applies an ease out curve to the linear progress value
+                - Without this the counter increments at a constant speed — feels mechanical
+                - With this it starts fast and slows down near $1,000,000 — feels natural
+
+                Math.pow( 1 - progress, 3 ) — cubes that inverted value :
+                progress = 0.0 → Math.pow( 1.0, 3 ) = 1.0
+                progress = 0.5 → Math.pow( 0.5, 3 ) = 0.125
+                progress = 1.0 → Math.pow( 0.0, 3 ) = 0.0
+                
+                Why cube it (³)?
+
+                Math.pow( x, 2 ) — gentle ease out
+                Math.pow( x, 3 ) — more pronounced ease out
+                Math.pow( x, 4 ) — very strong ease out
+            */
+            const eased  = 1 - Math.pow( 1 - progress, 3 );
+            
+            // round to nearest 10k
+            /*
+                eased * target — converts the eased progress to a dollar amount :
+
+                eased = 0.0   → 0.0   * 1000000 = $0
+                eased = 0.5   → 0.5   * 1000000 = $500,000
+                eased = 0.875 → 0.875 * 1000000 = $875,000
+                eased = 1.0   → 1.0   * 1000000 = $1,000,000
+
+                / 10000 — divides by your increment size :
+
+                $875,000 / 10000 = 87.5
+
+                Math.round( ... ) — rounds to nearest whole number :
+
+                87.5 → 88
+
+                * 10000 — multiplies back to get the rounded increment :
+
+                88 * 10000 = $880,000
+
+                Why divide then multiply?
+
+                It's a rounding trick to snap to the nearest $10,000
+                Without it you'd get values like $873,421 — not clean increments
+                With it you only ever see $0, $10,000, $20,000... up to $1,000,000
+            */
+            // no complex rounding needed for smaller numbers
+            const current = Math.round( eased * target );
+
+            // current will always be a number between 1 and 50 so use current
+            counterRefHappyCustomers.current.textContent = `${ current }+`;
+
+            // ==============================
+            // code block 4
+            // ==============================
+
+            // keep the animation going as long as progress is less than 1 and once progress
+            // equals 1 then stop the animation
+            if ( progress < 1 ) {
+
+                rafId = requestAnimationFrame( animate );
+
+            } // end of if ()
+
+        }; // end of the animate function
+
+        // ==============================
+        // code block 5
+        // ==============================
+
+        // trigger the animation and remember, requestAnimationFrame eliminated the flash on my
+        // iPhone for the infinite scroll by controlling the reset mathematically instead
+        // of letting the CSS handle it
+        rafId = requestAnimationFrame( animate );
+
+        // ==============================
+        // code block 6
+        // ==============================
+
+        // cancel the animation frame on cleanup, so it never fires against a stale
+        // ref in the first place:
+        return () => {
+
+            if ( rafId ) cancelAnimationFrame( rafId );
+
+        }; // end of return()
+
+    }, [ isIntersecting ] ); // end of useEffect 4
+
+    // ==============================
+    // useEffect 5
+    // ==============================
+
+    // ==============================
     // purpose - create a counter animation for 10 year warranty
     // ==============================
 
@@ -787,10 +935,10 @@ export default function ByTheNumbersComponent() {
 
         }; // end of return()
     
-    }, [ isIntersecting ] ); // end of useEffect 4
+    }, [ isIntersecting ] ); // end of useEffect 5
 
     // ==============================
-    // useEffect 5
+    // useEffect 6
     // ==============================
 
     // ==============================
@@ -919,7 +1067,7 @@ export default function ByTheNumbersComponent() {
         // of letting the CSS handle it
         requestAnimationFrame( animate );
     
-    }, [ isIntersecting ] ); // end of useEffect 5
+    }, [ isIntersecting ] ); // end of useEffect 6
 
     // ==============================
     // useLoader();
@@ -995,6 +1143,14 @@ export default function ByTheNumbersComponent() {
                             <p>Years experience</p>
 
                             <div ref={ counterRefYearsExperience    }></div>
+
+                        </div>
+
+                        <div>
+
+                            <p>Happy customers</p>
+
+                            <div ref={ counterRefHappyCustomers }></div>
 
                         </div>
 

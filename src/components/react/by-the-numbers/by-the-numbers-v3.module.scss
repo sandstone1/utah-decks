@@ -126,13 +126,13 @@
             grid-area : div1;
     
             display : grid;
-            width   : min( 144.0rem, 100% ); // needed in order to left justify the h2
+            width   : min( 192.0rem, 100% ); // needed in order to left justify the h2
 
-            @media all and ( max-width : $bp-1280 ) {
+            @media all and ( max-width : $bp-1440 ) {
 
                 width : min( 80.0rem, 100% ); // needed in order to left justify the h2
             
-            } // end of container > bp-1280
+            } // end of container > bp-1440
     
             // ==============================
             // container > div 1 > div 1 > h2
@@ -148,11 +148,11 @@
 
                     color : var( --gold-42 );
 
-                } // end of container > div 1 > div 1 > h2 > span
+                } // end of container > div1 > div1 > h2 > span
     
-            } // end of container > div 1 > div 1 > h2
+            } // end of container > div1 > div1 > h2
     
-        } // container > div 1 > div 1
+        } // container > div1 > div1
 
         // ==============================
         // container > div 1 > div 2
@@ -166,19 +166,20 @@
             display         : flex;
             justify-content : space-between;
             gap             : 2.0rem 0;
-            width           : min( 144.0rem, 100% ); // needed in order to left justify the div1 - div4
+            width           : min( 192.0rem, 100% ); // needed in order to left justify the div1 - div4
 
-            @media all and ( max-width : $bp-1280 ) {
+            @media all and ( max-width : $bp-1440 ) {
 
                 display               : grid;
                 grid-template-columns : 1fr 1fr;
                 gap                   : 4.0rem 4.0rem;
                 grid-template-areas   : "div1 div2"
-                                        "div3 div4";
+                                        "div3 div4"
+                                        "div5 .";
 
                 width : min( 80.0rem, 100% ); // needed in order to left justify the div1 - div4
             
-            } // end of container > bp-1280
+            } // end of container > bp-1440
     
             @media all and ( max-width : $bp-768 ) {
 
@@ -188,7 +189,8 @@
                 grid-template-areas   : "div1"
                                         "div2"
                                         "div3"
-                                        "div4";
+                                        "div4"
+                                        "div5";
             
             } // end of container > bp-768
 
@@ -205,7 +207,7 @@
 
                     @include h2-light-title;
 
-                } // end of container > div 1 > div 2 > div 1 > div 1
+                } // end of container > div1 > div2 > div1 > div1
 
                 > p {
 
@@ -213,9 +215,9 @@
 
                     font-weight : 400;
 
-                } // end of container > div 1 > div 2 > div 1 > p
+                } // end of container > div1 > div2 > div1 > p
 
-            } // end of container > div 1 > div 2 > div 1
+            } // end of container > div1 > div2 > div1
 
             // ==============================
             // container > div 1 > div 2 > div 2
@@ -230,7 +232,7 @@
 
                     @include h2-light-title;
 
-                } // end of container > div 1 > div 2 > div 2 > div 1
+                } // end of container > div1 > div2 > div2 > div1
 
                 > p {
 
@@ -238,9 +240,9 @@
 
                     font-weight : 400;
 
-                } // end of container > div 1 > div 2 > div 2 > p
+                } // end of container > div1 > div2 > div2 > p
     
-            } // end of container > div 1 > div 2 > div 2
+            } // end of container > div1 > div2 > div2
 
             // ==============================
             // container > div 1 > div 2 > div 3
@@ -255,7 +257,9 @@
 
                     @include h2-light-title;
 
-                } // end of container > div 1 > div 2 > div 3 > div 1
+                    color : var( --gold-42 );
+
+                } // end of container > div1 > div2 > div3 > div 1
 
                 > p {
 
@@ -263,9 +267,9 @@
 
                     font-weight : 400;
 
-                } // end of container > div 1 > div 2 > div 3 > p
+                } // end of container > div1 > div2 > div3 > p
     
-            } // end of container > div 1 > div 2 > div 3
+            } // end of container > div1 > div2 > div3
 
             // ==============================
             // container > div 1 > div 2 > div 4
@@ -276,15 +280,11 @@
                 // parent
                 grid-area : div4;
 
-                width : 148.61px;
-
                 > div {
 
                     @include h2-light-title;
 
-                    color : var( --gold-42 );
-
-                } // end of container > div 1 > div 2 > div 4 > div 1
+                } // end of container > div1 > div2 > div4 > div1
 
                 > p {
 
@@ -292,13 +292,40 @@
 
                     font-weight : 400;
 
-                } // end of container > div 1 > div 2 > div 4 > p
+                } // end of container > div1 > div2 > div4 > p
     
-            } // end of container > div 1 > div 2 > div 4
+            } // end of container > div1 > div2 > div4
 
-        } // container > div 1 > div 2
+            // ==============================
+            // container > div 1 > div 2 > div 5
+            // ==============================
+    
+            > div:nth-child( 5 ) {
 
-    } // end of container > div 1
+                // parent
+                grid-area : div5;
+
+                width : 148.61px;
+
+                > div {
+
+                    @include h2-light-title;
+
+                } // end of container > div1 > div2 > div5 > div1
+
+                > p {
+
+                    @include h8-light-title;
+
+                    font-weight : 400;
+
+                } // end of container > div1 > div2 > div 5 > p
+    
+            } // end of container > div1 > div2 > div5
+
+        } // container > div1 > div2
+
+    } // end of container > div1
 
 } // container
 
