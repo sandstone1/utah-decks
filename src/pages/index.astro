@@ -151,32 +151,6 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
         </div>
 
 
-        {
-            /*
-                // ==============================
-                // container > div 2
-                // ==============================
-            */
-        }
-        <ContactUsComponent client:visible />
-
-        {
-            /*
-                // ==============================
-                // container > div 3
-                // ==============================
-            */
-        }
-        <ByTheNumbersComponent client:visible />
-
-        {
-            /*
-                // ==============================
-                // container > div 4
-                // ==============================
-            */
-        }
-        <ServicesComponent client:visible />
 
         {
             /*
@@ -229,13 +203,12 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
     @use '../styles/_mixins.scss' as *;
     @use '../styles/_responsive_breakpoints.scss' as *;
 
-
     .hero-container {
 
         // position : relative;
-        //width    : 100%;
-        //height   : 100vh;
-        //overflow : hidden;
+        width    : 100%;
+        height   : 100vh;
+        overflow : hidden;
 
     }
 
