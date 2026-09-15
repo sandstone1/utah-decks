@@ -7,7 +7,7 @@
 // import in the Layout component
 import Layout from '../layouts/main-layout.astro';
 // import in the Hero component
-import HeroComponent from '../components/react/hero-image/index/hero-image-v5';
+import HeroComponent from '../components/react/hero-image/index/hero-image-v6';
 // import in the By The Numbers component
 import ByTheNumbersComponent from '../components/react/by-the-numbers/by-the-numbers-v3';
 // import in the WhatWeDo component
@@ -126,11 +126,29 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
             */
         }
 
+        <!-- new wrapper -->
+        <div class="hero-container">
+
+            <!-- native images and this will be found immediately inside the HTML and painted right away -->
+            <img
+                src={ img2560 }
+                srcset={ srcset }
+                sizes="( max-width : 480px ) 480px, ( max-width : 1032px ) 1032px, ( max-width : 1376px ) 1376px, ( max-width : 1728px ) 1728px, 2560px"
+                alt="Beautiful modern custom deck construction layout"
+                class="hero-native-bg"
+                fetchpriority="high"
+                loading="eager"
+                
+            />
+
+            <!-- provide the overlay -->
+            <div class="hero-overlay"></div>
 
             <!-- images have been stripped out and only the text survives but
             everything else stays the same -->
             <HeroComponent client:load />
             
+        </div>
 
         {
             /*
