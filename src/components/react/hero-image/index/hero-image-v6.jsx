@@ -284,6 +284,10 @@ export default function HeroImageComponent() {
         // only run GSAP on client side and good safety check
         if ( typeof window === 'undefined' ) return;
 
+        // push our text math to the next rendering frame and this should allow our
+        // background image to paint immediately on frame 2/3
+        requestAnimationFrame( () => {
+
         /*
             document.fonts.ready.then() :
 
@@ -649,7 +653,9 @@ export default function HeroImageComponent() {
 
             } // end of if else
 
-        } ); document.fonts.ready.then()
+        } ); // end of document.fonts.ready.then()
+
+        } ); // end of requestAnimationFrame( () => {} )
 
         // ==============================
         // end of GSAP code
