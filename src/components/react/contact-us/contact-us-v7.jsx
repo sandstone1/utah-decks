@@ -10,7 +10,7 @@ import ContactInformationComponent from '../contact/contact-information-v6';
 // import in the Blob Blue background component
 import BlobComponentOne from '../animations/blob/blob-v12';
 // import in our stylesheet
-import styles from './contact-us-v6.module.scss';
+import styles from './contact-us-v7.module.scss';
 
 
 
@@ -44,7 +44,7 @@ export default function ContactUsComponent() {
     // ==============================
 
     const wrapperRef = useRef( null );
-    const h2Ref      = useRef( null );
+    const h1Ref      = useRef( null );
     const div1Ref    = useRef( null );
     const div3Ref    = useRef( null );
 
@@ -59,7 +59,7 @@ export default function ContactUsComponent() {
     // ==============================
     // useEffect();
     // ==============================
-
+/*
     // ==============================
     // useEffect 1
     // ==============================
@@ -217,7 +217,7 @@ export default function ContactUsComponent() {
                                     // h2
                                     // ==============================
 
-                                    h2Ref.current.animate(
+                                    h1Ref.current.animate(
 
                                         [
 
@@ -242,7 +242,7 @@ export default function ContactUsComponent() {
                         
                                         }
 
-                                    ); // end of h2Ref.current.animate()
+                                    ); // end of h1Ref.current.animate()
 
                                     // ==============================
                                     // div 1
@@ -321,7 +321,7 @@ export default function ContactUsComponent() {
                                     // h2
                                     // ==============================
 
-                                    h2Ref.current.animate(
+                                    h1Ref.current.animate(
 
                                         [
 
@@ -346,7 +346,7 @@ export default function ContactUsComponent() {
                         
                                         }
 
-                                    ); // end of h2Ref.current.animate()
+                                    ); // end of h1Ref.current.animate()
 
                                     // ==============================
                                     // div 1
@@ -425,7 +425,7 @@ export default function ContactUsComponent() {
                                     // h2
                                     // ==============================
 
-                                    h2Ref.current.animate(
+                                    h1Ref.current.animate(
 
                                         [
 
@@ -450,7 +450,7 @@ export default function ContactUsComponent() {
                         
                                         }
 
-                                    ); // end of h2Ref.current.animate()
+                                    ); // end of h1Ref.current.animate()
 
                                     // ==============================
                                     // div 1
@@ -549,7 +549,7 @@ export default function ContactUsComponent() {
         // }, 100 );
 
     }, [] ); // end of useEffect 1
-
+*/
     // ==============================
     // useLoader();
     // ==============================
@@ -588,7 +588,23 @@ export default function ContactUsComponent() {
                 }
                 <div>
 
-                    <h2 ref={ h2Ref }>Request <span style={ { color : 'var( --blue-77 )' } }>Service</span></h2>
+                    <h1 ref={ h1Ref } class="contact-page-h1">Request <span style={ { color : 'var( --blue-77 )' } }>Service</span></h1>
+
+                    <picture>
+                        <source 
+                            srcset="/images/underline_gray_870_02_512.png"
+                            type="image/png"
+                        />
+                        <img
+                            class="contact-page-image-underline"
+                            src="/images/underline_gray_870_02_512.png"
+                            width={ 512 }
+                            height={ 48 }
+                            loading="eager"
+                            fetchpriority="high"
+                            alt="Gray underline"
+                        />
+                    </picture>
 
                 </div>
 

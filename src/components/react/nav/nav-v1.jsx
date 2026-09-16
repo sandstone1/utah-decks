@@ -62,7 +62,7 @@ import HamburgerMenuComponent from '../hamburger-menu/hamburger-menu.jsx';
 // import in the Side Menu component
 import SideMenuComponent from '../side-menu/side-menu.jsx';
 // import in the Logo component
-import LogoComponent from '../logo/logo-canyon-sky-stem-cells-stars.jsx';
+import LogoComponent from '../logo/logo-utah-decks-mountain-v1.jsx';
 // import in our stylesheet
 import styles from './nav-v1.module.scss';
 
@@ -101,9 +101,9 @@ export default function NavComponent() {
 
     // use the useRef(); hook to create a reference to a DOM element and let's start by
     // initializing the following useRef variable(s)
-    const navContainerRef  = useRef( null );
-    const contactRef       = useRef( null );
-    const hamburgerMenuRef = useRef( null );
+    const navContainerRef   = useRef( null );
+    const requestServiceRef = useRef( null );
+    const hamburgerMenuRef  = useRef( null );
 
     // ==============================
     // create DOM reference
@@ -276,7 +276,7 @@ export default function NavComponent() {
                             <LogoComponent />
                         </div>
                         <h2>
-                            Utah Decks & Pergolas
+                            Utah Decks & <span>Pergolas</span>
                         </h2>
                     </a>
 
@@ -298,7 +298,7 @@ export default function NavComponent() {
                             // ==============================
 
                             // ==============================
-                            // 1 - contact
+                            // 1 - request service
                             // 2 - hamburger menu ( conditionally shown )
                             // 3 - side menu ( conditionally shown )
                             // ==============================
@@ -309,22 +309,23 @@ export default function NavComponent() {
 
                         {
                             /*
-                                show the CONTACT tab only if the user's screen size is greater than 1376px
+                                show the REQUEST SERVICE tab only if the user's screen size is greater than 1376px
                             */
                         }
                         {
                             /*
                                 // ==============================
-                                // container > nav > div ( nav container right ) > ul > li ( contact )
+                                // container > nav > div ( nav container right ) > ul > li ( request service )
                                 // ==============================
-
+                            */
+                        }
                         <li
-                            className={ styles.navContainerRightContact }
-                            ref={ contactRef }
+                            className={ styles.navContainerRightRequestService }
+                            ref={ requestServiceRef }
                         >
                             <a
                                 // provide the fallback and accessibility with href='/'
-                                href='/contact'
+                                href='/request-service'
                                 onClick={ ( e ) => {
 
                                     handleButtonClick
@@ -354,16 +355,13 @@ export default function NavComponent() {
                                     if ( categoryPagePicture        ) categoryPagePicture.style.viewTransitionName        = 'none';
         
                                     // navigate to the home page
-                                    navigate( '/contact' );
+                                    navigate( '/request-service' );
         
                                 } }
                             >
-                                Contact
+                                Request Service
                             </a>
                         </li>
-
-                            */
-                        }
 
                         {
                             /*

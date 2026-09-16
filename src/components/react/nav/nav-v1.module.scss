@@ -166,7 +166,7 @@
             display               : grid;
             grid-template-columns : auto auto;
             align-items           : center;
-            grid-gap              : 0 0;
+            grid-gap              : 0 2.0rem;
 
             // active, focus selectors for the a tag
             &:active, &:focus {
@@ -198,7 +198,7 @@
 
             > div {
 
-                margin : -0.6rem -2.0rem 0 0; // since our div or box is 15.0 rem by 15.0 rem and we
+                margin : 0 -1.0rem 0 0; // since our div or box is 15.0 rem by 15.0 rem and we
                 // could not adjust the box size without affecting the size of the stars, we
                 // did a negative right margin and this moved the Enchanting Apps text over to
                 // the left and gave the 2 elements better spacing
@@ -220,7 +220,7 @@
     
                 font-family    : var( --font-display-1 );
                 font-size      : 2.75rem;
-                font-weight    : 300;
+                // font-weight    : 300;
                 // font-weight    : 350;
                 font-weight    : 800;
                 color          : var( --gray-225 );
@@ -232,19 +232,23 @@
                 // background : var( --purple-400 );
                 // background : var( --black );
                 // background : var( --blue-85-2 );
+                // background : var( --brown-500 );
+                //background : rgba( 0, 0, 0, 0.30 );
+
+
                 outline    : none;
 
                 @media all and ( max-width : $bp-480 ) {
 
-                    background : var( --blue-84 );
-             
-                 } // end of container > div1 > a > bp-480
+                    // background-color : var( --blue-84 );
+                
+                } // end of container > div1 > a > bp-480
 
-                @media all and ( max-width : 404px ) {
+                @media all and ( max-width : 438px ) {
 
                     text-align: center;
              
-                 } // end of container > div1 > a > 404px
+                 } // end of container > div1 > a > 438px
 
                 > span {
 
@@ -254,13 +258,13 @@
 
                     border-radius : 4px;
     
-                    font-family : var( --font-display-1 );
-                    font-size   : 2.75rem;
-                    font-weight : 800;
-                    color       : var( --gray-355 );
+                    font-family    : var( --font-display-1 );
+                    font-size      : 2.75rem;
+                    font-weight    : 800;
+                    // color       : var( --gray-355 );
                     // color       : var( --gray-342 );
-                    color       : var( --blue-62-1 );
-                    color       : var( --gray-225 );
+                    // color       : var( --blue-62-1 );
+                    color          : var( --gray-225 );
                     letter-spacing : 2px;
 
                     background : var( --blue-260 );
@@ -269,10 +273,15 @@
                     // background : var( --blue-84 );
                     // background : var( --blue-84 );
 
-                    @media all and ( max-width : 404px ) {
+                    @media all and ( max-width : 438px ) {
 
-                       display : block;
-                       margin  : 0;
+                        display : block;
+                        margin  : 0;
+                        padding : 0;
+
+                        text-align : center;
+
+                        background : var( --blue-800 );
                 
                     } // end of container > div1 > a > 404px
     
@@ -365,10 +374,10 @@
             } // end of container > div2 > ul > li > a
     
             // ==============================
-            // contact menu item
+            // request service menu item
             // ==============================
 
-            > .navContainerRightContact {
+            > .navContainerRightRequestService {
 
                 display : block;
 

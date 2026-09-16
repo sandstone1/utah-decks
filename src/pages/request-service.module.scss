@@ -1,0 +1,139 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../styles/_mixins.scss' as *;
+@use '../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+
+// ==============================
+// keyframes
+// ==============================
+
+// ==============================
+// purpose : slide up animation on page load
+// ==============================
+
+@keyframes slideUpAnimation {
+
+    from {
+        opacity   : 0;
+        translate : 0 1.25rem;
+    }
+
+    to {
+        opacity   : 1;
+        translate : 0 0;
+    }
+
+} // end of slideUpAnimation
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// contact page container
+// ==============================
+
+.contactPageContainer {
+
+    // parent
+    grid-column : 1 / -1; // center the contact page against the <main> grid
+
+    // children
+    display               : grid;
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // remember, there are 2 things we want to accomplish :
+    // 1 - allow the wrapper div to position against the parent div and thereby
+    // shrink as needed
+    // 2 - we want to center the wrapper div ( see below for details )
+    // ==============================
+
+    // ==============================
+    // " grid-template-columns " is needed so that the wrapper div ( i.e. child ) can position
+    // against the parent ( i.e. this div ) by using " grid-column : 2 / 22; " and this allows
+    // the background declared below to span across the entire container or the entire site and
+    // this also allows the wrapper div to dynamically contain its children within the
+    // " grid-column : 2 / 22; " context so that as the screen size shrinks the wrapper div
+    // container and all its children containers or divs will automatically shrink as well
+    // ==============================
+
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    justify-items         : center;
+
+    // ==============================
+    // background
+    // ==============================
+
+    background : var( --yellow-20 );
+    // background : var( --gray-230 );
+    // background : var( --gray-872 );
+    // background-image : conic-gradient( from 0deg at center, var( --green-30 ) 50%, var( --blue-80 ) 0% );
+
+    // ==============================
+    // end of background
+    // ==============================
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 3 ( Google map )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 3 ) {
+
+        // parent
+        grid-column : 1 / -1; // position against the parent
+
+    } // end of container > div3
+
+} // end of container
+

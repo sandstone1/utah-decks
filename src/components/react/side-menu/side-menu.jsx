@@ -1435,7 +1435,7 @@ export default function SideMenuComponent( { resetShowSideMenu, showSideMenu } )
                         </a>
                     </li>
 
-                    { /* show the contact at all times
+                    { // show the contact at all times
 
                             <li>
                                 <a
@@ -1479,18 +1479,18 @@ export default function SideMenuComponent( { resetShowSideMenu, showSideMenu } )
                                             await new Promise( resolve => setTimeout( resolve, side_menu_cross_fade_duration ) );
 
                                             // now navigate, after the slide has visually completed
-                                            navigate( '/contact' );
+                                            navigate( '/request-service' );
                                         } 
                                     } // reset showSideMenu or close the side menu
                                 >
                                     <span>
                                         <FaAddressCard style={ { verticalAlign : '-3.5px', fontSize : '2.4rem', marginRight : '2.0rem' } } />
                                     </span>
-                                    Contact
+                                    Request Service
                                 </a>
                             </li>
 
-                        */
+                        
                     }
 
                 </ul>

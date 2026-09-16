@@ -1,0 +1,106 @@
+---
+
+
+// import in the Layout component
+import Layout from '../layouts/main-layout.astro';
+// import in the Hero header component
+import HeroHeaderComponent from '../components/react/hero/hero-header';
+// import in the Contact Us component
+import ContactUsComponent from '../components/react/contact-us/contact-us-v7';
+// import in the Contact Form Postmark Badge component
+// import ContactFormPostmarkComponent from '../components/react/contact/contact-form-other-postmark-badge-long-v3';
+// import in the Contact Information component
+// import ContactInformationComponent from '../components/react/contact/contact-information-v5';
+// import in the Where You Can Find Us component
+import WhereYouCanFindUsComponent from '../components/react/where-you-can-find-us/where-you-can-find-us-v4';
+// import in the Blob Blue background component
+import BlobComponentOne from '../components/react/animations/blob/blob-v12';
+// import in the Blob Blue background component
+import BlobComponentTwo from '../components/react/animations/blob/blob-v13';
+// import in our stylesheet
+import styles from './request-service.module.scss';
+
+---
+
+<Layout>
+
+    {
+        /*
+            page specific meta tags
+        */
+    }
+    <meta slot="head" name="keywords" content='SEO, search engine optimization, local SEO, AI agent development, AI automation, web development, website design, Lehi Utah, Utah County, Salt Lake City' />
+    <meta slot="head" name="description" content='Struggling to get found online? Enchanting Apps specializes in digital marketing, website development, and AI agents that drive real results for your business.' />
+    <meta slot="head" property="og:image" content='/images/rocket_01_300.jpeg' />
+    <meta slot="head" property="og:title" content='Contact Us | Enchanting Apps' />
+    <meta slot="head" property="og:description" content='Struggling to get found online? Enchanting Apps specializes in digital marketing, website development, and AI agents that drive real results for your business.' />
+    <meta slot="head" property="og:site_name" content='Enchanting Apps' />
+    <meta slot="head" property="og:url" content='https://enchantingapps.com/contact' />
+    <meta slot="head" property="og:type" content='website' />
+    <meta slot="head" property="og:locale" content="en_US" />
+    <link slot="head" rel="canonical" href="https://enchantingapps.com/contact" />
+    <title slot="head">Contact Us | Enchanting Apps</title>
+
+    {
+        /*
+            // ==============================
+            // container
+            // ==============================
+        */
+    }
+
+    <div class={ styles.contactPageContainer }>
+
+        {
+            /*
+                // ==============================
+                // container > ( hero component )
+                // ==============================
+            */
+        }
+        <HeroHeaderComponent client:load />
+
+        {
+            /*
+                // ==============================
+                // container >( contact us component )
+                // ==============================
+            */
+        }
+        <ContactUsComponent client:load />
+
+        {
+            /*
+                // ==============================
+                // container > div 3 ( Google maps )
+                // ==============================
+
+                <WhereYouCanFindUsComponent client:visible />
+            */
+        }
+        <div>
+
+        </div>
+
+        {
+            /*
+                // ==============================
+                // container ( square or blob )
+                // ==============================
+            */
+        }
+        <BlobComponentOne client:visible />
+
+        {
+            /*
+                // ==============================
+                // container ( square or blob )
+                // ==============================
+            */
+        }
+        <BlobComponentTwo client:visible />
+
+    </div>
+
+</Layout>
+

@@ -934,7 +934,7 @@
             // display : none; // we initially need to hide div2
             display : grid;
 
-            border        : 0.075rem solid var( --gold-42 );
+            border        : 0.15rem solid var( --gold-42 );
             border-radius : 0.6rem;
 
             // opacity : 0;
@@ -948,11 +948,13 @@
                 font-size      : 1.85rem;
                 font-weight    : 600;
                 color          : var( --gold-42 );
+                // color          : var( --black ); 
                 letter-spacing : 1px;
                 text-align     : center;
 
                 background : none;
-                background : rgba( 0, 0, 0, 0.20 );
+                background : rgba( 0, 0, 0, 0.50 );
+                // background : var( --gold-42 );
 
                 transition : all 0.2s ease-out; // provide for a nice hover animation
 

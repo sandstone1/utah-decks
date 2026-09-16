@@ -2,7 +2,7 @@
 
 
 // import in the Logo component
-import LogoComponent from '../logo/logo-enchanting-apps-stars';
+import LogoComponent from '../logo/logo-utah-decks-mountain-v2';
 // import in the Highlight text component link 1
 import HighlightTextComponentLink1 from './highlight-text-link-1';
 // import in the Highlight text component link 2
