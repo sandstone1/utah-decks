@@ -332,7 +332,7 @@ export default function NavComponent() {
         
                                     // stop the default browser navigation so navigate() handles it instead
                                     e.preventDefault();
-        
+
                                     // remove the view transition names before navigating back to the home page
                                     // and this prevents the morph animation from showing up when navigating
                                     // back to the home page

@@ -85,9 +85,9 @@ export default function HighlightTextComponentLink2() {
                         // ==============================
                     */
                 }
-                <a href="/contact">
-                    <span data-content="Contact" aria-hidden="true"></span>
-                    Contact
+                <a href="/request-service">
+                    <span data-content="Request Service" aria-hidden="true"></span>
+                    Request Service
                 </a>
 
             </div>

@@ -2,7 +2,7 @@
 
 
 // import in the Logo component
-import LogoComponent from '../logo/logo-utah-decks-mountain-v2';
+import LogoComponent from '../logo/logo-utah-decks-mountain-v1';
 // import in the Highlight text component link 1
 import HighlightTextComponentLink1 from './highlight-text-link-1';
 // import in the Highlight text component link 2
@@ -175,6 +175,10 @@ export default function Footer() {
                         </div>
 
                         <div>
+                            <HighlightTextComponentLink2 />
+                        </div>
+
+                        <div>
                             <HighlightTextComponentLink3 />
                         </div>
 
@@ -254,10 +258,10 @@ export default function Footer() {
                 }
                 <div>
 
-                    <p>Copyright &copy; 2026 by Utah Decks and Pergolas LLC.</p>
+                    <p>Copyright &copy; 2026 by Utah Decks & Pergolas LLC.</p>
                     <p>All rights reserved.</p>
 
-                    <p>Copyright &copy; 2026 by Utah Decks and Pergolas LLC. All rights reserved.</p>
+                    <p>Copyright &copy; 2026 by Utah Decks & Pergolas LLC. All rights reserved.</p>
 
                 </div>
 

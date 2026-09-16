@@ -587,15 +587,21 @@
         // the same and therefore container > div2 and container > div3 do move down when the div2
         // slides in from the left since div2 is taller than div1
 
-        @media all and ( min-width: 376px ) and ( max-width: 382px ) {
+        @media all and ( min-width: 1441px ) and ( max-width: 2560px ) {
 
-            min-height: 438.19px !important; // !important likely needed to override the grid/JS-calculated height for this range only
+            min-height: 275.19px !important; // !important likely needed to override the grid/JS-calculated height for this range only
 
-        }// container > div 1 > 376px - 382px
+        }// container > div 1 > 1441x - 2560px
 
-        @media all and ( min-width: 372px ) and ( max-width: 375px ) {
+        @media all and ( max-width: 400px ) {
 
-            min-height: 423.07px !important; // !important likely needed to override the grid/JS-calculated height for this range only
+            min-height: 379.05px !important; // !important likely needed to override the grid/JS-calculated height for this range only
+
+        }// container > div 1 > 420px - 439px
+
+        @media all and ( max-width: 324px ) {
+
+            min-height: 452.64px !important; // !important likely needed to override the grid/JS-calculated height for this range only
 
         }// container > div 1 > 376px - 382px
 
@@ -855,14 +861,14 @@
     
         } // end of container > div2 > bp-1440
 
-        @media all and ( max-width : $bp-620 ) {
+        @media all and ( max-width : $bp-768 ) {
 
             display               : grid;
             align-content         : center;
             justify-content       : center;
             gap                   : 4.0rem 0;
     
-        } // end of container > div2 > bp-620
+        } // end of container > div2 > bp-768
 
         // ==============================
         // container > div 2 > div 1

@@ -746,13 +746,18 @@ export default function HeroImageComponent() {
                                 // className="first-hero-h1"
                                 // renders as: class="first-hero-h1"
                                 // ==============================
+
+                                Over 300 happy customers. Custom decks, built right.
+                                <span style={ { color : 'var( --gold-42 )' } }>7+ years</span>{ ' ' }
+                                serving Salt Lake City, Utah and Davis counties.
                             */
                         }
-                        <h1 className="first-hero-h1">Deck Builder in Draper, Utah</h1>
+                        <h1 className="first-hero-h1">Trusted Deck Builder in Northern Utah</h1>
 
                         <h5 className="first-hero-h5">
-                            Custom decks, built right. <span style={ { color : 'var( --gold-42 )' } }>7+ years</span>{ ' ' }
-                            serving Salt Lake City, Utah and Davis counties.
+                            <span style={ { color : 'var( --gold-42 )' } }>300+ happy
+                            customers</span> and counting. 7+ years building custom decks
+                            along the Wasatch Front.
                         </h5>
 
                     </div>
@@ -796,7 +801,7 @@ export default function HeroImageComponent() {
                     <div>
                         <a href="#">
                             <FaRegCalendarCheck style={ { verticalAlign: '-3.0px', fontSize: '2.25rem', margin: '0 1.0rem 0 0' } } />
-                            Free Estimate Coming Soon
+                            Free Estimate
                         </a>
                     </div>
 
