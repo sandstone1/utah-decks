@@ -30,8 +30,8 @@
     // the hamburger menu item a nice large clickable box ( remember the svg itself is
     // 50px * 50px ) 
     height   : 100px;
-    z-index  : 3; // remember, the side-menu container has a z-index of 2; therefore,
-    // we need to give the hamburger menu container a z-index greater than 2 in order
+    z-index  : 5; // remember, the side-menu container has a z-index of 4; therefore,
+    // we need to give the hamburger menu container a z-index greater than 4 in order
     // for the hamburger menu to be place on top of the side menu
     padding  : 2px 0 0 30px; // for whatever reason, I had to push the hamburger menu item
     // down a little in order to get it pefectly centered with the Next logo and remember
