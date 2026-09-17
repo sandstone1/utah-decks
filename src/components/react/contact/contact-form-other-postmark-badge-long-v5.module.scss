@@ -794,6 +794,18 @@
 
             } // end of container > form > button container > button
 
+            > p {
+
+                // display : none;
+
+                @include text-small-dark;
+
+                padding : 4.0rem 0 0 0;
+
+                font-size : 1.4rem;
+
+            } // end of container > form > button container > p
+
         } // end of container > form > button container
 
     } // end of container > form

@@ -11,16 +11,13 @@
 
 
 
-
-
-
 // ==============================
-// hero header container
+// hero header trust container
 // ==============================
 
-.heroHeaderContainer {
+.heroHeaderTrustContainer {
 
-    height : 160px; // match the height of the header
+    height : 20px; // match the height of the header
 
     // ==============================
     // Image hero element that lays on behind the header element and whatever page we are on
@@ -32,13 +29,8 @@
     right    : 0;
     bottom   : 0;
 
-    background : linear-gradient( to top, rgba( 0, 125, 240, 1 ) 0%, rgba( 0, 91, 234, 1 ) 100% ); // better for shorter screens
-
-    @media all and ( max-width : 438px ) {
-
-        height : 205px;
-
-    } // end of container > 426px
+    // background : linear-gradient( to top, rgba( 0, 125, 240, 1 ) 0%, rgba( 0, 91, 234, 1 ) 100% ); // better for shorter screens
+    background : black;
 
 } // end of container
 

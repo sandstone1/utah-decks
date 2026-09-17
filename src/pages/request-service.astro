@@ -17,6 +17,12 @@ import WhereYouCanFindUsComponent from '../components/react/where-you-can-find-u
 import BlobComponentOne from '../components/react/animations/blob/blob-v12';
 // import in the Blob Blue background component
 import BlobComponentTwo from '../components/react/animations/blob/blob-v13';
+// import in the Material Design phone icon
+import { MdOutlinePhoneAndroid } from "react-icons/md";
+// import in the Bootstrap shield icon
+import { BsShieldCheck } from "react-icons/bs";
+// import in the Font Awesome star icon
+import { FaRegStar } from "react-icons/fa6";
 // import in our stylesheet
 import styles from './request-service.module.scss';
 
@@ -64,6 +70,46 @@ import styles from './request-service.module.scss';
             */
         }
         <HeroHeaderComponent client:load />
+
+
+        {
+            /*
+                // ==============================
+                // container > div 2 ( trust signals )
+                // ==============================
+            */
+        }
+        <div class={ styles.heroHeaderTrustContainer }>
+
+            <div>
+
+                <MdOutlinePhoneAndroid style={ { verticalAlign : '-5.0px', margin : '0 -1.1rem 0 0', fontSize : '2.2rem' } } />
+
+                <a
+                    href="tel:385-425-2299"
+                >
+                    &#40;385&#41; 425&#45;2299
+                </a>
+
+            </div>
+
+            <div>
+
+                <BsShieldCheck style={ { verticalAlign: '-5.5px', fontSize: '2.15rem', margin: '0 1.0rem 0 0' } } />
+
+                <span>Licensed & Insured</span>
+
+            </div>
+
+            <div>
+
+                <FaRegStar style={ { verticalAlign: '-5.5px', fontSize: '2.3rem', margin: '0 1.0rem 0 0' } } />
+
+                <span>300+ Happy Customers</span>
+
+            </div>
+
+        </div>
 
         {
             /*

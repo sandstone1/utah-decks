@@ -13,10 +13,16 @@ import ContactFormPostmarkComponent from '../components/react/contact/contact-fo
 import BlobComponentOne from '../components/react/animations/blob/blob-v12';
 // import in the Blob Blue background component
 import BlobComponentTwo from '../components/react/animations/blob/blob-v13';
+// import in the Material Design phone icon
+import { MdOutlinePhoneAndroid } from "react-icons/md";
 // import in the Font Awesome phone icon
 import { FaPhoneAlt } from "react-icons/fa";
 // import in the Font Awesome clock icon
 import { FaClock } from "react-icons/fa6";
+// import in the Bootstrap shield icon
+import { BsShieldCheck } from "react-icons/bs";
+// import in the Font Awesome star icon
+import { FaRegStar } from "react-icons/fa6";
 // import in our stylesheet
 import styles from './free-estimate.module.scss';
 
@@ -33,14 +39,14 @@ import styles from './free-estimate.module.scss';
     <meta slot="head" name="keywords" content='custom deck builder Salt Lake City, deck builder Utah, custom deck builder Draper Utah, composite deck installation Utah, deck contractor near me, Trex deck installer Utah, TimberTech deck builder Utah, helical pier deck footings, composite deck railing installation, pergola builder Salt Lake County, deck demolition and replacement, custom deck stairs builder, deck builder Salt Lake County, deck builder Utah County, deck builder Davis County, Utah Decks' />
     <meta slot="head" name="description" content='Custom deck builder serving Salt Lake, Utah & Davis counties. Composite decking, pergolas, and railing — licensed, insured, free estimates.' />
     <meta slot="head" property="og:image" content='/images/mj_decks_02_1032.jpg' />
-    <meta slot="head" property="og:title" content='Request Service | Utah Decks & Pergolas' />
+    <meta slot="head" property="og:title" content='Free Estimate | Utah Decks & Pergolas' />
     <meta slot="head" property="og:description" content='Custom deck builder serving Salt Lake, Utah & Davis counties. Composite decking, pergolas, and railing — licensed, insured, free estimates.' />
     <meta slot="head" property="og:site_name" content='Utah Decks & Pergolas' />
     <meta slot="head" property="og:url" content='https://utahdecks.net' />
     <meta slot="head" property="og:type" content='website' />
     <meta slot="head" property="og:locale" content="en_US" />
     <link slot="head" rel="canonical" href="https://utahdecks.net" />
-    <title slot="head">Request Service | Utah Decks & Pergolas</title>
+    <title slot="head">Free Estimate | Utah Decks & Pergolas</title>
 
     <!-- stop Google from crawling this site until I have an office address on the site -->
     <!-- remove this line of code and think about updating my public/robots.txt file when I'm ready -->
@@ -68,7 +74,46 @@ import styles from './free-estimate.module.scss';
         {
             /*
                 // ==============================
-                // container > div 2 ( wrapper div )
+                // container > div 2 ( trust signals )
+                // ==============================
+            */
+        }
+        <div class={ styles.heroHeaderTrustContainer }>
+
+            <div>
+
+                <MdOutlinePhoneAndroid style={ { verticalAlign : '-5.0px', margin : '0 -1.1rem 0 0', fontSize : '2.2rem' } } />
+
+                <a
+                    href="tel:385-425-2299"
+                >
+                    &#40;385&#41; 425&#45;2299
+                </a>
+
+            </div>
+
+            <div>
+
+                <BsShieldCheck style={ { verticalAlign: '-5.5px', fontSize: '2.15rem', margin: '0 1.0rem 0 0' } } />
+
+                <span>Licensed & Insured</span>
+
+            </div>
+
+            <div>
+
+                <FaRegStar style={ { verticalAlign: '-5.5px', fontSize: '2.3rem', margin: '0 1.0rem 0 0' } } />
+
+                <span>300+ Happy Customers</span>
+
+            </div>
+
+        </div>
+
+        {
+            /*
+                // ==============================
+                // container > div 3 ( wrapper div )
                 // ==============================
             */
         }
@@ -77,7 +122,7 @@ import styles from './free-estimate.module.scss';
             {
                 /*
                     // ==============================
-                    // container > div 2 ( wrapper div ) > div 1 ( section title )
+                    // container > div 3 ( wrapper div ) > div 1 ( section title )
                     // ==============================
                 */
             }
@@ -110,7 +155,7 @@ import styles from './free-estimate.module.scss';
             {
                 /*
                     // ==============================
-                    // container > div 2 > div 2 ( wrapper div )
+                    // container > div 3 > div 2 ( wrapper div )
                     // ==============================
                 */
             }
@@ -119,7 +164,7 @@ import styles from './free-estimate.module.scss';
                 {
                     /*
                         // ==============================
-                        // container > div 1 > div 2 > div 1 ( contact form )
+                        // container > div 3 > div 2 > div 1 ( contact form )
                         // ==============================
                     */
                 }
@@ -132,7 +177,7 @@ import styles from './free-estimate.module.scss';
                 {
                     /*
                         // ==============================
-                        // container > div 2 > div 2 > div 2 ( blue box )
+                        // container > div 3 > div 2 > div 2 ( blue box )
                         // ==============================
                     */
                 }
@@ -187,7 +232,7 @@ import styles from './free-estimate.module.scss';
                 {
                     /*
                         // ==============================
-                        // container > div 2 > div 2 > div 3 ( prefer to call )
+                        // container > div 3 > div 2 > div 3 ( prefer to call )
                         // ==============================
                     */
                 }
@@ -210,7 +255,7 @@ import styles from './free-estimate.module.scss';
                 {
                     /*
                         // ==============================
-                        // container > div 2 > div 2 > div 4 ( business hours )
+                        // container > div 3 > div 2 > div 4 ( business hours )
                         // ==============================
                     */
                 }

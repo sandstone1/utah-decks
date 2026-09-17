@@ -568,7 +568,7 @@ export default function ContactUsComponent() {
         // ==============================
         // container
         // ==============================
-        <div className={ styles.contactUsContainer } id="contact-us-container">
+        <div className={ styles.contactUsContainer }>
     
             {
                 /*
@@ -578,7 +578,7 @@ export default function ContactUsComponent() {
                 */
             }
             <div ref={ wrapperRef }>
-    
+
                 {
                     /*
                         // ==============================
@@ -588,15 +588,15 @@ export default function ContactUsComponent() {
                 }
                 <div>
 
-                    <h1 ref={ h1Ref } class="contact-page-h1">Request <span style={ { color : 'var( --blue-77 )' } }>Service</span></h1>
+                    <h1 ref={ h1Ref } className="contact-page-h1">Request <span style={ { color : 'var( --blue-77 )' } }>Service</span></h1>
 
                     <picture>
                         <source 
-                            srcset="/images/underline_gray_870_02_512.png"
+                            srcSet="/images/underline_gray_870_02_512.png"
                             type="image/png"
                         />
                         <img
-                            class="contact-page-image-underline"
+                            className="contact-page-image-underline"
                             src="/images/underline_gray_870_02_512.png"
                             width={ 512 }
                             height={ 48 }

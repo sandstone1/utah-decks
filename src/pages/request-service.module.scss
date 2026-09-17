@@ -121,6 +121,57 @@
     // ==============================
 
     // ==============================
+    // container > div 2 ( trust signals )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 2 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+        // children
+        display         : flex;
+        justify-content : center;
+        gap             : 0 4.0rem;
+
+        width   : min( 144.0rem, 100% ); // browser will select the smaller of 172.0rem or 100%
+        padding : 3.0rem 0 0 0;
+
+        @include text-small-dark;
+
+        font-weight : 200;
+
+        @media all and ( max-width : $bp-768 ) {
+
+            display       : grid;
+            justify-items : start;
+            justify-self  : start;
+            gap           : 1.0rem 0;
+
+        } // end of container > div2 > bp-768
+
+        > div:nth-child( 1 ) {
+
+            // children
+            display     : flex;
+            align-items : center;
+            gap         : 0 2.0rem;
+
+            > a {
+
+                color : var( --gray-770 );
+
+            } // end of container > div2 > div1
+
+        } // end of container > div2 > div1
+
+    } // end of container > div2
+
+    // ==============================
     // container > div 3 ( Google map )
     // ==============================
 

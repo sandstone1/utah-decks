@@ -91,7 +91,7 @@
 
     justify-items         : center;
 
-    padding : 12.0rem 0 0 0;
+    padding : 0 0 0 0;
 
     // ==============================
     // background
@@ -123,7 +123,7 @@
     // ==============================
 
     // ==============================
-    // container > div 2 ( wrapper div )
+    // container > div 2 ( trust signals )
     // ==============================
 
     // ==============================
@@ -131,6 +131,56 @@
     // ==============================
 
     > div:nth-child( 2 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+        // children
+        display         : flex;
+        justify-content : center;
+        gap             : 0 4.0rem;
+
+        width   : min( 144.0rem, 100% ); // browser will select the smaller of 172.0rem or 100%
+        padding : 3.0rem 0 12.0rem 0;
+
+        @include text-small-dark;
+
+        font-weight : 200;
+
+        @media all and ( max-width : $bp-768 ) {
+
+            display       : grid;
+            justify-items : start;
+            gap           : 1.0rem 0;
+
+        } // end of container > div2 > bp-768
+
+        > div:nth-child( 1 ) {
+
+            // children
+            display     : flex;
+            align-items : center;
+            gap         : 0 2.0rem;
+
+            > a {
+
+                color : var( --gray-770 );
+
+            } // end of container > div2 > div1
+
+        } // end of container > div2 > div1
+
+    } // end of container > div2
+
+    // ==============================
+    // container > div 3 ( wrapper div )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 3 ) {
 
         // parent
         grid-column : 2 / 22; // position against the parent and see notes in parent above
@@ -150,10 +200,10 @@
 
             width : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
 
-        } // end of container > div2 > bp-1280
+        } // end of container > div3 > bp-1280
 
         // ==============================
-        // container > div 2 > div 1 ( section title )
+        // container > div 3 > div 1 ( section title )
         // ==============================
 
         > div:nth-child( 1 ) {
@@ -177,13 +227,13 @@
                 
                 grid-gap : 1.0rem 0;
     
-            } // end of container > div2 > div1 > bp-620
+            } // end of container > div3 > div1 > bp-620
 
             @media all and ( max-width : $bp-480 ) {
                 
                 grid-gap : 1.25rem 0;
     
-            } // end of container > div2 > div1 > bp-480
+            } // end of container > div3 > div1 > bp-480
 
             > h1 {
 
@@ -198,7 +248,7 @@
 
                 view-transition-name : contact-page-h1;
 
-            } // end of container > div2 > div1 > h1
+            } // end of container > div3 > div1 > h1
 
             > picture {
 
@@ -217,15 +267,23 @@
 
                         width : 75%;
             
-                    }// end of container > div2 > div1 > picture > img > bp-768
+                    }// end of container > div3 > div1 > picture > img > bp-768
 
-                } // end of container > div2 > div1 > picture > img
+                } // end of container > div3 > div1 > picture > img
 
-            } // end of container > div2 > div1 > picture
+            } // end of container > div3 > div1 > picture
 
             p:nth-child( 3 ) {
 
                 margin : 6.0rem 0 12.0rem 0;
+
+/*
+                @include text-large-dark;
+
+                font-size  : 2.1rem;
+                font-weight : 500;
+*/
+
 
                 font-size   : 5.0rem;
                 font-weight : 200;
@@ -235,8 +293,8 @@
 
                     font-size : 4.0rem; // 20% reduction
 
-                } // end of container > div2 > div1 > p3 > bp-768
-            
+                } // end of container > div3 > div1 > p3 > bp-768
+
                 &::first-letter {
 
                     float   : left;
@@ -251,16 +309,16 @@
 
                         font-size : 10.3rem; // 20% reduction
 
-                    } // end of container > div2 > div1 > p3 > ::first-letter > bp-768
+                    } // end of container > div3 > div1 > p3 > ::first-letter > bp-768
 
-                } // end of container > div2 > div1 > p3 > ::first-letter
+                } // end of container > div3 > div1 > p3 > ::first-letter
 
-            } // end of container > div2 > div1 > p3
+            } // end of container > div3 > div1 > p3
 
-        } // end of container > div2 > div1
+        } // end of container > div3 > div1
 
         // ==============================
-        // container > div 2 > div 2 ( wrapper div )
+        // container > div 3 > div 2 ( wrapper div )
         // ==============================
 
         > div:nth-child( 2 ) {
@@ -294,7 +352,7 @@
             } // end of container > div1 > div2 > bp-1280
 
             // ==============================
-            // container > div 2 > div 2 > div 1 ( contact form )
+            // container > div 3 > div 2 > div 1 ( contact form )
             // ==============================
 
             > div:nth-child( 1 ) {
@@ -304,10 +362,10 @@
 
                 width : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
 
-            } // end of container > div2 > div2 > div1
+            } // end of container > div3 > div2 > div1
 
             // ==============================
-            // container > div 2 > div 2 > div 2 ( how it works - blue box )
+            // container > div 3 > div 2 > div 2 ( how it works - blue box )
             // ==============================
 
             > div:nth-child( 2 ) {
@@ -352,7 +410,7 @@
 
                     @include h3-dark-title;
 
-                } // end of container > div2 > div2 > div2 > h3
+                } // end of container > div3 > div2 > div2 > h3
 
                 > div:nth-child( 2 ) {
 
@@ -380,23 +438,23 @@
     
                             background-color : var( --yellow-110 );
     
-                        } // end of container > div2 > div2 > div2 > div2 > div1 > span
+                        } // end of container > div3 > div2 > div2 > div2 > div1 > span
     
                         > h6 {
         
                             @include h6-dark-title;
                 
-                        } // end of container > div2 > div2 > div2 > div2 > div1 > h6
+                        } // end of container > div3 > div2 > div2 > div2 > div1 > h6
     
-                    } // end of container > div2 > div2 > div2 > div2 > div2
+                    } // end of container > div3 > div2 > div2 > div2 > div2
     
                     > p:nth-child( 3 ) {
     
                         @include text-base-dark;
     
-                    } // end of container > div2 > div2 > div2 > div2 > p3
+                    } // end of container > div3 > div2 > div2 > div2 > p3
             
-                } // end of container > div2 > div2 > div2 > div2
+                } // end of container > div3 > div2 > div2 > div2
 
                 > div:nth-child( 3 ) {
 
@@ -424,23 +482,23 @@
     
                             background-color : var( --yellow-110 );
     
-                        } // end of container > div2 > div2 > div2 > div3 > div1 > span
+                        } // end of container > div3 > div2 > div2 > div3 > div1 > span
     
                         > h6 {
         
                             @include h6-dark-title;
                 
-                        } // end of container > div2 > div2 > div2 > div3 > div1 > h6
+                        } // end of container > div3 > div2 > div2 > div3 > div1 > h6
     
-                    } // end of container > div2 > div2 > div2 > div3 > div1
+                    } // end of container > div3 > div2 > div2 > div3 > div1
     
                     > p:nth-child( 3 ) {
     
                         @include text-base-dark;
     
-                    } // end of container > div2 > div2 > div2 > div3 > p3
+                    } // end of container > div3 > div2 > div2 > div3 > p3
             
-                } // end of container > div2 > div2 > div2 > div3
+                } // end of container > div3 > div2 > div2 > div3
 
                 > div:nth-child( 4 ) {
 
@@ -468,28 +526,28 @@
     
                             background-color : var( --yellow-110 );
     
-                        } // end of container > div2 > div2 > div2 > div4 > div1 > span
+                        } // end of container > div3 > div2 > div2 > div4 > div1 > span
     
                         > h6 {
         
                             @include h6-dark-title;
                 
-                        } // end of container > div2 > div2 > div2 > div4 > div1 > h6
+                        } // end of container > div3 > div2 > div2 > div4 > div1 > h6
     
-                    } // end of container > div2 > div2 > div2 > > div4
+                    } // end of container > div3 > div2 > div2 > > div4
     
                     > p:nth-child( 3 ) {
     
                         @include text-base-dark;
     
-                    } // end of container > div2 > div2 > div2 > div4 > p3
+                    } // end of container > div3 > div2 > div2 > div4 > p3
             
-                } // end of container > div2 > div2 > div2 > div4
+                } // end of container > div3 > div2 > div2 > div4
 
-            } // end of container > div2 > div2 > div2 > div4
+            } // end of container > div3 > div2 > div2 > div4
 
             // ==============================
-            // container > div 2 > div 2 > div 3 ( prefer to call - yellow box )
+            // container > div 3 > div 2 > div 3 ( prefer to call - yellow box )
             // ==============================
 
             > div:nth-child( 3 ) {
@@ -521,14 +579,14 @@
                                             "  p"
                                             "  a";
 
-                } // end of container > div2 > div2 > div2 > div3 > 386px
+                } // end of container > div3 > div2 > div2 > div3 > 386px
     
                 > div:nth-child( 1 ) {
 
                     // parent
                     grid-area : icon;
 
-                } // end of container > div2 > div2 > div2 > div3 > div1
+                } // end of container > div3 > div2 > div2 > div3 > div1
 
                 > h6 {
 
@@ -540,7 +598,7 @@
         
                     } // end of container > div 1 > div 2 > div 4 > 386px
 
-                } // end of container > div2 > div2 > div2 > div3 > h6
+                } // end of container > div3 > div2 > div2 > div3 > h6
 
                 > a {
 
@@ -548,12 +606,12 @@
 
                     color : var( --blue-77 );
         
-                } // end of container > div2 > div2 > div2 > div3 > a
+                } // end of container > div3 > div2 > div2 > div3 > a
 
-            } // end of container > div2 > div2 > div3
+            } // end of container > div3 > div2 > div3
 
             // ==============================
-            // container > div 1 > div 2 > div 4 ( business hours - blue box )
+            // container > div 3 > div 2 > div 4 ( business hours - blue box )
             // ==============================
 
             > div:nth-child( 4 ) {
@@ -697,9 +755,9 @@
 
             } // end of container > div1 > div2 > div4
 
-        } // end of container > div2 > div2
+        } // end of container > div3 > div2
 
-    } // end of container > div2
+    } // end of container > div3
 
 } // end of container
 

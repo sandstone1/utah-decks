@@ -1310,7 +1310,13 @@ export default function ContactFormComponent() {
                                 >
                                     Request Service
                                 </button>
-                    
+
+                                <p>
+                                    Licensed, bonded, and insured. 7+ years{ ' ' }
+                                    serving Salt Lake, Utah, Summit, Davis and Weber counties. All
+                                    completed projects backed by our 2-year workmanship guarantee.
+                                </p>
+
                             </div>
 
                         </form>

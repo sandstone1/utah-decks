@@ -568,7 +568,7 @@ export default function ContactUsComponent() {
         // ==============================
         // container
         // ==============================
-        <div className={ styles.contactUsContainer } id="contact-us-container">
+        <div className={ styles.contactUsContainer }>
     
             {
                 /*
