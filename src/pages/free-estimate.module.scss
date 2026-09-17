@@ -141,7 +141,7 @@
         gap             : 0 4.0rem;
 
         width   : min( 144.0rem, 100% ); // browser will select the smaller of 172.0rem or 100%
-        padding : 3.0rem 0 12.0rem 0;
+        padding : 3.0rem 0 6.0rem 0;
 
         @include text-small-dark;
 
@@ -275,7 +275,7 @@
 
             p:nth-child( 3 ) {
 
-                margin : 6.0rem 0 12.0rem 0;
+                margin : 6.0rem 0 6.0rem 0;
 
                 font-size   : 3.6rem;
                 font-weight : 200;

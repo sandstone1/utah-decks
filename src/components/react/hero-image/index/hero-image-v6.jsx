@@ -716,6 +716,14 @@ export default function HeroImageComponent() {
             }
             <div className={ `${styles.heroImageContainer} hero-image-container` }>
 
+                {
+                    /*
+                        // ==============================
+                        // container > div 1
+                        // ==============================
+
+                    */
+                }
                 <div>
 
                     {

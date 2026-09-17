@@ -877,7 +877,6 @@
         > div:nth-child( 1 ) {
 
             // children
-            // display : none; // we initially need to hide div2
             display : grid;
 
             border        : 0.075rem solid var( --gold-42 );
@@ -898,7 +897,6 @@
                 letter-spacing : 1px;
                 text-align     : center;
 
-                // background : none;
                 background : var( --gold-42 );
 
                 transition : all 0.2s ease-out; // provide for a nice hover animation
@@ -919,9 +917,9 @@
                     // remove the animation effect for screen sizes under 1376 pixels
                     @media all and ( max-width : $bp-1376 ) {
 
-                        background-color : inherit;
+                        // background-color : inherit;
 
-                        transform: none;
+                        // transform : none;
                 
                     } // end of container > div2 > div1 > a, .phone-icon > &:hover > bp-1376
 
@@ -937,7 +935,6 @@
 
         > div:nth-child( 2 ) {
 
-            // display : none; // we initially need to hide div2
             display : grid;
 
             border        : 0.15rem solid var( --gray-225 );
