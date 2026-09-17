@@ -277,37 +277,37 @@
 
                 margin : 6.0rem 0 12.0rem 0;
 
-/*
-                @include text-large-dark;
-
-                font-size  : 2.1rem;
-                font-weight : 500;
-*/
-
-
-                font-size   : 5.0rem;
+                font-size   : 3.6rem;
                 font-weight : 200;
                 line-height : 1.5; // this + font-size determines the drop cap's target height
 
                 @media all and ( max-width : $bp-768 ) {
 
-                    font-size : 4.0rem; // 20% reduction
+                    font-size : 2.88rem; // 20% reduction
 
                 } // end of container > div3 > div1 > p3 > bp-768
 
                 &::first-letter {
 
                     float   : left;
-                    margin  : 3.1rem 0 0 0; // fine-tune vertical alignment against the text baseline
+                    margin  : 2.0rem 0 0 0; // fine-tune vertical alignment against the text baseline
                     padding : 0 1.0rem 0 0;
 
-                    font-size   : 13.9rem; // roughly matches 2 lines of the paragraph text
+                    font-size   : 11.0rem; // roughly matches 2 lines of the paragraph text
                     font-weight : 450; // this reference image uses a lighter weight, not bold
                     line-height : 0.75; // tight, so the letter's own box doesn't add extra height
 
+                    @media all and ( max-width : $bp-1376 ) {
+
+                        font-size : 10.5rem; // 20% reduction
+
+                    } // end of container > div3 > div1 > p3 > ::first-letter > bp-1376
+
                     @media all and ( max-width : $bp-768 ) {
 
-                        font-size : 10.3rem; // 20% reduction
+                        margin : 1.7rem 0 0 0; // fine-tune vertical alignment against the text baseline
+
+                        font-size : 8.3rem; // 20% reduction
 
                     } // end of container > div3 > div1 > p3 > ::first-letter > bp-768
 
@@ -435,8 +435,9 @@
                             padding : 1.0rem 2.0rem;
     
                             border-radius: 50%;
-    
+
                             background-color : var( --yellow-110 );
+                            background-color : var( --blue-61-1 );
     
                         } // end of container > div3 > div2 > div2 > div2 > div1 > span
     
@@ -481,6 +482,7 @@
                             border-radius: 50%;
     
                             background-color : var( --yellow-110 );
+                            background-color : var( --blue-61-1 );
     
                         } // end of container > div3 > div2 > div2 > div3 > div1 > span
     
@@ -525,6 +527,7 @@
                             border-radius: 50%;
     
                             background-color : var( --yellow-110 );
+                            background-color : var( --blue-61-1 );
     
                         } // end of container > div3 > div2 > div2 > div4 > div1 > span
     
