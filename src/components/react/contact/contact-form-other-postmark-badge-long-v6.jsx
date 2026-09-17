@@ -454,6 +454,7 @@
 
 
 
+
 // ==============================
 // IMPORTANT!!!
 //
@@ -472,7 +473,7 @@ import SuccessMessageComponent from '../success-message/sm-general';
 // import in the Spinner component
 import Spinner from '../spinner/spinner-bounce-dark';
 // import in our stylesheet
-import styles from './contact-form-other-postmark-badge-long-v5.module.scss';
+import styles from './contact-form-other-postmark-badge-long-v6.module.scss';
 
 
 
@@ -1042,7 +1043,7 @@ export default function ContactFormComponent() {
                                 // ==============================
                             */
                         }
-                        <h3 className={ styles.contactFormContainerH3 }>Email Form</h3>
+                        <h3 className={ styles.contactFormContainerH3 }>Share Your Project Details</h3>
 
                         {
                             /*
@@ -1308,8 +1309,12 @@ export default function ContactFormComponent() {
                                     type="submit"
                                     className={ styles.contactFormContainerFormButtonContainerButton }
                                 >
-                                    Request Service
+                                    Submit Your Project Details
                                 </button>
+
+                                <p>Licensed, bonded, and insured — 7+ years{ ' ' }
+                                serving Salt Lake, Utah, Summit, Davis and Weber counties. All
+                                completed projects backed by our 2-year workmanship guarantee.</p>
                     
                             </div>
 

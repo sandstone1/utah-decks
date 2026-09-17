@@ -180,7 +180,7 @@ export default function ContactInformationComponent() {
                             </div>
                             <div>
                                 <li>Sunday</li>
-                                <li>Closed</li>                        
+                                <li class={ styles.lastLi }>Closed</li>                        
                             </div>       
                         </ul>
         

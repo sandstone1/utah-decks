@@ -1,0 +1,267 @@
+---
+
+
+// import in the Layout component
+import Layout from '../layouts/main-layout.astro';
+// import in the Hero header component
+import HeroHeaderComponent from '../components/react/hero/hero-header';
+// import in the Contact Form Postmark Badge component
+import ContactFormPostmarkComponent from '../components/react/contact/contact-form-other-postmark-badge-long-v6';
+// import in the Contact Information component
+// import ContactInformationComponent from '../components/react/contact/contact-information-v5';
+// import in the Blob Blue background component
+import BlobComponentOne from '../components/react/animations/blob/blob-v12';
+// import in the Blob Blue background component
+import BlobComponentTwo from '../components/react/animations/blob/blob-v13';
+// import in the Font Awesome phone icon
+import { FaPhoneAlt } from "react-icons/fa";
+// import in the Font Awesome clock icon
+import { FaClock } from "react-icons/fa6";
+// import in our stylesheet
+import styles from './free-estimate.module.scss';
+
+---
+
+<Layout>
+
+    {
+        /*
+            page specific meta tags
+        */
+    }
+    <!-- page specific meta tags -->
+    <meta slot="head" name="keywords" content='custom deck builder Salt Lake City, deck builder Utah, custom deck builder Draper Utah, composite deck installation Utah, deck contractor near me, Trex deck installer Utah, TimberTech deck builder Utah, helical pier deck footings, composite deck railing installation, pergola builder Salt Lake County, deck demolition and replacement, custom deck stairs builder, deck builder Salt Lake County, deck builder Utah County, deck builder Davis County, Utah Decks' />
+    <meta slot="head" name="description" content='Custom deck builder serving Salt Lake, Utah & Davis counties. Composite decking, pergolas, and railing — licensed, insured, free estimates.' />
+    <meta slot="head" property="og:image" content='/images/mj_decks_02_1032.jpg' />
+    <meta slot="head" property="og:title" content='Request Service | Utah Decks & Pergolas' />
+    <meta slot="head" property="og:description" content='Custom deck builder serving Salt Lake, Utah & Davis counties. Composite decking, pergolas, and railing — licensed, insured, free estimates.' />
+    <meta slot="head" property="og:site_name" content='Utah Decks & Pergolas' />
+    <meta slot="head" property="og:url" content='https://utahdecks.net' />
+    <meta slot="head" property="og:type" content='website' />
+    <meta slot="head" property="og:locale" content="en_US" />
+    <link slot="head" rel="canonical" href="https://utahdecks.net" />
+    <title slot="head">Request Service | Utah Decks & Pergolas</title>
+
+    <!-- stop Google from crawling this site until I have an office address on the site -->
+    <!-- remove this line of code and think about updating my public/robots.txt file when I'm ready -->
+    <meta name="robots" content="noindex, nofollow" />
+
+    {
+        /*
+            // ==============================
+            // container
+            // ==============================
+        */
+    }
+
+    <div class={ styles.freeEstimateContainer }>
+
+        {
+            /*
+                // ==============================
+                // container > ( hero component )
+                // ==============================
+            */
+        }
+        <HeroHeaderComponent client:load />
+
+        {
+            /*
+                // ==============================
+                // container > div 2 ( wrapper div )
+                // ==============================
+            */
+        }
+        <div>
+
+            {
+                /*
+                    // ==============================
+                    // container > div 2 ( wrapper div ) > div 1 ( section title )
+                    // ==============================
+                */
+            }
+            <div>
+    
+                <h1 class="contact-page-h1">Free <span style={ { color : 'var( --blue-77 )' } }>Estimate</span></h1>
+    
+                <picture>
+                    <source 
+                        srcset="/images/underline_gray_870_02_512.png"
+                        type="image/png"
+                    />
+                    <img
+                        class="contact-page-image-underline"
+                        src="/images/underline_gray_870_02_512.png"
+                        width={ 512 }
+                        height={ 48 }
+                        loading="eager"
+                        fetchpriority="high"
+                        alt="Gray underline"
+                    />
+                </picture>
+    
+                <p class="drop-cap">Taking the first step toward your dream home
+                has never been easier. Tell us about your project and let Utah Decks & Pergolas
+                experienced team bring your vision to life.</p>
+
+            </div>
+
+            {
+                /*
+                    // ==============================
+                    // container > div 2 > div 2 ( wrapper div )
+                    // ==============================
+                */
+            }
+            <div>
+    
+                {
+                    /*
+                        // ==============================
+                        // container > div 1 > div 2 > div 1 ( contact form )
+                        // ==============================
+                    */
+                }
+                <div>
+    
+                    <ContactFormPostmarkComponent client:visible />
+    
+                </div>
+
+                {
+                    /*
+                        // ==============================
+                        // container > div 2 > div 2 > div 2 ( blue box )
+                        // ==============================
+                    */
+                }
+                <div>
+
+                    <h3>How it Works</h3>
+
+                    <div>
+
+                        <div>
+                            <span>1</span><h6>Share Your Project Details</h6>
+                        </div>
+
+                        <p>
+                            Fill out the form with a few basic details about your project —
+                            the type of work you're looking for, your timeline, and any
+                            other details you'd like us to know. We'll reply within the
+                            hour.
+                        </p>
+
+                    </div>
+
+                    <div>
+
+                        <div>
+                            <span>2</span><h6>We'll Be in Touch</h6>
+                        </div>
+
+                        <p>
+                            A member of our team will reach out promptly to schedule a
+                            consultation at a time that works for you.
+                        </p>
+
+                    </div>
+
+                    <div>
+
+                        <div>
+                            <span>3</span><h6>Get Your Plan</h6>
+                        </div>
+
+                        <p>
+                            We'll walk through your project together, discuss options,
+                            and provide a clear timeline and budget so you know exactly
+                            what to expect.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                {
+                    /*
+                        // ==============================
+                        // container > div 2 > div 2 > div 3 ( prefer to call )
+                        // ==============================
+                    */
+                }
+                <div>
+
+                    <div>
+                        <FaPhoneAlt style={ { verticalAlign : '-19.0px', margin : '0 -0.5rem 0 0', fontSize : '3.4rem' } } />
+                    </div>
+
+                    <h6>Prefer to Call?</h6>
+
+                    <a
+                        href="tel:385-425-2299"
+                    >
+                        385-425-2299
+                    </a>
+
+                </div>
+
+                {
+                    /*
+                        // ==============================
+                        // container > div 2 > div 2 > div 4 ( business hours )
+                        // ==============================
+                    */
+                }
+                <div>
+
+                    <div>
+                        <FaClock style={ { verticalAlign : '-20.0px', fontSize : '3.8rem' } } />
+                    </div>
+
+                    <h6>Business Hours</h6>
+
+                    <ul>
+                        <div>
+                            <li>Monday - Friday</li>
+                            <li>7:00 am - 7:00 pm</li>
+                        </div>
+                        <div>
+                            <li>Saturday</li>
+                            <li>7:00 am - 12:00 pm</li>                        
+                        </div>
+                        <div>
+                            <li>Sunday</li>
+                            <li class={ styles.lastLi }>Closed</li>                        
+                        </div>       
+                    </ul>
+    
+                </div>
+
+            </div>
+    
+        </div>
+
+        {
+            /*
+                // ==============================
+                // container ( square or blob )
+                // ==============================
+            */
+        }
+        <BlobComponentOne client:visible />
+
+        {
+            /*
+                // ==============================
+                // container ( square or blob )
+                // ==============================
+            */
+        }
+        <BlobComponentTwo client:visible />
+
+    </div>
+
+</Layout>
+

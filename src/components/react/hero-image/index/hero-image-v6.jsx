@@ -799,7 +799,7 @@ export default function HeroImageComponent() {
                 <div>
 
                     <div>
-                        <a href="#">
+                        <a href="/free-estimate">
                             <FaRegCalendarCheck style={ { verticalAlign: '-3.0px', fontSize: '2.25rem', margin: '0 1.0rem 0 0' } } />
                             Free Estimate
                         </a>
