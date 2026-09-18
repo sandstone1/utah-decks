@@ -156,7 +156,42 @@ import styles from './get-started.module.scss';
             <div>
 
                 <iframe src="https://api.leadconnectorhq.com/widget/booking/RrMEXlzJ4Y5xHRCSJ0OP" allow="payment" style="width: 100%;border:none;overflow: hidden;" scrolling="no" id="RrMEXlzJ4Y5xHRCSJ0OP_1789684779176"></iframe>
+                
+                <!--
+                    comment out the script below and replace with the following 2 scripts
+                -->
                 <!-- <script is:inline src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script> -->
+
+                <!--
+                    the loadCalendarWithUtms() function sets the iframe's src to include UTM parameters, fixing
+                    the UTM Facebook lead attribution issue; in other words, we should be able to see the FB UTM
+                    parameters inside GHL and thereby know when a FB lead books an appointment
+                -->
+                <script is:inline>
+                    function loadCalendarWithUtms() {
+                        const iframe = document.getElementById( 'RrMEXlzJ4Y5xHRCSJ0OP_1789684779176' );
+                        if ( !iframe ) return;
+
+                        const params = new URLSearchParams( window.location.search );
+                        const baseUrl = 'https://api.leadconnectorhq.com/widget/booking/RrMEXlzJ4Y5xHRCSJ0OP';
+                        const utmParams = new URLSearchParams();
+
+                        [ 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content' ].forEach( key =>
+                            {
+                                if ( params.has( key ) ) utmParams.set( key, params.get( key ) );
+                            }
+                        );
+
+                        iframe.src = utmParams.toString() ? `${ baseUrl }?${ utmParams.toString() }` : baseUrl;
+                    }
+
+                    // run on initial page load
+                    loadCalendarWithUtms();
+
+                    // re-run on every Astro client-side navigation
+                    document.addEventListener( 'astro:page-load', loadCalendarWithUtms );
+                </script>
+
                 <!-- 
                     due to using Astro view transitions, we had to modify the script tag above to
                     re-inject the script tag fresh on every navigation in order for the calendar
@@ -173,16 +208,16 @@ import styles from './get-started.module.scss';
                         s.type = 'text/javascript';
                         document.body.appendChild( s );
                     }
-                
+
                     // run on initial page load
                     loadGhlEmbedScript();
-                
+
                     // re-run on every Astro client-side navigation
                     document.addEventListener( 'astro:page-load', loadGhlEmbedScript );
                 </script>
 
             </div>
-    
+
         </div>
 
         {
