@@ -567,15 +567,20 @@ html[ data-initial-load ] #site-navbar {
     --green-12          : rgba( 227, 255, 217, 1 ); // good highlight color
     --green-20          : rgba( 172, 210, 204, 1 );
     --green-22          : rgba( 206, 243, 225, 1 ); // great highlight color
+    --green-22-5        : rgba( 182, 226, 220, 1 ); // matches the hue of --green-290
     --green-23          : rgba( 152, 230, 200, 1 ); // David Busell green and great great great highlight color and along with --yellow-120 the best darker hightlight color
     --green-23-5        : rgba( 100, 255, 218, 1 ); // great, great highlight color and mint color
+    --green-23-65       : rgba( 149, 218, 193, 1 );
+    --green-23-8        : rgba( 121, 210, 178, 1 );
+    --green-23-9        : rgba( 94, 201, 187, 1 ); // matches the hue of --green-290
     --green-24          : rgba( 145, 164, 168, 1 ); // good background color
     --green-25          : rgba( 0, 255, 127, 1 );
     --green-30          : rgba( 15, 197, 176, 1 ); // Kevin Powell green and good highlight color against dark mode background
     --green-35          : rgba( 66, 245, 132, 1 ); // Kevin Powell green and good highlight color
     --green-50          : rgba( 0, 204, 102, 1 );
     --green-100         : rgba( 75, 191, 115, 1 );
-    --green-200         : rgba( 60, 188, 141, 1 ); // use this on dark background and --green-205 on light backgrounds
+    --green-180         : rgba( 121, 210, 178, 1 );
+    --green-200         : rgba( 60, 188, 141, 1 ); // use this on dark background and --green-290 on light backgrounds
     --green-205         : rgba( 47, 158, 119, 1 );
     --green-210         : rgba( 45, 143, 133, 1 );
     --green-220         : rgba( 37, 117, 98, 1 );

@@ -879,7 +879,7 @@
             // children
             display : grid;
 
-            border        : 0.075rem solid var( --green-200 );
+            border        : 0.075rem solid var( --green-23-9 );
             border-radius : 0.6rem;
 
             // opacity : 0;
@@ -896,7 +896,7 @@
                 letter-spacing : 1px;
                 text-align     : center;
 
-                background : var( --green-200 );
+                background : var( --green-23-9 );
 
                 transition : all 0.3s ease-out; // provide for a nice hover animation
 
@@ -906,7 +906,7 @@
                     border-radius : 0.6rem;
 
                     // background-color : rgba( 255, 255, 255, 0.01 );
-                    background-color : var( --green-205 );
+                    background-color : var( --green-30 );
 
                     cursor : pointer;
 

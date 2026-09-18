@@ -763,7 +763,7 @@ export default function HeroImageComponent() {
                         <h1 className="first-hero-h1">Trusted Deck Builder in Northern Utah</h1>
 
                         <h5 className="first-hero-h5">
-                            <span style={ { color : 'var( --green-200 )' } }>300+ happy
+                            <span style={ { color : 'var( --green-23-9 )' } }>300+ happy
                             customers</span> and counting. 7+ years building custom decks
                             along the Wasatch Front.
                         </h5>
@@ -788,7 +788,7 @@ export default function HeroImageComponent() {
 
                         <h5 className="second-hero-h5">
                             We bring your
-                            backyard vision to life — <span style={{ color: 'var(--green-200 )' }}>licensed, insured,</span>{' '}
+                            backyard vision to life — <span style={{ color: 'var( --green-23-9 )' }}>licensed, insured,</span>{' '}
                             and backed by manufacturer warranties up to 50 years.
                         </h5>
 
