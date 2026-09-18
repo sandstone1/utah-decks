@@ -807,9 +807,9 @@ export default function HeroImageComponent() {
                 <div>
 
                     <div>
-                        <a href="/free-estimate">
+                        <a href="/get-started">
                             <FaRegCalendarCheck style={ { verticalAlign: '-3.0px', fontSize: '2.25rem', margin: '0 1.0rem 0 0' } } />
-                            Free Estimate
+                            Free Deck Design
                         </a>
                     </div>
 
