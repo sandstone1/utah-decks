@@ -879,7 +879,7 @@
             // children
             display : grid;
 
-            border        : 0.075rem solid var( --gold-42 );
+            border        : 0.075rem solid var( --green-200 );
             border-radius : 0.6rem;
 
             // opacity : 0;
@@ -892,14 +892,13 @@
                 font-family    : var( --font-primary-5 );
                 font-size      : 1.85rem;
                 font-weight    : 600;
-                // color          : var( --gold-42 );
                 color          : var( --black ); 
                 letter-spacing : 1px;
                 text-align     : center;
 
-                background : var( --gold-42 );
+                background : var( --green-200 );
 
-                transition : all 0.2s ease-out; // provide for a nice hover animation
+                transition : all 0.3s ease-out; // provide for a nice hover animation
 
                 // hover selector for the navigation tabs
                 &:hover {
@@ -907,7 +906,7 @@
                     border-radius : 0.6rem;
 
                     // background-color : rgba( 255, 255, 255, 0.01 );
-                    background-color : var( --gold-46 );
+                    background-color : var( --green-205 );
 
                     cursor : pointer;
 
@@ -959,27 +958,25 @@
                 background : rgba( 0, 0, 0, 0.2 );
                 // background : var( --gold-42 );
 
-                transition : all 0.2s ease-out; // provide for a nice hover animation
+                transition : all 0.3s ease-out; // provide for a nice hover animation
 
                 // hover selector for the navigation tabs
                 &:hover {
 
-                    border-radius : 0.6rem;
-
-                    // background-color : rgba( 255, 255, 255, 0.01 );
-                    color : var( --gold-46 );
+                    background : rgba( 0, 0, 0, 0.4 );
+                    // color : var( --gray-335 );
 
                     cursor : pointer;
 
                     // move the nav item up just a little to add a nice hover effect
-                    // transform : translate3d( 0, -0.2rem, 0 );
+                    // transform : translate3d( 0, -0.1rem, 0 );
 
                     // remove the animation effect for screen sizes under 1376 pixels
                     @media all and ( max-width : $bp-1376 ) {
 
-                        background-color : inherit;
+                        // background-color : inherit;
 
-                        transform: none;
+                        // transform: none;
                 
                     } // end of container > div2 > div1 > a, .phone-icon > &:hover > bp-1376
 

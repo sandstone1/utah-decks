@@ -276,7 +276,7 @@ export default function NavComponent() {
                             <LogoComponent />
                         </div>
                         <h2>
-                            Utah Decks & <span>Pergolas</span>
+                            Utah Decks & Pergolas
                         </h2>
                     </a>
 

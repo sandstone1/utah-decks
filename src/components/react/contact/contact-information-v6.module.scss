@@ -138,9 +138,9 @@
 
                 align-self : start;
 
-                font-size   : 2.0rem;
-                font-weight : 500;
-                color       : var( --blue-77 );
+                @include h4-dark-title;
+
+                color : var( --green-210 );
 
             } // end of container > div3 > div1 > a
 

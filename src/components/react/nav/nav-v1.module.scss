@@ -224,16 +224,20 @@
                 // font-weight    : 350;
                 font-weight    : 800;
                 color          : var( --gray-225 );
+                // color          : var( --gray-770 );
+                //color          : var( --green-750 );
                 letter-spacing : 2px;
                 // text-transform : uppercase;
 
-                background : var( --blue-800 );
+                //background : var( --blue-800 );
                 // background : var( --blue-850 );
                 // background : var( --purple-400 );
                 // background : var( --black );
                 // background : var( --blue-85-2 );
                 // background : var( --brown-500 );
                 //background : rgba( 0, 0, 0, 0.30 );
+                //background : var( --green-750 );
+                // background : var( --green-220 );
 
 
                 outline    : none;
@@ -261,10 +265,8 @@
                     font-family    : var( --font-display-1 );
                     font-size      : 2.75rem;
                     font-weight    : 800;
-                    // color       : var( --gray-355 );
-                    // color       : var( --gray-342 );
-                    // color       : var( --blue-62-1 );
                     color          : var( --gray-225 );
+                    // color          : var( --gray-770 );
                     letter-spacing : 2px;
 
                     background : var( --blue-260 );
@@ -272,6 +274,7 @@
                     // background : var( --blue-83 );
                     // background : var( --blue-84 );
                     // background : var( --blue-84 );
+                    // background : var( --green-725 );
 
                     @media all and ( max-width : 438px ) {
 

@@ -399,6 +399,7 @@
                 //background : var( --blue-61-3 );
                 // background : var( --blue-58 );
                 //background : var( --blue-61-1 ); // second best
+                //background : var( --green-06 );
 
                 // opacity : 0; // needed for the animation
                 opacity : 1;
@@ -432,12 +433,13 @@
     
                             @include h6-dark-title;
     
-                            padding : 1.0rem 2.0rem;
+                            //padding : 1.0rem 2.0rem;
     
                             border-radius: 50%;
 
-                            background-color : var( --yellow-110 );
-                            background-color : var( --blue-61-1 );
+                            //background-color : var( --yellow-110 );
+                            //background-color : var( --blue-61-1 );
+                            //background-color : var( --gray-326 );
     
                         } // end of container > div3 > div2 > div2 > div2 > div1 > span
     
@@ -477,12 +479,13 @@
     
                             @include h6-dark-title;
     
-                            padding : 1.0rem 2.0rem;
+                            //padding : 1.0rem 2.0rem;
     
                             border-radius: 50%;
     
-                            background-color : var( --yellow-110 );
-                            background-color : var( --blue-61-1 );
+                            //background-color : var( --yellow-110 );
+                            //background-color : var( --blue-61-1 );
+                            //background-color : var( --gray-326 );
     
                         } // end of container > div3 > div2 > div2 > div3 > div1 > span
     
@@ -522,12 +525,13 @@
     
                             @include h6-dark-title;
     
-                            padding : 1.0rem 2.0rem;
+                            //padding : 1.0rem 2.0rem;
     
                             border-radius: 50%;
     
-                            background-color : var( --yellow-110 );
-                            background-color : var( --blue-61-1 );
+                            //background-color : var( --yellow-110 );
+                            //background-color : var( --blue-61-1 );
+                            //background-color : var( --gray-700 );
     
                         } // end of container > div3 > div2 > div2 > div4 > div1 > span
     
@@ -550,7 +554,7 @@
             } // end of container > div3 > div2 > div2 > div4
 
             // ==============================
-            // container > div 3 > div 2 > div 3 ( prefer to call - yellow box )
+            // container > div 3 > div 2 > div 3 ( prefer to call - blue box )
             // ==============================
 
             > div:nth-child( 3 ) {
@@ -572,7 +576,10 @@
 
                 border-radius : 4.0rem;
 
-                background : var( --yellow-55 );
+                //background : var( --yellow-55 );
+                background : var( --blue-59 );
+                background : var( --green-06 );
+                // background : var( --gray-290 );
 
                 @media all and ( max-width : 386px ) {
 
@@ -607,7 +614,8 @@
 
                     @include h4-dark-title;
 
-                    color : var( --blue-77 );
+                    // color : var( --blue-77 );
+                    color : var( --green-210 );
         
                 } // end of container > div3 > div2 > div2 > div3 > a
 
@@ -639,6 +647,7 @@
                 //border-bottom: 0.1rem solid var( --gray-350 );
 
                 background : var( --blue-59 );
+                //background : var( --green-06 );
 
                 @media all and ( max-width : 386px ) {
 
