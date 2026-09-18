@@ -576,15 +576,19 @@ html[ data-initial-load ] #site-navbar {
     --green-50          : rgba( 0, 204, 102, 1 );
     --green-100         : rgba( 75, 191, 115, 1 );
     --green-200         : rgba( 60, 188, 141, 1 ); // use this on dark background and --green-205 on light backgrounds
-    --green-205         : rgba( 47, 158, 119, 1 ); // good color and works on both dark and light backgrounds
+    --green-205         : rgba( 47, 158, 119, 1 );
     --green-210         : rgba( 45, 143, 133, 1 );
     --green-220         : rgba( 37, 117, 98, 1 );
     --green-240         : rgba( 122, 148, 79, 1 );
     --green-250         : rgba( 112, 138, 69, 1 ); // greenish olive
+    --green-280         : rgba( 14, 129, 113, 1 );
+    --green-290         : rgba( 21, 121, 108, 1 ); // great text color - #1 and deep teal emerald
     --green-300         : rgba( 83, 105, 66, 1 );
     --green-350         : rgba( 85, 107, 47, 1 ); // darkolivegreen
     --green-400         : rgba( 5, 150, 105, 1 ); // forest green and good text color on some backgrounds
     --green-440         : rgba( 50, 100, 95, 1 ); // great text highlight color
+    --green-445         : rgba( 13, 119, 93, 1 ); // good text color - #2
+    --green-448         : rgba( 17, 105, 94, 1 ); // good hover color to --green-290
     --green-450         : rgba( 30, 90, 95, 1 );
     --green-500         : rgba( 22, 101, 52, 1 );
     --green-700         : rgba( 68, 73, 57, 1 );

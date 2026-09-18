@@ -588,7 +588,7 @@ export default function ContactUsComponent() {
                 }
                 <div>
 
-                    <h1 ref={ h1Ref } className="contact-page-h1">Request <span style={ { color : 'var( --green-210 )' } }>Service</span></h1>
+                    <h1 ref={ h1Ref } className="contact-page-h1">Request <span style={ { color : 'var( --green-290 )' } }>Service</span></h1>
 
                     <picture>
                         <source 
