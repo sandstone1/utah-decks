@@ -32,11 +32,11 @@
     background : var( --gray-872 );
     // background : var( --blue-83 );
 
-    @media all and ( max-width : 426px ) {
+    @media all and ( max-width : $bp-620 ) {
 
         height : 205px;
 
-    } // end of container > 426px
+    } // end of container > bp-620
 
 } // end of container
 
