@@ -41,7 +41,14 @@
     // fallback jpeg image
     // ==============================
 
-    background-image : linear-gradient( rgba( 0, 0, 0, 0.71 ), rgba( 0, 0, 0, 0.71 ) ), url( /images/mj_wood_texture_02.jpg );
+    background-image : linear-gradient( rgba( 0, 0, 0, 0.71 ), rgba( 0, 0, 0, 0.71 ) ), url( /images/mj_wood_texture_02_1024.jpg );
+
+    @media all and ( max-width : $bp-480 ) {
+
+        // this is an cropped image
+        background-image : linear-gradient( rgba( 0, 0, 0, 0.71 ), rgba( 0, 0, 0, 0.71 ) ), url( /images/mj_wood_texture_02_512.jpg );
+
+    } // end of bp-480
 
     // ==============================
     // end of fallback jpeg image
@@ -53,9 +60,16 @@
 
     // this code comes from the article :
     // " https://www.js-craft.io/blog/css-fallbacks-for-webp-background-images-with-supports/ "
-    @supports ( background-image : url( /images/mj_wood_textures_02.webp ) ) {
+    @supports ( background-image : url( /images/mj_wood_textures_02_1024.webp ) ) {
 
-        background-image : linear-gradient( rgba( 0, 0, 0, 0.71 ), rgba( 0, 0, 0, 0.71 ) ), url( /images/mj_wood_texture_02.webp );
+        background-image : linear-gradient( rgba( 0, 0, 0, 0.71 ), rgba( 0, 0, 0, 0.71 ) ), url( /images/mj_wood_texture_02_1024.webp );
+
+        @media all and ( max-width : $bp-480 ) {
+
+            // this is an cropped image
+            background-image : linear-gradient( rgba( 0, 0, 0, 0.71 ), rgba( 0, 0, 0, 0.71 ) ), url( /images/mj_wood_texture_02_512.webp );
+
+        } // end of bp-480
 
     } // end of container > @supports
 
