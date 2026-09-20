@@ -195,8 +195,8 @@
     @media all and ( max-width : $bp-620 ) {
 
         // match the height of the hero video container minus the header height
-        // margin : calc( 105.16rem - 160px ) 0 0 0;
-        margin : calc( 116.00rem - 160px ) 0 0 0; // had to change from 105.16 to
+        // margin : calc( 105.16rem - 205px ) 0 0 0;
+        margin : calc( 116.00rem - 205px ) 0 0 0; // had to change from 105.16 to
         // 116.00 to make sure we had enough room to fit all the content
 
     } // end of container > bp-620
@@ -204,18 +204,11 @@
     @media all and ( max-width : $bp-480 ) {
 
         // match the height of the hero video container minus the header height
-        // margin : calc( 105.16rem - 160px ) 0 0 0;
-        margin : calc( 130.00rem - 160px ) 0 0 0; // had to change from 105.16 to
+        // margin : calc( 105.16rem - 205px ) 0 0 0;
+        margin : calc( 130.00rem - 205px ) 0 0 0; // had to change from 105.16 to
         // 125.00 to make sure we had enough room to fit all the content
 
     } // end of container > bp-480
-
-    @media all and ( max-width : 404px ) {
-
-        // match the height of the hero video container minus the header height
-        margin : calc( 130.00rem - 205px ) 0 0 0;
-
-    } // end of container > end of 426px
 
     @media all and ( max-width : $bp-375 ) {
 

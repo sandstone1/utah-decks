@@ -526,9 +526,8 @@
         height  : 116.00rem; // make sure to adjust the margin top for the next container
         // and had to change from 105.16 to 116.00 to make sure we had enough room to fit
         // all the content
-        padding : calc( 160px + 11.1rem ) 0 0 0; // add some spacing between the header and the content divs
-        // and remmeber changed padding to 11.1rem from 12.0rem since the header height changed to 151px
-        // from 160px
+        padding : calc( 205px + 10.0rem ) 0 0 0; // add some spacing between the header and the content divs
+        // and this is a visual preference
 
     } // end of container > bp-620
 
@@ -540,13 +539,6 @@
         // all the content
 
     } // end of container > bp-480
-
-    // 105.16rem works out to 956px on a mobile device
-    @media all and ( max-width : 426px ) {
-
-        padding : calc( 160px + 13.0rem ) 0 0 0; // add some spacing between the header and the content divs
-
-    } // end of container > 426px
 
     // ==============================
     // remember, in this case, we keep the height at 105.16rem in order to prevent the content

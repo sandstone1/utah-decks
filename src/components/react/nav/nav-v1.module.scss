@@ -164,7 +164,7 @@
 
             // children
             display               : grid;
-            grid-template-columns : auto auto;
+            grid-template-columns : auto auto auto;
             align-items           : center;
             grid-gap              : 0 2.0rem;
 
@@ -198,7 +198,7 @@
 
             > div {
 
-                margin : 0 -1.0rem 0 0; // since our div or box is 15.0 rem by 15.0 rem and we
+                margin : 1.0rem 0 0 0; // since our div or box is 15.0 rem by 15.0 rem and we
                 // could not adjust the box size without affecting the size of the stars, we
                 // did a negative right margin and this moved the Enchanting Apps text over to
                 // the left and gave the 2 elements better spacing
@@ -241,12 +241,6 @@
 
 
                 outline    : none;
-
-                @media all and ( max-width : $bp-480 ) {
-
-                    // background-color : var( --blue-84 );
-                
-                } // end of container > div1 > a > bp-480
 
                 @media all and ( max-width : 438px ) {
 
@@ -291,6 +285,58 @@
                 } // end of container > div1 > a > h2 > span
     
             } // end of container > div1 > a > h2
+
+            > picture {
+                
+                > img {
+
+                    display : block; // eliminate spacing under picture
+
+                    // make sure to give the image a width so when I shrink it as the screen
+                    // size becomes smaller it does not chop off  the top and bottom of
+                    // the image
+                    width  : 24.0rem;
+                    height : 9.041rem;
+
+                    // ==============================
+                    // for some reason, could not get this part to work
+                    // ==============================
+
+                    // ==============================
+                    // make the image stretch horizontally to fit the column height
+                    // ==============================
+
+                    // remember, we added the width and height to the image element in the html file
+                    // width  : 70%;
+                    // height : 70%;
+                    // center the image inside the parent div
+                    // margin : 0 auto;
+
+                    // now let add the object-fit property and remember for object-fit to work we have to add
+                    // the width and the height to the element
+
+                    // by using these 3 key value pairs inside the image element or " width : 100%; "
+                    // and " height : 100%; " and " object-fit : cover; " we see that each image now fills up
+                    // one grid cell and one grid cell only
+
+                    object-fit : cover;
+
+                    @media all and ( max-width : $bp-1032 ) {
+
+                        width  : calc( 24.0 * 90% );
+                        // height : calc( 9.041 * 90% );
+            
+                    }// end of container > div1 > a > picture > img > bp-1032
+
+                    @media all and ( max-width : $bp-768 ) {
+
+                        margin : 0 0 1.0rem 0;
+            
+                    }// end of container > div1 > a > picture > img > bp-768
+
+                } // end of container > div1 > a > picture > img
+
+            } // end of container > div1 > a > picture
 
         } // end of container > div1 > a
 

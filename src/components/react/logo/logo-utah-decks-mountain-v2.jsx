@@ -87,11 +87,11 @@ export default function LogoUtahDecksComponent() {
                 }
                 <picture>
                     <source 
-                        srcSet="/images/logo_mountain_gold_42.svg"
+                        srcSet="/images/logo_mountain_green_23_9.svg"
                         type="image/svg"
                     />
                     <img
-                        src="/images/logo_mountain_gold_42.svg"
+                        src="/images/logo_mountain_green_23_9.svg"
                         loading="eager"       // explicitly not lazy and loads immediately
                         fetchpriority="high"  // tells the browser to prioritize this over lower-priority resources
                         alt="Mountain"

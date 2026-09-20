@@ -31,14 +31,43 @@
     top      : 0;
     right    : 0;
     bottom   : 0;
+    z-index  : 1; // make this 1 instead of 0 so that it sits on top of the blue blob
 
-    background : linear-gradient( to top, rgba( 0, 125, 240, 1 ) 0%, rgba( 0, 91, 234, 1 ) 100% ); // better for shorter screens
+    // background : linear-gradient( to top, rgba( 0, 125, 240, 1 ) 0%, rgba( 0, 91, 234, 1 ) 100% ); // better for shorter screens
+    // background : linear-gradient( rgba( 0, 0, 0, 0.70 ), rgba( 0, 0, 0, 0.70 ) ), url( '/textures/tileable_wood.png' );
+    // background : linear-gradient( rgba( 0, 0, 0, 0.70 ), rgba( 0, 0, 0, 0.70 ) ), url( '/textures/tileable_wood.png' );
 
-    @media all and ( max-width : 438px ) {
+    // ==============================
+    // fallback jpeg image
+    // ==============================
+
+    background-image : linear-gradient( rgba( 0, 0, 0, 0.71 ), rgba( 0, 0, 0, 0.71 ) ), url( /images/mj_wood_texture_02.jpg );
+
+    // ==============================
+    // end of fallback jpeg image
+    // ==============================
+
+    // ==============================
+    // webp image
+    // ==============================
+
+    // this code comes from the article :
+    // " https://www.js-craft.io/blog/css-fallbacks-for-webp-background-images-with-supports/ "
+    @supports ( background-image : url( /images/mj_wood_textures_02.webp ) ) {
+
+        background-image : linear-gradient( rgba( 0, 0, 0, 0.71 ), rgba( 0, 0, 0, 0.71 ) ), url( /images/mj_wood_texture_02.webp );
+
+    } // end of container > @supports
+
+    // ==============================
+    // end of webp image
+    // ==============================
+
+    @media all and ( max-width : $bp-620 ) {
 
         height : 205px;
 
-    } // end of container > 426px
+    } // end of container > bp-620
 
 } // end of container
 

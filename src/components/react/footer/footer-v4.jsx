@@ -118,9 +118,21 @@ export default function Footer() {
                             <div>
                                 <LogoComponent />
                             </div>
-                            <h2>
-                                Utah Decks & Pergolas
-                            </h2>
+                            <picture>
+                                <source 
+                                    srcset="/images/mj_utah_decks_wordmark_33.png"
+                                    type="image/png"
+                                />
+                                <img
+                                    class="contact-page-image-underline"
+                                    src="/images/mj_utah_decks_wordmark_33.png"
+                                    width={ 2150 }
+                                    height={ 810 }
+                                    loading="eager"
+                                    fetchpriority="high"
+                                    alt="Utah Decks & Pergoals"
+                                />
+                            </picture>
                         </a>
     
                     </div>
