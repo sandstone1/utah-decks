@@ -587,6 +587,17 @@ export async function POST( { request } ) {
     // ==============================
 
     // ==============================
+    // Server side Meta Conversions API call
+    // ==============================
+
+    // ==============================
+    // this is what fires when someone completes an action you count as a lead
+    // ( likely right after a GHL booking submission ), telling Facebook
+    // "this specific person just converted" so it can optimize your ad
+    // delivery and give you accurate reporting
+    // ==============================
+
+    // ==============================
     // this replaces the GHL's "Meta conversion API" workflow action — instead
     // of letting GHL build and send the lead event to Facebook on our behalf,
     // this block does that job directly from our own server code
@@ -639,14 +650,14 @@ export async function POST( { request } ) {
                                 value     : 30000,
                                 currency  : 'USD'
                             },
-                            test_event_code : 'TEST45409'
+                            // test_event_code : 'TEST45409'
                         }
                     ]
                 } )
             }
 
         );
-    
+
         // see of the fetch call was successful
         const fbResult = await fbResponse.json();
         // test
