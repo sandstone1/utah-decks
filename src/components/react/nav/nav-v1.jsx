@@ -278,11 +278,11 @@ export default function NavComponent() {
 
                         <picture>
                             <source 
-                                srcset="/images/mj_utah_decks_wordmark_33.png"
+                                srcSet="/images/mj_utah_decks_wordmark_33.png"
                                 type="image/png"
                             />
                             <img
-                                class="contact-page-image-underline"
+                                className="contact-page-image-underline"
                                 src="/images/mj_utah_decks_wordmark_33.png"
                                 width={ 240 }
                                 height={ 90.41 }

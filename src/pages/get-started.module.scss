@@ -365,5 +365,20 @@
 
     } // end of container > div3
 
+    // ==============================
+    // container > div 4 ( get started )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 4 ) {
+
+        // parent
+        grid-column : 1 / -1; // position against the parent and see notes in parent above
+
+    } // end of container > div4
+
 } // end of container
 

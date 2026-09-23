@@ -5,6 +5,8 @@
 import Layout from '../layouts/main-layout.astro';
 // import in the Hero header component
 import HeroHeaderComponent from '../components/react/hero/hero-header';
+// import in the Get Started component
+import GetStartedComponent from '../components/react/get-started/get-started-v1';
 // import in the Blob Blue background component
 import BlobComponentOne from '../components/react/animations/blob/blob-v12';
 // import in the Blob Blue background component
@@ -218,6 +220,17 @@ import styles from './get-started.module.scss';
 
             </div>
 
+        </div>
+
+        {
+            /*
+                // ==============================
+                // container > div 3 ( get started )
+                // ==============================
+            */
+        }
+        <div>
+            <GetStartedComponent client:visible />
         </div>
 
         {
