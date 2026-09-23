@@ -54,7 +54,7 @@ import styles from './get-started.module.scss';
         */
     }
 
-    <div class={ styles.freeDeckDesignContainer }>
+    <div class={ styles.freeDeckDesignContainer } id="calendar-section">
 
         {
             /*
@@ -254,4 +254,50 @@ import styles from './get-started.module.scss';
     </div>
 
 </Layout>
+
+
+{
+    /*
+        // ==============================
+        // browser side FB booking confirmation tracking code
+        // ==============================
+    */
+}
+
+<!--
+    this script's job is to tell Facebook's browser-side pixel "a real booking just happened"
+    the moment someone completes a booking inside the GHL calendar iframe, the same way our
+    contact form already does for its own contact form submissions
+-->
+<script is:inline>
+
+    // use this to make we are only attaching one lead event per booking
+    let ghlListenerAttached = false;
+
+    function setupGhlMessageListener() {
+
+        if ( ghlListenerAttached ) return;
+        ghlListenerAttached = true;
+
+        window.addEventListener( 'message', ( event ) => {
+
+            if ( Array.isArray( event.data ) && event.data[ 0 ] === 'msgsndr-booking-complete' ) {
+
+                const eventId = crypto.randomUUID();
+
+                if ( typeof fbq !== 'undefined' ) {
+
+                    fbq( 'track', 'Lead', {}, { eventID : eventId } );
+
+                }
+
+            }
+
+        } );
+
+    }
+
+    document.addEventListener( 'astro:page-load', setupGhlMessageListener );
+
+</script>
 

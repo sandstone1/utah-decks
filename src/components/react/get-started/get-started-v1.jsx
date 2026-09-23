@@ -7,10 +7,8 @@ import { useEffect, useRef } from 'react';
 import { navigate } from 'astro:transitions/client';
 // import in Animating Gradient Blur Component
 import AnimatingGradientBackground from '../animations/animating-gradient/animating-gradient-background-v12';
-// import in the Circle component
-import CircleComponent from '../animations/circle/circle-v5';
-// import in the Tabler number one icon
-import { TbCircleNumber1Filled } from "react-icons/tb";
+// import in the Font Awesome calendar check icon
+import { FaRegCalendarCheck } from "react-icons/fa6";
 // import in our stylesheet
 import styles from './get-started-v1.module.scss';
 
@@ -1316,7 +1314,7 @@ export default function GetStartedComponent() {
                 {
                     /*
                         // ==============================
-                        // container > div 1 ( wrapper div ) > div 3 ( wrapper div for badges )
+                        // container > div 1 ( wrapper div ) > div 5 ( wrapper div for badges )
                         // ==============================
                     */
                 }
@@ -1414,11 +1412,11 @@ export default function GetStartedComponent() {
                         }
                         <picture>
                             <source 
-                                srcSet="/images/mj_engineer_01_300.webp"
+                                srcSet="/images/mj_engineer_02_300.webp"
                                 type="image/webp"
                             />
                             <img
-                                src="/images/mj_engineer_01_300.jpg"
+                                src="/images/mj_engineer_02_300.jpg"
                                 width={ 300 }
                                 height={ 300 }
                                 loading="lazy"
@@ -1576,11 +1574,11 @@ export default function GetStartedComponent() {
                         }
                         <picture>
                             <source 
-                                srcSet="/images/mj_contractor_team_06_300.webp"
+                                srcSet="/images/mj_contractor_team_07_300.webp"
                                 type="image/webp"
                             />
                             <img
-                                src="/images/mj_contractor_team_06_300.jpg"
+                                src="/images/mj_contractor_team_07_300.jpg"
                                 width={ 300 }
                                 height={ 300 }
                                 loading="lazy"
@@ -1648,6 +1646,30 @@ export default function GetStartedComponent() {
 
                 </div>
 
+            </div>
+
+            {
+                /*
+                    // ==============================
+                    // container > div 2 ( schedule your project )
+                    // ==============================
+                */
+            }
+            <div>
+
+                <a 
+                    href="#"
+                    onClick={ 
+                        ( e ) => {
+                            e.preventDefault();
+                            document.getElementById( 'calendar-section' ).scrollIntoView( { behavior : 'smooth' } ); 
+                        }
+                    }
+                >
+                    <FaRegCalendarCheck style={ { verticalAlign: '-3.0px', fontSize: '2.25rem', margin: '0 1.0rem 0 0' } } />
+                    Schedule your project
+                </a>
+    
             </div>
 
             {
