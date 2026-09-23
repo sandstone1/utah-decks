@@ -352,15 +352,23 @@
             grid-template-columns : 1fr;
             justify-items         : center;
     
-            width   : min( 128.0rem, 100% ); // browser will select the smaller of 128.0rem or 100%
-            padding : 0 0 0 0;
-    
+            width      : min( 128.0rem, 100% ); // browser will select the smaller of 128.0rem or 100%
+            min-height : 787px;
+            padding    : 0 0 0 0;
+
             @media all and ( max-width : $bp-1280 ) {
-    
-                width : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
-    
+
+                width      : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+                min-height : 829px;
+
             } // end of container > div3 > div2 > bp-1280
-    
+
+            @media all and ( max-width : $bp-1032 ) {
+
+                min-height : 725px;
+
+            } // end of container > div3 > div2 > bp-1032
+
         } // end of container > div3 > div2
 
     } // end of container > div3

@@ -48,6 +48,9 @@ export default function GetStartedComponent() {
     // use the useRef(); hook to create a reference to a DOM element(s)
     const wrapperRef = useRef( null );
     const h2Ref      = useRef( null );
+    const p2Ref      = useRef( null );
+    const p3Ref      = useRef( null );
+    const p4Ref      = useRef( null );
     const badge1Ref  = useRef( null );
     const badge2Ref  = useRef( null );
     const badge3Ref  = useRef( null );
@@ -250,6 +253,99 @@ export default function GetStartedComponent() {
                                         }
 
                                     ); // end of h2Ref.current.animate()
+
+                                    // ==============================
+                                    // p2
+                                    // ==============================
+
+                                    p2Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateX( -20.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateX( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 400,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
+                                    ); // end of p2Ref.current.animate()
+
+                                    // ==============================
+                                    // p3
+                                    // ==============================
+
+                                    p3Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateX( -20.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateX( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 400,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
+                                    ); // end of p3Ref.current.animate()
+
+                                    // ==============================
+                                    // p4 div
+                                    // ==============================
+
+                                    p4Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateX( -20.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateX( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 400,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
+                                    ); // end of p4Ref.current.animate()
 
                                     // ==============================
                                     // badge 1
@@ -480,6 +576,99 @@ export default function GetStartedComponent() {
                                     ); // end of h2Ref.current.animate()
 
                                     // ==============================
+                                    // p2
+                                    // ==============================
+
+                                    p2Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateX( -20.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateX( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 200,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
+                                    ); // end of p2Ref.current.animate()
+
+                                    // ==============================
+                                    // p3
+                                    // ==============================
+
+                                    p3Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateX( -20.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateX( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 200,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
+                                    ); // end of p3Ref.current.animate()
+
+                                    // ==============================
+                                    // p4
+                                    // ==============================
+
+                                    p4Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateX( -20.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateX( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 200,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
+                                    ); // end of p4Ref.current.animate()
+
+                                    // ==============================
                                     // badge 1
                                     // ==============================
 
@@ -706,6 +895,99 @@ export default function GetStartedComponent() {
                                         }
 
                                     ); // end of h2Ref.current.animate()
+
+                                    // ==============================
+                                    // p2
+                                    // ==============================
+
+                                    p2Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateY( 4.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateY( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 0,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
+                                    ); // end of p2Ref.current.animate()
+
+                                    // ==============================
+                                    // p3
+                                    // ==============================
+
+                                    p3Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateY( 4.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateY( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 0,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
+                                    ); // end of p3Ref.current.animate()
+
+                                    // ==============================
+                                    // p4 div
+                                    // ==============================
+
+                                    p4Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateY( 4.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateY( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 0,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
+                                    ); // end of p4Ref.current.animate()
 
                                     // ==============================
                                     // badge 1
@@ -1016,17 +1298,17 @@ export default function GetStartedComponent() {
                     Get Started
                 </h2>
 
-                <p>
+                <p ref={ p2Ref }>
                     Starting a deck or pergola project with Utah Decks & Pergolas is easy.
                 </p>
 
-                <p>
+                <p ref={ p3Ref }>
                     It begins with a simple phone call or email, where we listen closely to
                     your vision — not just the mechanics of what you want built, but how the
                     finished space will fit your life and enhance the time you spend outdoors.
                 </p>
 
-                <p>
+                <p ref={ p4Ref }>
                     From design and planning through the finished product, we're with you every
                     step of the way.
                 </p>
