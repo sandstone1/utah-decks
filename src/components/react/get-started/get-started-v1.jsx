@@ -1412,11 +1412,11 @@ export default function GetStartedComponent() {
                         }
                         <picture>
                             <source 
-                                srcSet="/images/mj_engineer_02_300.webp"
+                                srcSet="/images/mj_engineer_03_300.webp"
                                 type="image/webp"
                             />
                             <img
-                                src="/images/mj_engineer_02_300.jpg"
+                                src="/images/mj_engineer_03_300.jpg"
                                 width={ 300 }
                                 height={ 300 }
                                 loading="lazy"

@@ -205,7 +205,7 @@
 
         @media all and ( max-width : $bp-1032 ) {
 
-            padding : 0 0 calc( 12.0rem - 0rem ) 0;;
+            padding : 0 0 calc( 12.0rem - 0rem ) 0;
 
         } // end of container > div3 > bp-1032
 
@@ -365,7 +365,7 @@
 
             @media all and ( max-width : $bp-1032 ) {
 
-                min-height : 725px;
+                min-height : 675px;
 
             } // end of container > div3 > div2 > bp-1032
 
@@ -374,7 +374,7 @@
     } // end of container > div3
 
     // ==============================
-    // container > div 4 ( get started )
+    // container > div 4 ( recent work )
     // ==============================
 
     // ==============================
@@ -387,6 +387,21 @@
         grid-column : 1 / -1; // position against the parent and see notes in parent above
 
     } // end of container > div4
+
+    // ==============================
+    // container > div 5 ( get started )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 5 ) {
+
+        // parent
+        grid-column : 1 / -1; // position against the parent and see notes in parent above
+
+    } // end of container > div5
 
 } // end of container
 
