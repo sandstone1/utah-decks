@@ -85,7 +85,7 @@ export default function RecentWorkComponent() {
             <div>
 
                 <h2>
-                    Recent Work
+                    A Couple Recent <span style={ { color : 'var( --green-290 )' } }>Projects</span>
                 </h2>
 
                 {
@@ -107,15 +107,15 @@ export default function RecentWorkComponent() {
                     <picture>
                         <source
                             media="( max-width : 620px )"
-                            srcSet="/images/recent_work_01_620.webp"
+                            srcSet="/images/recent_work/recent_08_620.webp"
                             type="image/webp"
                         />
                         <source
-                            srcSet="/images/recent_work_01_1440.webp"
+                            srcSet="/images/recent_work/recent_08_1440.webp"
                             type="image/webp"
                         />
                         <img
-                            src="/images/recent_work_01_1440.jpg"
+                            src="/images/recent_work/recent_08_1440.jpg"
                             width={ 1440 }
                             height={ 810 }
                             loading="lazy"
@@ -135,15 +135,15 @@ export default function RecentWorkComponent() {
                     <picture>
                         <source
                             media="( max-width : 620px )"
-                            srcSet="/images/recent_work_03_620.webp"
+                            srcSet="/images/recent_work/recent_05_620.webp"
                             type="image/webp"
                         />
                         <source
-                            srcSet="/images/recent_work_03_1440.webp"
+                            srcSet="/images/recent_work/recent_05_1440.webp"
                             type="image/webp"
                         />
                         <img
-                            src="/images/recent_work_03_1440.jpg"
+                            src="/images/recent_work/recent_05_1440.jpg"
                             width={ 1440 }
                             height={ 810 }
                             loading="lazy"
@@ -163,17 +163,17 @@ export default function RecentWorkComponent() {
                     <picture>
                         <source
                             media="( max-width : 620px )"
-                            srcSet="/images/recent_work_02_620.webp"
+                            srcSet="/images/recent_work/recent_20_620.webp"
                             type="image/webp"
                         />
                         <source
-                            srcSet="/images/recent_work_02_1440.webp"
+                            srcSet="/images/recent_work/recent_20_1440.webp"
                             type="image/webp"
                         />
                         <img
-                            src="/images/recent_work_02_1440.jpg"
+                            src="/images/recent_work/recent_20_1440.jpg"
                             width={ 1440 }
-                            height={ 810 }
+                            height={ 958 }
                             loading="lazy"
                             // fetchpriority={ "high" } // needed in case someone scrolls down the
                             // page super fast
