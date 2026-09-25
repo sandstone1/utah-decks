@@ -46,7 +46,7 @@ export default function OurPledgeComponent() {
     // use the useRef(); hook to create a reference to a DOM element(s)
     const wrapperRef = useRef( null );
     const h2Ref      = useRef( null );
-    const p2Ref      = useRef( null );
+    // const p2Ref      = useRef( null );
     const badge1Ref  = useRef( null );
     const badge2Ref  = useRef( null );
     const badge3Ref  = useRef( null );
@@ -247,7 +247,7 @@ export default function OurPledgeComponent() {
                                         }
 
                                     ); // end of h2Ref.current.animate()
-
+/*
                                     // ==============================
                                     // p2
                                     // ==============================
@@ -278,7 +278,7 @@ export default function OurPledgeComponent() {
                                         }
 
                                     ); // end of p2Ref.current.animate()
-
+*/
                                     // ==============================
                                     // badge 1
                                     // ==============================
@@ -444,7 +444,7 @@ export default function OurPledgeComponent() {
                                         }
 
                                     ); // end of h2Ref.current.animate()
-
+/*
                                     // ==============================
                                     // p2
                                     // ==============================
@@ -475,7 +475,7 @@ export default function OurPledgeComponent() {
                                         }
 
                                     ); // end of p2Ref.current.animate()
-
+*/
                                     // ==============================
                                     // badge 1
                                     // ==============================
@@ -641,7 +641,7 @@ export default function OurPledgeComponent() {
                                         }
 
                                     ); // end of h2Ref.current.animate()
-
+/*
                                     // ==============================
                                     // p2
                                     // ==============================
@@ -672,7 +672,7 @@ export default function OurPledgeComponent() {
                                         }
 
                                     ); // end of p2Ref.current.animate()
-
+*/
                                     // ==============================
                                     // badge 1
                                     // ==============================
@@ -900,6 +900,9 @@ export default function OurPledgeComponent() {
                     // ==============================
                     // container > div 1 ( wrapper div )
                     // ==============================
+                    <p ref={ p2Ref }>
+                        Here's what we commit to on every project, no exceptions.
+                    </p>
                 */
             }
             <div
@@ -911,10 +914,6 @@ export default function OurPledgeComponent() {
                 >
                     Our Pledge to <span style={ { color : 'var( --green-23-9 )' } }>Respect</span>
                 </h2>
-
-                <p ref={ p2Ref }>
-                    Here's what we commit to on every project, no exceptions.
-                </p>
 
                 {
                     /*

@@ -142,10 +142,9 @@
         display               : grid;
         grid-template-rows    : auto;
         grid-template-columns : 1fr;
-        grid-gap              : 2.0rem 0;
+        grid-gap              : 4.0rem 0;
         grid-template-areas   : "h2-1"
-                                "p2"
-                                "div3";
+                                "div2";
 
         // make this section sit above the animating gradient
         z-index : 1;
@@ -181,7 +180,7 @@
             } // end of container > div1 > h2 > bp-1536
     
         }  // end of container > div1 > h2
-
+/*
         > p:nth-child( 2 ) {
 
             // parent
@@ -201,15 +200,15 @@
             } // end of container > div1 > p2 > bp-1536
     
         }  // end of container > div1 > p2
-
+*/
         // ==============================
-        // container > div 1 ( wrapper div ) > div 3 ( wrapper div for steps )
+        // container > div 1 ( wrapper div ) > div 2 ( wrapper div for steps )
         // ==============================
 
-        > div:nth-child( 3 ) {
+        > div:nth-child( 2 ) {
 
             // parent
-            grid-area : div3;
+            grid-area : div2;
 
             display               : grid;
             grid-template-rows    : repeat( 2, auto );
@@ -238,10 +237,10 @@
                                         "div3"
                                         "div4";
     
-            } // end of container > div1 > div3 > bp-1280
+            } // end of container > div1 > div2 > bp-1280
 
             // ==============================
-            // container > div 1 ( wrapper div ) > div 3 ( wrapper div for badges ) > div 1
+            // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges ) > div 1
             // ==============================
 
             > div:nth-child( 1 ) {
@@ -279,7 +278,7 @@
                 opacity: 0; // needed for the opacity and slide in animation
 
                 // ==============================
-                // container > div 1 > div 3 > div 1 > h3-1
+                // container > div 1 > div 2 > div 1 > h3-1
                 // ==============================
 
                 > h3:nth-child( 1 ) {
@@ -292,7 +291,7 @@
                     line-height : 1.3; // visual preference and needed for when the
                     // h1 splits into 2 lines
 
-                } // end of container > div1 > div3 > div1 > h3-1
+                } // end of container > div1 > div2 > div1 > h3-1
 
                 // ==============================
                 // container > div 1 > div 3 > div 1 > p
@@ -305,10 +304,10 @@
 
                     @include text-base-dark;
 
-                } // end of container > div1 > div3 > div1 > p
+                } // end of container > div1 > div2 > div1 > p
 
                 // ==============================
-                // container > div 1 > div 3 > div 1 > picture
+                // container > div 1 > div 2 > div 1 > picture
                 // ==============================
 
                 > picture {
@@ -331,14 +330,14 @@
 
                         border-radius : 6px;
 
-                    } // end of container > div1 > div3 > div1 > picture > img
+                    } // end of container > div1 > div2 > div1 > picture > img
 
-                } // end of container > div1 > div3 > div1 > picture
+                } // end of container > div1 > div2 > div1 > picture
 
-            } // end of container > div1 > div3 > div1
+            } // end of container > div1 > div2 > div1
 
             // ==============================
-            // container > div 1 ( wrapper div ) > div 3 ( wrapper div for badges ) > div 2
+            // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges ) > div 2
             // ==============================
 
             > div:nth-child( 2 ) {
@@ -389,10 +388,10 @@
                     line-height : 1.3; // visual preference and needed for when the
                     // h1 splits into 2 lines
 
-                } // end of container > div1 > div3 > div2 > h3-1
+                } // end of container > div1 > div2 > div2 > h3-1
     
                 // ==============================
-                // container > div 1 > div 3 > div 2 > p
+                // container > div 1 > div 2 > div 2 > p
                 // ==============================
 
                 > p:nth-child( 2 ) {
@@ -402,10 +401,10 @@
 
                     @include text-base-dark;
 
-                } // end of container > div1 > div3 > div2 > p
+                } // end of container > div1 > div2 > div2 > p
 
                 // ==============================
-                // container > div 1 > div 3 > div 2 > picture
+                // container > div 1 > div 2 > div 2 > picture
                 // ==============================
 
                 > picture {
@@ -428,14 +427,14 @@
 
                         border-radius : 6px;
 
-                    } // end of container > div1 > div3 > div2 > picture > img
+                    } // end of container > div1 > div2 > div2 > picture > img
 
-                } // end of container > div1 > div3 > div2 > picture
+                } // end of container > div1 > div2 > div2 > picture
 
-            } // end of container > div1 > div3 > div2
+            } // end of container > div1 > div2 > div2
 
             // ==============================
-            // container > div 1 ( wrapper div ) > div 3 ( wrapper div for badges ) > div 3
+            // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges ) > div 3
             // ==============================
 
             > div:nth-child( 3 ) {
@@ -473,7 +472,7 @@
                 opacity: 0; // needed for the opacity and slide in animation
 
                 // ==============================
-                // container > div 1 > div 3 > div 3 > h3-1
+                // container > div 1 > div 2 > div 3 > h3-1
                 // ==============================
 
                 > h3:nth-child( 1 ) {
@@ -486,10 +485,10 @@
                     line-height : 1.3; // visual preference and needed for when the
                     // h1 splits into 2 lines
 
-                } // end of container > div1 > div3 > div3 > h3-1
+                } // end of container > div1 > div2 > div3 > h3-1
 
                 // ==============================
-                // container > div 1 > div 3 > div 3 > p
+                // container > div 1 > div 2 > div 3 > p
                 // ==============================
 
                 > p:nth-child( 2 ) {
@@ -499,10 +498,10 @@
 
                     @include text-base-dark;
 
-                } // end of container > div1 > div3 > div3 > p
+                } // end of container > div1 > div2 > div3 > p
 
                 // ==============================
-                // container > div 1 > div 3 > div 3 > picture
+                // container > div 1 > div 2 > div 3 > picture
                 // ==============================
 
                 > picture {
@@ -525,14 +524,14 @@
 
                         border-radius : 6px;
 
-                    } // end of container > div1 > div3 > div3 > picture > img
+                    } // end of container > div1 > div2 > div3 > picture > img
 
-                } // end of container > div1 > div3 > div3 > picture
+                } // end of container > div1 > div2 > div3 > picture
 
-            } // end of container > div1 > div3 > div3
+            } // end of container > div1 > div2 > div3
 
             // ==============================
-            // container > div 1 ( wrapper div ) > div 3 ( wrapper div for badges ) > div 4
+            // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges ) > div 4
             // ==============================
 
             > div:nth-child( 4 ) {
@@ -570,7 +569,7 @@
                 opacity: 0; // needed for the opacity and slide in animation
 
                 // ==============================
-                // container > div 1 > div 3 > div 3 > h3-1
+                // container > div 1 > div 2 > div 4 > h3-1
                 // ==============================
 
                 > h3:nth-child( 1 ) {
@@ -583,10 +582,10 @@
                     line-height : 1.3; // visual preference and needed for when the
                     // h1 splits into 2 lines
 
-                } // end of container > div1 > div3 > div4 > h3-1
+                } // end of container > div1 > div2 > div4 > h3-1
 
                 // ==============================
-                // container > div 1 > div 3 > div 4 > p
+                // container > div 1 > div 2 > div 4 > p
                 // ==============================
 
                 > p:nth-child( 2 ) {
@@ -596,10 +595,10 @@
 
                     @include text-base-dark;
 
-                } // end of container > div1 > div3 > div4 > p
+                } // end of container > div1 > div2 > div4 > p
 
                 // ==============================
-                // container > div 1 > div 3 > div 4 > picture
+                // container > div 1 > div 2 > div 4 > picture
                 // ==============================
 
                 > picture {
@@ -622,18 +621,18 @@
 
                         border-radius : 6px;
 
-                    } // end of container > div1 > div3 > div4 > picture > img
+                    } // end of container > div1 > div2 > div4 > picture > img
 
-                } // end of container > div1 > div3 > div4 > picture
+                } // end of container > div1 > div2 > div4 > picture
 
-            } // end of container > div1 > div3 > div4
+            } // end of container > div1 > div2 > div4
 
-        } // end of container > div1 > div3
+        } // end of container > div1 > div2
 
     } // end of container > div1
 
     // ==============================
-    // container > div 3 ( animating backgrounds )
+    // container > div 2 ( animating backgrounds )
     // ==============================
 
     > div:nth-child( 2 ) {
