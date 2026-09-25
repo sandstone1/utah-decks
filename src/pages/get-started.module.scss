@@ -389,7 +389,7 @@
     } // end of container > div4
 
     // ==============================
-    // container > div 5 ( get started )
+    // container > div 5 ( by the numbers )
     // ==============================
 
     // ==============================
@@ -404,7 +404,7 @@
     } // end of container > div5
 
     // ==============================
-    // container > div 6 ( our pledge )
+    // container > div 6 ( get started )
     // ==============================
 
     // ==============================
@@ -419,7 +419,7 @@
     } // end of container > div6
 
     // ==============================
-    // container > div 7 ( areas we serve )
+    // container > div 7 ( our pledge )
     // ==============================
 
     // ==============================
@@ -432,6 +432,21 @@
         grid-column : 1 / -1; // position against the parent and see notes in parent above
 
     } // end of container > div7
+
+    // ==============================
+    // container > div 8 ( areas we serve )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 8 ) {
+
+        // parent
+        grid-column : 1 / -1; // position against the parent and see notes in parent above
+
+    } // end of container > div8
 
 } // end of container
 

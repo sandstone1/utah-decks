@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react';
 // import in the navigate component
 import { navigate } from 'astro:transitions/client';
 // import in Animating Gradient Blur Component
-import AnimatingGradientBackground from '../animations/animating-gradient/animating-gradient-background-v12';
+import AnimatingGradientBackground from '../animations/animating-gradient/animating-gradient-background-v21';
 // import in the Circle component
 import CircleComponent from '../animations/circle/circle-v5';
 // import in the Tabler number one icon
@@ -1013,7 +1013,7 @@ export default function ServicesComponent() {
                 <h2
                     ref={ h2Ref }
                 >
-                    Services
+                    Outdoor Spaces & Home Additions Are What We Do
                 </h2>
 
                 {

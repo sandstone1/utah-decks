@@ -7,6 +7,8 @@ import Layout from '../layouts/main-layout.astro';
 import HeroHeaderComponent from '../components/react/hero/hero-header';
 // import in the Recent Work component
 import RecentWorkComponent from '../components/react/recent-work/recent-work-v1';
+// import in the By The Numbers component
+import ByTheNumbersComponent from '../components/react/by-the-numbers/by-the-numbers-v3';
 // import in the Get Started component
 import GetStartedComponent from '../components/react/get-started/get-started-v1';
 // import in the Our Pledge component
@@ -37,7 +39,7 @@ import styles from './get-started.module.scss';
     }
     <!-- page specific meta tags -->
     <meta slot="head" name="keywords" content='custom deck builder Salt Lake City, deck builder Utah, custom deck builder Draper Utah, composite deck installation Utah, deck contractor near me, Trex deck installer Utah, TimberTech deck builder Utah, helical pier deck footings, composite deck railing installation, pergola builder Salt Lake County, deck demolition and replacement, custom deck stairs builder, deck builder Salt Lake County, deck builder Utah County, deck builder Davis County, Utah Decks' />
-    <meta slot="head" name="description" content='Custom deck builder serving Salt Lake, Utah & Davis counties. Composite decking, pergolas, and railing — licensed, insured, free estimates.' />
+    <meta slot="head" name="description" content='Book a free deck design consultation. We&apos;ll visit your property, talk through your vision, and build a custom design — fast, no pressure.' />
     <meta slot="head" property="og:image" content='/images/mj_decks_02_1032.jpg' />
     <meta slot="head" property="og:title" content='Get Started | Utah Decks & Pergolas' />
     <meta slot="head" property="og:description" content='Custom deck builder serving Salt Lake, Utah & Davis counties. Composite decking, pergolas, and railing — licensed, insured, free estimates.' />
@@ -242,7 +244,18 @@ import styles from './get-started.module.scss';
         {
             /*
                 // ==============================
-                // container > div 5 ( get started )
+                // container > div 5 ) by the numbers )
+                // ==============================
+            */
+        }
+        <div>
+            <ByTheNumbersComponent client:visible />
+        </div>
+
+        {
+            /*
+                // ==============================
+                // container > div 6 ( get started )
                 // ==============================
             */
         }
@@ -253,7 +266,7 @@ import styles from './get-started.module.scss';
         {
             /*
                 // ==============================
-                // container > div 6 ( our pledge to respect )
+                // container > div 7 ( our pledge to respect )
                 // ==============================
             */
         }
@@ -264,7 +277,7 @@ import styles from './get-started.module.scss';
         {
             /*
                 // ==============================
-                // container > div 7 ( areas we serve )
+                // container > div 8 ( areas we serve )
                 // ==============================
             */
         }

@@ -8,12 +8,14 @@
 import Layout from '../layouts/main-layout.astro';
 // import in the Hero component
 import HeroComponent from '../components/react/hero-image/index/hero-image-v6';
+// import in the Contact Us component
+import ContactUsComponent from '../components/react/contact-us/contact-us-v6';
 // import in the By The Numbers component
 import ByTheNumbersComponent from '../components/react/by-the-numbers/by-the-numbers-v3';
 // import in the WhatWeDo component
 import ServicesComponent from '../components/react/services/services-v2';
-// import in the Contact Us component
-import ContactUsComponent from '../components/react/contact-us/contact-us-v6';
+// import in the Areas We Serve component
+import AreasWeServeComponent from '../components/react/areas-we-serve/areas-we-serve-v1';
 // import in the Contact Us component
 import WhyChooseUsComponent from '../components/react/why-choose-us/why-choose-us-v2';
 
@@ -187,6 +189,16 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
         {
             /*
                 // ==============================
+                // container > div 8 ( areas we serve )
+                // ==============================
+            */
+        }
+        <AreasWeServeComponent client:visible />
+
+    
+        {
+            /*
+                // ==============================
                 // container > div 6
                 // ==============================
                 <WhyChooseUsComponent client:visible />
@@ -199,16 +211,6 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
                 // container > div 11
                 // ==============================
                 <WhereYouCanFindUsComponent client:visible />
-            */
-        }
-        
-
-        {
-            /*
-                // ==============================
-                // container > div 12
-                // ==============================
-                <CimikoskiStemCellsWebsiteComponent client:load />
             */
         }
 
