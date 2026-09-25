@@ -10,6 +10,8 @@ import Layout from '../layouts/main-layout.astro';
 import HeroComponent from '../components/react/hero-image/index/hero-image-v6';
 // import in the Contact Us component
 import ContactUsComponent from '../components/react/contact-us/contact-us-v6';
+// import in the Recent Work component
+import RecentWorkComponent from '../components/react/recent-work/recent-work-v1';
 // import in the By The Numbers component
 import ByTheNumbersComponent from '../components/react/by-the-numbers/by-the-numbers-v3';
 // import in the WhatWeDo component
@@ -162,7 +164,7 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
         {
             /*
                 // ==============================
-                // container > div 2
+                // container > div 2 ( contact us )
                 // ==============================
             */
         }
@@ -171,7 +173,16 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
         {
             /*
                 // ==============================
-                // container > div 3
+                // container > div 3 ( recent work )
+                // ==============================
+            */
+        }
+        <RecentWorkComponent client:visible />
+    
+        {
+            /*
+                // ==============================
+                // container > div 4 ( by the number )
                 // ==============================
             */
         }
@@ -180,7 +191,7 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
         {
             /*
                 // ==============================
-                // container > div 4
+                // container > div 5 ( services )
                 // ==============================
             */
         }
@@ -189,7 +200,7 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
         {
             /*
                 // ==============================
-                // container > div 8 ( areas we serve )
+                // container > div 6 ( areas we serve )
                 // ==============================
             */
         }
