@@ -278,21 +278,21 @@
     0% {
 
         --gradient-percentage-x-1 : 20%;
-        --gradient-percentage-y-1 : 60%;
+        --gradient-percentage-y-1 : 55%;
 
     }
 
     50% {
 
         --gradient-percentage-x-1 : 25%;
-        --gradient-percentage-y-1 : 65%;
+        --gradient-percentage-y-1 : 50%;
 
     }
 
     100% {
 
         --gradient-percentage-x-1 : 30%;
-        --gradient-percentage-y-1 : 60%;
+        --gradient-percentage-y-1 : 55%;
 
     }
 
@@ -312,21 +312,21 @@
     0% {
 
         --gradient-percentage-x-1 : 20%;
-        --gradient-percentage-y-1 : 65%;
+        --gradient-percentage-y-1 : 55%;
 
     }
 
     50% {
 
         --gradient-percentage-x-1 : 25%;
-        --gradient-percentage-y-1 : 70%;
+        --gradient-percentage-y-1 : 50%;
 
     }
 
     100% {
 
         --gradient-percentage-x-1 : 30%;
-        --gradient-percentage-y-1 : 65%;
+        --gradient-percentage-y-1 : 55%;
 
     }
 
@@ -346,21 +346,21 @@
     0% {
 
         --gradient-percentage-x-1 : 20%;
-        --gradient-percentage-y-1 : 75%;
+        --gradient-percentage-y-1 : 55%;
 
     }
 
     50% {
 
         --gradient-percentage-x-1 : 25%;
-        --gradient-percentage-y-1 : 80%;
+        --gradient-percentage-y-1 : 50%;
 
     }
 
     100% {
 
         --gradient-percentage-x-1 : 30%;
-        --gradient-percentage-y-1 : 75%;
+        --gradient-percentage-y-1 : 55%;
 
     }
 
@@ -417,7 +417,7 @@
         // ------------------------
 
         background : 
-            radial-gradient( circle 1100px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), // --blue-85-2
+            radial-gradient( circle 800px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), // --blue-85-2
             // radial-gradient( circle 500px at var( --gradient-percentage-x-2 ) var( --gradient-percentage-y-2 ), var( --green-210 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
             // radial-gradient( circle 600px at var( --gradient-percentage-x-3 ) var( --gradient-percentage-y-3 ), rgba( 102, 51, 153, 0.7 ) 0%, rgba( 0, 0, 0, 0 ) 100% ) // --purple-150
         ;
@@ -439,7 +439,7 @@
 
             // change the size of the radial gradients
             background : 
-                radial-gradient( circle 850px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                radial-gradient( circle 750px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
                 // radial-gradient( circle 500px at var( --gradient-percentage-x-2 ) var( --gradient-percentage-y-2 ), var( --green-210 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
                 // radial-gradient( circle 450px at var( --gradient-percentage-x-3 ) var( --gradient-percentage-y-3 ), rgba( 102, 51, 153, 0.7 ) 0%, rgba( 0, 0, 0, 0 ) 100% )
             ;

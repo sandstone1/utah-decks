@@ -1,0 +1,526 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+// ==============================
+// keyframes 1
+// ==============================
+
+// ==============================
+// rotate the circle
+// ==============================
+
+// ==============================
+// purpose : rotate the circle
+// ==============================
+
+@keyframes rotate-1 {
+
+    from {
+
+        transform : rotate( 0deg );
+
+    } // end of from
+  
+    to {
+
+        transform : rotate( 360deg );
+
+    } // end of to
+  
+} // end of rotate-1
+
+
+
+
+
+
+
+
+
+
+// ==============================
+// areas we serve container
+// ==============================
+
+.areasWeServeContainer {
+
+    // parent
+    grid-column : 1 / -1; // position against the parent
+
+    // ==============================
+    // note 
+    // ==============================
+
+    // ==============================
+    // 1 - in the content div use grid-column to position against the parent grid and until we
+    // can use sub grid we may need to duplicate the parent grid and bring it down to the
+    // content div where we can position against it
+    // 2 - now our content div is sitting empty inside the parent grid we need to give the
+    // content div a width and height so we can create the content box and
+    // 3 - then set up a grid within the content box so that we can layout the content
+    // inside the content box as needed and
+    // 4 - the only cavet to 3 above, is that sometimes we need to go with a horizontal layout
+    // and in those cases, flexbox may be the better choice than css grid
+    // ==============================
+
+    display               : grid;
+    grid-template-rows    : repeat( 2, auto );
+    grid-template-columns : minmax( 8rem, 1fr )                          // col 1 - 2   ( column 1 )
+                            repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                            minmax( 8rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    // ==============================
+    // remember, I can center the wrapper div by using either " justify-items : center; "
+    // in the parent div ( see below ) or by using " margin : 0 auto; " in the
+    // wrapper div
+    // ==============================
+
+    align-content         : center;
+    // align-items           : start;
+    justify-items         : center;
+
+    position   : relative; // needed for wave shape
+    min-height : min( 100.0rem, 100vh );
+    // allow the container to fill up the window horizontally if the window is larger that
+    // 100.0rem and this looks great
+    // min-height : 100.0rem;
+    // height     : 100vh;
+    padding    : 12.0rem 0 12.0rem 0;
+
+    // ==============================
+    // background
+    // ==============================
+
+    background : var( --blue-83 );
+    background : var( --blue-84 );
+    // background : var( --blue-85-2 );
+    // background : var( --blue-85-2 );
+    background : var( --gray-872 );
+    // background : var( --yellow-20 );
+
+    // ==============================
+    // end of background
+    // ==============================
+    // ==============================
+    // background color
+    // ==============================
+
+    // this the best color that match the first video and will use this as my background
+    // color and hopefully save a network request by eliminating 
+    // background-image : url( /images/lama_bg_01.webp );
+    // background-color : rgba( 17, 11, 84, 1 );
+
+    background-size       : cover;
+    background-blend-mode : multiply;
+    // background-color      : var( --blue-85-2 );
+    // background-color      : rgba( 13, 58, 216, 0.80 );
+
+    // ==============================
+    // end of background color
+    // ==============================
+
+    // ==============================
+    // fallback jpeg image
+    // ==============================
+
+    background-image : url( /images/mj_salt_lake_02_2560.jpg );
+
+    @media all and ( max-width : $bp-1728 ) {
+    
+        background-image : url( /images/mj_salt_lake_02_1728.jpg );
+
+    } // end of bp-1728
+
+    @media all and ( max-width : $bp-1376 ) {
+        
+        background-image : url( /images/mj_salt_lake_02_1376.jpg );
+
+    } // end of bp-1376
+
+    @media all and ( max-width : $bp-1032 ) {
+    
+        background-image : url( /images/mj_salt_lake_02_1032.jpg );
+
+    } // end of bp-1032
+
+    @media all and ( max-width : $bp-480 ) {
+
+        // this is an cropped image
+        background-image    : url( /images/mj_salt_lake_02_480.jpg );
+
+    } // end of bp-480
+
+    // ==============================
+    // end of fallback jpeg image
+    // ==============================
+
+    // ==============================
+    // webp image
+    // ==============================
+
+    // this code comes from the article :
+    // " https://www.js-craft.io/blog/css-fallbacks-for-webp-background-images-with-supports/ "
+    @supports ( background-image : url( /images/mj_salt_lake_02_2560.webp ) ) {
+
+        background-image : url( /images/mj_salt_lake_02_2560.webp );
+
+        @media all and ( max-width : $bp-1728 ) {
+    
+            background-image : url( /images/mj_salt_lake_02_1728.webp );
+
+        } // end of bp-1728
+
+        @media all and ( max-width : $bp-1376 ) {
+    
+            background-image : url( /images/mj_salt_lake_02_1376.webp );
+
+        } // end of bp-1376
+
+        @media all and ( max-width : $bp-1032 ) {
+    
+            background-image : url( /images/mj_salt_lake_02_1032.webp );
+
+        } // end of bp-1032
+
+        @media all and ( max-width : $bp-480 ) {
+
+            // this is an cropped image
+            background-image : url( /images/mj_salt_lake_02_480.webp );
+
+        } // end of bp-480
+
+    } // end of container > @supports
+
+    // ==============================
+    // end of webp image
+    // ==============================
+
+    // ==============================
+    // tighten up side margins
+    // ==============================
+
+    @media all and ( max-width : $bp-1280 ) {
+
+        grid-template-columns : minmax( 6rem, 1fr )                          // col 1 - 2   ( column 1 )
+                                repeat( 20, minmax( min-content, 12.0rem ) ) // col 2 - 22  ( column 2 - 22 )
+                                minmax( 6rem, 1fr );                         // col 22 - 23 ( column 23 )
+
+    } // end of container > bp-1280
+
+    // ==============================
+    // end of tighten up side margins
+    // ==============================
+
+    // ==============================
+    // container > div 1 ( wrapper div )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 1 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent and see notes in parent above
+
+        // children
+        display               : grid;
+        grid-template-rows    : auto;
+        grid-template-columns : 1fr;
+        grid-gap              : 4.0rem 0;
+        grid-template-areas   : "h2-1"
+                                "div2";
+
+        // make this section sit above the animating gradient
+        z-index : 1;
+        width   : min( 192.0rem, 100% ); // browser will select the smaller of 192.0rem or 100%
+
+        // opacity : 0; // needed for the opacity and slide up animation
+
+        @media all and ( max-width : $bp-1536 ) {
+
+            width   : min( 144.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
+
+        } // end of container > div1 > bp-1536
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            width   : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+
+        } // end of container > div1 > bp-1280
+
+        > h2 {
+
+            // parent
+            grid-area : h2-1;
+
+            @include h2-light-title;
+
+            @media all and ( max-width : $bp-1536 ) {
+
+                justify-self : left;
+    
+            } // end of container > div1 > h2 > bp-1536
+    
+        }  // end of container > div1 > h2
+
+        // ==============================
+        // container > div 1 ( wrapper div ) > div 2 ( wrapper div for cities )
+        // ==============================
+
+        > div:nth-child( 2 ) {
+
+            // parent
+            grid-area : div2;
+
+            display               : grid;
+            grid-template-rows    : auto;
+            grid-template-columns : 1fr 1fr 1fr 1fr;
+            grid-gap              : 0 12.0rem;
+            grid-template-areas   : "div1 div2 div3 div4";
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                grid-template-rows    : repeat( 2, auto );
+                grid-template-columns : 1fr 1fr;
+                grid-gap              : 1.6rem 12.0rem;
+                grid-template-areas   : "div1 div3"
+                                        "div2 div4";
+    
+            } // end of container > div1 > div2 > bp-1280
+
+            @media all and ( max-width : $bp-620 ) {
+
+                grid-template-rows    : repeat( 4, auto );
+                grid-template-columns : 1fr;
+                grid-gap              : 1.6rem 0;
+                grid-template-areas   : "div1"
+                                        "div2"
+                                        "div3"
+                                        "div4";
+    
+            } // end of container > div1 > div2 > bp-620
+
+            > div:nth-child( 1 ) {
+
+                // parent
+                grid-area : div1;
+
+                > ul {
+
+                    padding : 0 0 0 1.6rem;
+
+                    list-style-type : disc; // override the global stylesheet in this case
+                    // list-style-position: outside; // make sure the disc markers are located
+                    // the content box
+
+                    > li {
+
+                        @include text-base-light;
+
+                        margin  : 0 0 0 0; // cancel default margin for text-base-dark
+                        padding : 0 0 1.6rem 0.6rem;
+
+                        @media all and ( max-width : $bp-480 ) {
+
+                            padding : 0 0 1.6rem 0.6rem;
+
+                        } // end of container > div1 > div2 > div1 > li > bp-480
+
+                    } // end of container > div1 > div2 > div1 > ul > li
+
+                    > li:last-child {
+
+                        padding : 0 0 0 0.6rem;
+    
+                    } // end of container > div1 > div2 > div1 > ul > li:last-child
+
+                } // end of container > div1 > div2 > div1 > ul
+
+            } // end of container > div1 > div2 > div1
+
+            > div:nth-child( 2 ) {
+
+                // parent
+                grid-area : div2;
+
+                > ul {
+
+                    padding : 0 0 0 1.6rem;
+
+                    list-style-type : disc; // override the global stylesheet in this case
+                    // list-style-position: outside; // make sure the disc markers are located
+                    // the content box
+
+                    > li {
+
+                        @include text-base-light;
+
+                        margin  : 0 0 0 0; // cancel default margin for text-base-dark
+                        padding : 0 0 1.6rem 0.6rem;
+
+                        @media all and ( max-width : $bp-480 ) {
+
+                            padding : 0 0 1.6rem 0.6rem;
+
+                        } // end of container > div1 > div2 > div2 > li > bp-480
+
+                    } // end of container > div1 > div2 > div2 > ul > li
+
+                    > li:last-child {
+
+                        padding : 0 0 0 0.6rem;
+    
+                    } // end of container > div1 > div2 > div2 > ul > li:last-child
+
+                } // end of container > div1 > div2 > div2 > ul
+
+            } // end of container > div1 > div2 > div2
+
+            > div:nth-child( 3 ) {
+
+                // parent
+                grid-area : div3;
+
+                > ul {
+
+                    padding : 0 0 0 1.6rem;
+
+                    list-style-type : disc; // override the global stylesheet in this case
+                    // list-style-position: outside; // make sure the disc markers are located
+                    // the content box
+
+                    > li {
+
+                        @include text-base-light;
+
+                        margin  : 0 0 0 0; // cancel default margin for text-base-dark
+                        padding : 0 0 1.6rem 0.6rem;
+
+                        @media all and ( max-width : $bp-480 ) {
+
+                            padding : 0 0 1.6rem 0.6rem;
+
+                        } // end of container > div1 > div2 > div3 > li > bp-480
+
+                    } // end of container > div1 > div2 > div3 > ul > li
+
+                    > li:last-child {
+
+                        padding : 0 0 0 0.6rem;
+    
+                    } // end of container > div1 > div2 > div3 > ul > li:last-child
+
+                } // end of container > div1 > div2 > div3 > ul
+                
+            } // end of container > div1 > div2 > div3
+
+            > div:nth-child( 4 ) {
+
+                // parent
+                grid-area : div4;
+
+                > ul {
+
+                    padding : 0 0 0 1.6rem;
+
+                    list-style-type : disc; // override the global stylesheet in this case
+                    // list-style-position: outside; // make sure the disc markers are located
+                    // the content box
+
+                    > li {
+
+                        @include text-base-light;
+
+                        margin  : 0 0 0 0; // cancel default margin for text-base-dark
+                        padding : 0 0 1.6rem 0.6rem;
+
+                        @media all and ( max-width : $bp-480 ) {
+
+                            padding : 0 0 1.6rem 0.6rem;
+
+                        } // end of container > div1 > div2 > div4 > li > bp-480
+
+                    } // end of container > div1 > div2 > div4 > ul > li
+
+                    > li:last-child {
+
+                        padding : 0 0 0 0.6rem;
+    
+                    } // end of container > div1 > div2 > div4 > ul > li:last-child
+
+                } // end of container > div1 > div2 > div4 > ul
+                
+            } // end of container > div1 > div2 > div4
+
+        } // end of container > div1 > div2
+
+    } // end of container > div1
+
+    // ==============================
+    // container > div 2 ( schedule your project button )
+    // ==============================
+
+    > div:nth-child( 2 ) {
+
+        // parent
+        grid-column : 2 / 22; // position against the parent
+
+        display            : grid;
+        grid-template-rows : min-content;
+        // align-self         : end;
+        justify-items      : center;
+
+        z-index : 1; // make this section sit above the animating gradient
+        width   : min( 192.0rem, 100% ); // browser will select the smaller of 192.0rem or 100%
+        margin  : 12.0rem 0 0 0; // visual preference
+
+        @media all and ( max-width : $bp-1536 ) {
+
+            width   : min( 144.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
+
+        } // end of container > div2 > bp-1536
+
+        @media all and ( max-width : $bp-1280 ) {
+
+            width   : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+
+        } // end of container > div2 > bp-1280
+
+        > a {
+
+            @include button-v7;
+
+            color : var( --black );
+
+            background : var( --green-23-9 );
+    
+            transition : all 0.3s ease-out;
+
+            // hover selector for the navigation tabs
+            &:hover {
+
+                background : var( --green-30 );
+
+            } // end of container > div2 > &:hover
+
+        } // end of container > div2 > a
+
+    } // end of container > div2
+
+} // end of container
+

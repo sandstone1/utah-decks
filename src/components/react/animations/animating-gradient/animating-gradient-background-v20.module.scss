@@ -72,16 +72,16 @@
 
     syntax        : "<percentage>";
     inherits      : false;
-    initial-value : 70%;
+    initial-value : 20%;
 
 } // end of @property
 
 
-@property --gradient-percentage-y-3{
+@property --gradient-percentage-y-3 {
 
     syntax        : "<percentage>";
     inherits      : false;
-    initial-value : 45%;
+    initial-value : 10%;
 
 } // end of @property
 
@@ -133,22 +133,22 @@
 
     0% {
 
-        --gradient-percentage-x-1 : 20%;
-        --gradient-percentage-y-1 : 54%;
+        --gradient-percentage-x-1 : 50%;
+        --gradient-percentage-y-1 : 50%;
 
     }
 
     50% {
 
-        --gradient-percentage-x-1 : 25%;
-        --gradient-percentage-y-1 : 59%;
+        --gradient-percentage-x-1 : 55%;
+        --gradient-percentage-y-1 : 55%;
 
     }
 
     100% {
 
-        --gradient-percentage-x-1 : 30%;
-        --gradient-percentage-y-1 : 54%;
+        --gradient-percentage-x-1 : 60%;
+        --gradient-percentage-y-1 : 50%;
 
     }
 
@@ -209,22 +209,22 @@
 
     0% {
 
-        --gradient-percentage-x-3 : 100%;
-        --gradient-percentage-y-3 : 5%;
+        --gradient-percentage-x-1 : 30%;
+        --gradient-percentage-y-1 : 50%;
 
     }
 
     50% {
 
-        --gradient-percentage-x-3 : 95%;
-        --gradient-percentage-y-3 : 10%;
+        --gradient-percentage-x-1 : 30%;
+        --gradient-percentage-y-1 : 45%;
 
     }
 
     100% {
 
-        --gradient-percentage-x-3 : 90%;
-        --gradient-percentage-y-3 : 15%;
+        --gradient-percentage-x-1 : 30%;
+        --gradient-percentage-y-1 : 50%;
 
     }
 
@@ -278,21 +278,21 @@
     0% {
 
         --gradient-percentage-x-1 : 20%;
-        --gradient-percentage-y-1 : 60%;
+        --gradient-percentage-y-1 : 60.0%;
 
     }
 
     50% {
 
         --gradient-percentage-x-1 : 25%;
-        --gradient-percentage-y-1 : 65%;
+        --gradient-percentage-y-1 : 65.0%;
 
     }
 
     100% {
 
         --gradient-percentage-x-1 : 30%;
-        --gradient-percentage-y-1 : 60%;
+        --gradient-percentage-y-1 : 60.0%;
 
     }
 
@@ -346,25 +346,142 @@
     0% {
 
         --gradient-percentage-x-1 : 20%;
-        --gradient-percentage-y-1 : 75%;
+        --gradient-percentage-y-1 : 70%;
 
     }
 
     50% {
 
         --gradient-percentage-x-1 : 25%;
-        --gradient-percentage-y-1 : 80%;
+        --gradient-percentage-y-1 : 75%;
 
     }
 
     100% {
 
         --gradient-percentage-x-1 : 30%;
-        --gradient-percentage-y-1 : 75%;
+        --gradient-percentage-y-1 : 70%;
 
     }
 
 } // end of movement-7
+
+
+// ==============================
+// keyframes 8
+// ==============================
+
+// ==============================
+// animate or move the gradient circle 3
+// ==============================
+
+// ==============================
+// purpose : move the circle around the card
+// ==============================
+
+@keyframes movement-8 {
+
+    0% {
+
+        --gradient-percentage-x-1 : 27%;
+        --gradient-percentage-y-1 : 0%;
+
+    }
+
+    50% {
+
+        --gradient-percentage-x-1 : 27%;
+        --gradient-percentage-y-1 : 5%;
+
+    }
+
+    100% {
+
+        --gradient-percentage-x-1 : 27%;
+        --gradient-percentage-y-1 : 0%;
+
+    }
+
+} // end of movement-8
+
+
+// ==============================
+// keyframes 9
+// ==============================
+
+// ==============================
+// animate or move the gradient circle 3
+// ==============================
+
+// ==============================
+// purpose : move the circle around the card
+// ==============================
+
+@keyframes movement-9 {
+
+    0% {
+
+        --gradient-percentage-x-1 : 20%;
+        --gradient-percentage-y-1 : 0%;
+
+    }
+
+    50% {
+
+        --gradient-percentage-x-1 : 20%;
+        --gradient-percentage-y-1 : 5%;
+
+    }
+
+    100% {
+
+        --gradient-percentage-x-1 : 20%;
+        --gradient-percentage-y-1 : 0%;
+
+    }
+
+} // end of movement-9
+
+
+// ==============================
+// keyframes 10
+// ==============================
+
+// ==============================
+// animate or move the gradient circle 3
+// ==============================
+
+// ==============================
+// purpose : move the circle around the card
+// ==============================
+
+@keyframes movement-10 {
+
+    0% {
+
+        --gradient-percentage-x-1 : 0%;
+        --gradient-percentage-y-1 : 0%;
+
+    }
+
+    50% {
+
+        --gradient-percentage-x-1 : 0%;
+        --gradient-percentage-y-1 : 5%;
+
+    }
+
+    100% {
+
+        --gradient-percentage-x-1 : 00%;
+        --gradient-percentage-y-1 : 0%;
+
+    }
+
+} // end of movement-10
+
+
+
 
 
 
@@ -417,9 +534,9 @@
         // ------------------------
 
         background : 
-            radial-gradient( circle 1100px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), // --blue-85-2
-            // radial-gradient( circle 500px at var( --gradient-percentage-x-2 ) var( --gradient-percentage-y-2 ), var( --green-210 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
-            // radial-gradient( circle 600px at var( --gradient-percentage-x-3 ) var( --gradient-percentage-y-3 ), rgba( 102, 51, 153, 0.7 ) 0%, rgba( 0, 0, 0, 0 ) 100% ) // --purple-150
+            // radial-gradient( circle 1100px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), // --blue-85-2
+            // radial-gradient( circle 500px at var( --gradient-percentage-x-2 ) var( --gradient-percentage-y-2 ), rgba( 45, 143, 133, 0.4 ) 0%, rgba( 0, 0, 0, 0 ) 100% ), // green-210
+            radial-gradient( circle 525px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 100, 255, 218, 0.15 ) 0%, rgba( 0, 0, 0, 0 ) 100% ) // --green-23-5
         ;
 
         // use this piece of code to turn off the animation for Firefox since as of 6-10-24
@@ -428,7 +545,7 @@
         // and see the article for details on targeting Firefox browsers :
         // " https://stackoverflow.com/questions/952861/targeting-only-firefox-with-css?noredirect=1&lq=1
         @-moz-document url-prefix() {
-    
+
             // animation : none;
 
         } // end @-moz-document url-prefix()
@@ -439,12 +556,10 @@
 
             // change the size of the radial gradients
             background : 
-                radial-gradient( circle 850px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                // radial-gradient( circle 850px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
                 // radial-gradient( circle 500px at var( --gradient-percentage-x-2 ) var( --gradient-percentage-y-2 ), var( --green-210 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
-                // radial-gradient( circle 450px at var( --gradient-percentage-x-3 ) var( --gradient-percentage-y-3 ), rgba( 102, 51, 153, 0.7 ) 0%, rgba( 0, 0, 0, 0 ) 100% )
+                radial-gradient( circle 475px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 100, 255, 218, 0.15 ) 0%, rgba( 0, 0, 0, 0 ) 100% ) // --green-23-5
             ;
-
-            animation : movement-5 12s linear infinite alternate, movement-2 12s linear infinite alternate, movement-3 12s linear infinite alternate;
 
         } // end of container > div::before, div::after > bp-1920
 
@@ -452,12 +567,12 @@
 
             // change the size of the radial gradients
             background : 
-                radial-gradient( circle 720px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                // radial-gradient( circle 720px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
                 // radial-gradient( circle 500px at var( --gradient-percentage-x-2 ) var( --gradient-percentage-y-2 ), var( --green-210 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
-                // radial-gradient( circle 380px at var( --gradient-percentage-x-3 ) var( --gradient-percentage-y-3 ), rgba( 102, 51, 153, 0.7 ) 0%, rgba( 0, 0, 0, 0 ) 100% )
+                radial-gradient( circle 400px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 100, 255, 218, 0.15 ) 0%, rgba( 0, 0, 0, 0 ) 100% ) // --green-23-5
             ;
 
-            animation : movement-5 12s linear infinite alternate, movement-2 12s linear infinite alternate, movement-3 12s linear infinite alternate;
+            animation : movement-4 12s linear infinite alternate, movement-2 12s linear infinite alternate, movement-3 12s linear infinite alternate;
 
         } // end of container > div::before, div::after > bp-1536
 
@@ -465,12 +580,12 @@
 
             // change the size of the radial gradients
             background : 
-                radial-gradient( circle 650px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                // radial-gradient( circle 650px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
                 // radial-gradient( circle 500px at var( --gradient-percentage-x-2 ) var( --gradient-percentage-y-2 ), var( --green-210 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
-                // radial-gradient( circle 350px at var( --gradient-percentage-x-3 ) var( --gradient-percentage-y-3 ), rgba( 102, 51, 153, 0.7 ) 0%, rgba( 0, 0, 0, 0 ) 100% )
+                radial-gradient( circle 400px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 100, 255, 218, 0.15 ) 0%, rgba( 0, 0, 0, 0 ) 100% ) // --green-23-5
             ;
 
-            animation : movement-6 12s linear infinite alternate, movement-2 12s linear infinite alternate, movement-3 12s linear infinite alternate;
+            animation : movement-4 12s linear infinite alternate, movement-2 12s linear infinite alternate, movement-3 12s linear infinite alternate;
 
         } // end of container > div::before, div::after > bp-1280
 
@@ -478,10 +593,12 @@
 
             // change the size of the radial gradients
             background : 
-                radial-gradient( circle 650px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                // radial-gradient( circle 650px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
                 // radial-gradient( circle 500px at var( --gradient-percentage-x-2 ) var( --gradient-percentage-y-2 ), var( --green-210 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
-                // radial-gradient( circle 325px at var( --gradient-percentage-x-3 ) var( --gradient-percentage-y-3 ), rgba( 102, 51, 153, 0.7 ) 0%, rgba( 0, 0, 0, 0 ) 100% )
+                radial-gradient( circle 450px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 100, 255, 218, 0.15 ) 0%, rgba( 0, 0, 0, 0 ) 100% ) // --green-23-5
             ;
+
+            animation : movement-4 12s linear infinite alternate, movement-2 12s linear infinite alternate, movement-3 12s linear infinite alternate;
 
         } // end of container > div::before, div::after > bp-1032
 
@@ -489,12 +606,12 @@
 
             // change the size of the radial gradients
             background : 
-                radial-gradient( circle 550px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                // radial-gradient( circle 550px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
                 // radial-gradient( circle 500px at var( --gradient-percentage-x-2 ) var( --gradient-percentage-y-2 ), var( --green-210 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
-                // radial-gradient( circle 325px at var( --gradient-percentage-x-3 ) var( --gradient-percentage-y-3 ), rgba( 102, 51, 153, 0.7 ) 0%, rgba( 0, 0, 0, 0 ) 100% )
+                radial-gradient( circle 400px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 100, 255, 218, 0.15 ) 0%, rgba( 0, 0, 0, 0 ) 100% ) // --green-23-5
             ;
 
-            animation : movement-6 12s linear infinite alternate, movement-2 12s linear infinite alternate, movement-3 12s linear infinite alternate;
+            animation : movement-4 12s linear infinite alternate, movement-2 12s linear infinite alternate, movement-3 12s linear infinite alternate;
 
         } // end of container > div::before, div::after > bp-920
 
@@ -502,12 +619,12 @@
 
             // change the size of the radial gradients
             background : 
-                radial-gradient( circle 550px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                // radial-gradient( circle 550px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
                 // radial-gradient( circle 500px at var( --gradient-percentage-x-2 ) var( --gradient-percentage-y-2 ), var( --green-210 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
-                // radial-gradient( circle 325px at var( --gradient-percentage-x-3 ) var( --gradient-percentage-y-3 ), rgba( 102, 51, 153, 0.7 ) 0%, rgba( 0, 0, 0, 0 ) 100% )
+                radial-gradient( circle 400px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 100, 255, 218, 0.15 ) 0%, rgba( 0, 0, 0, 0 ) 100% ) // --green-23-5
             ;
 
-            animation : movement-7 12s linear infinite alternate, movement-2 12s linear infinite alternate, movement-3 12s linear infinite alternate;
+            animation : movement-5 12s linear infinite alternate, movement-2 12s linear infinite alternate, movement-3 12s linear infinite alternate;
 
         } // end of container > div::before, div::after > bp-768
 
@@ -515,12 +632,12 @@
 
             // change the size of the radial gradients
             background : 
-                radial-gradient( circle 450px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                // radial-gradient( circle 450px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
                 // radial-gradient( circle 500px at var( --gradient-percentage-x-2 ) var( --gradient-percentage-y-2 ), var( --green-210 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
-                // radial-gradient( circle 350px at var( --gradient-percentage-x-3 ) var( --gradient-percentage-y-3 ), rgba( 102, 51, 153, 0.7 ) 0%, rgba( 0, 0, 0, 0 ) 100% )
+                radial-gradient( circle 350px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 100, 255, 218, 0.15 ) 0%, rgba( 0, 0, 0, 0 ) 100% ) // --green-23-5
             ;
 
-            animation : movement-7 12s linear infinite alternate, movement-2 12s linear infinite alternate, movement-3 12s linear infinite alternate;
+            animation : movement-6 12s linear infinite alternate, movement-2 12s linear infinite alternate, movement-3 12s linear infinite alternate;
 
         } // end of container > div::before, div::after > bp-480
 
@@ -528,9 +645,9 @@
 
             // change the size of the radial gradients
             background : 
-                radial-gradient( circle 400px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
+                // radial-gradient( circle 400px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 13, 58, 216, 0.8 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
                 // radial-gradient( circle 500px at var( --gradient-percentage-x-2 ) var( --gradient-percentage-y-2 ), var( --green-210 ) 0%, rgba( 0, 0, 0, 0 ) 100% ),
-                // radial-gradient( circle 350px at var( --gradient-percentage-x-3 ) var( --gradient-percentage-y-3 ), rgba( 102, 51, 153, 0.7 ) 0%, rgba( 0, 0, 0, 0 ) 100% )
+                radial-gradient( circle 350px at var( --gradient-percentage-x-1 ) var( --gradient-percentage-y-1 ), rgba( 100, 255, 218, 0.15 ) 0%, rgba( 0, 0, 0, 0 ) 100% ) // --green-23-5
             ;
 
             animation : movement-7 12s linear infinite alternate, movement-2 12s linear infinite alternate, movement-3 12s linear infinite alternate;

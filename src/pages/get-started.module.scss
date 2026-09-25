@@ -403,5 +403,35 @@
 
     } // end of container > div5
 
+    // ==============================
+    // container > div 6 ( our pledge )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 6 ) {
+
+        // parent
+        grid-column : 1 / -1; // position against the parent and see notes in parent above
+
+    } // end of container > div6
+
+    // ==============================
+    // container > div 7 ( areas we serve )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 7 ) {
+
+        // parent
+        grid-column : 1 / -1; // position against the parent and see notes in parent above
+
+    } // end of container > div7
+
 } // end of container
 

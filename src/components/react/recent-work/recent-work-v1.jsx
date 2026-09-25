@@ -85,7 +85,7 @@ export default function RecentWorkComponent() {
             <div>
 
                 <h2>
-                    A Couple Recent <span style={ { color : 'var( --green-290 )' } }>Projects</span>
+                    A Glimpse Into Our <span style={ { color : 'var( --green-290 )' } }>Work</span>
                 </h2>
 
                 {
@@ -135,17 +135,17 @@ export default function RecentWorkComponent() {
                     <picture>
                         <source
                             media="( max-width : 620px )"
-                            srcSet="/images/recent_work/recent_05_620.webp"
+                            srcSet="/images/recent_work/recent_24_620.webp"
                             type="image/webp"
                         />
                         <source
-                            srcSet="/images/recent_work/recent_05_1440.webp"
+                            srcSet="/images/recent_work/recent_24_1440.webp"
                             type="image/webp"
                         />
                         <img
-                            src="/images/recent_work/recent_05_1440.jpg"
+                            src="/images/recent_work/recent_24_1440.jpg"
                             width={ 1440 }
-                            height={ 810 }
+                            height={ 958 }
                             loading="lazy"
                             // fetchpriority={ "high" } // needed in case someone scrolls down the
                             // page super fast

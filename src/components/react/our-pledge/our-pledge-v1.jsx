@@ -6,15 +6,15 @@ import { useEffect, useRef } from 'react';
 // import in the navigate component
 import { navigate } from 'astro:transitions/client';
 // import in Animating Gradient Blur Component
-import AnimatingGradientBackground from '../animations/animating-gradient/animating-gradient-background-v21';
+import AnimatingGradientBackground from '../animations/animating-gradient/animating-gradient-background-v20';
 // import in the Font Awesome calendar check icon
 import { FaRegCalendarCheck } from "react-icons/fa6";
 // import in our stylesheet
-import styles from './get-started-v1.module.scss';
+import styles from './our-pledge-v1.module.scss';
 
 
 
-export default function GetStartedComponent() {
+export default function OurPledgeComponent() {
 
     // ==============================
     // component state
@@ -47,14 +47,10 @@ export default function GetStartedComponent() {
     const wrapperRef = useRef( null );
     const h2Ref      = useRef( null );
     const p2Ref      = useRef( null );
-    const p3Ref      = useRef( null );
-    const p4Ref      = useRef( null );
     const badge1Ref  = useRef( null );
     const badge2Ref  = useRef( null );
     const badge3Ref  = useRef( null );
     const badge4Ref  = useRef( null );
-    const badge5Ref  = useRef( null );
-    const badge6Ref  = useRef( null );
 
     // ==============================
     // useSession();
@@ -284,68 +280,6 @@ export default function GetStartedComponent() {
                                     ); // end of p2Ref.current.animate()
 
                                     // ==============================
-                                    // p3
-                                    // ==============================
-
-                                    p3Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 400,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of p3Ref.current.animate()
-
-                                    // ==============================
-                                    // p4 div
-                                    // ==============================
-
-                                    p4Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 400,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of p4Ref.current.animate()
-
-                                    // ==============================
                                     // badge 1
                                     // ==============================
 
@@ -468,68 +402,6 @@ export default function GetStartedComponent() {
                                         }
 
                                     ); // end of badge4Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 5
-                                    // ==============================
-
-                                    badge5Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 200,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge5Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 6
-                                    // ==============================
-
-                                    badge6Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 0,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge6Ref.current.animate()
 
                                 } // end of if ( browserWidth > 1728 )
 
@@ -605,68 +477,6 @@ export default function GetStartedComponent() {
                                     ); // end of p2Ref.current.animate()
 
                                     // ==============================
-                                    // p3
-                                    // ==============================
-
-                                    p3Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 200,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of p3Ref.current.animate()
-
-                                    // ==============================
-                                    // p4
-                                    // ==============================
-
-                                    p4Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 200,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of p4Ref.current.animate()
-
-                                    // ==============================
                                     // badge 1
                                     // ==============================
 
@@ -789,68 +599,6 @@ export default function GetStartedComponent() {
                                         }
 
                                     ); // end of badge4Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 5
-                                    // ==============================
-
-                                    badge5Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 200,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge5Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 6
-                                    // ==============================
-
-                                    badge6Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 0,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge6Ref.current.animate()
     
                                 } // end of if ( browserWidth > 768 && browserWidth <= 1728 )
 
@@ -924,68 +672,6 @@ export default function GetStartedComponent() {
                                         }
 
                                     ); // end of p2Ref.current.animate()
-
-                                    // ==============================
-                                    // p3
-                                    // ==============================
-
-                                    p3Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateY( 4.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateY( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 0,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of p3Ref.current.animate()
-
-                                    // ==============================
-                                    // p4 div
-                                    // ==============================
-
-                                    p4Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateY( 4.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateY( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 0,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of p4Ref.current.animate()
 
                                     // ==============================
                                     // badge 1
@@ -1111,68 +797,6 @@ export default function GetStartedComponent() {
 
                                     ); // end of badge4Ref.current.animate()
 
-                                    // ==============================
-                                    // badge 5
-                                    // ==============================
-
-                                    badge5Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateY( 4.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateY( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 1600,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge5Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 6
-                                    // ==============================
-
-                                    badge6Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateY( 4.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateY( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 2000,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge6Ref.current.animate()
-
                                 } // end of if ( browserWidth <= 768 )
 
                                 // ==============================
@@ -1219,14 +843,6 @@ export default function GetStartedComponent() {
                                 badge4Ref.current.style.transform                = 'translateX( 0 )';
                                 badge4Ref.current.style.transitionDuration       = '400ms';
                                 badge4Ref.current.style.transitionTimingFunction = 'ease-out';
-                                badge5Ref.current.style.opacity                  = 1;
-                                badge5Ref.current.style.transform                = 'translateX( 0 )';
-                                badge5Ref.current.style.transitionDuration       = '400ms';
-                                badge5Ref.current.style.transitionTimingFunction = 'ease-out';
-                                badge6Ref.current.style.opacity                  = 1;
-                                badge6Ref.current.style.transform                = 'translateX( 0 )';
-                                badge6Ref.current.style.transitionDuration       = '400ms';
-                                badge6Ref.current.style.transitionTimingFunction = 'ease-out';
 
                             } // end of if ( entry.boundingClientRect.top <= 0 ) {}
 
@@ -1277,7 +893,7 @@ export default function GetStartedComponent() {
         // container
         // ==============================
 
-        <div className={ styles.getStartedContainer }>
+        <div className={ styles.ourPledgeContainer }>
 
             {
                 /*
@@ -1293,28 +909,17 @@ export default function GetStartedComponent() {
                 <h2
                     ref={ h2Ref }
                 >
-                    Get Started
+                    Our Pledge to <span style={ { color : 'var( --green-23-9 )' } }>Respect</span>
                 </h2>
 
                 <p ref={ p2Ref }>
-                    Starting a deck or pergola project with Utah Decks & Pergolas is easy.
-                </p>
-
-                <p ref={ p3Ref }>
-                    It begins with a simple phone call or email, where we listen closely to
-                    your vision — not just the mechanics of what you want built, but how the
-                    finished space will fit your life and enhance the time you spend outdoors.
-                </p>
-
-                <p ref={ p4Ref }>
-                    From design and planning through the finished product, we're with you every
-                    step of the way.
+                    Here's what we commit to on every project, no exceptions.
                 </p>
 
                 {
                     /*
                         // ==============================
-                        // container > div 1 ( wrapper div ) > div 5 ( wrapper div for badges )
+                        // container > div 1 ( wrapper div ) > div 3 ( wrapper div for badges )
                         // ==============================
                     */
                 }
@@ -1323,7 +928,7 @@ export default function GetStartedComponent() {
                     {
                         /*
                             // ==============================
-                            // container > div 1 > div 2 > div 1 ( service 1 )
+                            // container > div 1 > div 3 > div 1 ( service 1 )
                             // ==============================
                         */
                     }
@@ -1331,12 +936,11 @@ export default function GetStartedComponent() {
                         ref={ badge1Ref }
                     >
 
-                        <h3>1</h3>
-
-                        <h3>Free Inspection</h3>
+                        <h3>Your Time</h3>
 
                         <p>
-                            We visit your property, no cost, no obligation.
+                            Your time matters to us. We'll do everything we can to be on time,
+                            and if something comes up, you'll hear from us right away.
                         </p>
 
                         {
@@ -1358,17 +962,17 @@ export default function GetStartedComponent() {
                         }
                         <picture>
                             <source 
-                                srcSet="/images/mj_contractor_01_300.webp"
+                                srcSet="/images/mj_watch_01_300.webp"
                                 type="image/webp"
                             />
                             <img
-                                src="/images/mj_contractor_01_300.jpg"
+                                src="/images/mj_watch_01_300.jpg"
                                 width={ 300 }
                                 height={ 300 }
                                 loading="lazy"
                                 // fetchpriority={ "high" } // needed in case someone scrolls down the
                                 // page super fast
-                                alt="Image of a contractor inspecting a house"
+                                alt="Image of a pocket watch"
                             />
                         </picture>
 
@@ -1385,12 +989,12 @@ export default function GetStartedComponent() {
                         ref={ badge2Ref }
                     >
 
-                        <h3>2</h3>
-
-                        <h3>Design & Estimate</h3>
+                        <h3>Your Money</h3>
 
                         <p>
-                            We'll provide a custom design, cost estimate, and timeline.
+                            Our contract isn't just a suggestion, it's our commitment to finish
+                            your project on time and on budget. If something unexpected comes
+                            up, you'll be the first to know.
                         </p>
 
                         {
@@ -1412,17 +1016,17 @@ export default function GetStartedComponent() {
                         }
                         <picture>
                             <source 
-                                srcSet="/images/mj_engineer_05_300.webp"
+                                srcSet="/images/mj_contract_02_300.webp"
                                 type="image/webp"
                             />
                             <img
-                                src="/images/mj_engineer_05_300.jpg"
+                                src="/images/mj_contract_02_300.jpg"
                                 width={ 300 }
                                 height={ 300 }
                                 loading="lazy"
                                 // fetchpriority={ "high" } // needed in case someone scrolls down the
                                 // page super fast
-                                alt="Image of a engineer working on a deck design"
+                                alt="Image of a contract"
                             />
                         </picture>
 
@@ -1439,12 +1043,12 @@ export default function GetStartedComponent() {
                         ref={ badge3Ref }
                     >
 
-                        <h3>3</h3>
-
-                        <h3>Schedule Start Date</h3>
+                        <h3>Your Neighbors</h3>
 
                         <p>
-                            Lock in when work begins.
+                            Your neighbors should feel just as comfortable with workers nearby as
+                            you do. We'll never play loud music, use crass language, or dress
+                            unprofessionally while working on your project.
                         </p>
 
                         {
@@ -1466,17 +1070,17 @@ export default function GetStartedComponent() {
                         }
                         <picture>
                             <source 
-                                srcSet="/images/mj_calendar_01_300.webp"
+                                srcSet="/images/mj_neighbors_02_300.webp"
                                 type="image/webp"
                             />
                             <img
-                                src="/images/mj_calendar_01_300.jpg"
+                                src="/images/mj_neighbors_02_300.jpg"
                                 width={ 300 }
                                 height={ 300 }
                                 loading="lazy"
                                 // fetchpriority={ "high" } // needed in case someone scrolls down the
                                 // page super fast
-                                alt="Image of a calendar"
+                                alt="Image of nice orderly neighborhood"
                             />
                         </picture>
 
@@ -1493,66 +1097,12 @@ export default function GetStartedComponent() {
                         ref={ badge4Ref }
                     >
 
-                        <h3>4</h3>
-
-                        <h3>Choose Colors & Options</h3>
+                        <h3>Your Property</h3>
 
                         <p>
-                            Pick materials that match your style.
-                        </p>
-
-                        {
-                            /*
-                                // ==============================
-                                // container > div 1 > div 2 > div 5 > picture
-                                // ==============================
-                            */
-                        }
-                        {
-                            /*
-                                // ==============================
-                                // remember, we had to put the picture first in the source code
-                                // and eliminate the grid at bp-1032 and do " float : right; "
-                                // on the picture at bp-1032 in order to get the text to wrap
-                                // around the picture
-                                // ==============================
-                            */
-                        }
-                        <picture>
-                            <source 
-                                srcSet="/images/mj_painter_02_300.webp"
-                                type="image/webp"
-                            />
-                            <img
-                                src="/images/mj_painter_02_300.jpg"
-                                width={ 300 }
-                                height={ 300 }
-                                loading="lazy"
-                                // fetchpriority={ "high" } // needed in case someone scrolls down the
-                                // page super fast
-                                alt="Image of a woman painting"
-                            />
-                        </picture>
-
-                    </div>
-
-                    {
-                        /*
-                            // ==============================
-                            // container > div 1 > div 2 > div 5 ( step 5 )
-                            // ==============================
-                        */
-                    }
-                    <div
-                        ref={ badge5Ref }
-                    >
-
-                        <h3>5</h3>
-
-                        <h3>Start Building</h3>
-
-                        <p>
-                            Your project comes to life.
+                            Construction can get messy — we get it. We'll keep your property organized
+                            and tidy throughout the project, and take extra care when around your
+                            plants, trees, and any other structures on your property.
                         </p>
 
                         {
@@ -1574,71 +1124,17 @@ export default function GetStartedComponent() {
                         }
                         <picture>
                             <source 
-                                srcSet="/images/mj_contractor_team_07_300.webp"
+                                srcSet="/images/mj_tools_01_300.webp"
                                 type="image/webp"
                             />
                             <img
-                                src="/images/mj_contractor_team_07_300.jpg"
+                                src="/images/mj_tools_01_300.jpg"
                                 width={ 300 }
                                 height={ 300 }
                                 loading="lazy"
                                 // fetchpriority={ "high" } // needed in case someone scrolls down the
                                 // page super fast
-                                alt="Image of a construction crew building"
-                            />
-                        </picture>
-
-                    </div>
-
-                    {
-                        /*
-                            // ==============================
-                            // container > div 1 > div 2 > div 6 ( step 6 )
-                            // ==============================
-                        */
-                    }
-                    <div
-                        ref={ badge6Ref }
-                    >
-
-                        <h3>6</h3>
-
-                        <h3>Final Walkthrough</h3>
-
-                        <p>
-                            Walk the finished space and get your warranty.
-                        </p>
-
-                        {
-                            /*
-                                // ==============================
-                                // container > div 1 > div 2 > div 6 > picture
-                                // ==============================
-                            */
-                        }
-                        {
-                            /*
-                                // ==============================
-                                // remember, we had to put the picture first in the source code
-                                // and eliminate the grid at bp-1032 and do " float : right; "
-                                // on the picture at bp-1032 in order to get the text to wrap
-                                // around the picture
-                                // ==============================
-                            */
-                        }
-                        <picture>
-                            <source 
-                                srcSet="/images/mj_deck_01_300.webp"
-                                type="image/webp"
-                            />
-                            <img
-                                src="/images/mj_deck_01_300.jpg"
-                                width={ 300 }
-                                height={ 300 }
-                                loading="lazy"
-                                // fetchpriority={ "high" } // needed in case someone scrolls down the
-                                // page super fast
-                                alt="Image of a beutiful deck"
+                                alt="Image of neat stack of wood and tools"
                             />
                         </picture>
 
@@ -1651,37 +1147,8 @@ export default function GetStartedComponent() {
             {
                 /*
                     // ==============================
-                    // container > div 2 ( schedule your project )
-                    // ==============================
-                */
-            }
-            <div>
-
-                <a 
-                    href="#"
-                    onClick={ 
-                        ( e ) => {
-                            e.preventDefault();
-                            document.getElementById( 'calendar-section' ).scrollIntoView( { behavior : 'smooth' } ); 
-                        }
-                    }
-                >
-                    <FaRegCalendarCheck style={ { verticalAlign: '-3.0px', fontSize: '2.25rem', margin: '0 1.0rem 0 0' } } />
-                    Schedule your project
-                </a>
-    
-            </div>
-
-            {
-                /*
-                    // ==============================
                     // container > div 3 ( animating backgrounds )
                     // ==============================
-                */
-            }
-            {
-                /*
-                    <AnimatingGradientBackground />
                 */
             }
             <div>
@@ -1694,5 +1161,5 @@ export default function GetStartedComponent() {
 
     );
 
-} // end of GetStartedComponent
+} // end of OurPledgeComponent
 
