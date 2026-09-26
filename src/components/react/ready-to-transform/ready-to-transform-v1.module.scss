@@ -147,7 +147,8 @@
         grid-template-areas   : "h2-1"
                                 "p2"
                                 "div3"
-                                "div4";
+                                "p4"
+                                "div5";
 
         // make this section sit above the animating gradient
         z-index : 1;
@@ -181,10 +182,10 @@
 
             @include h1-light-hero;
 
-            line-height : 1.05; // reduce and match the line height of the a tag below so that
+            // line-height : 1.05; // reduce and match the line height of the a tag below so that
             // we can apply consistent margins
     
-        }  // end of container > div1 > h2
+        } // end of container > div1 > h2
 
         > p:nth-child( 2 ) {
 
@@ -193,11 +194,20 @@
 
             @include text-base-light;
 
-            margin : 2.0rem 0 0 0;
+            margin : 0.2rem 0 0 0; // set this 0.2rem and commented out line-height above so that
+            // I could get close to a 2.0rem top margin between the h2 element and the p2 element
+            // and I'm doing this so that I can match the distance between " or call us directly "
+            // and the phone number, which is 2.0rem
 
             text-align : center;
+
+            @media all and ( max-width : $bp-1280 ) {
+
+                margin : 1.3rem 0 0 0;
     
-        }  // end of container > div1 > p2
+            } // end of container > div1 > p2 > bp-1280
+
+        } // end of container > div1 > p2
 
         // ==============================
         // container > div 1 > div 3 ( get started button )
@@ -236,43 +246,45 @@
 
                 transition : all 0.3s ease-out;
 
-                // hover selector for the navigation tabs
                 &:hover {
 
                     background : var( --green-30 );
 
-                } // end of container div1 > div3 > &:hover
+                } // end of container div1 > div3 > a > :hover
 
             } // end of container div1 > div3 > a
 
         } // end of container div1 > div3
 
-        // ==============================
-        // container >div 1 > div 4 ( phone number )
-        // ==============================
-
-        > div:nth-child( 4 ) {
+        > p:nth-child( 4 ) {
 
             // parent
-            grid-area : div4;
+            grid-area : p4;
+
+            @include text-base-light;
+
+            margin  : 4.0rem 0 0 0; // visual preference
+
+        } // end of container > div1 > p4
+
+        // ==============================
+        // container >div 1 > div 5 ( phone number )
+        // ==============================
+
+        > div:nth-child( 5 ) {
+
+            // parent
+            grid-area : div5;
 
             display       : grid;
             justify-items : center;
 
             z-index : 1; // make this section sit above the animating gradient
-            margin  : 4.0rem 0 0 0; // visual preference
-
-            > p {
-
-                @include text-base-light;
-
-            } // end of container > div1 > div4 > p
+            margin  : 2.0rem 0 0 0; // visual preference
 
             > a {
 
                 @include h2-light-hero;
-
-                margin : 2.0rem 0 0 0; // visual preference
 
                 color       : var( --green-23-9 );
                 line-height : 1.05; // reduce and match the line height of the h2 above so that
@@ -283,28 +295,18 @@
                 // hover selector for the navigation tabs
                 &:hover {
 
-                    background : rgba( 0, 0, 0, 0.4 );
-                    // color : var( --gray-335 );
+                    color : var( --green-30 );
 
                     cursor : pointer;
 
                     // move the nav item up just a little to add a nice hover effect
                     // transform : translate3d( 0, -0.1rem, 0 );
 
-                    // remove the animation effect for screen sizes under 1376 pixels
-                    @media all and ( max-width : $bp-1376 ) {
+                } // end of container > div1 > div5 > a, .phone-icon > &:hover
 
-                        // background-color : inherit;
-
-                        // transform: none;
-                
-                    } // end of container > div1 > div4 > a, .phone-icon > &:hover > bp-1376
-
-                } // end of container > div1 > div4 > a, .phone-icon > &:hover
-
-            } // end of container > div1 > div4 > a
+            } // end of container > div1 > div5 > a
     
-        } // end of container > div1 > div4
+        } // end of container > div1 > div5
 
     } // end of container > div1
 

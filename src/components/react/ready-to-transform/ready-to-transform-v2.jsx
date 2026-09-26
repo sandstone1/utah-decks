@@ -181,6 +181,10 @@ export default function ReadyToTransformComponent() {
                     type      : 'lines, words, chars',
                     smartWrap : true
                 } );
+                // get the CTA button
+                const ctaButton = document.querySelector( '.cta-button' );
+                // get the phone number
+                const phoneNumber = document.querySelector( '.phone-number' );
 
                 gsap.timeline( {
                     scrollTrigger : {
@@ -199,6 +203,28 @@ export default function ReadyToTransformComponent() {
                         ease     : 'elastic.out( 1.2, 0.75 )'          
                     } 
                 )
+                .from( ctaButton,
+                    {
+                        opacity  : 0,
+                        duration : 1.8,
+                        delay    : 0.0,
+                        stagger  : 0.015,
+                        x        : -140,
+                        ease     : 'elastic.out( 1.2, 0.75 )'
+                    },
+                '-=01.40' ) // start 1.40s before the h2 animation ends and remember, use this
+                // number as our delay
+                .from( phoneNumber,
+                    {
+                        opacity  : 0,
+                        duration : 1.8,
+                        delay    : 0.0,
+                        stagger  : 0.015,
+                        x        : -140,
+                        ease     : 'elastic.out( 1.2, 0.75 )'
+                    },
+                '-=01.40' ) // start 1.40s before the h2 animation ends and remember, use this
+                // number as our delay
 
             } // end of if ()
 
@@ -220,6 +246,10 @@ export default function ReadyToTransformComponent() {
                     type      : 'lines, words, chars',
                     smartWrap : true
                 } );
+                // get the CTA button
+                const ctaButton = document.querySelector( '.cta-button' );
+                // get the phone number
+                const phoneNumber = document.querySelector( '.phone-number' );
 
                 gsap.timeline( {
                     scrollTrigger : {
@@ -238,6 +268,28 @@ export default function ReadyToTransformComponent() {
                         ease     : 'elastic.out( 1.4, 0.70 )'
                     } 
                 )
+                .from( ctaButton,
+                    {
+                        opacity  : 0,
+                        duration : 1.8,
+                        delay    : 0.0,
+                        stagger  : 0.05,
+                        x        : -125,
+                        ease     : 'elastic.out( 1.4, 0.70 )'
+                    },
+                '-=01.40' ) // start 1.40s before the h2 animation ends and remember, use this
+                // number as our delay
+                .from( phoneNumber,
+                    {
+                        opacity  : 0,
+                        duration : 1.8,
+                        delay    : 0.0,
+                        stagger  : 0.05,
+                        x        : -125,
+                        ease     : 'elastic.out( 1.4, 0.70 )'
+                    },
+                '-=01.40' ) // start 1.40s before the h2 animation ends and remember, use this
+                // number as our delay
 
             } // end of else if()
 
@@ -256,6 +308,10 @@ export default function ReadyToTransformComponent() {
                     type      : 'lines, words, chars',
                     smartWrap : true
                 } );
+                // get the CTA button
+                const ctaButton = document.querySelector( '.cta-button' );
+                // get the phone number
+                const phoneNumber = document.querySelector( '.phone-number' );
 
                 gsap.timeline( {
                     scrollTrigger : {
@@ -289,6 +345,28 @@ export default function ReadyToTransformComponent() {
                         ease       : 'elastic.out( 1.2, 0.75 )'
                     } 
                 )
+                .from( ctaButton,
+                    {
+                        opacity  : 0,
+                        duration : 1.8,
+                        delay    : 0.0,
+                        stagger  : 0.035,
+                        x        : -200,
+                        ease     : 'elastic.out( 1.2, 0.75 )'
+                    },
+                '-=01.40' ) // start 1.40s before the h2 animation ends and remember, use this
+                // number as our delay
+                .from( phoneNumber,
+                    {
+                        opacity  : 0,
+                        duration : 1.8,
+                        delay    : 0.0,
+                        stagger  : 0.035,
+                        x        : -200,
+                        ease     : 'elastic.out( 1.2, 0.75 )'
+                    },
+                '-=01.40' ) // start 1.40s before the h2 animation ends and remember, use this
+                // number as our delay
 
             } // end of if else
 
@@ -370,8 +448,10 @@ export default function ReadyToTransformComponent() {
                         // ==============================
                     */
                 }
-                <div>
-    
+                <div
+                    className="cta-button"
+                >
+
                     <a
                         href="#"
                         onClick={ 
@@ -387,15 +467,18 @@ export default function ReadyToTransformComponent() {
         
                 </div>
 
+                <p>or call us directly at</p>
+
                 {
                     /*
                         // ==============================
-                        // container > div 1 ( wrapper div ) > div 4 ( phone number )
+                        // container > div 1 ( wrapper div ) > div 5 ( phone number )
                         // ==============================
                     */
                 }
-                <div>
-                    <p>or call us directly at</p>
+                <div
+                    className="phone-number"
+                >
                     <a
                         href="tel:385-425-2299"
                         target="_blank"
