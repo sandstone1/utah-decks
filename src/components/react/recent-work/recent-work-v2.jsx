@@ -1,8 +1,6 @@
 
 
 
-// import in the useEffect, useRef hooks
-import { useEffect, useRef } from 'react';
 // import in the Font Awesome calendar check icon
 import { FaRegCalendarCheck } from "react-icons/fa6";
 // import in our stylesheet
@@ -196,7 +194,7 @@ export default function RecentWorkComponent() {
 
                 <a href="/get-started#calendar-section">
                     <FaRegCalendarCheck style={ { verticalAlign: '-3.0px', fontSize: '2.25rem', margin: '0 1.0rem 0 0' } } />
-                    Get started
+                    Get Started
                 </a>
     
             </div>

@@ -1,8 +1,6 @@
 
 
 
-// import in the useEffect, useRef hooks
-import { useEffect, useRef } from 'react';
 // import in the Font Awesome calendar check icon
 import { FaRegCalendarCheck } from "react-icons/fa6";
 // import in our stylesheet
@@ -194,7 +192,7 @@ export default function RecentWorkComponent() {
             }
             <div>
 
-                <a 
+                <a
                     href="#"
                     onClick={ 
                         ( e ) => {

@@ -7,14 +7,14 @@
 // import in gsap
 import gsap from 'gsap';
 // import in ScrollTrigger
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // import in SplitText
 import { SplitText } from 'gsap/SplitText';
-// import in SplitText
+// import in CustomEase
 // import { CustomEase } from 'gsap/CustomEase';
 // register ScrollTrigger, SplitText, CustomEase
 gsap.registerPlugin( 
-    // ScrollTrigger, 
+    ScrollTrigger, 
     SplitText, 
     // CustomEase 
 );
@@ -24,5 +24,5 @@ gsap.registerPlugin(
 // exports
 // ==============================
 
-export { gsap, /*ScrollTrigger,*/ SplitText, /*CustomEase*/ };
+export { gsap, ScrollTrigger, SplitText, /*CustomEase*/ };
 

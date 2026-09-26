@@ -14,7 +14,9 @@ import GetStartedComponent from '../components/react/get-started/get-started-v1'
 // import in the Our Pledge component
 import OurPledgeComponent from '../components/react/our-pledge/our-pledge-v1';
 // import in the Areas We Serve component
-import AreasWeServeComponent from '../components/react/areas-we-serve/areas-we-serve-v1';
+import AreasWeServeComponent from '../components/react/areas-we-serve/areas-we-serve-v2';
+// import in the Ready To Transform component
+import ReadyToTransformComponent from '../components/react/ready-to-transform/ready-to-transform-v2';
 // import in the Blob Blue background component
 import BlobComponentOne from '../components/react/animations/blob/blob-v12';
 // import in the Blob Blue background component
@@ -285,6 +287,18 @@ import styles from './get-started.module.scss';
             <AreasWeServeComponent client:visible />
         </div>
 
+
+        {
+            /*
+                // ==============================
+                // container > div 9 ( ready to transform )
+                // ==============================
+            */
+        }
+        <div>
+            <ReadyToTransformComponent client:visible />
+        </div>
+        
         {
             /*
                 // ==============================

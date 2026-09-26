@@ -623,11 +623,11 @@
     
             width   : min( 105.0rem, 100% ); // browser will select the smaller of 105.0rem or 100%
             z-index : 1; // needed in order to appear on top
-    
+
             // ==============================
             // IMPORTANT!
             //
-            // if using gsap, make sure the first video content div's opcity is set to 0 so
+            // if using gsap, make sure the first video content div's opacity is set to 0 so
             // that the h1 and h5 elements do not suddenly appear and then disappear right
             // before the gsap animation
             // ==============================

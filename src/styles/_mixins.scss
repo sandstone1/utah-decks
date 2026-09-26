@@ -439,13 +439,13 @@
 
     @media all and ( max-width : $bp-620 ) {
 
-        font-size : 3.6rem; // 40% reduction
+        font-size : 3.9rem; // 35% reduction
 
     } // end of h1-light-hero > bp-620
 
     @media all and ( max-width : $bp-375 ) {
 
-        font-size : 3.2rem; // we have to decrease the font size so it fits within the grid
+        font-size : 3.75rem; // we have to decrease the font size so it fits within the grid
         // at bp-320
 
     } // end of h1-light-hero > bp-375
@@ -485,13 +485,13 @@
 
     @media all and ( max-width : $bp-620 ) {
 
-        font-size : 3.6rem; // 40% reduction
+        font-size : 3.9rem; // 35% reduction
 
     } // end of h1-dark-hero > bp-620
 
     @media all and ( max-width : $bp-375 ) {
 
-        font-size : 3.2rem; // we have to decrease the font size so it fits within the grid
+        font-size : 3.75rem; // we have to decrease the font size so it fits within the grid
         // at bp-320
 
     } // end of h1-dark-hero > bp-375
@@ -502,31 +502,45 @@
 @mixin h2-light-hero {
 
     font-family    : var( --font-primary-5 );
-    font-size      : 2.7rem;
-    font-weight    : 400;
+    font-size      : 4.4rem;
+    font-weight    : 800;
     color          : var( --gray-225 );
     letter-spacing : 0.2rem;
     text-align     : center;
 
-    @media all and ( max-width : $bp-1440 ) {
+    @media all and ( max-width : $bp-1920 ) {
 
-        font-size   : 2.43rem; // 10% reduction
+        font-size   : 4.18rem; // 5% reduction
         line-height : 1.5;
 
-    } // end of h2-light-hero > bp-1440
+    } // end of h1-light-hero > bp-1920
+
+    @media all and ( max-width : $bp-1440 ) {
+
+        font-size   : 3.96rem; // 10% reduction
+        line-height : 1.5;
+
+    } // end of h1-light-hero > bp-1440
 
     @media all and ( max-width : $bp-768 ) {
 
-        font-size   : 2.3rem;
+        font-size   : 3.52rem; // 20% reduction
         line-height : 1.4;
 
-    } // end of h2-light-hero > bp-768
+    } // end of h1-light-hero > bp-768
 
     @media all and ( max-width : $bp-620 ) {
 
-        font-size : 2.2rem;
+        font-size : 3.2rem; // 27.27% reduction
 
-    } // end of h2-light-hero > bp-620
+    } // end of h1-light-hero > bp-620
+
+    @media all and ( max-width : $bp-375 ) {
+
+        font-size : 3.05rem; // we have to decrease the font size so it fits within the grid
+        // at bp-320
+
+    } // end of h1-light-hero > bp-375
 
 } // end of h2-light-hero
 
@@ -534,31 +548,45 @@
 @mixin h2-dark-hero {
 
     font-family    : var( --font-primary-5 );
-    font-size      : 2.7rem;
-    font-weight    : 400;
+    font-size      : 4.4rem;
+    font-weight    : 800;
     color          : var( --gray-870 );
     letter-spacing : 0.2rem;
     text-align     : center;
 
-    @media all and ( max-width : $bp-1440 ) {
+    @media all and ( max-width : $bp-1920 ) {
 
-        font-size   : 2.43rem; // 10% reduction
+        font-size   : 4.18rem; // 5% reduction
         line-height : 1.5;
 
-    } // end of h2-dark-hero > bp-1440
+    } // end of h1-light-hero > bp-1920
+
+    @media all and ( max-width : $bp-1440 ) {
+
+        font-size   : 3.96rem; // 10% reduction
+        line-height : 1.5;
+
+    } // end of h1-light-hero > bp-1440
 
     @media all and ( max-width : $bp-768 ) {
 
-        font-size   : 2.3rem;
+        font-size   : 3.52rem; // 20% reduction
         line-height : 1.4;
 
-    } // end of h2-dark-hero > bp-768
+    } // end of h1-light-hero > bp-768
 
     @media all and ( max-width : $bp-620 ) {
 
-        font-size : 2.2rem;
+        font-size : 3.2rem; // 27.27% reduction
 
-    } // end of h2-dark-hero > bp-620
+    } // end of h1-light-hero > bp-620
+
+    @media all and ( max-width : $bp-375 ) {
+
+        font-size : 3.05rem; // we have to decrease the font size so it fits within the grid
+        // at bp-320
+
+    } // end of h1-light-hero > bp-375
 
 } // end of h2-dark-hero
 

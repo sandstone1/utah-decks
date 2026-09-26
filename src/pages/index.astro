@@ -18,6 +18,8 @@ import ByTheNumbersComponent from '../components/react/by-the-numbers/by-the-num
 import ServicesComponent from '../components/react/services/services-v2';
 // import in the Areas We Serve component
 import AreasWeServeComponent from '../components/react/areas-we-serve/areas-we-serve-v2';
+// import in the Ready To Transform component
+import ReadyToTransformComponent from '../components/react/ready-to-transform/ready-to-transform-v1';
 // import in the Contact Us component
 import WhyChooseUsComponent from '../components/react/why-choose-us/why-choose-us-v2';
 
@@ -48,8 +50,6 @@ import RankingMadeEasyWebsiteComponent from '../components/react/websites/rankin
 
 // import in the Where You Can Find Us component
 import WhereYouCanFindUsComponent from '../components/react/where-you-can-find-us/where-you-can-find-us-v6';
-// import in the ContactVideoComponent
-import ContactVideoComponent from '../components/react/contact/contact-video-v2';
 // import in the scss file
 import styles from './index.module.scss';
 // import styles from './index_img_sep.module.scss';
@@ -206,7 +206,15 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
         }
         <AreasWeServeComponent client:visible />
 
-    
+        {
+            /*
+                // ==============================
+                // container > div 7 ( ready to transform )
+                // ==============================
+            */
+        }
+        <ReadyToTransformComponent client:visible />
+
         {
             /*
                 // ==============================
@@ -222,19 +230,6 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
                 // container > div 11
                 // ==============================
                 <WhereYouCanFindUsComponent client:visible />
-            */
-        }
-
-        {
-            /*
-                // ==============================
-                // container > div 15
-                //
-                // use my intersection observer, do not use client:visible and client:only="react"
-                // downloads the JS upfront but skips SSR — our internal Intersection Observer
-                // controls exactly when the content appears
-                // ==============================
-                <ContactVideoComponent client:load />
             */
         }
 

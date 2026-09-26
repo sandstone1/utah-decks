@@ -448,5 +448,20 @@
 
     } // end of container > div8
 
+    // ==============================
+    // container > div 9 ( ready to transform )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 9 ) {
+
+        // parent
+        grid-column : 1 / -1; // position against the parent and see notes in parent above
+
+    } // end of container > div9
+
 } // end of container
 
