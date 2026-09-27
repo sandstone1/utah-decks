@@ -174,7 +174,6 @@
             width   : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
             margin  : 0 auto 0 auto; // center the title
             padding : 0 0 6.0rem 0;
-            
 
             @media all and ( max-width : $bp-620 ) {
                 
@@ -210,7 +209,7 @@
 
                     margin : 0 auto;
 
-                    view-transition-name : contact-page-image-underline;
+                    // view-transition-name : contact-page-image-underline;
 
                     @media all and ( max-width : $bp-768 ) {
 
