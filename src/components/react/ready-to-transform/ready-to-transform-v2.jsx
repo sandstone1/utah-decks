@@ -197,34 +197,37 @@ export default function ReadyToTransformComponent() {
                 .from( firstHeroH1Text.words, 
                     {
                         opacity  : 0,
-                        duration : 2.4,
+                        duration : 0.70,
                         delay    : 0.0,
                         stagger  : 0.100,
                         x        : -100,
-                        ease     : 'elastic.out( 1.4, 0.70 )'
+                        ease     : 'power4.out'
+                        // ease     : 'elastic.out( 1.4, 0.70 )'
                     }
                 )
                 .from( ctaButton,
                     {
                         opacity  : 0,
-                        duration : 2.4,
+                        duration : 0.70,
                         delay    : 0.0,
                         stagger  : 0.05,
                         x        : -100,
-                        ease     : 'elastic.out( 1.4, 0.70 )'
+                        ease     : 'power4.out'
+                        // ease     : 'elastic.out( 1.4, 0.70 )'
                     },
-                '-=01.90' ) // start 1.40s before the h2 animation ends and remember, use this
+                '-=00.30' ) // start 0.30s before the h2 animation ends and remember, use this
                 // number as our delay
                 .from( phoneNumber,
                     {
                         opacity  : 0,
-                        duration : 2.4,
+                        duration : 0.70,
                         delay    : 0.0,
                         stagger  : 0.05,
                         x        : -100,
-                        ease     : 'elastic.out( 1.4, 0.70 )'
+                        ease     : 'power4.out'
+                        // ease     : 'elastic.out( 1.4, 0.70 )'
                     },
-                '-=01.90' ) // start 1.40s before the h2 animation ends and remember, use this
+                '-=00.30' ) // start 0.30s before the h2 animation ends and remember, use this
                 // number as our delay
 
             } // end of if ()
