@@ -200,7 +200,7 @@ export default function ReadyToTransformComponent() {
                         duration : 2.0,
                         delay    : 0.0,
                         stagger  : 0.100,
-                        x        : -50,
+                        x        : -75,
                         ease     : 'elastic.out( 1.4, 0.70 )'
                     }
                 )
@@ -210,7 +210,7 @@ export default function ReadyToTransformComponent() {
                         duration : 2.0,
                         delay    : 0.0,
                         stagger  : 0.05,
-                        x        : -50,
+                        x        : -100,
                         ease     : 'elastic.out( 1.4, 0.70 )'
                     },
                 '-=01.50' ) // start 1.40s before the h2 animation ends and remember, use this
@@ -221,7 +221,7 @@ export default function ReadyToTransformComponent() {
                         duration : 2.0,
                         delay    : 0.0,
                         stagger  : 0.05,
-                        x        : -50,
+                        x        : -100,
                         ease     : 'elastic.out( 1.4, 0.70 )'
                     },
                 '-=01.50' ) // start 1.40s before the h2 animation ends and remember, use this
