@@ -197,7 +197,7 @@ export default function ReadyToTransformComponent() {
                 .from( firstHeroH1Text.words, 
                     {
                         opacity  : 0,
-                        duration : 2.0,
+                        duration : 2.4,
                         delay    : 0.0,
                         stagger  : 0.075,
                         x        : -100,
