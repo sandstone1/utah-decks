@@ -116,7 +116,7 @@ export default function OurPledgeComponent() {
                 threshold : 0.0, // this value can be between 0 and 1 and 0 is the default and
                 // 0 means that as soon as any little piece enters the defined viewport the
                 // intersection observer will fire
-                rootMargin : '0px 0px -250px 0px' // this works like margin in css and this
+                rootMargin : '0px 0px -200px 0px' // this works like margin in css and this
                 // can help us control when the intersection observer fires
 
                 // remember, it's the bottom rootMargin that controls when the element
