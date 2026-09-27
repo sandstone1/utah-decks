@@ -21,6 +21,10 @@ import { FaSpaceAwesome } from "react-icons/fa6";
 import { FaCamera } from "react-icons/fa";
 // import in IcoMoon cube
 import { IoCube } from "react-icons/io5";
+// import in Font Awesome wrench icon
+import { FaWrench } from "react-icons/fa6";
+// import in Font Awesome pencil ruler icon
+import { FaPenRuler } from "react-icons/fa6";
 // import in our stylesheet
 import styles from './side-menu.module.scss';
 
@@ -1393,33 +1397,6 @@ export default function SideMenuComponent( { resetShowSideMenu, showSideMenu } )
                                     resetShowSideMenu(); // open or close the side menu and this state is in the Nav
                                     // component
 
-                                    // ==============================
-                                    // remove the view transition when navigating
-                                    // ==============================
-
-                                    // remove the view transition names before navigating
-                                    // and this prevents the morph animation from showing up when navigating
-                                    // back to the home page
-                                    const contactPageH1             = document.querySelector( '.contact-page-h1' );
-                                    const contactPageImageUnderline = document.querySelector( '.contact-page-image-underline' );
-                                    const contactPageBlueBox        = document.querySelector( '.contact-page-blue-box' );
-
-                                    if ( contactPageH1             ) contactPageH1.style.viewTransitionName              = 'none';
-                                    if ( contactPageImageUnderline ) contactPageImageUnderline.style.viewTransitionName  = 'none';
-                                    if ( contactPageBlueBox        ) contactPageBlueBox.style.viewTransitionName         = 'none';
-
-                                    const categoryPageH1             = document.querySelector( '.category-page-h1' );
-                                    const categoryPageImageUnderline = document.querySelector( '.category-page-image-underline' );
-                                    const categoryPagePicture        = document.querySelector( '.category-page-picture' );
-        
-                                    if ( categoryPageH1             ) categoryPageH1.style.viewTransitionName             = 'none';
-                                    if ( categoryPageImageUnderline ) categoryPageImageUnderline.style.viewTransitionName = 'none';
-                                    if ( categoryPagePicture        ) categoryPagePicture.style.viewTransitionName        = 'none';
-
-                                    // ==============================
-                                    // end of remove the view transition when navigating
-                                    // ==============================
-
                                     // wait for the slide-off animation to finish before navigating
                                     await new Promise( resolve => setTimeout( resolve, side_menu_cross_fade_duration ) );
 
@@ -1435,63 +1412,56 @@ export default function SideMenuComponent( { resetShowSideMenu, showSideMenu } )
                         </a>
                     </li>
 
-                    { // show the contact at all times
+                    { /* show the request service at all times */ }
 
-                            <li>
-                                <a
-                                    onClick={ async ( e)  => 
-                                        {
-                                            e.preventDefault(); // stop the browser from navigating immediately
+                    <li>
+                        <a
+                            onClick={ async ( e)  => 
+                                {
+                                    e.preventDefault(); // stop the browser from navigating immediately
 
-                                            resetShowSideMenu(); // open or close the side menu and this state is in the Nav
-                                            // component
+                                    resetShowSideMenu(); // open or close the side menu and this state is in the Nav
+                                    // component
 
-                                            // ==============================
-                                            // remove the view transition when navigating
-                                            // ==============================
+                                    // wait for the slide-off animation to finish before navigating
+                                    await new Promise( resolve => setTimeout( resolve, side_menu_cross_fade_duration ) );
 
-                                            // remove the view transition names before navigating
-                                            // and this prevents the morph animation from showing up when navigating
-                                            // back to the contact page
-                                            const contactPageH1             = document.querySelector( '.contact-page-h1' );
-                                            const contactPageImageUnderline = document.querySelector( '.contact-page-image-underline' );
-                                            const contactPageYellowBox      = document.querySelector( '.contact-page-yellow-box' );
-                                            const contactPageBlueBox        = document.querySelector( '.contact-page-blue-box' );
-                
-                                            if ( contactPageH1             ) contactPageH1.style.viewTransitionName              = 'none';
-                                            if ( contactPageImageUnderline ) contactPageImageUnderline.style.viewTransitionName  = 'none';
-                                            if ( contactPageYellowBox      ) contactPageYellowBox.style.viewTransitionName       = 'none';
-                                            if ( contactPageBlueBox        ) contactPageBlueBox.style.viewTransitionName         = 'none';
+                                    // now navigate, after the slide has visually completed
+                                    navigate( '/request-service' );
+                                } 
+                            } // reset showSideMenu or close the side menu
+                        >
+                            <span>
+                                <FaWrench style={ { verticalAlign : '-3.5px', fontSize : '2.4rem', marginRight : '2.0rem' } } />
+                            </span>
+                            Request Service
+                        </a>
+                    </li>
 
-                                            const categoryPageH1             = document.querySelector( '.category-page-h1' );
-                                            const categoryPageImageUnderline = document.querySelector( '.category-page-image-underline' );
-                                            const categoryPagePicture        = document.querySelector( '.category-page-picture' );
-                
-                                            if ( categoryPageH1             ) categoryPageH1.style.viewTransitionName             = 'none';
-                                            if ( categoryPageImageUnderline ) categoryPageImageUnderline.style.viewTransitionName = 'none';
-                                            if ( categoryPagePicture        ) categoryPagePicture.style.viewTransitionName        = 'none';
+                    { /* show the free deck design at all times */ }
+                    <li>
+                        <a
+                            onClick={ async ( e)  => 
+                                {
+                                    e.preventDefault(); // stop the browser from navigating immediately
 
-                                            // ==============================
-                                            // end of remove the view transition when navigating
-                                            // ==============================
+                                    resetShowSideMenu(); // open or close the side menu and this state is in the Nav
+                                    // component
 
-                                            // wait for the slide-off animation to finish before navigating
-                                            await new Promise( resolve => setTimeout( resolve, side_menu_cross_fade_duration ) );
+                                    // wait for the slide-off animation to finish before navigating
+                                    await new Promise( resolve => setTimeout( resolve, side_menu_cross_fade_duration ) );
 
-                                            // now navigate, after the slide has visually completed
-                                            navigate( '/request-service' );
-                                        } 
-                                    } // reset showSideMenu or close the side menu
-                                >
-                                    <span>
-                                        <FaAddressCard style={ { verticalAlign : '-3.5px', fontSize : '2.4rem', marginRight : '2.0rem' } } />
-                                    </span>
-                                    Request Service
-                                </a>
-                            </li>
-
-                        
-                    }
+                                    // now navigate, after the slide has visually completed
+                                    navigate( '/get-started' );
+                                } 
+                            } // reset showSideMenu or close the side menu
+                        >
+                            <span>
+                                <FaPenRuler style={ { verticalAlign : '-3.5px', fontSize : '2.4rem', marginRight : '2.0rem' } } />
+                            </span>
+                            Free Deck Design
+                        </a>
+                    </li>
 
                 </ul>
 

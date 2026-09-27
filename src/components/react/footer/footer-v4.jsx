@@ -191,6 +191,10 @@ export default function Footer() {
                         </div>
 
                         <div>
+                            <HighlightTextComponentLink5 />
+                        </div>
+
+                        <div>
                             <HighlightTextComponentLink3 />
                         </div>
 

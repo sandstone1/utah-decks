@@ -63,6 +63,8 @@ import HamburgerMenuComponent from '../hamburger-menu/hamburger-menu.jsx';
 import SideMenuComponent from '../side-menu/side-menu.jsx';
 // import in the Logo component
 import LogoComponent from '../logo/logo-utah-decks-mountain-v1.jsx';
+// import in the Font Awesome calendar check icon
+import { FaRegCalendarCheck } from "react-icons/fa6";
 // import in our stylesheet
 import styles from './nav-v1.module.scss';
 
@@ -101,9 +103,8 @@ export default function NavComponent() {
 
     // use the useRef(); hook to create a reference to a DOM element and let's start by
     // initializing the following useRef variable(s)
-    const navContainerRef   = useRef( null );
-    const requestServiceRef = useRef( null );
-    const hamburgerMenuRef  = useRef( null );
+    const navContainerRef  = useRef( null );
+    const hamburgerMenuRef = useRef( null );
 
     // ==============================
     // create DOM reference
@@ -238,38 +239,7 @@ export default function NavComponent() {
                     }
 
                     <a
-                        // provide the fallback and accessibility with href='/'
                         href='/'
-                        onClick={ ( e ) => {
-
-                            // stop the default browser navigation so navigate() handles it instead
-                            e.preventDefault();
-
-                            // remove the view transition names before navigating back to the home page
-                            // and this prevents the morph animation from showing up when navigating
-                            // back to the home page
-                            const contactPageH1             = document.querySelector( '.contact-page-h1' );
-                            const contactPageImageUnderline = document.querySelector( '.contact-page-image-underline' );
-                            const contactPageYellowBox      = document.querySelector( '.contact-page-yellow-box' );
-                            const contactPageBlueBox        = document.querySelector( '.contact-page-blue-box' );
-
-                            if ( contactPageH1             ) contactPageH1.style.viewTransitionName              = 'none';
-                            if ( contactPageImageUnderline ) contactPageImageUnderline.style.viewTransitionName  = 'none';
-                            if ( contactPageYellowBox      ) contactPageYellowBox.style.viewTransitionName       = 'none';
-                            if ( contactPageBlueBox        ) contactPageBlueBox.style.viewTransitionName         = 'none';
-
-                            const categoryPageH1             = document.querySelector( '.category-page-h1' );
-                            const categoryPageImageUnderline = document.querySelector( '.category-page-image-underline' );
-                            const categoryPagePicture        = document.querySelector( '.category-page-picture' );
-
-                            if ( categoryPageH1             ) categoryPageH1.style.viewTransitionName             = 'none';
-                            if ( categoryPageImageUnderline ) categoryPageImageUnderline.style.viewTransitionName = 'none';
-                            if ( categoryPagePicture        ) categoryPagePicture.style.viewTransitionName        = 'none';
-
-                            // navigate to the home page
-                            navigate( '/' );
-
-                        } }
                     >
 
                         <div>
@@ -335,45 +305,50 @@ export default function NavComponent() {
                         }
                         <li
                             className={ styles.navContainerRightRequestService }
-                            ref={ requestServiceRef }
                         >
-                            <a
-                                // provide the fallback and accessibility with href='/'
-                                href='/request-service'
-                                onClick={ ( e ) => {
-
-                                    handleButtonClick
-        
-                                    // stop the default browser navigation so navigate() handles it instead
-                                    e.preventDefault();
-
-                                    // remove the view transition names before navigating back to the home page
-                                    // and this prevents the morph animation from showing up when navigating
-                                    // back to the home page
-                                    const contactPageH1             = document.querySelector( '.contact-page-h1' );
-                                    const contactPageImageUnderline = document.querySelector( '.contact-page-image-underline' );
-                                    const contactPageYellowBox      = document.querySelector( '.contact-page-yellow-box' );
-                                    const contactPageBlueBox        = document.querySelector( '.contact-page-blue-box' );
-        
-                                    if ( contactPageH1             ) contactPageH1.style.viewTransitionName              = 'none';
-                                    if ( contactPageImageUnderline ) contactPageImageUnderline.style.viewTransitionName  = 'none';
-                                    if ( contactPageYellowBox      ) contactPageYellowBox.style.viewTransitionName       = 'none';
-                                    if ( contactPageBlueBox        ) contactPageBlueBox.style.viewTransitionName         = 'none';
-        
-                                    const categoryPageH1             = document.querySelector( '.category-page-h1' );
-                                    const categoryPageImageUnderline = document.querySelector( '.category-page-image-underline' );
-                                    const categoryPagePicture        = document.querySelector( '.category-page-picture' );
-        
-                                    if ( categoryPageH1             ) categoryPageH1.style.viewTransitionName             = 'none';
-                                    if ( categoryPageImageUnderline ) categoryPageImageUnderline.style.viewTransitionName = 'none';
-                                    if ( categoryPagePicture        ) categoryPagePicture.style.viewTransitionName        = 'none';
-        
-                                    // navigate to the home page
-                                    navigate( '/request-service' );
-        
-                                } }
-                            >
+                            <a href='/request-service'>
                                 Request Service
+                            </a>
+                        </li>
+
+                        {
+                            /*
+                                show the FREE DECK DESIGN tab only if the user's screen size is greater than 1376px
+                            */
+                        }
+                        {
+                            /*
+                                // ==============================
+                                // container > nav > div ( nav container right ) > ul > div > li ( free deck design )
+                                // ==============================
+                            */
+                        }
+                        <li
+                            className={ styles.navContainerRightFreeDeckDesign }
+                        >
+                            <a href='/get-started'>
+                                Free Deck Design
+                            </a>
+                        </li>
+
+                        {
+                            /*
+                                show the FREE DECK DESIGN tab only if the user's screen size is greater than 1376px
+                            */
+                        }
+                        {
+                            /*
+                                // ==============================
+                                // container > nav > div ( nav container right ) > ul > div > li ( free deck design )
+                                // ==============================
+                            */
+                        }
+                        <li
+                            className={ styles.navContainerRightFreeDeckDesignScroll }
+                        >
+                            <a href='/get-started'>
+                                <FaRegCalendarCheck style={ { verticalAlign: '-3.0px', fontSize: '2.25rem', margin: '0 1.0rem 0 0' } } />
+                                Free Deck Design
                             </a>
                         </li>
 

@@ -256,7 +256,7 @@
     // bottom   : 0; // important!! ( see the notes below )
 
     // z-index : 1;
-    z-index : 3;
+    z-index : 2;
 
     // ==============================
     // height
@@ -622,7 +622,7 @@
                                     "h5";
     
             width   : min( 105.0rem, 100% ); // browser will select the smaller of 105.0rem or 100%
-            z-index : 1; // needed in order to appear on top
+            // z-index : 1; // needed in order to appear on top
 
             // ==============================
             // IMPORTANT!
@@ -724,7 +724,7 @@
             grid-template-areas   : "h2"
                                     "h5";
 
-            z-index : 1; // needed in order to appear on top
+            // z-index : 1; // needed in order to appear on top
             width   : min( 105.0rem, 100% ); // browser will select the smaller of 100.0rem or 100%
 
             // ==============================
@@ -834,7 +834,7 @@
         justify-content  : center;
         gap              : 0 4.0rem;
 
-        z-index : 1; // needed in order to appear on top
+        // z-index : 1; // needed in order to appear on top
         width   : min( 100.0rem, 100% ); // browser will select the smaller of 100.0rem or 100%
         margin  : 4.0rem 0 0 0;
 
@@ -863,7 +863,7 @@
         } // end of container > div2 > bp-768
 
         // ==============================
-        // container > div 2 > div 1
+        // container > div 2 > div 1 ( free deck design button )
         // ==============================
 
         > div:nth-child( 1 ) {
@@ -874,8 +874,6 @@
             border        : 0.075rem solid var( --green-23-9 );
             border-radius : 0.6rem;
 
-            // opacity : 0;
-
             > a {
 
                 padding : 1.725rem 2.925rem; // given a 0.05 rem border, we need to substract 0.05rem
@@ -885,7 +883,7 @@
                 font-size      : 1.85rem;
                 font-weight    : 600;
                 color          : var( --black ); 
-                letter-spacing : 1px;
+                letter-spacing : 0.1rem;
                 text-align     : center;
 
                 background : var( --green-23-9 );
@@ -897,22 +895,9 @@
 
                     border-radius : 0.6rem;
 
-                    // background-color : rgba( 255, 255, 255, 0.01 );
                     background-color : var( --green-30 );
 
                     cursor : pointer;
-
-                    // move the nav item up just a little to add a nice hover effect
-                    // transform : translate3d( 0, -0.2rem, 0 );
-
-                    // remove the animation effect for screen sizes under 1376 pixels
-                    @media all and ( max-width : $bp-1376 ) {
-
-                        // background-color : inherit;
-
-                        // transform : none;
-                
-                    } // end of container > div2 > div1 > a, .phone-icon > &:hover > bp-1376
 
                 } // end of container > div2 > div1 > a, .phone-icon > &:hover
 
@@ -921,7 +906,7 @@
         } // end of container > div2 > div1
 
         // ==============================
-        // container > div 2 > div 2
+        // container > div 2 > div 2 ( phone number button )
         // ==============================
 
         > div:nth-child( 2 ) {
@@ -943,12 +928,11 @@
                 font-weight    : 600;
                 color          : var( --gray-225 );
                 // color          : var( --black ); 
-                letter-spacing : 1px;
+                letter-spacing : 0.1rem;
                 text-align     : center;
 
                 background : none;
                 background : rgba( 0, 0, 0, 0.2 );
-                // background : var( --gold-42 );
 
                 transition : all 0.3s ease-out; // provide for a nice hover animation
 
@@ -999,7 +983,7 @@
         justify-content : center;
         gap             : 0 4.0rem;
 
-        z-index : 1; // needed in order to appear on top
+        // z-index : 1; // needed in order to appear on top
         width   : min( 100.0rem, 100% ); // browser will select the smaller of 100.0rem or 100%
         margin  : 4.0rem 0 0 0;
 

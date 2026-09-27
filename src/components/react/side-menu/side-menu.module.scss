@@ -114,7 +114,7 @@
     right      : 0;
     // bottom   : 0;
     // z-index    : 2; // see nav.module.scss for z-index notes
-    z-index    : 4;
+    z-index    : 3;
     width      : 0; // set the width in the web animations api
     overflow   : scroll; // make sure the side menu scrolls to the bottom of the side
     // menu container
@@ -197,6 +197,10 @@
 
     background : linear-gradient( in oklch, var( --purple-140 ) 0%, var( --blue-83-6 ) 100% );
     // background : linear-gradient( in oklch, var( --purple-150 ) 0%, var( --blue-300 ) 100% );
+    // background : linear-gradient( in oklch, var( --green-210 ) 0%, var( --green-448 ) 100% );
+    background : linear-gradient( in oklch, var( --green-290 ) 0%, var( --green-448 ) 100% );
+    //background : linear-gradient( in oklch, var( --green-290 ) 0%, var( --blue-84 ) 100% );
+    background : linear-gradient( in oklch, var( --green-290 ) 0%, var( --green-440 ) 100% );
 
     // ==============================
     // container > ul ( side menu list )

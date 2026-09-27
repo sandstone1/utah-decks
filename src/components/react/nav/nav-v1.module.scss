@@ -90,7 +90,7 @@
         3d Earth h2 and canvas )   
     */
     // z-index : 2;
-    z-index : 4;
+    z-index : 3;
     // width  : min( 192.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
     width   : min( 144.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
     margin  : 0 auto;
@@ -368,35 +368,36 @@
 
                 @include text-base-large-light;
 
-                font-size       : 1.90rem; // visual preference after looking at Mikey's
-                // computer
+                // font-size       : 1.90rem; // visual preference after looking at Mikey's computer
+                font-size       : 1.85rem;
                 color           : var( --white ); // visual preference for nav items
                 letter-spacing  : 0.1rem; // visual preference for nav items
 
                 transition : all 0.2s ease-out; // provide for a nice hover animation
 
-                // hover selector for the navigation tabs
-                &:hover {
+                /*
+                    by wrapping your :hover block in this media query, the hover effect
+                    only ever gets applied on devices that can properly hover — phones
+                    and tablets never receive the :hover styling at all, so there's nothing
+                    to get stuck in the first place
+                */
+                @media ( hover: hover ) and ( pointer: fine ) {
 
-                    border-radius : 0.6rem;
+                    // hover selector for the navigation tabs
+                    &:hover {
 
-                    background-color : rgba( 255, 255, 255, 0.05 );
+                        border-radius : 0.6rem;
 
-                    cursor : pointer;
-
-                    // move the nav item up just a little to add a nice hover effect
-                    transform: translate3d( 0, -0.3rem, 0 );
-
-                    // remove the animation effect for screen sizes under 1376 pixels
-                    @media all and ( max-width : $bp-1376 ) {
-
-                        background-color : inherit;
-
-                        transform: none;
+                        // background-color : rgba( 255, 255, 255, 0.05 );
+    
+                        cursor : pointer;
+    
+                        // move the nav item up just a little to add a nice hover effect
+                        transform: translate3d( 0, -0.3rem, 0 );
                 
-                    }  // end of container > div2 > ul > li > > a > &:hover > bp-1376
-
-                } // end of container > div2 > ul > li > > a > &:hover
+                    } // end of container > div2 > ul > li > > a > @media > :hover
+                
+                }// end of container > div2 > ul > li > > a > @media
 
                 // active, focus selectors for the navigation tabs
                 &:active, &:focus {
@@ -418,7 +419,7 @@
                     // " https://stackoverflow.com/questions/9784350/mobile-safari-tap-and-hold-a-link-it-will-show-a-gray-shadow-how-to-disable-it?rq=3 "
                     -webkit-tap-highlight-color : rgba( 0, 0, 0, 0 );
                 
-                } // end of container > div2 > ul > li > > a > &:active, &:focused
+                } // end of container > div2 > ul > li > > a > :active, :focused
 
             } // end of container > div2 > ul > li > a
     
@@ -436,6 +437,89 @@
                     // before paint and before the JS runs
 
                 } // end of container > div2 > ul > li > bp-1376
+
+            } // end of container > div2 > ul > li
+
+            // ==============================
+            // free deck design menu item
+            // ==============================
+    
+            > .navContainerRightFreeDeckDesign {
+
+                display : block;
+
+                @media all and ( max-width: $bp-1376 ) {
+
+                    display : none; // correct default for mobile, no flash and css applies
+                    // before paint and before the JS runs
+
+                } // end of container > div2 > ul > li > bp-1376
+
+            } // end of container > div2 > ul > li
+
+            > .navContainerRightFreeDeckDesignScroll {
+
+                // children
+                display : grid;
+
+                display : none;
+
+                border        : 0.075rem solid var( --green-23-9 );
+                border-radius : 0.6rem;
+
+                > a {
+
+                    padding : 1.725rem 2.925rem; // given a 0.05 rem border, we need to substract 0.05rem
+                    // from the button padding in order to equal the size of the first button
+        
+                    font-family    : var( --font-primary-5 );
+                    font-size      : 1.85rem;
+                    font-weight    : 600;
+                    color          : var( --black ); 
+                    letter-spacing : 0.1rem;
+                    text-align     : center;
+    
+                    background : var( --green-23-9 );
+    
+                    transition : all 0.3s ease-out; // provide for a nice hover animation
+    
+                    // hover selector for the navigation tabs
+                    &:hover {
+    
+                        background-color : var( --green-30 );
+    
+                        cursor : pointer;
+
+                        transform : none;
+    
+                    } // end of container > div2 > ul > li > a > :hover
+
+                    &:active, &:focus {
+
+                        // make sure you override the default :active behavior
+                        background : var( --green-23-9 );
+
+                        // on mobile devices, safari was putting a think white background around
+                        // my clicks and " outline : none; " is my attempt to not show any browser
+                        // outline on a click event
+                        outline : 0;
+
+                        // on mobile devices, safari was putting a think white background around
+                        // my clicks and I found the answer on how to solve this problem from
+                        // stackoverflow :
+                        // " https://stackoverflow.com/questions/9784350/mobile-safari-tap-and-hold-a-link-it-will-show-a-gray-shadow-how-to-disable-it?rq=3 "
+                        -webkit-tap-highlight-color : rgba( 0, 0, 0, 0 );
+    
+                    }// end of container > div2 > ul > li > a > :active, :focus
+
+                    @media all and ( max-width: $bp-1376 ) {
+    
+                        display : none; // correct default for mobile, no flash and css applies
+                        // before paint and before the JS runs
+    
+                    } // end of container > div2 > ul > li > a > bp-1376
+
+                } // end of container > div2 > ul > li > a
 
             } // end of container > div2 > ul > li
 

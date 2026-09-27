@@ -588,7 +588,7 @@ export default function ContactUsComponent() {
                 }
                 <div>
 
-                    <h1 ref={ h1Ref } className="contact-page-h1">Request <span style={ { color : 'var( --green-290 )' } }>Service</span></h1>
+                    <h1 ref={ h1Ref }>Request <span style={ { color : 'var( --green-290 )' } }>Service</span></h1>
 
                     <picture>
                         <source 
@@ -596,7 +596,6 @@ export default function ContactUsComponent() {
                             type="image/png"
                         />
                         <img
-                            className="contact-page-image-underline"
                             src="/images/underline_gray_870_02_512.png"
                             width={ 512 }
                             height={ 48 }

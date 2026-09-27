@@ -367,6 +367,7 @@
                     @include text-small-light;
 
                     font-weight : 200;
+                    line-height : 2.8rem;
 
                 } // end of container > div1 > div2 > div1 > p
 
@@ -419,6 +420,7 @@
                         font-size   : 1.85rem;
                         font-weight : 500;
                         color       : var( --gray-225 );
+                        line-height : 2.8rem !important;
 
                     } // end of container > div1 > div2 > div3 > div2 > a
 
@@ -436,6 +438,7 @@
 
                         font-weight : 200;
                         font-style  : initial;
+                        line-height : 2.8rem;
 
                     } // end of container > div1 > div2 > div3 > div3 > address > span
 
@@ -453,6 +456,7 @@
 
                         font-weight : 200;
                         font-style  : initial;
+                        line-height : 2.8rem;
 
                     } // end of container > div1 > div2 > div3 > div4 > a
 

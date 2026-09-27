@@ -237,40 +237,7 @@ export default function NavComponent() {
                         */
                     }
 
-                    <a
-                        // provide the fallback and accessibility with href='/'
-                        href='/'
-                        onClick={ ( e ) => {
-
-                            // stop the default browser navigation so navigate() handles it instead
-                            e.preventDefault();
-
-                            // remove the view transition names before navigating back to the home page
-                            // and this prevents the morph animation from showing up when navigating
-                            // back to the home page
-                            const contactPageH1             = document.querySelector( '.contact-page-h1' );
-                            const contactPageImageUnderline = document.querySelector( '.contact-page-image-underline' );
-                            const contactPageYellowBox      = document.querySelector( '.contact-page-yellow-box' );
-                            const contactPageBlueBox        = document.querySelector( '.contact-page-blue-box' );
-
-                            if ( contactPageH1             ) contactPageH1.style.viewTransitionName              = 'none';
-                            if ( contactPageImageUnderline ) contactPageImageUnderline.style.viewTransitionName  = 'none';
-                            if ( contactPageYellowBox      ) contactPageYellowBox.style.viewTransitionName       = 'none';
-                            if ( contactPageBlueBox        ) contactPageBlueBox.style.viewTransitionName         = 'none';
-
-                            const categoryPageH1             = document.querySelector( '.category-page-h1' );
-                            const categoryPageImageUnderline = document.querySelector( '.category-page-image-underline' );
-                            const categoryPagePicture        = document.querySelector( '.category-page-picture' );
-
-                            if ( categoryPageH1             ) categoryPageH1.style.viewTransitionName             = 'none';
-                            if ( categoryPageImageUnderline ) categoryPageImageUnderline.style.viewTransitionName = 'none';
-                            if ( categoryPagePicture        ) categoryPagePicture.style.viewTransitionName        = 'none';
-
-                            // navigate to the home page
-                            navigate( '/' );
-
-                        } }
-                    >
+                    <a href='/'>
 
                         <div>
                             <LogoComponent />
@@ -325,42 +292,7 @@ export default function NavComponent() {
                             className={ styles.navContainerRightContact }
                             ref={ contactRef }
                         >
-                            <a
-                                // provide the fallback and accessibility with href='/'
-                                href='/contact'
-                                onClick={ ( e ) => {
-
-                                    handleButtonClick
-        
-                                    // stop the default browser navigation so navigate() handles it instead
-                                    e.preventDefault();
-        
-                                    // remove the view transition names before navigating back to the home page
-                                    // and this prevents the morph animation from showing up when navigating
-                                    // back to the home page
-                                    const contactPageH1             = document.querySelector( '.contact-page-h1' );
-                                    const contactPageImageUnderline = document.querySelector( '.contact-page-image-underline' );
-                                    const contactPageYellowBox      = document.querySelector( '.contact-page-yellow-box' );
-                                    const contactPageBlueBox        = document.querySelector( '.contact-page-blue-box' );
-        
-                                    if ( contactPageH1             ) contactPageH1.style.viewTransitionName              = 'none';
-                                    if ( contactPageImageUnderline ) contactPageImageUnderline.style.viewTransitionName  = 'none';
-                                    if ( contactPageYellowBox      ) contactPageYellowBox.style.viewTransitionName       = 'none';
-                                    if ( contactPageBlueBox        ) contactPageBlueBox.style.viewTransitionName         = 'none';
-        
-                                    const categoryPageH1             = document.querySelector( '.category-page-h1' );
-                                    const categoryPageImageUnderline = document.querySelector( '.category-page-image-underline' );
-                                    const categoryPagePicture        = document.querySelector( '.category-page-picture' );
-        
-                                    if ( categoryPageH1             ) categoryPageH1.style.viewTransitionName             = 'none';
-                                    if ( categoryPageImageUnderline ) categoryPageImageUnderline.style.viewTransitionName = 'none';
-                                    if ( categoryPagePicture        ) categoryPagePicture.style.viewTransitionName        = 'none';
-        
-                                    // navigate to the home page
-                                    navigate( '/contact' );
-        
-                                } }
-                            >
+                            <a href='/contact'>
                                 Contact
                             </a>
                         </li>
