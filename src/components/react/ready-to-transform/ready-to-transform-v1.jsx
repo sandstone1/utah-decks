@@ -422,6 +422,10 @@ export default function ReadyToTransformComponent() {
 
             clearTimeout( timeoutId );
 
+            // remove the EventListener for the load event so that it doesn't leak across
+            // component re-mounts / Astro navigations
+            window.removeEventListener( 'load', handleLoad );
+
             // clean up ScrollTrigger instances on unmount so they don't stack up
             // across client-side navigations
             ScrollTrigger.getAll().forEach( ( trigger ) => trigger.kill() );

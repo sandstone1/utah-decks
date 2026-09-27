@@ -284,6 +284,9 @@ export default function HeroImageComponent() {
         // only run GSAP on client side and good safety check
         if ( typeof window === 'undefined' ) return;
 
+        // this creates a Promise that automatically resolves after 2 seconds
+        const timeout = new Promise( ( resolve ) => setTimeout( resolve, 2000 ) );
+
         /*
             document.fonts.ready.then() :
 
@@ -306,7 +309,18 @@ export default function HeroImageComponent() {
             No need to wait for videos and images which take much longer
             Fires sooner = animation starts sooner = better user experience
         */
-        document.fonts.ready.then( () => {
+        /*
+            Promise.race( [ document.fonts.ready, timeout ] ) resolves as soon as either
+            promise resolves first, whichever wins. By pairing document.fonts.ready ( which
+            resolves whenever fonts finish loading — could be fast, could be slow, could
+            theoretically never happen on buggy iOS ) against this timeout Promise ( which
+            always resolves, guaranteed, in exactly 2 seconds ), you get a safety ceiling :
+            your code proceeds either when fonts are actually ready, or after 2 seconds pass
+            — whichever happens first. That's what prevents the animation from being
+            permanently stuck waiting on a promise that might never resolve
+            ( i.e. document.fonts.ready )
+        */
+        Promise.race( [ document.fonts.ready, timeout ] ).then( () => {
 
             // ==============================
             // code block 3
@@ -659,6 +673,23 @@ export default function HeroImageComponent() {
         // code block 7
         // ==============================
 
+        // force ScrollTrigger to recalculate trigger positions once everything
+        // ( images, iframes, late-loading fonts ) has fully finished loading —
+        // fixes stale trigger positions on iOS specifically
+
+        // refresh() just recalculates trigger positions based on current layout;
+        // it doesn't restart or interrupt animations that are already in progress,
+        // it just makes sure future scroll-triggered calculations are accurate
+        const handleLoad = () => {
+            ScrollTrigger.refresh();
+        };
+
+        window.addEventListener( 'load', handleLoad );
+
+        // ==============================
+        // code block 8
+        // ==============================
+
         // clean up
         /*
             The clearTimeout in the cleanup function is what bridges that gap — it tells React
@@ -669,7 +700,16 @@ export default function HeroImageComponent() {
 
             clearTimeout( timeoutId );
 
+            // remove the EventListener for the load event so that it doesn't leak across
+            // component re-mounts / Astro navigations
+            window.removeEventListener( 'load', handleLoad );
+
+            // clean up ScrollTrigger instances on unmount so they don't stack up
+            // across client-side navigations
+            ScrollTrigger.getAll().forEach( ( trigger ) => trigger.kill() );
+
         }; // end of return
+
 
     }, [] ); // end of useEffect 2
 
