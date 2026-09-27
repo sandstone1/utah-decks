@@ -208,7 +208,7 @@ export default function ReadyToTransformComponent() {
                         once    : true,                       // only run the animation the first time it enters view
                     }
                 } )
-                .from( firstHeroH1Text.lines, 
+                .from( firstHeroH1Text.words, 
                     {
                         opacity  : 0,
                         duration : 0.96,
@@ -221,10 +221,10 @@ export default function ReadyToTransformComponent() {
                 .from( ctaButton,
                     {
                         opacity  : 0,
-                        duration : 2.4,
+                        duration : 0.96,
                         delay    : 0.0,
                         // stagger  : 0.05,
-                        x        : -125,
+                        x        : -50,
                         ease     : 'elastic.out( 1.4, 0.70 )'
                     },
                 '-=00.46' ) // start 1.40s before the h2 animation ends and remember, use this
@@ -232,13 +232,13 @@ export default function ReadyToTransformComponent() {
                 .from( phoneNumber,
                     {
                         opacity  : 0,
-                        duration : 2.4,
+                        duration : 0.96,
                         delay    : 0.0,
                         // stagger  : 0.05,
-                        x        : -125,
+                        x        : -50,
                         ease     : 'elastic.out( 1.4, 0.70 )'
                     },
-                '-=01.90' ) // start 1.40s before the h2 animation ends and remember, use this
+                '-=00.46' ) // start 1.40s before the h2 animation ends and remember, use this
                 // number as our delay
 
             } // end of if ()
