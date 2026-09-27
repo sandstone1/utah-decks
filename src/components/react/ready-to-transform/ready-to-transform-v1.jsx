@@ -197,7 +197,7 @@ export default function ReadyToTransformComponent() {
                 .from( firstHeroH1Text.words, 
                     {
                         opacity  : 0,
-                        duration : 2.4,
+                        duration : 2.0,
                         delay    : 0.0,
                         stagger  : 0.06,
                         x        : -100,
@@ -213,7 +213,7 @@ export default function ReadyToTransformComponent() {
                         x        : -100,
                         ease     : 'elastic.out( 1.4, 0.70 )'
                     },
-                '-=01.9' ) // start 1.40s before the h2 animation ends and remember, use this
+                '-=01.60' ) // start 1.40s before the h2 animation ends and remember, use this
                 // number as our delay
                 .from( phoneNumber,
                     {
