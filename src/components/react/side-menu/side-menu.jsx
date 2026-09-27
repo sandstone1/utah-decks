@@ -25,6 +25,8 @@ import { IoCube } from "react-icons/io5";
 import { FaWrench } from "react-icons/fa6";
 // import in Font Awesome pencil ruler icon
 import { FaPenRuler } from "react-icons/fa6";
+// import in the Font Awesome calendar check icon
+import { FaRegCalendarCheck } from "react-icons/fa6";
 // import in our stylesheet
 import styles from './side-menu.module.scss';
 
@@ -1457,7 +1459,7 @@ export default function SideMenuComponent( { resetShowSideMenu, showSideMenu } )
                             } // reset showSideMenu or close the side menu
                         >
                             <span>
-                                <FaPenRuler style={ { verticalAlign : '-3.5px', fontSize : '2.4rem', marginRight : '2.0rem' } } />
+                                <FaRegCalendarCheck style={ { verticalAlign : '-3.50px', fontSize : '2.4rem', marginRight : '2.0rem' } } />
                             </span>
                             Free Deck Design
                         </a>
