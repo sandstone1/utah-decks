@@ -187,9 +187,10 @@ export default function ReadyToTransformComponent() {
                 const phoneNumber = document.querySelector( '.phone-number' );
 
                 gsap.timeline( {
+                    delay         : 0.20,
                     scrollTrigger : {
                         trigger : containerRef.current,       // element to watch
-                        start   : 'top 70.0%',                // waits until the div is 30.0% into view
+                        start   : 'top 30.0%',                // waits until the div is 70.0% into view
                         once    : true,                       // only run the animation the first time it enters view
                     }
                 } )

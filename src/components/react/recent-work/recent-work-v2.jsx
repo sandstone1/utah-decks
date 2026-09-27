@@ -83,7 +83,7 @@ export default function RecentWorkComponent() {
             <div>
 
                 <h2>
-                    A Glimpse Into Our <span style={ { color : 'var( --green-290 )' } }>Work</span>
+                    A Glimpse Into <span style={ { color : 'var( --green-290 )' } }>Our Work</span>
                 </h2>
 
                 {
