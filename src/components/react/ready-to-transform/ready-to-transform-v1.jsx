@@ -122,6 +122,9 @@ export default function ReadyToTransformComponent() {
         // only run GSAP on client side and good safety check
         if ( typeof window === 'undefined' ) return;
 
+        // this creates a Promise that automatically resolves after 2 seconds
+        const timeout = new Promise( ( resolve ) => setTimeout( resolve, 2000 ) );
+
         /*
             document.fonts.ready.then() :
 
@@ -144,7 +147,18 @@ export default function ReadyToTransformComponent() {
             No need to wait for videos and images which take much longer
             Fires sooner = animation starts sooner = better user experience
         */
-        document.fonts.ready.then( () => {
+        /*
+            Promise.race( [ document.fonts.ready, timeout ] ) resolves as soon as either
+            promise resolves first, whichever wins. By pairing document.fonts.ready ( which
+            resolves whenever fonts finish loading — could be fast, could be slow, could
+            theoretically never happen on buggy iOS ) against this timeout Promise ( which
+            always resolves, guaranteed, in exactly 2 seconds ), you get a safety ceiling :
+            your code proceeds either when fonts are actually ready, or after 2 seconds pass
+            — whichever happens first. That's what prevents the animation from being
+            permanently stuck waiting on a promise that might never resolve
+            ( i.e. document.fonts.ready )
+        */
+        Promise.race( [ document.fonts.ready, timeout ] ).then( () => {
 
             // ==============================
             // code block 3
@@ -200,7 +214,7 @@ export default function ReadyToTransformComponent() {
                         duration : 1.8,
                         delay    : 0.0,
                         stagger  : 0.100,
-                        x        : -100,
+                        x        : -125,
                         ease     : 'elastic.out( 1.4, 0.70 )'
                     }
                 )
@@ -209,8 +223,8 @@ export default function ReadyToTransformComponent() {
                         opacity  : 0,
                         duration : 1.8,
                         delay    : 0.0,
-                        stagger  : 0.05,
-                        x        : -100,
+                        // stagger  : 0.05,
+                        x        : -125,
                         ease     : 'elastic.out( 1.4, 0.70 )'
                     },
                 '-=01.30' ) // start 1.40s before the h2 animation ends and remember, use this
@@ -220,8 +234,8 @@ export default function ReadyToTransformComponent() {
                         opacity  : 0,
                         duration : 1.8,
                         delay    : 0.0,
-                        stagger  : 0.05,
-                        x        : -100,
+                        // stagger  : 0.05,
+                        x        : -125,
                         ease     : 'elastic.out( 1.4, 0.70 )'
                     },
                 '-=01.30' ) // start 1.40s before the h2 animation ends and remember, use this
@@ -274,7 +288,7 @@ export default function ReadyToTransformComponent() {
                         opacity  : 0,
                         duration : 1.8,
                         delay    : 0.0,
-                        stagger  : 0.05,
+                        // stagger  : 0.05,
                         x        : -125,
                         ease     : 'elastic.out( 1.4, 0.70 )'
                     },
@@ -285,7 +299,7 @@ export default function ReadyToTransformComponent() {
                         opacity  : 0,
                         duration : 1.8,
                         delay    : 0.0,
-                        stagger  : 0.05,
+                        // stagger  : 0.05,
                         x        : -125,
                         ease     : 'elastic.out( 1.4, 0.70 )'
                     },
@@ -351,7 +365,7 @@ export default function ReadyToTransformComponent() {
                         opacity  : 0,
                         duration : 1.8,
                         delay    : 0.0,
-                        stagger  : 0.035,
+                        // stagger  : 0.035,
                         x        : -200,
                         ease     : 'elastic.out( 1.2, 0.75 )'
                     },
@@ -362,7 +376,7 @@ export default function ReadyToTransformComponent() {
                         opacity  : 0,
                         duration : 1.8,
                         delay    : 0.0,
-                        stagger  : 0.035,
+                        // stagger  : 0.035,
                         x        : -200,
                         ease     : 'elastic.out( 1.2, 0.75 )'
                     },
@@ -371,7 +385,7 @@ export default function ReadyToTransformComponent() {
 
             } // end of if else
 
-        } ); // end of document.fonts.ready.then()
+        } ); // end of Promise.race( [ document.fonts.ready, timeout ] ).then( () => {}
 
         // ==============================
         // end of GSAP code
@@ -379,6 +393,23 @@ export default function ReadyToTransformComponent() {
 
         // ==============================
         // code block 7
+        // ==============================
+
+        // force ScrollTrigger to recalculate trigger positions once everything
+        // ( images, iframes, late-loading fonts ) has fully finished loading —
+        // fixes stale trigger positions on iOS specifically
+
+        // refresh() just recalculates trigger positions based on current layout;
+        // it doesn't restart or interrupt animations that are already in progress,
+        // it just makes sure future scroll-triggered calculations are accurate
+        const handleLoad = () => {
+            ScrollTrigger.refresh();
+        };
+
+        window.addEventListener( 'load', handleLoad );
+
+        // ==============================
+        // code block 8
         // ==============================
 
         // clean up
