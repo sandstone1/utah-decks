@@ -182,6 +182,8 @@
 
             @include h1-light-hero;
 
+            will-change : transform, opacity;
+
             // line-height : 1.05; // reduce and match the line height of the a tag below so that
             // we can apply consistent margins
     
@@ -223,6 +225,8 @@
 
             z-index : 1; // make this section sit above the animating gradient
             margin  : 4.0rem 0 0 0; // visual preference
+
+            will-change : transform, opacity;
 
             @media all and ( max-width : $bp-1536 ) {
 
@@ -281,6 +285,8 @@
 
             z-index : 1; // make this section sit above the animating gradient
             margin  : 2.0rem 0 0 0; // visual preference
+
+            will-change : transform, opacity;
 
             > a {
 

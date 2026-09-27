@@ -189,7 +189,7 @@ export default function ReadyToTransformComponent() {
                 gsap.timeline( {
                     scrollTrigger : {
                         trigger : containerRef.current,       // element to watch
-                        start   : 'top 50.0%',                // waits until the div is 50.0% into view
+                        start   : 'top 70.0%',                // waits until the div is 30.0% into view
                         once    : true,                       // only run the animation the first time it enters view
                     }
                 } )
