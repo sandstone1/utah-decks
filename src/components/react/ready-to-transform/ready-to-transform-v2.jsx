@@ -211,34 +211,34 @@ export default function ReadyToTransformComponent() {
                 .from( firstHeroH1Text.lines, 
                     {
                         opacity  : 0,
-                        duration : 0.48,
+                        duration : 0.96,
                         delay    : 0.0,
                         stagger  : 0.100,
-                        x        : -25,
+                        x        : -50,
                         ease     : 'elastic.out( 1.4, 0.70 )'
                     }
                 )
                 .from( ctaButton,
                     {
                         opacity  : 0,
-                        duration : 0.48,
+                        duration : 0.96,
                         delay    : 0.0,
                         // stagger  : 0.05,
-                        x        : -25,
+                        x        : -50,
                         ease     : 'elastic.out( 1.4, 0.70 )'
                     },
-                '-=00.00' ) // start 1.40s before the h2 animation ends and remember, use this
+                '-=00.46' ) // start 1.40s before the h2 animation ends and remember, use this
                 // number as our delay
                 .from( phoneNumber,
                     {
                         opacity  : 0,
-                        duration : 0.48,
+                        duration : 0.96,
                         delay    : 0.0,
                         // stagger  : 0.05,
-                        x        : -25,
+                        x        : -50,
                         ease     : 'elastic.out( 1.4, 0.70 )'
                     },
-                '-=00.00' ) // start 1.40s before the h2 animation ends and remember, use this
+                '-=00.46' ) // start 1.40s before the h2 animation ends and remember, use this
                 // number as our delay
 
             } // end of if ()
