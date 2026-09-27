@@ -194,7 +194,7 @@ export default function ReadyToTransformComponent() {
                         once    : true,                       // only run the animation the first time it enters view
                     }
                 } )
-                from( firstHeroH1Text.words, 
+                .from( firstHeroH1Text.words, 
                     {
                         opacity  : 0,
                         duration : 1.8,
