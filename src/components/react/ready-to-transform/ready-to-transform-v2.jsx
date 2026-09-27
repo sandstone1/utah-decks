@@ -190,7 +190,7 @@ export default function ReadyToTransformComponent() {
                     // delay         : 0.20,
                     scrollTrigger : {
                         trigger : containerRef.current,       // element to watch
-                        start   : 'top 30.0%',                // waits until the div is 70.0% into view
+                        start   : 'top 40.0%',                // waits until the div is 60.0% into view
                         once    : true,                       // only run the animation the first time it enters view
                     }
                 } )
@@ -200,8 +200,8 @@ export default function ReadyToTransformComponent() {
                         duration : 1.8,
                         delay    : 0.0,
                         stagger  : 0.05,
-                        x        : -140,
-                        ease     : 'elastic.out( 1.2, 0.75 )'          
+                        x        : -125,
+                        ease     : 'elastic.out( 1.4, 0.70 )'
                     } 
                 )
                 .from( ctaButton,
@@ -209,9 +209,9 @@ export default function ReadyToTransformComponent() {
                         opacity  : 0,
                         duration : 1.8,
                         delay    : 0.0,
-                        stagger  : 0.015,
-                        x        : -140,
-                        ease     : 'elastic.out( 1.2, 0.75 )'
+                        stagger  : 0.05,
+                        x        : -125,
+                        ease     : 'elastic.out( 1.4, 0.70 )'
                     },
                 '-=01.40' ) // start 1.40s before the h2 animation ends and remember, use this
                 // number as our delay
@@ -220,9 +220,9 @@ export default function ReadyToTransformComponent() {
                         opacity  : 0,
                         duration : 1.8,
                         delay    : 0.0,
-                        stagger  : 0.015,
-                        x        : -140,
-                        ease     : 'elastic.out( 1.2, 0.75 )'
+                        stagger  : 0.05,
+                        x        : -125,
+                        ease     : 'elastic.out( 1.4, 0.70 )'
                     },
                 '-=01.40' ) // start 1.40s before the h2 animation ends and remember, use this
                 // number as our delay
@@ -255,7 +255,7 @@ export default function ReadyToTransformComponent() {
                 gsap.timeline( {
                     scrollTrigger : {
                         trigger : containerRef.current,       // element to watch
-                        start   : 'top 65.0%',                // waits until the div is 35.0% into view
+                        start   : 'top 50.0%',                // waits until the div is 50.0% into view
                         once    : true,                       // only run the animation the first time it enters view
                     }
                 } )
