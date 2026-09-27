@@ -190,41 +190,41 @@ export default function ReadyToTransformComponent() {
                     // delay         : 0.20,
                     scrollTrigger : {
                         trigger : containerRef.current,       // element to watch
-                        start   : 'top 40.0%',                // waits until the div is 60.0% into view
+                        start   : 'top 50.0%',                // waits until the div is 50.0% into view
                         once    : true,                       // only run the animation the first time it enters view
                     }
                 } )
                 .from( firstHeroH1Text.words, 
                     {
                         opacity  : 0,
-                        duration : 1.8,
+                        duration : 2.4,
                         delay    : 0.0,
                         stagger  : 0.05,
-                        x        : -125,
-                        ease     : 'elastic.out( 1.4, 0.70 )'   
+                        x        : -100,
+                        ease     : 'elastic.out( 1.4, 0.70 )'  
                     } 
                 )
                 .from( ctaButton,
                     {
                         opacity  : 0,
-                        duration : 1.8,
+                        duration : 2.4,
                         delay    : 0.0,
                         stagger  : 0.05,
-                        x        : -125,
+                        x        : -100,
                         ease     : 'elastic.out( 1.4, 0.70 )'
                     },
-                '-=01.40' ) // start 1.40s before the h2 animation ends and remember, use this
+                '-=01.9' ) // start 1.40s before the h2 animation ends and remember, use this
                 // number as our delay
                 .from( phoneNumber,
                     {
                         opacity  : 0,
-                        duration : 1.8,
+                        duration : 2.4,
                         delay    : 0.0,
                         stagger  : 0.05,
-                        x        : -125,
+                        x        : -100,
                         ease     : 'elastic.out( 1.4, 0.70 )'
                     },
-                '-=01.40' ) // start 1.40s before the h2 animation ends and remember, use this
+                '-=01.90' ) // start 1.40s before the h2 animation ends and remember, use this
                 // number as our delay
 
             } // end of if ()
