@@ -197,7 +197,7 @@ export default function ReadyToTransformComponent() {
                 .from( firstHeroH1Text.words, 
                     {
                         opacity  : 0,
-                        duration : 2.7,
+                        duration : 2.0,
                         delay    : 0.0,
                         stagger  : 0.100,
                         x        : -50,
@@ -207,24 +207,24 @@ export default function ReadyToTransformComponent() {
                 .from( ctaButton,
                     {
                         opacity  : 0,
-                        duration : 2.4,
+                        duration : 2.0,
                         delay    : 0.0,
                         stagger  : 0.05,
-                        x        : -100,
+                        x        : -50,
                         ease     : 'elastic.out( 1.4, 0.70 )'
                     },
-                '-=02.20' ) // start 1.40s before the h2 animation ends and remember, use this
+                '-=01.50' ) // start 1.40s before the h2 animation ends and remember, use this
                 // number as our delay
                 .from( phoneNumber,
                     {
                         opacity  : 0,
-                        duration : 2.4,
+                        duration : 2.0,
                         delay    : 0.0,
                         stagger  : 0.05,
-                        x        : -100,
+                        x        : -50,
                         ease     : 'elastic.out( 1.4, 0.70 )'
                     },
-                '-=01.90' ) // start 1.40s before the h2 animation ends and remember, use this
+                '-=01.50' ) // start 1.40s before the h2 animation ends and remember, use this
                 // number as our delay
 
             } // end of if ()
