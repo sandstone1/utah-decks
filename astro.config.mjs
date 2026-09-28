@@ -1,5 +1,3 @@
-
-
 // import in defineConfig, passthroughImageService
 import { defineConfig, passthroughImageService } from 'astro/config';
 // import in node
@@ -10,6 +8,8 @@ import netlify from '@astrojs/netlify';
 import react from "@astrojs/react";
 // import in solid
 import solidJs from "@astrojs/solid-js";
+// import in the astro sitemap package
+import sitemap from '@astrojs/sitemap';
 
 
 // increase the limit to 20 so Node stops complaining after running npm run dev
@@ -46,11 +46,8 @@ export default defineConfig(
         build   : {
             inlineStylesheets : 'always'
         },
-        integrations : [
-            // tell Astro exactly which folders belong to which framework
-            react( { include: ['**/components/react/**'] } ),
-            solidJs( { include: ['**/components/solid/**'] } )
-        ],
+        integrations : [// tell Astro exactly which folders belong to which framework
+        react( { include: ['**/components/react/**'] } ), solidJs( { include: ['**/components/solid/**'] } ), sitemap()],
         css : {
             modules : {
                 // "camelCaseOnly" ensures compiled class names match safe JS object notation 
@@ -82,4 +79,3 @@ export default defineConfig(
         }
     }
 );
-

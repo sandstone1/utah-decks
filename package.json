@@ -15,6 +15,7 @@
         "@astrojs/netlify": "8.1.3",
         "@astrojs/node": "11.0.3",
         "@astrojs/react": "^4.4.2",
+        "@astrojs/sitemap": "^3.7.4",
         "@astrojs/solid-js": "^6.0.1",
         "@fontsource-variable/roboto-flex": "^5.2.8",
         "@fontsource/dynapuff": "^5.2.8",

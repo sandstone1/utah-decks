@@ -258,7 +258,7 @@ export default function NavComponent() {
                                 height={ 90.41 }
                                 loading="eager"
                                 fetchpriority="high"
-                                alt="Utah Decks & Pergoals"
+                                alt="Utah Decks & Pergolas"
                             />
                         </picture>
 
