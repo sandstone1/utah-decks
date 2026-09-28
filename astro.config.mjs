@@ -42,7 +42,7 @@ export default defineConfig(
         image   : {
             service : passthroughImageService() // this tells Astro's <Image /> component to skip the "Sharp" processing while still allowing the build process to hash the filenames for assets kept in the src/
         },
-        site    : process.env.SITE || 'http://localhost:3038', // include site url when ready ( right now using Netlify generated url )
+        site    : process.env.SITE || 'https://utahdecks.net', // include site url when ready ( right now using Netlify generated url ) ( before I added 'https://utahdecks.net', I had 'http://localhost:3038', )
         build   : {
             inlineStylesheets : 'always'
         },
