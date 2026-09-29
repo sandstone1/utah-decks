@@ -284,8 +284,8 @@ export default function HeroImageComponent() {
         // only run GSAP on client side and good safety check
         if ( typeof window === 'undefined' ) return;
 
-        // this creates a Promise that automatically resolves after 2 seconds
-        const timeout = new Promise( ( resolve ) => setTimeout( resolve, 2000 ) );
+        // this creates a Promise that automatically resolves after 500 ms
+        const timeout = new Promise( ( resolve ) => setTimeout( resolve, 500 ) );
 
         /*
             document.fonts.ready.then() :
