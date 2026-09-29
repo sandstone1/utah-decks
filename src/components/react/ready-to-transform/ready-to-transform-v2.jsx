@@ -213,7 +213,7 @@ export default function ReadyToTransformComponent() {
                 .from( wrapperDiv,
                     {
                         opacity  : 0,
-                        duration : 1.8,
+                        duration : 1.0,
                         delay    : 0.0,
                         // stagger  : 0.05,
                         x        : -125,
