@@ -457,8 +457,15 @@
 // ==============================
 // IMPORTANT!!!
 //
-// REMEMBER, THIS IS EXACTLY THE SAME AS V5, THE ONLY DIFFERENCE IS THE TITLE AND
-// BUTTON TITLE
+// REMEMBER, THIS IS EXACTLY THE SAME AS V6, THE ONLY DIFFERENCE IS THE TITLE AND
+// BUTTON TITLE AND THE DATA LAYER VARIABLE VALUES
+// ==============================
+
+// ==============================
+// IMPORTANT!!!
+//
+// REMEMBER, THIS IS EXACTLY THE SAME AS V7, THE ONLY DIFFERENCE IS THE DATA LAYER
+// VARIABLE VALUES
 // ==============================
 
 // import in Fragment and the useEffect, useRef and useState hooks
@@ -962,19 +969,33 @@ export default function ContactFormComponent() {
             // this click event in GTM and GA4
             // ==============================
 
-            // push the following object into the dataLayer
-            window.dataLayer.push(
+            // ==============================
+            // remmeber : since we have a 3 second set timeout in the GTM script in the
+            // app.js file we want to make sure that " window.dataLayer " exist; otherwise,
+            // we could get an error; for example, if a user presses the nav " Contact " button
+            // before the 3 second setTimeout function has run then an error will be thrown
+            // ==============================
 
-                {
+            // test
+            // console.log( window.dataLayer );
 
-                    'event'      : 'form_submission_success',
-                    'form_id'    : 'Submit - Contact Page',
-                    'page_url'   : 'enchantingapps.com/contact',
-                    'page_title' : 'Enchanting Apps | Contact | Submit | Form Submission Success'
+            if ( window.dataLayer ) {
 
-                }
+                // push the following object into the dataLayer
+                window.dataLayer.push(
 
-            );
+                    {
+
+                        'event'      : 'generate_lead',
+                        'form_id'    : 'Submit - Home Page',
+                        'page_url'   : 'utahdecks.net',
+                        'page_title' : 'Utah Decks & Pergolas | Contact Form Other Postmark Badge Long v5 | Submit | Form Submission Success'
+
+                    }
+
+                );
+
+            } // end of if
 
         }
 

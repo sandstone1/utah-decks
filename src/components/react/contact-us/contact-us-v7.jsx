@@ -4,7 +4,7 @@
 // import in the useEffect, useRef hooks
 import { useEffect, useRef } from 'react';
 // import in the Contact Form Postmark Badge component
-import ContactFormPostmarkComponent from '../contact/contact-form-other-postmark-badge-long-v5';
+import ContactFormPostmarkComponent from '../contact/contact-form-other-postmark-badge-long-v7';
 // import in the Contact Information component
 import ContactInformationComponent from '../contact/contact-information-v6';
 // import in the Blob Blue background component

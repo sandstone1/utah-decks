@@ -454,18 +454,17 @@
 
 
 
+// ==============================
+// IMPORTANT!!!
+//
+// REMEMBER, THIS IS EXACTLY THE SAME AS V5, THE ONLY DIFFERENCE IS THE DATA
+// LAYER VARAIBLE VALUES
+// ==============================
 
 // ==============================
 // IMPORTANT!!!
 //
-// REMEMBER, THIS IS EXACTLY THE SAME AS V5, THE ONLY DIFFERENCE IS THE TITLE AND
-// BUTTON TITLE AND THE DATA LAYER VARAIBLE VALUES
-// ==============================
-
-// ==============================
-// IMPORTANT!!!
-//
-// REMEMBER, THIS IS EXACTLY THE SAME AS V7, THE ONLY DIFFERENCE IS THE TITLE AND
+// REMEMBER, THIS IS EXACTLY THE SAME AS V6, THE ONLY DIFFERENCE IS THE TITLE AND
 // BUTTON TITLE AND THE DATA LAYER VARAIBLE VALUES
 // ==============================
 
@@ -480,7 +479,7 @@ import SuccessMessageComponent from '../success-message/sm-general';
 // import in the Spinner component
 import Spinner from '../spinner/spinner-bounce-dark';
 // import in our stylesheet
-import styles from './contact-form-other-postmark-badge-long-v6.module.scss';
+import styles from './contact-form-other-postmark-badge-long-v7.module.scss';
 
 
 
@@ -990,14 +989,14 @@ export default function ContactFormComponent() {
                         'event'      : 'generate_lead',
                         'form_id'    : 'Submit - Request Service Page',
                         'page_url'   : 'utahdecks.net/request-service',
-                        'page_title' : 'Utah Decks & Pergolas | Contact Form Other Postmark Badge Long v6 | Submit | Form Submission Success'
+                        'page_title' : 'Utah Decks & Pergolas | Contact Form Other Postmark Badge Long v7 | Submit | Form Submission Success'
 
                     }
 
                 );
 
             } // end of if
-    
+
         }
 
         // ==============================
@@ -1064,7 +1063,7 @@ export default function ContactFormComponent() {
                                 // ==============================
                             */
                         }
-                        <h3 className={ styles.contactFormContainerH3 }>Share Your Project Details</h3>
+                        <h3 className={ styles.contactFormContainerH3 }>Email Form</h3>
 
                         {
                             /*
@@ -1330,7 +1329,7 @@ export default function ContactFormComponent() {
                                     type="submit"
                                     className={ styles.contactFormContainerFormButtonContainerButton }
                                 >
-                                    Submit Your Project Details
+                                    Request Service
                                 </button>
 
                                 <p>
@@ -1338,7 +1337,7 @@ export default function ContactFormComponent() {
                                     serving Salt Lake, Utah, Summit, Davis and Weber counties. All
                                     completed projects backed by our 2-year workmanship guarantee.
                                 </p>
-                    
+
                             </div>
 
                         </form>
