@@ -213,12 +213,13 @@ export default function ReadyToTransformComponent() {
                 .from( wrapperDiv,
                     {
                         opacity  : 0,
-                        duration : 1.2,
+                        duration : 1.8,
                         delay    : 0.0,
                         // stagger  : 0.05,
                         x        : -125,
                         ease     : 'elastic.out( 1.4, 0.7 )'
-                    } )/*
+                    } )
+                /*
                 '-=00.46' ) // start 1.40s before the h2 
                 .from( firstHeroH1Text.words, 
                     {
@@ -252,7 +253,8 @@ export default function ReadyToTransformComponent() {
                     },
                 '-=00.46' ) // start 1.40s before the h2 animation ends and remember, use this
                 // number as our delay
-*/
+                */
+
             } // end of if ()
 
             // ==============================
