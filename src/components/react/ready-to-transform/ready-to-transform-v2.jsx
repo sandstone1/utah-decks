@@ -227,7 +227,7 @@ export default function ReadyToTransformComponent() {
                         duration : 0.96,
                         delay    : 0.0,
                         stagger  : 0.100,
-                        x        : -40,
+                        x        : -20,
                         ease     : 'elastic.out( 1.4, 0.7 )'
                     }
                 )
@@ -237,7 +237,7 @@ export default function ReadyToTransformComponent() {
                         duration : 0.96,
                         delay    : 0.0,
                         // stagger  : 0.05,
-                        x        : -40,
+                        x        : -20,
                         ease     : 'elastic.out( 1.4, 0.7 )'
                     },
                 '-=00.56' ) // start 1.40s before the h2 animation ends and remember, use this
@@ -248,7 +248,7 @@ export default function ReadyToTransformComponent() {
                         duration : 0.96,
                         delay    : 0.0,
                         // stagger  : 0.05,
-                        x        : -40,
+                        x        : -20,
                         ease     : 'elastic.out( 1.4, 0.7 )'
                     },
                 '-=00.56' ) // start 1.40s before the h2 animation ends and remember, use this
