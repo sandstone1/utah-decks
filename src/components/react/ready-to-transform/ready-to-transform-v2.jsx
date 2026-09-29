@@ -195,6 +195,8 @@ export default function ReadyToTransformComponent() {
                     type      : 'lines, words, chars',
                     smartWrap : true
                 } );
+                // get the container ref
+                const wrapperDiv = document.querySelector( '.wrapper-div' );
                 // get the CTA button
                 const ctaButton = document.querySelector( '.cta-button' );
                 // get the phone number
@@ -208,6 +210,16 @@ export default function ReadyToTransformComponent() {
                         once    : true,                       // only run the animation the first time it enters view
                     }
                 } )
+                .from( wrapperDiv,
+                    {
+                        opacity  : 0,
+                        duration : 1.2,
+                        delay    : 0.0,
+                        // stagger  : 0.05,
+                        x        : -125,
+                        ease     : 'elastic.out( 1.4, 0.7 )'
+                    } )/*
+                '-=00.46' ) // start 1.40s before the h2 
                 .from( firstHeroH1Text.words, 
                     {
                         opacity  : 0,
@@ -240,7 +252,7 @@ export default function ReadyToTransformComponent() {
                     },
                 '-=00.46' ) // start 1.40s before the h2 animation ends and remember, use this
                 // number as our delay
-
+*/
             } // end of if ()
 
             // ==============================
@@ -467,6 +479,7 @@ export default function ReadyToTransformComponent() {
             }
             <div
                 ref={ div1Ref }
+                className="wrapper-div"
             >
 
                 <h2 className="hero-h2">
