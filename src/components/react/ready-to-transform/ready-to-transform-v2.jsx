@@ -215,7 +215,7 @@ export default function ReadyToTransformComponent() {
                         delay    : 0.0,
                         stagger  : 0.100,
                         x        : -50,
-                        ease     : 'elastic.out( 1.4, 1.7 )'
+                        ease     : 'elastic.out( 1.4, 1.0 )'
                     }
                 )
                 .from( ctaButton,
@@ -225,7 +225,7 @@ export default function ReadyToTransformComponent() {
                         delay    : 0.0,
                         // stagger  : 0.05,
                         x        : -50,
-                        ease     : 'elastic.out( 1.4, 1.7 )'
+                        ease     : 'elastic.out( 1.4, 1.0 )'
                     },
                 '-=00.46' ) // start 1.40s before the h2 animation ends and remember, use this
                 // number as our delay
@@ -236,7 +236,7 @@ export default function ReadyToTransformComponent() {
                         delay    : 0.0,
                         // stagger  : 0.05,
                         x        : -50,
-                        ease     : 'elastic.out( 1.4, 1.7 )'
+                        ease     : 'elastic.out( 1.4, 1.0 )'
                     },
                 '-=00.46' ) // start 1.40s before the h2 animation ends and remember, use this
                 // number as our delay
