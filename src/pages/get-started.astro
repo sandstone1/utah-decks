@@ -330,6 +330,14 @@ import styles from './get-started.module.scss';
     */
 }
 
+{
+    /*
+        // ==============================
+        // dataLayer push for GHL booking calendar
+        // ==============================
+    */
+}
+
 <!--
     this script's job is to tell Facebook's browser-side pixel "a real booking just happened"
     the moment someone completes a booking inside the GHL calendar iframe, the same way our
@@ -337,13 +345,11 @@ import styles from './get-started.module.scss';
 -->
 <script is:inline>
 
-    // use this to make we are only attaching one lead event per booking
-    let ghlListenerAttached = false;
-
     function setupGhlMessageListener() {
 
-        if ( ghlListenerAttached ) return;
-        ghlListenerAttached = true;
+        // use this to make sure we only attach one listener
+        if ( window.ghlListenerAttached ) return;
+        window.ghlListenerAttached = true;
 
         window.addEventListener( 'message', ( event ) => {
 
@@ -351,11 +357,34 @@ import styles from './get-started.module.scss';
 
                 const eventId = crypto.randomUUID();
 
+                // ==============================
+                // facebook pixel lead event
+                // ==============================
                 if ( typeof fbq !== 'undefined' ) {
 
                     fbq( 'track', 'Lead', {}, { eventID : eventId } );
-
+    
                 }
+
+                // ==============================
+                // dataLayer push
+                // ==============================
+
+                // ==============================
+                // purpose : to push information into the dataLayer method so that we can track
+                // this calendar booking event in GTM and GA4
+                // ==============================
+
+                window.dataLayer = window.dataLayer || [];
+
+                window.dataLayer.push(
+                    {
+                        'event'      : 'generate_lead',
+                        'form_id'    : 'Calendar Booking - Get Started Page',
+                        'page_url'   : 'utahdecks.net/get-started',
+                        'page_title' : 'Utah Decks & Pergolas | GHL Calendar | Schedule Meeting | Booking Complete'
+                    }
+                );
 
             }
 

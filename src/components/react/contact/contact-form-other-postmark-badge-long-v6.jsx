@@ -988,9 +988,9 @@ export default function ContactFormComponent() {
                     {
 
                         'event'      : 'generate_lead',
-                        'form_id'    : 'Submit - Request Service Page',
+                        'form_id'    : 'Form Submit - Request Service Page',
                         'page_url'   : 'utahdecks.net/request-service',
-                        'page_title' : 'Utah Decks & Pergolas | Contact Form Other Postmark Badge Long v6 | Submit | Form Submission Success'
+                        'page_title' : 'Utah Decks & Pergolas | Contact Form Other Postmark Badge Long v6 | Submit Your Project Details | Form Submission Success'
 
                     }
 
@@ -1338,7 +1338,7 @@ export default function ContactFormComponent() {
                                     serving Salt Lake, Utah, Summit, Davis and Weber counties. All
                                     completed projects backed by our 2-year workmanship guarantee.
                                 </p>
-                    
+
                             </div>
 
                         </form>

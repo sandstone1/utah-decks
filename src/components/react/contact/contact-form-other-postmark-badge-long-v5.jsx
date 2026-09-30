@@ -987,9 +987,9 @@ export default function ContactFormComponent() {
                     {
 
                         'event'      : 'generate_lead',
-                        'form_id'    : 'Submit - Home Page',
+                        'form_id'    : 'Form Submit - Home Page',
                         'page_url'   : 'utahdecks.net',
-                        'page_title' : 'Utah Decks & Pergolas | Contact Form Other Postmark Badge Long v5 | Submit | Form Submission Success'
+                        'page_title' : 'Utah Decks & Pergolas | Contact Form Other Postmark Badge Long v5 | Request Service | Form Submission Success'
 
                     }
 
