@@ -364,7 +364,7 @@ import styles from './get-started.module.scss';
 
                     fbq( 'track', 'Lead', {}, { eventID : eventId } );
     
-                }
+                };
 
                 // ==============================
                 // dataLayer push
@@ -379,10 +379,9 @@ import styles from './get-started.module.scss';
 
                 window.dataLayer.push(
                     {
-                        'event'      : 'generate_lead',
-                        'form_id'    : 'Calendar Booking - Get Started Page',
-                        'page_url'   : 'utahdecks.net/get-started',
-                        'page_title' : 'Utah Decks & Pergolas | GHL Calendar | Schedule Meeting | Booking Complete'
+                        'event'     : 'generate_lead',
+                        'form_id'   : 'Calendar Booking - Get Started Page',
+                        'page_info' : 'Utah Decks & Pergolas | GHL Calendar | Schedule Meeting | Booking Complete'
                     }
                 );
 
