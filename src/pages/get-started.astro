@@ -188,7 +188,7 @@ import styles from './get-started.module.scss';
                         const baseUrl = 'https://api.leadconnectorhq.com/widget/booking/RrMEXlzJ4Y5xHRCSJ0OP';
                         const utmParams = new URLSearchParams();
 
-                        [ 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content' ].forEach( key =>
+                        [ 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid' ].forEach( key =>
                             {
                                 if ( params.has( key ) ) utmParams.set( key, params.get( key ) );
                             }

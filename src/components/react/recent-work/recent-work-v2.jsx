@@ -70,7 +70,10 @@ export default function RecentWorkComponent() {
         // container
         // ==============================
 
-        <div className={ styles.recentWorkContainer }>
+        <div 
+            className={ styles.recentWorkContainer }
+            id="recent-work"    
+        >
 
             {
                 /*
