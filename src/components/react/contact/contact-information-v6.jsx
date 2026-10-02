@@ -126,7 +126,7 @@ export default function ContactInformationComponent() {
                         <a
                             href="tel:385-425-2299"
                         >
-                            385-425-2299
+                            (385) 425-2299
                         </a>
 
                     </div>
