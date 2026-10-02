@@ -225,7 +225,7 @@ export default function Footer() {
                             <a
                                 href="tel:385-425-2299"
                             >
-                                385-425-2299
+                                (385) 425-2299
                             </a>
 
                         </div>
