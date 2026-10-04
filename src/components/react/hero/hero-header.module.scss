@@ -60,7 +60,7 @@
 
     // this code comes from the article :
     // " https://www.js-craft.io/blog/css-fallbacks-for-webp-background-images-with-supports/ "
-    @supports ( background-image : url( /images/mj_wood_textures_02_1024.webp ) ) {
+    @supports ( background-image : url( /images/mj_wood_texture_02_1024.webp ) ) {
 
         background-image : linear-gradient( rgba( 0, 0, 0, 0.71 ), rgba( 0, 0, 0, 0.71 ) ), url( /images/mj_wood_texture_02_1024.webp );
 

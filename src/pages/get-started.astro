@@ -52,6 +52,29 @@ import styles from './get-started.module.scss';
     <!-- remove this line of code and think about updating my public/robots.txt file when I'm ready -->
     <!-- <meta name="robots" content="noindex, nofollow" /> -->
 
+    <!-- speed optimization -->
+    <!-- wood hero preload : mobile -->
+    <link
+        slot="head"
+        rel="preload"
+        as="image"
+        href="/images/mj_wood_texture_02_512.webp"
+        media="( max-width : 480px )"
+        fetchpriority="high"
+    />
+
+    <!-- wood hero preload : larger screens -->
+    <link
+        slot="head"
+        rel="preload"
+        as="image"
+        href="/images/mj_wood_texture_02_1024.webp"
+        media="( min-width : 481px )"
+        fetchpriority="high"
+    />
+    <!-- end of speed optimization -->
+
+    <!-- page content -->
     {
         /*
             // ==============================
@@ -141,7 +164,6 @@ import styles from './get-started.module.scss';
                         width={ 512 }
                         height={ 48 }
                         loading="eager"
-                        fetchpriority="high"
                         alt="Gray underline"
                     />
                 </picture>
