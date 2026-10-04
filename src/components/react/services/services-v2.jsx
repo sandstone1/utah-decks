@@ -1087,7 +1087,7 @@ export default function ServicesComponent() {
                         <div>
                             <a
                                 // provide the fallback and accessibility with href='/'
-                                href='/stem-cell-therapy'
+                                href=''
                                 onClick={ ( e ) => {
 
                                     // stop the default browser navigation so navigate() handles it instead
@@ -1111,7 +1111,7 @@ export default function ServicesComponent() {
                                     // ==============================
 
                                     // navigate to the home page
-                                    navigate( '/stem-cell-therapy' );
+                                    navigate( '' );
 
                                 } }
                             >
@@ -1191,7 +1191,7 @@ export default function ServicesComponent() {
 
                         <div>
 
-                            <a href="/peptides">
+                            <a href="">
                                 <span data-content="Learn more" aria-hidden="true"></span>
                                 Learn more
                             </a>
@@ -1256,7 +1256,7 @@ export default function ServicesComponent() {
 
                         <div>
 
-                            <a href="/bioidentical-hormone-replacement-therapy">
+                            <a href="">
                                 <span data-content="Learn more" aria-hidden="true"></span>
                                 Learn more
                             </a>
@@ -1319,7 +1319,7 @@ export default function ServicesComponent() {
 
                         <div>
 
-                            <a href="/platelet-rich-plasma-therapy">
+                            <a href="">
                                 <span data-content="Learn more" aria-hidden="true"></span>
                                 Learn more
                             </a>
@@ -1382,7 +1382,7 @@ export default function ServicesComponent() {
 
                         <div>
 
-                            <a href="/medical-aesthetics">
+                            <a href="">
                                 <span data-content="Learn more" aria-hidden="true"></span>
                                 Learn more
                             </a>
@@ -1445,7 +1445,7 @@ export default function ServicesComponent() {
 
                         <div>
 
-                            <a href="/iv-nutritional-therapy">
+                            <a href="">
                                 <span data-content="Learn more" aria-hidden="true"></span>
                                 Learn more
                             </a>

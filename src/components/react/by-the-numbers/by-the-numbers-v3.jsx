@@ -1156,7 +1156,7 @@ export default function ByTheNumbersComponent() {
 
                         <div>
 
-                            <p>Warranty on all deck and roof builds</p>
+                            <p>Warranty on all deck builds</p>
 
                             <div ref={ counterRefWarranty }></div>
 
