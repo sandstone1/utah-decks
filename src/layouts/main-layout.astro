@@ -105,10 +105,14 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
         <!-- self-hosting removes the extra hop ( Google's CDN → their font file ) and preloading removes the extra wait -->
         <!-- remember, we had go to Google Fonts and then download the Roboto Flex Variable font zip file and then
         unzip the file and then take the 1.7 mb .ttf file and convert that file into a woff2 file and that is the file
-        listed below -->
+        listed below
+        -->
+        <!-- this is the old Roboto Flex variable font but the new lighter weight Roboto Flex font looks the same
+        href="/fonts/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.woff2"
+        -->
         <link
             rel="preload"
-            href="/fonts/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.woff2"
+            href="/fonts/RobotoFlex-opsz-wght-latin.woff2"
             as="font"
             type="font/woff2"
             crossorigin

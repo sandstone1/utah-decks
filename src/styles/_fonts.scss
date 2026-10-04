@@ -14,7 +14,8 @@
     font-family  : 'Roboto Flex';
     font-style   : normal;
     font-weight  : 100 1000; // range, since it's the variable font file
-    src          : url('/fonts/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.woff2') format('woff2');
+    // src          : url('/fonts/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.woff2') format('woff2'); // old heavier version
+    src          : url('/fonts/RobotoFlex-opsz-wght-latin.woff2') format('woff2'); // new lighter version and this one weighs 85kb vs 747kb for the old version
 }
 
 
