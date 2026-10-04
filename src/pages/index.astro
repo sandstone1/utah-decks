@@ -22,38 +22,11 @@ import AreasWeServeComponent from '../components/react/areas-we-serve/areas-we-s
 import ReadyToTransformComponent from '../components/react/ready-to-transform/ready-to-transform-v1';
 // import in the Contact Us component
 import WhyChooseUsComponent from '../components/react/why-choose-us/why-choose-us-v2';
-
-
-/*
-// import in the Infinite Scroll component
-import InfiniteScrollComponent from '../components/react/infinite-scroll/infinite-scroll-v2';
-// import in the Why Work With Us component
-import WhyWorkWithUsComponent from '../components/react/why-work-with-us/why-work-with-us-video-no-calc-v5';
-// import in the Sticky Pictures component
-import StickyPicturesComponent from '../components/react/animations/scroll-driven/sticky-pictures/sticky-pictures-v9';
-// import in the Our Process dark component
-import OurProcessDarkComponent from '../components/react/our-process/our-process-dark-v3';
-// import in the Our Process light component
-import OurProcessLightComponent from '../components/react/our-process/our-process-light';
-// import in the Pricing component
-import PricingRadialGradientComponent from '../components/react/pricing/pricing-radial-gradient-v5';
-// import in the Where You Can Find Us component
-import WhereYouCanFindUsComponent from '../components/react/where-you-can-find-us/where-you-can-find-us-v4';
-// import in the Cimikoski Stem Cells Website component
-import CimikoskiStemCellsWebsiteComponent from '../components/react/websites/cimikoski-stem-cells-v2';
-// import in the Real Estate Broker Website component
-import RealEstateBrokerWebsiteComponent from '../components/react/websites/real-estate-broker-gray-bg-v2';
-// import in the Ranking Made Easy Website component
-import RankingMadeEasyWebsiteComponent from '../components/react/websites/ranking-made-easy-gradient-bg-v3';
-*/
-
-
 // import in the Where You Can Find Us component
 import WhereYouCanFindUsComponent from '../components/react/where-you-can-find-us/where-you-can-find-us-v6';
 // import in the scss file
 import styles from './index.module.scss';
 // import styles from './index_img_sep.module.scss';
-
 
 // ==============================
 // speed optimization
@@ -117,6 +90,20 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
     <!-- remove this line of code and think about updating my public/robots.txt file when I'm ready -->
     <!-- <meta name="robots" content="noindex, nofollow" /> -->
 
+    <!-- speed optimization -->
+    <!-- hero image preload -->
+    <link
+        slot="head"
+        rel="preload"
+        as="image"
+        href={ img2560 }
+        imagesrcset={ srcset }
+        imagesizes="( max-width : 480px ) 480px, ( max-width : 1032px ) 1032px, ( max-width : 1376px ) 1376px, ( max-width : 1728px ) 1728px, 2560px"
+        fetchpriority="high"            
+    />
+    <!-- end of speed optimization -->
+
+    <!-- page content ... -->
     {
         /*
             // ==============================

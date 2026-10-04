@@ -54,32 +54,6 @@ import '../styles/_globals.scss';
 // get user and then pass it to our script below so that we can update the $user store
 const { user } = Astro.locals;
 
-// ==============================
-// speed optimization
-// ==============================
-
-// ==============================
-// preload hero images
-// ==============================
-
-// by moving your responsive image URLs out of the JavaScript component and placing
-// a <link rel="preload"> tag at the very top of your HTML, we bypass the entire queue
-// and the browser discovers and starts downloading the correct hero image size concurrently
-// with your CSS files, shaving seconds off the initial network idle time
-
-const img480  = "/images/mj_decks_02_480.webp";
-const img1032 = "/images/mj_decks_02_1032.webp";
-const img1376 = "/images/mj_decks_02_1376.webp";
-const img1728 = "/images/mj_decks_02_1728.webp";
-const img2560 = "/images/mj_decks_02_2560.webp";
-
-// construct the srcset string using above URLs
-const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img1728 } 1728w, ${ img2560 } 2560w`;
-
-// ==============================
-// end of speed optimization
-// ==============================
-
 ---
 
 <html lang="en">
@@ -116,17 +90,6 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
             as="font"
             type="font/woff2"
             crossorigin
-        />
-        <!-- end of speed optimization -->
-
-        <!-- speed optimization -->
-        <!-- hero image preload -->
-        <link
-            rel="preload"
-            as="image"
-            href={ img2560 } 
-            imagesrcset={ srcset }
-            imagesizes="( max-width : 480px ) 480px, ( max-width : 1032px ) 1032px, ( max-width : 1376px ) 1376px, ( max-width : 1728px ) 1728px, 2560px"
         />
         <!-- end of speed optimization -->
 
