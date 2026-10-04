@@ -202,11 +202,17 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
 
         <!-- utm code - part 1 of 3 -->
         <script is:inline>
-            const params = new URLSearchParams( window.location.search );
-        
-            [ 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'gclid' ].forEach( key => {
-                if ( params.has( key ) ) sessionStorage.setItem( key, params.get( key ) );
-            } );
+            // if Astro re-runs this inline script during a page change, declaring const params
+            // a second time at the top level throws an "already been declared" error, the
+            // same issue as the let flag earlier so wrap it in curly braces so params stays local
+            {
+                
+                const params = new URLSearchParams( window.location.search );
+
+                [ 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'gclid' ].forEach( key => {
+                    if ( params.has( key ) ) sessionStorage.setItem( key, params.get( key ) );
+                } );
+            }
         </script>
         <!-- end of utm code -->
 

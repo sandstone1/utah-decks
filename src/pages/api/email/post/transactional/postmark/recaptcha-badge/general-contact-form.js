@@ -148,16 +148,20 @@ export async function POST( { request } ) {
     // get the data from the request
     const body = await request.json();
 
-    // extract the first name, last name, email address, phone number, message and
-    // token from the incoming request and then save the data to the const " first_name ",
-    // " last_name ", " email ", " phone ", " message " and " token "
-    const first_name = body.first_name;
-    const last_name  = body.last_name;
-    const email      = body.email.trim().toLowerCase(); // make sure we decapitalize User@Example.com or in any large letters;
-    const phone      = body.phone;
-    const message    = body.message;
-    const token      = body.token;
-    const event_id   = body.event_id;
+    // extract the data information from the incoming request and then save the
+    // data to the corresponding names
+    const first_name   = body.first_name;
+    const last_name    = body.last_name;
+    const email        = body.email.trim().toLowerCase(); // make sure we decapitalize User@Example.com or in any large letters;
+    const phone        = body.phone;
+    const message      = body.message;
+    const token        = body.token;
+    const event_id     = body.event_id;
+    const utm_source   = body.utm_source;
+    const utm_medium   = body.utm_medium;
+    const utm_campaign = body.utm_campaign;
+    const utm_term     = body.utm_term;
+    const gclid        = body.gclid;
 
     // ==============================
     // server side validation - #1
@@ -534,7 +538,7 @@ export async function POST( { request } ) {
     // ==============================
 
     // ==============================
-    // GHL - send the same submission to GHL as an inbound webhook
+    // GHL - send the form data to GHL
     // ==============================
 
     // this runs after Postmark succeeds, and its own success/failure doesn't block
@@ -543,7 +547,7 @@ export async function POST( { request } ) {
     try {
 
         // ==============================
-        // send the email contact information to GHL
+        // send the contact information and utm parameters to GHL
         // ==============================
     
         await fetch(
@@ -558,9 +562,14 @@ export async function POST( { request } ) {
                     email       : email,
                     phone       : phone,
                     customData  : {
-                        message : message,
-                        eventID : event_id,
-                        source  : 'website_contact_form'
+                        message      : message,
+                        eventID      : event_id,
+                        source       : 'website_contact_form',
+                        utm_source   : utm_source,
+                        utm_medium   : utm_medium,
+                        utm_campaign : utm_campaign,
+                        utm_term     : utm_term,
+                        gclid        : gclid
                     }
                 } )
             }
