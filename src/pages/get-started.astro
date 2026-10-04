@@ -27,6 +27,8 @@ import { MdOutlinePhoneAndroid } from "react-icons/md";
 import { BsShieldCheck } from "react-icons/bs";
 // import in the Font Awesome star icon
 import { FaRegStar } from "react-icons/fa6";
+// import in the Font Awesome map marker icon
+import { FaMapMarkerAlt } from "react-icons/fa";
 // import in our stylesheet
 import styles from './get-started.module.scss';
 
@@ -46,10 +48,10 @@ import styles from './get-started.module.scss';
     <meta slot="head" property="og:title" content='Get Started | Utah Decks & Pergolas' />
     <meta slot="head" property="og:description" content='Book a free deck design consultation. We&apos;ll visit your property, talk through your vision, and build a custom design — fast, no pressure.' />
     <meta slot="head" property="og:site_name" content='Utah Decks & Pergolas' />
-    <meta slot="head" property="og:url" content='https://utahdecks.net' />
+    <meta slot="head" property="og:url" content='https://utahdecks.net/get-started' />
     <meta slot="head" property="og:type" content='website' />
     <meta slot="head" property="og:locale" content="en_US" />
-    <link slot="head" rel="canonical" href="https://utahdecks.net" />
+    <link slot="head" rel="canonical" href="https://utahdecks.net/get-started" />
     <title slot="head">Get Started | Utah Decks & Pergolas</title>
 
     <!-- stop Google from crawling this site until I have an office address on the site -->
@@ -98,17 +100,17 @@ import styles from './get-started.module.scss';
 
             <div>
 
-                <BsShieldCheck style={ { verticalAlign: '-5.5px', fontSize: '2.15rem', margin: '0 1.0rem 0 0' } } />
+                <FaRegStar style={ { verticalAlign: '-5.5px', fontSize: '2.3rem', margin: '0 1.0rem 0 0' } } />
 
-                <span>Licensed & Insured</span>
+                <span>300+ Happy Customers</span>
 
             </div>
 
             <div>
 
-                <FaRegStar style={ { verticalAlign: '-5.5px', fontSize: '2.3rem', margin: '0 1.0rem 0 0' } } />
+                <FaMapMarkerAlt style={ { verticalAlign: '-5.5px', fontSize: '2.3rem', margin: '0 1.0rem 0 0' } } />
 
-                <span>300+ Happy Customers</span>
+                <span>Northern Utah Deck Builder</span>
 
             </div>
 
@@ -167,7 +169,7 @@ import styles from './get-started.module.scss';
             }
             <div>
 
-                <iframe src="https://api.leadconnectorhq.com/widget/booking/RrMEXlzJ4Y5xHRCSJ0OP" allow="payment" style="width: 100%;border:none;overflow: hidden;" scrolling="no" id="ghl-calendar"></iframe>
+                <iframe allow="payment" style="width: 100%;border:none;overflow: hidden;" scrolling="no" id="ghl-calendar"></iframe>
 
                 <!--
                     comment out the script below and replace with the following 2 scripts
