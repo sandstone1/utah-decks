@@ -175,6 +175,12 @@
 
         } // end of container > div1 > bp-1280
 
+        @media all and ( max-width : $bp-620 ) {
+
+            opacity : 1;
+
+        } // end of container > div1 > bp-620
+
         > h2 {
 
             // parent
@@ -186,7 +192,13 @@
 
             // line-height : 1.05; // reduce and match the line height of the a tag below so that
             // we can apply consistent margins
-    
+
+            @media all and ( max-width : $bp-620 ) {
+
+                opacity : 0;
+
+            } // end of container > div1 > h2 > bp-620
+
         } // end of container > div1 > h2
 
         > p:nth-child( 2 ) {
@@ -208,6 +220,12 @@
                 margin : 1.3rem 0 0 0;
     
             } // end of container > div1 > p2 > bp-1280
+
+            @media all and ( max-width : $bp-620 ) {
+
+                opacity : 0;
+
+            } // end of container > div1 > p2 > bp-620
 
         } // end of container > div1 > p2
 
@@ -240,6 +258,12 @@
 
             } // end of container div1 > div3 > bp-1280
 
+            @media all and ( max-width : $bp-620 ) {
+
+                opacity : 0;
+
+            } // end of container > div1 > div3 > bp-620
+
             > a {
 
                 @include button-v7;
@@ -269,6 +293,12 @@
 
             margin  : 4.0rem 0 0 0; // visual preference
 
+            @media all and ( max-width : $bp-620 ) {
+
+                opacity : 0;
+
+            } // end of container > div1 > p4 > bp-620
+
         } // end of container > div1 > p4
 
         // ==============================
@@ -287,6 +317,12 @@
             margin  : 2.0rem 0 0 0; // visual preference
 
             will-change : transform, opacity;
+
+            @media all and ( max-width : $bp-620 ) {
+
+                opacity : 0;
+
+            } // end of container > div1 > div5 > bp-620
 
             > a {
 
@@ -315,26 +351,6 @@
         } // end of container > div1 > div5
 
     } // end of container > div1
-
-    // ==============================
-    // container > div 3 ( animating backgrounds )
-    // ==============================
-
-    > div:nth-child( 3 ) {
-
-        display : block; // hide the blob and show the animating backgrounds
-        z-index : 0; // remember, this container has to sit behind the parent container
-        // which has a z-index of 1
-
-        opacity : 1;
-
-        @media all and ( max-width : $bp-1536 ) {
-
-            //margin : 40.0rem 0 0 0;
-
-        } // end of container > div3 > bp-1536
-
-    } // end of container > div3
 
 } // end of container
 

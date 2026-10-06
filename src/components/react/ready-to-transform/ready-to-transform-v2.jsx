@@ -9,12 +9,8 @@ import {
     ScrollTrigger,
     SplitText
 } from '../../../lib/gsap';
-// import in Animating Gradient Blur Component
-import AnimatingGradientBackground from '../animations/animating-gradient/animating-gradient-background-v21';
 // import in the Font Awesome calendar check icon
 import { FaRegCalendarCheck } from "react-icons/fa6";
-// import in the Material Design phone icon
-import { MdOutlinePhoneAndroid } from "react-icons/md";
 // import in our stylesheet
 import styles from './ready-to-transform-v2.module.scss';
 
@@ -50,8 +46,13 @@ export default function ReadyToTransformComponent() {
     // ==============================
 
     // use the useRef(); hook to create a reference to a DOM element(s)
-    const containerRef = useRef();
-    const div1Ref      = useRef();
+    const containerRef   = useRef();
+    const wrapperRef     = useRef();
+    const h2Ref          = useRef();
+    const p2Ref          = useRef();
+    const ctaButtonRef   = useRef();
+    const p4Ref          = useRef();
+    const phoneNumberRef = useRef();
 
     // ==============================
     // useSession();
@@ -66,7 +67,338 @@ export default function ReadyToTransformComponent() {
     // ==============================
 
     // ==============================
-    // useEffect(); 1
+    // useEffect 1
+    // ==============================
+
+    // ==============================
+    // purpose - fade in and slide in our text and buttons
+    // ==============================
+
+    useEffect( () => {
+
+        // ==============================
+        // code block 1
+        // ==============================
+
+        // ==============================
+        // get the browser width
+        // ==============================
+
+        let browserWidth = window.innerWidth;
+
+        // ==============================
+        // code block 2
+        // ==============================
+
+        // ==============================
+        // intersection observer
+        // ==============================
+
+        // ==============================
+        // use the web animations api for the animation
+        // ==============================
+
+        // options object
+        const readyToTransformOptions = {
+
+            root : null, // this is the default and this means our viewport is the canvas
+            // we are working with here
+            threshold : 0.0, // this value can be between 0 and 1 and 0 is the default and
+            // 0 means that as soon as any little piece enters the defined viewport the
+            // intersection observer will fire
+            rootMargin : '0px 0px -450px 0px' // this works like margin in css and this
+            // can help us control when the intersection observer fires
+
+            // remember, it's the bottom rootMargin that controls when the element
+            // isIntersecting
+
+            // remember, a positive 400px bottom root margin means that isIntersecting
+            // will be true once the user gets to a point in the code that is 400px
+            // above the ref; in other words, a positive root margin is great for pre
+            // loading images
+
+            // remember, a negative 50px bottom root margin means that isIntersecting
+            // will be true once the user gets to a point in the code that is 50px
+            // below the ref; in other words, a negative root margin is great if want
+            // to fade in text or slide up some elements
+
+        } // end of options object
+
+        // create the intersection observer and save the result to the const
+        // readyToTransformObserver
+        const readyToTransformObserver = new IntersectionObserver( 
+
+            // we pass in 2 arguments to the IntersectionObserver : a function and an
+            // options object
+
+            // the first argument ( i.e. the function )
+            function( entries, readyToTransformObserver ) { 
+
+                entries.forEach( ( entry ) => {
+
+                    // if our element is in the viewport then do something
+                    if ( entry.isIntersecting ) {
+
+                        // test
+                        // ==============================
+                        // important comment
+                        // ==============================
+                        // log the entry to console so that we can see the 
+                        // IntersectionObserverEntry object and what we are concerned
+                        // with is the isIntersecting value
+                        // console.log( entry );
+
+                        // test
+                        // ==============================
+                        // important comment
+                        // ==============================
+                        // if the user ever reloads the page we can use
+                        // entry.boundingClientRect.top to tell where the user is at
+                        // on the page and then act accordingly
+                        // console.log( entry.boundingClientRect.top );
+
+                        // ==============================
+                        // TEST 1 ( see TEST 2 below )
+                        // ==============================
+    
+                        // ==============================
+                        // entry.boundingClientRect.top > 0 if statement
+                        // ==============================
+
+                        // ==============================
+                        // additional check
+                        //
+                        // remember, we want to check and see if the user is scrolling
+                        // up or down and depending on the direction we want different
+                        // code to run
+                        //
+                        // remember, this check is only useful if the user had reloaded
+                        // the page and happens to be underneth the container and the user
+                        // is scrolling up to this container and the reason this
+                        // code is useful is because it prevents the opacity and slide up
+                        // animation from running a second time as the user is scrolling
+                        // up to this container
+                        // ==============================
+
+                        // ==============================
+                        // entry.boundingClientRect.top definition : " This property tells
+                        // you the vertical position of the element relative to the top of
+                        // the viewport. If it's less than 0, the element is above the top
+                        // edge of the viewport. "
+                        // ==============================
+
+                        // determine if the user is scrolling down and if so then run
+                        // our opacity and slide up animation
+                        if ( entry.boundingClientRect.top > 0 ) {
+
+                            // Element entered from the bottom or when the user is scrolling
+                            // down
+                            // console.log( 'Element entered from the bottom' );
+
+                            // ==============================
+                            // animation - opacity and slide in
+                            // ==============================
+
+                            // ==============================
+                            // browserWidth <= 620
+                            // ==============================
+
+                            if ( 
+                                wrapperRef.current &&
+                                ( browserWidth <= 620 )
+                            ) {
+
+                                // ==============================
+                                // h2
+                                // ==============================
+
+                                h2Ref.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateY( 6.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateY( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 0,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of h2Ref.current.animate()
+
+                                // ==============================
+                                // paragragh 2
+                                // ==============================
+
+                                p2Ref.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateY( 6.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateY( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 400,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of p2Ref.current.animate()
+
+                                // ==============================
+                                // cta button
+                                // ==============================
+
+                                ctaButtonRef.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateY( 6.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateY( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 800,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of ctaButtonRef.current.animate()
+
+                                // ==============================
+                                // paragragh 4
+                                // ==============================
+
+                                p4Ref.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateY( 6.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateY( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 1200,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of p4Ref.current.animate()
+
+                                // ==============================
+                                // phone number
+                                // ==============================
+
+                                phoneNumberRef.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateY( 6.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateY( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 1600,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of phoneNumberRef.current.animate()
+
+                            } // end of if ( browserWidth <= 620 )
+
+                            // ==============================
+                            // end of animation
+                            // ==============================
+
+                        } // end of if ( entry.boundingClientRect.top > 0 ) {}
+
+                        // once the observation happens then we want to unobserve the DOM
+                        // element
+                        readyToTransformObserver.unobserve( containerRef.current );
+
+                    } // end of if
+
+                } ) // end of entries.forEach()
+
+            }, // end of function( entries, readyToTransformObserver )
+
+            readyToTransformOptions // the second argument
+
+        ); // end of new IntersectionObserver()
+
+        // let's have the observer observe our selected DOM element and then do something
+        // once the DOM element enters the viewport and remember the criteria for when a
+        // DOM element enters the viewport or triggers entry.isIntersecting is determined
+        // by the options object above
+        readyToTransformObserver.observe( containerRef.current );
+
+        // ==============================
+        // end of intersection observer
+        // ==============================
+
+    }, [] ); // end of useEffect 1
+
+    // ==============================
+    // useEffect(); 2
     // ==============================
 
     // ==============================
@@ -164,26 +496,30 @@ export default function ReadyToTransformComponent() {
             // code block 3
             // ==============================
 
-            // had to set the opacity to 1 in order for the first video h1 and h5 elements
-            // to show on the page after running the animation below
-            div1Ref.current.style.opacity = 1;
-
             // ==============================
             // determine of the user is on mobile
             // ==============================
 
             // get isMobile
             const isMobile = window.innerWidth <= 620;
+            // no hero animation on mobile and use the intersection observer above to provide for
+            // the animation
+            if ( isMobile ) return;
+
+            // had to set the opacity to 1 in order for the first video h1 and h5 elements
+            // to show on the page after running the animation below
+            wrapperRef.current.style.opacity = 1;
+
             // get is1376
-            const is1376 = window.innerWidth <= 1376;
+            const is1376 = window.innerWidth > 620 && window.innerWidth <= 1376;
 
             // ==============================
             // code block 4
             // ==============================
-
+/*
             if (
                 isMobile &&
-                div1Ref.current
+                wrapperRef.current
             ) {
 
                 // ==============================
@@ -220,7 +556,7 @@ export default function ReadyToTransformComponent() {
                         x        : -125,
                         ease     : 'elastic.out( 1.4, 0.7 )'
                     } )
-                */
+                */ /*
                 .from( firstHeroH1Text.words, 
                     {
                         opacity  : 0,
@@ -260,9 +596,9 @@ export default function ReadyToTransformComponent() {
             // code block 5
             // ==============================
 
-            else if ( 
+            else */ if ( 
                 is1376 &&
-                div1Ref.current
+                wrapperRef.current
             ) {
 
                 // ==============================
@@ -479,15 +815,20 @@ export default function ReadyToTransformComponent() {
                 */
             }
             <div
-                ref={ div1Ref }
+                ref={ wrapperRef }
                 className="wrapper-div"
             >
 
-                <h2 className="hero-h2">
+                <h2
+                    ref={ h2Ref }
+                    className="hero-h2"
+                >
                     Ready to Transform Your <span style={ { color : 'var( --green-23-9 )' } }>Backyard?</span>
                 </h2>
 
-                <p>
+                <p
+                    ref={ p2Ref }
+                >
                     Get a free, no-pressure deck design or inspection from Utah Decks & Pergolas.
                 </p>
 
@@ -499,6 +840,7 @@ export default function ReadyToTransformComponent() {
                     */
                 }
                 <div
+                    ref={ ctaButtonRef }
                     className="cta-button"
                 >
 
@@ -517,7 +859,11 @@ export default function ReadyToTransformComponent() {
         
                 </div>
 
-                <p>or call us directly at</p>
+                <p
+                    ref={ p4Ref }
+                >
+                    or call us directly at
+                </p>
 
                 {
                     /*
@@ -527,6 +873,7 @@ export default function ReadyToTransformComponent() {
                     */
                 }
                 <div
+                    ref={ phoneNumberRef }
                     className="phone-number"
                 >
                     <a
@@ -544,24 +891,6 @@ export default function ReadyToTransformComponent() {
                         &#40;385&#41; 425&#45;2299
                     </a>
                 </div>
-
-            </div>
-
-            {
-                /*
-                    // ==============================
-                    // container > div 3 ( animating backgrounds )
-                    // ==============================
-                */
-            }
-            {
-                /*
-                    <AnimatingGradientBackground />
-                */
-            }
-            <div>
-
-                <AnimatingGradientBackground />
 
             </div>
 

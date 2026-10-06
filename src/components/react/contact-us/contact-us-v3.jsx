@@ -635,7 +635,7 @@ export default function ContactUsComponent() {
                         }
                         <picture>
                             <source 
-                                srcset="/images/mj_postcards_01_580.webp"
+                                srcSet="/images/mj_postcards_01_580.webp"
                                 type="image/webp"
                             />
                             <img
@@ -643,14 +643,14 @@ export default function ContactUsComponent() {
                                 width={ 580 }
                                 height={ 325 }
                                 loading="eager"
-                                fetchpriority="high"
+                                fetchPriority="high"
                                 alt="Picture of postcards"
                             />
                         </picture>
         
                         <picture>
                             <source 
-                                srcset="/images/arrow_01_512.png"
+                                srcSet="/images/arrow_01_512.png"
                                 type="image/png"
                             />
                             <img
@@ -658,7 +658,7 @@ export default function ContactUsComponent() {
                                 width={ 125 }
                                 height={ 125 }
                                 loading="eager"
-                                fetchpriority="high"
+                                fetchPriority="high"
                                 alt="Down arrow"
                             />
                         </picture>

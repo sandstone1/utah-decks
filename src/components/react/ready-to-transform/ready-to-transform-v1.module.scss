@@ -316,25 +316,5 @@
 
     } // end of container > div1
 
-    // ==============================
-    // container > div 3 ( animating backgrounds )
-    // ==============================
-
-    > div:nth-child( 3 ) {
-
-        display : block; // hide the blob and show the animating backgrounds
-        z-index : 0; // remember, this container has to sit behind the parent container
-        // which has a z-index of 1
-
-        opacity : 1;
-
-        @media all and ( max-width : $bp-1536 ) {
-
-            //margin : 40.0rem 0 0 0;
-
-        } // end of container > div3 > bp-1536
-
-    } // end of container > div3
-
 } // end of container
 

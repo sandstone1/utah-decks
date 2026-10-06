@@ -657,7 +657,7 @@ export default function ContactUsComponent() {
                                 width={ 232 }
                                 height={ 130 }
                                 loading="lazy"
-                                // fetchpriority="high"
+                                // fetchPriority="high"
                                 alt="Picture of postcards"
                             />
                         </picture>
@@ -672,7 +672,7 @@ export default function ContactUsComponent() {
                                 width={ 125 }
                                 height={ 125 }
                                 loading="lazy"
-                                // fetchpriority="high"
+                                // fetchPriority="high"
                                 alt="Down arrow"
                             />
                         </picture>
@@ -742,7 +742,7 @@ export default function ContactUsComponent() {
                                 width={ 3002 }
                                 height={ 300 }
                                 loading="lazy"
-                                // fetchpriority="high"
+                                // fetchPriority="high"
                                 alt="Picture of a custom deck"
                             />
                         </picture>

@@ -9,12 +9,8 @@ import {
     ScrollTrigger,
     SplitText
 } from '../../../lib/gsap';
-// import in Animating Gradient Blur Component
-import AnimatingGradientBackground from '../animations/animating-gradient/animating-gradient-background-v21';
 // import in the Font Awesome calendar check icon
 import { FaRegCalendarCheck } from "react-icons/fa6";
-// import in the Material Design phone icon
-import { MdOutlinePhoneAndroid } from "react-icons/md";
 // import in our stylesheet
 import styles from './ready-to-transform-v1.module.scss';
 
@@ -50,8 +46,13 @@ export default function ReadyToTransformComponent() {
     // ==============================
 
     // use the useRef(); hook to create a reference to a DOM element(s)
-    const containerRef = useRef();
-    const div1Ref      = useRef();
+    const containerRef   = useRef();
+    const wrapperRef     = useRef();
+    const h2Ref          = useRef();
+    const p2Ref          = useRef();
+    const ctaButtonRef   = useRef();
+    const p4Ref          = useRef();
+    const phoneNumberRef = useRef();
 
     // ==============================
     // useSession();
@@ -166,7 +167,7 @@ export default function ReadyToTransformComponent() {
 
             // had to set the opacity to 1 in order for the first video h1 and h5 elements
             // to show on the page after running the animation below
-            div1Ref.current.style.opacity = 1;
+            wrapperRef.current.style.opacity = 1;
 
             // ==============================
             // determine of the user is on mobile
@@ -175,15 +176,15 @@ export default function ReadyToTransformComponent() {
             // get isMobile
             const isMobile = window.innerWidth <= 620;
             // get is1376
-            const is1376 = window.innerWidth <= 1376;
+            const is1376 = window.innerWidth > 620 && window.innerWidth <= 1376;
 
             // ==============================
             // code block 4
             // ==============================
-
+/*
             if (
                 isMobile &&
-                div1Ref.current
+                wrapperRef.current
             ) {
 
                 // ==============================
@@ -247,9 +248,9 @@ export default function ReadyToTransformComponent() {
             // code block 5
             // ==============================
 
-            else if ( 
+            else */ if ( 
                 is1376 &&
-                div1Ref.current
+                wrapperRef.current
             ) {
 
                 // ==============================
@@ -466,14 +467,20 @@ export default function ReadyToTransformComponent() {
                 */
             }
             <div
-                ref={ div1Ref }
+                ref={ wrapperRef }
+                className="wrapper-div"
             >
 
-                <h2 className="hero-h2">
+                <h2
+                    ref={ h2Ref }
+                    className="hero-h2"
+                >
                     Ready to Transform Your <span style={ { color : 'var( --green-23-9 )' } }>Backyard?</span>
                 </h2>
 
-                <p>
+                <p
+                    ref={ p2Ref }
+                >
                     Get a free, no-pressure deck design or inspection from Utah Decks & Pergolas.
                 </p>
 
@@ -485,19 +492,30 @@ export default function ReadyToTransformComponent() {
                     */
                 }
                 <div
-                    className="cta-button" 
+                    ref={ ctaButtonRef }
+                    className="cta-button"
                 >
 
                     <a
-                        href="/get-started#calendar-section"
+                        href="#"
+                        onClick={ 
+                            ( e ) => {
+                                e.preventDefault();
+                                document.getElementById( 'calendar-section' ).scrollIntoView( { behavior : 'smooth' } ); 
+                            }
+                        }
                     >
                         <FaRegCalendarCheck style={ { verticalAlign: '-3.0px', fontSize: '2.25rem', margin: '0 1.0rem 0 0' } } />
-                        Get Started
+                        Schedule your project
                     </a>
-
+        
                 </div>
 
-                <p>or call us directly at</p>
+                <p
+                    ref={ p4Ref }
+                >
+                    or call us directly at
+                </p>
 
                 {
                     /*
@@ -507,6 +525,7 @@ export default function ReadyToTransformComponent() {
                     */
                 }
                 <div
+                    ref={ phoneNumberRef }
                     className="phone-number"
                 >
                     <a
@@ -524,24 +543,6 @@ export default function ReadyToTransformComponent() {
                         &#40;385&#41; 425&#45;2299
                     </a>
                 </div>
-
-            </div>
-
-            {
-                /*
-                    // ==============================
-                    // container > div 3 ( animating backgrounds )
-                    // ==============================
-                */
-            }
-            {
-                /*
-                    <AnimatingGradientBackground />
-                */
-            }
-            <div>
-
-                <AnimatingGradientBackground />
 
             </div>
 
