@@ -261,7 +261,7 @@ export default function ReadyToTransformComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 400,
+                                        delay      : 350,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -292,7 +292,7 @@ export default function ReadyToTransformComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 800,
+                                        delay      : 700,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -323,7 +323,7 @@ export default function ReadyToTransformComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 1200,
+                                        delay      : 1050,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -354,7 +354,7 @@ export default function ReadyToTransformComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 1600,
+                                        delay      : 1400,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
