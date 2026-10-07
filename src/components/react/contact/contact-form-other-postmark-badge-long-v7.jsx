@@ -1007,7 +1007,13 @@ export default function ContactFormComponent() {
 
                         'event'     : 'generate_lead',
                         'form_id'   : 'Form Submit - Request Service Page',
-                        'page_info' : 'Utah Decks & Pergolas | Contact Form Other Postmark Badge Long v7 | Request Service | Form Submission Success'
+                        'page_info' : 'Utah Decks & Pergolas | Contact Form Other Postmark Badge Long v7 | Request Service | Form Submission Success',
+                        'user_data' :
+                            // Google Ads needed this informaton for tranking
+                            {
+                                email        : email,
+                                phone_number : '+1' + phone.replace( /\D/g, '' ).slice( -10 )
+                            }
 
                     }
 
