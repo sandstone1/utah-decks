@@ -100,7 +100,7 @@ export default function ContactInformationComponent() {
 
                 <p>Prefer to talk? Give us a call anytime. If we miss your call, we&apos;ll
                 text you right away, and if it&apos;s after hours, we'll call you back the
-                next morning. You&apos;re also welcome to text us."</p>
+                next morning. You&apos;re also welcome to text us.</p>
     
                 {
                     /*

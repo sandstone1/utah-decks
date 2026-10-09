@@ -581,21 +581,45 @@
 
         @media all and ( min-width: 1441px ) and ( max-width: 2560px ) {
 
-            min-height: 275.19px !important; // !important likely needed to override the grid/JS-calculated height for this range only
+            min-height: calc( 254.19px + 20px ) !important; // !important likely needed to override the grid/JS-calculated height for this range only
+
+        }// container > div 1 > 1441x - 2560px
+
+        @media all and ( min-width: 1033px ) and ( max-width: 1440px ) {
+
+            min-height: calc( 245.19px + 20.0px ) !important; // !important likely needed to override the grid/JS-calculated height for this range only
+
+        }// container > div 1 > 1441x - 2560px
+
+        @media all and ( min-width: 769px ) and ( max-width: 1032px ) {
+
+            min-height: calc( 220.67px + 20.0px ) !important; // !important likely needed to override the grid/JS-calculated height for this range only
+
+        }// container > div 1 > 1441x - 2560px
+
+        @media all and ( min-width: 621px ) and ( max-width: 768px ) {
+
+            min-height: calc( 230.16px + 20.0px ) !important; // !important likely needed to override the grid/JS-calculated height for this range only
+
+        }// container > div 1 > 1441x - 2560px
+
+        @media all and ( min-width: 481px ) and ( max-width: 620px ) {
+
+            min-height: calc( 265.07px + 20.0px ) !important; // !important likely needed to override the grid/JS-calculated height for this range only
+
+        }// container > div 1 > 1441x - 2560px
+
+        @media all and ( min-width: 401px ) and ( max-width: 480px ) {
+
+            min-height: calc( 295.27px + 20.0px ) !important; // !important likely needed to override the grid/JS-calculated height for this range only
 
         }// container > div 1 > 1441x - 2560px
 
         @media all and ( max-width: 400px ) {
 
-            min-height: 379.05px !important; // !important likely needed to override the grid/JS-calculated height for this range only
+            min-height: calc( 443.24px + 20.0px ) !important; // !important likely needed to override the grid/JS-calculated height for this range only
 
         }// container > div 1 > 420px - 439px
-
-        @media all and ( max-width: 324px ) {
-
-            min-height: 452.64px !important; // !important likely needed to override the grid/JS-calculated height for this range only
-
-        }// container > div 1 > 376px - 382px
 
         // ==============================
         // container > div 1 > div 1
@@ -718,6 +742,8 @@
             display               : grid;
             grid-template-rows    : repeat( 2, auto );
             grid-template-columns : 1fr;
+            align-content         : center; // center the h2 and h5 since this hero text has extra
+            // space in between the h2 and h5
             align-items           : center;
             justify-items         : center;
             gap                   : 4.0rem 0;
