@@ -158,7 +158,7 @@
         // IMPORTANT!
         //
         // if using gsap, make sure the first video content div's opacity is set to 0 so
-        // that the h1 element does not suddenly appear and then disappear right before
+        // that the div element does not suddenly appear and then disappear right before
         // the gsap animation
         // ==============================
         opacity : 0;
@@ -175,6 +175,12 @@
 
         } // end of container > div1 > bp-1280
 
+        @media all and ( max-width : $bp-620 ) {
+
+            opacity : 1;
+
+        } // end of container > div1 > bp-620
+
         > h2 {
 
             // parent
@@ -186,7 +192,13 @@
 
             // line-height : 1.05; // reduce and match the line height of the a tag below so that
             // we can apply consistent margins
-    
+
+            @media all and ( max-width : $bp-620 ) {
+
+                opacity : 0;
+
+            } // end of container > div1 > h2 > bp-620
+
         } // end of container > div1 > h2
 
         > p:nth-child( 2 ) {
@@ -209,10 +221,16 @@
     
             } // end of container > div1 > p2 > bp-1280
 
+            @media all and ( max-width : $bp-620 ) {
+
+                opacity : 0;
+
+            } // end of container > div1 > p2 > bp-620
+
         } // end of container > div1 > p2
 
         // ==============================
-        // container > div 1 > div 3 ( get started button )
+        // container > div 1 > div 3 ( schedule your project button )
         // ==============================
 
         > div:nth-child( 3 ) {
@@ -239,6 +257,12 @@
                 width   : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
 
             } // end of container div1 > div3 > bp-1280
+
+            @media all and ( max-width : $bp-620 ) {
+
+                opacity : 0;
+
+            } // end of container > div1 > div3 > bp-620
 
             > a {
 
@@ -269,6 +293,12 @@
 
             margin  : 4.0rem 0 0 0; // visual preference
 
+            @media all and ( max-width : $bp-620 ) {
+
+                opacity : 0;
+
+            } // end of container > div1 > p4 > bp-620
+
         } // end of container > div1 > p4
 
         // ==============================
@@ -287,6 +317,12 @@
             margin  : 2.0rem 0 0 0; // visual preference
 
             will-change : transform, opacity;
+
+            @media all and ( max-width : $bp-620 ) {
+
+                opacity : 0;
+
+            } // end of container > div1 > div5 > bp-620
 
             > a {
 

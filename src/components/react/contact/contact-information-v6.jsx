@@ -92,12 +92,15 @@ export default function ContactInformationComponent() {
                         // ==============================
                         // container > h5
                         // ==============================
+                        <p>Feel free to call anytime or visit us during business hours. Walk ins
+                        are welcome.</p>
                     */
                 }
                 <h3>Reach Us Directly</h3>
 
-                <p>Feel free to call anytime or visit us during business hours. Walk ins
-                are welcome.</p>
+                <p>Prefer to talk? Give us a call anytime. If we miss your call, we&apos;ll
+                text you right away, and if it&apos;s after hours, we'll call you back the
+                next morning. You&apos;re also welcome to text us."</p>
     
                 {
                     /*
@@ -121,7 +124,7 @@ export default function ContactInformationComponent() {
                             <FaPhoneAlt style={ { verticalAlign : '-19.0px', margin : '0 -0.5rem 0 0', fontSize : '3.4rem' } } />
                         </div>
 
-                        <h5>Call Anytime</h5>
+                        <h5>Call or text anytime</h5>
 
                         <a
                             href="tel:385-425-2299"
@@ -144,7 +147,7 @@ export default function ContactInformationComponent() {
                             <FaLocationDot style={ { verticalAlign : '-25.0px', margin : '0 0 0 -0.5rem', fontSize : '3.8rem' } } />
                         </div>
 
-                        <h5>Visit Us</h5>
+                        <h5>Visit us</h5>
 
                         <address>
                             <span>Office address coming soon</span>
@@ -167,7 +170,7 @@ export default function ContactInformationComponent() {
                             <FaClock style={ { verticalAlign : '-20.0px', fontSize : '3.4rem' } } />
                         </div>
 
-                        <h5>Business Hours</h5>
+                        <h5>Business hours</h5>
 
                         <ul>
                             <div>

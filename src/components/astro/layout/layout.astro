@@ -198,21 +198,33 @@ import styles from './layout.module.scss';
     } // end of if ()
 
     // runs on page reload
-    window.scrollTo( { top : 0, behavior : 'instant' } );
+    if ( !window.location.hash ) {
+
+        window.scrollTo( { top : 0, behavior : 'instant' } );
+
+    }
 
     // runs on every navigation
     document.addEventListener( 'astro:page-load', () => {
 
-        window.scrollTo( { top : 0, behavior : 'instant' } );
+        if ( !window.location.hash ) {
+
+            window.scrollTo( { top : 0, behavior : 'instant' } );
+
+        }
 
     } );
 
     // runs after page content swaps - catches edge cases like iOS Chrome ( hopefully )
     document.addEventListener( 'astro:after-swap', () => {
 
-        window.scrollTo( { top : 0, behavior : 'instant' } );
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop            = 0;
+        if ( !window.location.hash ) {
+
+            window.scrollTo( { top : 0, behavior : 'instant' } );
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop            = 0;
+
+        }
 
     } );
 

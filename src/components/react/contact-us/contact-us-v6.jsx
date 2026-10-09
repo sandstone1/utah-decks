@@ -588,7 +588,7 @@ export default function ContactUsComponent() {
                 }
                 <div>
 
-                    <h2 ref={ h2Ref }>Request <span style={ { color : 'var( --green-290 )' } }>Service</span></h2>
+                    <h2 ref={ h2Ref }>Need to <span style={ { color : 'var( --green-290 )' } }>Build, Repair, or Replace</span> a Deck?</h2>
 
                 </div>
 

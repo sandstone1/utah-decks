@@ -308,11 +308,11 @@
         
                     } // end of container div3 > div3 > picture > bp-1280
 
-                    @media all and ( max-width : $bp-768 ) {
+                    @media all and ( max-width : $bp-620 ) {
 
                         display : grid;
         
-                    } // end of container div3 > div3 > picture > bp-768
+                    } // end of container div3 > div3 > picture > bp-620
 
                     > li {
             
@@ -355,12 +355,12 @@
         
                     } // end of container div3 > div3 > ul > div1, div2 > bp-1280
 
-                    @media all and ( max-width : $bp-768 ) {
+                    @media all and ( max-width : $bp-620 ) {
 
                         // make sure the border only stretches as far as the content
                         width : fit-content;
         
-                    } // end of container div3 > div3 > ul > div1, div2 > bp-768
+                    } // end of container div3 > div3 > ul > div1, div2 > bp-620
 
                 } // end of container > div3 > div3 > ul > div1, div2
             

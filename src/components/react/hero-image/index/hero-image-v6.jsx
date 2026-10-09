@@ -798,9 +798,18 @@ export default function HeroImageComponent() {
                                 Over 300 happy customers. Custom decks, built right.
                                 <span style={ { color : 'var( --gold-42 )' } }>7+ years</span>{ ' ' }
                                 serving Salt Lake City, Utah and Davis counties.
+
+
+                                We bring your
+                                backyard vision to life — <span style={{ color: 'var( --green-23-9 )' }}>licensed, insured,</span>{' '}
+                                and backed by manufacturer warranties up to 50 years.
+
+                                We'll design your dream deck for free, with clear, upfront pricing and
+                                manufacturer warranties up to{ ' ' }
+                                <span style={{ color: 'var( --green-23-9 )' }}>50 years</span>.
                             */
                         }
-                        <h1 className="first-hero-h1">Trusted Deck Builder in Northern Utah</h1>
+                        <h1 className="first-hero-h1">Northern Utah's Custom Deck Builder</h1>
 
                         <h5 className="first-hero-h5">
                             <span style={ { color : 'var( --green-23-9 )' } }>300+ happy
@@ -823,13 +832,13 @@ export default function HeroImageComponent() {
                     >
 
                         <h2 className="second-hero-h2">
-                            Built to last, designed to impress
+                            Tell us your vision
                         </h2>
 
                         <h5 className="second-hero-h5">
-                            We bring your
-                            backyard vision to life — <span style={{ color: 'var( --green-23-9 )' }}>licensed, insured,</span>{' '}
-                            and backed by manufacturer warranties up to 50 years.
+                            We'll design your dream deck{' '}
+                            <span style={{ color: 'var( --green-23-9 )' }}>for free</span>,
+                            then build it to last for decades.
                         </h5>
 
                     </div>
