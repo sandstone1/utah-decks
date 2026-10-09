@@ -23,6 +23,8 @@ import { BsShieldCheck } from "react-icons/bs";
 import { FaRegStar } from "react-icons/fa";
 // import in the Font Awesome calendar check icon
 import { FaRegCalendarCheck } from "react-icons/fa6";
+// import in the Feather layer outline icon
+import { FiLayers } from "react-icons/fi";
 // import in our stylesheet
 import styles from './hero-image-v6.module.scss';
 
@@ -907,8 +909,8 @@ export default function HeroImageComponent() {
 
                     <div>
                         <span>
-                            <BsFillPeopleFill style={ { verticalAlign: '-6.0px', fontSize: '2.4rem', margin: '0 1.0rem 0 0' } } />
-                            Locally Owned
+                            <FiLayers style={ { verticalAlign: '-6.0px', fontSize: '2.4rem', margin: '0 1.0rem 0 0' } } />
+                            Trex & TimberTech Decks
                         </span>
                     </div>
 

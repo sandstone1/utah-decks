@@ -19,10 +19,18 @@ import AreasWeServeComponent from '../components/react/areas-we-serve/areas-we-s
 import ReadyToTransformComponent from '../components/react/ready-to-transform/ready-to-transform-v2';
 // import in the Material Design phone icon
 import { MdOutlinePhoneAndroid } from "react-icons/md";
+// import in the Bootstrap shield icon
+import { BsShieldCheck } from "react-icons/bs";
 // import in the Font Awesome star icon
 import { FaRegStar } from "react-icons/fa6";
+// import in the Feather layer outline icon
+import { FiLayers } from "react-icons/fi";
+// import in the Bootstrap pin map icon
+import { BsPinMap } from "react-icons/bs";
 // import in the Font Awesome map marker icon
 import { FaMapMarkerAlt } from "react-icons/fa";
+// import in the Font Awesome map icon
+import { FaRegMap } from "react-icons/fa";
 // import in our stylesheet
 import styles from './get-started.module.scss';
 
@@ -105,7 +113,7 @@ import styles from './get-started.module.scss';
 
             <div>
 
-                <MdOutlinePhoneAndroid style={ { verticalAlign : '-5.0px', margin : '0 -1.1rem 0 0', fontSize : '2.2rem' } } />
+                <MdOutlinePhoneAndroid style={ { verticalAlign : '-5.0px', fontSize : '2.2rem', margin : '0 -1.1rem 0 0' } } />
 
                 <a
                     href="tel:385-425-2299"
@@ -124,8 +132,15 @@ import styles from './get-started.module.scss';
             </div>
 
             <div>
+                <span>
+                    <FiLayers style={ { verticalAlign: '-5.5px', fontSize: '2.4rem', margin: '0 1.0rem 0 0' } } />
+                    Trex & TimberTech Decks
+                </span>
+            </div>
 
-                <FaMapMarkerAlt style={ { verticalAlign: '-5.5px', fontSize: '2.3rem', margin: '0 1.0rem 0 0' } } />
+            <div>
+
+                <FaRegMap style={ { verticalAlign: '-5.5px', fontSize: '2.25rem', margin: '0 1.0rem 0 0' } } />
 
                 <span>Northern Utah Deck Builder</span>
 
