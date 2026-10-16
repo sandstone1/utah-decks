@@ -881,11 +881,18 @@ export default function ContactFormComponent() {
         const utm_term     = sessionStorage.getItem( 'utm_term' )     || '';
         const gclid        = sessionStorage.getItem( 'gclid' )        || '';
 
+        // STEP 6
+
+        // for parts 2 and 3: the referrer follows the same path as our UTMs
+
+        // organic search tracking for website form submissions - part 2 of 3
+        const referrer = sessionStorage.getItem( 'first_referrer' ) || '';
+
         // create our data object
 
         // create our config object
 
-        // STEP 6
+        // STEP 7
         // make the fetch request and save the result to the const called res
         const res = await fetch(
             endpoint,
@@ -905,7 +912,8 @@ export default function ContactFormComponent() {
                         utm_medium   : utm_medium,
                         utm_campaign : utm_campaign,
                         utm_term     : utm_term,
-                        gclid        : gclid
+                        gclid        : gclid,
+                        referrer     : referrer
                     }
                 ),
                 headers : {
@@ -914,11 +922,11 @@ export default function ContactFormComponent() {
             }
         );
 
-        // STEP 7(a)
+        // STEP 8(a)
         // first, check to see if there is a request error
         if ( !res.ok ) {
 
-            // STEP 7(b)
+            // STEP 8(b)
             // the fetch request above returns a response object and then we can apply the
             // json(); method to the reponse object and this will convert the response
             // object into a JavaScript object that we can use and we will call this JavaScript
@@ -926,19 +934,19 @@ export default function ContactFormComponent() {
             // the api route
             const data = await res.json();
 
-            // STEP 7(c)
+            // STEP 8(c)
             // once we get the data, set isLoading to false
             setIsLoading( false );
 
-            // STEP 7(d)
+            // STEP 8(d)
             // console.log data for the moment
             console.log( data );
 
-            // STEP 7(e)
+            // STEP 8(e)
             // set the error message
             setFrontendErrorMessage( data.message );
 
-            // STEP 7(f)
+            // STEP 8(f)
             // reset the component state
             setFirstName( '' );
             setLastName( '' );
@@ -948,7 +956,7 @@ export default function ContactFormComponent() {
 
         } else {
 
-            // STEP 8(a)
+            // STEP 9(a)
             // the fetch request above returns a response object and then we can apply the
             // json(); method to the reponse object and this will convert the response
             // object into a JavaScript object that we can use and we will call this JavaScript
@@ -956,19 +964,19 @@ export default function ContactFormComponent() {
             // the api route
             const data = await res.json();
 
-            // STEP 8(b)
+            // STEP 9(b)
             // once we get the data, set isLoading to false
             setIsLoading( false );
 
-            // STEP 8(c)
+            // STEP 9(c)
             // console.log data for the moment
             console.log( data );
 
-            // STEP 8(d)
+            // STEP 9(d)
             // set the success message
             setFrontendSuccessMessage( data.message );
 
-            // STEP 8(e)
+            // STEP 9(e)
             // reset the component state
             setFirstName( '' );
             setLastName( '' );
@@ -976,7 +984,7 @@ export default function ContactFormComponent() {
             setPhone( '' );
             setMessage( '' );
 
-            // STEP 8(f)
+            // STEP 9(f)
 
             // ==============================
             // dataLayer push

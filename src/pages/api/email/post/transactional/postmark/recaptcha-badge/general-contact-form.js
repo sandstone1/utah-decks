@@ -162,6 +162,8 @@ export async function POST( { request } ) {
     const utm_campaign = body.utm_campaign;
     const utm_term     = body.utm_term;
     const gclid        = body.gclid;
+    // organic search tracking for website form submissions - part 3 of 3
+    const referrer     = body.referrer;
 
     // ==============================
     // server side validation - #1
@@ -569,7 +571,8 @@ export async function POST( { request } ) {
                         utm_medium   : utm_medium,
                         utm_campaign : utm_campaign,
                         utm_term     : utm_term,
-                        gclid        : gclid
+                        gclid        : gclid,
+                        referrer     : referrer
                     }
                 } )
             }
