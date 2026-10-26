@@ -115,7 +115,11 @@ import crypto from 'node:crypto';
 // @access  - Public route
 
 // request = HTTP incoming message
-export async function POST( { request } ) {
+
+// cookies are added so we can read the visitor's Meta pixel cookies ( _fbc and _fbp )
+// and send them with the conversions API event, which helps Facebook match the lead
+// to the exact ad click
+export async function POST( { request, cookies } ) {
 
     // in this function we will accept an incoming request with the name, email and message
     // fields and in this case we do not want to verify that the request is coming from an
@@ -549,7 +553,10 @@ export async function POST( { request } ) {
     try {
 
         // ==============================
-        // send the contact information and utm parameters to GHL
+        // send the contact information, utm parameters, gclid, facebook ad click id to GHL
+        // and we do this because everything that happens later ( texts, the pipeline card,
+        // tagging, sending results back to Google and Meta ) runs off what’s saved on the
+        // contact
         // ==============================
     
         await fetch(
@@ -572,6 +579,10 @@ export async function POST( { request } ) {
                         utm_campaign : utm_campaign,
                         utm_term     : utm_term,
                         gclid        : gclid,
+                        // facebook ad click id and browser id from the pixel cookies, saved on the
+                        // contact so later pipeline events can be sent back to Meta
+                        fbc          : cookies.get( '_fbc' )?.value,
+                        fbp          : cookies.get( '_fbp' )?.value,
                         referrer     : referrer
                     }
                 } )
@@ -599,7 +610,7 @@ export async function POST( { request } ) {
     // ==============================
 
     // ==============================
-    // Server side Meta Conversions API call
+    // server side Meta Conversions API call
     // ==============================
 
     // ==============================
@@ -651,12 +662,21 @@ export async function POST( { request } ) {
                             event_name    : 'Lead',
                             event_time    : Math.floor( Date.now() / 1000 ),
                             event_id      : event_id,
+                            // the page the visitor submitted the form from, required by Meta for website events
+                            event_source_url : request.headers.get( 'referer' ),
                             action_source : 'website',
                             user_data     : {
                                 // the hashed email ( em ) and phone ( ph ), used to help
                                 // FB match this event to a real person / ad account for attribution
                                 em : [ hash( email ) ],
-                                ph : [ hash( phone.replace( /\D/g, '' ) ) ]
+                                ph : [ hash( phone.replace( /\D/g, '' ) ) ],
+                                // fbc is the Facebook ad click id ( from fbclid ) and fbp is the browser id,
+                                // both set by the pixel and these are sent as-is ( not hashed ) and are left
+                                // out if missing
+                                fbc : cookies.get( '_fbc' )?.value,
+                                fbp : cookies.get( '_fbp' )?.value,
+                                // the visitor's browser info, required by Meta for website events
+                                client_user_agent : request.headers.get( 'user-agent' )
                             },
                             custom_data   : {
                                 value     : 30000,
