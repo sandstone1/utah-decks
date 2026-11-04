@@ -1047,7 +1047,7 @@ export default function OurPledgeComponent() {
                         <p>
                             Your neighbors should feel just as comfortable with workers nearby as
                             you do. We'll never play loud music, use crass language, or dress
-                            unprofessionally while working on your project.
+                            un&shy;professionally while working on your project.
                         </p>
 
                         {

@@ -1014,7 +1014,7 @@ export default function ServicesComponent() {
                 <h2
                     ref={ h2Ref }
                 >
-                    Outdoor Spaces & Home Additions Are What We Do
+                    Decks, Pergolas & Basements Are What We Do
                 </h2>
 
                 {

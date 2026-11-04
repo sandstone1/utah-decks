@@ -795,7 +795,7 @@ export default function ByTheNumbersComponent() {
     // ==============================
 
     // ==============================
-    // purpose - create a counter animation for 10 year warranty
+    // purpose - create a counter animation for 2 year warranty
     // ==============================
 
     useEffect( () => {
@@ -806,8 +806,8 @@ export default function ByTheNumbersComponent() {
 
         if ( !isIntersecting ) return;
     
-        // our target is 10 year warranty
-        const target   = 10;
+        // our target is 2 year warranty
+        const target   = 2;
         const duration = 4000;
         // performance.now() returns the current time in milliseconds since the page loaded and is
         // best for animations

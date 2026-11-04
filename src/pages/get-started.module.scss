@@ -402,7 +402,7 @@
     } // end of container > div5
 
     // ==============================
-    // container > div 6 ( get started )
+    // container > div 6 ( reviews )
     // ==============================
 
     // ==============================
@@ -417,7 +417,7 @@
     } // end of container > div6
 
     // ==============================
-    // container > div 7 ( our pledge )
+    // container > div 7 ( get started )
     // ==============================
 
     // ==============================
@@ -432,7 +432,7 @@
     } // end of container > div7
 
     // ==============================
-    // container > div 8 ( areas we serve )
+    // container > div 8 ( our pledge )
     // ==============================
 
     // ==============================
@@ -447,7 +447,7 @@
     } // end of container > div8
 
     // ==============================
-    // container > div 9 ( ready to transform )
+    // container > div 9 ( areas we serve )
     // ==============================
 
     // ==============================
@@ -460,6 +460,21 @@
         grid-column : 1 / -1; // position against the parent and see notes in parent above
 
     } // end of container > div9
+
+    // ==============================
+    // container > div 10 ( ready to transform )
+    // ==============================
+
+    // ==============================
+    // content div
+    // ==============================
+
+    > div:nth-child( 10 ) {
+
+        // parent
+        grid-column : 1 / -1; // position against the parent and see notes in parent above
+
+    } // end of container > div10
 
 } // end of container
 

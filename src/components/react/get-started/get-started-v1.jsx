@@ -1603,7 +1603,7 @@ export default function GetStartedComponent() {
 
                         <h3>6</h3>
 
-                        <h3>Final Walkthrough</h3>
+                        <h3>Final Walk&shy;through</h3>
 
                         <p>
                             Walk the finished space and get your warranty.
