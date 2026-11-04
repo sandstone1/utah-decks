@@ -14,8 +14,12 @@ import ContactUsComponent from '../components/react/contact-us/contact-us-v6';
 import RecentWorkComponent from '../components/react/recent-work/recent-work-v2';
 // import in the By The Numbers component
 import ByTheNumbersComponent from '../components/react/by-the-numbers/by-the-numbers-v3';
+// import in the Reviews component
+import ReviewsComponent from '../components/react/reviews/reviews-v1';
 // import in the WhatWeDo component
 import ServicesComponent from '../components/react/services/services-v2';
+// import in the Owners Story component
+import OwnersStoryComponent from '../components/react/owners-story/owners-story-v2';
 // import in the Areas We Serve component
 import AreasWeServeComponent from '../components/react/areas-we-serve/areas-we-serve-v2';
 // import in the Ready To Transform component
@@ -26,7 +30,7 @@ import WhyChooseUsComponent from '../components/react/why-choose-us/why-choose-u
 import WhereYouCanFindUsComponent from '../components/react/where-you-can-find-us/where-you-can-find-us-v6';
 // import in the scss file
 import styles from './index.module.scss';
-// import styles from './index_img_sep.module.scss';
+
 
 // ==============================
 // speed optimization
@@ -178,7 +182,16 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
         {
             /*
                 // ==============================
-                // container > div 5 ( services )
+                // container > div 5 ( reviews )
+                // ==============================
+            */
+        }
+        <ReviewsComponent client:visible />
+
+        {
+            /*
+                // ==============================
+                // container > div 6 ( services )
                 // ==============================
             */
         }
@@ -187,7 +200,16 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
         {
             /*
                 // ==============================
-                // container > div 6 ( areas we serve )
+                // container > div 7 ( owners story )
+                // ==============================
+            */
+        }
+        <OwnersStoryComponent client:visible />
+
+        {
+            /*
+                // ==============================
+                // container > div 8 ( areas we serve )
                 // ==============================
             */
         }
@@ -196,29 +218,11 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
         {
             /*
                 // ==============================
-                // container > div 7 ( ready to transform )
+                // container > div 9 ( ready to transform )
                 // ==============================
             */
         }
         <ReadyToTransformComponent client:visible />
-
-        {
-            /*
-                // ==============================
-                // container > div 6
-                // ==============================
-                <WhyChooseUsComponent client:visible />
-            */
-        }
-
-        {
-            /*
-                // ==============================
-                // container > div 11
-                // ==============================
-                <WhereYouCanFindUsComponent client:visible />
-            */
-        }
 
     </div>
 
