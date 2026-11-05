@@ -98,7 +98,7 @@ export default function HighlightTextComponentLink5() {
                 }
                 <a href="/get-started" data-astro-reload>
                     <span data-content="Free Deck Design" aria-hidden="true"></span>
-                    Free Deck Design
+                    Free Estimate
                 </a>
 
             </div>
