@@ -751,7 +751,7 @@ export default function OwnersStoryComponent() {
                         loading="lazy"
                         // fetchpriority={ "high" } // needed in case someone scrolls down the
                         // page super fast
-                        alt="Image of a beutiful deck"
+                        alt="Pencil sketch of Jordan Goff, founder of Utah Decks & Pergolas."
                     />
                 </picture>
 

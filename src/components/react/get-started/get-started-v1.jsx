@@ -1638,7 +1638,7 @@ export default function GetStartedComponent() {
                                 loading="lazy"
                                 // fetchpriority={ "high" } // needed in case someone scrolls down the
                                 // page super fast
-                                alt="Image of a beutiful deck"
+                                alt="Image of a beautiful deck"
                             />
                         </picture>
 

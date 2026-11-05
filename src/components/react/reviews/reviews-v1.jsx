@@ -960,7 +960,7 @@ export default function ReviewsComponent() {
                     </div>
 
                     <p>
-                        This company and Jordan&apos;s sharp attention to detail went way
+                        This company and Jordan&apos;s Sharp attention to detail went way
                         beyond our expectations!! Our back yard was left in better shape then
                         when they started. Our project was big and we knew we had to find the
                         right deck builder. We met with Jordan and can I tell you what!! This
