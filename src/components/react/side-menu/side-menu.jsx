@@ -1440,7 +1440,7 @@ export default function SideMenuComponent( { resetShowSideMenu, showSideMenu } )
                         </a>
                     </li>
 
-                    { /* show the free deck design at all times */ }
+                    { /* show the free estimate at all times */ }
                     <li>
                         <a
                             onClick={ async ( e)  => 
@@ -1461,7 +1461,7 @@ export default function SideMenuComponent( { resetShowSideMenu, showSideMenu } )
                             <span>
                                 <FaRegCalendarCheck style={ { verticalAlign : '-3.50px', fontSize : '2.4rem', marginRight : '2.0rem' } } />
                             </span>
-                            Free Deck Design
+                            Free Estimate
                         </a>
                     </li>
 

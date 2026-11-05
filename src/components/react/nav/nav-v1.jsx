@@ -313,13 +313,13 @@ export default function NavComponent() {
 
                         {
                             /*
-                                show the FREE DECK DESIGN tab only if the user's screen size is greater than 1376px
+                                show the FREE ESTIMATE tab only if the user's screen size is greater than 1376px
                             */
                         }
                         {
                             /*
                                 // ==============================
-                                // container > nav > div ( nav container right ) > ul > div > li ( free deck design )
+                                // container > nav > div ( nav container right ) > ul > div > li ( free estimate )
                                 // ==============================
                             */
                         }
