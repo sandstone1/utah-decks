@@ -821,7 +821,7 @@ export default function ReviewsComponent() {
                                 // Element entered from the bottom or when the user is scrolling
                                 // up
                                 // console.log( 'Element entered from the top' );
-
+/*
                                 // if the user is scrolling up, just show the elements without any animation
                                 h2Ref.current.style.opacity                      = 1;
                                 h2Ref.current.style.transform                    = 'translateX( 0 )';
@@ -843,7 +843,7 @@ export default function ReviewsComponent() {
                                 badge4Ref.current.style.transform                = 'translateX( 0 )';
                                 badge4Ref.current.style.transitionDuration       = '400ms';
                                 badge4Ref.current.style.transitionTimingFunction = 'ease-out';
-
+*/
                             } // end of if ( entry.boundingClientRect.top <= 0 ) {}
 
                             // once the observation happens then we want to unobserve the DOM

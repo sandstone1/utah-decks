@@ -48,6 +48,7 @@ export default function OwnersStoryComponent() {
     const h2Ref      = useRef( null );
     const pictureRef = useRef( null );
     const divRef     = useRef( null );
+    const div2Ref    = useRef( null );
 
     // ==============================
     // useSession();
@@ -307,6 +308,37 @@ export default function OwnersStoryComponent() {
 
                                     ); // end of divRef.current.animate()
 
+                                    // ==============================
+                                    // div 2
+                                    // ==============================
+
+                                    div2Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateX( -20.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateX( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 400,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
+                                    ); // end of div2Ref.current.animate()
+
                                 } // end of if ( browserWidth > 1728 )
 
                                 // ==============================
@@ -410,7 +442,38 @@ export default function OwnersStoryComponent() {
                                         }
 
                                     ); // end of divRef.current.animate()
-    
+
+                                    // ==============================
+                                    // div 2
+                                    // ==============================
+
+                                    div2Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateX( -20.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateX( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 200,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
+                                    ); // end of div2Ref.current.animate()
+
                                 } // end of if ( browserWidth > 768 && browserWidth <= 1728 )
 
                                 // ==============================
@@ -515,6 +578,37 @@ export default function OwnersStoryComponent() {
 
                                     ); // end of divRef.current.animate()
 
+                                    // ==============================
+                                    // div 2
+                                    // ==============================
+
+                                    div2Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateY( 4.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateY( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 0,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
+                                    ); // end of div2Ref.current.animate()
+
                                 } // end of if ( browserWidth <= 768 )
 
                                 // ==============================
@@ -553,6 +647,10 @@ export default function OwnersStoryComponent() {
                                 divRef.current.style.transform                    = 'translateX( 0 )';
                                 divRef.current.style.transitionDuration           = '400ms';
                                 divRef.current.style.transitionTimingFunction     = 'ease-out';
+                                div2Ref.current.style.opacity                     = 1;
+                                div2Ref.current.style.transform                   = 'translateX( 0 )';
+                                div2Ref.current.style.transitionDuration          = '400ms';
+                                div2Ref.current.style.transitionTimingFunction    = 'ease-out';
 
                             } // end of if ( entry.boundingClientRect.top <= 0 ) {}
 
@@ -692,7 +790,7 @@ export default function OwnersStoryComponent() {
 
                     <p>
                         Jordan<br />
-                        Founder, Utah Decks
+                        Founder, Utah Decks & Pergolas
                     </p>
 
                 </div>
@@ -706,7 +804,9 @@ export default function OwnersStoryComponent() {
                     // ==============================
                 */
             }
-            <div>
+            <div
+                ref={ div2Ref }
+            >
 
                 <a href="/get-started#calendar-section">
                     <FaRegCalendarCheck style={ { verticalAlign: '-3.0px', fontSize: '2.25rem', margin: '0 1.0rem 0 0' } } />

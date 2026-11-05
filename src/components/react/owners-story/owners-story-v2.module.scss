@@ -255,6 +255,8 @@
         width   : min( 192.0rem, 100% ); // browser will select the smaller of 192.0rem or 100%
         margin  : 12.0rem 0 0 0; // visual preference
 
+        opacity : 0; // needed for the opacity and slide up animation
+
         @media all and ( max-width : $bp-1536 ) {
 
             width   : min( 144.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
