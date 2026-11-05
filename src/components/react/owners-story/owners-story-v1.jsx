@@ -800,7 +800,7 @@ export default function OwnersStoryComponent() {
             {
                 /*
                     // ==============================
-                    // container > div 2 ( schedule your project )
+                    // container > div 2 ( schedule your free estimate button )
                     // ==============================
                 */
             }
@@ -818,7 +818,7 @@ export default function OwnersStoryComponent() {
                     }
                 >
                     <FaRegCalendarCheck style={ { verticalAlign: '-3.0px', fontSize: '2.25rem', margin: '0 1.0rem 0 0' } } />
-                    Schedule your project
+                    Schedule Your Free Estimate
                 </a>
     
             </div>

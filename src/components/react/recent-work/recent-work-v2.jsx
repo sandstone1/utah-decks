@@ -189,7 +189,7 @@ export default function RecentWorkComponent() {
             {
                 /*
                     // ==============================
-                    // container > div 2 ( schedule your project button )
+                    // container > div 2 ( schedule your free estimate button )
                     // ==============================
                 */
             }
@@ -197,7 +197,7 @@ export default function RecentWorkComponent() {
 
                 <a href="/get-started#calendar-section">
                     <FaRegCalendarCheck style={ { verticalAlign: '-3.0px', fontSize: '2.25rem', margin: '0 1.0rem 0 0' } } />
-                    Schedule Your Project
+                    Schedule Your Free Estimate
                 </a>
     
             </div>

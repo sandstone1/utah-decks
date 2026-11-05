@@ -835,7 +835,7 @@ export default function ReadyToTransformComponent() {
                 {
                     /*
                         // ==============================
-                        // container > div 1 ( wrapper div ) > div 3 ( get started button )
+                        // container > div 1 ( wrapper div ) > div 3 ( schedule your free estimate button )
                         // ==============================
                     */
                 }
@@ -854,7 +854,7 @@ export default function ReadyToTransformComponent() {
                         }
                     >
                         <FaRegCalendarCheck style={ { verticalAlign: '-3.0px', fontSize: '2.25rem', margin: '0 1.0rem 0 0' } } />
-                        Schedule your project
+                        Schedule Your Free Estimate
                     </a>
         
                 </div>
