@@ -327,7 +327,7 @@ export default function NavComponent() {
                             className={ styles.navContainerRightFreeDeckDesign }
                         >
                             <a href='/get-started'>
-                                Free Deck Design
+                                Free Estimate
                             </a>
                         </li>
 
