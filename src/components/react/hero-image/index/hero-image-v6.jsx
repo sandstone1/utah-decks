@@ -809,14 +809,22 @@ export default function HeroImageComponent() {
                                 We'll design your dream deck for free, with clear, upfront pricing and
                                 manufacturer warranties up to{ ' ' }
                                 <span style={{ color: 'var( --green-23-9 )' }}>50 years</span>.
+
+                                300+ happy
+                                customers</span> and counting. 7+ years building custom decks
+                                along the Wasatch Front.
+
+                                We design and build custom Trex &
+                                TimberTech <span style={ { color : 'var( --green-23-9 )' } }>decks{ ' ' }
+                                and pergolas</span> across Northern Utah
                             */
                         }
-                        <h1 className="first-hero-h1">Northern Utah's Custom Deck Builder</h1>
+                        <h1 className="first-hero-h1">Deck Builder in Midvale, UT</h1>
 
                         <h5 className="first-hero-h5">
-                            <span style={ { color : 'var( --green-23-9 )' } }>300+ happy
-                            customers</span> and counting. 7+ years building custom decks
-                            along the Wasatch Front.
+                            Transform your backyard with <span style={{ color: 'var( --green-23-9 )' }}>7+ years{ ' ' }
+                            of proven expertise</span> building Trex & TimberTech
+                            decks and pergolas across Northern Utah
                         </h5>
 
                     </div>
@@ -834,13 +842,13 @@ export default function HeroImageComponent() {
                     >
 
                         <h2 className="second-hero-h2">
-                            Tell us your vision
+                            See Your Deck Before We Build
                         </h2>
 
                         <h5 className="second-hero-h5">
                             We'll design your dream deck{' '}
                             <span style={{ color: 'var( --green-23-9 )' }}>for free</span>,
-                            then build it to last for decades.
+                            then build it to last for decades
                         </h5>
 
                     </div>
