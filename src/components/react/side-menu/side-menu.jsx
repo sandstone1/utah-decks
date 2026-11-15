@@ -11,6 +11,8 @@ import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 import { navigate } from 'astro:transitions/client';
 // import in Font Awesome home icon
 import { FaHome } from 'react-icons/fa';
+// import in Font Awesome hammer icon
+import { FaHammer } from "react-icons/fa6";
 // import in Three.js icon
 import { TbBrandThreejs } from "react-icons/tb";
 // import in Font Awesome address card icon
@@ -1411,6 +1413,32 @@ export default function SideMenuComponent( { resetShowSideMenu, showSideMenu } )
                                 <FaHome style={ { verticalAlign : '-3.0px', fontSize : '2.4rem', marginRight : '2.0rem' } } />
                             </span>
                             Home
+                        </a>
+                    </li>
+
+                    { /* show the decks service at all times */ }
+
+                    <li>
+                        <a
+                            onClick={ async ( e)  => 
+                                {
+                                    e.preventDefault(); // stop the browser from navigating immediately
+
+                                    resetShowSideMenu(); // open or close the side menu and this state is in the Nav
+                                    // component
+
+                                    // wait for the slide-off animation to finish before navigating
+                                    await new Promise( resolve => setTimeout( resolve, side_menu_cross_fade_duration ) );
+
+                                    // now navigate, after the slide has visually completed
+                                    navigate( '/decks' );
+                                } 
+                            } // reset showSideMenu or close the side menu
+                        >
+                            <span>
+                                <FaHammer style={ { verticalAlign : '-3.5px', fontSize : '2.4rem', marginRight : '2.0rem' } } />
+                            </span>
+                            Decks
                         </a>
                     </li>
 
