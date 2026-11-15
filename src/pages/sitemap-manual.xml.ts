@@ -8,6 +8,7 @@ export async function GET() {
 
     const pages = [
         '',
+        'decks',
         'request-service',
         'get-started',
         'free-estimate',
@@ -25,7 +26,7 @@ export async function GET() {
     </urlset>`;
 
     return new Response( xml, {
-        headers : { 'Content-Type' : 'application/xml' }
+        headers : { 'Content-Type' : 'application/xml; charset=utf-8' }
     } );
 
 }

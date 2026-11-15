@@ -118,19 +118,19 @@ export default function AreasWeServeComponent() {
                             <li>Herriman</li>
                             <li>Highland</li>
                             <li>Holladay</li>
+                            <li>Kamas</li>
                             <li>Kaysville</li>
                             <li>Kearns</li>
                             <li>Layton</li>
                             <li>Lehi</li>
-                            <li>Midvale</li>
                         </ul>
                     </div>
 
                     <div>
                         <ul>
+                            <li>Midvale</li>
                             <li>Millcreek</li>
                             <li>Murray</li>
-                            <li>North Salt Lake</li>
                             <li>Ogden</li>
                             <li>Orem</li>
                             <li>Park City</li>
@@ -148,11 +148,11 @@ export default function AreasWeServeComponent() {
                             <li>South Jordan</li>
                             <li>Spanish Fork</li>
                             <li>Springville</li>
+                            <li>St. George</li>
                             <li>Syracuse</li>
                             <li>Taylorsville</li>
                             <li>Tooele</li>
                             <li>West Jordan</li>
-                            <li>West Valley City</li>
                         </ul>
                     </div>
 

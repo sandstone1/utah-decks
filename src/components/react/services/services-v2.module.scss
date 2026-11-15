@@ -377,7 +377,7 @@
 
                     > a {
 
-                        @include text-base-dark;
+                        @include text-base-large-dark;
                 
                         display  : inline-flex;
                         position : relative;
@@ -482,6 +482,9 @@
                     } // container > div 1 > div 2 > div 1 > div 1 > a
 
                     > svg {
+
+                        width  : 1.95rem;
+                        height : 1.95rem;
 
                         color : var( --green-290 );
 
