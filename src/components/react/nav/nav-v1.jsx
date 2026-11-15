@@ -304,6 +304,26 @@ export default function NavComponent() {
                             */
                         }
                         <li
+                            className={ styles.navContainerRightDecksService }
+                        >
+                            <a href='/decks'>
+                                Decks
+                            </a>
+                        </li>
+
+                        {
+                            /*
+                                show the REQUEST SERVICE tab only if the user's screen size is greater than 1376px
+                            */
+                        }
+                        {
+                            /*
+                                // ==============================
+                                // container > nav > div ( nav container right ) > ul > li ( request service )
+                                // ==============================
+                            */
+                        }
+                        <li
                             className={ styles.navContainerRightRequestService }
                         >
                             <a href='/request-service'>

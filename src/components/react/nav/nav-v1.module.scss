@@ -422,7 +422,24 @@
                 } // end of container > div2 > ul > li > > a > :active, :focused
 
             } // end of container > div2 > ul > li > a
-    
+
+            // ==============================
+            // decks service menu item
+            // ==============================
+
+            > .navContainerRightDecksService {
+
+                display : block;
+
+                @media all and ( max-width: $bp-1376 ) {
+
+                    display : none; // correct default for mobile, no flash and css applies
+                    // before paint and before the JS runs
+
+                } // end of container > div2 > ul > li > bp-1376
+
+            } // end of container > div2 > ul > li
+
             // ==============================
             // request service menu item
             // ==============================

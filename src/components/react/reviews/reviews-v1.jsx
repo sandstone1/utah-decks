@@ -909,7 +909,7 @@ export default function ReviewsComponent() {
                 <h2
                     ref={ h2Ref }
                 >
-                    What Utah Homeowners Are <span style={ { color : 'var( --green-23-9 )' } }>Saying</span>
+                    What <span style={ { color : 'var( --green-23-9 )' } }>Utah Homeowners</span> Are Saying
                 </h2>
 
                 <p

@@ -18,14 +18,14 @@ import ByTheNumbersComponent from '../components/react/by-the-numbers/by-the-num
 import ReviewsComponent from '../components/react/reviews/reviews-v1';
 // import in the WhatWeDo component
 import ServicesComponent from '../components/react/services/services-v2';
+// import in the Contact Us component
+import WhyChooseUsComponent from '../components/react/why-choose-us/why-choose-us-v4';
 // import in the Owners Story component
 import OwnersStoryComponent from '../components/react/owners-story/owners-story-v2';
 // import in the Areas We Serve component
 import AreasWeServeComponent from '../components/react/areas-we-serve/areas-we-serve-v2';
 // import in the Ready To Transform component
 import ReadyToTransformComponent from '../components/react/ready-to-transform/ready-to-transform-v1';
-// import in the Contact Us component
-import WhyChooseUsComponent from '../components/react/why-choose-us/why-choose-us-v2';
 // import in the Where You Can Find Us component
 import WhereYouCanFindUsComponent from '../components/react/where-you-can-find-us/where-you-can-find-us-v6';
 // import in the scss file
@@ -41,11 +41,20 @@ import styles from './index.module.scss';
 // ==============================
 
 // define your static image file paths
+/*
 const img480  = "/images/mj_decks_02_480.webp";
 const img1032 = "/images/mj_decks_02_1032.webp";
 const img1376 = "/images/mj_decks_02_1376.webp";
 const img1728 = "/images/mj_decks_02_1728.webp";
 const img2560 = "/images/mj_decks_02_2560.webp";
+*/
+
+const img480  = "/images/mj_deck_replacement_05_480.webp";
+const img1032 = "/images/mj_deck_replacement_05_1032.webp";
+const img1376 = "/images/mj_deck_replacement_05_1376.webp";
+const img1728 = "/images/mj_deck_replacement_05_1728.webp";
+const img2560 = "/images/mj_deck_replacement_05_2560.webp";
+
 
 // 480w means " this image file ( img480 ) is 480 pixels wide "
 const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img1728 } 1728w, ${ img2560 } 2560w`;
@@ -137,7 +146,7 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
                 src={ img2560 }
                 srcset={ srcset }
                 sizes="( max-width : 480px ) 480px, ( max-width : 1032px ) 1032px, ( max-width : 1376px ) 1376px, ( max-width : 1728px ) 1728px, 2560px"
-                alt="Beautiful modern custom deck construction layout"
+                alt="Beautiful modern custom deck"
                 class="index-hero-image"
                 fetchpriority="high"
                 loading="eager"
@@ -196,6 +205,15 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
             */
         }
         <ServicesComponent client:visible />
+
+        {
+            /*
+                // ==============================
+                // container > div 3 ( why choose us )
+                // ==============================
+            */
+        }
+        <WhyChooseUsComponent client:visible />
 
         {
             /*
@@ -415,7 +433,8 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
         inset    : 0;
         z-index  : 2;
     
-        background-color : rgba( 13, 58, 216, 0.80 );
+        background-color : rgba( 13, 58, 216, 0.80 ); // for mj_decks_02 on the index page
+        background-color : rgba( 13, 58, 216, 0.75 ); // for mj_deck_replacement_05 on the index page
         mix-blend-mode   : multiply;
         pointer-events   : none; // do this so that we don't block the clicks to anything beneath
         // this overlay div

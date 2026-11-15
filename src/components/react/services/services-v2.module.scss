@@ -357,13 +357,13 @@
                     // parent
                     grid-area : div4;
 
+                    display      : flex;
+                    align-items  : center;
                     justify-self : center;
 
                     padding : 2.0rem 0 0 0;
 
                     @media all and ( max-width : $bp-1280 ) {
-
-                        // justify-self : left;
 
                         padding : 0 0 0 0;
             
@@ -377,7 +377,7 @@
 
                     > a {
 
-                        // @include text-large-light;
+                        @include text-base-dark;
                 
                         display  : inline-flex;
                         position : relative;
@@ -385,16 +385,17 @@
                         // nearby links
                         overflow : hidden;
 
-                        display : none;
+                        padding : 0 0.75rem 0.10rem 0;
 
-                        @include text-base-dark;
+                        color : var( --green-290 );
 
                         @media all and ( max-width : $bp-620 ) {
                 
                             margin : 0 0 0 0; // get rid of the right margin on smaller screens
                 
                         } // end of container > div1 > div1 > p:nth-child( 1 ) > bp-620
-
+                        
+                
                         /*
                             please see the sritcle for details on this effect :
                             https://css-tricks.com/4-ways-to-animate-the-color-of-a-text-link-on-hover/
@@ -443,7 +444,7 @@
                         } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )
                 
                         &:hover span:nth-child( 1 ) {
-
+                
                             transform : translateX( 0 );
                 
                         } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 )
@@ -453,7 +454,7 @@
                 
                             display : inline-flex;
                 
-                            color           : var( --gray-870 );
+                            // color           : var( --gray-870 );
                             text-decoration : underline;
                 
                             transform  : translateX( 100% );
@@ -477,8 +478,20 @@
                             transform : translateX( 0 );
                 
                         } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 ):before
-                
+
                     } // container > div 1 > div 2 > div 1 > div 1 > a
+
+                    > svg {
+
+                        color : var( --green-290 );
+
+                        @media all and ( max-width : $bp-375 ) {
+                
+                            display : none;
+                        
+                        } // container > div 1 > div 2 > div 1 > div 1 > svg > bp-375
+
+                    }// container > div 1 > div 2 > div 1 > div 1 > svg
 
                 } // container > div 1 > div 2 > div 1 > div 1
 

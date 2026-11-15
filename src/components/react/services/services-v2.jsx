@@ -1043,7 +1043,7 @@ export default function ServicesComponent() {
                         ref={ badge1Ref }
                     >
 
-                        <h3 className="service-1-h3">Custom Decks</h3>
+                        <h3 className="service-1-h3">Custom Trex & Timber&shy;Tech Decks</h3>
 
                         <p className="service-1-p">
                             We specialize in building high-quality, beautiful decks that are built to last.
@@ -1086,39 +1086,14 @@ export default function ServicesComponent() {
                         </picture>
 
                         <div>
-                            <a
-                                // provide the fallback and accessibility with href='/'
-                                href=''
-                                onClick={ ( e ) => {
 
-                                    // stop the default browser navigation so navigate() handles it instead
-                                    e.preventDefault();
-
-                                    // ==============================
-                                    // morph video container to blue box on the contact page
-                                    // ==============================
-
-                                    const service1H3 = document.querySelector( '.service-1-h3' );
-                                    service1H3.style.viewTransitionName = 'category-page-h1';
-
-                                    const service1P = document.querySelector( '.service-1-p' );
-                                    service1P.style.viewTransitionName = 'category-page-image-underline';
-
-                                    const service1Picture = document.querySelector( '.service-1-picture' );
-                                    service1Picture.style.viewTransitionName = 'category-page-picture';
-
-                                    // ==============================
-                                    // end of morph video container to blue box on the contact page
-                                    // ==============================
-
-                                    // navigate to the home page
-                                    navigate( '' );
-
-                                } }
-                            >
+                            <a href="/decks">
                                 <span data-content="Learn more" aria-hidden="true"></span>
                                 Learn more
                             </a>
+                            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+                                <path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
 
                         </div>
 
@@ -1213,13 +1188,12 @@ export default function ServicesComponent() {
                         ref={ badge3Ref }
                     >
 
-                        <h3>Railings & Lighting</h3>
+                        <h3>Railings & Stairs</h3>
 
                         <p>
-                            From durable prefab railing to premium aluminum and composite designs, we
-                            build railing that's safe, code-compliant, and matched to your deck's
-                            style. Add subtle lighting along the way for a finished look after the sun
-                            goes down.
+                            From aluminum and steel to composite and custom designs, we build safe,
+                            code-compliant railings matched to your deck's style, plus sturdy stairs
+                            from standard steps to wide-format.
                         </p>
 
                         {
@@ -1277,7 +1251,7 @@ export default function ServicesComponent() {
                         ref={ badge4Ref }
                     >
 
-                        <h3>Basements</h3>
+                        <h3>Base&shy;ments</h3>
 
                         <p>
                             A finished basement adds real living space, year-round. We handle framing,
