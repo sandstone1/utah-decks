@@ -128,6 +128,7 @@ export default function ContactInformationComponent() {
 
                         <a
                             href="tel:385-425-2299"
+                            suppressHydrationWarning
                         >
                             (385) 425-2299
                         </a>

@@ -430,8 +430,8 @@ export default function NavComponent() {
                                             src="/images/mj_icon_deck_03_120.png"
                                             width={ 120 }
                                             height={ 120 }
-                                            loading="lazy"
-                                            fetchPriority="high"
+                                            loading="eager"
+                                            fetchpriority="high"
                                             alt="Picture of a deck"
                                         />
                                     </picture>

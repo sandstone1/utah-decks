@@ -212,7 +212,7 @@ export default function ReviewsComponent() {
                                 // browserWidth > 768 && browserWidth <= 1728
                                 // ==============================
 
-                                if ( 
+                                if (
                                     wrapperRef.current &&
                                     ( browserWidth > 1728 )
                                 ) {
@@ -340,7 +340,7 @@ export default function ReviewsComponent() {
                                         }
 
                                     ); // end of badge2Ref.current.animate()
-
+/*
                                     // ==============================
                                     // badge 3
                                     // ==============================
@@ -402,14 +402,14 @@ export default function ReviewsComponent() {
                                         }
 
                                     ); // end of badge4Ref.current.animate()
-
+*/
                                 } // end of if ( browserWidth > 1728 )
 
                                 // ==============================
                                 // browserWidth > 768 && browserWidth <= 1728
                                 // ==============================
 
-                                if ( 
+                                if (
                                     wrapperRef.current &&
                                     ( browserWidth > 768 && browserWidth <= 1728 )
                                 ) {
@@ -537,7 +537,7 @@ export default function ReviewsComponent() {
                                         }
 
                                     ); // end of badge2Ref.current.animate()
-
+/*
                                     // ==============================
                                     // badge 3
                                     // ==============================
@@ -599,14 +599,14 @@ export default function ReviewsComponent() {
                                         }
 
                                     ); // end of badge4Ref.current.animate()
-    
+*/
                                 } // end of if ( browserWidth > 768 && browserWidth <= 1728 )
 
                                 // ==============================
                                 // browserWidth <= 768
                                 // ==============================
 
-                                if ( 
+                                if (
                                     wrapperRef.current &&
                                     ( browserWidth <= 768 )
                                 ) {
@@ -734,7 +734,7 @@ export default function ReviewsComponent() {
                                         }
 
                                     ); // end of badge2Ref.current.animate()
-
+/*
                                     // ==============================
                                     // badge 3
                                     // ==============================
@@ -796,7 +796,7 @@ export default function ReviewsComponent() {
                                         }
 
                                     ); // end of badge4Ref.current.animate()
-
+*/
                                 } // end of if ( browserWidth <= 768 )
 
                                 // ==============================
