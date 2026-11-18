@@ -431,7 +431,7 @@ export default function NavComponent() {
                                             width={ 120 }
                                             height={ 120 }
                                             loading="lazy"
-                                            // fetchPriority="high"
+                                            fetchPriority="high"
                                             alt="Picture of a deck"
                                         />
                                     </picture>
