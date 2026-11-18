@@ -1,0 +1,1168 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+// ==============================
+// keyframes
+// ==============================
+
+// ==============================
+// fade in animation
+// ==============================
+
+@keyframes fade-in {
+
+    from {
+
+        opacity : 0;
+
+    }
+
+    to {
+
+        opacity : 1;
+
+    }
+
+} // end of fade-in
+
+
+
+
+
+
+
+
+// ==============================
+// nav container
+// ==============================
+
+// remember we have the header css grid styling affecting the nav container flex styling
+.navContainer {
+
+    // parent
+    grid-column : 2 / 22;
+
+    // children
+    display         : flex;
+    justify-content : space-between;
+    align-items     : center;
+
+    // ==============================
+    // z-index notes
+    // ==============================
+
+    /*
+        ( 1 ) for the " Why Work With Us " badges to sit on top of the 3D blob we made the
+        following z-index adjustment :
+        ( adjustment 1 ) badge div 1 - 6 ( see index.module.scss ) : z-index of 1
+        ( 2 ) for the nav to sit on top of the background div, the home page container and the
+        badges we made the following z-index adjustment :
+        ( adjustment 2 ) nav container ( see nav.module.scss ) : z-index of 2
+        ( 3 ) for the side menu to sit on top of the background div, the home page container and
+        the badges we made the following z-index adjustment :
+        ( adjustment 3 ) side menu container ( see side-menu.module.scss ) : z-index of 2
+        ( 4 ) for the hamburger menu to sit on top of the background div, the home page container,
+        the badges and the side menu container we made the following z-index adjustment :
+        ( adjustment 4 ) hamburger menu container ( see hamburger-menu.module.scss ) : z-index of 3
+        ( 5 ) for the 3d Earth h2 and canvas to sit above the starfield, we made the following
+        z-index adjustment :
+        ( adjustment 5 ) wrapper div for the h2 and canvas ( see earth.module.scss ) : z-index of 1
+        ( 6 ) for the side menu to sit on top of the 3d Earth h2 and canvas, we made the following
+        z-index adjustments :
+        ( adjustment 6 ) side menu container ( see side-menu.module.scss ) : z-index of 2 and 
+        ( 7 ) for the side menu to sit on top of the 3d objects container, we made the following
+        z-index adjustments :       
+        ( adjustment 7 ) 3d objects container ( see 3d-objects.module.scss ) : z-index of 0 ( and
+        I'm not sure why I had to set adjustment 7 in order for the side menu to sit on top of the
+        3d Earth h2 and canvas )   
+    */
+    // z-index : 2;
+    z-index : 3;
+    // width  : min( 192.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
+    width   : min( 144.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
+    margin  : 0 auto;
+
+    // overflow : hidden;
+/*
+    // ==============================
+    // fade in the nav container on page load
+    // ==============================
+
+    // ==============================
+    // fade in the nav container when navigation back to the home page from the contact page
+    // ==============================
+
+    opacity : 0; // needed in order for the animation to work
+
+    animation-name            : fade-in;
+    animation-duration        : 600ms;
+    animation-timing-function : ease-out; // standard easing
+    // animation-delay           : 500ms;
+    animation-delay           : 300ms;
+    animation-iteration-count : 1; // this is the default but leave here for reference purposes
+    animation-fill-mode       : forwards;
+*/
+    // ==============================
+    // end of fade in animation
+    // ==============================
+
+    @media all and ( max-width : $bp-620 ) {
+
+        display         : grid;
+        justify-content : center;
+        justify-items   : center;
+
+        height : 154.76px; // match the height of the old nav element
+/*
+        // ==============================
+        // fade in animation
+        // ==============================
+
+        // ==============================
+        // fade in the nav container on page load
+        // ==============================
+
+        // ==============================
+        // fade in the nav container when navigation back to the home page from the contact page
+        // ==============================
+
+        opacity : 0; // needed in order for the animation to work
+
+        animation-name            : fade-in;
+        animation-duration        : 600ms; // match the header overlay animation slide out duration
+        animation-timing-function : ease-out; // standard easing
+        // animation-delay           : 700ms; // match the header overlay animation slide out delay
+        animation-delay           : 500ms;
+        animation-iteration-count : 1; // this is the default but leave here for reference purposes
+        animation-fill-mode       : forwards;
+
+        // ==============================
+        // end of fade in animation
+        // ==============================
+*/
+    } // end of container.onHomePage > bp-620
+
+
+    // ==============================
+    // container > div1 ( nav container left )
+    // ==============================
+
+    .navContainerLeft {
+
+        > a {
+
+            // children
+            display               : grid;
+            grid-template-columns : auto auto auto;
+            align-items           : center;
+            grid-gap              : 0 2.0rem;
+
+            // active, focus selectors for the a tag
+            &:active, &:focus {
+
+                // on mobile devices, safari was putting a think white background around
+                // my clicks and " outline : none; " is my attempt to not show any browser
+                // outline on a click event
+                outline : 0;
+
+                // on mobile devices, safari was putting a think white background around
+                // my clicks and I found the answer on how to solve this problem from
+                // stackoverflow :
+                // " https://stackoverflow.com/questions/69594393/tapping-links-in-ios-safari-shows-a-thick-white-border-around-element-how-to-g "
+                background-color : transparent;
+
+                // on mobile devices, safari was putting a think white background around
+                // my clicks and I found the answer on how to solve this problem from
+                // stackoverflow :
+                // " https://stackoverflow.com/questions/9784350/mobile-safari-tap-and-hold-a-link-it-will-show-a-gray-shadow-how-to-disable-it?rq=3 "
+                -webkit-tap-highlight-color : rgba( 0, 0, 0, 0 );
+            
+            } // end of container > div1 > a > &:active, &:focus
+
+            @media all and ( max-width : $bp-620 ) {
+
+                grid-template-columns : auto;
+        
+            } // end of container > div1 > a > bp-620
+
+            > div {
+
+                margin : 1.0rem 0 0 0; // since our div or box is 15.0 rem by 15.0 rem and we
+                // could not adjust the box size without affecting the size of the stars, we
+                // did a negative right margin and this moved the Enchanting Apps text over to
+                // the left and gave the 2 elements better spacing
+
+                @media all and ( max-width : $bp-768 ) {
+
+                    display : none;
+            
+                } // end of container > div1 > a > bp-768
+
+            } // end of container > div1 > a > div
+
+            > h2 {
+
+                display : block;
+                padding : 1.0rem 1.6rem 1.0rem 1.6rem;
+    
+                border-radius : 6px;
+    
+                font-family    : var( --font-display-1 );
+                font-size      : 2.75rem;
+                // font-weight    : 300;
+                // font-weight    : 350;
+                font-weight    : 800;
+                color          : var( --gray-225 );
+                // color          : var( --gray-770 );
+                //color          : var( --green-750 );
+                letter-spacing : 2px;
+                // text-transform : uppercase;
+
+                //background : var( --blue-800 );
+                // background : var( --blue-850 );
+                // background : var( --purple-400 );
+                // background : var( --black );
+                // background : var( --blue-85-2 );
+                // background : var( --brown-500 );
+                //background : rgba( 0, 0, 0, 0.30 );
+                //background : var( --green-750 );
+                // background : var( --green-220 );
+
+                outline    : none;
+
+                @media all and ( max-width : 438px ) {
+
+                    text-align: center;
+             
+                 } // end of container > div1 > a > 438px
+
+                > span {
+
+                    margin  : 0 0 0 0.6rem;
+                    // padding : 1px 8px 1px 8px;
+                    padding : 0.4rem 1.6rem 0.4rem 1.6rem;
+
+                    border-radius : 4px;
+    
+                    font-family    : var( --font-display-1 );
+                    font-size      : 2.75rem;
+                    font-weight    : 800;
+                    color          : var( --gray-225 );
+                    // color          : var( --gray-770 );
+                    letter-spacing : 2px;
+
+                    background : var( --blue-260 );
+                    // background : var( --blue-80 );
+                    // background : var( --blue-83 );
+                    // background : var( --blue-84 );
+                    // background : var( --blue-84 );
+                    // background : var( --green-725 );
+
+                    @media all and ( max-width : 438px ) {
+
+                        display : block;
+                        margin  : 0;
+                        padding : 0;
+
+                        text-align : center;
+
+                        background : var( --blue-800 );
+                
+                    } // end of container > div1 > a > 404px
+    
+                } // end of container > div1 > a > h2 > span
+    
+            } // end of container > div1 > a > h2
+
+            > picture {
+                
+                > img {
+
+                    display : block; // eliminate spacing under picture
+
+                    // make sure to give the image a width so when I shrink it as the screen
+                    // size becomes smaller it does not chop off  the top and bottom of
+                    // the image
+                    width  : 24.0rem;
+                    height : 9.041rem;
+
+                    // ==============================
+                    // for some reason, could not get this part to work
+                    // ==============================
+
+                    // ==============================
+                    // make the image stretch horizontally to fit the column height
+                    // ==============================
+
+                    // remember, we added the width and height to the image element in the html file
+                    // width  : 70%;
+                    // height : 70%;
+                    // center the image inside the parent div
+                    // margin : 0 auto;
+
+                    // now let add the object-fit property and remember for object-fit to work we have to add
+                    // the width and the height to the element
+
+                    // by using these 3 key value pairs inside the image element or " width : 100%; "
+                    // and " height : 100%; " and " object-fit : cover; " we see that each image now fills up
+                    // one grid cell and one grid cell only
+
+                    object-fit : cover;
+
+                    @media all and ( max-width : $bp-1032 ) {
+
+                        width  : calc( 24.0 * 90% );
+                        // height : calc( 9.041 * 90% );
+            
+                    }// end of container > div1 > a > picture > img > bp-1032
+
+                    @media all and ( max-width : $bp-768 ) {
+
+                        margin : 0 0 1.0rem 0;
+            
+                    }// end of container > div1 > a > picture > img > bp-768
+
+                } // end of container > div1 > a > picture > img
+
+            } // end of container > div1 > a > picture
+
+        } // end of container > div1 > a
+
+    } // end of container > div1
+
+    // ==============================
+    // container > div2 ( nav container right )
+    // ==============================
+
+    .navContainerRight {
+
+        // ==============================
+        // unordered list
+        // ==============================
+
+        > ul {
+
+            // children
+            display     : flex; // flex will make the navigation tabs line up horizontally
+            align-items : center; // make sure all the tabs are in the horizontal center of
+            // the container
+            gap         : 0 5.4rem;
+
+            // ==============================
+            // the navigation tabs
+            // ==============================
+
+            > li > a {
+
+                font-size       : 1.85rem;
+                color           : var( --white ); // visual preference for nav items
+                letter-spacing  : 0.1rem; // visual preference for nav items
+
+                /*
+                    by wrapping your :hover block in this media query, the hover effect
+                    only ever gets applied on devices that can properly hover — phones
+                    and tablets never receive the :hover styling at all, so there's nothing
+                    to get stuck in the first place
+                */
+                @media ( hover : hover ) and ( pointer : fine ) {
+
+                    // hover selector for the navigation tabs
+                    &:hover {
+    
+                        cursor : pointer;
+                
+                    } // end of container > div2 > ul > li > > a > @media > :hover
+                
+                }// end of container > div2 > ul > li > > a > @media
+
+                // active, focus selectors for the navigation tabs
+                &:active, &:focus {
+
+                    // on mobile devices, safari was putting a think white background around
+                    // my clicks and " outline : none; " is my attempt to not show any browser
+                    // outline on a click event
+                    outline : 0;
+
+                    // on mobile devices, safari was putting a think white background around
+                    // my clicks and I found the answer on how to solve this problem from
+                    // stackoverflow :
+                    // " https://stackoverflow.com/questions/69594393/tapping-links-in-ios-safari-shows-a-thick-white-border-around-element-how-to-g "
+                    background-color : transparent;
+
+                    // on mobile devices, safari was putting a think white background around
+                    // my clicks and I found the answer on how to solve this problem from
+                    // stackoverflow :
+                    // " https://stackoverflow.com/questions/9784350/mobile-safari-tap-and-hold-a-link-it-will-show-a-gray-shadow-how-to-disable-it?rq=3 "
+                    -webkit-tap-highlight-color : rgba( 0, 0, 0, 0 );
+                
+                } // end of container > div2 > ul > li > > a > :active, :focused
+
+            } // end of container > div2 > ul > li > a
+
+            // ==============================
+            // services menu item
+            // ==============================
+
+            > .navContainerRightServices {
+
+                // children
+                display     : flex;
+                align-items : center;
+
+                position : relative;
+
+                @media all and ( max-width: $bp-1376 ) {
+
+                    display : none; // correct default for mobile, no flash and css applies
+                    // before paint and before the JS runs
+
+                } // end of container > div2 > ul > li > bp-1376
+
+                > a {
+            
+                    display  : inline-flex;
+                    position : relative;
+                    // clip the absolutely positioned span so that it doesn't bleed outside to other nearby links
+                    overflow : hidden;
+                    // add some spacing between the anchor tag and the svg chevron
+                    padding : 0 1.0rem 0 0;
+
+                    @media all and ( max-width : $bp-620 ) {
+            
+                        padding : 0 0 0 0; // get rid of the top padding on smaller screens
+            
+                    } // end of container > div2 > ul > li > a > bp-620
+
+                    /*
+                        please see the sritcle for details on this effect :
+                        https://css-tricks.com/4-ways-to-animate-the-color-of-a-text-link-on-hover/
+                    */
+
+                    /*
+                        Here’s how it works in short:
+
+                        Two copies of the word. The normal “Services” is always visible. A second copy,
+                        made with content: attr( data-content ), sits exactly on top of it, and it’s
+                        underlined.
+
+                        The span is a window. With overflow: hidden, you only see the part of the
+                        underlined copy that’s inside the span.
+
+                        Before hover, the window is shifted fully to the left (-100%), so the
+                        underlined copy is outside it and hidden.
+
+                        The copy moves the opposite way (+100%), which cancels out the window’s shift.
+                        The copy stays pinned over the real word the whole time.
+
+                        On hover, both slide back to 0 together over 400ms. The window sweeps across
+                        the word and uncovers the underline from left to right. When the mouse leaves,
+                        it all runs in reverse and the underline wipes back out.
+
+                        The text itself never moves. Only the window does, and that’s what creates the wipe.
+                    */
+
+                    // this is the container and it slide in from the left
+                    > span:nth-child( 1 ) {
+            
+                        position : absolute;
+                        top      : 0;
+                        left     : 0;
+            
+                        overflow : hidden;
+
+                        text-underline-offset : 0.2rem;
+
+                        transform  : translateX( -100% );
+                        transition : transform 400ms ease-out;
+            
+                        // even though we probably don't need this since mobile devices can't hover, turn
+                        // this off anyways
+                        @media all and ( max-width : $bp-768 ) {
+            
+                            display : none;
+                        
+                        } // end of container > div2 > ul > li > a > span:nth-child( 1 ) > bp-768
+            
+                    } // end of container > div2 > ul > li > a > span:nth-child( 1 )
+
+                    // this is the text and it slides in from the right
+                    > span:nth-child( 1 )::before {
+            
+                        display : inline-flex;
+
+                        // this is the underline we see move in from the left
+                        text-decoration : underline;
+            
+                        transform  : translateX( 100% );
+                        transition : transform 400ms ease-out;
+            
+                        // the text
+                        content : attr( data-content );
+            
+                        // even though we probably don't need this since mobile devices can't hover, turn
+                        // this off anyways
+                        @media all and ( max-width : $bp-768 ) {
+            
+                            display : none;
+                        
+                        } // end of container > div2 > ul > li > a > span:nth-child( 1 )::before > bp-768
+            
+                    } // end of container > div2 > ul > li > a > > span:nth-child( 1 )::before
+            
+                    &:hover span:nth-child( 1 ),
+                    &:hover span:nth-child( 1 ):before {
+            
+                        transform : translateX( 0 );
+            
+                    } // end of container > div2 > ul > li > a > &:hover span:nth-child( 1 ), end of container > div2 > ul > li > a > &:hover span:nth-child( 1 ):before
+
+                    // this keep the underline in place even after my cursor leaves the a element
+                    // area but once my modal is removed then the underline slides off
+                    &.servicesActive span:nth-child( 1 ),
+                    &.servicesActive span:nth-child( 1 )::before {
+
+                        transform : translateX( 0 );
+
+                    } // end of container > div2 > ul > li > a > &.servicesActive span:nth-child( 1 ), end of container > div2 > ul > li > a > &.servicesActive span:nth-child( 1 ):before
+
+                    &.navActive span:nth-child( 1 ),
+                    &.navActive span:nth-child( 1 )::before {
+
+                        // this keeps the underline in place, even when the user is not hovering
+                        transform : translateX( 0 );
+                        // turn off the transition if navigating between pages
+                        transition : none;  
+
+                    } // end of container > div2 > ul > li > a > &.navActive span:nth-child( 1 ), end of container > div2 > ul > li > a > &.navActive span:nth-child( 1 )::before {
+
+                } // end of container > div2 > ul > li > a
+
+                // ==============================
+                // chevron
+                // ==============================
+
+                > .chevron {
+
+                    width  : 2.10rem;
+                    height : 2.10rem;
+
+                    color : var( --white );
+
+                    transition : transform 200ms ease-out;
+
+                } // end of container > div2 > ul > li > .chevron
+                
+                > .chevronOpen {
+
+                    width  : 2.10rem;
+                    height : 2.10rem;
+
+                    color : var( --white );
+
+                    transform  : rotate( 180deg );
+                    transition : transform 200ms ease-out;
+
+                } // end of container > div2 > ul > li > .chevronOpen
+
+                // ==============================
+                // modal
+                // ==============================
+
+                > div {
+
+                    // hidden state initially
+                    display  : none;
+
+                    position : absolute;
+                    top      : 100%;
+                    left     : 0;
+                    width    : 48.0rem;
+                    height   : auto;
+                    margin   : 1.0rem 0 0 0;
+                    padding  : 2.0rem;
+                
+                    border-radius : 0.6rem;
+
+                    // ==============================
+                    // box shadow
+                    // ==============================
+
+                    // from Tailwind
+                    box-shadow : 0 20px 25px -5px rgb( 0 0 0 / 0.1 ), 0 8px 10px -6px rgb( 0 0 0 / 0.1 );
+                    
+                    // from net ninja
+                    // box-shadow : 3px 3px 3px rgba( 0, 0, 0, 0.05 );
+
+                    
+                    // from css tricks : " https://css-tricks.com/almanac/properties/b/box-shadow/ "
+                    box-shadow :
+                        0 2.8px   2.2px  rgba( 0, 0, 0, 0.034 ),
+                        0 6.7px   5.3px  rgba( 0, 0, 0, 0.048 ),
+                        0 12.5px  10.0px rgba( 0, 0, 0, 0.060 ),
+                        0 22.3px  17.9px rgba( 0, 0, 0, 0.072 ),
+                        0 41.8px  33.4px rgba( 0, 0, 0, 0.086 ),
+                        0 100.0px 80.0px rgba( 0, 0, 0, 0.120 )
+                    ;
+
+                    // ==============================
+                    // end of box shadow
+                    // ==============================
+
+                    background-color : var( --green-200 );
+                    // background-color : var( --green-290 );
+                    background-color : var( --gray-225 );
+                    // background-color : var( --gray-870 );
+                    // background-color : var( --blue-74 );
+
+                    // hidden state initially
+                    opacity             : 0;
+                    // here we animate display and opacity
+                    // fade out ( closing )
+                    transition          : display 200ms ease-out, opacity 200ms ease-out;
+                    transition-behavior : allow-discrete;
+
+                    > a {
+
+                        // in order to stop the picture from jumping around when I closed the modal
+                        // I had to add this block of code here and add the picture, a and p elements
+                        // below
+                        display               : grid;
+                        grid-template-rows    : auto auto;
+                        grid-template-columns : auto 1fr;
+                        align-items           : center;
+                        grid-gap              : 0.5rem 2.0rem;
+                        grid-template-areas   : "picture span"
+                                                "picture    p";
+
+                        // underline the title when hovering anywhere on the card
+                        &:hover > span:nth-child( 2 ) > span:nth-child( 1 ),
+                        &:hover > span:nth-child( 2 ) > span:nth-child( 1 )::before {
+
+                            transform : translateX( 0 );
+
+                        } // end of container > div2 > ul > li > div > a
+
+                        > picture {
+
+                            // parent
+                            grid-area : picture;
+                
+                            // children
+                            display         : grid;
+                            justify-content : center;
+        
+                            > img { 
+        
+                                display : block; // remove the bottom spacing
+        
+                                // make sure to give the image a width so when I shrink it as the screen
+                                // size becomes smaller it does not chop off the top and bottom of
+                                // the image
+                                width  : 12.0rem;
+                                height : 12.0rem;
+        
+                                // now let add the object-fit property and remember for object-fit to work we have to add
+                                // the width and the height to the element
+        
+                                // by using these 3 key value pairs inside the image element or " width : 100%; "
+                                // and " height : 100%; " and " object-fit : cover; " we see that each image now fills up
+                                // one grid cell and one grid cell only
+        
+                                object-fit : cover;
+    
+                                // this blends my Mid Journey pictures into the background color perfectly
+                                // and makes white pixels completely transparent and keeps black pixels
+                                // visible — works perfectly with black and white illustrations on
+                                // colored backgrounds without needing to remove the background at all
+                                mix-blend-mode : multiply;
+    
+                            } // end of container > div2 > ul > li > div > a > picture > img
+        
+                        } // end of container > div2 > ul > li > div > a > picture
+    
+                        > span:nth-child( 2 ) {
+    
+                            @include text-base-dark;
+    
+                            grid-area : span;
+    
+                            align-self : end;
+    
+                            display  : inline-flex;
+                            position : relative;
+                            // clip the absolutely positioned span so that it doesn't bleed outside to other nearby links
+                            overflow : hidden;
+                            padding  : 0 0 0.5rem 0; 
+    
+        
+                            /*
+                                please see the sritcle for details on this effect :
+                                https://css-tricks.com/4-ways-to-animate-the-color-of-a-text-link-on-hover/
+                            */
+        
+                            /*
+                                Here’s how it works in short:
+        
+                                Two copies of the word. The normal “Services” is always visible. A second copy,
+                                made with content: attr( data-content ), sits exactly on top of it, and it’s
+                                underlined.
+        
+                                The span is a window. With overflow: hidden, you only see the part of the
+                                underlined copy that’s inside the span.
+        
+                                Before hover, the window is shifted fully to the left (-100%), so the
+                                underlined copy is outside it and hidden.
+        
+                                The copy moves the opposite way (+100%), which cancels out the window’s shift.
+                                The copy stays pinned over the real word the whole time.
+        
+                                On hover, both slide back to 0 together over 400ms. The window sweeps across
+                                the word and uncovers the underline from left to right. When the mouse leaves,
+                                it all runs in reverse and the underline wipes back out.
+        
+                                The text itself never moves. Only the window does, and that’s what creates the wipe.
+                            */
+    
+                            // this is the container and it slide in from the left
+                            > span:nth-child( 1 ) {
+                    
+                                position : absolute;
+                                top      : 0;
+                                left     : 0;
+                    
+                                overflow : hidden;
+    
+                                text-underline-offset : 0.2rem;
+    
+                                transform  : translateX( -100% );
+                                transition : transform 400ms ease-out;
+                    
+                                // even though we probably don't need this since mobile devices can't hover, turn
+                                // this off anyways
+                                @media all and ( max-width : $bp-768 ) {
+                    
+                                    display : none;
+                                
+                                } // end of container > div2 > ul > li > div > > a > span2 > span:nth-child( 1 ) > bp-768
+                    
+                            } // end of container > div2 > ul > li > div > a > span2 > span:nth-child( 1 )
+    
+                            // this is the text and it slides in from the right
+                            > span:nth-child( 1 )::before {
+                    
+                                display : inline-flex;
+    
+                                // this is the underline we see move in from the left
+                                text-decoration : underline;
+                    
+                                transform  : translateX( 100% );
+                                transition : transform 400ms ease-out;
+                    
+                                // the text
+                                content : attr( data-content );
+                    
+                                // even though we probably don't need this since mobile devices can't hover, turn
+                                // this off anyways
+                                @media all and ( max-width : $bp-768 ) {
+                    
+                                    display : none;
+                                
+                                } // end of container > div2 > ul > li > div > a > span2 > span:nth-child( 1 )::before > bp-768
+                    
+                            } // end of container > div2 > ul > li > div > a > span2 > span:nth-child( 1 )::before
+                    
+                            &:hover span:nth-child( 1 ),
+                            &:hover span:nth-child( 1 ):before {
+                    
+                                transform : translateX( 0 );
+                    
+                            } // end of container > div2 > ul > li > div > a > span2 > &:hover span:nth-child( 1 ), end of container > div2 > ul > li > div > a > &:hover span:nth-child( 1 ):before
+
+                            &.navActive span:nth-child( 1 ),
+                            &.navActive span:nth-child( 1 )::before {
+        
+                                // this keeps the underline in place, even when the user is not hovering
+                                transform : translateX( 0 );
+                                // turn off the transition if navigating between pages
+                                transition : none;  
+        
+                            } // end of container > div2 > ul > li > div > a > span2 > &.navActive span:nth-child( 1 ), end of container > div2 > ul > li > div > a > &.navActive span:nth-child( 1 )::before {
+
+                        } // end of container > div2 > ul > li > div > a > span2
+    
+                        > p {
+    
+                            @include text-base-dark;
+
+                            grid-area : p;
+    
+                            align-self : start;
+    
+                            line-height : 1.3;
+    
+                        } // end of container > div2 > ul > li > div > a > p
+
+                    } // end of container > div2 > ul > li > div > a
+    
+                } // end of container > div2 > ul > li > div
+
+                > div.modalOpen {
+
+                    // links stack vertically
+                    display : grid;
+
+                    opacity : 1;
+
+                    // here we animate display and opacity
+                    // fade in ( opening )
+                    transition          : display 400ms ease-out, opacity 400ms ease-out;
+                    transition-behavior : allow-discrete;
+
+                    @starting-style {
+
+                        opacity : 0;
+
+                    } // end of container > div2 > ul > li > div.modalOpen > @starting-style
+
+                } // end of container > div2 > ul > li > div.modalOpen
+
+                > div.modalNoFade {
+
+                    transition : none;
+
+                } // end of container > div2 > ul > li > div.modalNoFade
+
+            } // end of container > div2 > ul > li
+
+            // ==============================
+            // request service menu item
+            // ==============================
+
+            > .navContainerRightRequestService {
+
+                // children
+                display     : flex;
+                align-items : center;
+
+                position : relative;
+
+                @media all and ( max-width: $bp-1376 ) {
+
+                    display : none; // correct default for mobile, no flash and css applies
+                    // before paint and before the JS runs
+
+                } // end of container > div2 > ul > li > bp-1376
+
+                > a {
+            
+                    display  : inline-flex;
+                    position : relative;
+                    // clip the absolutely positioned span so that it doesn't bleed outside to other nearby links
+                    overflow : hidden;
+
+                    @media all and ( max-width : $bp-620 ) {
+            
+                        margin : 0 0 0 0; // get rid of the right margin on smaller screens
+            
+                    } // end of container > div2 > ul > li > a > bp-620
+
+                    /*
+                        please see the sritcle for details on this effect :
+                        https://css-tricks.com/4-ways-to-animate-the-color-of-a-text-link-on-hover/
+                    */
+
+                    /*
+                        Here’s how it works in short:
+
+                        Two copies of the word. The normal “Services” is always visible. A second copy,
+                        made with content: attr( data-content ), sits exactly on top of it, and it’s
+                        underlined.
+
+                        The span is a window. With overflow: hidden, you only see the part of the
+                        underlined copy that’s inside the span.
+
+                        Before hover, the window is shifted fully to the left (-100%), so the
+                        underlined copy is outside it and hidden.
+
+                        The copy moves the opposite way (+100%), which cancels out the window’s shift.
+                        The copy stays pinned over the real word the whole time.
+
+                        On hover, both slide back to 0 together over 400ms. The window sweeps across
+                        the word and uncovers the underline from left to right. When the mouse leaves,
+                        it all runs in reverse and the underline wipes back out.
+
+                        The text itself never moves. Only the window does, and that’s what creates the wipe.
+                    */
+
+                    // this is the container and it slide in from the left
+                    > span:nth-child( 1 ) {
+            
+                        position : absolute;
+                        top      : 0;
+                        left     : 0;
+            
+                        overflow : hidden;
+
+                        text-underline-offset : 0.2rem;
+
+                        transform  : translateX( -100% );
+                        transition : transform 400ms ease-out;
+            
+                        // even though we probably don't need this since mobile devices can't hover, turn
+                        // this off anyways
+                        @media all and ( max-width : $bp-768 ) {
+            
+                            display : none;
+                        
+                        } // end of container > div2 > ul > li > a > span:nth-child( 1 ) > bp-768
+            
+                    } // end of container > div2 > ul > li > a > span:nth-child( 1 )
+
+                    // this is the text and it slides in from the right
+                    > span:nth-child( 1 )::before {
+            
+                        display : inline-flex;
+
+                        // this is the underline we see move in from the left
+                        text-decoration : underline;
+            
+                        transform  : translateX( 100% );
+                        transition : transform 400ms ease-out;
+            
+                        // the text
+                        content : attr( data-content );
+            
+                        // even though we probably don't need this since mobile devices can't hover, turn
+                        // this off anyways
+                        @media all and ( max-width : $bp-768 ) {
+            
+                            display : none;
+                        
+                        } // end of container > div2 > ul > li > a > span:nth-child( 1 )::before > bp-768
+            
+                    } // end of container > div2 > ul > li > a > > span:nth-child( 1 )::before
+            
+                    &:hover span:nth-child( 1 ),
+                    &:hover span:nth-child( 1 ):before {
+            
+                        transform : translateX( 0 );
+            
+                    } // end of container > div2 > ul > li > a > &:hover span:nth-child( 1 ), end of container > div2 > ul > li > a > &:hover span:nth-child( 1 ):before
+
+                    // this keep the underline in place even after my cursor leaves the a element
+                    // area but once my modal is removed then the underline slides off
+                    &.servicesActive span:nth-child( 1 ),
+                    &.servicesActive span:nth-child( 1 )::before {
+
+                        transform : translateX( 0 );
+
+                    } // end of container > div2 > ul > li > a > &.servicesActive span:nth-child( 1 ), end of container > div2 > ul > li > a > &.servicesActive span:nth-child( 1 ):before
+
+                    &.navActive span:nth-child( 1 ),
+                    &.navActive span:nth-child( 1 )::before {
+
+                        // this keeps the underline in place, even when the user is not hovering
+                        transform  : translateX( 0 );
+                        // turn off the transition if navigating between pages
+                        transition : none;  
+
+                    } // end of container > div2 > ul > li > a > &.navActive span:nth-child( 1 ), end of container > div2 > ul > li > a > &.navActive span:nth-child( 1 )::before {
+
+                } // end of container > div2 > ul > li > a
+
+            } // end of container > div2 > ul > li
+
+            // ==============================
+            // free estimate menu item
+            // ==============================
+    
+            > .navContainerRightFreeEstimate {
+
+                // children
+                display     : flex;
+                align-items : center;
+
+                position : relative;
+
+                @media all and ( max-width: $bp-1376 ) {
+
+                    display : none; // correct default for mobile, no flash and css applies
+                    // before paint and before the JS runs
+
+                } // end of container > div2 > ul > li > bp-1376
+
+                > a {
+            
+                    display  : inline-flex;
+                    position : relative;
+                    // clip the absolutely positioned span so that it doesn't bleed outside to other nearby links
+                    overflow : hidden;
+
+                    @media all and ( max-width : $bp-620 ) {
+            
+                        margin : 0 0 0 0; // get rid of the right margin on smaller screens
+            
+                    } // end of container > div2 > ul > li > a > bp-620
+
+                    /*
+                        please see the sritcle for details on this effect :
+                        https://css-tricks.com/4-ways-to-animate-the-color-of-a-text-link-on-hover/
+                    */
+
+                    /*
+                        Here’s how it works in short:
+
+                        Two copies of the word. The normal “Services” is always visible. A second copy,
+                        made with content: attr( data-content ), sits exactly on top of it, and it’s
+                        underlined.
+
+                        The span is a window. With overflow: hidden, you only see the part of the
+                        underlined copy that’s inside the span.
+
+                        Before hover, the window is shifted fully to the left (-100%), so the
+                        underlined copy is outside it and hidden.
+
+                        The copy moves the opposite way (+100%), which cancels out the window’s shift.
+                        The copy stays pinned over the real word the whole time.
+
+                        On hover, both slide back to 0 together over 400ms. The window sweeps across
+                        the word and uncovers the underline from left to right. When the mouse leaves,
+                        it all runs in reverse and the underline wipes back out.
+
+                        The text itself never moves. Only the window does, and that’s what creates the wipe.
+                    */
+
+                    // this is the container and it slide in from the left
+                    > span:nth-child( 1 ) {
+            
+                        position : absolute;
+                        top      : 0;
+                        left     : 0;
+            
+                        overflow : hidden;
+
+                        text-underline-offset : 0.2rem;
+
+                        transform  : translateX( -100% );
+                        transition : transform 400ms ease-out;
+            
+                        // even though we probably don't need this since mobile devices can't hover, turn
+                        // this off anyways
+                        @media all and ( max-width : $bp-768 ) {
+            
+                            display : none;
+                        
+                        } // end of container > div2 > ul > li > a > span:nth-child( 1 ) > bp-768
+            
+                    } // end of container > div2 > ul > li > a > span:nth-child( 1 )
+
+                    // this is the text and it slides in from the right
+                    > span:nth-child( 1 )::before {
+            
+                        display : inline-flex;
+
+                        // this is the underline we see move in from the left
+                        text-decoration : underline;
+            
+                        transform  : translateX( 100% );
+                        transition : transform 400ms ease-out;
+            
+                        // the text
+                        content : attr( data-content );
+            
+                        // even though we probably don't need this since mobile devices can't hover, turn
+                        // this off anyways
+                        @media all and ( max-width : $bp-768 ) {
+            
+                            display : none;
+                        
+                        } // end of container > div2 > ul > li > a > span:nth-child( 1 )::before > bp-768
+            
+                    } // end of container > div2 > ul > li > a > > span:nth-child( 1 )::before
+            
+                    &:hover span:nth-child( 1 ),
+                    &:hover span:nth-child( 1 ):before {
+            
+                        transform : translateX( 0 );
+            
+                    } // end of container > div2 > ul > li > a > &:hover span:nth-child( 1 ), end of container > div2 > ul > li > a > &:hover span:nth-child( 1 ):before
+
+                    // this keep the underline in place even after my cursor leaves the a element
+                    // area but once my modal is removed then the underline slides off
+                    &.servicesActive span:nth-child( 1 ),
+                    &.servicesActive span:nth-child( 1 )::before {
+
+                        transform : translateX( 0 );
+
+                    } // end of container > div2 > ul > li > a > &.servicesActive span:nth-child( 1 ), end of container > div2 > ul > li > a > &.servicesActive span:nth-child( 1 ):before
+
+                    &.navActive span:nth-child( 1 ),
+                    &.navActive span:nth-child( 1 )::before {
+
+                        // this keeps the underline in place, even when the user is not hovering
+                        transform  : translateX( 0 );
+                        // turn off the transition if navigating between pages
+                        transition : none;  
+
+                    } // end of container > div2 > ul > li > a > &.navActive span:nth-child( 1 ), end of container > div2 > ul > li > a > &.navActive span:nth-child( 1 )::before {
+
+                } // end of container > div2 > ul > li > a
+
+            } // end of container > div2 > ul > li
+
+            // ==============================
+            // hamburger menu item
+            // ==============================
+
+            > .navContainerRightHamburgerMenu {
+
+                display : none;
+
+                @media all and (max-width: $bp-1376) {
+    
+                    display : block;
+
+                }// end of container > div2 > ul > li > bp-1376
+
+                // ==============================
+                // note
+                // ==============================
+
+                // ==============================
+                // shrink the top and bottom margins of the hamburger menu item below
+                // and then add " align-content : end " in the header component so
+                // that we allow for some spacing between the top of the website and
+                // the nav container left or company name and logo
+                // ==============================
+
+                > a {
+
+                    @media all and ( max-width : $bp-620 ) {
+
+                        // padding : 0.8rem 2.2rem 0.8rem 2.2rem; // visual preference
+                
+                    } // end of container > div2 > ul > li > a > bp-620
+
+                } // end of container > div2 > ul > li > a
+
+            } // end of container > div2 > ul > li
+    
+        } // end of container > div2 > ul
+
+    } // end of container > div2
+
+} // end of container
+
