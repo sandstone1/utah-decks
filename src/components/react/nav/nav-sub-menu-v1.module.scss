@@ -647,14 +647,23 @@
                         grid-template-areas   : "picture span"
                                                 "picture    p";
 
+                        transition : background-color 300ms ease-out;
+
+                        &:hover {
+
+                            background-color : var( --blue-61-1 );
+                            // background-color : var( --yellow-110 );
+
+                        } // end of container > div2 > ul > li > div > a > &:hover
+/*
                         // underline the title when hovering anywhere on the card
                         &:hover > span:nth-child( 2 ) > span:nth-child( 1 ),
                         &:hover > span:nth-child( 2 ) > span:nth-child( 1 )::before {
 
                             transform : translateX( 0 );
 
-                        } // end of container > div2 > ul > li > div > a
-
+                        } // end of container > div2 > ul > li > div > a > &:hover > span:nth-child( 2 ) > span:nth-child( 1 ), &:hover > span:nth-child( 2 ) > span:nth-child( 1 )::before {
+*/
                         > picture {
 
                             // parent
@@ -664,6 +673,8 @@
                             display         : grid;
                             justify-content : center;
         
+                            // background-color : var( --yellow-110 );
+
                             > img { 
         
                                 display : block; // remove the bottom spacing
@@ -816,6 +827,13 @@
                         } // end of container > div2 > ul > li > div > a > p
 
                     } // end of container > div2 > ul > li > div > a
+
+                    // when on the /decks page or any /decks sub page, highlight the background
+                    > a.decksOpen {
+
+                        background-color : var( --blue-61-1 );
+
+                    } // end of container > div2 > ul > li > div > a.decksOpen
     
                 } // end of container > div2 > ul > li > div
 

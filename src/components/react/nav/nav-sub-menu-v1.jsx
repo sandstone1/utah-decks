@@ -389,6 +389,8 @@ export default function NavComponent() {
 
                                 <a
                                     href='/decks'
+                                    // add state for the blue background for the /decks sub menu when on that page
+                                    className={ currentPath.startsWith( '/decks' ) ? styles.decksOpen : '' }
                                     onClick={ () => {
                                         setSkipFade( true ); // close instantly, no fade
                                         setIsServicesOpen( false ); // close the model after clicking on
@@ -437,7 +439,7 @@ export default function NavComponent() {
                                     </picture>
                                     <span
                                         // underline this text if on this page or a sub page
-                                        className={ currentPath.startsWith( '/decks' ) ? styles.navActive : '' }
+                                        // className={ currentPath.startsWith( '/decks' ) ? styles.navActive : '' }
                                     >
                                         <span data-content="Deck Services" aria-hidden="true"></span>
                                         Deck Services
