@@ -354,7 +354,7 @@ export default function NavComponent() {
                                 // removed then the underline slides off
                                 onClick={ () => setIsServicesOpen( !isServicesOpen ) }
                                 // keep underline if on this page
-                                className={ currentPath === '/decks' ? styles.navActive : '' }
+                                className={ currentPath.startsWith( '/decks' ) ? styles.navActive : '' }
                             >
                                 <span data-content="Services" aria-hidden="true"></span>
                                 Services

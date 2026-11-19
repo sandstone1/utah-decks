@@ -1,0 +1,438 @@
+---
+
+
+// import in the Layout component
+import Layout from '../../layouts/main-layout.astro';
+// import in the Hero header component
+import HeroHeaderComponent from '../../components/react/hero/hero-header';
+// import in the Recent Work component
+import RecentWorkComponent from '../../components/react/recent-work/recent-work-v1';
+// import in the By The Numbers component
+import ByTheNumbersComponent from '../../components/react/by-the-numbers/by-the-numbers-v3';
+// import in the Reviews component
+import ReviewsComponent from '../../components/react/reviews/reviews-v1';
+// import in the Owners Story component
+import OwnersStoryComponent from '../../components/react/owners-story/owners-story-v1';
+// import in the Get Started component
+import GetStartedComponent from '../../components/react/get-started/get-started-v1';
+// import in the Our Pledge component
+import OurPledgeComponent from '../../components/react/our-pledge/our-pledge-v1';
+// import in the Areas We Serve component
+import AreasWeServeComponent from '../../components/react/areas-we-serve/areas-we-serve-v2';
+// import in the Ready To Transform component
+import ReadyToTransformComponent from '../../components/react/ready-to-transform/ready-to-transform-v2';
+// import in the Material Design phone icon
+import { MdOutlinePhoneAndroid } from "react-icons/md";
+// import in the Bootstrap shield icon
+import { BsShieldCheck } from "react-icons/bs";
+// import in the Font Awesome star icon
+import { FaRegStar } from "react-icons/fa6";
+// import in the Feather layer outline icon
+import { FiLayers } from "react-icons/fi";
+// import in the Bootstrap pin map icon
+import { BsPinMap } from "react-icons/bs";
+// import in the Font Awesome map marker icon
+import { FaMapMarkerAlt } from "react-icons/fa";
+// import in the Font Awesome map icon
+import { FaRegMap } from "react-icons/fa";
+// import in our stylesheet
+import styles from './deck-repair.module.scss';
+
+---
+
+<Layout>
+
+    {
+        /*
+            page specific meta tags
+        */
+    }
+    <!-- page specific meta tags -->
+    <meta slot="head" name="keywords" content='custom deck builder Salt Lake City, deck builder Utah, custom deck builder Draper Utah, composite deck installation Utah, deck contractor near me, Trex deck installer Utah, TimberTech deck builder Utah, helical pier deck footings, composite deck railing installation, pergola builder Salt Lake County, deck demolition and replacement, custom deck stairs builder, deck builder Salt Lake County, deck builder Utah County, deck builder Davis County, Utah Decks' />
+    <meta slot="head" name="description" content='Deck repair in Midvale and Northern Utah. We fix loose boards, wobbly railings, rotted joists and stairs on wood and composite decks. Free deck inspection.' />
+    <meta slot="head" property="og:image" content='https://utahdecks.net/images/mj_decks_replacement_05_1200.jpg' />
+    <meta slot="head" property="og:title" content='Deck Repair in Midvale, UT | Utah Decks & Pergolas' />
+    <meta slot="head" property="og:description" content='Loose boards, wobbly railings or rotted joists? We repair wood and composite decks across Northern Utah. Schedule a free deck inspection.' />
+    <meta slot="head" property="og:site_name" content='Utah Decks & Pergolas' />
+    <meta slot="head" property="og:url" content='https://utahdecks.net/decks/deck-repair' />
+    <meta slot="head" property="og:type" content='website' />
+    <meta slot="head" property="og:locale" content="en_US" />
+    <link slot="head" rel="canonical" href="https://utahdecks.net/decks/deck-repair" />
+    <title slot="head">Free Deck Design | Northern Utah Deck Builder | Utah Decks & Pergolas</title>
+
+    <!-- stop Google from crawling this site until I have an office address on the site -->
+    <!-- remove this line of code and think about updating my public/robots.txt file when I'm ready -->
+    <!-- <meta name="robots" content="noindex, nofollow" /> -->
+
+    <!-- speed optimization -->
+    <!-- wood hero preload : mobile -->
+    <link
+        slot="head"
+        rel="preload"
+        as="image"
+        href="/images/mj_wood_texture_02_512.webp"
+        media="( max-width : 480px )"
+        fetchpriority="high"
+    />
+
+    <!-- wood hero preload : larger screens -->
+    <link
+        slot="head"
+        rel="preload"
+        as="image"
+        href="/images/mj_wood_texture_02_1024.webp"
+        media="( min-width : 481px )"
+        fetchpriority="high"
+    />
+    <!-- end of speed optimization -->
+
+    <!-- page content -->
+    {
+        /*
+            // ==============================
+            // container
+            // ==============================
+        */
+    }
+
+    <div class={ styles.deckRepairContainer } id="calendar-section">
+
+        {
+            /*
+                // ==============================
+                // container > ( hero component )
+                // ==============================
+            */
+        }
+        <HeroHeaderComponent client:load />
+
+        {
+            /*
+                // ==============================
+                // container > div 2 ( trust signals )
+                // ==============================
+            */
+        }
+        <div>
+
+            <div>
+
+                <MdOutlinePhoneAndroid style={ { verticalAlign : '-5.0px', fontSize : '2.2rem', margin : '0 -1.1rem 0 0' } } />
+
+                <a
+                    href="tel:385-425-2299"
+                >
+                    &#40;385&#41; 425&#45;2299
+                </a>
+
+            </div>
+
+            <div>
+
+                <FaRegStar style={ { verticalAlign: '-5.5px', fontSize: '2.3rem', margin: '0 1.0rem 0 0' } } />
+
+                <span>300+ Happy Customers</span>
+
+            </div>
+
+            <div>
+                <span>
+                    <FiLayers style={ { verticalAlign: '-5.5px', fontSize: '2.4rem', margin: '0 1.0rem 0 0' } } />
+                    Trex & TimberTech Decks
+                </span>
+            </div>
+
+            <div>
+
+                <FaRegMap style={ { verticalAlign: '-5.5px', fontSize: '2.25rem', margin: '0 1.0rem 0 0' } } />
+
+                <span>Northern Utah Deck Builder</span>
+
+            </div>
+
+        </div>
+
+        {
+            /*
+                // ==============================
+                // container > div 3 ( wrapper div )
+                // ==============================
+            */
+        }
+        <div>
+
+            {
+                /*
+                    // ==============================
+                    // container > div 3 ( wrapper div ) > div 1 ( section title )
+                    // ==============================
+                */
+            }
+            <div>
+    
+                <h1 class="get-started-page-h1">Free <span style={ { color : 'var( --green-290 )' } }>Deck Repair Inspection</span> in Midvale, UT</h1>
+    
+                <picture>
+                    <source 
+                        srcset="/images/underline_gray_870_02_512.png"
+                        type="image/png"
+                    />
+                    <img
+                        class="contact-page-image-underline"
+                        src="/images/underline_gray_870_02_512.png"
+                        width={ 512 }
+                        height={ 48 }
+                        loading="eager"
+                        alt="Gray underline"
+                    />
+                </picture>
+    
+                <p class="drop-cap">
+                    Loose boards, a wobbly railing or soft spots? We'll inspect your deck,
+                    show you what it needs, and give you clear, upfront pricing — fast, free,
+                    and no pressure. Just pick a time below.
+                </p>
+
+            </div>
+
+            {
+                /*
+                    // ==============================
+                    // container > div 3 > div 2 ( GHL calendar )
+                    // ==============================
+                */
+            }
+            <div>
+
+                <iframe allow="payment" style="width: 100%;border:none;overflow: hidden;" scrolling="no" id="ghl-calendar"></iframe>
+
+                <!--
+                    comment out the script below and replace with the following 2 scripts
+                -->
+                <!-- <script is:inline src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script> -->
+
+                <!--
+                    the loadCalendarWithUtms() function sets the iframe's src to include UTM parameters, fixing
+                    the UTM Facebook lead attribution issue; in other words, we should be able to see the FB UTM
+                    parameters inside GHL and thereby know when a FB lead books an appointment
+                -->
+                <script is:inline>
+                    function loadCalendarWithUtms() {
+                        const iframe = document.getElementById( 'ghl-calendar' );
+                        if ( !iframe ) return;
+
+                        const params = new URLSearchParams( window.location.search );
+                        const baseUrl = 'https://api.leadconnectorhq.com/widget/booking/RrMEXlzJ4Y5xHRCSJ0OP';
+                        const utmParams = new URLSearchParams();
+
+                        [ 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid' ].forEach( key =>
+                            {
+                                if ( params.has( key ) ) utmParams.set( key, params.get( key ) );
+                            }
+                        );
+
+                        iframe.src = utmParams.toString() ? `${ baseUrl }?${ utmParams.toString() }` : baseUrl;
+                    }
+
+                    // run on initial page load
+                    // loadCalendarWithUtms();
+
+                    // re-run on every Astro client-side navigation
+                    document.addEventListener( 'astro:page-load', loadCalendarWithUtms );
+                </script>
+
+                <!-- 
+                    due to using Astro view transitions, we had to modify the script tag above to
+                    re-inject the script tag fresh on every navigation in order for the calendar
+                    to work
+                -->
+                <script is:inline>
+                    function loadGhlEmbedScript() {
+                        // remove any existing copy so we get a clean re-run
+                        const existing = document.querySelector( 'script[ src*="form_embed.js" ]' );
+                        if ( existing ) existing.remove();
+                
+                        const s = document.createElement( 'script' );
+                        s.src  = 'https://link.msgsndr.com/js/form_embed.js';
+                        s.type = 'text/javascript';
+                        document.body.appendChild( s );
+                    }
+
+                    // run on initial page load
+                    // loadGhlEmbedScript();
+
+                    // re-run on every Astro client-side navigation
+                    document.addEventListener( 'astro:page-load', loadGhlEmbedScript );
+                </script>
+
+            </div>
+
+        </div>
+
+        {
+            /*
+                // ==============================
+                // container > div 4 ( recent work )
+                // ==============================
+            */
+        }
+        <div>
+            <RecentWorkComponent client:visible />
+        </div>
+
+        {
+            /*
+                // ==============================
+                // container > div 5 ( by the numbers )
+                // ==============================
+            */
+        }
+        <div>
+            <ByTheNumbersComponent client:visible />
+        </div>
+
+        {
+            /*
+                // ==============================
+                // container > div 6 ( reviews )
+                // ==============================
+            */
+        }
+        <div>
+            <ReviewsComponent client:visible />
+        </div>
+
+        {
+            /*
+                // ==============================
+                // container > div 7 ( owners story )
+                // ==============================
+            */
+        }
+        <div>
+            <OwnersStoryComponent client:visible />
+        </div>
+
+        {
+            /*
+                // ==============================
+                // container > div 8 ( get started )
+                // ==============================
+            */
+        }
+        <div>
+            <GetStartedComponent client:visible />
+        </div>
+
+        {
+            /*
+                // ==============================
+                // container > div 9 ( our pledge to respect )
+                // ==============================
+            */
+        }
+        <div>
+            <OurPledgeComponent client:visible />
+        </div>
+
+        {
+            /*
+                // ==============================
+                // container > div 10 ( areas we serve )
+                // ==============================
+            */
+        }
+        <div>
+            <AreasWeServeComponent client:visible />
+        </div>
+
+
+        {
+            /*
+                // ==============================
+                // container > div 11 ( ready to transform )
+                // ==============================
+            */
+        }
+        <div>
+            <ReadyToTransformComponent client:visible />
+        </div>
+
+    </div>
+
+</Layout>
+
+
+{
+    /*
+        // ==============================
+        // browser side FB booking confirmation tracking code
+        // ==============================
+    */
+}
+
+{
+    /*
+        // ==============================
+        // dataLayer push for GHL booking calendar
+        // ==============================
+    */
+}
+
+<!--
+    this script's job is to tell Facebook's browser-side pixel "a real booking just happened"
+    the moment someone completes a booking inside the GHL calendar iframe, the same way our
+    contact form already does for its own contact form submissions
+-->
+<script is:inline>
+
+    function setupGhlMessageListener() {
+
+        // use this to make sure we only attach one listener
+        if ( window.ghlListenerAttached ) return;
+        window.ghlListenerAttached = true;
+
+        window.addEventListener( 'message', ( event ) => {
+
+            if ( Array.isArray( event.data ) && event.data[ 0 ] === 'msgsndr-booking-complete' ) {
+
+                const eventId = crypto.randomUUID();
+
+                // ==============================
+                // facebook pixel lead event
+                // ==============================
+                if ( typeof fbq !== 'undefined' ) {
+
+                    fbq( 'track', 'Lead', {}, { eventID : eventId } );
+    
+                };
+
+                // ==============================
+                // dataLayer push
+                // ==============================
+
+                // ==============================
+                // purpose : to push information into the dataLayer method so that we can track
+                // this calendar booking event in GTM and GA4
+                // ==============================
+
+                window.dataLayer = window.dataLayer || [];
+
+                window.dataLayer.push(
+                    {
+                        'event'     : 'generate_lead',
+                        'form_id'   : 'Calendar Booking - Get Started Page',
+                        'page_info' : 'Utah Decks & Pergolas | GHL Calendar | Schedule Meeting | Booking Complete'
+                    }
+                );
+
+            }
+
+        } );
+
+    }
+
+    document.addEventListener( 'astro:page-load', setupGhlMessageListener );
+
+</script>
+

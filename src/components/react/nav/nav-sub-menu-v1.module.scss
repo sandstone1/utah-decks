@@ -794,14 +794,14 @@
                                 } // end of container > div2 > ul > li > div > a > span2 > span:nth-child( 1 )::before > bp-768
                     
                             } // end of container > div2 > ul > li > div > a > span2 > span:nth-child( 1 )::before
-                    
+/*
                             &:hover span:nth-child( 1 ),
                             &:hover span:nth-child( 1 ):before {
                     
                                 transform : translateX( 0 );
                     
                             } // end of container > div2 > ul > li > div > a > span2 > &:hover span:nth-child( 1 ), end of container > div2 > ul > li > div > a > &:hover span:nth-child( 1 ):before
-
+*/
                             &.navActive span:nth-child( 1 ),
                             &.navActive span:nth-child( 1 )::before {
         
