@@ -152,8 +152,9 @@ import styles from './layout.module.scss';
         // small delay to let React hydrate
         setTimeout( () => {
 
-            // select all the videos in the dom
-            const videos = document.querySelectorAll( 'video' );
+            // select all the videos in the dom and only select the videos that are
+            // set to autoplay
+            const videos = document.querySelectorAll<HTMLVideoElement>( 'video[ autoplay ]' );
 
             // loop through each video and then play each video
             videos.forEach( video => {

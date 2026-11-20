@@ -6,7 +6,7 @@ import Layout from '../../layouts/main-layout.astro';
 // import in the Hero header component
 import HeroHeaderComponent from '../../components/react/hero/hero-header';
 // import in the Recent Work component
-import RecentWorkComponent from '../../components/react/recent-work/recent-work-v1';
+import RecentWorkComponent from '../../components/react/recent-work/recent-work-v3';
 // import in the By The Numbers component
 import ByTheNumbersComponent from '../../components/react/by-the-numbers/by-the-numbers-v3';
 // import in the Reviews component
@@ -170,7 +170,7 @@ import styles from './deck-repair.module.scss';
             }
             <div>
     
-                <h1 class="get-started-page-h1">Free <span style={ { color : 'var( --green-290 )' } }>Deck Repair Inspection</span> in Midvale, UT</h1>
+                <h1 class="deck-repair-page-h1">Free <span style={ { color : 'var( --green-290 )' } }>Deck Repair Inspection</span> in Midvale, UT</h1>
     
                 <picture>
                     <source 
@@ -180,9 +180,10 @@ import styles from './deck-repair.module.scss';
                     <img
                         class="contact-page-image-underline"
                         src="/images/underline_gray_870_02_512.png"
-                        width={ 512 }
-                        height={ 48 }
+                        width="512"
+                        height="48"
                         loading="eager"
+                        fetchpriority="high"
                         alt="Gray underline"
                     />
                 </picture>

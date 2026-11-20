@@ -545,6 +545,7 @@ export default function HeroImageComponent() {
                         <a
                             href="tel:385-425-2299"
                             target="_blank"
+                            suppressHydrationWarning
                         >
                             {
                                 /*
