@@ -144,9 +144,7 @@
         grid-gap              : 2.0rem 0;
         grid-template-areas   : "h2-1"
                                 "p2"
-                                "p3"
-                                "p4"
-                                "div5";
+                                "div3";
 
         // make this section sit above the animating gradient
         z-index : 1;
@@ -190,7 +188,8 @@
 
             @include text-base-light;
 
-            width : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+            width  : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+            margin : 0 0 2.0rem 0;
 
             opacity : 0; // needed for the opacity and slide up animation
 
@@ -202,60 +201,21 @@
     
         }  // end of container > div1 > p2
 
-        > p:nth-child( 3 ) {
-
-            // parent
-            grid-area : p3;
-
-            @include text-base-light;
-
-            width : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
-
-            opacity : 0; // needed for the opacity and slide up animation
-
-            @media all and ( max-width : $bp-1536 ) {
-
-                justify-self : left;
-    
-            } // end of container > div1 > p3 > bp-1536
-    
-        }  // end of container > div1 > p3
-
-        > p:nth-child( 4 ) {
-
-            // parent
-            grid-area : p4;
-
-            @include text-base-light;
-
-            width  : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
-            margin : 0 0 2.0rem 0;
-
-            opacity : 0; // needed for the opacity and slide up animation
-
-            @media all and ( max-width : $bp-1536 ) {
-
-                justify-self : left;
-    
-            } // end of container > div1 > p4 > bp-1536
-    
-        }  // end of container > div1 > p4
-
         // ==============================
-        // container > div 1 ( wrapper div ) > div 5 ( wrapper div for steps )
+        // container > div 1 ( wrapper div ) > div 3 ( wrapper div for steps )
         // ==============================
 
-        > div:nth-child( 5 ) {
+        > div:nth-child( 3 ) {
 
             // parent
-            grid-area : div5;
+            grid-area : div3;
 
             display               : grid;
             grid-template-rows    : repeat( 2 auto );
             grid-template-columns : 1fr 1fr 1fr;
             grid-gap              : 12.0rem 12.0rem;
             grid-template-areas   : "div1 div2 div3"
-                                    "div4 div5 div6";
+                                    "div4 div5    .";
 
             @media all and ( max-width : $bp-1728 ) {
 
@@ -264,9 +224,9 @@
                 grid-gap              : 12.0rem 12.0rem;
                 grid-template-areas   : "div1 div2"
                                         "div3 div4"
-                                        "div5 div6";
+                                        "div5    .";
     
-            } // end of container > div1 > div2 > bp-1728
+            } // end of container > div1 > div3 > bp-1728
 
             @media all and ( max-width : $bp-1280 ) {
 
@@ -277,13 +237,12 @@
                                         "div2"
                                         "div3"
                                         "div4"
-                                        "div5"
-                                        "div6";
+                                        "div5";
     
-            } // end of container > div1 > div2 > bp-1280
+            } // end of container > div1 > div3 > bp-1280
 
             // ==============================
-            // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges ) > div 1 ( step 1 )
+            // container > div 1 ( wrapper div ) > div 3 ( wrapper div for badges ) > div 1 ( step 1 )
             // ==============================
 
             > div:nth-child( 1 ) {
@@ -331,7 +290,7 @@
                                             "p             p"
                                             "picture picture";
         
-                } // end of container > div1 > div2 > div1 > bp-1280
+                } // end of container > div1 > div3 > div1 > bp-1280
 
                 @media all and ( max-width : $bp-375 ) {
 
@@ -345,10 +304,10 @@
                                             "p"
                                             "picture";
 
-                }  // end of container > div1 > div2 > div1 > bp-375
+                }  // end of container > div1 > div3 > div1 > bp-375
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > h3-1
+                // container > div 1 > div 3 > div 1 > h3-1
                 // ==============================
 
                 > h3:nth-child( 1 ) {
@@ -367,10 +326,10 @@
 
                     background : var( --yellow-20 );
 
-                } // end of container > div1 > div2 > div1 > h3-1
+                } // end of container > div1 > div3 > div1 > h3-1
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > h3-2
+                // container > div 1 > div 3 > div 1 > h3-2
                 // ==============================
 
                 > h3:nth-child( 2 ) {
@@ -383,10 +342,10 @@
                     line-height : 1.3; // visual preference and needed for when the
                     // h1 splits into 2 lines
 
-                } // end of container > div1 > div2 > div1 > h3-2
+                } // end of container > div1 > div3 > div1 > h3-2
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > p
+                // container > div 1 > div 3 > div 1 > p
                 // ==============================
 
                 > p:nth-child( 3 ) {
@@ -396,10 +355,10 @@
 
                     @include text-base-dark;
 
-                } // end of container > div1 > div2 > div1 > p
+                } // end of container > div1 > div3 > div1 > p
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > picture
+                // container > div 1 > div 3 > div 1 > picture
                 // ==============================
 
                 > picture {
@@ -422,14 +381,14 @@
 
                         border-radius : 6px;
 
-                    } // end of container > div1 > div2 > div1 > picture > img
+                    } // end of container > div1 > div3 > div1 > picture > img
 
-                } // end of container > div1 > div2 > div1 > picture
+                } // end of container > div1 > div3 > div1 > picture
 
-            } // end of container > div1 > div2 > div1
+            } // end of container > div1 > div3 > div1
 
             // ==============================
-            // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges ) > div 2 ( step 2 )
+            // container > div 1 ( wrapper div ) > div 3 ( wrapper div for badges ) > div 2 ( step 2 )
             // ==============================
 
             > div:nth-child( 2 ) {
@@ -477,7 +436,7 @@
                                             "p             p"
                                             "picture picture";
         
-                } // end of container > div1 > div2 > div1 > bp-1280
+                } // end of container > div1 > div3 > div1 > bp-1280
 
                 @media all and ( max-width : $bp-375 ) {
 
@@ -491,10 +450,10 @@
                                             "p"
                                             "picture";
 
-                }  // end of container > div1 > div2 > div1 > bp-375
+                }  // end of container > div1 > div3 > div1 > bp-375
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > h3-1
+                // container > div 1 > div 3 > div 1 > h3-1
                 // ==============================
 
                 > h3:nth-child( 1 ) {
@@ -513,10 +472,10 @@
 
                     background : var( --yellow-20 );
 
-                } // end of container > div1 > div2 > div1 > h3-1
+                } // end of container > div1 > div3 > div1 > h3-1
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > h3-2
+                // container > div 1 > div 3 > div 1 > h3-2
                 // ==============================
 
                 > h3:nth-child( 2 ) {
@@ -529,10 +488,10 @@
                     line-height : 1.3; // visual preference and needed for when the
                     // h1 splits into 2 lines
 
-                } // end of container > div1 > div2 > div1 > h3-2
+                } // end of container > div1 > div3 > div1 > h3-2
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > p
+                // container > div 1 > div 3 > div 1 > p
                 // ==============================
 
                 > p:nth-child( 3 ) {
@@ -542,10 +501,10 @@
 
                     @include text-base-dark;
 
-                } // end of container > div1 > div2 > div1 > p
+                } // end of container > div1 > div3 > div1 > p
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > picture
+                // container > div 1 > div 3 > div 1 > picture
                 // ==============================
 
                 > picture {
@@ -568,14 +527,14 @@
 
                         border-radius : 6px;
 
-                    } // end of container > div1 > div2 > div1 > picture > img
+                    } // end of container > div1 > div3 > div1 > picture > img
 
-                } // end of container > div1 > div2 > div1 > picture
+                } // end of container > div1 > div3 > div1 > picture
 
-            } // end of container > div1 > div2 > div2
+            } // end of container > div1 > div3 > div2
 
             // ==============================
-            // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges ) > div 3 ( step 3 )
+            // container > div 1 ( wrapper div ) > div 3 ( wrapper div for badges ) > div 3 ( step 3 )
             // ==============================
 
             > div:nth-child( 3 ) {
@@ -623,7 +582,7 @@
                                             "p             p"
                                             "picture picture";
         
-                } // end of container > div1 > div2 > div1 > bp-1280
+                } // end of container > div1 > div3 > div1 > bp-1280
 
                 @media all and ( max-width : $bp-375 ) {
 
@@ -637,10 +596,10 @@
                                             "p"
                                             "picture";
 
-                }  // end of container > div1 > div2 > div1 > bp-375
+                }  // end of container > div1 > div3 > div1 > bp-375
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > h3-1
+                // container > div 1 > div 3 > div 1 > h3-1
                 // ==============================
 
                 > h3:nth-child( 1 ) {
@@ -659,10 +618,10 @@
 
                     background : var( --yellow-20 );
 
-                } // end of container > div1 > div2 > div1 > h3-1
+                } // end of container > div1 > div3 > div1 > h3-1
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > h3-2
+                // container > div 1 > div 3 > div 1 > h3-2
                 // ==============================
 
                 > h3:nth-child( 2 ) {
@@ -675,10 +634,10 @@
                     line-height : 1.3; // visual preference and needed for when the
                     // h1 splits into 2 lines
 
-                } // end of container > div1 > div2 > div1 > h3-2
+                } // end of container > div1 > div3 > div1 > h3-2
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > p
+                // container > div 1 > div 3 > div 1 > p
                 // ==============================
 
                 > p:nth-child( 3 ) {
@@ -688,10 +647,10 @@
 
                     @include text-base-dark;
 
-                } // end of container > div1 > div2 > div1 > p
+                } // end of container > div1 > div3 > div1 > p
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > picture
+                // container > div 1 > div 3 > div 1 > picture
                 // ==============================
 
                 > picture {
@@ -714,11 +673,11 @@
 
                         border-radius : 6px;
 
-                    } // end of container > div1 > div2 > div1 > picture > img
+                    } // end of container > div1 > div3 > div1 > picture > img
 
-                } // end of container > div1 > div2 > div1 > picture
+                } // end of container > div1 > div3 > div1 > picture
 
-            } // end of container > div1 > div2 > div3
+            } // end of container > div1 > div3 > div3
 
             // ==============================
             // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges ) > div 4 ( step 4 )
@@ -769,7 +728,7 @@
                                             "p             p"
                                             "picture picture";
         
-                } // end of container > div1 > div2 > div1 > bp-1280
+                } // end of container > div1 > div3 > div1 > bp-1280
 
                 @media all and ( max-width : $bp-375 ) {
 
@@ -783,10 +742,10 @@
                                             "p"
                                             "picture";
 
-                }  // end of container > div1 > div2 > div1 > bp-375
+                }  // end of container > div1 > div3 > div1 > bp-375
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > h3-1
+                // container > div 1 > div 3 > div 1 > h3-1
                 // ==============================
 
                 > h3:nth-child( 1 ) {
@@ -805,10 +764,10 @@
 
                     background : var( --yellow-20 );
 
-                } // end of container > div1 > div2 > div1 > h3-1
+                } // end of container > div1 > div3 > div1 > h3-1
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > h3-2
+                // container > div 1 > div 3 > div 1 > h3-2
                 // ==============================
 
                 > h3:nth-child( 2 ) {
@@ -821,10 +780,10 @@
                     line-height : 1.3; // visual preference and needed for when the
                     // h1 splits into 2 lines
 
-                } // end of container > div1 > div2 > div1 > h3-2
+                } // end of container > div1 > div3 > div1 > h3-2
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > p
+                // container > div 1 > div 3 > div 1 > p
                 // ==============================
 
                 > p:nth-child( 3 ) {
@@ -834,10 +793,10 @@
 
                     @include text-base-dark;
 
-                } // end of container > div1 > div2 > div1 > p
+                } // end of container > div1 > div3 > div1 > p
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > picture
+                // container > div 1 > div 3 > div 1 > picture
                 // ==============================
 
                 > picture {
@@ -860,11 +819,11 @@
 
                         border-radius : 6px;
 
-                    } // end of container > div1 > div2 > div1 > picture > img
+                    } // end of container > div1 > div3 > div1 > picture > img
 
-                } // end of container > div1 > div2 > div1 > picture
+                } // end of container > div1 > div3 > div1 > picture
 
-            } // end of container > div1 > div2 > div4
+            } // end of container > div1 > div3 > div4
 
             // ==============================
             // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges ) > div 5 ( step 5 )
@@ -915,7 +874,7 @@
                                             "p             p"
                                             "picture picture";
         
-                } // end of container > div1 > div2 > div1 > bp-1280
+                } // end of container > div1 > div3 > div1 > bp-1280
 
                 @media all and ( max-width : $bp-375 ) {
 
@@ -929,10 +888,10 @@
                                             "p"
                                             "picture";
 
-                }  // end of container > div1 > div2 > div1 > bp-375
+                }  // end of container > div1 > div3 > div1 > bp-375
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > h3-1
+                // container > div 1 > div 3 > div 1 > h3-1
                 // ==============================
 
                 > h3:nth-child( 1 ) {
@@ -951,10 +910,10 @@
 
                     background : var( --yellow-20 );
 
-                } // end of container > div1 > div2 > div1 > h3-1
+                } // end of container > div1 > div3 > div1 > h3-1
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > h3-2
+                // container > div 1 > div 3 > div 1 > h3-2
                 // ==============================
 
                 > h3:nth-child( 2 ) {
@@ -967,10 +926,10 @@
                     line-height : 1.3; // visual preference and needed for when the
                     // h1 splits into 2 lines
 
-                } // end of container > div1 > div2 > div1 > h3-2
+                } // end of container > div1 > div3 > div1 > h3-2
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > p
+                // container > div 1 > div 3 > div 1 > p
                 // ==============================
 
                 > p:nth-child( 3 ) {
@@ -980,10 +939,10 @@
 
                     @include text-base-dark;
 
-                } // end of container > div1 > div2 > div1 > p
+                } // end of container > div1 > div3 > div1 > p
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > picture
+                // container > div 1 > div 3 > div 1 > picture
                 // ==============================
 
                 > picture {
@@ -1006,11 +965,11 @@
 
                         border-radius : 6px;
 
-                    } // end of container > div1 > div2 > div1 > picture > img
+                    } // end of container > div1 > div3 > div1 > picture > img
 
-                } // end of container > div1 > div2 > div1 > picture
+                } // end of container > div1 > div3 > div1 > picture
 
-            } // end of container > div1 > div2 > div5
+            } // end of container > div1 > div3 > div5
 
             // ==============================
             // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges ) > div 6 ( step 6 )
@@ -1060,7 +1019,7 @@
                                             "p             p"
                                             "picture picture";
         
-                } // end of container > div1 > div2 > div1 > bp-1280
+                } // end of container > div1 > div3 > div1 > bp-1280
 
                 @media all and ( max-width : $bp-375 ) {
 
@@ -1074,10 +1033,10 @@
                                             "p"
                                             "picture";
 
-                }  // end of container > div1 > div2 > div1 > bp-375
+                }  // end of container > div1 > div3 > div1 > bp-375
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > h3-1
+                // container > div 1 > div 3 > div 1 > h3-1
                 // ==============================
 
                 > h3:nth-child( 1 ) {
@@ -1096,10 +1055,10 @@
 
                     background : var( --yellow-20 );
 
-                } // end of container > div1 > div2 > div1 > h3-1
+                } // end of container > div1 > div3 > div1 > h3-1
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > h3-2
+                // container > div 1 > div 3 > div 1 > h3-2
                 // ==============================
 
                 > h3:nth-child( 2 ) {
@@ -1112,10 +1071,10 @@
                     line-height : 1.3; // visual preference and needed for when the
                     // h1 splits into 2 lines
 
-                } // end of container > div1 > div2 > div1 > h3-2
+                } // end of container > div1 > div3 > div1 > h3-2
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > p
+                // container > div 1 > div 3 > div 1 > p
                 // ==============================
 
                 > p:nth-child( 3 ) {
@@ -1125,10 +1084,10 @@
 
                     @include text-base-dark;
 
-                } // end of container > div1 > div2 > div1 > p
+                } // end of container > div1 > div3 > div1 > p
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > picture
+                // container > div 1 > div 3 > div 1 > picture
                 // ==============================
 
                 > picture {
@@ -1151,13 +1110,13 @@
 
                         border-radius : 6px;
 
-                    } // end of container > div1 > div2 > div1 > picture > img
+                    } // end of container > div1 > div3 > div1 > picture > img
 
-                } // end of container > div1 > div2 > div1 > picture
+                } // end of container > div1 > div3 > div1 > picture
 
-            } // end of container > div1 > div2 > div6
+            } // end of container > div1 > div3 > div6
 
-        } // end of container > div1 > div2
+        } // end of container > div1 > div3
 
     } // end of container > div1
 
@@ -1193,17 +1152,15 @@
 
             @include button-v7;
 
+            display     : flex;
+            align-items : center;
+            gap         : 0 1.0rem;
+
             color : var( --black );
 
             background : var( --green-23-9 );
     
             transition : all 0.3s ease-out;
-
-            @media all and ( max-width : $bp-1728 ) {
-
-                // width : 100%;
-    
-            } // end of container > div2 > bp-1728
 
             // hover selector for the navigation tabs
             &:hover {
@@ -1211,6 +1168,22 @@
                 background : var( --green-30 );
 
             } // end of container > div2 > &:hover
+
+            > svg {
+
+                flex-shrink : 0;
+
+                font-size : 2.25rem;
+
+                transform  : translateY( -0.125rem ); // optically centers the icon with the text
+
+                @media all and ( max-width : $bp-375 ) {
+
+                    display : none;
+
+                } // end of container > div2 > $bp-375
+
+            } // end of container > div2 > a > svg
 
         } // end of container > div2 > a
 

@@ -47,8 +47,6 @@ export default function GetStartedComponent() {
     const wrapperRef = useRef( null );
     const h2Ref      = useRef( null );
     const p2Ref      = useRef( null );
-    const p3Ref      = useRef( null );
-    const p4Ref      = useRef( null );
     const badge1Ref  = useRef( null );
     const badge2Ref  = useRef( null );
     const badge3Ref  = useRef( null );
@@ -282,68 +280,6 @@ export default function GetStartedComponent() {
                                         }
 
                                     ); // end of p2Ref.current.animate()
-
-                                    // ==============================
-                                    // p3
-                                    // ==============================
-
-                                    p3Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 400,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of p3Ref.current.animate()
-
-                                    // ==============================
-                                    // p4 div
-                                    // ==============================
-
-                                    p4Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 400,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of p4Ref.current.animate()
 
                                     // ==============================
                                     // badge 1
@@ -605,68 +541,6 @@ export default function GetStartedComponent() {
                                     ); // end of p2Ref.current.animate()
 
                                     // ==============================
-                                    // p3
-                                    // ==============================
-
-                                    p3Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 200,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of p3Ref.current.animate()
-
-                                    // ==============================
-                                    // p4
-                                    // ==============================
-
-                                    p4Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 200,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of p4Ref.current.animate()
-
-                                    // ==============================
                                     // badge 1
                                     // ==============================
 
@@ -924,68 +798,6 @@ export default function GetStartedComponent() {
                                         }
 
                                     ); // end of p2Ref.current.animate()
-
-                                    // ==============================
-                                    // p3
-                                    // ==============================
-
-                                    p3Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateY( 4.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateY( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 0,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of p3Ref.current.animate()
-
-                                    // ==============================
-                                    // p4 div
-                                    // ==============================
-
-                                    p4Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateY( 4.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateY( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 0,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of p4Ref.current.animate()
 
                                     // ==============================
                                     // badge 1
@@ -1297,18 +1109,8 @@ export default function GetStartedComponent() {
                 </h2>
 
                 <p ref={ p2Ref }>
-                    Starting a deck or pergola project with Utah Decks & Pergolas is easy.
-                </p>
-
-                <p ref={ p3Ref }>
-                    It begins with a simple phone call or email, where we listen closely to
-                    your vision — not just the mechanics of what you want built, but how the
-                    finished space will fit your life and enhance the time you spend outdoors.
-                </p>
-
-                <p ref={ p4Ref }>
-                    From design and planning through the finished product, we're with you every
-                    step of the way.
+                    From the first visit to the final walkthrough, here&apos;s exactly what
+                    to expect when we repair your deck.
                 </p>
 
                 {
@@ -1336,7 +1138,8 @@ export default function GetStartedComponent() {
                         <h3>Free Inspection</h3>
 
                         <p>
-                            We visit your property, no cost, no obligation.
+                            We look over your deck from top to bottom and show you exactly
+                            what&apos;s damaged and why.
                         </p>
 
                         {
@@ -1387,10 +1190,11 @@ export default function GetStartedComponent() {
 
                         <h3>2</h3>
 
-                        <h3>Design & Estimate</h3>
+                        <h3>Clear Quote</h3>
 
                         <p>
-                            We'll provide a custom design, cost estimate, and timeline.
+                            You get a written quote covering what needs fixing and what
+                            it costs, with no surprises later.
                         </p>
 
                         {
@@ -1441,10 +1245,11 @@ export default function GetStartedComponent() {
 
                         <h3>3</h3>
 
-                        <h3>Schedule Start Date</h3>
+                        <h3>Permits, If Needed</h3>
 
                         <p>
-                            Lock in when work begins.
+                            If your repair requires a permit, we handle the paperwork
+                            and inspections for you.
                         </p>
 
                         {
@@ -1466,11 +1271,11 @@ export default function GetStartedComponent() {
                         }
                         <picture>
                             <source 
-                                srcSet="/images/mj_calendar_01_300.webp"
+                                srcSet="/images/mj_permit_03_300.webp"
                                 type="image/webp"
                             />
                             <img
-                                src="/images/mj_calendar_01_300.jpg"
+                                src="/images/mj_permit_03_300.jpg"
                                 width={ 300 }
                                 height={ 300 }
                                 loading="lazy"
@@ -1495,64 +1300,11 @@ export default function GetStartedComponent() {
 
                         <h3>4</h3>
 
-                        <h3>Choose Colors & Options</h3>
+                        <h3>Expert Repair</h3>
 
                         <p>
-                            Pick materials that match your style.
-                        </p>
-
-                        {
-                            /*
-                                // ==============================
-                                // container > div 1 > div 2 > div 5 > picture
-                                // ==============================
-                            */
-                        }
-                        {
-                            /*
-                                // ==============================
-                                // remember, we had to put the picture first in the source code
-                                // and eliminate the grid at bp-1032 and do " float : right; "
-                                // on the picture at bp-1032 in order to get the text to wrap
-                                // around the picture
-                                // ==============================
-                            */
-                        }
-                        <picture>
-                            <source 
-                                srcSet="/images/mj_painter_02_300.webp"
-                                type="image/webp"
-                            />
-                            <img
-                                src="/images/mj_painter_02_300.jpg"
-                                width={ 300 }
-                                height={ 300 }
-                                loading="lazy"
-                                // fetchpriority={ "high" } // needed in case someone scrolls down the
-                                // page super fast
-                                alt="Image of a woman painting"
-                            />
-                        </picture>
-
-                    </div>
-
-                    {
-                        /*
-                            // ==============================
-                            // container > div 1 > div 2 > div 5 ( step 5 )
-                            // ==============================
-                        */
-                    }
-                    <div
-                        ref={ badge5Ref }
-                    >
-
-                        <h3>5</h3>
-
-                        <h3>Start Building</h3>
-
-                        <p>
-                            Your project comes to life.
+                            Our crew repairs the damage and fixes what caused it,
+                            so your deck is safe and solid again.
                         </p>
 
                         {
@@ -1593,20 +1345,21 @@ export default function GetStartedComponent() {
                     {
                         /*
                             // ==============================
-                            // container > div 1 > div 2 > div 6 ( step 6 )
+                            // container > div 1 > div 2 > div 5 ( step 5 )
                             // ==============================
                         */
                     }
                     <div
-                        ref={ badge6Ref }
+                        ref={ badge5Ref }
                     >
 
-                        <h3>6</h3>
+                        <h3>5</h3>
 
                         <h3>Final Walk&shy;through</h3>
 
                         <p>
-                            Walk the finished space and get your warranty.
+                            We walk the finished deck with you, then back it with a
+                            2-year workmanship warranty.
                         </p>
 
                         {
@@ -1660,7 +1413,7 @@ export default function GetStartedComponent() {
                 <a
                     href="/decks/deck-repair#calendar-section"
                 >
-                    <FaRegCalendarCheck style={ { verticalAlign: '-3.0px', fontSize: '2.25rem', margin: '0 1.0rem 0 0' } } />
+                    <FaRegCalendarCheck />
                     Schedule Your Free Deck Inspection
                 </a>
     

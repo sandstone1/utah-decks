@@ -267,20 +267,42 @@
             > a {
 
                 @include button-v7;
-
+    
+                display     : flex;
+                align-items : center;
+                gap         : 0 1.0rem;
+    
+                //flex-shrink : 0;
                 color : var( --black );
-
+    
                 background : var( --green-23-9 );
-
+        
                 transition : all 0.3s ease-out;
-
+    
+                // hover selector for the navigation tabs
                 &:hover {
-
+    
                     background : var( --green-30 );
+    
+                } // end of container > div2 > &:hover
+    
+                > svg {
+    
+                    flex-shrink : 0;
+    
+                    font-size : 2.25rem;
 
-                } // end of container div1 > div3 > a > :hover
+                    transform  : translateY( -0.125rem ); // optically centers the icon with the text
 
-            } // end of container div1 > div3 > a
+                    @media all and ( max-width : $bp-375 ) {
+
+                        display : none;
+
+                    } // end of container > div2 > $bp-375
+
+                } // end of container > div2 > a > svg
+    
+            } // end of container > div2 > a
 
         } // end of container div1 > div3
 
