@@ -829,7 +829,7 @@ export default function ReadyToTransformComponent() {
                 <p
                     ref={ p2Ref }
                 >
-                    Get a free, no-pressure deck design or inspection from Utah Decks & Pergolas.
+                    Get a free, no-pressure deck estimate or inspection from Utah Decks & Pergolas.
                 </p>
 
                 {

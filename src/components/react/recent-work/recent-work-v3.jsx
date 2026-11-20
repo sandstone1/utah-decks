@@ -369,7 +369,7 @@ export default function RecentWorkComponent() {
 
                 <a href="/decks/deck-repair#calendar-section">
                     <FaRegCalendarCheck style={ { verticalAlign: '-3.0px', fontSize: '2.25rem', margin: '0 1.0rem 0 0' } } />
-                    Schedule Your Free Estimate
+                    Schedule Your Free Deck Inspection
                 </a>
     
             </div>
