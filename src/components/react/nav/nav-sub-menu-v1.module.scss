@@ -588,8 +588,8 @@
 
                     position : absolute;
                     top      : 100%;
-                    left     : 0;
-                    width    : 48.0rem;
+                    left     : -23.675rem; // = 10.665rem - ( 58.0 / 2 ) = 5.325rem - 29.0rem = -23.675
+                    width    : 58.0rem;
                     height   : auto;
                     margin   : 1.0rem 0 0 0;
                     padding  : 2.0rem;
@@ -646,6 +646,8 @@
                         grid-gap              : 0.5rem 2.0rem;
                         grid-template-areas   : "picture span"
                                                 "picture    p";
+
+                        padding : 2.0rem;
 
                         transition : background-color 300ms ease-out;
 

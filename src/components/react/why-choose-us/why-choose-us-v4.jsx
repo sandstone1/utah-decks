@@ -1210,7 +1210,7 @@ export default function WhyChooseUsComponent() {
                         ref={ badge3Ref }
                     >
 
-                        <h3>Utah Permit Specialists</h3>
+                        <h3>Utah Permit Special&shy;ists</h3>
 
                         <p>
                             We pull and manage all required permits across Northern Utah,
@@ -1236,11 +1236,11 @@ export default function WhyChooseUsComponent() {
                         }
                         <picture>
                             <source 
-                                srcSet="/images/mj_permit_01_300.webp"
+                                srcSet="/images/mj_permit_03_300.webp"
                                 type="image/webp"
                             />
                             <img
-                                src="/images/mj_permit_01_300.jpg"
+                                src="/images/mj_permit_03_300.jpg"
                                 width={ 300 }
                                 height={ 300 }
                                 loading="lazy"
@@ -1263,7 +1263,7 @@ export default function WhyChooseUsComponent() {
                         ref={ badge4Ref }
                     >
 
-                        <h3>2-Year Workmanship Guarantee</h3>
+                        <h3>2-Year Workman&shy;ship Guarantee</h3>
 
                         <p>
                             Every deck we build or repair is backed in writing for
@@ -1317,7 +1317,7 @@ export default function WhyChooseUsComponent() {
                         ref={ badge5Ref }
                     >
 
-                        <h3>Trex & TimberTech Decks</h3>
+                        <h3>Trex & Timber&shy;Tech Decks</h3>
 
                         <p>
                             Low-maintenance composite boards that never need staining

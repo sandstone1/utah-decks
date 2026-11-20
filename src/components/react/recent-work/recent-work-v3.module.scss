@@ -702,29 +702,7 @@
 
         } // end of container > div2 > a
 
-        > a {
-
-            @include button-v7;
-
-            color : var( --black );
-            color : var( --white );
-
-            background : var( --green-23-9 );
-            background : var( --green-290 );
-
-            transition : all 0.3s ease-out;
-
-            // hover selector for the navigation tabs
-            &:hover {
-
-                background : var( --green-30 );
-                background : var( --green-448 );
-
-            } // end of container > div1 > div5 > a > &:hover
-
-        } // end of container > div1 > div5 > a
-
-    } // end of container > div1 > div5
+    } // end of container > div2
 
 } // end of container
 
