@@ -1395,11 +1395,11 @@ export default function DeckRepairIncludesComponent() {
                         }
                         <picture>
                             <source 
-                                srcSet="/images/mj_deck_01_300.webp"
+                                srcSet="/images/mj_railings_01_300.webp"
                                 type="image/webp"
                             />
                             <img
-                                src="/images/mj_deck_01_300.jpg"
+                                src="/images/mj_railings_01_300.jpg"
                                 width={ 300 }
                                 height={ 300 }
                                 loading="lazy"
