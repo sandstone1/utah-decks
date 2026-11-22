@@ -1121,79 +1121,10 @@
     } // end of container > div1
 
     // ==============================
-    // container > div 2 ( schedule your free deck inspection button )
+    // container > div 2 ( animating backgrounds )
     // ==============================
 
     > div:nth-child( 2 ) {
-
-        // parent
-        grid-column : 2 / 22; // position against the parent
-
-        display       : grid;
-        justify-items : center;
-
-        z-index : 1; // make this section sit above the animating gradient
-        width   : min( 192.0rem, 100% ); // browser will select the smaller of 192.0rem or 100%
-        margin  : 12.0rem 0 0 0; // visual preference
-
-        @media all and ( max-width : $bp-1536 ) {
-
-            width   : min( 144.0rem, 100% ); // browser will select the smaller of 144.0rem or 100%
-
-        } // end of container > div2 > bp-1536
-
-        @media all and ( max-width : $bp-1280 ) {
-
-            width   : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
-
-        } // end of container > div2 > bp-1280
-
-        > a {
-
-            @include button-v7;
-
-            display     : flex;
-            align-items : center;
-            gap         : 0 1.0rem;
-
-            color : var( --black );
-
-            background : var( --green-23-9 );
-    
-            transition : all 0.3s ease-out;
-
-            // hover selector for the navigation tabs
-            &:hover {
-
-                background : var( --green-30 );
-
-            } // end of container > div2 > &:hover
-
-            > svg {
-
-                flex-shrink : 0;
-
-                font-size : 2.25rem;
-
-                transform  : translateY( -0.125rem ); // optically centers the icon with the text
-
-                @media all and ( max-width : $bp-375 ) {
-
-                    display : none;
-
-                } // end of container > div2 > $bp-375
-
-            } // end of container > div2 > a > svg
-
-        } // end of container > div2 > a
-
-    } // end of container > div2
-
-    // ==============================
-    // container > div 3 ( animating backgrounds )
-    // ==============================
-
-    > div:nth-child( 3 ) {
 
         display : block; // hide the blob and show the animating backgrounds
         z-index : 0; // remember, this container has to sit behind the parent container
@@ -1205,9 +1136,9 @@
 
             //margin : 40.0rem 0 0 0;
 
-        } // end of container > div3 > bp-1536
+        } // end of container > div2 > bp-1536
 
-    } // end of container > div3
+    } // end of container > div2
 
 } // end of container
 

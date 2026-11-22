@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react';
 // import in the navigate component
 import { navigate } from 'astro:transitions/client';
 // import in Animating Gradient Blur Component
-import AnimatingGradientBackground from '../animations/animating-gradient/animating-gradient-background-v21';
+import AnimatingGradientBackground from '../animations/animating-gradient/animating-gradient-background-v24';
 // import in the Font Awesome calendar check icon
 import { FaRegCalendarCheck } from "react-icons/fa6";
 // import in our stylesheet
@@ -1007,7 +1007,7 @@ export default function GetStartedComponent() {
                 <h2
                     ref={ h2Ref }
                 >
-                    Get Started
+                    Our Deck Repair <span style={ { color : 'var( --green-23-9 )' } }>Process</span>
                 </h2>
 
                 <p ref={ p2Ref }>
@@ -1306,25 +1306,7 @@ export default function GetStartedComponent() {
             {
                 /*
                     // ==============================
-                    // container > div 2 ( schedule your free deck inspection button )
-                    // ==============================
-                */
-            }
-            <div>
-
-                <a
-                    href="/decks/deck-repair#calendar-section"
-                >
-                    <FaRegCalendarCheck />
-                    Schedule Your Free Deck Inspection
-                </a>
-    
-            </div>
-
-            {
-                /*
-                    // ==============================
-                    // container > div 3 ( animating backgrounds )
+                    // container > div 2 ( animating backgrounds )
                     // ==============================
                 */
             }

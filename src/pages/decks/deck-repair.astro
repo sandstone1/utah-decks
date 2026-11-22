@@ -13,14 +13,14 @@ import DeckRepairIncludesComponent from '../../components/react/deck-repair/deck
 import DeckRepairSignsComponent from '../../components/react/deck-repair/deck-repair-signs-v1';
 // import in the Get Started component
 import GetStartedComponent from '../../components/react/get-started/get-started-v2';
-// import in the Our Pledge component
-import OurPledgeComponent from '../../components/react/our-pledge/our-pledge-v1';
-// import in the By The Numbers component
-import ByTheNumbersComponent from '../../components/react/by-the-numbers/by-the-numbers-v3';
+// import in the Best Time of the Year to Repair component
+import BestTimeOfTheYearToRepairComponent from '../../components/react/deck-repair/best-time-of-the-year-to-repair-v1';
 // import in the Reviews component
 import ReviewsComponent from '../../components/react/reviews/reviews-v1';
 // import in the Owners Story component
 import OwnersStoryComponent from '../../components/react/owners-story/owners-story-v3';
+// import in the Our Pledge component
+import OurPledgeComponent from '../../components/react/our-pledge/our-pledge-v1';
 // import in the Areas We Serve component
 import AreasWeServeComponent from '../../components/react/areas-we-serve/areas-we-serve-v2';
 // import in the Ready To Transform component
@@ -313,25 +313,16 @@ import styles from './deck-repair.module.scss';
         {
             /*
                 // ==============================
-                // container > div 8 ( our pledge to respect )
+                // container > div 8 ( get started )
                 // ==============================
             */
         }
-        <OurPledgeComponent client:visible />
+        <BestTimeOfTheYearToRepairComponent client:visible />
 
         {
             /*
                 // ==============================
-                // container > div 9 ( by the numbers )
-                // ==============================
-            */
-        }
-        <ByTheNumbersComponent client:visible />
-
-        {
-            /*
-                // ==============================
-                // container > div 10 ( reviews )
+                // container > div 9 ( reviews )
                 // ==============================
             */
         }
@@ -340,11 +331,20 @@ import styles from './deck-repair.module.scss';
         {
             /*
                 // ==============================
-                // container > div 11 ( owners story )
+                // container > div 10 ( owners story )
                 // ==============================
             */
         }
         <OwnersStoryComponent client:visible />
+
+        {
+            /*
+                // ==============================
+                // container > div 11 ( our pledge to respect )
+                // ==============================
+            */
+        }
+        <OurPledgeComponent client:visible />
 
         {
             /*

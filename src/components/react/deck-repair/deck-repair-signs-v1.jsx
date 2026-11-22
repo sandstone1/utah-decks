@@ -822,7 +822,7 @@ export default function DeckRepairSignsComponent() {
                 <h2
                     ref={ h2Ref }
                 >
-                    <span style={ { color : 'var( --green-23-9 )' } }>How to Tell</span> If Your Deck Needs Repair
+                    <span style={ { color : 'var( --green-23-9 )' } }>Signs</span> Your Deck Needs Repair
                 </h2>
 
                 <p 
@@ -837,7 +837,7 @@ export default function DeckRepairSignsComponent() {
                 <p
                     ref={ p3Ref }
                 >
-                    Warning signs to look for:
+                    Warning signs to look for include:
                 </p>
 
                 {

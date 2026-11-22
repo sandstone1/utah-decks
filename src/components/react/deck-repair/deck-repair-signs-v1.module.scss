@@ -411,6 +411,8 @@
 
             > picture {
 
+                // on mobile, sarafi was displaying this as an inline element, thereby pushing
+                // the image down and this fixed the problem
                 display : block;
 
                 > img {
