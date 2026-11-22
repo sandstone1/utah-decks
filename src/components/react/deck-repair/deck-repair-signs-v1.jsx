@@ -1,14 +1,14 @@
 
 
 
-// import in the useEffect, useRef hooks
+// import in the useEffect, useRef hook
 import { useEffect, useRef } from 'react';
-// import in the navigate component
-import { navigate } from 'astro:transitions/client';
 // import in Animating Gradient Blur Component
-import AnimatingGradientBackground from '../animations/animating-gradient/animating-gradient-background-v21';
-// import in the Font Awesome calendar check icon
-import { FaRegCalendarCheck } from "react-icons/fa6";
+import AnimatingGradientBackground from '../animations/animating-gradient/animating-gradient-background-v23';
+// import in the Font Awesome circle check icon
+import { FaRegCircleCheck } from "react-icons/fa6";
+// import in the Phosphor number 2 icon
+import { PiNumberCircleTwoFill } from "react-icons/pi";
 // import in our stylesheet
 import styles from './deck-repair-signs-v1.module.scss';
 
@@ -47,12 +47,9 @@ export default function DeckRepairSignsComponent() {
     const wrapperRef = useRef( null );
     const h2Ref      = useRef( null );
     const p2Ref      = useRef( null );
-    const badge1Ref  = useRef( null );
-    const badge2Ref  = useRef( null );
-    const badge3Ref  = useRef( null );
-    const badge4Ref  = useRef( null );
-    const badge5Ref  = useRef( null );
-    const badge6Ref  = useRef( null );
+    const p3Ref      = useRef( null );
+    const div4Ref    = useRef( null );
+    const p5Ref      = useRef( null );
 
     // ==============================
     // useSession();
@@ -91,982 +88,640 @@ export default function DeckRepairSignsComponent() {
         // ==============================
 
         // ==============================
-        // need setTimeout in order to give the container time to set marginTop in
-        // useEffect 1
+        // intersection observer
         // ==============================
 
         // ==============================
-        // comment this out now that this section is moved down one div but keep the code
-        // in case I ever need to apply it to the section above
+        // use the web animations api for the animation
         // ==============================
 
-        // setTimeout( () => {
+        // options object
+        const servicesOptions = {
 
-            // ==============================
-            // intersection observer
-            // ==============================
+            root : null, // this is the default and this means our viewport is the canvas
+            // we are working with here
+            threshold : 0.0, // this value can be between 0 and 1 and 0 is the default and
+            // 0 means that as soon as any little piece enters the defined viewport the
+            // intersection observer will fire
+            rootMargin : '0px 0px -150px 0px' // this works like margin in css and this
+            // can help us control when the intersection observer fires
 
-            // ==============================
-            // use the web animations api for the animation
-            // ==============================
+            // remember, it's the bottom rootMargin that controls when the element
+            // isIntersecting
 
+            // remember, a positive 400px bottom root margin means that isIntersecting
+            // will be true once the user gets to a point in the code that is 400px
+            // above the ref; in other words, a positive root margin is great for pre
+            // loading images
+
+            // remember, a negative 50px bottom root margin means that isIntersecting
+            // will be true once the user gets to a point in the code that is 50px
+            // below the ref; in other words, a negative root margin is great if want
+            // to fade in text or slide up some elements
+
+        } // end of options object
+
+        // create the intersection observer and save the result to the const
+        // servicesObserver
+        const servicesObserver = new IntersectionObserver( 
+
+            // we pass in 2 arguments to the IntersectionObserver : a function and an
             // options object
-            const servicesOptions = {
 
-                root : null, // this is the default and this means our viewport is the canvas
-                // we are working with here
-                threshold : 0.0, // this value can be between 0 and 1 and 0 is the default and
-                // 0 means that as soon as any little piece enters the defined viewport the
-                // intersection observer will fire
-                rootMargin : '0px 0px -250px 0px' // this works like margin in css and this
-                // can help us control when the intersection observer fires
-
-                // remember, it's the bottom rootMargin that controls when the element
-                // isIntersecting
-
-                // remember, a positive 400px bottom root margin means that isIntersecting
-                // will be true once the user gets to a point in the code that is 400px
-                // above the ref; in other words, a positive root margin is great for pre
-                // loading images
-
-                // remember, a negative 50px bottom root margin means that isIntersecting
-                // will be true once the user gets to a point in the code that is 50px
-                // below the ref; in other words, a negative root margin is great if want
-                // to fade in text or slide up some elements
-
-            } // end of options object
-
-            // create the intersection observer and save the result to the const
-            // servicesObserver
-            const servicesObserver = new IntersectionObserver( 
-
-                // we pass in 2 arguments to the IntersectionObserver : a function and an
-                // options object
-
-                // the first argument ( i.e. the function )
-                function( entries, servicesObserver ) { 
-
-                    entries.forEach( ( entry ) => {
-
-                        // if our element is in the viewport then do something
-                        if ( entry.isIntersecting ) {
-
-                            // test
-                            // ==============================
-                            // important comment
-                            // ==============================
-                            // log the entry to console so that we can see the 
-                            // IntersectionObserverEntry object and what we are concerned
-                            // with is the isIntersecting value
-                            // console.log( entry );
-
-                            // test
-                            // ==============================
-                            // important comment
-                            // ==============================
-                            // if the user ever reloads the page we can use
-                            // entry.boundingClientRect.top to tell where the user is at
-                            // on the page and then act accordingly
-                            // console.log( entry.boundingClientRect.top );
-
-                            // ==============================
-                            // TEST 1 ( see TEST 2 below )
-                            // ==============================
-        
-                            // ==============================
-                            // entry.boundingClientRect.top > 0 if statement
-                            // ==============================
-
-                            // ==============================
-                            // additional check
-                            //
-                            // remember, we want to check and see if the user is scrolling
-                            // up or down and depending on the direction we want different
-                            // code to run
-                            //
-                            // remember, this check is only useful if the user had reloaded
-                            // the page and happens to be underneth the container and the user
-                            // is scrolling up to this container and the reason this
-                            // code is useful is because it prevents the opacity and slide up
-                            // animation from running a second time as the user is scrolling
-                            // up to this container
-                            // ==============================
-
-                            // ==============================
-                            // entry.boundingClientRect.top definition : " This property tells
-                            // you the vertical position of the element relative to the top of
-                            // the viewport. If it's less than 0, the element is above the top
-                            // edge of the viewport. "
-                            // ==============================
-
-                            // determine if the user is scrolling down and if so then run
-                            // our opacity and slide up animation
-                            if ( entry.boundingClientRect.top > 0 ) {
-
-                                // Element entered from the bottom or when the user is scrolling
-                                // down
-                                // console.log( 'Element entered from the bottom' );
-
-                                // ==============================
-                                // animation - opacity and slide in
-                                // ==============================
-                                // ==============================
-                                // browserWidth > 768 && browserWidth <= 1728
-                                // ==============================
-
-                                if ( 
-                                    wrapperRef.current &&
-                                    ( browserWidth > 1728 )
-                                ) {
-
-                                    // ==============================
-                                    // h2 div
-                                    // ==============================
-
-                                    h2Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 400,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of h2Ref.current.animate()
-
-                                    // ==============================
-                                    // p2
-                                    // ==============================
-
-                                    p2Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 400,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of p2Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 1
-                                    // ==============================
-
-                                    badge1Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 400,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge1Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 2
-                                    // ==============================
-
-                                    badge2Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 200,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge2Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 3
-                                    // ==============================
-
-                                    badge3Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 0,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge3Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 4
-                                    // ==============================
-
-                                    badge4Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 400,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge4Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 5
-                                    // ==============================
-
-                                    badge5Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 200,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge5Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 6
-                                    // ==============================
-
-                                    badge6Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 0,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge6Ref.current.animate()
-
-                                } // end of if ( browserWidth > 1728 )
-
-                                // ==============================
-                                // browserWidth > 768 && browserWidth <= 1728
-                                // ==============================
-
-                                if ( 
-                                    wrapperRef.current &&
-                                    ( browserWidth > 768 && browserWidth <= 1728 )
-                                ) {
-
-                                    // ==============================
-                                    // h2 div
-                                    // ==============================
-
-                                    h2Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 200,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of h2Ref.current.animate()
-
-                                    // ==============================
-                                    // p2
-                                    // ==============================
-
-                                    p2Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 200,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of p2Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 1
-                                    // ==============================
-
-                                    badge1Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 200,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge1Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 2
-                                    // ==============================
-
-                                    badge2Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 0,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge2Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 3
-                                    // ==============================
-
-                                    badge3Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 200,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge3Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 4
-                                    // ==============================
-
-                                    badge4Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 0,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge4Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 5
-                                    // ==============================
-
-                                    badge5Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 200,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge5Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 6
-                                    // ==============================
-
-                                    badge6Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 0,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge6Ref.current.animate()
+            // the first argument ( i.e. the function )
+            function( entries, servicesObserver ) { 
+
+                entries.forEach( ( entry ) => {
+
+                    // if our element is in the viewport then do something
+                    if ( entry.isIntersecting ) {
+
+                        // test
+                        // ==============================
+                        // important comment
+                        // ==============================
+                        // log the entry to console so that we can see the 
+                        // IntersectionObserverEntry object and what we are concerned
+                        // with is the isIntersecting value
+                        // console.log( entry );
+
+                        // test
+                        // ==============================
+                        // important comment
+                        // ==============================
+                        // if the user ever reloads the page we can use
+                        // entry.boundingClientRect.top to tell where the user is at
+                        // on the page and then act accordingly
+                        // console.log( entry.boundingClientRect.top );
+
+                        // ==============================
+                        // TEST 1 ( see TEST 2 below )
+                        // ==============================
     
-                                } // end of if ( browserWidth > 768 && browserWidth <= 1728 )
+                        // ==============================
+                        // entry.boundingClientRect.top > 0 if statement
+                        // ==============================
 
-                                // ==============================
-                                // browserWidth <= 768
-                                // ==============================
+                        // ==============================
+                        // additional check
+                        //
+                        // remember, we want to check and see if the user is scrolling
+                        // up or down and depending on the direction we want different
+                        // code to run
+                        //
+                        // remember, this check is only useful if the user had reloaded
+                        // the page and happens to be underneth the container and the user
+                        // is scrolling up to this container and the reason this
+                        // code is useful is because it prevents the opacity and slide up
+                        // animation from running a second time as the user is scrolling
+                        // up to this container
+                        // ==============================
 
-                                if ( 
-                                    wrapperRef.current &&
-                                    ( browserWidth <= 768 )
-                                ) {
+                        // ==============================
+                        // entry.boundingClientRect.top definition : " This property tells
+                        // you the vertical position of the element relative to the top of
+                        // the viewport. If it's less than 0, the element is above the top
+                        // edge of the viewport. "
+                        // ==============================
 
-                                    // ==============================
-                                    // h2 div
-                                    // ==============================
+                        // determine if the user is scrolling down and if so then run
+                        // our opacity and slide up animation
+                        if ( entry.boundingClientRect.top > 0 ) {
 
-                                    h2Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateY( 4.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateY( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 0,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of h2Ref.current.animate()
-
-                                    // ==============================
-                                    // p2
-                                    // ==============================
-
-                                    p2Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateY( 4.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateY( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 0,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of p2Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 1
-                                    // ==============================
-
-                                    badge1Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateY( 4.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateY( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 0,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge1Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 2
-                                    // ==============================
-
-                                    badge2Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateY( 4.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateY( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 400,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge2Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 3
-                                    // ==============================
-
-                                    badge3Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateY( 4.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateY( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 800,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge3Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 4
-                                    // ==============================
-
-                                    badge4Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateY( 4.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateY( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 1200,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge4Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 5
-                                    // ==============================
-
-                                    badge5Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateY( 4.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateY( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 1600,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge5Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 6
-                                    // ==============================
-
-                                    badge6Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateY( 4.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateY( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 2000,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge6Ref.current.animate()
-
-                                } // end of if ( browserWidth <= 768 )
-
-                                // ==============================
-                                // end of animation
-                                // ==============================
-
-                            } // end of if ( entry.boundingClientRect.top > 0 ) {}
-
+                            // Element entered from the bottom or when the user is scrolling
+                            // down
+                            // console.log( 'Element entered from the bottom' );
+/*
                             // ==============================
-                            // TEST 2
+                            // animation - opacity and slide in
+                            // ==============================
+                            // ==============================
+                            // browserWidth > 768 && browserWidth <= 1728
                             // ==============================
 
+                            if ( 
+                                wrapperRef.current &&
+                                ( browserWidth > 1728 )
+                            ) {
+
+                                // ==============================
+                                // h2 div
+                                // ==============================
+
+                                h2Ref.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateX( -20.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateX( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 0,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of h2Ref.current.animate()
+
+                                // ==============================
+                                // p2
+                                // ==============================
+
+                                p2Ref.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateX( -20.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateX( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 0,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of p2Ref.current.animate()
+
+                                // ==============================
+                                // p3
+                                // ==============================
+
+                                p3Ref.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateX( -20.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateX( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 0,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of p3Ref.current.animate()
+
+                                // ==============================
+                                // div4 
+                                // ==============================
+
+                                div4Ref.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateX( -20.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateX( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 0,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of div4Ref.current.animate()
+
+                                // ==============================
+                                // p5
+                                // ==============================
+
+                                p5Ref.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateX( -20.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateX( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 0,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of p5Ref.current.animate()
+
+                            } // end of if ( browserWidth > 1728 )
+
                             // ==============================
-                            // entry.boundingClientRect.top <= 0 if statement
+                            // browserWidth > 768 && browserWidth <= 1728
                             // ==============================
 
-                            // remember, since we have " position : sticky " we will either get a positive
-                            // number ( user scrolling down ) or 0 ( user scrolling up or on top of the
-                            // section )
-                            if ( entry.boundingClientRect.top <= 0 ) {
+                            if ( 
+                                wrapperRef.current &&
+                                ( browserWidth > 768 && browserWidth <= 1728 )
+                            ) {
 
-                                // Element entered from the bottom or when the user is scrolling
-                                // up
-                                // console.log( 'Element entered from the top' );
+                                // ==============================
+                                // h2   
+                                // ==============================
 
-                                // if the user is scrolling up, just show the elements without any animation
-                                h2Ref.current.style.opacity                      = 1;
-                                h2Ref.current.style.transform                    = 'translateX( 0 )';
-                                h2Ref.current.style.transitionDuration           = '400ms';
-                                h2Ref.current.style.transitionTimingFunction     = 'ease-out';
-                                badge1Ref.current.style.opacity                  = 1;
-                                badge1Ref.current.style.transform                = 'translateX( 0 )';
-                                badge1Ref.current.style.transitionDuration       = '400ms';
-                                badge1Ref.current.style.transitionTimingFunction = 'ease-out';
-                                badge2Ref.current.style.opacity                  = 1;
-                                badge2Ref.current.style.transform                = 'translateX( 0 )';
-                                badge2Ref.current.style.transitionDuration       = '400ms';
-                                badge2Ref.current.style.transitionTimingFunction = 'ease-out';
-                                badge3Ref.current.style.opacity                  = 1;
-                                badge3Ref.current.style.transform                = 'translateX( 0 )';
-                                badge3Ref.current.style.transitionDuration       = '400ms';
-                                badge3Ref.current.style.transitionTimingFunction = 'ease-out';
-                                badge4Ref.current.style.opacity                  = 1;
-                                badge4Ref.current.style.transform                = 'translateX( 0 )';
-                                badge4Ref.current.style.transitionDuration       = '400ms';
-                                badge4Ref.current.style.transitionTimingFunction = 'ease-out';
-                                badge5Ref.current.style.opacity                  = 1;
-                                badge5Ref.current.style.transform                = 'translateX( 0 )';
-                                badge5Ref.current.style.transitionDuration       = '400ms';
-                                badge5Ref.current.style.transitionTimingFunction = 'ease-out';
-                                badge6Ref.current.style.opacity                  = 1;
-                                badge6Ref.current.style.transform                = 'translateX( 0 )';
-                                badge6Ref.current.style.transitionDuration       = '400ms';
-                                badge6Ref.current.style.transitionTimingFunction = 'ease-out';
+                                h2Ref.current.animate(
 
-                            } // end of if ( entry.boundingClientRect.top <= 0 ) {}
+                                    [
 
-                            // once the observation happens then we want to unobserve the DOM
-                            // element
-                            servicesObserver.unobserve( wrapperRef.current );
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateX( -20.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateX( 0 )"
+                                        }
 
-                        } // end of if
+                                    ],
+                                    {
 
-                    } ) // end of entries.forEach()
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 0,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
 
-                }, // end of function( entries, servicesObserver )
+                                ); // end of h2Ref.current.animate()
 
-                servicesOptions // the second argument
+                                // ==============================
+                                // p2
+                                // ==============================
 
-            ); // end of new IntersectionObserver()
+                                p2Ref.current.animate(
 
-            // let's have the observer observe our selected DOM element and then do something
-            // once the DOM element enters the viewport and remember the criteria for when a
-            // DOM element enters the viewport or triggers entry.isIntersecting is determined
-            // by the options object above
-            servicesObserver.observe( wrapperRef.current );
+                                    [
 
-            // ==============================
-            // end of intersection observer
-            // ==============================
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateX( -20.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateX( 0 )"
+                                        }
 
-        // }, 100 );
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 0,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of p2Ref.current.animate()
+
+                                // ==============================
+                                // p3
+                                // ==============================
+
+                                p3Ref.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateX( -20.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateX( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 0,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of p3Ref.current.animate()
+
+                                // ==============================
+                                // div4
+                                // ==============================
+
+                                div4Ref.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateX( -20.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateX( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 0,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of div4Ref.current.animate()
+
+                                // ==============================
+                                // p5
+                                // ==============================
+
+                                p5Ref.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateX( -20.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateX( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 0,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of p5Ref.current.animate()
+
+                            } // end of if ( browserWidth > 768 && browserWidth <= 1728 )
+*/
+                            // ==============================
+                            // browserWidth <= 768
+                            // ==============================
+
+                            if ( 
+                                wrapperRef.current &&
+                                ( browserWidth <= 768 )
+                            ) {
+
+                                // ==============================
+                                // h2   
+                                // ==============================
+
+                                h2Ref.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateY( 4.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateY( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 0,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of h2Ref.current.animate()
+
+                                // ==============================
+                                // p2
+                                // ==============================
+
+                                p2Ref.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateY( 4.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateY( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 0,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of p2Ref.current.animate()
+
+                                // ==============================
+                                // p3
+                                // ==============================
+
+                                p3Ref.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateY( 4.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateY( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 0,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of p3Ref.current.animate()
+
+                                // ==============================
+                                // div4 
+                                // ==============================
+
+                                div4Ref.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateY( 4.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateY( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 0,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of div4Ref.current.animate()
+
+                                // ==============================
+                                // p5
+                                // ==============================
+
+                                p5Ref.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateY( 4.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateY( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 0,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of p5Ref.current.animate()
+
+                            } // end of if ( browserWidth <= 768 )
+
+                            // ==============================
+                            // end of animation
+                            // ==============================
+
+                        } // end of if ( entry.boundingClientRect.top > 0 ) {}
+
+                        // once the observation happens then we want to unobserve the DOM
+                        // element
+                        servicesObserver.unobserve( wrapperRef.current );
+
+                    } // end of if
+
+                } ) // end of entries.forEach()
+
+            }, // end of function( entries, servicesObserver )
+
+            servicesOptions // the second argument
+
+        ); // end of new IntersectionObserver()
+
+        // let's have the observer observe our selected DOM element and then do something
+        // once the DOM element enters the viewport and remember the criteria for when a
+        // DOM element enters the viewport or triggers entry.isIntersecting is determined
+        // by the options object above
+        servicesObserver.observe( wrapperRef.current );
+
+        // ==============================
+        // end of intersection observer
+        // ==============================
 
     }, [] ); // end of useEffect 1
 
@@ -1105,324 +760,114 @@ export default function DeckRepairSignsComponent() {
                 <h2
                     ref={ h2Ref }
                 >
-                    Get Started
+                    <span style={ { color : 'var( --green-23-9 )' } }>How to Tell</span> If Your Midvale Deck Needs Repair
                 </h2>
 
-                <p ref={ p2Ref }>
-                    From the first visit to the final walkthrough, here&apos;s exactly what
-                    to expect when we repair your deck.
+                <p 
+                    ref={ p2Ref }
+                >
+                    Utah&apos;s freeze-thaw cycles are hard on decks. Water soaks into
+                    the wood, freezes overnight, then thaws again, sometimes dozens of
+                    times a winter. Over time, that opens cracks, loosens fasteners
+                    and speeds up rot.
+                </p>
+
+                <p
+                    ref={ p3Ref }
+                >
+                    Warning signs to look for:
                 </p>
 
                 {
                     /*
                         // ==============================
-                        // container > div 1 ( wrapper div ) > div 5 ( wrapper div for badges )
+                        // container > div 1 > div 4 ( checklist )
                         // ==============================
                     */
                 }
+                <div
+                    ref={ div4Ref }
+                >
+
+                    <ul>
+
+                        <li>
+                            <FaRegCircleCheck />
+                            Soft, spongy or cracked boards
+                        </li>
+                        <li>
+                            <FaRegCircleCheck />
+                            Railings that wobble or feel loose
+                        </li>
+                        <li>
+                            <FaRegCircleCheck />
+                            Popped nails or loose screws
+                        </li>
+                        <li>
+                            <FaRegCircleCheck />
+                            Dark stains, mold or rot, especially near the house
+                        </li>
+                        <li>
+                            <FaRegCircleCheck />
+                            Posts that are leaning or sinking
+                        </li>
+                        <li>
+                            <FaRegCircleCheck />
+                            A deck that bounces or sways when you walk on it
+                        </li>
+                        <li>
+                            <FaRegCircleCheck />
+                            Water stains on the ceiling below the deck
+                        </li>
+
+                    </ul>
+                
+                </div>
+
+                <p
+                    ref={ p5Ref }
+                >
+                    If you notice{' '}
+                    <PiNumberCircleTwoFill style={ { verticalAlign: '-11.5px', fontSize: '4.0rem', margin: '0 auto', color: 'var( --gray-225 )' } } />{' '}
+                    or more of these signs, it&apos;s time for an inspection. Catching
+                    damage early usually means a smaller, less expensive repair.
+                </p>
+
+
                 <div>
 
                     {
                         /*
                             // ==============================
-                            // container > div 1 > div 2 > div 1 ( service 1 )
+                            // container > div 1 > div 6 ( picture )
                             // ==============================
                         */
                     }
-                    <div
-                        ref={ badge1Ref }
-                    >
-
-                        <h3>1</h3>
-
-                        <h3>Free Inspection</h3>
-
-                        <p>
-                            We look over your deck from top to bottom and show you exactly
-                            what&apos;s damaged and why.
-                        </p>
-
-                        {
-                            /*
-                                // ==============================
-                                // container > div 1 > div 2 > div 1 > picture
-                                // ==============================
-                            */
-                        }
-                        {
-                            /*
-                                // ==============================
-                                // remember, we had to put the picture first in the source code
-                                // and eliminate the grid at bp-1032 and do " float : right; "
-                                // on the picture at bp-1032 in order to get the text to wrap
-                                // around the picture
-                                // ==============================
-                            */
-                        }
-                        <picture>
-                            <source 
-                                srcSet="/images/mj_contractor_01_300.webp"
-                                type="image/webp"
-                            />
-                            <img
-                                src="/images/mj_contractor_01_300.jpg"
-                                width={ 300 }
-                                height={ 300 }
-                                loading="lazy"
-                                // fetchpriority={ "high" } // needed in case someone scrolls down the
-                                // page super fast
-                                alt="Image of a contractor inspecting a house"
-                            />
-                        </picture>
-
-                    </div>
-
-                    {
-                        /*
-                            // ==============================
-                            // container > div 1 > div 2 > div 2 ( step 2 )
-                            // ==============================
-                        */
-                    }
-                    <div
-                        ref={ badge2Ref }
-                    >
-
-                        <h3>2</h3>
-
-                        <h3>Clear Quote</h3>
-
-                        <p>
-                            You get a written quote covering what needs fixing and what
-                            it costs, with no surprises later.
-                        </p>
-
-                        {
-                            /*
-                                // ==============================
-                                // container > div 1 > div 2 > div 2 > picture
-                                // ==============================
-                            */
-                        }
-                        {
-                            /*
-                                // ==============================
-                                // remember, we had to put the picture first in the source code
-                                // and eliminate the grid at bp-1032 and do " float : right; "
-                                // on the picture at bp-1032 in order to get the text to wrap
-                                // around the picture
-                                // ==============================
-                            */
-                        }
-                        <picture>
-                            <source 
-                                srcSet="/images/mj_engineer_05_300.webp"
-                                type="image/webp"
-                            />
-                            <img
-                                src="/images/mj_engineer_05_300.jpg"
-                                width={ 300 }
-                                height={ 300 }
-                                loading="lazy"
-                                // fetchpriority={ "high" } // needed in case someone scrolls down the
-                                // page super fast
-                                alt="Image of a engineer working on a deck design"
-                            />
-                        </picture>
-
-                    </div>
-
-                    {
-                        /*
-                            // ==============================
-                            // container > div 1 > div 2 > div 3 ( step 3 )
-                            // ==============================
-                        */
-                    }
-                    <div
-                        ref={ badge3Ref }
-                    >
-
-                        <h3>3</h3>
-
-                        <h3>Permits, If Needed</h3>
-
-                        <p>
-                            If your repair requires a permit, we handle the paperwork
-                            and inspections for you.
-                        </p>
-
-                        {
-                            /*
-                                // ==============================
-                                // container > div 1 > div 2 > div 3 > picture
-                                // ==============================
-                            */
-                        }
-                        {
-                            /*
-                                // ==============================
-                                // remember, we had to put the picture first in the source code
-                                // and eliminate the grid at bp-1032 and do " float : right; "
-                                // on the picture at bp-1032 in order to get the text to wrap
-                                // around the picture
-                                // ==============================
-                            */
-                        }
-                        <picture>
-                            <source 
-                                srcSet="/images/mj_permit_03_300.webp"
-                                type="image/webp"
-                            />
-                            <img
-                                src="/images/mj_permit_03_300.jpg"
-                                width={ 300 }
-                                height={ 300 }
-                                loading="lazy"
-                                // fetchpriority={ "high" } // needed in case someone scrolls down the
-                                // page super fast
-                                alt="Image of a calendar"
-                            />
-                        </picture>
-
-                    </div>
-
-                    {
-                        /*
-                            // ==============================
-                            // container > div 1 > div 2 > div 4 ( step 4 )
-                            // ==============================
-                        */
-                    }
-                    <div
-                        ref={ badge4Ref }
-                    >
-
-                        <h3>4</h3>
-
-                        <h3>Expert Repair</h3>
-
-                        <p>
-                            Our crew repairs the damage and fixes what caused it,
-                            so your deck is safe and solid again.
-                        </p>
-
-                        {
-                            /*
-                                // ==============================
-                                // container > div 1 > div 2 > div 4 > picture
-                                // ==============================
-                            */
-                        }
-                        {
-                            /*
-                                // ==============================
-                                // remember, we had to put the picture first in the source code
-                                // and eliminate the grid at bp-1032 and do " float : right; "
-                                // on the picture at bp-1032 in order to get the text to wrap
-                                // around the picture
-                                // ==============================
-                            */
-                        }
-                        <picture>
-                            <source 
-                                srcSet="/images/mj_contractor_team_07_300.webp"
-                                type="image/webp"
-                            />
-                            <img
-                                src="/images/mj_contractor_team_07_300.jpg"
-                                width={ 300 }
-                                height={ 300 }
-                                loading="lazy"
-                                // fetchpriority={ "high" } // needed in case someone scrolls down the
-                                // page super fast
-                                alt="Image of a construction crew building"
-                            />
-                        </picture>
-
-                    </div>
-
-                    {
-                        /*
-                            // ==============================
-                            // container > div 1 > div 2 > div 5 ( step 5 )
-                            // ==============================
-                        */
-                    }
-                    <div
-                        ref={ badge5Ref }
-                    >
-
-                        <h3>5</h3>
-
-                        <h3>Final Walk&shy;through</h3>
-
-                        <p>
-                            We walk the finished deck with you, then back it with a
-                            2-year workmanship warranty.
-                        </p>
-
-                        {
-                            /*
-                                // ==============================
-                                // container > div 1 > div 2 > div 6 > picture
-                                // ==============================
-                            */
-                        }
-                        {
-                            /*
-                                // ==============================
-                                // remember, we had to put the picture first in the source code
-                                // and eliminate the grid at bp-1032 and do " float : right; "
-                                // on the picture at bp-1032 in order to get the text to wrap
-                                // around the picture
-                                // ==============================
-                            */
-                        }
-                        <picture>
-                            <source 
-                                srcSet="/images/mj_deck_01_300.webp"
-                                type="image/webp"
-                            />
-                            <img
-                                src="/images/mj_deck_01_300.jpg"
-                                width={ 300 }
-                                height={ 300 }
-                                loading="lazy"
-                                // fetchpriority={ "high" } // needed in case someone scrolls down the
-                                // page super fast
-                                alt="Image of a beautiful deck"
-                            />
-                        </picture>
-
-                    </div>
-
+                    <picture>
+                        <source 
+                            srcSet="/images/mj_homeowner_02_800.webp"
+                            type="image/webp"
+                        />
+                        <img
+                            src="/images/mj_homeowner_02_800_v2.jpg"
+                            width={ 800 }
+                            height={ 800 }
+                            loading="lazy"
+                            // fetchpriority={ "high" } // needed in case someone scrolls down the
+                            // page super fast
+                            alt="Image of a homeowner holding a checklist from a completed deck repair"
+                        />
+                    </picture>
+                
                 </div>
 
             </div>
 
-            {
-                /*
-                    // ==============================
-                    // container > div 2 ( schedule your free deck inspection button )
-                    // ==============================
-                */
-            }
-            <div>
-
-                <a
-                    href="/decks/deck-repair#calendar-section"
-                >
-                    <FaRegCalendarCheck />
-                    Schedule Your Free Deck Inspection
-                </a>
-    
-            </div>
 
             {
                 /*
                     // ==============================
-                    // container > div 3 ( animating backgrounds )
+                    // container > div 2 ( animating backgrounds )
                     // ==============================
                 */
             }

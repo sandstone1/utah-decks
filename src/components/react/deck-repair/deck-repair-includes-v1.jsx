@@ -52,7 +52,6 @@ export default function DeckRepairIncludesComponent() {
     const badge3Ref  = useRef( null );
     const badge4Ref  = useRef( null );
     const badge5Ref  = useRef( null );
-    const badge6Ref  = useRef( null );
 
     // ==============================
     // useSession();
@@ -118,7 +117,7 @@ export default function DeckRepairIncludesComponent() {
                 threshold : 0.0, // this value can be between 0 and 1 and 0 is the default and
                 // 0 means that as soon as any little piece enters the defined viewport the
                 // intersection observer will fire
-                rootMargin : '0px 0px -250px 0px' // this works like margin in css and this
+                rootMargin : '0px 0px -650px 0px' // this works like margin in css and this
                 // can help us control when the intersection observer fires
 
                 // remember, it's the bottom rootMargin that controls when the element
@@ -436,37 +435,6 @@ export default function DeckRepairIncludesComponent() {
 
                                     ); // end of badge5Ref.current.animate()
 
-                                    // ==============================
-                                    // badge 6
-                                    // ==============================
-
-                                    badge6Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 0,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge6Ref.current.animate()
-
                                 } // end of if ( browserWidth > 1728 )
 
                                 // ==============================
@@ -694,37 +662,6 @@ export default function DeckRepairIncludesComponent() {
                                         }
 
                                     ); // end of badge5Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 6
-                                    // ==============================
-
-                                    badge6Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 0,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge6Ref.current.animate()
     
                                 } // end of if ( browserWidth > 768 && browserWidth <= 1728 )
 
@@ -954,37 +891,6 @@ export default function DeckRepairIncludesComponent() {
 
                                     ); // end of badge5Ref.current.animate()
 
-                                    // ==============================
-                                    // badge 6
-                                    // ==============================
-
-                                    badge6Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateY( 4.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateY( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 2000,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge6Ref.current.animate()
-
                                 } // end of if ( browserWidth <= 768 )
 
                                 // ==============================
@@ -1035,10 +941,6 @@ export default function DeckRepairIncludesComponent() {
                                 badge5Ref.current.style.transform                = 'translateX( 0 )';
                                 badge5Ref.current.style.transitionDuration       = '400ms';
                                 badge5Ref.current.style.transitionTimingFunction = 'ease-out';
-                                badge6Ref.current.style.opacity                  = 1;
-                                badge6Ref.current.style.transform                = 'translateX( 0 )';
-                                badge6Ref.current.style.transitionDuration       = '400ms';
-                                badge6Ref.current.style.transitionTimingFunction = 'ease-out';
 
                             } // end of if ( entry.boundingClientRect.top <= 0 ) {}
 
@@ -1128,7 +1030,7 @@ export default function DeckRepairIncludesComponent() {
                 <h2
                     ref={ h2Ref }
                 >
-                    What Does Deck Repair in Midvale Include?
+                    What Does <span style={ { color : 'var( --green-23-9 )' } }>Deck Repair</span> in Midvale Include?
                 </h2>
 
                 <p ref={ p2Ref }>
@@ -1342,11 +1244,11 @@ export default function DeckRepairIncludesComponent() {
                         }
                         <picture>
                             <source 
-                                srcSet="/images/mj_footings_01_300.webp"
+                                srcSet="/images/mj_posts_01_300.webp"
                                 type="image/webp"
                             />
                             <img
-                                src="/images/mj_footings_01_300.jpg"
+                                src="/images/mj_posts_01_300.jpg"
                                 width={ 300 }
                                 height={ 300 }
                                 loading="lazy"
