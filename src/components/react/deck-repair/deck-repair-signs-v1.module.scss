@@ -156,6 +156,90 @@
 
         @media all and ( max-width : $bp-1920 ) {
 
+            grid-template-columns : 70.0rem 70.0rem;
+            grid-gap              : 2.0rem 12.0rem;
+            grid-template-areas   : "h2-1 div6"
+                                    "p2   div6"
+                                    "p3   div6"
+                                    "div4 div6"
+                                    "p5   div6";
+
+            width : min( 192.0rem, 100% ); // browser will select the smaller of 192.0rem or 100%
+
+        } // end of container > div1 > h2 > bp-1920
+
+        @media all and ( max-width : $bp-1728 ) {
+
+            grid-template-columns : 60.0rem 60.0rem;
+            grid-gap              : 2.0rem 12.0rem;
+            grid-template-areas   : "h2-1 div6"
+                                    "p2   div6"
+                                    "p3   div6"
+                                    "div4 div6"
+                                    "p5   div6";
+
+            width : min( 172.8rem, 100% ); // browser will select the smaller of 192.0rem or 100%
+
+        } // end of container > div1 > h2 > bp-1728
+
+        @media all and ( max-width : $bp-1536 ) {
+
+            grid-template-columns : 57.0rem 57.0rem;
+            grid-gap              : 2.0rem 12.0rem;
+            grid-template-areas   : "h2-1 div6"
+                                    "p2   div6"
+                                    "p3   div6"
+                                    "div4 div6"
+                                    "p5   div6";
+
+            width : min( 153.6rem, 100% ); // browser will select the smaller of 192.0rem or 100%
+
+        } // end of container > div1 > h2 > bp-1536
+
+        @media all and ( max-width : $bp-1440 ) {
+
+            grid-template-columns : 54.0rem 54.0rem;
+            grid-gap              : 2.0rem 12.0rem;
+            grid-template-areas   : "h2-1 div6"
+                                    "p2   div6"
+                                    "p3   div6"
+                                    "div4 div6"
+                                    "p5   div6";
+
+            width : min( 144.0rem, 100% ); // browser will select the smaller of 192.0rem or 100%
+
+        } // end of container > div1 > h2 > bp-1440
+
+        @media all and ( max-width : $bp-1376 ) {
+
+            grid-template-columns : 52.5rem 52.5rem;
+            grid-gap              : 2.0rem 12.0rem;
+            grid-template-areas   : "h2-1 div6"
+                                    "p2   div6"
+                                    "p3   div6"
+                                    "div4 div6"
+                                    "p5   div6";
+
+            width : min( 137.6rem, 100% ); // browser will select the smaller of 192.0rem or 100%
+
+        } // end of container > div1 > h2 > bp-1376
+
+        @media all and ( max-width : 1340px ) {
+
+            grid-template-columns : 50.0rem 50.0rem;
+            grid-gap              : 2.0rem 12.0rem;
+            grid-template-areas   : "h2-1 div6"
+                                    "p2   div6"
+                                    "p3   div6"
+                                    "div4 div6"
+                                    "p5   div6";
+
+            width : min( 134.0rem, 100% ); // browser will select the smaller of 192.0rem or 100%
+
+        } // end of container > div1 > h2 > 1340px
+
+        @media all and ( max-width : $bp-1280 ) {
+
             grid-template-columns : 1fr;
             grid-gap              : 2.0rem 0;
             grid-template-areas   : "h2-1"
@@ -167,7 +251,7 @@
 
             width : min( 80.0rem, 100% ); // browser will select the smaller of 192.0rem or 100%
 
-        } // end of container > div1 > h2 > bp-1920
+        } // end of container > div1 > h2 > bp-1280
 
         > h2 {
 
@@ -305,17 +389,19 @@
             // parent
             grid-area : div6;
 
-            @media all and ( max-width : $bp-1032 ) {
+            align-content : center;
 
-                width    : 75%;
-                margin   : 0 auto;
+            @media all and ( max-width : $bp-1280 ) {
+
+                width  : 75%;
+                margin : 0 auto;
                 overflow : hidden;
 
                 border-radius : 50%;
 
                 background-color : var( --blue-61-1 );
     
-            } // end of container > div1 > div6 > bp-1032
+            } // end of container > div1 > div6 > bp-1280
 
             @media all and ( max-width : $bp-620 ) {
 
@@ -333,7 +419,7 @@
                     // ==============================
                     // Make the image stretch horizontally to fit the column height
                     // ==============================
-    
+
                     width  : 100%;
                     height : 100%;
                     margin : 0 auto;
@@ -352,7 +438,47 @@
                     // visible — works perfectly with black and white illustrations on
                     // colored backgrounds without needing to remove the background at all
                     mix-blend-mode : multiply;
-    
+
+                    // need to reduce the image size so it doesn't overtake the text
+                    @media all and ( max-width : $bp-1536 ) {
+
+                        width  : 94%;
+                        height : 94%;
+            
+                    } // end of container > div1 > div6 > picture > img > bp-1536
+
+                    // need to reduce the image size so it doesn't overtake the text
+                    @media all and ( max-width : $bp-1440 ) {
+
+                        width  : 87%;
+                        height : 87%;
+            
+                    } // end of container > div1 > div6 > picture > img > bp-1440
+
+                    // need to reduce the image size so it doesn't overtake the text
+                    @media all and ( max-width : $bp-1376 ) {
+
+                        width  : 86%;
+                        height : 86%;
+            
+                    } // end of container > div1 > div6 > picture > img > bp-1376
+
+                    // need to reduce the image size so it doesn't overtake the text
+                    @media all and ( max-width : 1340px ) {
+
+                        width  : 85%;
+                        height : 85%;
+            
+                    } // end of container > div1 > div6 > picture > img > 1340px
+
+                    // need to reduce the image size so it doesn't overtake the text
+                    @media all and ( max-width : $bp-1280 ) {
+
+                        width  : 100%;
+                        height : 100%;
+            
+                    } // end of container > div1 > div6 > picture > img > $bp-1280
+
                 } // end of container > div1 > div6 > picture > img
 
             } // end of container > div1 > div6 > picture

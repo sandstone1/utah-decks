@@ -39,6 +39,9 @@ export default function DeckRepairSignsComponent() {
     // define variables
     // ==============================
 
+    // use browserWidth inside the useEffect hook below
+    let browserWidth;
+
     // ==============================
     // useRef();
     // ==============================
@@ -726,6 +729,65 @@ export default function DeckRepairSignsComponent() {
     }, [] ); // end of useEffect 1
 
     // ==============================
+    // useEffect(); 2
+    // ==============================
+
+    // ==============================
+    // make sure the content shows when we switch screen sizes during testing
+    // ==============================
+
+    useEffect( () => {
+
+        // define browserWidth
+        browserWidth = window.innerWidth;
+
+        // ==============================
+        // add an event listener for the browser resize event
+        // ==============================
+
+        // if browserWidth exist then call the handleResize function
+        if ( browserWidth ) {
+
+            // remember, " Both methods achieve the same outcome, allowing you to pass arguments
+            // to the function called by the event listener. It's important to avoid calling the
+            // function directly in the addEventListener method like
+            // window.addEventListener( 'click', myFunction( 'argument' ) ) because this will
+            // execute the function immediately, instead of when the event occurs. "
+            window.addEventListener( 'resize', () => { 
+                
+                if ( 
+
+                    h2Ref.current &&
+                    p2Ref.current &&
+                    p3Ref.current &&  
+                    div4Ref.current &&      
+                    p5Ref.current      
+
+                ) {
+
+                    h2Ref.current.style.opacity   = 1;
+                    p2Ref.current.style.opacity   = 1;
+                    p3Ref.current.style.opacity   = 1;
+                    div4Ref.current.style.opacity = 1;
+                    p5Ref.current.style.opacity   = 1;
+
+                } // end of if
+            
+            }, false ); // end of window.addEventListener()
+
+            // make sure we remove the event listener after we call the handleResize
+            // function
+            return () => {
+
+                window.removeEventListener( 'resize', handleResize, false );
+
+            };
+
+        } // end of if
+
+    }, [ browserWidth ] ); // end of useEffect 2
+
+    // ==============================
     // useLoader();
     // ==============================
 
@@ -760,7 +822,7 @@ export default function DeckRepairSignsComponent() {
                 <h2
                     ref={ h2Ref }
                 >
-                    <span style={ { color : 'var( --green-23-9 )' } }>How to Tell</span> If Your Midvale Deck Needs Repair
+                    <span style={ { color : 'var( --green-23-9 )' } }>How to Tell</span> If Your Deck Needs Repair
                 </h2>
 
                 <p 
