@@ -260,17 +260,13 @@
 
             @include h2-light-title;
 
+            opacity : 0; // needed for the opacity and slide up animation
+
             @media all and ( max-width : $bp-1536 ) {
 
                 justify-self : left;
     
             } // end of container > div1 > h2 > bp-1536
-
-            @media all and ( max-width : $bp-768 ) {
-
-                opacity : 0; // needed for the opacity and slide up animation
-    
-            } // end of container > div1 > h2 > bp-768
 
         }  // end of container > div1 > h2
 
@@ -281,11 +277,7 @@
 
             @include text-base-light;
 
-            @media all and ( max-width : $bp-768 ) {
-
-                opacity : 0; // needed for the opacity and slide up animation
-    
-            } // end of container > div1 > p2 > bp-768
+            opacity : 0; // needed for the opacity and slide up animation
 
         }  // end of container > div1 > p2
 
@@ -298,17 +290,7 @@
 
             // font-weight : 700;
 
-            @media all and ( max-width : $bp-1536 ) {
-
-                justify-self : left;
-    
-            } // end of container > div1 > p3 > bp-1536
-
-            @media all and ( max-width : $bp-768 ) {
-
-                opacity : 0; // needed for the opacity and slide up animation
-    
-            } // end of container > div1 > p3 > bp-768
+            opacity : 0; // needed for the opacity and slide up animation
 
         }  // end of container > div1 > p3
 
@@ -321,11 +303,7 @@
             // parent
             grid-area : div4;
 
-            @media all and ( max-width : $bp-768 ) {
-
-                opacity : 0; // needed for the opacity and slide up animation
-    
-            } // end of container > div1 > div > bp-768
+            opacity : 0; // needed for the opacity and slide up animation
 
             > ul {
 
@@ -372,11 +350,7 @@
 
             margin : 0 0 2.0rem 0;
 
-            @media all and ( max-width : $bp-768 ) {
-
-                opacity : 0; // needed for the opacity and slide up animation
-    
-            } // end of container > div1 > p5 > bp-768
+            opacity : 0; // needed for the opacity and slide up animation
 
         } // end of container > div1 > p5
 
@@ -388,8 +362,6 @@
 
             // parent
             grid-area : div6;
-
-            align-content : center;
 
             @media all and ( max-width : $bp-1280 ) {
 
@@ -411,13 +383,17 @@
 
             > picture {
 
-                // on mobile, sarafi was displaying this as an inline element, thereby pushing
+                // on mobile, Sarafi was displaying this as an inline element, thereby pushing
                 // the image down and this fixed the problem
                 display : block;
+                height  : 100%; // need to get the correct size after adding display : block
+                // to the picture element
+
+                align-content : center;
 
                 > img {
 
-                    align-self : center;
+                    // align-self : center;
 
                     display : block; // remove the bottom spacing
     
@@ -443,6 +419,11 @@
                     // visible — works perfectly with black and white illustrations on
                     // colored backgrounds without needing to remove the background at all
                     mix-blend-mode : multiply;
+
+                    opacity : 0; // needed for the opacity and slide up animation and need to
+                    // include here and not on the parent div; otherwise, the parent div becomes
+                    // its own isolated layer and the image can’t blend with the dark background
+                    // behind it
 
                     // need to reduce the image size so it doesn't overtake the text
                     @media all and ( max-width : $bp-1536 ) {
@@ -508,7 +489,7 @@
 
         @media all and ( max-width : $bp-1536 ) {
 
-            //margin : 40.0rem 0 0 0;
+            // margin : 40.0rem 0 0 0;
 
         } // end of container > div2 > bp-1536
 

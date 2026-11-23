@@ -210,15 +210,16 @@ export default function WhyChooseUsComponent() {
                                 // console.log( 'Element entered from the bottom' );
 
                                 // ==============================
-                                // animation - opacity and slide in
+                                // animation - opacity and slide up
                                 // ==============================
+    
                                 // ==============================
-                                // browserWidth > 768 && browserWidth <= 1728
+                                // browserWidth > 768
                                 // ==============================
 
                                 if ( 
                                     wrapperRef.current &&
-                                    ( browserWidth > 1728 )
+                                    ( browserWidth > 768 )
                                 ) {
 
                                     // ==============================
@@ -231,11 +232,11 @@ export default function WhyChooseUsComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
+                                                transform : "translateY( 6.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
-                                                transform : "translateX( 0 )"
+                                                transform : "translateY( 0 )"
                                             }
 
                                         ],
@@ -243,7 +244,7 @@ export default function WhyChooseUsComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 400,
+                                            delay      : 0,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -262,270 +263,11 @@ export default function WhyChooseUsComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
+                                                transform : "translateY( 6.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 400,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge1Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 2
-                                    // ==============================
-
-                                    badge2Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 200,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge2Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 3
-                                    // ==============================
-
-                                    badge3Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 0,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge3Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 4
-                                    // ==============================
-
-                                    badge4Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 400,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge4Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 5
-                                    // ==============================
-
-                                    badge5Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 200,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge5Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 6
-                                    // ==============================
-
-                                    badge6Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 0,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge6Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 7
-                                    // ==============================
-
-                                    badge7Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 400,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of badge7Ref.current.animate()
-
-                                } // end of if ( browserWidth > 1728 )
-
-                                // ==============================
-                                // browserWidth > 768 && browserWidth <= 1728
-                                // ==============================
-
-                                if ( 
-                                    wrapperRef.current &&
-                                    ( browserWidth > 768 && browserWidth <= 1728 )
-                                ) {
-
-                                    // ==============================
-                                    // h2 div
-                                    // ==============================
-
-                                    h2Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 200,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of h2Ref.current.animate()
-
-                                    // ==============================
-                                    // badge 1
-                                    // ==============================
-
-                                    badge1Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
+                                                transform : "translateY( 0 )"
                                             }
 
                                         ],
@@ -552,11 +294,11 @@ export default function WhyChooseUsComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
+                                                transform : "translateY( 6.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
-                                                transform : "translateX( 0 )"
+                                                transform : "translateY( 0 )"
                                             }
 
                                         ],
@@ -564,7 +306,7 @@ export default function WhyChooseUsComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 0,
+                                            delay      : 400,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -583,11 +325,11 @@ export default function WhyChooseUsComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
+                                                transform : "translateY( 6.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
-                                                transform : "translateX( 0 )"
+                                                transform : "translateY( 0 )"
                                             }
 
                                         ],
@@ -595,7 +337,7 @@ export default function WhyChooseUsComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 200,
+                                            delay      : 600,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -614,11 +356,11 @@ export default function WhyChooseUsComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
+                                                transform : "translateY( 6.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
-                                                transform : "translateX( 0 )"
+                                                transform : "translateY( 0 )"
                                             }
 
                                         ],
@@ -626,7 +368,7 @@ export default function WhyChooseUsComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 0,
+                                            delay      : 800,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -645,11 +387,11 @@ export default function WhyChooseUsComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
+                                                transform : "translateY( 6.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
-                                                transform : "translateX( 0 )"
+                                                transform : "translateY( 0 )"
                                             }
 
                                         ],
@@ -657,7 +399,7 @@ export default function WhyChooseUsComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 200,
+                                            delay      : 1000,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -676,11 +418,11 @@ export default function WhyChooseUsComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
+                                                transform : "translateY( 6.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
-                                                transform : "translateX( 0 )"
+                                                transform : "translateY( 0 )"
                                             }
 
                                         ],
@@ -688,7 +430,7 @@ export default function WhyChooseUsComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 0,
+                                            delay      : 1200,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -707,11 +449,11 @@ export default function WhyChooseUsComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
+                                                transform : "translateY( 6.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
-                                                transform : "translateX( 0 )"
+                                                transform : "translateY( 0 )"
                                             }
 
                                         ],
@@ -719,7 +461,7 @@ export default function WhyChooseUsComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 200,
+                                            delay      : 1400,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -728,7 +470,7 @@ export default function WhyChooseUsComponent() {
 
                                     ); // end of badge7Ref.current.animate()
 
-                                } // end of if ( browserWidth > 768 && browserWidth <= 1728 )
+                                } // end of if ( browserWidth > 768 )
 
                                 // ==============================
                                 // browserWidth <= 768
