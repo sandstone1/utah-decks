@@ -9,6 +9,7 @@ export async function GET() {
     const pages = [
         '',
         'decks',
+        'decks/deck-repair',
         'request-service',
         'get-started',
         'free-estimate',
