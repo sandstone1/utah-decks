@@ -269,7 +269,7 @@ export default function OwnersStoryComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 200,
+                                            delay      : 150,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -300,7 +300,7 @@ export default function OwnersStoryComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 400,
+                                            delay      : 300,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -331,7 +331,7 @@ export default function OwnersStoryComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 600,
+                                            delay      : 450,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -404,7 +404,7 @@ export default function OwnersStoryComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 0,
+                                            delay      : 150,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -435,7 +435,7 @@ export default function OwnersStoryComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 0,
+                                            delay      : 300,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -466,7 +466,7 @@ export default function OwnersStoryComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 0,
+                                            delay      : 450,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "

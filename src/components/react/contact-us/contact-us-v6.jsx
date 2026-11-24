@@ -46,7 +46,7 @@ export default function ContactUsComponent() {
     const wrapperRef = useRef( null );
     const h2Ref      = useRef( null );
     const div1Ref    = useRef( null );
-    const div3Ref    = useRef( null );
+    const div2Ref    = useRef( null );
 
     // ==============================
     // useSession();
@@ -204,8 +204,9 @@ export default function ContactUsComponent() {
                                 // ==============================
                                 // animation - opacity and slide in
                                 // ==============================
+
                                 // ==============================
-                                // browserWidth > 768 && browserWidth <= 1728
+                                // browserWidth > 1728
                                 // ==============================
 
                                 if ( 
@@ -235,7 +236,7 @@ export default function ContactUsComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 400,
+                                            delay      : 200,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -276,10 +277,10 @@ export default function ContactUsComponent() {
                                     ); // end of badge1Ref.current.animate()
 
                                     // ==============================
-                                    // div 3
+                                    // div 2
                                     // ==============================
 
-                                    div3Ref.current.animate(
+                                    div2Ref.current.animate(
 
                                         [
 
@@ -297,24 +298,24 @@ export default function ContactUsComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 400,
+                                            delay      : 0,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
                         
                                         }
 
-                                    ); // end of div3Ref.current.animate()
+                                    ); // end of div2Ref.current.animate()
 
                                 } // end of if ( browserWidth > 1728 )
 
                                 // ==============================
-                                // browserWidth > 768 && browserWidth <= 1728
+                                // browserWidth > 1280 && browserWidth <= 1728
                                 // ==============================
 
                                 if ( 
                                     wrapperRef.current &&
-                                    ( browserWidth > 768 && browserWidth <= 1728 )
+                                    ( browserWidth > 1280 && browserWidth <= 1728 )
                                 ) {
 
                                     // ==============================
@@ -327,7 +328,7 @@ export default function ContactUsComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
+                                                transform : "translateX( -12.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
@@ -358,38 +359,7 @@ export default function ContactUsComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
-                                            }, 
-                                            {
-                                                opacity   : 1,
-                                                transform : "translateX( 0 )"
-                                            }
-
-                                        ],
-                                        {
-
-                                            duration   : 400,
-                                            easing     : "ease-out",
-                                            delay      : 0,
-                                            iterations : 1, // this is the default but leave for reference purposes
-                                            fill       : "forwards" // this lets the " element retain the style values
-                                            // from the last keyframe when the animation ends "
-                        
-                                        }
-
-                                    ); // end of div1Ref.current.animate()
-
-                                    // ==============================
-                                    // div 3
-                                    // ==============================
-
-                                    div3Ref.current.animate(
-
-                                        [
-
-                                            {
-                                                opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
+                                                transform : "translateX( -12.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
@@ -408,9 +378,144 @@ export default function ContactUsComponent() {
                         
                                         }
 
+                                    ); // end of badge1Ref.current.animate()
+
+                                    // ==============================
+                                    // div 2
+                                    // ==============================
+
+                                    div2Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateX( -12.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateX( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 0,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
+                                    ); // end of div2Ref.current.animate()
+
+                                } // end of if ( browserWidth > 1280 && browserWidth <= 1728 )
+
+                                // ==============================
+                                // browserWidth > 768 && browserWidth <= 1280
+                                // ==============================
+
+                                if ( 
+                                    wrapperRef.current &&
+                                    ( browserWidth > 768 && browserWidth <= 1280 )
+                                ) {
+
+                                    // ==============================
+                                    // h2
+                                    // ==============================
+
+                                    h2Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateY( 6.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateX( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 0,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
+                                    ); // end of h2Ref.current.animate()
+
+                                    // ==============================
+                                    // div 1
+                                    // ==============================
+
+                                    div1Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateY( 6.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateX( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 150,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
+                                    ); // end of div1Ref.current.animate()
+
+                                    // ==============================
+                                    // div 2
+                                    // ==============================
+
+                                    div2Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateY( 6.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateX( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 300,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
                                     ); // end of div3Ref.current.animate()
 
-                                } // end of if ( browserWidth > 768 && browserWidth <= 1728 )
+                                } // end of if ( browserWidth > 768 && browserWidth <= 1280 )
 
                                 // ==============================
                                 // browserWidth <= 768
@@ -474,7 +579,7 @@ export default function ContactUsComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 400,
+                                            delay      : 150,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -484,10 +589,10 @@ export default function ContactUsComponent() {
                                     ); // end of div1Ref.current.animate()
 
                                     // ==============================
-                                    // div 3
+                                    // div 2
                                     // ==============================
 
-                                    div3Ref.current.animate(
+                                    div2Ref.current.animate(
 
                                         [
 
@@ -505,7 +610,7 @@ export default function ContactUsComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 0,
+                                            delay      : 300,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -604,11 +709,24 @@ export default function ContactUsComponent() {
                     {
                         /*
                             // ==============================
-                            // container > div 1 > div 2 > div 1 ( blue box )
+                            // container > div 1 > div 2 > div 1 ( contact information )
                             // ==============================
                         */
                     }
                     <div ref={ div1Ref }>
+        
+                        <ContactInformationComponent />             
+        
+                    </div>
+
+                    {
+                        /*
+                            // ==============================
+                            // container > div 1 > div 2 > div 2 ( email us )
+                            // ==============================
+                        */
+                    }
+                    <div ref={ div2Ref }>
         
                         <h3>Email Us</h3>
     
@@ -667,26 +785,13 @@ export default function ContactUsComponent() {
                     {
                         /*
                             // ==============================
-                            // container > div 1 > div 2 > div 2 ( contact form )
+                            // container > div 1 > div 2 > div 3 ( contact form )
                             // ==============================
                         */
                     }
                     <div>
         
                         <ContactFormPostmarkComponent client:visible />
-        
-                    </div>
-    
-                    {
-                        /*
-                            // ==============================
-                            // container > div 1 > div 2 > div 3 ( contact information )
-                            // ==============================
-                        */
-                    }
-                    <div ref={ div3Ref }>
-        
-                        <ContactInformationComponent />             
         
                     </div>
     

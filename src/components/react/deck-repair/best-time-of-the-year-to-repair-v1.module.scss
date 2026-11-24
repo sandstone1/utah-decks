@@ -218,7 +218,7 @@
             grid-template-areas   : "div1 div2 div3"
                                     "div4    .    .";
 
-            padding : 0 0 6.0rem 0;
+            padding : 0 0 4.0rem 0;
 
             @media all and ( max-width : $bp-1728 ) {
 
@@ -741,16 +741,16 @@
             // parent
             grid-area : p4;
 
-            @include text-base-light;
+            @include text-large-light;
 
             display      : grid;
             justify-self : center;
 
             width   : min( 80.0rem, 100% ); // browser will select the smaller of 80.0rem or 100%
-            padding : 2.0rem;
+            margin  : 0 0 0 0;
+            padding : 0 0 0 2.0rem;
 
-            border        : 0.2rem solid var( --green-23-9 );
-            border-radius : 0.6rem;
+            border-left : 4px solid var( --green-23-9 ); // accent bar in your brand green
 
         } // end of container > div1 > p4
 

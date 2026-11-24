@@ -438,12 +438,12 @@ export default function DeckRepairIncludesComponent() {
                                 } // end of if ( browserWidth > 1728 )
 
                                 // ==============================
-                                // browserWidth > 768 && browserWidth <= 1728
+                                // browserWidth > 1280 && browserWidth <= 1728
                                 // ==============================
 
                                 if ( 
                                     wrapperRef.current &&
-                                    ( browserWidth > 768 && browserWidth <= 1728 )
+                                    ( browserWidth > 1280 && browserWidth <= 1728 )
                                 ) {
 
                                     // ==============================
@@ -456,7 +456,7 @@ export default function DeckRepairIncludesComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
+                                                transform : "translateX( -12.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
@@ -487,7 +487,7 @@ export default function DeckRepairIncludesComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
+                                                transform : "translateX( -12.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
@@ -518,7 +518,7 @@ export default function DeckRepairIncludesComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
+                                                transform : "translateX( -12.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
@@ -549,7 +549,7 @@ export default function DeckRepairIncludesComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
+                                                transform : "translateX( -12.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
@@ -580,7 +580,7 @@ export default function DeckRepairIncludesComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
+                                                transform : "translateX( -12.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
@@ -611,7 +611,7 @@ export default function DeckRepairIncludesComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
+                                                transform : "translateX( -12.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
@@ -642,7 +642,7 @@ export default function DeckRepairIncludesComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -20.0rem )"
+                                                transform : "translateX( -12.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
@@ -663,7 +663,235 @@ export default function DeckRepairIncludesComponent() {
 
                                     ); // end of badge5Ref.current.animate()
     
-                                } // end of if ( browserWidth > 768 && browserWidth <= 1728 )
+                                } // end of if ( browserWidth > 1280 && browserWidth <= 1728 )
+
+                                // ==============================
+                                // browserWidth > 768 && browserWidth <= 1280
+                                // ==============================
+
+                                if ( 
+                                    wrapperRef.current &&
+                                    ( browserWidth > 768 && browserWidth <= 1280 )
+                                ) {
+
+                                    // ==============================
+                                    // h2 div
+                                    // ==============================
+
+                                    h2Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateY( 6.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateY( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 0,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
+                                    ); // end of h2Ref.current.animate()
+
+                                    // ==============================
+                                    // p2
+                                    // ==============================
+
+                                    p2Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateY( 6.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateY( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 150,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
+                                    ); // end of p2Ref.current.animate()
+
+                                    // ==============================
+                                    // badge 1
+                                    // ==============================
+
+                                    badge1Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateY( 6.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateY( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 300,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
+                                    ); // end of badge1Ref.current.animate()
+
+                                    // ==============================
+                                    // badge 2
+                                    // ==============================
+
+                                    badge2Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateY( 6.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateY( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 450,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
+                                    ); // end of badge2Ref.current.animate()
+
+                                    // ==============================
+                                    // badge 3
+                                    // ==============================
+
+                                    badge3Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateY( 6.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateY( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 600,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
+                                    ); // end of badge3Ref.current.animate()
+
+                                    // ==============================
+                                    // badge 4
+                                    // ==============================
+
+                                    badge4Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateY( 6.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateY( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 750,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
+                                    ); // end of badge4Ref.current.animate()
+
+                                    // ==============================
+                                    // badge 5
+                                    // ==============================
+
+                                    badge5Ref.current.animate(
+
+                                        [
+
+                                            {
+                                                opacity   : 0,
+                                                transform : "translateY( 6.0rem )"
+                                            }, 
+                                            {
+                                                opacity   : 1,
+                                                transform : "translateY( 0 )"
+                                            }
+
+                                        ],
+                                        {
+
+                                            duration   : 400,
+                                            easing     : "ease-out",
+                                            delay      : 900,
+                                            iterations : 1, // this is the default but leave for reference purposes
+                                            fill       : "forwards" // this lets the " element retain the style values
+                                            // from the last keyframe when the animation ends "
+                        
+                                        }
+
+                                    ); // end of badge5Ref.current.animate()
+
+                                } // end of if ( browserWidth > 768 && browserWidth <= 1280 )
 
                                 // ==============================
                                 // browserWidth <= 768
@@ -727,7 +955,7 @@ export default function DeckRepairIncludesComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 0,
+                                            delay      : 150,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -758,7 +986,7 @@ export default function DeckRepairIncludesComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 0,
+                                            delay      : 300,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -789,7 +1017,7 @@ export default function DeckRepairIncludesComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 400,
+                                            delay      : 450,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -820,7 +1048,7 @@ export default function DeckRepairIncludesComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 800,
+                                            delay      : 600,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -851,7 +1079,7 @@ export default function DeckRepairIncludesComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 1200,
+                                            delay      : 750,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -882,7 +1110,7 @@ export default function DeckRepairIncludesComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 1600,
+                                            delay      : 900,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -898,51 +1126,6 @@ export default function DeckRepairIncludesComponent() {
                                 // ==============================
 
                             } // end of if ( entry.boundingClientRect.top > 0 ) {}
-
-                            // ==============================
-                            // TEST 2
-                            // ==============================
-
-                            // ==============================
-                            // entry.boundingClientRect.top <= 0 if statement
-                            // ==============================
-
-                            // remember, since we have " position : sticky " we will either get a positive
-                            // number ( user scrolling down ) or 0 ( user scrolling up or on top of the
-                            // section )
-                            if ( entry.boundingClientRect.top <= 0 ) {
-
-                                // Element entered from the bottom or when the user is scrolling
-                                // up
-                                // console.log( 'Element entered from the top' );
-
-                                // if the user is scrolling up, just show the elements without any animation
-                                h2Ref.current.style.opacity                      = 1;
-                                h2Ref.current.style.transform                    = 'translateX( 0 )';
-                                h2Ref.current.style.transitionDuration           = '400ms';
-                                h2Ref.current.style.transitionTimingFunction     = 'ease-out';
-                                badge1Ref.current.style.opacity                  = 1;
-                                badge1Ref.current.style.transform                = 'translateX( 0 )';
-                                badge1Ref.current.style.transitionDuration       = '400ms';
-                                badge1Ref.current.style.transitionTimingFunction = 'ease-out';
-                                badge2Ref.current.style.opacity                  = 1;
-                                badge2Ref.current.style.transform                = 'translateX( 0 )';
-                                badge2Ref.current.style.transitionDuration       = '400ms';
-                                badge2Ref.current.style.transitionTimingFunction = 'ease-out';
-                                badge3Ref.current.style.opacity                  = 1;
-                                badge3Ref.current.style.transform                = 'translateX( 0 )';
-                                badge3Ref.current.style.transitionDuration       = '400ms';
-                                badge3Ref.current.style.transitionTimingFunction = 'ease-out';
-                                badge4Ref.current.style.opacity                  = 1;
-                                badge4Ref.current.style.transform                = 'translateX( 0 )';
-                                badge4Ref.current.style.transitionDuration       = '400ms';
-                                badge4Ref.current.style.transitionTimingFunction = 'ease-out';
-                                badge5Ref.current.style.opacity                  = 1;
-                                badge5Ref.current.style.transform                = 'translateX( 0 )';
-                                badge5Ref.current.style.transitionDuration       = '400ms';
-                                badge5Ref.current.style.transitionTimingFunction = 'ease-out';
-
-                            } // end of if ( entry.boundingClientRect.top <= 0 ) {}
 
                             // once the observation happens then we want to unobserve the DOM
                             // element

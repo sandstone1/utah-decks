@@ -201,12 +201,12 @@ export default function DeckRepairSignsComponent() {
                             // ==============================
 
                             // ==============================
-                            // browserWidth > 768
+                            // browserWidth > 1280
                             // ==============================
 
                             if ( 
                                 wrapperRef.current &&
-                                ( browserWidth > 768 )
+                                ( browserWidth > 1280 )
                             ) {
 
                                 // ==============================
@@ -219,7 +219,7 @@ export default function DeckRepairSignsComponent() {
 
                                         {
                                             opacity   : 0,
-                                            transform : "translateY( 4.0rem )"
+                                            transform : "translateY( 6.0rem )"
                                         }, 
                                         {
                                             opacity   : 1,
@@ -250,7 +250,7 @@ export default function DeckRepairSignsComponent() {
 
                                         {
                                             opacity   : 0,
-                                            transform : "translateY( 4.0rem )"
+                                            transform : "translateY( 6.0rem )"
                                         }, 
                                         {
                                             opacity   : 1,
@@ -262,7 +262,7 @@ export default function DeckRepairSignsComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 150,
+                                        delay      : 100,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -281,7 +281,7 @@ export default function DeckRepairSignsComponent() {
 
                                         {
                                             opacity   : 0,
-                                            transform : "translateY( 4.0rem )"
+                                            transform : "translateY( 6.0rem )"
                                         }, 
                                         {
                                             opacity   : 1,
@@ -293,7 +293,7 @@ export default function DeckRepairSignsComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 300,
+                                        delay      : 200,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -312,7 +312,7 @@ export default function DeckRepairSignsComponent() {
 
                                         {
                                             opacity   : 0,
-                                            transform : "translateY( 4.0rem )"
+                                            transform : "translateY( 6.0rem )"
                                         }, 
                                         {
                                             opacity   : 1,
@@ -324,7 +324,7 @@ export default function DeckRepairSignsComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 450,
+                                        delay      : 300,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -343,7 +343,7 @@ export default function DeckRepairSignsComponent() {
 
                                         {
                                             opacity   : 0,
-                                            transform : "translateY( 4.0rem )"
+                                            transform : "translateY( 6.0rem )"
                                         }, 
                                         {
                                             opacity   : 1,
@@ -355,7 +355,7 @@ export default function DeckRepairSignsComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 600,
+                                        delay      : 400,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -374,7 +374,7 @@ export default function DeckRepairSignsComponent() {
 
                                         {
                                             opacity   : 0,
-                                            transform : "translateY( 4.0rem )"
+                                            transform : "translateY( 6.0rem )"
                                         }, 
                                         {
                                             opacity   : 1,
@@ -386,7 +386,7 @@ export default function DeckRepairSignsComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 750,
+                                        delay      : 500,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -395,7 +395,204 @@ export default function DeckRepairSignsComponent() {
 
                                 ); // end of img6Ref.current.animate()
 
-                            } // end of if ( browserWidth > 768 )
+                            } // end of if ( browserWidth > 1280 )
+
+                            // ==============================
+                            // browserWidth > 768 && browserWidth <= 1280
+                            // ==============================
+
+                            if ( 
+                                wrapperRef.current &&
+                                ( browserWidth > 768 && browserWidth <= 1280 )
+                            ) {
+
+                                // ==============================
+                                // h2 div
+                                // ==============================
+
+                                h2Ref.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateY( 6.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateY( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 0,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of h2Ref.current.animate()
+
+                                // ==============================
+                                // p2
+                                // ==============================
+
+                                p2Ref.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateY( 6.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateY( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 100,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of p2Ref.current.animate()
+
+                                // ==============================
+                                // p3
+                                // ==============================
+
+                                p3Ref.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateY( 6.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateY( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 200,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of p3Ref.current.animate()
+
+                                // ==============================
+                                // div4 
+                                // ==============================
+
+                                div4Ref.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateY( 6.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateY( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 300,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of div4Ref.current.animate()
+
+                                // ==============================
+                                // p5
+                                // ==============================
+
+                                p5Ref.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateY( 6.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateY( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 400,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of p5Ref.current.animate()
+
+                                // ==============================
+                                // div6
+                                // ==============================
+
+                                img6Ref.current.animate(
+
+                                    [
+
+                                        {
+                                            opacity   : 0,
+                                            transform : "translateY( 6.0rem )"
+                                        }, 
+                                        {
+                                            opacity   : 1,
+                                            transform : "translateY( 0 )"
+                                        }
+
+                                    ],
+                                    {
+
+                                        duration   : 400,
+                                        easing     : "ease-out",
+                                        delay      : 500,
+                                        iterations : 1, // this is the default but leave for reference purposes
+                                        fill       : "forwards" // this lets the " element retain the style values
+                                        // from the last keyframe when the animation ends "
+                    
+                                    }
+
+                                ); // end of img6Ref.current.animate()
+
+                            } // end of if ( browserWidth > 768 && browserWidth <= 1280 )
 
                             // ==============================
                             // browserWidth <= 768
@@ -459,7 +656,7 @@ export default function DeckRepairSignsComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 0,
+                                        delay      : 100,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -490,7 +687,7 @@ export default function DeckRepairSignsComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 0,
+                                        delay      : 200,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -521,7 +718,7 @@ export default function DeckRepairSignsComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 0,
+                                        delay      : 300,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -552,7 +749,7 @@ export default function DeckRepairSignsComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 0,
+                                        delay      : 400,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -583,7 +780,7 @@ export default function DeckRepairSignsComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 0,
+                                        delay      : 500,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "

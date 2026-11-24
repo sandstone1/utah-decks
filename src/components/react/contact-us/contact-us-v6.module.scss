@@ -317,28 +317,57 @@
             align-content         : center;
             justify-items         : center;
             gap                   : 12.0rem 12.0rem;
-            grid-template-areas   : "div2-3 div2-1"
-                                    "div2-4 div2-2";
+            grid-template-areas   : "div1 div2"
+                                    "div4 div3";
 
             @media all and ( max-width : $bp-1280 ) {
 
                 // children
                 grid-template-columns : 1fr;
                 gap                   : 12.0rem 0;
-                grid-template-areas   : "div2-3"
-                                        "div2-1"
-                                        "div2-2";
+                grid-template-areas   : "div1"
+                                        "div2"
+                                        "div3";
 
             } // end of container > div1 > div2 > bp-1280
 
             // ==============================
-            // container > div 1 > div 2 > div 1 ( blue box )
+            // container > div 1 > div 2 > div 1 ( contact information )
             // ==============================
 
             > div:nth-child( 1 ) {
 
                 // parent
-                grid-area : div2-1;
+                grid-area : div1;
+
+                display         : grid; // needed in order to override the default display : block
+                // for the child component container
+                //align-self      : start;
+                justify-content : left;
+
+                width   : min( 80.4rem, 100% ); // browser will select the smaller of 80.0rem or 100%
+                padding : 4.0rem;
+    
+                border-radius : 4.0rem;
+
+                //background-color : var( --yellow-55 );
+                background-color : var( --green-06 );
+                //background-color : var( --green-08 );
+                // background-color : var( --yellow-120 );
+                // background-color : var( --yellow-110 ); // second best
+
+                opacity : 0; // needed for the animation
+
+            } // end of container > div1 > div2 > div1
+
+            // ==============================
+            // container > div 1 > div 2 > div 2 ( email us )
+            // ==============================
+
+            > div:nth-child( 2 ) {
+
+                // parent
+                grid-area : div2;
 
                 display               : grid;
                 grid-template-rows    : repeat( 4, auto );
@@ -385,7 +414,7 @@
                     margin  : 0;
                     padding : 0;
 
-                } // end of container > div1 > div2 > div1 > h3
+                } // end of container > div1 > div2 > div2 > h3
 
                 > p {
 
@@ -402,12 +431,12 @@
 
                         padding : 0;
 
-                    } // end of container > div1 > div2 > div1 > picture3 > img > bp-1280
+                    } // end of container > div1 > div2 > div2 > picture3 > img > bp-1280
 
-                } // end of container > div1 > div2 > div1 > p
+                } // end of container > div1 > div2 > div2 > p
         
                 // ==============================
-                // container > div 1 > div 2 > picture ( postcards )
+                // container > div 1 > div 2 > div 2 > picture ( postcards )
                 // ==============================
 
                 > picture:nth-child( 3 ) {
@@ -423,7 +452,7 @@
 
                         padding : 0;
 
-                    } // end of container > div1 > div2 > div1 > picture3 > img > bp-1280
+                    } // end of container > div1 > div2 > div2 > picture3 > img > bp-1280
 
                     > img {
     
@@ -455,17 +484,17 @@
 
                             height : 20.0rem; // maintain the width and height and screen size shrinks
 
-                        } // end of container > div1 > div2 > div1 > picture3 > img > bp-480
+                        } // end of container > div1 > div2 > div2 > picture3 > img > bp-480
         
                         @media all and ( max-width : $bp-375 ) {
 
                             height : 12.5rem; // maintain the width and height and screen size shrinks
                 
-                        } // end of container > div1 > div2 > div1 > picture3 > img > bp-375
+                        } // end of container > div1 > div2 > div2 > picture3 > img > bp-375
 
-                    } // end of container > div1 > div3 > picture3 > img
+                    } // end of container > div1 > div2 > div2 > picture3 > img
         
-                } // end of container > div1 > div3 > picture3
+                } // end of container > div1 > div2 > div2 > picture3
 
                 > picture:nth-child( 4 ) {
 
@@ -514,43 +543,43 @@
                             width  : 12.0rem;
                             height : 12.0rem;
 
-                        } // end of container > div1 > div2 > div1 > picture4 > img > bp-768
+                        } // end of container > div1 > div2 > div2 > picture4 > img > bp-768
 
                         @media all and ( max-width : $bp-620 ) {
 
                             width  : 11.0rem;
                             height : 11.0rem;
 
-                        } // end of container > div1 > div2 > div1 > picture4 > img > bp-620
+                        } // end of container > div1 > div2 > div2 > picture4 > img > bp-620
 
                         @media all and ( max-width : $bp-480 ) {
 
                             width  : 9.5rem;
                             height : 9.5rem;
 
-                        } // end of container > div1 > div2 > div1 > picture4 > img > bp-480
+                        } // end of container > div1 > div2 > div2 > picture4 > img > bp-480
         
                         @media all and ( max-width : $bp-375 ) {
 
                             width  : 7.0rem;
                             height : 7.0rem;
                 
-                        } // end of container > div1 > div2 > div1 > picture4 > img > bp-375
+                        } // end of container > div1 > div2 > div2 > picture4 > img > bp-375
         
-                    } // end of container > div1 > div2 > div1 > picture4 > img
+                    } // end of container > div1 > div2 > div2 > picture4 > img
 
-                } // end of container > div1 > div2 > div1 > picture4
+                } // end of container > div1 > div2 > div2 > picture4
 
-            } // end of container > div1 > div2 > div1
+            } // end of container > div1 > div2 > div2
 
             // ==============================
-            // container > div 1 > div 2 > div 2 ( contact form )
+            // container > div 1 > div 2 > div 3 ( contact us form )
             // ==============================
 
-            > div:nth-child( 2 ) {
+            > div:nth-child( 3 ) {
 
                 // parent
-                grid-area : div2-2;
+                grid-area : div3;
 
                 display       : grid; // needed in order to override the default display : block
                 // for the child component container
@@ -565,7 +594,7 @@
 
                         padding : 0;
             
-                    } // end of container > div1 > div2 > div2 > bp-1280
+                    } // end of container > div1 > div2 > div3 > bp-1280
         
                     > h2 {
 
@@ -573,46 +602,17 @@
 
                             text-align : left
                 
-                        } // end of container > div1 > div2 > div2 > h2 > bp-480
+                        } // end of container > div1 > div2 > div3 > h2 > bp-480
 
-                    } // end of container > div1 > div2 > div2 > h2
+                    } // end of container > div1 > div2 > div3 > h2
 
                     form > div > input, textarea {
 
                         background : var( --yellow-20 );
         
-                    } // end of container > div1 > div2 > div2 > form > div > input, textarea
+                    } // end of container > div1 > div2 > div3 > form > div > input, textarea
 
-                } // end of container > div1 > div2 > div2
-
-            } // end of container > div1 > div2 > div2
-
-            // ==============================
-            // container > div 1 > div 2 > div 3 ( contact information )
-            // ==============================
-
-            > div:nth-child( 3 ) {
-
-                // parent
-                grid-area : div2-3;
-
-                display         : grid; // needed in order to override the default display : block
-                // for the child component container
-                //align-self      : start;
-                justify-content : left;
-
-                width   : min( 80.4rem, 100% ); // browser will select the smaller of 80.0rem or 100%
-                padding : 4.0rem;
-    
-                border-radius : 4.0rem;
-
-                //background-color : var( --yellow-55 );
-                background-color : var( --green-06 );
-                //background-color : var( --green-08 );
-                // background-color : var( --yellow-120 );
-                // background-color : var( --yellow-110 ); // second best
-
-                opacity : 0; // needed for the animation
+                } // end of container > div1 > div2 > div3
 
             } // end of container > div1 > div2 > div3
 
@@ -623,7 +623,7 @@
             > div:nth-child( 4 ) {
 
                 // parent
-                grid-area : div2-4;
+                grid-area : div4;
     
                 align-self : center;
 
