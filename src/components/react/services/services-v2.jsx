@@ -458,7 +458,7 @@ export default function ServicesComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -12.0rem )"
+                                                transform : "translateX( -20.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
@@ -489,7 +489,7 @@ export default function ServicesComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -12.0rem )"
+                                                transform : "translateX( -20.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
@@ -520,7 +520,7 @@ export default function ServicesComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -12.0rem )"
+                                                transform : "translateX( -20.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
@@ -551,7 +551,7 @@ export default function ServicesComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -12.0rem )"
+                                                transform : "translateX( -20.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
@@ -582,7 +582,7 @@ export default function ServicesComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -12.0rem )"
+                                                transform : "translateX( -20.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
@@ -613,7 +613,7 @@ export default function ServicesComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -12.0rem )"
+                                                transform : "translateX( -20.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
@@ -644,7 +644,7 @@ export default function ServicesComponent() {
 
                                             {
                                                 opacity   : 0,
-                                                transform : "translateX( -12.0rem )"
+                                                transform : "translateX( -20.0rem )"
                                             }, 
                                             {
                                                 opacity   : 1,
