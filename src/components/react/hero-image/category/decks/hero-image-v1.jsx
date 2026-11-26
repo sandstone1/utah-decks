@@ -512,12 +512,12 @@ export default function HeroImageComponent() {
                                 and pergolas</span> across Northern Utah
                             */
                         }
-                        <h1 className="first-hero-h1">Deck Services in Midvale, UT</h1>
+                        <h1 className="first-hero-h1">Deck Builder in Midvale, UT</h1>
 
                         <h5 className="first-hero-h5">
-                            Custom Trex & TimberTech decks, repairs, replacements, and railings,{' '}
-                            <span style={{ color: 'var( --green-23-9 )' }}>backed by 7+ years</span>{' '}
-                            of building decks across Northern Utah
+                            Custom Trex and TimberTech decks, built by a licensed and insured
+                            Northern Utah <span style={{ color: 'var( --green-23-9 )' }}>deck builder with 7+ years</span>{' '}
+                            of experience.
                         </h5>
 
                     </div>

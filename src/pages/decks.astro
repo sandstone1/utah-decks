@@ -8,8 +8,10 @@
 import Layout from '../layouts/main-layout.astro';
 // import in the Hero component
 import HeroComponent from '../components/react/hero-image/category/decks/hero-image-v1';
+// import in the Deck Services Intro component
+import DeckServicesIntroComponent from '../components/react/services/deck-services-intro-v1';
 // import in the Deck Services component
-import DeckServicesComponent from '../components/react/services/deck-services-v1';
+import DeckServicesComponent from '../components/react/services/deck-services-v2';
 // import in the Contact Us component
 import WhyChooseUsComponent from '../components/react/why-choose-us/why-choose-us-v4';
 // import in the By The Numbers component
@@ -78,7 +80,7 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
     <meta slot="head" name="keywords" content='deck services Midvale UT, custom Trex deck builder Utah, TimberTech deck builder Utah, deck repair Salt Lake County, deck replacement Utah, deck railing installation Utah, deck stairs builder, composite deck builder Northern Utah, Utah Decks' />
     <meta slot="head" name="description" content='Deck services in Midvale and Northern Utah: custom Trex & TimberTech decks, deck repair, deck replacement, and railings & stairs. Licensed, insured, free estimates.' />
     <meta slot="head" property="og:image" content='https://utahdecks.net/images/mj_deck_replacement_05_1200.jpg' />
-    <meta slot="head" property="og:title" content='Deck Services in Midvale, UT | Utah Decks & Pergolas' />
+    <meta slot="head" property="og:title" content='Deck Builder in Midvale, UT | Utah Decks & Pergolas' />
     <meta slot="head" property="og:description" content='Custom Trex & TimberTech decks, deck repair, replacement, and railings & stairs across Northern Utah. Free estimates.' />
     <meta slot="head" property="og:site_name" content='Utah Decks & Pergolas' />
     <meta slot="head" property="og:url" content='https://utahdecks.net/decks' />
@@ -152,7 +154,16 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
         {
             /*
                 // ==============================
-                // container > div 2 ( deck services )
+                // container > div 2 ( deck services intro )
+                // ==============================
+            */
+        }
+        <DeckServicesIntroComponent client:visible / >
+
+        {
+            /*
+                // ==============================
+                // container > div 3 ( deck services )
                 // ==============================
             */
         }
@@ -161,7 +172,7 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
         {
             /*
                 // ==============================
-                // container > div 3 ( why choose us )
+                // container > div 4 ( why choose us )
                 // ==============================
             */
         }
@@ -170,7 +181,7 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
         {
             /*
                 // ==============================
-                // container > div 4 ( by the number )
+                // container > div 5 ( by the number )
                 // ==============================
             */
         }
@@ -179,7 +190,7 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
         {
             /*
                 // ==============================
-                // container > div 5 ( reviews )
+                // container > div 6 ( reviews )
                 // ==============================
             */
         }
@@ -188,7 +199,7 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
         {
             /*
                 // ==============================
-                // container > div 6 ( owners story )
+                // container > div 7 ( owners story )
                 // ==============================
             */
         }
@@ -197,7 +208,7 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
         {
             /*
                 // ==============================
-                // container > div 7 ( areas we serve )
+                // container > div 8 ( areas we serve )
                 // ==============================
             */
         }
@@ -206,7 +217,7 @@ const srcset = `${ img480 } 480w, ${ img1032 } 1032w, ${ img1376 } 1376w, ${ img
         {
             /*
                 // ==============================
-                // container > div 8 ( ready to transform )
+                // container > div 9 ( ready to transform )
                 // ==============================
             */
         }

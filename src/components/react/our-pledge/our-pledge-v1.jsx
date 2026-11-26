@@ -602,7 +602,7 @@ export default function OurPledgeComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 150,
+                                            delay      : 100,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -633,7 +633,7 @@ export default function OurPledgeComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 300,
+                                            delay      : 200,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -664,7 +664,7 @@ export default function OurPledgeComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 450,
+                                            delay      : 300,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -695,7 +695,7 @@ export default function OurPledgeComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 600,
+                                            delay      : 400,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -768,7 +768,7 @@ export default function OurPledgeComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 150,
+                                            delay      : 100,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -799,7 +799,7 @@ export default function OurPledgeComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 300,
+                                            delay      : 200,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -830,7 +830,7 @@ export default function OurPledgeComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 450,
+                                            delay      : 300,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "
@@ -861,7 +861,7 @@ export default function OurPledgeComponent() {
 
                                             duration   : 400,
                                             easing     : "ease-out",
-                                            delay      : 600,
+                                            delay      : 400,
                                             iterations : 1, // this is the default but leave for reference purposes
                                             fill       : "forwards" // this lets the " element retain the style values
                                             // from the last keyframe when the animation ends "

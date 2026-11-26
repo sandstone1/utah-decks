@@ -415,7 +415,7 @@ export default function BestTimeOfTheYearToRepairComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 500,
+                                        delay      : 600,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -582,7 +582,7 @@ export default function BestTimeOfTheYearToRepairComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 200,
+                                        delay      : 400,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -613,7 +613,7 @@ export default function BestTimeOfTheYearToRepairComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 300,
+                                        delay      : 500,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -644,7 +644,7 @@ export default function BestTimeOfTheYearToRepairComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 300,
+                                        delay      : 600,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -717,7 +717,7 @@ export default function BestTimeOfTheYearToRepairComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 150,
+                                        delay      : 100,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -748,7 +748,7 @@ export default function BestTimeOfTheYearToRepairComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 300,
+                                        delay      : 200,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -779,7 +779,7 @@ export default function BestTimeOfTheYearToRepairComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 450,
+                                        delay      : 300,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -810,7 +810,7 @@ export default function BestTimeOfTheYearToRepairComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 600,
+                                        delay      : 400,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -841,7 +841,7 @@ export default function BestTimeOfTheYearToRepairComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 750,
+                                        delay      : 500,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -872,7 +872,7 @@ export default function BestTimeOfTheYearToRepairComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 900,
+                                        delay      : 600,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -945,7 +945,7 @@ export default function BestTimeOfTheYearToRepairComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 150,
+                                        delay      : 100,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -976,7 +976,7 @@ export default function BestTimeOfTheYearToRepairComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 300,
+                                        delay      : 200,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -1007,7 +1007,7 @@ export default function BestTimeOfTheYearToRepairComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 450,
+                                        delay      : 300,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -1038,7 +1038,7 @@ export default function BestTimeOfTheYearToRepairComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 600,
+                                        delay      : 400,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -1069,7 +1069,7 @@ export default function BestTimeOfTheYearToRepairComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 750,
+                                        delay      : 500,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
@@ -1100,7 +1100,7 @@ export default function BestTimeOfTheYearToRepairComponent() {
 
                                         duration   : 400,
                                         easing     : "ease-out",
-                                        delay      : 900,
+                                        delay      : 600,
                                         iterations : 1, // this is the default but leave for reference purposes
                                         fill       : "forwards" // this lets the " element retain the style values
                                         // from the last keyframe when the animation ends "
