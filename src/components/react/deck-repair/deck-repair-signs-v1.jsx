@@ -7,6 +7,20 @@ import { useEffect, useRef } from 'react';
 import AnimatingGradientBackground from '../animations/animating-gradient/animating-gradient-background-v23';
 // import in the Font Awesome circle check icon
 import { FaRegCircleCheck } from "react-icons/fa6";
+// import in the Font Awesome shield icon
+import { FaShield } from "react-icons/fa6";
+// import in the Bootstrap shield icon
+import { BsShieldFillCheck } from "react-icons/bs";
+// import in the Bootstrap shield icon
+import { BsShield } from "react-icons/bs";
+// import in the Ionicons 5 shield icon
+import { IoShieldCheckmarkSharp } from "react-icons/io5";
+// import in the Ionicons 5 shield sharp icon
+import { IoShieldCheckmark } from "react-icons/io5";
+// import in the Heroicons shield icon
+import { HiShieldCheck } from "react-icons/hi2";
+// import in the Github Octicons icons shield icon
+import { GoShieldCheck } from "react-icons/go";
 // import in the Phosphor number 2 icon
 import { PiNumberCircleTwoFill } from "react-icons/pi";
 // import in our stylesheet
@@ -951,31 +965,31 @@ export default function DeckRepairSignsComponent() {
                     <ul>
 
                         <li>
-                            <FaRegCircleCheck />
+                            <BsShieldFillCheck />
                             Soft, spongy or cracked boards
                         </li>
                         <li>
-                            <FaRegCircleCheck />
+                            <BsShieldFillCheck />
                             Railings that wobble or feel loose
                         </li>
                         <li>
-                            <FaRegCircleCheck />
+                            <BsShieldFillCheck />
                             Popped nails or loose screws
                         </li>
                         <li>
-                            <FaRegCircleCheck />
+                            <BsShieldFillCheck />
                             Dark stains, mold or rot, especially near the house
                         </li>
                         <li>
-                            <FaRegCircleCheck />
+                            <BsShieldFillCheck />
                             Posts that are leaning or sinking
                         </li>
                         <li>
-                            <FaRegCircleCheck />
+                            <BsShieldFillCheck />
                             A deck that bounces or sways when you walk on it
                         </li>
                         <li>
-                            <FaRegCircleCheck />
+                            <BsShieldFillCheck />
                             Water stains on the ceiling below the deck
                         </li>
 

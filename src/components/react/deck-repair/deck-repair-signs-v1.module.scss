@@ -143,7 +143,7 @@
         display               : grid;
         grid-template-rows    : auto;
         grid-template-columns : 80.0rem 80.0rem;
-        grid-gap              : 2.0rem 12.0rem;
+        grid-gap              : 0rem 12.0rem;
         grid-template-areas   : "h2-1 div6"
                                 "p2   div6"
                                 "p3   div6"
@@ -157,7 +157,7 @@
         @media all and ( max-width : $bp-1920 ) {
 
             grid-template-columns : 70.0rem 70.0rem;
-            grid-gap              : 2.0rem 12.0rem;
+            grid-gap              : 3.0rem 12.0rem;
             grid-template-areas   : "h2-1 div6"
                                     "p2   div6"
                                     "p3   div6"
@@ -171,7 +171,7 @@
         @media all and ( max-width : $bp-1728 ) {
 
             grid-template-columns : 60.0rem 60.0rem;
-            grid-gap              : 2.0rem 12.0rem;
+            grid-gap              : 3.0rem 12.0rem;
             grid-template-areas   : "h2-1 div6"
                                     "p2   div6"
                                     "p3   div6"
@@ -185,7 +185,7 @@
         @media all and ( max-width : $bp-1536 ) {
 
             grid-template-columns : 57.0rem 57.0rem;
-            grid-gap              : 2.0rem 12.0rem;
+            grid-gap              : 3.0rem 12.0rem;
             grid-template-areas   : "h2-1 div6"
                                     "p2   div6"
                                     "p3   div6"
@@ -199,7 +199,7 @@
         @media all and ( max-width : $bp-1440 ) {
 
             grid-template-columns : 54.0rem 54.0rem;
-            grid-gap              : 2.0rem 12.0rem;
+            grid-gap              : 3.0rem 12.0rem;
             grid-template-areas   : "h2-1 div6"
                                     "p2   div6"
                                     "p3   div6"
@@ -213,7 +213,7 @@
         @media all and ( max-width : $bp-1376 ) {
 
             grid-template-columns : 52.5rem 52.5rem;
-            grid-gap              : 2.0rem 12.0rem;
+            grid-gap              : 3.0rem 12.0rem;
             grid-template-areas   : "h2-1 div6"
                                     "p2   div6"
                                     "p3   div6"
@@ -227,7 +227,7 @@
         @media all and ( max-width : 1340px ) {
 
             grid-template-columns : 50.0rem 50.0rem;
-            grid-gap              : 2.0rem 12.0rem;
+            grid-gap              : 3.0rem 12.0rem;
             grid-template-areas   : "h2-1 div6"
                                     "p2   div6"
                                     "p3   div6"
@@ -241,7 +241,7 @@
         @media all and ( max-width : $bp-1280 ) {
 
             grid-template-columns : 1fr;
-            grid-gap              : 2.0rem 0;
+            grid-gap              : 3.0rem 0;
             grid-template-areas   : "h2-1"
                                     "p2"
                                     "p3"
@@ -306,15 +306,18 @@
             opacity : 0; // needed for the opacity and slide up animation
 
             > ul {
-
-                padding : 0 0 0 0;
+    
+                padding : 0 0 0 0; // for svg
+                // padding : 0 0 0 1.6rem; // for bullets
+    
+                // list-style-type : disc; // override the global stylesheet in this case
 
                 > li {
 
                     @include text-base-light;
 
-                    display : flex;
-                    align-items: center;
+                    display     : flex; // for svg
+                    align-items : center; // for svg
 
                     padding : 0 0 1.6rem 0;
 
@@ -324,10 +327,10 @@
 
                         padding : 0 1.6rem 0 0;
 
-                        font-size : 3.8rem;
+                        font-size : 3.6rem;
                         color     : var( --green-23-9 );
 
-                    }
+                    } // end of container > div1 > div4 > ul > li > svg
 
                 } // end of container > div1 > div4 > ul > li
 
@@ -336,7 +339,17 @@
                     padding : 0 0 0 0;
 
                 } // end of container > div1 > div4 > ul > li:last-child
+/*
+                // add a styling to the bullets
+                li::marker {
 
+                    // content : "✓";
+
+                    font-size : 2.4rem;
+                    color     : var( --green-23-9 );
+
+                } // end of container > div1 > div4 > ul > li::marker
+*/
             } // end of container > div1 > div4 > ul
 
         } // end of container > div1 > div4

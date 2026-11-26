@@ -1384,7 +1384,7 @@ export default function WhyChooseUsComponent() {
                                 loading="lazy"
                                 // fetchpriority={ "high" } // needed in case someone scrolls down the
                                 // page super fast
-                                alt="Image of stem cells moving"
+                                alt="Image of a deck in morning sun"
                             />
                         </picture>
 
@@ -1452,7 +1452,7 @@ export default function WhyChooseUsComponent() {
                                 loading="lazy"
                                 // fetchpriority={ "high" } // needed in case someone scrolls down the
                                 // page super fast
-                                alt="Image of a rocket launching out of a laptop"
+                                alt="Image of a trust badge"
                             />
                         </picture>
 
@@ -1506,7 +1506,7 @@ export default function WhyChooseUsComponent() {
                                 loading="lazy"
                                 // fetchpriority={ "high" } // needed in case someone scrolls down the
                                 // page super fast
-                                alt="Image of a rocket launching out of a laptop"
+                                alt="Image of a permit being approved"
                             />
                         </picture>
 
@@ -1560,7 +1560,7 @@ export default function WhyChooseUsComponent() {
                                 loading="lazy"
                                 // fetchpriority={ "high" } // needed in case someone scrolls down the
                                 // page super fast
-                                alt="Image of a rocket launching out of a laptop"
+                                alt="Image of a hammer and bubble level"
                             />
                         </picture>
 
@@ -1613,7 +1613,7 @@ export default function WhyChooseUsComponent() {
                                 loading="lazy"
                                 // fetchpriority={ "high" } // needed in case someone scrolls down the
                                 // page super fast
-                                alt="Image of a woman getting ready for a Botox treatment"
+                                alt="Image of a high quality deck"
                             />
                         </picture>
 
@@ -1667,7 +1667,7 @@ export default function WhyChooseUsComponent() {
                                 loading="lazy"
                                 // fetchpriority={ "high" } // needed in case someone scrolls down the
                                 // page super fast
-                                alt="Image of a rocket launching out of a laptop"
+                                alt="Image of a woman holding a completed estimate"
                             />
                         </picture>
 
@@ -1720,7 +1720,7 @@ export default function WhyChooseUsComponent() {
                                 loading="lazy"
                                 // fetchpriority={ "high" } // needed in case someone scrolls down the
                                 // page super fast
-                                alt="Image of a rocket launching out of a laptop"
+                                alt="Image of a hard hat on top of plans"
                             />
                         </picture>
 

@@ -6,9 +6,7 @@ import { useEffect, useRef } from 'react';
 // import in the navigate component
 import { navigate } from 'astro:transitions/client';
 // import in Animating Gradient Blur Component
-import AnimatingGradientBackground from '../animations/animating-gradient/animating-gradient-background-v21';
-// import in the Font Awesome calendar check icon
-import { FaRegCalendarCheck } from "react-icons/fa6";
+import AnimatingGradientBackground from '../animations/animating-gradient/animating-gradient-background-v25';
 // import in our stylesheet
 import styles from './deck-repair-includes-v1.module.scss';
 
@@ -105,7 +103,7 @@ export default function DeckRepairIncludesComponent() {
             threshold : 0.0, // this value can be between 0 and 1 and 0 is the default and
             // 0 means that as soon as any little piece enters the defined viewport the
             // intersection observer will fire
-            rootMargin : '0px 0px -650px 0px' // this works like margin in css and this
+            rootMargin : '0px 0px -150px 0px' // this works like margin in css and this
             // can help us control when the intersection observer fires
 
             // remember, it's the bottom rootMargin that controls when the element
@@ -1172,29 +1170,6 @@ export default function DeckRepairIncludesComponent() {
             <div
                 ref={ wrapperRef }
             >
-
-                <div>
-
-                    <h6>
-                        Small deck problems rarely stay small.
-                    </h6>
-
-                    <p>
-                        Left alone, they turn into rot,
-                        mold and structural damage that cost far more to fix later. Utah Decks & Pergolas
-                        repairs decks in Midvale and across the Wasatch Front, including Salt Lake City,
-                        Park City, Draper, Sandy, Saratoga Springs, South Jordan, Centerville and
-                        Farmington.        
-                    </p>
-
-                    <p>
-                        We find what&apos;s actually causing the damage, fix it properly,
-                        and leave you with a deck that&apos;s solid, safe and ready to use. Every
-                        repair starts with a free inspection, so you&apos;ll know exactly
-                        what&apos;s wrong before any work begins.                    
-                    </p>
-
-                </div>
                 
                 <h2
                     ref={ h2Ref }
