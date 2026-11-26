@@ -93,7 +93,10 @@
     // wrapper div
     // ==============================
 
-    justify-items         : center;
+    align-items          : center;
+    justify-items        : center;
+
+    height  : 100.0rem; // visual preference
 
     // ==============================
     // set the top margin
@@ -132,6 +135,100 @@
 
     // ==============================
     // end of background
+    // ==============================
+
+    // ==============================
+    // background color
+    // ==============================
+
+    // this the best color that match the first video and will use this as my background
+    // color and hopefully save a network request by eliminating 
+    // background-image : url( /images/lama_bg_01.webp );
+    // background-color : rgba( 17, 11, 84, 1 );
+
+    background-size       : cover;
+    background-blend-mode : multiply;
+    // background-color      : var( --blue-85-2 );
+    // background-color      : rgba( 13, 58, 216, 0.80 );
+
+    // ==============================
+    // end of background color
+    // ==============================
+
+    // ==============================
+    // fallback jpeg image
+    // ==============================
+
+    background-image : url( /images/mj_utah_background_02_v5_2560.jpg );
+
+    @media all and ( max-width : $bp-1728 ) {
+    
+        background-image : url( /images/mj_utah_background_02_v5_1728.jpg );
+
+    } // end of bp-1728
+
+    @media all and ( max-width : $bp-1376 ) {
+        
+        background-image : url( /images/mj_utah_background_02_v5_1376.jpg );
+
+    } // end of bp-1376
+
+    @media all and ( max-width : $bp-1032 ) {
+    
+        background-image : url( /images/mj_utah_background_02_v5_1032.jpg );
+
+    } // end of bp-1032
+
+    @media all and ( max-width : $bp-480 ) {
+
+        // this is an cropped image
+        background-image    : url( /images/mj_utah_background_02_v5_480_v2.jpg );
+
+    } // end of bp-480
+
+    // ==============================
+    // end of fallback jpeg image
+    // ==============================
+
+    // ==============================
+    // webp image
+    // ==============================
+
+    // this code comes from the article :
+    // " https://www.js-craft.io/blog/css-fallbacks-for-webp-background-images-with-supports/ "
+    @supports ( background-image : url( /images/mj_utah_background_02_v5_2560.webp ) ) {
+
+        background-image : url( /images/mj_utah_background_02_v5_2560.webp );
+
+        @media all and ( max-width : $bp-1728 ) {
+    
+            background-image : url( /images/mj_utah_background_02_v5_1728.webp );
+
+        } // end of bp-1728
+
+        @media all and ( max-width : $bp-1376 ) {
+    
+            background-image : url( /images/mj_utah_background_02_v5_1376.webp );
+
+        } // end of bp-1376
+
+        @media all and ( max-width : $bp-1032 ) {
+    
+            background-image : url( /images/mj_utah_background_02_v5_1032.webp );
+
+        } // end of bp-1032
+
+        @media all and ( max-width : $bp-480 ) {
+
+            // this is an cropped image
+            background-image : url( /images/mj_utah_background_02_v5_480_v2.webp );
+
+        } // end of bp-480
+
+    } // end of container > @supports
+
+    // ==============================
+    // end of webp image
     // ==============================
 
     // ==============================
@@ -201,6 +298,8 @@
     } // end of container > bp-620
 
     @media all and ( max-width : $bp-480 ) {
+
+        // height : 86.1rem; // my original height and good height for mobile
 
         // match the height of the hero video container minus the header height
         // margin : calc( 105.16rem - 205px ) 0 0 0;
