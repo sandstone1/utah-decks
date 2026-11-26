@@ -261,12 +261,19 @@
                 border-bottom : 1px inset rgba( 255, 255, 255, .15 );
 
                 font-family    : var( --font-primary-5 );
-                font-size      : 1.9rem;
+                font-size      : 1.85rem;
                 font-weight    : 400;
                 color          : var( --white );
                 letter-spacing : 0.5px;
 
                 transition : all 0.2s ease-out;
+
+                @media all and ( max-width : $bp-1032 ) {
+
+                    font-size : 1.90rem; // 1.90rem or 1.71rem looked better than 1.85rem or
+                    // 1.665rem on smaller screens 
+            
+                } // end of container > div1 > ul > li > a > bp-1032
 
                 // ==============================
                 // although we don't need the display key value pair above or the
@@ -396,7 +403,9 @@
                     display     : flex;
                     align-items : center;
 
-                    padding : 1.5rem 2.2rem 1.5rem 0; // give some padding for the click event
+                    padding : 1.7rem 0 1.5rem 0; // give some padding for the click event and
+                    // made padding top just because it looked better to provide a little extra
+                    // spacing at the top
 
                     // match the parent a elements
                     font-family    : var( --font-primary-5 );

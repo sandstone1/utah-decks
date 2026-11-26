@@ -442,7 +442,7 @@ export default function NavComponent() {
                                         // className={ currentPath.startsWith( '/decks' ) ? styles.navActive : '' }
                                     >
                                         <span data-content="Deck Services" aria-hidden="true"></span>
-                                        Deck Services
+                                        Deck Builder Services
                                     </span>
                                     <p>Custom decks, repair, replacement & railings</p>
 

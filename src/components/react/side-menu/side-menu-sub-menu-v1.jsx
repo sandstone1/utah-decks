@@ -201,13 +201,13 @@ export default function SideMenuComponent( { resetShowSideMenu, showSideMenu } )
 
                     {
                         visibility : "hidden",
-                        width      : '30vw',
-                        transform  : "translateX( 30vw )" // the side menu starts off the screen
-                        // to the right by 30vw
+                        width      : '32vw',
+                        transform  : "translateX( 32vw )" // the side menu starts off the screen
+                        // to the right by 32vw
                     }, 
                     {
                         visibility : "visible",
-                        width      : '30vw',
+                        width      : '32vw',
                         transform  : "translateX( 0 )" // this moves the side menu to the left by
                         // 26vw, thereby filling the viewport with the side menu
                     }
@@ -282,13 +282,13 @@ export default function SideMenuComponent( { resetShowSideMenu, showSideMenu } )
 
                     {
                         visibility : "hidden",
-                        width      : '32vw',
-                        transform  : "translateX( 32vw )" // the side menu starts off the screen
-                        // to the right by 32vw
+                        width      : '38vw',
+                        transform  : "translateX( 38vw )" // the side menu starts off the screen
+                        // to the right by 38vw
                     }, 
                     {
                         visibility : "visible",
-                        width      : '32vw',
+                        width      : '38vw',
                         transform  : "translateX( 0 )" // this moves the side menu to the left by
                         // 32vw, thereby filling the viewport with the side menu
                     }
@@ -363,15 +363,15 @@ export default function SideMenuComponent( { resetShowSideMenu, showSideMenu } )
 
                     {
                         visibility : "hidden",
-                        width      : '36vw',
-                        transform  : "translateX( 36vw )" // the side menu starts off the screen
-                        // to the right by 36vw
+                        width      : '38vw',
+                        transform  : "translateX( 38vw )" // the side menu starts off the screen
+                        // to the right by 38vw
                     }, 
                     {
                         visibility : "visible",
-                        width      : '36vw',
+                        width      : '38vw',
                         transform  : "translateX( 0 )" // this moves the side menu to the left by
-                        // 35vw, thereby filling the viewport with the side menu
+                        // 38vw, thereby filling the viewport with the side menu
                     }
     
                 ],
@@ -444,15 +444,15 @@ export default function SideMenuComponent( { resetShowSideMenu, showSideMenu } )
 
                     {
                         visibility : "hidden",
-                        width      : '40vw',
-                        transform  : "translateX( 40vw )" // the side menu starts off the screen
-                        // to the right by 40vw
+                        width      : '44vw',
+                        transform  : "translateX( 44vw )" // the side menu starts off the screen
+                        // to the right by 44vw
                     }, 
                     {
                         visibility : "visible",
-                        width      : '40vw',
+                        width      : '44vw',
                         transform  : "translateX( 0 )" // this moves the side menu to the left by
-                        // 40vw, thereby filling the viewport with the side menu
+                        // 44vw, thereby filling the viewport with the side menu
                     }
     
                 ],
@@ -525,15 +525,15 @@ export default function SideMenuComponent( { resetShowSideMenu, showSideMenu } )
 
                     {
                         visibility : "hidden",
-                        width      : '47vw',
-                        transform  : "translateX( 47vw )" // the side menu starts off the screen
-                        // to the right by 47vw
+                        width      : '55vw',
+                        transform  : "translateX( 55vw )" // the side menu starts off the screen
+                        // to the right by 55vw
                     }, 
                     {
                         visibility : "visible",
-                        width      : '47vw',
+                        width      : '55vw',
                         transform  : "translateX( 0 )" // this moves the side menu to the left by
-                        // 47vw, thereby filling the viewport with the side menu
+                        // 55vw, thereby filling the viewport with the side menu
                     }
     
                 ],
@@ -699,15 +699,15 @@ export default function SideMenuComponent( { resetShowSideMenu, showSideMenu } )
 
                     {
                         visibility : "visible",
-                        width      : '30vw',
+                        width      : '32vw',
                         transform  : "translateX( 0 )" // this starts with the side menu filling
                         // the viewport
                     },
                     {
                         visibility : "hidden",
-                        width      : '30vw',
-                        transform  : "translateX( 30vw )" // this moves the side menu off the
-                        // screen to the right by 30vw
+                        width      : '32vw',
+                        transform  : "translateX( 32vw )" // this moves the side menu off the
+                        // screen to the right by 32vw
                     }
 
                 ],
@@ -791,15 +791,15 @@ export default function SideMenuComponent( { resetShowSideMenu, showSideMenu } )
 
                     {
                         visibility : "visible",
-                        width      : '32vw',
+                        width      : '38vw',
                         transform  : "translateX( 0 )" // this starts with the side menu filling
                         // the viewport
                     },
                     {
                         visibility : "hidden",
-                        width      : '32vw',
-                        transform  : "translateX( 32vw )" // this moves the side menu off the
-                        // screen to the right by 32vw
+                        width      : '38vw',
+                        transform  : "translateX( 38vw )" // this moves the side menu off the
+                        // screen to the right by 38vw
                     }
 
                 ],
@@ -883,15 +883,15 @@ export default function SideMenuComponent( { resetShowSideMenu, showSideMenu } )
 
                     {
                         visibility : "visible",
-                        width      : '36vw',
+                        width      : '38vw',
                         transform  : "translateX( 0 )" // this starts with the side menu filling
                         // the viewport
                     },
                     {
                         visibility : "hidden",
-                        width      : '36vw',
-                        transform  : "translateX( 36vw )" // this moves the side menu off the
-                        // screen to the right by 36vw
+                        width      : '38vw',
+                        transform  : "translateX( 38vw )" // this moves the side menu off the
+                        // screen to the right by 38vw
                     }
 
                 ],
@@ -975,15 +975,15 @@ export default function SideMenuComponent( { resetShowSideMenu, showSideMenu } )
 
                     {
                         visibility : "visible",
-                        width      : '40vw',
+                        width      : '44vw',
                         transform  : "translateX( 0 )" // this starts with the side menu filling
                         // the viewport
                     },
                     {
                         visibility : "hidden",
-                        width      : '40vw',
-                        transform  : "translateX( 40vw )" // this moves the side menu off the
-                        // screen to the right by 40vw
+                        width      : '44vw',
+                        transform  : "translateX( 44vw )" // this moves the side menu off the
+                        // screen to the right by 44vw
                     }
 
                 ],
@@ -1067,15 +1067,15 @@ export default function SideMenuComponent( { resetShowSideMenu, showSideMenu } )
 
                     {
                         visibility : "visible",
-                        width      : '47vw',
+                        width      : '55vw',
                         transform  : "translateX( 0 )" // this starts with the side menu filling
                         // the viewport
                     },
                     {
                         visibility : "hidden",
-                        width      : '47vw',
-                        transform  : "translateX( 47vw )" // this moves the side menu off the
-                        // screen to the right by 47vw
+                        width      : '55vw',
+                        transform  : "translateX( 55vw )" // this moves the side menu off the
+                        // screen to the right by 55vw
                     }
 
                 ],
@@ -1526,7 +1526,11 @@ export default function SideMenuComponent( { resetShowSideMenu, showSideMenu } )
                                         <span>
                                             <FiLayers style={ { fontSize: '2.4rem' } } />
                                         </span>
-                                        Deck Services
+                                        {
+
+                                            window.innerWidth <= 375 ? 'Deck Builder' : 'Deck Builder Services'
+
+                                        }
                                     </a>
 
                                 </div>
