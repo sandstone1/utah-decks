@@ -573,7 +573,8 @@ export default function DeckServicesIntroComponent() {
                         and framing that weren't built for the conditions. Utah Decks & Pergolas
                         builds every deck with properly set footings, composite decking that
                         never needs staining, and a 2-year workmanship guarantee, so your deck
-                        still looks and performs well years from now.
+                        still looks and performs well years from now. From permits to the final
+                        walkthrough, we handle every step of your deck construction.
                     </p>
                 
                 </div> 
