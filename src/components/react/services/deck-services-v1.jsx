@@ -1115,7 +1115,7 @@ export default function DeckServicesComponent() {
                                 loading="lazy"
                                 // fetchpriority={ "high" } // needed in case someone scrolls down the
                                 // page super fast
-                                alt="Image of a custom built pergola"
+                                alt="Image of a deck being repaired"
                             />
                         </picture>
 

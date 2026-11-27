@@ -1180,7 +1180,7 @@ export default function ServicesComponent() {
                 <h2
                     ref={ h2Ref }
                 >
-                    Decks, Pergolas & Basements Are What We Do
+                    Decks & Pergolas Are What We Do
                 </h2>
 
                 {
@@ -1209,7 +1209,7 @@ export default function ServicesComponent() {
                         ref={ badge1Ref }
                     >
 
-                        <h3 className="service-1-h3">Custom Trex & Timber&shy;Tech Decks</h3>
+                        <h3 className="service-1-h3">Deck Builder</h3>
 
                         <p className="service-1-p">
                             We specialize in building high-quality, beautiful decks that are built to last.
@@ -1242,8 +1242,8 @@ export default function ServicesComponent() {
                             <img
                                 className="service-1-picture"
                                 src="/images/mj_decks_03_300.jpg"
-                                width={ 300 }
-                                height={ 300 }
+                                width="300"
+                                height="300"
                                 loading="lazy"
                                 // fetchpriority={ "high" } // needed in case someone scrolls down the
                                 // page super fast
@@ -1293,9 +1293,9 @@ export default function ServicesComponent() {
                             */
                         }
                         <p>
-                            From standard cedar pergolas to custom louvered designs, we build
-                            pergolas that add shade, structure, and style to your backyard
-                            — built to fit your space, not a template.
+                            We build custom cedar and louvered pergolas, plus patio covers, to give
+                            your backyard shade and structure that fits your space. Every project
+                            is built from quality materials and made to handle Utah&apos;s weather.
                         </p>
 
                         {
@@ -1322,8 +1322,8 @@ export default function ServicesComponent() {
                             />
                             <img
                                 src="/images/mj_decks_pergola_01_300.jpg"
-                                width={ 300 }
-                                height={ 300 }
+                                width="300"
+                                height="300"
                                 loading="lazy"
                                 // fetchpriority={ "high" } // needed in case someone scrolls down the
                                 // page super fast
@@ -1333,10 +1333,13 @@ export default function ServicesComponent() {
 
                         <div>
 
-                            <a href="">
+                            <a href="/decks/deck-repair">
                                 <span data-content="Learn more" aria-hidden="true"></span>
                                 Learn more
                             </a>
+                            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+                                <path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path>
+                            </svg>
 
                         </div>
 
@@ -1347,11 +1350,78 @@ export default function ServicesComponent() {
                             // ==============================
                             // container > div 1 > div 2 > div 3 ( service 3 )
                             // ==============================
-                            We build AI software that increases revenue and maximizes company productivity.
                         */
                     }
                     <div
                         ref={ badge3Ref }
+                    >
+
+                        <h3>Deck Repair</h3>
+
+                        <p>
+                            Utah&apos;s sun, snow, and freeze-thaw take a toll on decks.
+                            We fix damaged boards, railings, stairs, and structural problems
+                            before they get worse. Every repair is done right so your deck
+                            stays safe and solid for years.
+                        </p>
+
+                        {
+                            /*
+                                // ==============================
+                                // container > div 1 > div 2 > div 1 > picture
+                                // ==============================
+                            */
+                        }
+                        {
+                            /*
+                                // ==============================
+                                // remember, we had to put the picture first in the source code
+                                // and eliminate the grid at bp-1032 and do " float : right; "
+                                // on the picture at bp-1032 in order to get the text to wrap
+                                // around the picture
+                                // ==============================
+                            */
+                        }
+                        <picture>
+                            <source 
+                                srcSet="/images/mj_deck_repair_04_300.webp"
+                                type="image/webp"
+                            />
+                            <img
+                                src="/images/mj_deck_repair_04_300.jpg"
+                                width="300"
+                                height="300"
+                                loading="lazy"
+                                // fetchpriority={ "high" } // needed in case someone scrolls down the
+                                // page super fast
+                                alt="Image of a custom built fireplace"
+                            />
+                        </picture>
+
+                        <div>
+
+                            <a href="/decks/deck-repair">
+                                <span data-content="Learn more" aria-hidden="true"></span>
+                                Learn more
+                            </a>
+                            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+                                <path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path>
+                            </svg>
+
+                        </div>
+
+                    </div>
+
+                    {
+                        /*
+                            // ==============================
+                            // container > div 1 > div 2 > div 4 ( service 4 )
+                            // ==============================
+                            We build AI software that increases revenue and maximizes company productivity.
+                        */
+                    }
+                    <div
+                        ref={ badge4Ref }
                     >
 
                         <h3>Railings & Stairs</h3>
@@ -1386,8 +1456,8 @@ export default function ServicesComponent() {
                             />
                             <img
                                 src="/images/mj_decks_railings_01_300.jpg"
-                                width={ 300 }
-                                height={ 300 }
+                                width="300"
+                                height="300"
                                 loading="lazy"
                                 // fetchpriority={ "high" } // needed in case someone scrolls down the
                                 // page super fast
@@ -1397,10 +1467,13 @@ export default function ServicesComponent() {
 
                         <div>
 
-                            <a href="">
+                            <a href="/decks/deck-repair">
                                 <span data-content="Learn more" aria-hidden="true"></span>
                                 Learn more
                             </a>
+                            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+                                <path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path>
+                            </svg>
 
                         </div>
 
@@ -1409,15 +1482,15 @@ export default function ServicesComponent() {
                     {
                         /*
                             // ==============================
-                            // container > div 1 > div 2 > div 4 ( service 4 )
+                            // container > div 1 > div 2 > div 5 ( service 5 )
                             // ==============================
                         */
                     }
                     <div
-                        ref={ badge4Ref }
+                        ref={ badge5Ref }
                     >
 
-                        <h3>Base&shy;ments</h3>
+                        <h3>Base&shy;ment Finishing</h3>
 
                         <p>
                             A finished basement adds real living space, year-round. We handle framing,
@@ -1449,8 +1522,8 @@ export default function ServicesComponent() {
                             />
                             <img
                                 src="/images/mj_decks_basement_02_300.jpg"
-                                width={ 300 }
-                                height={ 300 }
+                                width="300"
+                                height="300"
                                 loading="lazy"
                                 // fetchpriority={ "high" } // needed in case someone scrolls down the
                                 // page super fast
@@ -1460,73 +1533,13 @@ export default function ServicesComponent() {
 
                         <div>
 
-                            <a href="">
+                            <a href="/decks/deck-repair">
                                 <span data-content="Learn more" aria-hidden="true"></span>
                                 Learn more
                             </a>
-
-                        </div>
-
-                    </div>
-
-                    {
-                        /*
-                            // ==============================
-                            // container > div 1 > div 2 > div 5 ( service 5 )
-                            // ==============================
-                        */
-                    }
-                    <div
-                        ref={ badge5Ref }
-                    >
-
-                        <h3>Fireplaces</h3>
-
-                        <p>
-                            We build custom outdoor fireplaces that extend your outdoor
-                            season — designed to fit your deck or patio and built for
-                            real Utah evenings.
-                        </p>
-
-                        {
-                            /*
-                                // ==============================
-                                // container > div 1 > div 2 > div 1 > picture
-                                // ==============================
-                            */
-                        }
-                        {
-                            /*
-                                // ==============================
-                                // remember, we had to put the picture first in the source code
-                                // and eliminate the grid at bp-1032 and do " float : right; "
-                                // on the picture at bp-1032 in order to get the text to wrap
-                                // around the picture
-                                // ==============================
-                            */
-                        }
-                        <picture>
-                            <source 
-                                srcSet="/images/mj_decks_fireplace_03_300.webp"
-                                type="image/webp"
-                            />
-                            <img
-                                src="/images/mj_decks_fireplace_03_300.jpg"
-                                width={ 300 }
-                                height={ 300 }
-                                loading="lazy"
-                                // fetchpriority={ "high" } // needed in case someone scrolls down the
-                                // page super fast
-                                alt="Image of a custom built fireplace"
-                            />
-                        </picture>
-
-                        <div>
-
-                            <a href="">
-                                <span data-content="Learn more" aria-hidden="true"></span>
-                                Learn more
-                            </a>
+                            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+                                <path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path>
+                            </svg>
 
                         </div>
 
@@ -1575,8 +1588,8 @@ export default function ServicesComponent() {
                             />
                             <img
                                 src="/images/mj_decks_design_01_300.jpg"
-                                width={ 300 }
-                                height={ 300 }
+                                width="300"
+                                height="300"
                                 loading="lazy"
                                 // fetchpriority={ "high" } // needed in case someone scrolls down the
                                 // page super fast
@@ -1586,10 +1599,13 @@ export default function ServicesComponent() {
 
                         <div>
 
-                            <a href="">
+                            <a href="/decks/deck-repair">
                                 <span data-content="Learn more" aria-hidden="true"></span>
                                 Learn more
                             </a>
+                            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+                                <path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"></path>
+                            </svg>
 
                         </div>
 

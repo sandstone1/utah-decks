@@ -349,7 +349,7 @@
                 } // end of container > div1 > div2 > div1 > picture
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > div 1
+                // container > div 1 > div 2 > div 1 > div 4
                 // ==============================
 
                 > div {
@@ -365,15 +365,19 @@
 
                     @media all and ( max-width : $bp-1280 ) {
 
+                        justify-self : start;
+
                         padding : 0 0 0 0;
             
-                    } // end of container > div1 > div2 > div1 > bp-1280
+                    } // end of container > div1 > div2 a. div1 > div4 > bp-1280
 
                     @media all and ( max-width : $bp-768 ) {
 
+                        justify-self : center;
+
                         padding : 2.0rem 0 0 0;
             
-                    } // end of container > div1 > div2 > div1 > bp-768
+                    } // end of container > div1 > div2 > div1 > div4 > bp-768
 
                     > a {
 
@@ -393,7 +397,7 @@
                 
                             margin : 0 0 0 0; // get rid of the right margin on smaller screens
                 
-                        } // end of container > div1 > div1 > p:nth-child( 1 ) > bp-620
+                        } // end of container > div1 > div2 > div1 > div4 > a > bp-620
                         
                 
                         /*
@@ -439,15 +443,15 @@
                 
                                 display : none;
                             
-                            }// container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 ) > bp-768
+                            } // end of container > div1 > div2 > div1 > div4 > a > span:nth-child( 1 ) > bp-768
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )
+                        } // end of container > div1 > div2 > div1 > div4 > a > span:nth-child( 1 )
                 
                         &:hover span:nth-child( 1 ) {
                 
                             transform : translateX( 0 );
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 )
+                        } // container > div1 > div2 > div1 > div4 > a > &:hover span:nth-child( 1 )
                 
                         // this is the text and it slides in from the right
                         > span:nth-child( 1 )::before {
@@ -469,17 +473,17 @@
                 
                                 display : none;
                             
-                            } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )::before > bp-768
+                            } // end of container > div1 > div2 > div1 > div4 > a > span:nth-child( 1 )::before > bp-768
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > > span:nth-child( 1 )::before
+                        } // end of container > div1 > div2 > div1 > div4 > a > span:nth-child( 1 )::before
                 
                         &:hover span:nth-child( 1 ):before {
                 
                             transform : translateX( 0 );
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 ):before
+                        } // end of container > div1 > div2 > div1 > div4 > a > &:hover span:nth-child( 1 ):before
 
-                    } // container > div 1 > div 2 > div 1 > div 1 > a
+                    } // end of container > div1 > div2 > div1 > div4 > a
 
                     > svg {
 
@@ -492,13 +496,13 @@
                 
                             display : none;
                         
-                        } // container > div 1 > div 2 > div 1 > div 1 > svg > bp-375
+                        } // end of container > div1 > div2 > div1 > div4 > svg > bp-375
 
-                    }// container > div 1 > div 2 > div 1 > div 1 > svg
+                    } // end of container > div1 > div2 > div1 > div4 > svg
 
-                } // container > div 1 > div 2 > div 1 > div 1
+                } // end of container > div1 > div2 > div1 > div4
 
-            } // container > div 1 > div 2 > div 1
+            } // end of container > div1 > div2 > div1
 
             // ==============================
             // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges ) > div 2 ( badge 2 )
@@ -560,7 +564,7 @@
                                             "picture"
                                             "div4";
 
-                }  // end of container > div1 > div2 > div2 > bp-768
+                } // end of container > div1 > div2 > div2 > bp-768
 
                 // ==============================
                 // container > div 1 > div 2 > div 2 > h3
@@ -622,7 +626,7 @@
                 } // end of container > div1 > div2 > div2 > picture
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > div 1
+                // container > div 1 > div 2 > div 2 > div 4
                 // ==============================
 
                 > div {
@@ -630,27 +634,33 @@
                     // parent
                     grid-area : div4;
 
+                    display      : flex;
+                    align-items  : center;
                     justify-self : center;
+
+                    visibility : hidden;
 
                     padding : 2.0rem 0 0 0;
 
                     @media all and ( max-width : $bp-1280 ) {
 
-                        // justify-self : left;
+                        justify-self : start;
 
                         padding : 0 0 0 0;
             
-                    } // end of container > div1 > div2 > div1 > bp-1280
+                    } // end of container > div1 > div2 > div2 > div4 > bp-1280
 
                     @media all and ( max-width : $bp-768 ) {
 
+                        justify-self : center;
+
                         padding : 2.0rem 0 0 0;
             
-                    } // end of container > div1 > div2 > div1 > bp-768
+                    } // end of container > div1 > div2 > div2 > div4 > bp-768
 
                     > a {
 
-                        // @include text-large-light;
+                        @include text-base-large-dark;
                 
                         display  : inline-flex;
                         position : relative;
@@ -658,15 +668,15 @@
                         // nearby links
                         overflow : hidden;
 
-                        display : none;
+                        padding : 0 0.75rem 0.10rem 0;
 
-                        @include text-base-dark;
+                        color : var( --green-290 );
 
                         @media all and ( max-width : $bp-620 ) {
                 
                             margin : 0 0 0 0; // get rid of the right margin on smaller screens
                 
-                        } // end of container > div1 > div1 > p:nth-child( 1 ) > bp-620
+                        } // end of container > div1 > div2 > div2 > div4 > a > bp-620
                         
                 
                         /*
@@ -694,7 +704,7 @@
                 
                             so I'm not sure how this effect works
                         */
-                
+
                         // this is the container and it slide in from the left
                         > span:nth-child( 1 ) {
                 
@@ -712,22 +722,22 @@
                 
                                 display : none;
                             
-                            }// container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 ) > bp-768
+                            } // end of container > div1 > div2 > div2 > div4 > a > span:nth-child( 1 ) > bp-768
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )
+                        } // end of container > div1 > div2 > div2 > div4 > a > span:nth-child( 1 )
                 
                         &:hover span:nth-child( 1 ) {
                 
                             transform : translateX( 0 );
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 )
+                        } // container > div1 > div2 > div2 > div4 > a > &:hover span:nth-child( 1 )
                 
                         // this is the text and it slides in from the right
                         > span:nth-child( 1 )::before {
                 
                             display : inline-flex;
                 
-                            color           : var( --gray-870 );
+                            // color           : var( --gray-870 );
                             text-decoration : underline;
                 
                             transform  : translateX( 100% );
@@ -742,19 +752,34 @@
                 
                                 display : none;
                             
-                            } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )::before > bp-768
+                            } // end of container > div1 > div2 > div2 > div4 > a > span:nth-child( 1 )::before > bp-768
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > > span:nth-child( 1 )::before
+                        } // end of container > div1 > div2 > div2 > div4 > a > span:nth-child( 1 )::before
                 
                         &:hover span:nth-child( 1 ):before {
                 
                             transform : translateX( 0 );
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 ):before
-                
-                    } // container > div 1 > div 2 > div 1 > div 1 > a
+                        } // end of container > div1 > div2 > div2 > div4 > a > &:hover span:nth-child( 1 ):before
 
-                } // container > div 1 > div 2 > div 1 > div 1
+                    } // end of container > div1 > div2 > div2 > div4 > a
+
+                    > svg {
+
+                        width  : 1.95rem;
+                        height : 1.95rem;
+
+                        color : var( --green-290 );
+
+                        @media all and ( max-width : $bp-375 ) {
+                
+                            display : none;
+                        
+                        } // end of container > div1 > div2 > div2 > div4 > svg > bp-375
+
+                    } // end of container > div1 > div2 > div2 > div4 > svg
+
+                } // end of container > div1 > div2 > div2 > div4
 
             } // end of container > div1 > div2 > div2
 
@@ -824,7 +849,7 @@
                                             "picture"
                                             "div4";
 
-                }  // end of container > div1 > div2 > div3 > bp-768
+                } // end of container > div1 > div2 > div3 > bp-768
 
                 // ==============================
                 // container > div 1 > div 2 > div 3 > h3
@@ -886,7 +911,7 @@
                 } // end of container > div1 > div2 > div3 > picture
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > div 1
+                // container > div 1 > div 2 > div 3 > div 4
                 // ==============================
 
                 > div {
@@ -894,27 +919,31 @@
                     // parent
                     grid-area : div4;
 
+                    display      : flex;
+                    align-items  : center;
                     justify-self : center;
 
                     padding : 2.0rem 0 0 0;
 
                     @media all and ( max-width : $bp-1280 ) {
 
-                        // justify-self : left;
+                        justify-self : start;
 
                         padding : 0 0 0 0;
             
-                    } // end of container > div1 > div2 > div1 > bp-1280
+                    } // end of container > div1 > div2 > div3 > div4 > bp-1280
 
                     @media all and ( max-width : $bp-768 ) {
 
+                        justify-self : center;
+
                         padding : 2.0rem 0 0 0;
             
-                    } // end of container > div1 > div2 > div1 > bp-768
+                    } // end of container > div1 > div2 > div3 > div4 > bp-768
 
                     > a {
 
-                        // @include text-large-light;
+                        @include text-base-large-dark;
                 
                         display  : inline-flex;
                         position : relative;
@@ -922,15 +951,15 @@
                         // nearby links
                         overflow : hidden;
 
-                        display : none;
+                        padding : 0 0.75rem 0.10rem 0;
 
-                        @include text-base-dark;
+                        color : var( --green-290 );
 
                         @media all and ( max-width : $bp-620 ) {
                 
                             margin : 0 0 0 0; // get rid of the right margin on smaller screens
                 
-                        } // end of container > div1 > div1 > p:nth-child( 1 ) > bp-620
+                        } // end of container > div1 > div2 > div3 > div4 > a > bp-620
                         
                 
                         /*
@@ -958,7 +987,7 @@
                 
                             so I'm not sure how this effect works
                         */
-                
+
                         // this is the container and it slide in from the left
                         > span:nth-child( 1 ) {
                 
@@ -976,22 +1005,22 @@
                 
                                 display : none;
                             
-                            }// container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 ) > bp-768
+                            } // end of container > div1 > div2 > div3 > div4 > a > span:nth-child( 1 ) > bp-768
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )
+                        } // end of container > div1 > div2 > div3 > div4 > a > span:nth-child( 1 )
                 
                         &:hover span:nth-child( 1 ) {
                 
                             transform : translateX( 0 );
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 )
+                        } // end of container > div1 > div2 > div3 > div4 > a > &:hover span:nth-child( 1 )
                 
                         // this is the text and it slides in from the right
                         > span:nth-child( 1 )::before {
                 
                             display : inline-flex;
                 
-                            color           : var( --gray-870 );
+                            // color           : var( --gray-870 );
                             text-decoration : underline;
                 
                             transform  : translateX( 100% );
@@ -1006,19 +1035,34 @@
                 
                                 display : none;
                             
-                            } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )::before > bp-768
+                            } // end of container > div1 > div2 > div3 > div4 > a > span:nth-child( 1 )::before > bp-768
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > > span:nth-child( 1 )::before
+                        } // end of container > div1 > div2 > div3 > div4 > a > > span:nth-child( 1 )::before
                 
                         &:hover span:nth-child( 1 ):before {
                 
                             transform : translateX( 0 );
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 ):before
-                
-                    } // container > div 1 > div 2 > div 1 > div 1 > a
+                        } // end of container > div1 > div2 > div3 > div4 > a > &:hover span:nth-child( 1 ):before
 
-                } // container > div 1 > div 2 > div 1 > div 1
+                    } // end of container > div1 > div2 > div3 > div4 > a
+
+                    > svg {
+
+                        width  : 1.95rem;
+                        height : 1.95rem;
+
+                        color : var( --green-290 );
+
+                        @media all and ( max-width : $bp-375 ) {
+                
+                            display : none;
+                        
+                        } // end of container > div1 > div2 > div3 > div4 > svg > bp-375
+
+                    } // end of container > div1 > div2 > div3 > div4 > svg
+
+                } // end of container > div1 > div2 > div3 > div4
 
             } // end of container > div1 > div2 > div3
 
@@ -1145,7 +1189,7 @@
                 } // end of container > div1 > div2 > div4 > picture
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > div 1
+                // container > div 1 > div 2 > div 4 > div 4
                 // ==============================
 
                 > div {
@@ -1153,27 +1197,33 @@
                     // parent
                     grid-area : div4;
 
+                    display      : flex;
+                    align-items  : center;
                     justify-self : center;
+
+                    visibility : hidden;
 
                     padding : 2.0rem 0 0 0;
 
                     @media all and ( max-width : $bp-1280 ) {
 
-                        // justify-self : left;
+                        justify-self : start;
 
                         padding : 0 0 0 0;
             
-                    } // end of container > div1 > div2 > div1 > bp-1280
+                    } // end of container > div1 > div2 > div4 > div4 > bp-1280
 
                     @media all and ( max-width : $bp-768 ) {
 
+                        justify-self : center;
+
                         padding : 2.0rem 0 0 0;
             
-                    } // end of container > div1 > div2 > div1 > bp-768
+                    } // end of container > div1 > div2 > div4 > div4 > bp-768
 
                     > a {
 
-                        // @include text-large-light;
+                        @include text-base-large-dark;
                 
                         display  : inline-flex;
                         position : relative;
@@ -1181,15 +1231,15 @@
                         // nearby links
                         overflow : hidden;
 
-                        display : none;
+                        padding : 0 0.75rem 0.10rem 0;
 
-                        @include text-base-dark;
+                        color : var( --green-290 );
 
                         @media all and ( max-width : $bp-620 ) {
                 
                             margin : 0 0 0 0; // get rid of the right margin on smaller screens
                 
-                        } // end of container > div1 > div1 > p:nth-child( 1 ) > bp-620
+                        } // end of container > div1 > div2 > div4 > div4 > a > bp-620
                         
                 
                         /*
@@ -1217,7 +1267,7 @@
                 
                             so I'm not sure how this effect works
                         */
-                
+
                         // this is the container and it slide in from the left
                         > span:nth-child( 1 ) {
                 
@@ -1235,22 +1285,22 @@
                 
                                 display : none;
                             
-                            }// container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 ) > bp-768
+                            } // end of container > div1 > div2 > div4 > div4 > a > span:nth-child( 1 ) > bp-768
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )
+                        } // end of container > div1 > div2 > div4 > div4 > a > span:nth-child( 1 )
                 
                         &:hover span:nth-child( 1 ) {
                 
                             transform : translateX( 0 );
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 )
+                        } // container > div1 > div2 > div4 > div4 > a > &:hover span:nth-child( 1 )
                 
                         // this is the text and it slides in from the right
                         > span:nth-child( 1 )::before {
                 
                             display : inline-flex;
                 
-                            color           : var( --gray-870 );
+                            // color           : var( --gray-870 );
                             text-decoration : underline;
                 
                             transform  : translateX( 100% );
@@ -1265,19 +1315,34 @@
                 
                                 display : none;
                             
-                            } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )::before > bp-768
+                            } // end of container > div1 > div2 > div4 > div4 > a > span:nth-child( 1 )::before > bp-768
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > > span:nth-child( 1 )::before
+                        } // end of container > div1 > div2 > div4 > div4 > a > span:nth-child( 1 )::before
                 
                         &:hover span:nth-child( 1 ):before {
                 
                             transform : translateX( 0 );
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 ):before
-                
-                    } // container > div 1 > div 2 > div 1 > div 1 > a
+                        } // end of container > div1 > div2 > div4 > div4 > a > &:hover span:nth-child( 1 ):before
 
-                } // container > div 1 > div 2 > div 1 > div 1
+                    } // end of container > div1 > div2 > div4 > div4 > a
+
+                    > svg {
+
+                        width  : 1.95rem;
+                        height : 1.95rem;
+
+                        color : var( --green-290 );
+
+                        @media all and ( max-width : $bp-375 ) {
+                
+                            display : none;
+                        
+                        } // end of container > div1 > div2 > div4 > div4 > svg > bp-375
+
+                    } // end of container > div1 > div2 > div4 > div4 > svg
+
+                } // end of container > div1 > div2 > div4 > div4
 
             } // end of container > div1 > div2 > div4
 
@@ -1410,7 +1475,7 @@
                 } // end of container > div1 > div2 > div5 > picture
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > div 1
+                // container > div 1 > div 2 > div 4 > div 5
                 // ==============================
 
                 > div {
@@ -1418,27 +1483,33 @@
                     // parent
                     grid-area : div4;
 
+                    display      : flex;
+                    align-items  : center;
                     justify-self : center;
+
+                    visibility : hidden;
 
                     padding : 2.0rem 0 0 0;
 
                     @media all and ( max-width : $bp-1280 ) {
 
-                        // justify-self : left;
+                        justify-self : start;
 
                         padding : 0 0 0 0;
             
-                    } // end of container > div1 > div2 > div1 > bp-1280
+                    } // end of container > div1 > div2 > div4 > div5 > bp-1280
 
                     @media all and ( max-width : $bp-768 ) {
 
+                        justify-self : center;
+
                         padding : 2.0rem 0 0 0;
             
-                    } // end of container > div1 > div2 > div1 > bp-768
+                    } // end of container > div1 > div2 > div4 > div5 > bp-768
 
                     > a {
 
-                        // @include text-large-light;
+                        @include text-base-large-dark;
                 
                         display  : inline-flex;
                         position : relative;
@@ -1446,15 +1517,15 @@
                         // nearby links
                         overflow : hidden;
 
-                        display : none;
+                        padding : 0 0.75rem 0.10rem 0;
 
-                        @include text-base-dark;
+                        color : var( --green-290 );
 
                         @media all and ( max-width : $bp-620 ) {
                 
                             margin : 0 0 0 0; // get rid of the right margin on smaller screens
                 
-                        } // end of container > div1 > div1 > p:nth-child( 1 ) > bp-620
+                        } // end of container > div1 > div2 > div4 > div5 > a > bp-620
                         
                 
                         /*
@@ -1482,7 +1553,7 @@
                 
                             so I'm not sure how this effect works
                         */
-                
+
                         // this is the container and it slide in from the left
                         > span:nth-child( 1 ) {
                 
@@ -1500,22 +1571,22 @@
                 
                                 display : none;
                             
-                            }// container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 ) > bp-768
+                            } // end of container > div1 > div2 > div4 > div5 > a > span:nth-child( 1 ) > bp-768
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )
+                        } // end of container > div1 > div2 > div4 > div5 > a > span:nth-child( 1 )
                 
                         &:hover span:nth-child( 1 ) {
                 
                             transform : translateX( 0 );
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 )
+                        } // container > div1 > div2 > div4 > div5 > a > &:hover span:nth-child( 1 )
                 
                         // this is the text and it slides in from the right
                         > span:nth-child( 1 )::before {
                 
                             display : inline-flex;
                 
-                            color           : var( --gray-870 );
+                            // color           : var( --gray-870 );
                             text-decoration : underline;
                 
                             transform  : translateX( 100% );
@@ -1530,21 +1601,36 @@
                 
                                 display : none;
                             
-                            } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )::before > bp-768
+                            } // end of container > div1 > div2 > div4 > div5 > a > span:nth-child( 1 )::before > bp-768
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > > span:nth-child( 1 )::before
+                        } // end of container > div1 > div2 > div4 > div5 > a > span:nth-child( 1 )::before
                 
                         &:hover span:nth-child( 1 ):before {
                 
                             transform : translateX( 0 );
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 ):before
+                        } // end of container > div1 > div2 > div4 > div5 > a > &:hover span:nth-child( 1 ):before
+
+                    } // end of container > div1 > div2 > div4 > div5 > a
+
+                    > svg {
+
+                        width  : 1.95rem;
+                        height : 1.95rem;
+
+                        color : var( --green-290 );
+
+                        @media all and ( max-width : $bp-375 ) {
                 
-                    } // container > div 1 > div 2 > div 1 > div 1 > a
+                            display : none;
+                        
+                        } // end of container > div1 > div2 > div4 > div5 > svg > bp-375
 
-                } // container > div 1 > div 2 > div 1 > div 1
+                    } // end of container > div1 > div2 > div4 > div5 > svg
 
-            } // end of container > div1 > div2 > div5
+                } // end of container > div1 > div2 > div4 > div5
+
+            } // end of container > div1 > div2 > div4
 
             // ==============================
             // container > div 1 ( wrapper div ) > div 2 ( wrapper div for badges ) > div 6 ( badge 6 )
@@ -1675,7 +1761,7 @@
                 } // end of container > div1 > div2 > div6 > picture
 
                 // ==============================
-                // container > div 1 > div 2 > div 1 > div 1
+                // container > div 1 > div 2 > div 6 > div 4
                 // ==============================
 
                 > div {
@@ -1683,27 +1769,33 @@
                     // parent
                     grid-area : div4;
 
-                    justify-self : center;
+                    display      : flex;
+                    align-items  : center;
+                    //justify-self : center;
+
+                    visibility : hidden;
 
                     padding : 2.0rem 0 0 0;
 
                     @media all and ( max-width : $bp-1280 ) {
 
-                        // justify-self : left;
+                        justify-self : start;
 
                         padding : 0 0 0 0;
             
-                    } // end of container > div1 > div2 > div1 > bp-1280
+                    } // end of container > div1 > div2 > div6 > div4 > bp-1280
 
                     @media all and ( max-width : $bp-768 ) {
 
+                        justify-self : center;
+
                         padding : 2.0rem 0 0 0;
             
-                    } // end of container > div1 > div2 > div1 > bp-768
+                    } // end of container > div1 > div2 > div6 > div4 > bp-768
 
                     > a {
 
-                        // @include text-large-light;
+                        @include text-base-large-dark;
                 
                         display  : inline-flex;
                         position : relative;
@@ -1711,15 +1803,15 @@
                         // nearby links
                         overflow : hidden;
 
-                        display : none;
+                        padding : 0 0.75rem 0.10rem 0;
 
-                        @include text-base-dark;
+                        color : var( --green-290 );
 
                         @media all and ( max-width : $bp-620 ) {
                 
                             margin : 0 0 0 0; // get rid of the right margin on smaller screens
                 
-                        } // end of container > div1 > div1 > p:nth-child( 1 ) > bp-620
+                        } // end of container > div1 > div2 > div6 > div4 > a > bp-620
                         
                 
                         /*
@@ -1747,7 +1839,7 @@
                 
                             so I'm not sure how this effect works
                         */
-                
+
                         // this is the container and it slide in from the left
                         > span:nth-child( 1 ) {
                 
@@ -1765,22 +1857,22 @@
                 
                                 display : none;
                             
-                            }// container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 ) > bp-768
+                            } // end of container > div1 > div2 > div6 > div4 > a > span:nth-child( 1 ) > bp-768
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )
+                        } // end of container > div1 > div2 > div6 > div4 > a > span:nth-child( 1 )
                 
                         &:hover span:nth-child( 1 ) {
                 
                             transform : translateX( 0 );
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 )
+                        } // container > div1 > div2 > div6 > div4 > a > &:hover span:nth-child( 1 )
                 
                         // this is the text and it slides in from the right
                         > span:nth-child( 1 )::before {
                 
                             display : inline-flex;
                 
-                            color           : var( --gray-870 );
+                            // color           : var( --gray-870 );
                             text-decoration : underline;
                 
                             transform  : translateX( 100% );
@@ -1795,19 +1887,34 @@
                 
                                 display : none;
                             
-                            } // container > div 1 > div 2 > div 1 > div 1 > a > span:nth-child( 1 )::before > bp-768
+                            } // end of container > div1 > div2 > div6 > div4 > a > span:nth-child( 1 )::before > bp-768
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > > span:nth-child( 1 )::before
+                        } // end of container > div1 > div2 > div6 > div4 > a > span:nth-child( 1 )::before
                 
                         &:hover span:nth-child( 1 ):before {
                 
                             transform : translateX( 0 );
                 
-                        } // container > div 1 > div 2 > div 1 > div 1 > a > &:hover span:nth-child( 1 ):before
-                
-                    } // container > div 1 > div 2 > div 1 > div 1 > a
+                        } // end of container > div1 > div2 > div6 > div4 > a > &:hover span:nth-child( 1 ):before
 
-                } // container > div 1 > div 2 > div 1 > div 1
+                    } // end of container > div1 > div2 > div6 > div4 > a
+
+                    > svg {
+
+                        width  : 1.95rem;
+                        height : 1.95rem;
+
+                        color : var( --green-290 );
+
+                        @media all and ( max-width : $bp-375 ) {
+                
+                            display : none;
+                        
+                        } // end of container > div1 > div2 > div6 > div4 > svg > bp-375
+
+                    } // end of container > div1 > div2 > div6 > div4 > svg
+
+                } // end of container > div1 > div2 > div6 > div4
 
             } // end of container > div1 > div2 > div6
 

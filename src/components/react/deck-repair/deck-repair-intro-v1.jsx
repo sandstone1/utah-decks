@@ -696,7 +696,7 @@ export default function DeckRepairIntroComponent() {
                         Left alone, they turn into rot,
                         mold and structural damage that cost far more to fix later. Utah Decks & Pergolas
                         repairs decks in Midvale and across the Wasatch Front, including Salt Lake City,
-                        Park City, Draper, Sandy, Saratoga Springs, South Jordan, Centerville and
+                        Park City, Draper, Sandy, Saratoga Springs, South Jordan, Bountiful and
                         Farmington.        
                     </p>
 
