@@ -624,30 +624,12 @@
 
                 // parent
                 grid-area : div4;
-    
-                align-self : center;
 
-                width   : 55.0rem;
-                height  : 55.0rem;
-                z-index : 0;
-
-                border-radius : 50%;
-
-                // background : var( --blue-85-2 );
-                background : var( --orange-20 );
-                // background : var( --yellow-55 );
-                // background : var( --gray-225 );
-                // background : var( --purple-150 );
-                // background-image : linear-gradient( to bottom, rgba( 13, 58, 216, 0.20 ),  rgba( 13, 58, 216, 0.20 ) ), url( ../public/textures/brick_wall.png );
-                background : var( --blue-58 );
-                background : var( --blue-59 );
-                // background : var( --yellow-40 );
-                // background : var( --blue-61-1 );
-                // background-image : url( /textures/brick_wall.png );
+                display      : grid;
+                align-self   : center;
+                justify-self : center;
 
                 > picture:nth-child( 1 ) {
-
-                    justify-self : center;
 
                     > img {
     
@@ -658,9 +640,7 @@
                         // ==============================
     
                         width  : 100%;
-                        height : 100%;
-
-                        border-radius : 50%;
+                        height : auto;
     
                         // now let add the object-fit property and remember for object-fit to work we have to add
                         // the width and the height to the element
@@ -676,18 +656,6 @@
                         // visible — works perfectly with black and white illustrations on
                         // colored backgrounds without needing to remove the background at all
                         mix-blend-mode : multiply;
-    
-                        @media all and ( max-width : $bp-480 ) {
-
-                            height : 20.0rem; // maintain the width and height and screen size shrinks
-
-                        } // end of container > div1 > div2 > div1 > picture1 > img > bp-480
-        
-                        @media all and ( max-width : $bp-375 ) {
-
-                            height : 12.5rem; // maintain the width and height and screen size shrinks
-                
-                        } // end of container > div1 > div2 > div1 > picture1 > img > bp-375
 
                     } // end of container > div1 > div3 > picture1 > img
 

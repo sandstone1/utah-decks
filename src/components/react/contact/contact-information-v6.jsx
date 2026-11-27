@@ -98,7 +98,7 @@ export default function ContactInformationComponent() {
                 }
                 <h3>Reach Us Directly</h3>
 
-                <p>Prefer to talk? Give us a call anytime. If we miss your call, we&apos;ll
+                <p>Give us a call anytime. If we miss your call, we&apos;ll
                 get back to you right away. If it&apos;s after hours, we'll call you back the
                 next morning. You&apos;re also welcome to text us.</p>
     

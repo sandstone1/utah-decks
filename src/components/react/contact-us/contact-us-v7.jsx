@@ -734,15 +734,15 @@ export default function ContactUsComponent() {
                         }
                         <picture>
                             <source 
-                                srcSet="/images/mj_decks_04_300.webp"
+                                srcSet="/images/mj_pergola_01_800_60_round.webp"
                                 type="image/webp"
                             />
                             <img
-                                src="/images/mj_decks_04_300.png"
-                                width={ 3002 }
-                                height={ 300 }
+                                src="/images/mj_pergola_01_800_60_round.jpg"
+                                width="800"
+                                height="800"
                                 loading="lazy"
-                                // fetchPriority="high"
+                                // fetchpriority="high"
                                 alt="Picture of a custom deck"
                             />
                         </picture>
