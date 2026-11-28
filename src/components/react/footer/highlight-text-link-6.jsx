@@ -96,9 +96,9 @@ export default function HighlightTextComponentLink6() {
                         // ==============================
                     */
                 }
-                <a href="/3d-models" data-astro-reload>
-                    <span data-content="Models" aria-hidden="true"></span>
-                    Models
+                <a href="/decks" data-astro-reload>
+                    <span data-content="Deck Builder" aria-hidden="true"></span>
+                    Deck Builder
                 </a>
 
             </div>

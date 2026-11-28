@@ -15,6 +15,8 @@ import HighlightTextComponentLink4 from './highlight-text-link-4';
 import HighlightTextComponentLink5 from './highlight-text-link-5';
 // import in the Highlight text component link 6
 import HighlightTextComponentLink6 from './highlight-text-link-6';
+// import in the Highlight text component link 7
+import HighlightTextComponentLink7 from './highlight-text-link-7';
 // import in the Font Awesome phone icon
 import { FaPhoneAlt } from "react-icons/fa";
 // import in the Font Awesome location icon
@@ -159,11 +161,15 @@ export default function Footer() {
 
                         <h2>Services</h2>
 
-                        <p>Custom Decks</p>
+                        <div>
+                            <HighlightTextComponentLink6 />
+                        </div>
                         <p>Pergolas</p>
-                        <p>Railings & Lighting</p>
-                        <p>Basements</p>
-                        <p>Fireplaces</p>
+                        <div>
+                            <HighlightTextComponentLink7 />
+                        </div>
+                        <p>Railings & Stairs</p>
+                        <p>Base­ment Finishing</p>
                         <p>Design & Planning</p>
 
                     </div>

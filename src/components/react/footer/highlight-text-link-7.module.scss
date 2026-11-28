@@ -1,0 +1,136 @@
+
+
+
+// ==============================
+// partial imports / style imports
+// ==============================
+
+@use '../../../styles/_mixins.scss' as *;
+@use '../../../styles/_responsive_breakpoints.scss' as *;
+
+
+
+
+
+
+
+
+// ==============================
+// highlight text container
+// ==============================
+
+.highlightTextContainer {
+
+    // ==============================
+    // container > a
+    // ==============================
+
+    > a {
+
+        // @include text-large-light;
+
+        display  : inline-flex;
+        position : relative;
+        // clip the absolutely positioned span so that it doesn't bleed outside to other
+        // nearby links
+        overflow : hidden;
+
+        @include text-small-light;
+
+        font-weight : 200;
+
+        @media all and ( max-width : $bp-620 ) {
+
+            margin : 0 0 0 0; // get rid of the right margin on smaller screens
+
+        } // end of container > div1 > div1 > p:nth-child( 1 ) > bp-620
+        
+
+        /*
+            please see the sritcle for details on this effect :
+            https://css-tricks.com/4-ways-to-animate-the-color-of-a-text-link-on-hover/
+        */
+
+        /*
+            this is AI's estimate of how this works :
+
+            The span itself is invisible — it's just a clipping window ( overflow: hidden ) that
+            moves. The actual colored, underlined text lives in the ::before pseudo-element, and
+            IT'S the only thing you ever see. As the span ( window ) slides from off-screen-left
+            into its normal position, more and more of the ::before text becomes visible through
+            that window, creating the "wipe in from the left" effect. The color isn't moving
+            INTO existence — it's always there, just progressively REVEALED as the clipping window
+            slides into place around it
+        */
+
+        /*
+            I checked and the ::before is sitting behind the anchor text, which has the same
+            value as ::before or the content : attr( data-content );
+
+            and the span container is sitting to the right of the anchor text
+
+            so I'm not sure how this effect works
+        */
+
+        // this is the container and it slide in from the left
+        > span:nth-child( 1 ) {
+
+            position : absolute;
+            top      : 0;
+            left     : 0;
+
+            overflow   : hidden;
+            transform  : translateX( -100% );
+            transition : transform 400ms ease-out;
+
+            // even though we probably don't need this since mobile devices can't hover, turn
+            // this off anyways
+            @media all and ( max-width : $bp-768 ) {
+
+                display : none;
+            
+            } // end of container > a > span:nth-child( 1 ) > bp-768
+
+        } // end of container > a > span:nth-child( 1 )
+
+        &:hover span:nth-child( 1 ) {
+
+            transform : translateX( 0 );
+
+        } // end of container > a > &:hover span:nth-child( 1 )
+
+        // this is the text and it slides in from the right
+        > span:nth-child( 1 )::before {
+
+            display : inline-flex;
+
+            color           : var( --gray-225 );
+            text-decoration : underline;
+
+            transform  : translateX( 100% );
+            transition : transform 400ms ease-out;
+
+            // the text
+            content : attr( data-content );
+
+            // even though we probably don't need this since mobile devices can't hover, turn
+            // this off anyways
+            @media all and ( max-width : $bp-768 ) {
+
+                display : none;
+            
+            } // end of container > a > span:nth-child( 1 )::before > bp-768
+
+        } // end of container > a > > span:nth-child( 1 )::before
+
+        &:hover span:nth-child( 1 ):before {
+
+            transform : translateX( 0 );
+
+        } // end of container > a > &:hover span:nth-child( 1 ):before
+
+    } // end of container > a
+
+} // end of container
+
+
