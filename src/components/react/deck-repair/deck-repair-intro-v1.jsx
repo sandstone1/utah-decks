@@ -706,7 +706,13 @@ export default function DeckRepairIntroComponent() {
                         We find what&apos;s actually causing the damage, fix it properly,
                         and leave you with a deck that&apos;s solid, safe and ready to use. Every
                         repair starts with a free inspection, so you&apos;ll know exactly
-                        what&apos;s wrong before any work begins.                    
+                        what&apos;s wrong before any work begins. And if your deck
+                        is past repairing, we&apos;re also a full-service{' '}
+                        <a href="/decks">
+                            <span data-content="deck builder" aria-hidden="true"></span>
+                            deck builder
+                        </a>{' '}
+                        and can replace it with a new one built to last.
                     </p>
                 
                 </div> 
