@@ -1317,11 +1317,11 @@ export default function ServicesComponent() {
                         }
                         <picture>
                             <source 
-                                srcSet="/images/mj_decks_pergola_01_300.webp"
+                                srcSet="/images/mj_pergolas_02_300.webp"
                                 type="image/webp"
                             />
                             <img
-                                src="/images/mj_decks_pergola_01_300.jpg"
+                                src="/images/mj_pergolas_02_300.jpg"
                                 width="300"
                                 height="300"
                                 loading="lazy"
@@ -1384,11 +1384,11 @@ export default function ServicesComponent() {
                         }
                         <picture>
                             <source 
-                                srcSet="/images/mj_deck_repair_04_300.webp"
+                                srcSet="/images/mj_deck_repair_06_300.webp"
                                 type="image/webp"
                             />
                             <img
-                                src="/images/mj_deck_repair_04_300.jpg"
+                                src="/images/mj_deck_repair_06_300.jpg"
                                 width="300"
                                 height="300"
                                 loading="lazy"
